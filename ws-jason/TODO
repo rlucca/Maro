@@ -1,0 +1,58 @@
+AgArch sobreescrever todos os metodos publicos... em avaliacao
+	- Na classe há um metodo act que contem um parametro na minha avaliação inútil chamado feedback. Quem usa ou quando isso teve utilidade?
+Agent  sobreescrever todos os metodos publicos... não precisa
+TransitionSystem nao sei o que fazer, mas reasoningCycle precisa ser modificado... não precisa
+
+seguranca: desafio-resposta
+
+Objetivo
+	agente ter o raciocinio em WS
+		so eh necessario se preocupar
+			com ter o raciocinio fora e desativar as coisas do lado do jason
+			com a percepcao do agente (getPercepts) por causa que precisa ser repassada para onde o agente esta
+			agente sera um cliente WS
+				motivo: assim, a aplicacao externa pode manter sincronismo de forma mais facil com o jason
+			PROBLEMA: o agente precisa agir no ambiente, porem o agente eh um ambiente jason e o agente eh externo
+				SOLUCAO: quando o agente for XMLRPC ser peer-to-peer? ou realizar pooling?
+			PROBLEMA: como fazer para um simples servidor WS ser capaz de receber / enviar mensagens para outros agentes Jason?
+	ambiente ser descrito em WS
+		sera um servidor WS
+			motivo: assim, o jason pode manter o sincronismo com a aplicacao external
+
+
+WS Implementacao
+
+	Agentes
+		- podem executar em diferentes enderecos/porta com diferentes secrets? Sim, porem fica limitado ao secret "Interno" do Jason
+		- Cada agente é um cliente de um servidor, as percepções são enviadas para esse servidor (via 2 metodos, act ou perceive).
+			* Ao fim da entrega da percepção é retornado a ação que deve ser executada no lado Jason.
+		- Mensagens de outros agentes podem ser entregas por um metodo que ira retornar as mensagens que o Agente deseja enviar (via send ou via Broadcast)
+
+	Ambiente
+		- por enquanto esta sendo pensado como um unico servidor que ira fazer uso de um dado secret
+
+http://java.sun.com/developer/technicalArticles/Security/AES/AES_v1.html
+http://www.codekoala.com/blog/2009/aes-encryption-python-using-pycrypto/
+javax/mail/internet/MimeUtility.html decode to base64 :)
+http://commons.apache.org/codec/apidocs/org/apache/commons/codec/binary/Base64.html
+
+Problema
+	- Otimizacao
+		Ambiente deveria verificar no inicio as ações possiveis de serem executadas no WS
+	- Segurança
+		Um agente pode ser sobreescrito por outro no WS, se houver colisão de nomes
+		Tambem seria ideal ter criptografia via AES
+		Tornar o secret configuravel via configuracao no MAS2J
+	- Dump perceive
+		Não tenho certeza se o que será feito valerá para listas ([ricardo|r|lucca])
+	- Pensar em um jeito de nao ter que obrigar o allow_none=True
+		Hoje eh necessario deixar o allow_none em verdadeiro porque o agente pode
+		perceber que no ambiente nao tem percepcoes. Da mesma forma daria para
+		tentar separar em getAction(isToEraseAll?) e getActionAfterPercept(percepts).
+	- Aff. Arrumar a percepcao para fazer vir o ~ quando usado. getFunctor nao esta retornando-a!
+		Arrumado.
+	- Uma mensagem deve ser enviada assim "<mprpc01,,achieve,porter,locked(door)>".
+	  O ponto nao preenchido, com duas virgulas, deveria ser preenchido pelo Jason.
+		Feito. Valor era vazio ao inves de nulo.
+	- Os numeros de ciclos no WS com o Jason diferem. Em alguns agentes podem precisar ser feitos 3 ciclos para se ter uma acao no Jason. No WS eh 1:1
+	  Isso interfere em que?!

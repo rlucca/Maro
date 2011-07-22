@@ -1,0 +1,19 @@
+MAS maro {
+	infrastructure: Centralised
+
+	// Ambiente sendo implementado de forma a usar xmlrpc
+	//environment: maro.Environment.EnvXmlRpc("http://localhost:8079")
+	// Esse ambiente tem um comando hello que disponibiliza como percepcao world
+	//environment: maro.Environment.EnvHello
+
+	executionControl: jason.control.ExecutionControl
+
+	agents:
+		admin #1;
+		//hello #10;
+		hello [url="http://localhost:8080/RPC2"]
+			agentArchClass maro.architecture.AgArchXmlRpc
+			#10;
+
+	aslSourcePath: "src/asl";
+}

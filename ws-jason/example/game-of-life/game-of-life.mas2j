@@ -1,0 +1,28 @@
+/* Jason Project 
+
+   -- Game of Life --
+
+   based on the description available at
+    http://ccl.northwestern.edu/netlogo/models/Life
+
+*/
+
+MAS game_of_life {
+
+    // use a thread pool instead of one thread by agent
+    // the pool has only two threads
+    infrastructure: Centralised(pool,2)
+
+	environment: maro.Environment.EnvXmlRpc("http://localhost:8079")
+    //environment: LifeEnvironment(60,10) // grid size = 60, initial density = 10%
+
+	executionControl: jason.control.ExecutionControl
+
+    agents:
+		cell  #3600;
+        //cell [verbose=0,url="http://localhost:8080/RPC2"]
+		//	agentArchClass maro.architecture.AgArchXmlRpc
+        //     #3600; // a 60x60 grid has 3600 agents
+
+}
+

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- curl -X POST -H 'Content-type: text/xml' -d @sample2.xml http://localhost:8080/RPC2 -->
+<methodCall>
+ <methodName>system.methodHelp</methodName>
+ <params>
+  <param><string>PM.handshake</string></param>
+ </params>
+</methodCall>
