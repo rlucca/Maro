@@ -1,0 +1,84 @@
+% introdução
+\chapter{Introdução} \label{chap-introducao}
+
+%% Resolvi comentar porque parece um adendo muito fraco, alem disso quem for avaliar o trabalho tem que ser da area entao falar mais uma vez isso eh ***
+%Antes de introduzir a plataforma, os conceitos de agente e sistema multi-agente
+%serão brevemente explicados. De acordo com \cite{roadmap}, o agente
+%é um sistema de computador que se encontra inserido em um ambiente
+%sendo capaz de interagir de maneira flexível e autônomo no meio. Da mesma
+%forma, um sistema multi-agente é um sistema projetado e implementado para
+%tirar proveito das interações entre esses agentes.
+%\todo{fico em duvida se devo continuar e falar dos outros que consideram Agente = Personagem + sistema especialista e Objeto = Personagem... Mais ou menos seria a ideia do cartago}
+
+Uma das arquiteturas mais conhecidas para o desenvolvimento de agentes
+cognitivos é a arquitetura BDI, onde
+\cite{dastani2009modularity,de2005planning} são dois trabalhos que utilizam-na.
+A plataforma Jason \cite{bordini-jason}, baseada na arquitetura BDI,
+ utiliza uma extensão da linguagem de programação abstrata \cite{rao1996agentspeak},
+ chamada AgentSpeak(L), para especificar as decisões
+dos agentes. Enquanto, os ambientes são unicamente códigos Java que, por
+muitas, vezes demostram graficamente os agentes atuando.
+
+No processo de deliberação, as ações encontram-se agrupadas em um conjunto
+chamado de plano e cada plano possui um conjunto de ações para
+verificar o contexto de sua execução \cite{dastani2009modularity}.
+O contexto serve para determinar os planos válidos para executar no presente
+momento. Em caso de haver mais de um plano válido, o primeiro será escolhido.
+
+Uma decisão de um agente é a escolha feita para se realizar
+determinada atividade. Por exemplo: o agente X deseja empurrar o agente Y.
+Essa atividade ou ação de empurrar pode ser implementada de diferentes formas. Na
+primeira, o agente X encaminha uma mensagem para o agente Y dizendo que ele
+esta sendo empurrado. Na segunda, o agente X envia uma mensagem para o
+ambiente dizendo que esta empurrando o outro agente.
+Ambas implementações são possíveis em Jason e utilizam diferentes
+mecanismos. O que deve ficar claro aqui é a importância das decisões de
+projeto e, também, de se manter a coesão em projetos de MAS.
+
+A motivação desse trabalho é permitir que a plataforma Jason se integre com
+outras linguagens que podem não ser do mesmo paradigma. Essa integração seria
+possível usando a interface de funções nativas do Java, porém essa solução
+deixaria nosso código com um nível de acoplamento elevado e restrito a um
+conjunto limitado de linguagens.
+%\todo{essas duas frases estao muito fortes}
+%Essa integração seria possível usando a interface de funções nativas do Java
+%utilizadas quando uma biblioteca é feita em C ou C++. Todavia, essa solução
+%deixaria atrelado a plataforma Jason somente a uma linguagem e o nível de
+%acoplamento aumentaria.
+Assim sendo, o uso de WS surge naturalmente para solucionar esses dois
+problemas. As principais abordagens usadas em WS utilizam XML-RPC e SOAP
+\cite{cerami2002web}. Padrões mais novos existem, porém não com bibliotecas
+prontas para o conjunto de linguagens escolhidas ou não foi considerado um
+padrão tão conhecido.
+
+Para o trabalho
+desenvolvido atingir o maior número de linguagens possíveis, um levantamento em
+linguagens imperativas (C e Java), funcionais (Haskell e Lisp) e de script
+(Lua, PHP e Python) foi realizado. Todas essas linguagens possuem ou suporte
+nativo ou suporte através de bibliotecas que podem ser instaladas para ambos
+os protocolos. Por exemplo: PHP tem suporte nativo aos dois protocolos; Java
+tem suporte nativo ao SOAP; Python tem suporte nativo ao XML-RPC. Dessa forma,
+ambos os protocolos foram considerados equivalentes ficando a decisão de qual
+utilizar baseando-se no detalhamento dos mesmos.
+
+No capítulo \ref{chap-levantamentoBibliografico},
+o estudo detalhado dos protocolos, a plataforma Jason e abordagens que
+utilizam o conceito de serviços web para integrar sistemas são discutidas.
+No capítulo \ref{chap-desenvolvimentoWS}, os critérios utilizados na decisão e
+o projeto de implementação podem ser encontrados. No capítulo \ref{chap-casoWS}
+é mostrado um passo-a-passo da montagem do ambiente e duas implementações que
+utilizam o desenvolvimento. Por fim, no capítulo \ref{chap-conclusao} é
+debatido a experiência e os trabalhos futuros.
+
+
+% http://www.tldp.org/HOWTO/XML-RPC-HOWTO/xmlrpc-howto-competition.html#xmlrpc-howto-soap
+% http://weblog.masukomi.org/writings/xml-rpc_vs_soap.htm
+% descontar uma palavra da nota de rodape
+% C = lib
+% Haskell = lib
+% Lisp = lib
+% Lua = lib
+% Java = xml-rpc via lib e SOAP nativo
+% PHP = XML-RPC e SOAP nativo
+% Python = XML-RPC nativo
+

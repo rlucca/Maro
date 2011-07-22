@@ -1,0 +1,426 @@
+\chapter{Exemplo de Uso} \label{chap-casoWS}
+
+O presente capítulo apresenta dois exemplos desenvolvidos. Na
+seção \ref{casoWS-room} se apresenta o exemplo \emph{room} adaptado para
+executar dois agentes (\emph{porter} e \emph{paranoid}) na linguagem Python.
+Já o seguinte apresenta o exemplo
+\emph{game of life}, adaptado para ter o ambiente desenvolvido em Haskell. Os
+agentes em Python estão na seção \ref{casoWS-gol}.
+
+\section{Exemplo \emph{Room}} \label{casoWS-room}
+
+O exemplo \emph{Room} foi adaptado para executar dois agentes de maneira
+externa à plataforma Jason. Assim, a Listagem~\ref{lst-roomMas2j} (pg.
+\pageref{lst-roomMas2j}) deve ficar conforme a Listagem~\ref{lst-roomXR}.
+Fora isso, os dois programas que implementam o servidor de agentes do
+\emph{porter} e do \emph{paranoid} devem ser disparados antes da plataforma
+Jason iniciar a simulação. A implementação desses pode ser vista
+no Anexo~\ref{anexo-room}.
+
+\lstset{linewidth=100mm}
+\begin{center}
+    \begin{minipage}{100mm}
+	\begin{lstlisting}[frame=trbl, caption=Arquivo de projeto do Jason adaptado., label=lst-roomXR]
+// Isso eh um comentario
+MAS room {
+  infrastructure: Centralised
+  environment: RoomEnv
+  executionControl: jason.control.ExecutionControl
+  agents:
+    porter
+    [url="http://localhost:8080"]
+    agentArchClass maro.architecture.AgArchXmlRpc
+    ;
+    claustrophobe
+    ;
+    paranoid
+    [url="http://localhost:8081"]
+    agentArchClass maro.architecture.AgArchXmlRpc
+    ;
+}
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+
+A Listagem~\ref{lst-roomXR} define uma simulação na plataforma Jason com três
+agentes heterogêneos. O primeiro chamado \emph{porter} encontra-se localizado
+em um WSS definido pela url ``http://localhost:8080'' que define o
+servidor sendo a máquina local na porta 8080. Nessa url poderia ser colocado
+lugares diferentes sem nenhum problema e a porta poderia ser omitida quando a
+mesma for a 80. O segundo agente nomeado \emph{claustrophobe} é um agente
+Jason e o último agente é outro WSS localizado na porta 8081.
+
+A implementação dos agentes em Jason podem ser consultadas na
+Listagem~\ref{lst-agente} (página~\pageref{lst-agente}). O agente \emph{porter}
+como pode ser visto, deve trancar a porta quando receber do agente
+\emph{paranoid} a meta \emph{locked} e deve destrancar a porta quando receber
+do agente \emph{claustrophobe} a meta $\sim$\emph{locked}. De acordo com a
+Figura~\ref{fig-uml-ag} (pg \pageref{fig-uml-ag}), há 7 métodos que o servidor
+necessita implementar. Os métodos \emph{handshake}, \emph{login} e
+\emph{logout} não serão comentados aqui.
+
+\lstset{linewidth=130mm}
+\begin{center}
+    \begin{minipage}{140mm}
+	\begin{lstlisting}[frame=trbl, caption=Método de percepção e ação do agente \emph{porter}., label=lst-roomWS-perceive]
+def perceive(id, percepts):
+	data = agentL[id]
+	agentL[id] = (data[0], percepts, data[2])
+	return act(id, False)
+
+def act(id, eraseAll):
+	if eraseAll:
+		data = agentL[id]
+		agentL[id] = (data[0], [], data[2])
+	data = agentL[id]
+	if len(data[2]) >= 1:
+		ret = exclusion_act(data[1], data[2][0])
+		if len(ret) > 0:
+			agentL[id] = (data[0], data[1], data[2][1:])
+		return ret
+	return ""
+
+def exclusion_act(perceptions, message_received):
+	M = { "~locked(door)":"locked(door)", "locked(door)":"~locked(door)" }
+	P = { "~locked":"lock", "locked":"unlock" }
+	test = M[ message_received[4] ][:-1].split('(')
+	for p in perceptions:
+		functor = p[0]
+		terms = p[1]
+		annots = p[2]
+		if functor == test[0] and terms[0] == test[1]:
+			return P[functor]
+	return ""
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+
+Na Listagem~\ref{lst-roomWS-perceive} tem-se a implementação de dois dos
+métodos essenciais. O primeiro (\emph{perceive}) recebe o identificador do
+agente criado na inicialização e a nova lista de percepções e usa esses
+dados para atualizar a tupla que contêm, respectivamente, o nome do agente, as
+percepções e as mensagens recebidas. Agora, o método \emph{act} deve retornar
+a ação que o agente \emph{porter} fará no momento e, para isso, recebe o
+identificador do agente e um valor lógico que indica se as percepções devem
+ser apagadas ou não. Assim, é possível chamar esse método sem passar por
+\emph{perceive} quando o grupo de novas percepções for o grupo vazio. Portanto, a
+primeira atividade dessa função é verificar esse valor e limpar as percepções
+caso seja necessário. Após, o uso verifica se há mensagens, havendo chama
+uma função auxiliar para definir se há ou não ação a realizar e consome a
+mensagem.
+
+\lstset{linewidth=130mm}
+\begin{center}
+    \begin{minipage}{140mm}
+	\begin{lstlisting}[frame=trbl, caption=Métodos relacionados com a comunicação do agente \emph{porter}., label=lst-roomWS-messages]
+def receiveMessages(id, messages):
+	data = agentL[id]
+	msgL = []
+	for msg in messages:
+		m = msg[1:-1].split(',')
+		if m[1] == "claustrophobe" and m[4] == "~locked(door)":
+			msgL.append(m);
+		elif m[1] == "paranoid" and m[4] == "locked(door)":
+			msgL.append(m);
+	agentL[id] = (data[0], data[1], msgL)
+	return sendMessages(id)
+
+def sendMessages(id):
+	return []
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+
+O agente que origina à mensagem é testado no momento do recebimento
+da mensagem, onde o agente pode descarta-la ou guarda-la.
+Esse comportamento pode ser observado na Listagem~\ref{lst-roomWS-messages}.
+Nela os métodos \emph{checkMail} e \emph{getMessages} mapeiam,
+respectivamente, para \emph{receiveMessages} e \emph{sendMessages}. O método
+de recebimento de mensagens, \emph{receiveMessages}, sabe como parsear a tupla
+que veio (linha 5) e somente cadastra as mensagens relevantes para desempenhar
+as mesmas ações do código Jason. Dessa forma, ele só considera as mensagens
+relevantes que para o agente \emph{paranoid} é um pedido de trancamento
+e para o agente \emph{claustrophobe} é um pedido de destrancamento da porta.
+O agente \emph{porter} não envia nenhum tipo de mensagens para
+outros agentes, assim a implementação do \emph{getMessages} mapeado para
+\emph{sendMessages} na implentação retorna um conjunto vazio representando que
+não deseja enviar mensagens.
+
+\lstset{linewidth=130mm}
+\begin{center}
+    \begin{minipage}{140mm}
+	\begin{lstlisting}[frame=trbl, caption=Métodos do agente \emph{paranoid}., label=lst-roomWS-paranoid]
+def act2(id, eraseAll):
+	if eraseAll:
+		data = agentL[id]
+		agentL[id] = (data[0], [], data[2])
+	data = agentL[id]
+	if len(data[1]) > 0:
+		sendMessage = exclusion_act(data[1])
+		if len(sendMessage) > 0:
+			data[2].append(sendMessage)
+			agentL[id] = (data[0], data[1], data[2])
+	return ""
+
+def exclusion_act(perceptions):
+	p = perceptions[0]
+	functor = p[0]
+	terms = p[1]
+	annots = p[2]
+	if functor == "~locked" and terms[0] == "door":
+		try:
+			msgId = agentL["msgId"]
+		except KeyError:
+			msgId = 0
+		agentL["msgId"] = msgId + 1
+		return "<mprpc%02d,,achieve,porter,locked(door)>" % msgId
+	return ""
+
+def sendMessages(id):
+	data = agentL[id]
+	ret = []
+	if len(data[2]) > 0:
+		ret = data[2]
+		agentL[id] = (data[0], data[1], [])
+	return ret
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+
+No agente \emph{paranoid} a situação se altera um pouco, a função de percepção
+(\emph{perceive}), ação (\emph{act}) e recebimento de mensagens
+(\emph{checkMail}) não são mostrados na Listagem~\ref{lst-roomWS-paranoid}.
+O método de percepção é igual ao mostrado
+anteriormente, porém ele passa a chamar \emph{act2} ao invés de \emph{act}.
+Já no método \emph{act}, o método \emph{act2} só é chamado quando
+precisa limpar todas as crenças. O método \emph{checkMail}
+simplesmente realiza a chamada a função \emph{getMessages} (mapeada na
+implementação para \emph{sendMessages}) para enviar para a plataforma Jason as
+mensagens desejadas.
+
+A presente implementação considera uma mensagem como uma string. Essa string
+tem o seguinte formato: ``<id, emissor, tipo, vitima, mensagem>''. Esses dados
+são usados para construir uma tupla com 5 elementos, conforme já explicado na
+seção \ref{sec-WSC}. Essa string é construída na função interna
+\emph{exclusion\_act}, chamada somente quando há percepções, e
+guardada para ser enviada depois pela função \emph{getMessages}. Essa função
+retorna as mensagens que o agente deseja enviar e limpa o campo de
+mensagens à serem enviadas.
+
+
+\section{Exemplo \emph{Game of Life}} \label{casoWS-gol}
+
+O presente exemplo tem como foco apresentar uma implementação do
+ambiente como WS. O serviço segue a interface apresentada na
+Figura~\ref{fig-uml-env} presente na página~\pageref{fig-uml-env}, onde
+existem 10 métodos.
+%
+O presente foi organizado em um diretório e um arquivo \emph{Python}. No arquivo
+\emph{Python} tem-se a implementação do raciocínio dos agentes e no diretório
+tem-se a implementação do ambiente. O ambiente é tanto a implementação da API
+pública em WS quanto a interface que o usuário pode interagir (que na versão
+Jason existia).
+
+\lstset{linewidth=130mm}
+\begin{center}
+    \begin{minipage}{140mm}
+	\begin{lstlisting}[frame=trbl, caption=Arquivo de projeto do \emph{Game-of-Life}., label=lst-gol]
+MAS game_of_life {
+  infrastructure: Centralised(pool,2)
+  environment: maro.Environment.EnvXmlRpc("http://localhost:8079")
+  executionControl: jason.control.ExecutionControl
+
+  agents:
+    cell
+    [url="http://localhost:8080/RPC2"]
+    agentArchClass maro.architecture.AgArchXmlRpc
+    #3600 // matrix 60x60
+    ;
+}
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+
+A Listagem~\ref{lst-gol} mostra o arquivo de projeto adaptado. Na URL a parte
+com ``RPC2'' poderia ser omitida deixando somente o endereço com a porta. O
+ambiente recebe a URL da maneira como demostrada. A infraestrutura utilizada é
+a centralizada, porém é utilizado um conjunto de \emph{threads} que no caso
+foi definido no valor 2 (duas \emph{threads}).
+
+\lstset{linewidth=73mm}
+\begin{wrapfigure}{l}{83mm}
+    \begin{minipage}{73mm}
+	\begin{lstlisting}[frame=trbl, caption=Tipos usados pelo ambiente.,label=lst-gol-types]
+type Action = Percept
+data Percept = Percept {
+        functor::String,
+        params::[String],
+        annots::[Percept]
+    } deriving (Show,Eq,Ord)
+data TPerception = Perceptions {
+        global::[Percept],
+        local::[(String, Percept)],
+        updated::[String]
+    } deriving (Show)
+	\end{lstlisting}
+    \end{minipage}
+\end{wrapfigure}
+
+Antes de mostrar os trechos da implementação da parte do ambiente em
+\emph{Haskell} é necessário falar sobre os dois tipos de dados que são usados para
+suportar o desenvolvimento. Na Listagem~\ref{lst-gol-types} tem-se os tipos, o
+primeiro denominado \emph{Percept} é a tupla de percepções explicada na
+seção~\ref{sec-WSS}. Esse tipo de dado também pode ser referenciado como
+\emph{Action}. Já o tipo \emph{TPerception} contém, respectivamente,
+uma lista de percepções, uma lista com tuplas que mapeam nome do agente para uma
+percepção e uma lista de nomes de agentes. Esse tipo serve para guardar
+separadamente as percepções globais dos locais e guarda ainda os agentes que
+estão atualizados (o cliente já requisitou os dados atuais). Cabe salientar,
+ainda, que todas as listas são mantidas ordenadas para facilitar a busca
+nas mesmas.
+
+Na Listagem~\ref{lst-gol-arcP} são mostrados os métodos implementados pelo WSS
+para adicionar, remover e limpar as percepções locais ou globais.
+Esses métodos tratam a lista de
+percepções que eles alteram como conjuntos. Dessa forma, não é necessário se
+preocupar com percepções repetidas porque elas não vão existir. Além disso,
+nas operações de remoção e limpeza é utilizada a
+diferença entre dois conjuntos. Essas funções da listagem encontram-se
+mapeadas e publicadas por um WS, porém, quando comparadas com a
+Tabela~\ref{table-server-environment} (pg \pageref{table-server-environment})
+pensa-se que há parâmetros em excesso. Na implementação do método
+\emph{addPerceptLocal}, por exemplo, têm-se por parâmetros uma referência ao
+tipo interno \emph{TPerceptions}, uma \emph{string} (nome do agente), uma
+tupla de percepção e como retorno um booleano encapsulado. Esse protótipo de
+função é possível pois quando se realiza o mapeamento das funções publicadas
+pelo WS passa-se alguns parâmetros da chamada a priori.
+Essa característica é utilizada em quase todas as funções e,
+principalmente, na \emph{performAction}. Consulte no Anexo~\ref{anexo-gol} a
+função \emph{serving} (pg~\pageref{anexo-gol-endLuccaWS}) para maiores
+detalhes.
+
+\lstset{linewidth=140mm}
+\begin{center}
+    \begin{minipage}{140mm}
+	\begin{lstlisting}[frame=trbl, caption=Métodos relativos às percepções.,label=lst-gol-arcP]
+addPercept :: IORef(TPerception) -> Percept -> IO Bool
+addPercept p perception = do
+    (Perceptions gp lp ua) <- readIORef p
+    let gp' = insertSet perception gp
+    modifyIORef p $ \(Perceptions _ lp _) -> (Perceptions gp' lp [])
+    return True
+
+addPerceptLocal :: IORef(TPerception) -> String -> Percept -> IO Bool
+addPerceptLocal p name perception = do
+    (Perceptions gp lp ua) <- readIORef p
+    let lp' = insertSet (name,perception) lp
+    modifyIORef p $ \(Perceptions gp _ _) -> (Perceptions gp lp' [])
+    return True
+
+removePercept :: IORef(TPerception) -> Percept -> IO Bool
+removePercept p perception = do
+    (Perceptions gp lp ua) <- readIORef p
+    let gp' = gp `minus` [perception]
+    modifyIORef p $ \(Perceptions _ lp _) -> (Perceptions gp' lp [])
+    return True
+
+removePerceptLocal :: IORef(TPerception) -> String -> Percept -> IO Bool
+removePerceptLocal p name perception = do
+    (Perceptions gp lp ua) <- readIORef p
+    let lp' = lp `minus` [(name,perception)]
+    modifyIORef p $ \(Perceptions gp _ _) -> (Perceptions gp lp' [])
+    return True
+
+clearPercepts :: IORef(TPerception) -> IO Bool
+clearPercepts p = do
+    (Perceptions gp lp ua) <- readIORef p
+    if (null gp) then
+        return True
+     else do
+        modifyIORef p $ \(Perceptions _ lp _) -> (Perceptions [] lp [])
+        return True
+
+clearPerceptsLocal :: IORef(TPerception) -> String -> IO Bool
+clearPerceptsLocal p name = do
+    (Perceptions gp lp ua) <- readIORef p
+    if (null gp) then
+        return True
+     else do
+        let lp' = lp `minus` [(name, perception) | (n, perception) <- lp, n==name]
+        modifyIORef p $ \(Perceptions _ lp _) -> (Perceptions [] lp [])
+        return True
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+
+O ambiente é responsável por armazenar todas as percepções que os agentes
+possuem, assim ele deve também disponibilizar formas desses dados serem
+recuperados. A Listagem~\ref{lst-gol-testP} mostra os dois métodos que são
+usados no momento do agente conhecer as suas percepções. A função
+\emph{havePercepts} utiliza a lista de agentes atualizados para devolver
+verdadeiro quando é necessário ocorrer uma chamada ao método
+\emph{getPercepts}. O  método \emph{getPercepts} define as percepções à
+serem retornadas na linha 9 da Listagem~\ref{lst-gol-testP} como sendo a
+união das percepções globais com o conjunto de percepções locais filtrados
+pelo nome do agente.
+
+\begin{center}
+    \begin{minipage}{140mm}
+	\begin{lstlisting}[frame=trbl, caption=Métodos para recuperar as percepções., label=lst-gol-testP]
+havePercepts :: IORef(TPerception) -> String -> IO Bool
+havePercepts p name = do
+    pp <- readIORef p
+    return $ not $ (updated pp) `has` name
+
+getPercepts :: IORef(TPerception) -> String -> Bool -> IO [Percept]
+getPercepts p name isUpdate = do
+    (Perceptions gp lp ua) <- readIORef p
+    let r = union gp [lp' | (n, lp') <- lp, n == name]
+    if isUpdate == False then
+        return r
+     else do
+        let ua' = insertSet name ua
+        modifyIORef p $ \(Perceptions gp lp _) -> (Perceptions gp lp ua')
+        return r
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+
+A presente implementação do ambiente aceita quatro ações possíveis vindo do
+agente Jason. As ações nomeadas são \emph{skip}, \emph{live} e \emph{die}, uma
+quarta ação existe e é a ação de ignorar para quando o ambiente não conhece-la não
+realizar nenhuma tarefa. Essa seleção é feita baseado no operador da ação
+recebida (linha 5 da Listagem~\ref{lst-gol-action}).
+
+\lstset{linewidth=130mm}
+\begin{center}
+    \begin{minipage}{140mm}
+	\begin{lstlisting}[frame=trbl, caption=Método que realiza ações., label=lst-gol-action]
+performAction :: IORef(TPerception) -> SyncModel -> GLWidget -> String
+     -> Action -> IO Bool
+performAction p controller viewer name action =
+    let
+        actionName = functor action
+        actionPars = params action
+        actionBy = name
+    in
+        case actionName of
+            "skip"  -> cmdRealize p controller viewer actionBy Nothing
+            "live"  -> cmdRealize p controller viewer actionBy (Just True)
+            "die"   -> cmdRealize p controller viewer actionBy (Just False)
+            _       -> return True -- ignore action
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+
+Na Listagem~\ref{lst-gol-action}, a chamada a função interna \emph{cmdRealize}
+permitiu que fosse abstraído código. Essa é a função que
+realiza o trabalho ``sujo'' de atualizar o modelo e solicitar a reexibição da
+interface com o usuário. Os únicos parâmetros úteis para a célula são: a
+referência as percepções, quem está realizando a ação e que tipo de ação é.
+Para representar o tipo de ação é utilizado o tipo \emph{Maybe Bool}. Dessa
+forma, as funções \emph{skip}, \emph{live} e \emph{die} são mapeadas,
+respectivamente, para não ser um tipo booleano ou ser um tipo booleano valendo
+verdadeiro ou ser um tipo booleano valendo falso. Maiores detalhes consulte o
+Anexo~\ref{anexo-gol}.
+

@@ -1,0 +1,48 @@
+\chapter{Conclusão} \label{chap-conclusao}
+
+No presente trabalho foi apresentado uma forma de aumentar a integração da
+plataforma Jason com outras linguagens além do Java. A forma apresentada
+utiliza o conceito de serviços para permitir a utilização de agentes e
+ambientes heterogêneos, isto é, diferentes componentes da plataforma podem
+rodar em ambientes computacionais diferentes.
+
+Assim, ao se construir os métodos do servidor deve-se tomar cuidado para
+evitar problemas. Um método quando implementado incorretamente pode refletir
+somente em outro ponto. Dessa forma, é importante no futuro ter-se bibliotecas
+específicas para cada linguagem visando dar uma implementação padrão correta à
+todas as funções necessárias ao serviço web e seu desenvolvimento pode ser
+conforme demanda.
+
+O exemplo do \emph{Game Of Life} apresentado na seção \ref{casoWS-gol} possui
+um ciclo médio de 28 segundos para receber a comunicação de todos os agentes.
+Enquanto que, na plataforma para todos os 3600 agentes (matriz de 60 por 60) o
+tempo é inferior a 1 segundo. Conforme já dito, o protocolo de comunicação
+é o \emph{XML-RPC} baseado na linguagem \emph{XML}. Em
+\cite{kohlhoff2003evaluating} é mostrado que a linguagem \emph{XML} pode
+deixar as
+mensagens até 10 vezes maiores e que o principal tempo gasto na comunicação
+de um processo para outro é perdido no transformar o dado de binário para
+\emph{XML} e vice-versa.
+
+Dessa forma, a lentidão no sistema pode ser pensada como sendo culpa da
+quantidade de agentes e da representação textual dos dados trocados. O ideal
+seria trocar a representação textual e, também, rever o protocolo para estudar
+se há uma forma de evitar a troca de mensagens desnecessárias. Por exemplo, na
+implementação atual, se um agente não recebe e não envia mensagens para outros
+agentes a plataforma Jason chamará a função \emph{checkMail} e obterá um
+retorno vazio todas as vezes. Outro exemplo é o mapeamento de todas as ações
+do ambiente em uma única função evitando que seja conhecido as ações
+válidas através da consulta da listagem de métodos do servidor.
+
+O mecanismo de segurança criado pelo protocolo desenvolvido visa dar um mínimo de
+segurança aos servidores, porém é necessário pensar em mecanismos mais
+fortes para evitar o problema do homem no meio. Talvez permitir uma
+entrada no arquivo de configuração do projeto ativando uma cifragem à ser
+utilizada nas mensagens trocadas. Além disso, o uso de serviços
+permitiria a criação de uma ferramenta de teste que torna possível a
+substituição de um dos componentes (cliente ou um dos servidores) para se
+validar o outro componente. Esse teste seria realizado conhecendo as entradas e a
+saída esperada para a verificação do comportamento esperado. Essa forma de
+teste é conhecida por teste unitário e considera todo o serviço sendo testado
+como uma só unidade.
+

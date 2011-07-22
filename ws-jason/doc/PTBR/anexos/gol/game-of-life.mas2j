@@ -1,0 +1,12 @@
+MAS game_of_life {
+  infrastructure: Centralised(pool,2)
+  environment: maro.Environment.EnvXmlRpc("http://localhost:8079")
+  executionControl: jason.control.ExecutionControl
+
+  agents:
+    cell
+    [url="http://localhost:8080/RPC2"]
+    agentArchClass maro.architecture.AgArchXmlRpc
+    #3600 // matrix 60x60
+    ;
+}

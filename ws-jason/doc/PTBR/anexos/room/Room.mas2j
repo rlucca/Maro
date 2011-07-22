@@ -1,0 +1,18 @@
+// Adaptado para usar os agentes em servicos web
+MAS room {
+	infrastructure: Centralised
+	environment: RoomEnv
+	executionControl: jason.control.ExecutionControl
+
+	agents:
+		porter
+			[url="http://localhost:8080"]
+			agentArchClass maro.architecture.AgArchXmlRpc
+			;
+		claustrophobe;
+		paranoid
+			[url="http://localhost:8081"]
+			agentArchClass maro.architecture.AgArchXmlRpc
+			;
+}
+
