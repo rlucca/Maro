@@ -1,0 +1,24 @@
+
+MAS eoaus {
+	infrastructure: Centralised
+
+	environment: eoaus.Env // nao tinha outro nome
+
+	agents:
+		sam
+			#1
+			agentArchClass eoaus.AgArchAffective
+			beliefBaseClass eoaus.BBAffective
+            ;
+		aline
+			#1
+			//agentArchClass eoaus.AgArchAffective
+			//beliefBaseClass eoaus.BBAffective
+			;
+		william
+			#1
+			//agentArchClass eoaus.AgArchAffective
+			//beliefBaseClass eoaus.BBAffective
+			;
+	aslSourcePath: "asl";
+}
