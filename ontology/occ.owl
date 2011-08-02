@@ -1,714 +1,961 @@
 <?xml version="1.0"?>
 
 
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
-    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+<!DOCTYPE Ontology [
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
-    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="http://www.affective.org/occ_2011.owl#"
-     xml:base="http://www.affective.org/occ_2011.owl"
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2011/7/occ.owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
-     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
-     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <owl:Ontology rdf:about="http://www.affective.org/occ_2011.owl"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#hasCauseBy -->
-
-    <owl:ObjectProperty rdf:about="http://www.affective.org/occ_2011.owl#hasCauseBy">
-        <rdfs:range rdf:resource="http://www.affective.org/occ_2011.owl#Agent"/>
-        <rdfs:domain rdf:resource="http://www.affective.org/occ_2011.owl#Situation"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#hasEmotionType -->
-
-    <owl:ObjectProperty rdf:about="http://www.affective.org/occ_2011.owl#hasEmotionType">
-        <rdfs:domain rdf:resource="http://www.affective.org/occ_2011.owl#Emotion"/>
-        <rdfs:range rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#hasLikeTarget -->
-
-    <owl:ObjectProperty rdf:about="http://www.affective.org/occ_2011.owl#hasLikeTarget">
-        <rdfs:comment xml:lang="pt">Ao se gostar, se gosta de outros agentes.</rdfs:comment>
-        <rdfs:range rdf:resource="http://www.affective.org/occ_2011.owl#Agent"/>
-        <rdfs:domain rdf:resource="http://www.affective.org/occ_2011.owl#LikeRelation"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#like -->
-
-    <owl:ObjectProperty rdf:about="http://www.affective.org/occ_2011.owl#like">
-        <rdfs:comment xml:lang="pt">Um agente gosta de outro agente com um valor.
-(Por isso ser uma relacao sempre binaria tem que ter uma classe no meio)</rdfs:comment>
-        <rdfs:domain rdf:resource="http://www.affective.org/occ_2011.owl#Agent"/>
-        <rdfs:range rdf:resource="http://www.affective.org/occ_2011.owl#LikeRelation"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#hasDesire -->
-
-    <owl:DatatypeProperty rdf:about="http://www.affective.org/occ_2011.owl#hasDesire">
-        <rdfs:comment xml:lang="pt">Desejo para o proprio agente.</rdfs:comment>
-        <rdfs:domain rdf:resource="http://www.affective.org/occ_2011.owl#Event"/>
-        <rdfs:range rdf:resource="&xsd;float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#hasDesireForOther -->
-
-    <owl:DatatypeProperty rdf:about="http://www.affective.org/occ_2011.owl#hasDesireForOther">
-        <rdfs:comment xml:lang="pt">Desejo presumido para outro agente pelo proprio agente.</rdfs:comment>
-        <rdfs:domain rdf:resource="http://www.affective.org/occ_2011.owl#Event"/>
-        <rdfs:range rdf:resource="&xsd;float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#hasEffort -->
-
-    <owl:DatatypeProperty rdf:about="http://www.affective.org/occ_2011.owl#hasEffort">
-        <rdfs:comment xml:lang="pt">Esse eh o esforco para tentar atrair ou repelir um determinado evento provavel.</rdfs:comment>
-        <rdfs:domain rdf:resource="http://www.affective.org/occ_2011.owl#Event"/>
-        <rdfs:range rdf:resource="&xsd;float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#hasEmotionValence -->
-
-    <owl:DatatypeProperty rdf:about="http://www.affective.org/occ_2011.owl#hasEmotionValence">
-        <rdfs:domain rdf:resource="http://www.affective.org/occ_2011.owl#Emotion"/>
-        <rdfs:range rdf:resource="&xsd;float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#hasFamiliarity -->
-
-    <owl:DatatypeProperty rdf:about="http://www.affective.org/occ_2011.owl#hasFamiliarity">
-        <rdfs:comment xml:lang="pt">Quanto mais um objeto eh familiar mais ele eh atrativo, quanto menos mais ele eh repulsivo</rdfs:comment>
-        <rdfs:domain rdf:resource="http://www.affective.org/occ_2011.owl#Object"/>
-        <rdfs:range rdf:resource="&xsd;float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#hasJudge -->
-
-    <owl:DatatypeProperty rdf:about="http://www.affective.org/occ_2011.owl#hasJudge">
-        <rdfs:comment xml:lang="pt">Como a acao feita esta sendo julgada.</rdfs:comment>
-        <rdfs:domain rdf:resource="http://www.affective.org/occ_2011.owl#Action"/>
-        <rdfs:range rdf:resource="&xsd;float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#hasLikeLevel -->
-
-    <owl:DatatypeProperty rdf:about="http://www.affective.org/occ_2011.owl#hasLikeLevel">
-        <rdfs:comment xml:lang="pt">Nivel de quanto se gosta.</rdfs:comment>
-        <rdfs:domain rdf:resource="http://www.affective.org/occ_2011.owl#LikeRelation"/>
-        <rdfs:range rdf:resource="&xsd;float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#hasName -->
-
-    <owl:DatatypeProperty rdf:about="http://www.affective.org/occ_2011.owl#hasName">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:comment xml:lang="pt">Toda entidade deliberadora deve ter um nome, se nao como vamos nos referir a ela?</rdfs:comment>
-        <rdfs:domain rdf:resource="http://www.affective.org/occ_2011.owl#Agent"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#hasProbability -->
-
-    <owl:DatatypeProperty rdf:about="http://www.affective.org/occ_2011.owl#hasProbability">
-        <rdfs:comment xml:lang="pt">Um evento pode ter uma probabilidade de ocorrer.</rdfs:comment>
-        <rdfs:domain rdf:resource="http://www.affective.org/occ_2011.owl#Event"/>
-        <rdfs:range rdf:resource="&xsd;float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Action -->
-
-    <owl:Class rdf:about="http://www.affective.org/occ_2011.owl#Action">
-        <rdfs:subClassOf rdf:resource="http://www.affective.org/occ_2011.owl#Situation"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasJudge"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasJudge"/>
-                <owl:allValuesFrom rdf:resource="&xsd;float"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="http://www.affective.org/occ_2011.owl#Event"/>
-        <owl:disjointWith rdf:resource="http://www.affective.org/occ_2011.owl#LikeRelation"/>
-        <owl:disjointWith rdf:resource="http://www.affective.org/occ_2011.owl#Object"/>
-        <rdfs:comment xml:lang="pt">Acoes sao situacoes onde o responsavel eh avaliado.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Agent -->
-
-    <owl:Class rdf:about="http://www.affective.org/occ_2011.owl#Agent">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasName"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasName"/>
-                <owl:allValuesFrom rdf:resource="&xsd;string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#like"/>
-                <owl:allValuesFrom rdf:resource="http://www.affective.org/occ_2011.owl#LikeRelation"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="http://www.affective.org/occ_2011.owl#Appraisal"/>
-        <owl:disjointWith rdf:resource="http://www.affective.org/occ_2011.owl#Emotion"/>
-        <rdfs:comment xml:lang="pt">Entidade que pode ser causadora de eventos/acoes.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Appraisal -->
-
-    <owl:Class rdf:about="http://www.affective.org/occ_2011.owl#Appraisal">
-        <owl:disjointWith rdf:resource="http://www.affective.org/occ_2011.owl#Emotion"/>
-        <rdfs:comment xml:lang="pt">Formas de avaliacoes.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Emotion -->
-
-    <owl:Class rdf:about="http://www.affective.org/occ_2011.owl#Emotion">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasEmotionType"/>
-                <owl:allValuesFrom rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasEmotionType"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasEmotionValence"/>
-                <owl:allValuesFrom rdf:resource="&xsd;float"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasEmotionValence"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="pt">Emocao sendo presenciada (e nao percebida).</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#EmotionType -->
-
-    <owl:Class rdf:about="http://www.affective.org/occ_2011.owl#EmotionType">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Gratitude"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Distress"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#FearsConfirmed"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#HappyFor"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Hate"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Relief"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Reproach"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Hope"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Gloating"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Joy"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Disappointment"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Resentment"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Love"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Pride"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Shame"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Admiration"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Anger"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Gratification"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#FearsUnconfirmed"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#SorryFor"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Satisfaction"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Remorse"/>
-                </owl:oneOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:comment xml:lang="pt">Emocoes possiveis propostas no modelo.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Event -->
-
-    <owl:Class rdf:about="http://www.affective.org/occ_2011.owl#Event">
-        <rdfs:subClassOf rdf:resource="http://www.affective.org/occ_2011.owl#Situation"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasDesireForOther"/>
-                <owl:allValuesFrom rdf:resource="&xsd;float"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasDesireForOther"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasProbability"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasProbability"/>
-                <owl:allValuesFrom rdf:resource="&xsd;float"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasDesire"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasEffort"/>
-                <owl:allValuesFrom rdf:resource="&xsd;float"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasEffort"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasDesire"/>
-                <owl:allValuesFrom rdf:resource="&xsd;float"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="http://www.affective.org/occ_2011.owl#LikeRelation"/>
-        <owl:disjointWith rdf:resource="http://www.affective.org/occ_2011.owl#Object"/>
-        <rdfs:comment xml:lang="pt">Eventos sao situacoes onde as consequencias sao avaliadas.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#LikeRelation -->
-
-    <owl:Class rdf:about="http://www.affective.org/occ_2011.owl#LikeRelation">
-        <rdfs:subClassOf rdf:resource="http://www.affective.org/occ_2011.owl#Appraisal"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasLikeLevel"/>
-                <owl:allValuesFrom rdf:resource="&xsd;float"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasLikeTarget"/>
-                <owl:allValuesFrom rdf:resource="http://www.affective.org/occ_2011.owl#Agent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasLikeTarget"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasLikeLevel"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="http://www.affective.org/occ_2011.owl#Object"/>
-        <rdfs:comment xml:lang="pt">Relacao entre um agente alvo e um valor de agradabilidade.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Object -->
-
-    <owl:Class rdf:about="http://www.affective.org/occ_2011.owl#Object">
-        <rdfs:subClassOf rdf:resource="http://www.affective.org/occ_2011.owl#Appraisal"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasFamiliarity"/>
-                <owl:allValuesFrom rdf:resource="&xsd;float"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasFamiliarity"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="pt">Forma de percepcao quanto atratividade as coisas, objetos ou, ate mesmo, outros agentes.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Situation -->
-
-    <owl:Class rdf:about="http://www.affective.org/occ_2011.owl#Situation">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Action"/>
-                    <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Event"/>
-                </owl:unionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasCauseBy"/>
-                        <owl:allValuesFrom rdf:resource="http://www.affective.org/occ_2011.owl#Agent"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.affective.org/occ_2011.owl#hasCauseBy"/>
-                        <owl:onClass rdf:resource="http://www.affective.org/occ_2011.owl#Agent"/>
-                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.affective.org/occ_2011.owl#Appraisal"/>
-        <rdfs:comment xml:lang="pt">Evento ou Acao.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Admiration -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Admiration">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Anger -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Anger">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Disappointment -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Disappointment">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Distress -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Distress">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#FearsConfirmed -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#FearsConfirmed">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#FearsUnconfirmed -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#FearsUnconfirmed">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Gloating -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Gloating">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Gratification -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Gratification">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Gratitude -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Gratitude">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#HappyFor -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#HappyFor">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Hate -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Hate">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Hope -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Hope">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Joy -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Joy">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Love -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Love">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Pride -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Pride">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Relief -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Relief">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Remorse -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Remorse">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Reproach -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Reproach">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Resentment -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Resentment">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Satisfaction -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Satisfaction">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#Shame -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#Shame">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.affective.org/occ_2011.owl#SorryFor -->
-
-    <owl:NamedIndividual rdf:about="http://www.affective.org/occ_2011.owl#SorryFor">
-        <rdf:type rdf:resource="http://www.affective.org/occ_2011.owl#EmotionType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // General axioms
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Admiration"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Anger"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Disappointment"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Distress"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#FearsConfirmed"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#FearsUnconfirmed"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Gloating"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Gratification"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Gratitude"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#HappyFor"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Hate"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Hope"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Joy"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Love"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Pride"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Relief"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Remorse"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Reproach"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Resentment"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Satisfaction"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#Shame"/>
-            <rdf:Description rdf:about="http://www.affective.org/occ_2011.owl#SorryFor"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-</rdf:RDF>
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.semanticweb.org/ontologies/2011/7/occ.owl">
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Admiration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Agent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Anger"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Appraisal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BadKnowRelation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Disappointment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Distress"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FearsConfirmed"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FearsUnconfirmed"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Gloating"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GoodKnowRelation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Gratification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Gratitude"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HappyFor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hope"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Joy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#KnowRelation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Love"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pride"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Relief"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Remorse"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Reproach"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Resentment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Satisfaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Shame"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SorryFor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAppraisal"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasBadKnowRelation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCauseBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasEnemy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasFriend"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGoodKnowRelation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasKnow"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasKnowRelation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasOther"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasTarget"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isAppraisalOf"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDesireForOther"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDesireSelf"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasEffort"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasFamiliarity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasJudge"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasNiceness"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasPreviousIntensity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasProbability"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasRealized"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Admiration"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasCauseBy"/>
+                <Class IRI="#Agent"/>
+            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasJudge"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Anger"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasCauseBy"/>
+                <Class IRI="#Agent"/>
+            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireSelf"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasJudge"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Appraisal"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isAppraisalOf"/>
+            <Class IRI="#Agent"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#BadKnowRelation"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#KnowRelation"/>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasNiceness"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Disappointment"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasEffort"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasPreviousIntensity"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasRealized"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Distress"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasDesireSelf"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:double"/>
+                <FacetRestriction facet="&xsd;maxExclusive">
+                    <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#FearsConfirmed"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasEffort"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasPreviousIntensity"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasRealized"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#FearsUnconfirmed"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireSelf"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataExactCardinality cardinality="1">
+                <DataProperty IRI="#hasProbability"/>
+                <Datatype abbreviatedIRI="xsd:double"/>
+            </DataExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Gloating"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasEnemy"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasOther"/>
+                    <Class IRI="#Agent"/>
+                </ObjectSomeValuesFrom>
+            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireForOther"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireSelf"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GoodKnowRelation"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#KnowRelation"/>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasNiceness"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Gratification"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isAppraisalOf"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasCauseBy"/>
+                    <Class IRI="#Agent"/>
+                </ObjectSomeValuesFrom>
+            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireSelf"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasJudge"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Gratitude"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasCauseBy"/>
+                <Class IRI="#Agent"/>
+            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireSelf"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasJudge"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#HappyFor"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasFriend"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasOther"/>
+                    <Class IRI="#Agent"/>
+                </ObjectSomeValuesFrom>
+            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireForOther"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireSelf"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Hate"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasFamiliarity"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:double"/>
+                <FacetRestriction facet="&xsd;maxExclusive">
+                    <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Hope"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireSelf"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataExactCardinality cardinality="1">
+                <DataProperty IRI="#hasProbability"/>
+                <Datatype abbreviatedIRI="xsd:double"/>
+            </DataExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Joy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasDesireSelf"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:double"/>
+                <FacetRestriction facet="&xsd;minExclusive">
+                    <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#KnowRelation"/>
+        <ObjectIntersectionOf>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#hasTarget"/>
+                <Class IRI="#Agent"/>
+            </ObjectExactCardinality>
+            <DataExactCardinality cardinality="1">
+                <DataProperty IRI="#hasNiceness"/>
+                <Datatype abbreviatedIRI="xsd:double"/>
+            </DataExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Love"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasFamiliarity"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:double"/>
+                <FacetRestriction facet="&xsd;minExclusive">
+                    <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Pride"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isAppraisalOf"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasCauseBy"/>
+                    <Class IRI="#Agent"/>
+                </ObjectSomeValuesFrom>
+            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasJudge"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Relief"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasEffort"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasPreviousIntensity"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasRealized"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Remorse"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isAppraisalOf"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasCauseBy"/>
+                    <Class IRI="#Agent"/>
+                </ObjectSomeValuesFrom>
+            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireSelf"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasJudge"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Reproach"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasCauseBy"/>
+                <Class IRI="#Agent"/>
+            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasJudge"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Resentment"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasEnemy"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasOther"/>
+                    <Class IRI="#Agent"/>
+                </ObjectSomeValuesFrom>
+            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireForOther"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireSelf"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Satisfaction"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasEffort"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasPreviousIntensity"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasRealized"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Shame"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isAppraisalOf"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasCauseBy"/>
+                    <Class IRI="#Agent"/>
+                </ObjectSomeValuesFrom>
+            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasJudge"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SorryFor"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasFriend"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasOther"/>
+                    <Class IRI="#Agent"/>
+                </ObjectSomeValuesFrom>
+            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireForOther"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireSelf"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Agent"/>
+        <ObjectIntersectionOf>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasKnowRelation"/>
+                <Class IRI="#KnowRelation"/>
+            </ObjectAllValuesFrom>
+            <DataAllValuesFrom>
+                <DataProperty IRI="#hasName"/>
+                <Datatype abbreviatedIRI="xsd:string"/>
+            </DataAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#KnowRelation"/>
+        <Class IRI="#Appraisal"/>
+    </SubClassOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasBadKnowRelation"/>
+        <ObjectProperty IRI="#hasKnowRelation"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasEnemy"/>
+        <ObjectProperty IRI="#hasKnow"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasFriend"/>
+        <ObjectProperty IRI="#hasKnow"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGoodKnowRelation"/>
+        <ObjectProperty IRI="#hasKnowRelation"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isAppraisalOf"/>
+        <ObjectProperty IRI="#hasAppraisal"/>
+    </InverseObjectProperties>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#hasAppraisal"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#isAppraisalOf"/>
+    </SymmetricObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAppraisal"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasBadKnowRelation"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCauseBy"/>
+        <Class IRI="#Appraisal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasGoodKnowRelation"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasKnow"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasKnowRelation"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasOther"/>
+        <Class IRI="#Appraisal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasTarget"/>
+        <Class IRI="#KnowRelation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isAppraisalOf"/>
+        <Class IRI="#Appraisal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAppraisal"/>
+        <Class IRI="#Appraisal"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasBadKnowRelation"/>
+        <Class IRI="#BadKnowRelation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCauseBy"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGoodKnowRelation"/>
+        <Class IRI="#GoodKnowRelation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasKnow"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasKnowRelation"/>
+        <Class IRI="#KnowRelation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasOther"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasTarget"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isAppraisalOf"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyRange>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasBadKnowRelation"/>
+            <ObjectProperty IRI="#hasTarget"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasEnemy"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasGoodKnowRelation"/>
+            <ObjectProperty IRI="#hasTarget"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasFriend"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasKnowRelation"/>
+            <ObjectProperty IRI="#hasTarget"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasKnow"/>
+    </SubObjectPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDesireForOther"/>
+        <Class IRI="#Appraisal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDesireSelf"/>
+        <Class IRI="#Appraisal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasEffort"/>
+        <Class IRI="#Appraisal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasFamiliarity"/>
+        <Class IRI="#Appraisal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasJudge"/>
+        <Class IRI="#Appraisal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasName"/>
+        <Class IRI="#Agent"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasNiceness"/>
+        <Class IRI="#KnowRelation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasPreviousIntensity"/>
+        <Class IRI="#Appraisal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasProbability"/>
+        <Class IRI="#Appraisal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasRealized"/>
+        <Class IRI="#Appraisal"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDesireForOther"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDesireSelf"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasEffort"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasFamiliarity"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasJudge"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasNiceness"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasPreviousIntensity"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasProbability"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasRealized"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+</Ontology>
 
 
 
