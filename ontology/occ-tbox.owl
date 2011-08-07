@@ -130,16 +130,10 @@
         <ObjectProperty IRI="#hasAppraisal"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#hasBadKnowRelation"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#hasEnemy"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasFriend"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasGoodKnowRelation"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasJudge"/>
@@ -161,6 +155,12 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#isJudgeOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isSelfBadKnowRelationOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isSelfGoodKnowRelationOf"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#hasDesire"/>
@@ -743,6 +743,12 @@
         <Class IRI="#KnowRelation"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#BadKnowRelation"/>
+        <ObjectHasSelf>
+            <ObjectProperty IRI="#isSelfBadKnowRelationOf"/>
+        </ObjectHasSelf>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Behaviour"/>
         <Class abbreviatedIRI=":Thing"/>
     </SubClassOf>
@@ -789,6 +795,12 @@
     <SubClassOf>
         <Class IRI="#GoodKnowRelation"/>
         <Class IRI="#KnowRelation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GoodKnowRelation"/>
+        <ObjectHasSelf>
+            <ObjectProperty IRI="#isSelfGoodKnowRelationOf"/>
+        </ObjectHasSelf>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#HappyFor"/>
@@ -1069,10 +1081,6 @@
         <Class IRI="#SorryFor"/>
     </DisjointClasses>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#hasBadKnowRelation"/>
-        <ObjectProperty IRI="#hasKnowRelation"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
         <ObjectProperty IRI="#hasEnemy"/>
         <ObjectProperty IRI="#hasKnow"/>
     </SubObjectPropertyOf>
@@ -1081,8 +1089,8 @@
         <ObjectProperty IRI="#hasKnow"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#hasGoodKnowRelation"/>
         <ObjectProperty IRI="#hasKnowRelation"/>
+        <ObjectProperty IRI="#hasAppraisal"/>
     </SubObjectPropertyOf>
     <InverseObjectProperties>
         <ObjectProperty IRI="#hasAppraisal"/>
@@ -1092,12 +1100,11 @@
         <ObjectProperty IRI="#isJudgeOf"/>
         <ObjectProperty IRI="#hasJudge"/>
     </InverseObjectProperties>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#hasKnow"/>
+    </SymmetricObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasAppraisal"/>
-        <Class IRI="#Agent"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasBadKnowRelation"/>
         <Class IRI="#Agent"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -1106,10 +1113,6 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasFriend"/>
-        <Class IRI="#Agent"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasGoodKnowRelation"/>
         <Class IRI="#Agent"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -1145,20 +1148,12 @@
         <Class IRI="#Appraisal"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasBadKnowRelation"/>
-        <Class IRI="#BadKnowRelation"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
         <ObjectProperty IRI="#hasEnemy"/>
         <Class IRI="#Agent"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasFriend"/>
         <Class IRI="#Agent"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasGoodKnowRelation"/>
-        <Class IRI="#GoodKnowRelation"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasJudge"/>
@@ -1188,26 +1183,28 @@
         <ObjectProperty IRI="#isJudgeOf"/>
         <Class IRI="#Appraisal"/>
     </ObjectPropertyRange>
-    <SubObjectPropertyOf>
-        <ObjectPropertyChain>
-            <ObjectProperty IRI="#hasBadKnowRelation"/>
-            <ObjectProperty IRI="#hasTarget"/>
-        </ObjectPropertyChain>
-        <ObjectProperty IRI="#hasEnemy"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectPropertyChain>
-            <ObjectProperty IRI="#hasGoodKnowRelation"/>
-            <ObjectProperty IRI="#hasTarget"/>
-        </ObjectPropertyChain>
-        <ObjectProperty IRI="#hasFriend"/>
-    </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectPropertyChain>
             <ObjectProperty IRI="#hasKnowRelation"/>
             <ObjectProperty IRI="#hasTarget"/>
         </ObjectPropertyChain>
         <ObjectProperty IRI="#hasKnow"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasKnowRelation"/>
+            <ObjectProperty IRI="#isSelfBadKnowRelationOf"/>
+            <ObjectProperty IRI="#hasTarget"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasEnemy"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectPropertyChain>
+            <ObjectProperty IRI="#hasKnowRelation"/>
+            <ObjectProperty IRI="#isSelfGoodKnowRelationOf"/>
+            <ObjectProperty IRI="#hasTarget"/>
+        </ObjectPropertyChain>
+        <ObjectProperty IRI="#hasFriend"/>
     </SubObjectPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#hasDesireOther"/>
