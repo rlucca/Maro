@@ -43,9 +43,6 @@
         <Class IRI="#BadKnowRelation"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Behaviour"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#ConsequenceForOther"/>
     </Declaration>
     <Declaration>
@@ -68,9 +65,6 @@
     </Declaration>
     <Declaration>
         <Class IRI="#FearsUnconfirmed"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Feeling"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Gloating"/>
@@ -104,6 +98,18 @@
     </Declaration>
     <Declaration>
         <Class IRI="#Pride"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProspectConfirmed"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProspectIrrelevant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProspectRelevant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProspectUnconfirmed"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Relief"/>
@@ -188,6 +194,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="#hasNiceness"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasPower"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#hasPreviousIntensity"/>
@@ -339,10 +348,10 @@
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
-            <DataExactCardinality cardinality="1">
+            <DataSomeValuesFrom>
                 <DataProperty IRI="#hasProbability"/>
                 <Datatype abbreviatedIRI="xsd:double"/>
-            </DataExactCardinality>
+            </DataSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
@@ -455,10 +464,10 @@
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
-            <DataExactCardinality cardinality="1">
+            <DataSomeValuesFrom>
                 <DataProperty IRI="#hasProbability"/>
                 <Datatype abbreviatedIRI="xsd:double"/>
-            </DataExactCardinality>
+            </DataSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
@@ -703,6 +712,20 @@
         <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#ActionOfAgent"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hasJudge"/>
+            <Class IRI="#Agent"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ActionOfAgent"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#hasJudgeness"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Admiration"/>
         <Class IRI="#ActionOfAgent"/>
     </SubClassOf>
@@ -739,6 +762,13 @@
         <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#AspectOfObject"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#hasFamiliarity"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#BadKnowRelation"/>
         <Class IRI="#KnowRelation"/>
     </SubClassOf>
@@ -749,16 +779,47 @@
         </ObjectHasSelf>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Behaviour"/>
-        <Class abbreviatedIRI=":Thing"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#ConsequenceForOther"/>
         <Class IRI="#ConsequenceOfEvent"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#ConsequenceForOther"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hasOther"/>
+            <Class IRI="#Agent"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ConsequenceForOther"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#hasDesireOther"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ConsequenceForOther"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#hasDesirePresume"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#ConsequenceForSelf"/>
         <Class IRI="#ConsequenceOfEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ConsequenceForSelf"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasDesireSelf"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ConsequenceForSelf"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasProbability"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataMaxCardinality>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#ConsequenceOfEvent"/>
@@ -766,27 +827,37 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Disappointment"/>
-        <Class IRI="#ConsequenceForSelf"/>
+        <Class IRI="#ProspectConfirmed"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Distress"/>
-        <Class IRI="#ConsequenceForSelf"/>
+        <Class IRI="#ProspectIrrelevant"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Emotion"/>
         <Class IRI="#Appraisal"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Emotion"/>
+        <DataAllValuesFrom>
+            <DataProperty IRI="#hasPower"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Emotion"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasPower"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#FearsConfirmed"/>
-        <Class IRI="#ConsequenceForSelf"/>
+        <Class IRI="#ProspectConfirmed"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#FearsUnconfirmed"/>
-        <Class IRI="#ConsequenceForSelf"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Feeling"/>
-        <Class abbreviatedIRI=":Thing"/>
+        <Class IRI="#ProspectUnconfirmed"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Gloating"/>
@@ -812,11 +883,11 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Hope"/>
-        <Class IRI="#ConsequenceForSelf"/>
+        <Class IRI="#ProspectUnconfirmed"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Joy"/>
-        <Class IRI="#ConsequenceForSelf"/>
+        <Class IRI="#ProspectIrrelevant"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#KnowRelation"/>
@@ -845,8 +916,103 @@
         <Class IRI="#ActionOfAgent"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Relief"/>
+        <Class IRI="#ProspectConfirmed"/>
+        <Class IRI="#ProspectRelevant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProspectConfirmed"/>
+        <ObjectIntersectionOf>
+            <ObjectComplementOf>
+                <DataSomeValuesFrom>
+                    <DataProperty IRI="#hasProbability"/>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                </DataSomeValuesFrom>
+            </ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasRealized"/>
+                <Datatype abbreviatedIRI="xsd:double"/>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProspectConfirmed"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasEffort"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProspectConfirmed"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasPreviousIntensity"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProspectConfirmed"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasRealized"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProspectIrrelevant"/>
         <Class IRI="#ConsequenceForSelf"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProspectIrrelevant"/>
+        <ObjectComplementOf>
+            <ObjectUnionOf>
+                <DataSomeValuesFrom>
+                    <DataProperty IRI="#hasProbability"/>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                </DataSomeValuesFrom>
+                <DataSomeValuesFrom>
+                    <DataProperty IRI="#hasRealized"/>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                </DataSomeValuesFrom>
+            </ObjectUnionOf>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProspectRelevant"/>
+        <Class IRI="#ConsequenceForSelf"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProspectRelevant"/>
+        <ObjectUnionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasProbability"/>
+                <Datatype abbreviatedIRI="xsd:double"/>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasRealized"/>
+                <Datatype abbreviatedIRI="xsd:double"/>
+            </DataSomeValuesFrom>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProspectUnconfirmed"/>
+        <Class IRI="#ProspectRelevant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProspectUnconfirmed"/>
+        <ObjectIntersectionOf>
+            <ObjectComplementOf>
+                <DataSomeValuesFrom>
+                    <DataProperty IRI="#hasRealized"/>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                </DataSomeValuesFrom>
+            </ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasProbability"/>
+                <Datatype abbreviatedIRI="xsd:double"/>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Relief"/>
+        <Class IRI="#ProspectConfirmed"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Reproach"/>
@@ -858,7 +1024,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Satisfaction"/>
-        <Class IRI="#ConsequenceForSelf"/>
+        <Class IRI="#ProspectConfirmed"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Shame"/>
@@ -873,40 +1039,12 @@
         <Class IRI="#AspectOfObject"/>
     </DisjointClasses>
     <DisjointClasses>
-        <Class IRI="#Admiration"/>
-        <Class IRI="#Pride"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Admiration"/>
-        <Class IRI="#Reproach"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Admiration"/>
-        <Class IRI="#Shame"/>
-    </DisjointClasses>
-    <DisjointClasses>
         <Class IRI="#Agent"/>
         <Class IRI="#Appraisal"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Agent"/>
-        <Class IRI="#Behaviour"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Agent"/>
-        <Class IRI="#Feeling"/>
     </DisjointClasses>
     <DisjointClasses>
         <Class IRI="#Anger"/>
         <Class IRI="#Remorse"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Appraisal"/>
-        <Class IRI="#Behaviour"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Appraisal"/>
-        <Class IRI="#Feeling"/>
     </DisjointClasses>
     <DisjointClasses>
         <Class IRI="#AspectOfObject"/>
@@ -921,164 +1059,12 @@
         <Class IRI="#ConsequenceForSelf"/>
     </DisjointClasses>
     <DisjointClasses>
-        <Class IRI="#Disappointment"/>
-        <Class IRI="#Distress"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Disappointment"/>
-        <Class IRI="#FearsConfirmed"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Disappointment"/>
-        <Class IRI="#FearsUnconfirmed"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Disappointment"/>
-        <Class IRI="#Hope"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Disappointment"/>
-        <Class IRI="#Joy"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Disappointment"/>
-        <Class IRI="#Relief"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Disappointment"/>
-        <Class IRI="#Satisfaction"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Distress"/>
-        <Class IRI="#FearsConfirmed"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Distress"/>
-        <Class IRI="#FearsUnconfirmed"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Distress"/>
-        <Class IRI="#Hope"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Distress"/>
-        <Class IRI="#Joy"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Distress"/>
-        <Class IRI="#Relief"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Distress"/>
-        <Class IRI="#Satisfaction"/>
-    </DisjointClasses>
-    <DisjointClasses>
         <Class IRI="#Emotion"/>
         <Class IRI="#KnowRelation"/>
     </DisjointClasses>
     <DisjointClasses>
-        <Class IRI="#FearsConfirmed"/>
-        <Class IRI="#FearsUnconfirmed"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#FearsConfirmed"/>
-        <Class IRI="#Hope"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#FearsConfirmed"/>
-        <Class IRI="#Joy"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#FearsConfirmed"/>
-        <Class IRI="#Relief"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#FearsConfirmed"/>
-        <Class IRI="#Satisfaction"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#FearsUnconfirmed"/>
-        <Class IRI="#Hope"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#FearsUnconfirmed"/>
-        <Class IRI="#Joy"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#FearsUnconfirmed"/>
-        <Class IRI="#Relief"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#FearsUnconfirmed"/>
-        <Class IRI="#Satisfaction"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Gloating"/>
-        <Class IRI="#HappyFor"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Gloating"/>
-        <Class IRI="#Resentment"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Gloating"/>
-        <Class IRI="#SorryFor"/>
-    </DisjointClasses>
-    <DisjointClasses>
         <Class IRI="#Gratification"/>
         <Class IRI="#Gratitude"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#HappyFor"/>
-        <Class IRI="#Resentment"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#HappyFor"/>
-        <Class IRI="#SorryFor"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Hate"/>
-        <Class IRI="#Love"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Hope"/>
-        <Class IRI="#Joy"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Hope"/>
-        <Class IRI="#Relief"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Hope"/>
-        <Class IRI="#Satisfaction"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Joy"/>
-        <Class IRI="#Relief"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Joy"/>
-        <Class IRI="#Satisfaction"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Pride"/>
-        <Class IRI="#Reproach"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Pride"/>
-        <Class IRI="#Shame"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Relief"/>
-        <Class IRI="#Satisfaction"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Reproach"/>
-        <Class IRI="#Shame"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Resentment"/>
-        <Class IRI="#SorryFor"/>
     </DisjointClasses>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#hasEnemy"/>
@@ -1255,6 +1241,10 @@
         <Class IRI="#KnowRelation"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="#hasPower"/>
+        <Class IRI="#Emotion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#hasPreviousIntensity"/>
         <Class IRI="#Appraisal"/>
     </DataPropertyDomain>
@@ -1303,6 +1293,10 @@
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="#hasPower"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#hasPreviousIntensity"/>
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
@@ -1314,16 +1308,6 @@
         <DataProperty IRI="#hasRealized"/>
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Behaviour</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">TODO: eliminar?</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Feeling</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">TODO: eliminar?</Literal>
-    </AnnotationAssertion>
 </Ontology>
 
 
