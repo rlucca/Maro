@@ -21,6 +21,10 @@
     <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Ontologia baseada no modelo Ortony, Collins e Clore de 1988.</Literal>
+    </Annotation>
     <Declaration>
         <Class IRI="#ActionOfAgent"/>
     </Declaration>
@@ -211,14 +215,12 @@
         <Class IRI="#Admiration"/>
         <ObjectIntersectionOf>
             <ObjectIntersectionOf>
-                <ObjectComplementOf>
-                    <ObjectSomeValuesFrom>
-                        <ObjectProperty IRI="#isAppraisalOf"/>
-                        <Class IRI="#Agent"/>
-                    </ObjectSomeValuesFrom>
-                </ObjectComplementOf>
                 <ObjectSomeValuesFrom>
                     <ObjectProperty IRI="#hasJudge"/>
+                    <Class IRI="#Agent"/>
+                </ObjectSomeValuesFrom>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#isAppraisalOf"/>
                     <Class IRI="#Agent"/>
                 </ObjectSomeValuesFrom>
             </ObjectIntersectionOf>
@@ -569,14 +571,12 @@
         <Class IRI="#Reproach"/>
         <ObjectIntersectionOf>
             <ObjectIntersectionOf>
-                <ObjectComplementOf>
-                    <ObjectSomeValuesFrom>
-                        <ObjectProperty IRI="#isAppraisalOf"/>
-                        <Class IRI="#Agent"/>
-                    </ObjectSomeValuesFrom>
-                </ObjectComplementOf>
                 <ObjectSomeValuesFrom>
                     <ObjectProperty IRI="#hasJudge"/>
+                    <Class IRI="#Agent"/>
+                </ObjectSomeValuesFrom>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#isAppraisalOf"/>
                     <Class IRI="#Agent"/>
                 </ObjectSomeValuesFrom>
             </ObjectIntersectionOf>
@@ -713,10 +713,24 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#ActionOfAgent"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasJudge"/>
+            <Class IRI="#Agent"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ActionOfAgent"/>
         <ObjectExactCardinality cardinality="1">
             <ObjectProperty IRI="#hasJudge"/>
             <Class IRI="#Agent"/>
         </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ActionOfAgent"/>
+        <DataAllValuesFrom>
+            <DataProperty IRI="#hasJudgeness"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataAllValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#ActionOfAgent"/>
@@ -745,10 +759,17 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Agent"/>
-        <DataExactCardinality cardinality="1">
+        <DataSomeValuesFrom>
             <DataProperty IRI="#hasName"/>
             <Datatype abbreviatedIRI="xsd:string"/>
-        </DataExactCardinality>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Agent"/>
+        <DataAllValuesFrom>
+            <DataProperty IRI="#hasName"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataAllValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Appraisal"/>
@@ -756,6 +777,13 @@
             <ObjectProperty IRI="#isAppraisalOf"/>
             <Class IRI="#Agent"/>
         </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Appraisal"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#isAppraisalOf"/>
+            <Class IRI="#Agent"/>
+        </ObjectExactCardinality>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#AspectOfObject"/>
@@ -1039,12 +1067,16 @@
         <Class IRI="#AspectOfObject"/>
     </DisjointClasses>
     <DisjointClasses>
-        <Class IRI="#Agent"/>
-        <Class IRI="#Appraisal"/>
+        <Class IRI="#ActionOfAgent"/>
+        <Class IRI="#ConsequenceForOther"/>
     </DisjointClasses>
     <DisjointClasses>
-        <Class IRI="#Anger"/>
-        <Class IRI="#Remorse"/>
+        <Class IRI="#ActionOfAgent"/>
+        <Class IRI="#ProspectRelevant"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Agent"/>
+        <Class IRI="#Appraisal"/>
     </DisjointClasses>
     <DisjointClasses>
         <Class IRI="#AspectOfObject"/>
@@ -1061,10 +1093,6 @@
     <DisjointClasses>
         <Class IRI="#Emotion"/>
         <Class IRI="#KnowRelation"/>
-    </DisjointClasses>
-    <DisjointClasses>
-        <Class IRI="#Gratification"/>
-        <Class IRI="#Gratitude"/>
     </DisjointClasses>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#hasEnemy"/>
@@ -1308,6 +1336,81 @@
         <DataProperty IRI="#hasRealized"/>
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ActionOfAgent</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Avalia a responsabilidade de um agente com uma acao ou evento.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Admiration</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">TODO: agentes nao esta se julgando</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Agent</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Pessoa que possui avaliacao das coisas
+ao redor e que eh capaz de desempenhar
+atividades no mundo.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Appraisal</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Avaliacao de um determinado
+evento (consequencia) ou
+acao (responsabilidade) ou
+objeto (familiaridade).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AspectOfObject</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Avalia a familiaridade e atracao de um agente ou objeto.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ConsequenceOfEvent</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Avaliacao de uma consequencia de um evento.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Emotion</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Representa os tres ramos do modelo.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#KnowRelation</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Relacao de amigabilidade.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Pride</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">TODO: agentes esta se julgando</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProspectConfirmed</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Avaliacao feita sobre um evento
+provavel que jah aconteceu e pode
+ter sido confirmado positivamente
+ou negativamente.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ProspectUnconfirmed</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Avaliacao de um evento provavel
+que ainda esta para acontecer,
+mas ainda nao foi realizado.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Reproach</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">TODO: agentes nao esta se julgando</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Shame</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">TODO: agentes esta se julgando</Literal>
+    </AnnotationAssertion>
 </Ontology>
 
 
