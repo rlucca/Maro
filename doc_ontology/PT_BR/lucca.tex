@@ -9,29 +9,69 @@
 \usepackage{color}              % pacote para usar \textcolor
 \usepackage{rotating}		   	% pacote para rotacoes
 \usepackage{xcolor,colortbl}	% colorir tabelas
+\usepackage{url}
 
 % See the ``Article customise'' template for come common customisations
 
-\title{Provisorio: Estudo sobre ontologias emocionais}
+\title{Provisorio: Estudo sobre ontologias afetivas}
 \author{Ricardo Rodrigues Lucca}
 %\date{}
+\newcommand{\citet}{\citeonline}
 
 %%% BEGIN DOCUMENT
 \begin{document}
 
 \maketitle
 
-\section{Resumo}
 
-. ........ ........ .... ........ . .......çã. .. .......... ..... \....{.......-.....} ...
-......... .ã. ............. .. ......... ..... . .......... é ........ ... ...... ..........
-..... .......... ...... ... .......... ....., .. .......... .......... .. .....ç.. ... (..)
-..... ......... \....{......2002...,......2003..........,........2003..........}. .. ....
-.......... .... .......... .ã. ........ .. .......... ...: ...-... . .....
-...., .. .....ç. ... ...á ............ .... ...... . ........ . .. ....... .. .......... .....
-....... .. ..... ............. .. .......... ........... ..é. ....., .. ............ ..ó....
-.. á... ...á ......... .......... .. .......... ........... . ......... ............ .. á...
-\....{......2009...,...........1999....}.
+%\section{Introdução}
+%
+%Segundo \citet{wks2008towards}, ontologia foi caracterizada como o estudo da
+%existência, desde Aristóteles, por estar interessada em descrever todas as
+%coisas existentes e as relações que existem entre elas. Atualmente, essa forma
+%de representar o domínio do conhecimento tem se tornado popular na computação
+%por causa da independência de linguagem oferecida.
+%
+%O conceito de ontologia utilizado aqui é o dado por
+%\citet{ontoly2004Approach}. Eles definiram este como sendo uma representação
+%de conhecimento utilizada para capturar conhecimento e informação sobre
+%determinado assunto e que é, normalmente, estruturado de forma similar a uma
+%rede semântica. Dessa forma, uma ontologia pode ser pensada como uma coleção
+%de conceitos interligados entre si. Esses conceitos são fundamentados para
+%possibilitar a descoberta e reuso do conhecimento sendo escrito.
+%
+%Existem diferentes maneiras de se escrever essa fundamentação, entretanto a
+%adotada no presente trabalho foi baseada em OWL (\emph{Ontology Web
+%Language}). Essa linguagem foi regulamentada pela W3C\footnote{Ver
+%\url{http://www.w3.org/standards/semanticweb/ontology}.}, orgão internacional
+%que regulamenta padrões na Web, para ser usada na Web Semântica. Essa
+%linguagem de descrição foi criada em 2002 e trabalha com a possibilidade do
+%mundo aberto. Logo, uma coisa só é verdadeira ou falsa quando foi
+%explicitamente dito isto, caso contrario não se sabe nada.
+%
+%Assim, utilizando essa ferramenta será construída uma ontologia do modelo
+%afetivo definido por \citet{ortony1988cse}. Esse modelo fundamenta ao todo 22
+%emoções diferentes divididos em três formas de percepção: consequência,
+%responsabilidade e atratividade. Além disso, o presente trabalho pretende
+%estudar e relatar outras ontologia afetivas e introduzir a linguagem OWL em
+%maior detalhe.
+
+% a parte comentada vai na introducao propriamente dita...
+% isso aqui seria o trailer
+
+\section{Resumo}
+Segundo \citet{ontoly2004Approach}, ontologia é a representação de um
+conhecimento utilizado para se capturar informações sobre determinado assunto
+e que é, normalmente, estruturado de forma similar a uma rede semântica. Dessa
+forma, uma ontologia permite a descoberta, interoperabilidade e reuso do
+conhecimento sendo escrito.
+%
+O presente trabalho pretende estudar e relatar outras ontologias afetivas,
+utilizar a linguagem OWL\footnote{Ver mais em
+\url{http://www.w3.org/standards/semanticweb/ontology}.} para descrever o
+modelo afetivo definido por \citet{ortony1988cse} e que fundamenta 22 emoções
+divididas em três formas de perceber o mundo.
+
 
 \section{Cronograma das atividades}
 
@@ -41,10 +81,10 @@
 		%\cellcolor{green!50} feito & \\
 		%\cellcolor{blue!50} andamento & \\
 		%\cellcolor{red!85} atrasado &  \\
-	Estudo bibliográfico & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} &  &  &  \\
+	Estudo bibliográfico & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} &  \\
 	Elaboração proposta &  & \cellcolor{gray!50} &  &  &  &  \\
-	Desenv. Ontologia &  &  & \cellcolor{gray!50} & \cellcolor{gray!50} &  &  \\
-	Redação da monografia &  & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} &
+	Desenvolvimento da ontologia &  &  & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} &  \\
+	Redação da monografia &  & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50}
 	\end{tabular}
 
 %\bibliographystyle{abnt-alf}
@@ -55,8 +95,8 @@
    \begin{center}
 		\rule{8cm}{.1mm} \\ Orientador: Prof.~Dr.~Rafael Heitor Bordini
     \end{center}
-   %\begin{center}
-	%	\rule{8cm}{.1mm} \\ Aprovação: Prof.~Dr.~Ana L.C. Bazzan
-    %\end{center}
+   \begin{center}
+		\rule{6cm}{.1mm} \\ Aluno: Ricardo Rodrigues Lucca
+    \end{center}
 
 \end{document}
