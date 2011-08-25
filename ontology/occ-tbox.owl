@@ -32,6 +32,9 @@
         <Class IRI="#Anger"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Appraisal"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#BadKnowRelation"/>
     </Declaration>
     <Declaration>
@@ -39,6 +42,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#Distress"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Emotion"/>
     </Declaration>
     <Declaration>
         <Class IRI="#FearsConfirmed"/>
@@ -187,108 +193,11 @@
     <Declaration>
         <DataProperty IRI="#hasRealized"/>
     </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Al"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Blueriver"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Canal"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Millie"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTAdmiration"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTDisappointment"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTDistress"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTFearsConfirmed"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTFearsUn"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTGloating"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTHappyFor"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTHate"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTHope"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTJoy"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTKRAlBlueriver"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTKRAlCanal"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTKRBlueriverAl"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTKRCanalAl"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTKRMillieAl"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTKRMillieBlueriver"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTLikelihoodHigh"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTLikelihoodLow"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTLikelihoodMid"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTLikelihoodNone"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTLove"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTPride"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTRelief"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTResentment"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTSatisfaction"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTSorryFor"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#TSTSorryForIncorrectMillieNotFriendOfCanal"/>
-    </Declaration>
     <EquivalentClasses>
         <Class IRI="#Admiration"/>
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="#hasJudgeOther"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
                 <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
@@ -324,10 +233,6 @@
     <EquivalentClasses>
         <Class IRI="#Disappointment"/>
         <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasEffort"/>
                 <DatatypeRestriction>
@@ -364,10 +269,6 @@
                 <ObjectProperty IRI="#hasLikelihood"/>
                 <Class IRI="#None"/>
             </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasDesireSelf"/>
                 <DatatypeRestriction>
@@ -382,10 +283,6 @@
     <EquivalentClasses>
         <Class IRI="#FearsConfirmed"/>
         <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasEffort"/>
                 <DatatypeRestriction>
@@ -427,10 +324,6 @@
                     </ObjectComplementOf>
                 </ObjectIntersectionOf>
             </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasDesireSelf"/>
                 <DatatypeRestriction>
@@ -447,10 +340,6 @@
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="#hasPersonEnemy"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
                 <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
@@ -506,10 +395,6 @@
                 <ObjectProperty IRI="#hasPersonFriend"/>
                 <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasDesireOther"/>
                 <DatatypeRestriction>
@@ -532,25 +417,15 @@
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#Hate"/>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasSomething"/>
-                <Class abbreviatedIRI="owl:Thing"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
-            <DataSomeValuesFrom>
-                <DataProperty IRI="#hasFamiliarity"/>
-                <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:int"/>
-                    <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;int">0</Literal>
-                    </FacetRestriction>
-                </DatatypeRestriction>
-            </DataSomeValuesFrom>
-        </ObjectIntersectionOf>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasFamiliarity"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:int"/>
+                <FacetRestriction facet="&xsd;maxExclusive">
+                    <Literal datatypeIRI="&xsd;int">0</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#Hope"/>
@@ -563,10 +438,6 @@
                         <Class IRI="#None"/>
                     </ObjectComplementOf>
                 </ObjectIntersectionOf>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
-                <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasDesireSelf"/>
@@ -585,10 +456,6 @@
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="#hasLikelihood"/>
                 <Class IRI="#None"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
-                <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasDesireSelf"/>
@@ -619,35 +486,21 @@
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#Love"/>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasSomething"/>
-                <Class abbreviatedIRI="owl:Thing"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
-            <DataSomeValuesFrom>
-                <DataProperty IRI="#hasFamiliarity"/>
-                <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:int"/>
-                    <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;int">0</Literal>
-                    </FacetRestriction>
-                </DatatypeRestriction>
-            </DataSomeValuesFrom>
-        </ObjectIntersectionOf>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasFamiliarity"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:int"/>
+                <FacetRestriction facet="&xsd;minExclusive">
+                    <Literal datatypeIRI="&xsd;int">0</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#Pride"/>
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="#hasJudgeMyself"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
                 <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
@@ -664,10 +517,6 @@
     <EquivalentClasses>
         <Class IRI="#Relief"/>
         <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasEffort"/>
                 <DatatypeRestriction>
@@ -711,10 +560,6 @@
                 <ObjectProperty IRI="#hasJudgeOther"/>
                 <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasJudgeness"/>
                 <DatatypeRestriction>
@@ -731,10 +576,6 @@
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="#hasPersonEnemy"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
                 <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
@@ -760,10 +601,6 @@
     <EquivalentClasses>
         <Class IRI="#Satisfaction"/>
         <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasEffort"/>
                 <DatatypeRestriction>
@@ -800,10 +637,6 @@
                 <ObjectProperty IRI="#hasJudgeMyself"/>
                 <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasJudgeness"/>
                 <DatatypeRestriction>
@@ -820,10 +653,6 @@
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="#hasPersonFriend"/>
-                <Class IRI="#Agent"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#isAppraisalOf"/>
                 <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
@@ -848,7 +677,7 @@
     </EquivalentClasses>
     <SubClassOf>
         <Class IRI="#Admiration"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Agent"/>
@@ -856,7 +685,14 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Anger"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Appraisal"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isAppraisalOf"/>
+            <Class IRI="#Agent"/>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#BadKnowRelation"/>
@@ -864,23 +700,27 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Disappointment"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Distress"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Emotion"/>
+        <Class IRI="#Appraisal"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#FearsConfirmed"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#FearsUnconfirmed"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Gloating"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#GoodKnowRelation"/>
@@ -888,19 +728,19 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Gratification"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Gratitude"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#HappyFor"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Hate"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#High"/>
@@ -908,15 +748,15 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Hope"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Joy"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#KnowRelation"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Appraisal"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Likelihood"/>
@@ -924,7 +764,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Love"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Low"/>
@@ -940,35 +780,35 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Pride"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Relief"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Remorse"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Reproach"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Resentment"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Satisfaction"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Shame"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SorryFor"/>
-        <Class abbreviatedIRI="owl:Thing"/>
+        <Class IRI="#Emotion"/>
     </SubClassOf>
     <DisjointClasses>
         <Class IRI="#High"/>
@@ -976,452 +816,6 @@
         <Class IRI="#Mid"/>
         <Class IRI="#None"/>
     </DisjointClasses>
-    <ClassAssertion>
-        <Class IRI="#Agent"/>
-        <NamedIndividual IRI="#Al"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Agent"/>
-        <NamedIndividual IRI="#Blueriver"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Agent"/>
-        <NamedIndividual IRI="#Canal"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Agent"/>
-        <NamedIndividual IRI="#Millie"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#High"/>
-        <NamedIndividual IRI="#TSTLikelihoodHigh"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Low"/>
-        <NamedIndividual IRI="#TSTLikelihoodLow"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Mid"/>
-        <NamedIndividual IRI="#TSTLikelihoodMid"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#None"/>
-        <NamedIndividual IRI="#TSTLikelihoodNone"/>
-    </ClassAssertion>
-    <DifferentIndividuals>
-        <NamedIndividual IRI="#Al"/>
-        <NamedIndividual IRI="#Blueriver"/>
-    </DifferentIndividuals>
-    <DifferentIndividuals>
-        <NamedIndividual IRI="#Al"/>
-        <NamedIndividual IRI="#Canal"/>
-    </DifferentIndividuals>
-    <DifferentIndividuals>
-        <NamedIndividual IRI="#Al"/>
-        <NamedIndividual IRI="#Millie"/>
-    </DifferentIndividuals>
-    <DifferentIndividuals>
-        <NamedIndividual IRI="#Blueriver"/>
-        <NamedIndividual IRI="#Canal"/>
-    </DifferentIndividuals>
-    <DifferentIndividuals>
-        <NamedIndividual IRI="#Blueriver"/>
-        <NamedIndividual IRI="#Millie"/>
-    </DifferentIndividuals>
-    <DifferentIndividuals>
-        <NamedIndividual IRI="#Canal"/>
-        <NamedIndividual IRI="#Millie"/>
-    </DifferentIndividuals>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasKnowRelation"/>
-        <NamedIndividual IRI="#Canal"/>
-        <NamedIndividual IRI="#TSTKRCanalAl"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasJudge"/>
-        <NamedIndividual IRI="#TSTAdmiration"/>
-        <NamedIndividual IRI="#Canal"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTAdmiration"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTDisappointment"/>
-        <NamedIndividual IRI="#Blueriver"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasLikelihood"/>
-        <NamedIndividual IRI="#TSTDistress"/>
-        <NamedIndividual IRI="#TSTLikelihoodNone"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTDistress"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTFearsConfirmed"/>
-        <NamedIndividual IRI="#Millie"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasLikelihood"/>
-        <NamedIndividual IRI="#TSTFearsUn"/>
-        <NamedIndividual IRI="#TSTLikelihoodHigh"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTFearsUn"/>
-        <NamedIndividual IRI="#Canal"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPerson"/>
-        <NamedIndividual IRI="#TSTGloating"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTGloating"/>
-        <NamedIndividual IRI="#Millie"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPerson"/>
-        <NamedIndividual IRI="#TSTHappyFor"/>
-        <NamedIndividual IRI="#Blueriver"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTHappyFor"/>
-        <NamedIndividual IRI="#Millie"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPerson"/>
-        <NamedIndividual IRI="#TSTHate"/>
-        <NamedIndividual IRI="#Blueriver"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTHate"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasLikelihood"/>
-        <NamedIndividual IRI="#TSTHope"/>
-        <NamedIndividual IRI="#TSTLikelihoodMid"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTHope"/>
-        <NamedIndividual IRI="#Canal"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasLikelihood"/>
-        <NamedIndividual IRI="#TSTJoy"/>
-        <NamedIndividual IRI="#TSTLikelihoodNone"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTJoy"/>
-        <NamedIndividual IRI="#Canal"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPerson"/>
-        <NamedIndividual IRI="#TSTKRAlBlueriver"/>
-        <NamedIndividual IRI="#Blueriver"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTKRAlBlueriver"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPerson"/>
-        <NamedIndividual IRI="#TSTKRAlCanal"/>
-        <NamedIndividual IRI="#Canal"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTKRAlCanal"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPerson"/>
-        <NamedIndividual IRI="#TSTKRBlueriverAl"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTKRBlueriverAl"/>
-        <NamedIndividual IRI="#Blueriver"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPerson"/>
-        <NamedIndividual IRI="#TSTKRCanalAl"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPerson"/>
-        <NamedIndividual IRI="#TSTKRMillieAl"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTKRMillieAl"/>
-        <NamedIndividual IRI="#Millie"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPerson"/>
-        <NamedIndividual IRI="#TSTKRMillieBlueriver"/>
-        <NamedIndividual IRI="#Blueriver"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTKRMillieBlueriver"/>
-        <NamedIndividual IRI="#Millie"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPerson"/>
-        <NamedIndividual IRI="#TSTLove"/>
-        <NamedIndividual IRI="#Canal"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTLove"/>
-        <NamedIndividual IRI="#Millie"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasJudge"/>
-        <NamedIndividual IRI="#TSTPride"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTPride"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTRelief"/>
-        <NamedIndividual IRI="#Canal"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPerson"/>
-        <NamedIndividual IRI="#TSTResentment"/>
-        <NamedIndividual IRI="#Canal"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTResentment"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTSatisfaction"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPerson"/>
-        <NamedIndividual IRI="#TSTSorryFor"/>
-        <NamedIndividual IRI="#Al"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTSorryFor"/>
-        <NamedIndividual IRI="#Canal"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPerson"/>
-        <NamedIndividual IRI="#TSTSorryForIncorrectMillieNotFriendOfCanal"/>
-        <NamedIndividual IRI="#Millie"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <NamedIndividual IRI="#TSTSorryForIncorrectMillieNotFriendOfCanal"/>
-        <NamedIndividual IRI="#Canal"/>
-    </ObjectPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasJudgeness"/>
-        <NamedIndividual IRI="#TSTAdmiration"/>
-        <Literal datatypeIRI="&xsd;int">12</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasEffort"/>
-        <NamedIndividual IRI="#TSTDisappointment"/>
-        <Literal datatypeIRI="&xsd;int">10</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasPreviousIntensity"/>
-        <NamedIndividual IRI="#TSTDisappointment"/>
-        <Literal datatypeIRI="&xsd;int">9</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasRealized"/>
-        <NamedIndividual IRI="#TSTDisappointment"/>
-        <Literal datatypeIRI="&xsd;int">-2</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesireSelf"/>
-        <NamedIndividual IRI="#TSTDistress"/>
-        <Literal datatypeIRI="&xsd;int">-20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasEffort"/>
-        <NamedIndividual IRI="#TSTFearsConfirmed"/>
-        <Literal datatypeIRI="&xsd;int">-20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasPreviousIntensity"/>
-        <NamedIndividual IRI="#TSTFearsConfirmed"/>
-        <Literal datatypeIRI="&xsd;int">-10</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasRealized"/>
-        <NamedIndividual IRI="#TSTFearsConfirmed"/>
-        <Literal datatypeIRI="&xsd;int">-40</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesireSelf"/>
-        <NamedIndividual IRI="#TSTFearsUn"/>
-        <Literal datatypeIRI="&xsd;int">-9</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesireOther"/>
-        <NamedIndividual IRI="#TSTGloating"/>
-        <Literal datatypeIRI="&xsd;int">-10</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesirePresume"/>
-        <NamedIndividual IRI="#TSTGloating"/>
-        <Literal datatypeIRI="&xsd;int">20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesireOther"/>
-        <NamedIndividual IRI="#TSTHappyFor"/>
-        <Literal datatypeIRI="&xsd;int">44</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesirePresume"/>
-        <NamedIndividual IRI="#TSTHappyFor"/>
-        <Literal datatypeIRI="&xsd;int">11</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasFamiliarity"/>
-        <NamedIndividual IRI="#TSTHate"/>
-        <Literal datatypeIRI="&xsd;int">-33</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesireSelf"/>
-        <NamedIndividual IRI="#TSTHope"/>
-        <Literal datatypeIRI="&xsd;int">30</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesireSelf"/>
-        <NamedIndividual IRI="#TSTJoy"/>
-        <Literal datatypeIRI="&xsd;int">20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasNiceness"/>
-        <NamedIndividual IRI="#TSTKRAlBlueriver"/>
-        <Literal datatypeIRI="&xsd;int">8</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasNiceness"/>
-        <NamedIndividual IRI="#TSTKRAlCanal"/>
-        <Literal datatypeIRI="&xsd;int">-30</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasNiceness"/>
-        <NamedIndividual IRI="#TSTKRBlueriverAl"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasNiceness"/>
-        <NamedIndividual IRI="#TSTKRCanalAl"/>
-        <Literal datatypeIRI="&xsd;int">5</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasNiceness"/>
-        <NamedIndividual IRI="#TSTKRMillieAl"/>
-        <Literal datatypeIRI="&xsd;int">-67</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasNiceness"/>
-        <NamedIndividual IRI="#TSTKRMillieBlueriver"/>
-        <Literal datatypeIRI="&xsd;int">5</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasFamiliarity"/>
-        <NamedIndividual IRI="#TSTLove"/>
-        <Literal datatypeIRI="&xsd;int">19</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasJudgeness"/>
-        <NamedIndividual IRI="#TSTPride"/>
-        <Literal datatypeIRI="&xsd;int">33</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasEffort"/>
-        <NamedIndividual IRI="#TSTRelief"/>
-        <Literal datatypeIRI="&xsd;int">-20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasPreviousIntensity"/>
-        <NamedIndividual IRI="#TSTRelief"/>
-        <Literal datatypeIRI="&xsd;int">-40</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasRealized"/>
-        <NamedIndividual IRI="#TSTRelief"/>
-        <Literal datatypeIRI="&xsd;int">1</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesireOther"/>
-        <NamedIndividual IRI="#TSTResentment"/>
-        <Literal datatypeIRI="&xsd;int">20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesirePresume"/>
-        <NamedIndividual IRI="#TSTResentment"/>
-        <Literal datatypeIRI="&xsd;int">-10</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasEffort"/>
-        <NamedIndividual IRI="#TSTSatisfaction"/>
-        <Literal datatypeIRI="&xsd;int">12</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasPreviousIntensity"/>
-        <NamedIndividual IRI="#TSTSatisfaction"/>
-        <Literal datatypeIRI="&xsd;int">4</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasRealized"/>
-        <NamedIndividual IRI="#TSTSatisfaction"/>
-        <Literal datatypeIRI="&xsd;int">20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesireOther"/>
-        <NamedIndividual IRI="#TSTSorryFor"/>
-        <Literal datatypeIRI="&xsd;int">-10</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesirePresume"/>
-        <NamedIndividual IRI="#TSTSorryFor"/>
-        <Literal datatypeIRI="&xsd;int">-20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesireOther"/>
-        <NamedIndividual IRI="#TSTSorryForIncorrectMillieNotFriendOfCanal"/>
-        <Literal datatypeIRI="&xsd;int">-20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasDesirePresume"/>
-        <NamedIndividual IRI="#TSTSorryForIncorrectMillieNotFriendOfCanal"/>
-        <Literal datatypeIRI="&xsd;int">-10</Literal>
-    </DataPropertyAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#hasEnemy"/>
         <ObjectProperty IRI="#hasKnow"/>
@@ -1459,12 +853,9 @@
         <ObjectProperty IRI="#hasPerson"/>
     </SubObjectPropertyOf>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#isAppraisalOf"/>
         <ObjectProperty IRI="#hasAppraisal"/>
+        <ObjectProperty IRI="#isAppraisalOf"/>
     </InverseObjectProperties>
-    <InverseFunctionalObjectProperty>
-        <ObjectProperty IRI="#hasJudge"/>
-    </InverseFunctionalObjectProperty>
     <SymmetricObjectProperty>
         <ObjectProperty IRI="#hasKnow"/>
     </SymmetricObjectProperty>
@@ -1653,26 +1044,6 @@
             </ObjectPropertyAtom>
         </Head>
     </DLSafeRule>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Anger</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">TODO</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Gratification</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">TODO</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Gratitude</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">TODO</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Remorse</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">TODO</Literal>
-    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#hasEnemy</IRI>
