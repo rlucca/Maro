@@ -240,8 +240,6 @@ public class BBAffective
 		boolean ret = false;
 		int arity = l.getArity();
 
-        System.err.println("lucca removing " +l);
-
 		// Se eh uma percepcao nao temos interesse...
 		if (l.hasAnnot(BeliefBase.TPercept)) {
 			return super.remove(l);
@@ -253,7 +251,7 @@ public class BBAffective
 
 		d = Dumper.dumpLiteral(l);
 		ret = ek.remove(d);
-		System.err.println("lucca " + d + " = " + ret);
+		//System.err.println("lucca " + d + " = " + ret);
 		if (ret == false) return super.remove(l);
 		return ret; // always true
 	}

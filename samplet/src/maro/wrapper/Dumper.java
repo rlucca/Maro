@@ -133,33 +133,19 @@ public class Dumper {
 	addOntology(Dumper[] d, String ontology) {
 		List<Dumper> sd = new LinkedList<Dumper>();
 		Dumper o = new Dumper();
-		Dumper o2 = new Dumper();
-		o2.setFunctor("source");
-		o2.setNot("");
-		o2.setTerms(new String [] { "ontology" });
-		o2.setAnnots( new Dumper [] { o });
-
-		o.setFunctor( "iri" );
+		o.setFunctor( "ontology" );
 		o.setNot("");
 		o.setTerms(new String[]  { ontology });
 		o.setAnnots(new Dumper[] { });
 
-		boolean hasSource = false;
 		for (Dumper du : d) {
-			if (du.getFunctor().equals("source")) {
-				for (String s : du.getTerms()) {
-					if (s.equals("ontology"))
-						return d; // nao precisa fazer nada
+			if (du.getFunctor().equals("ontology")) {
+				return d; // nao precisa fazer nada
 				}
-				sd.add(o2);
-				hasSource = true;
-			} else {
-				sd.add(du);
-			}
+			sd.add(du);
 		}
 
-		if (hasSource == false)
-			sd.add(o2);
+		sd.add(o);
 		return sd.toArray(new Dumper[0]);
 	}
 
