@@ -5,6 +5,11 @@
 
 # Nome do arquivo principal .tex, sem a extensão.
 MAIN	= lucca
+FILES   = $(MAIN).tex    \
+          resumos.tex    \
+          cronograma.tex \
+          estadoArte.tex \
+          trabalho.tex
 
 
 # Regra simplista para gerar um PostScript do documento.
