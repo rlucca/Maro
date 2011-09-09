@@ -5,7 +5,7 @@
 
 # Nome do arquivo principal .tex, sem a extensão.
 MAIN	= lucca
-PREFIX  = ../../../..
+PREFIX  = ../../..
 FILES   = 	$(MAIN).tex \
 			abreviaturas.tex \
 			assinaturas.tex \
