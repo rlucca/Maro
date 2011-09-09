@@ -1,24 +1,16 @@
 
+
 MAS eoaus {
-	infrastructure: Centralised
+    infrastructure: Centralised
 
-	environment: eoaus.Env // nao tinha outro nome
+    //environment:
 
-	agents:
-		sam
-			#1
-			agentArchClass eoaus.AgArchAffective
-			beliefBaseClass eoaus.BBAffective
-            ;
-		aline
-			#1
-			//agentArchClass eoaus.AgArchAffective
-			//beliefBaseClass eoaus.BBAffective
-			;
-		william
-			#1
-			//agentArchClass eoaus.AgArchAffective
-			//beliefBaseClass eoaus.BBAffective
-			;
-	aslSourcePath: "asl";
+    agents:
+        test
+          #1
+          beliefBaseClass maro.wrapper.BBAffective("../ontology/occ-tbox.owl")
+          agentArchClass maro.wrapper.AgArchFixBB
+        ;
+
+    aslSourcePath: "asl";
 }
