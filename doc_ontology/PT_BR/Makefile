@@ -16,7 +16,7 @@ FILES   = $(MAIN).tex    \
 all: $(MAIN).pdf
 	@-echo "feito."
 
-$(MAIN).pdf: $(MAIN).tex
+$(MAIN).pdf: $(FILES)
 	pdflatex $(MAIN) && bibtex $(MAIN) && pdflatex $(MAIN) && pdflatex $(MAIN)
 
 # Remoção dos arquivos temporários (lista não exaustiva).
@@ -26,5 +26,5 @@ clean:
 mrproper:
 	rm -fv *.aux *.toc *.lo[lagft] *.bbl *.blg *.out *.nav *.snm *.ps *.synctex.gz lucca.pdf *.dvi *.tdo
 
-view: $(MAIN).pdf
+view: all
 	open $(MAIN).pdf

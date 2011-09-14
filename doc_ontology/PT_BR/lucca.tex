@@ -12,7 +12,13 @@
 \usepackage{url}
 
 % See the ``Article customise'' template for come common customisations
-\newcommand{\dev}{ }
+% Use todo para anotar algo para ver depois
+% Criando comando \todo{algo}
+\newcommand{\todo}[1] {\footnote{TODO #1}\marginpar{\textcolor{red}{\textbf{TODO}}}}
+%\newcommand{\todo}[1] {}
+% Use dev para anotar algum comprometimento
+\newcommand{\dev}[0] {\marginpar{\textcolor{blue}{\textbf{IMPL}}}}
+%\newcommand{\dev}[0] {}
 \newcommand{\citet}{\citeonline}
 
 \title{Provisorio: Estudo sobre ontologias afetivas}
@@ -36,6 +42,7 @@
 \include{cronograma}
 \include{estadoArte}
 \include{trabalho}
+\include{conclusao}
 
 
 %\bibliographystyle{abnt-alf}
