@@ -11,6 +11,7 @@ FILES   = .OAlock		 \
           cronograma.tex \
           estadoArte.tex \
           trabalho.tex	 \
+          conclusao.tex  \
 		  Makefile
 affectiveOnto = ../../ontology/occ-tbox.owl
 
