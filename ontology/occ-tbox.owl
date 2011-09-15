@@ -86,7 +86,7 @@ Limitações:
         <Class IRI="#Emotion"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Fears"/>
+        <Class IRI="#Fear"/>
     </Declaration>
     <Declaration>
         <Class IRI="#FearsConfirmed"/>
@@ -338,7 +338,7 @@ Limitações:
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#Fears"/>
+        <Class IRI="#Fear"/>
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="#hasLikelihood"/>
@@ -835,7 +835,7 @@ Limitações:
         <Class IRI="#Appraisal"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Fears"/>
+        <Class IRI="#Fear"/>
         <Class IRI="#ProspectNotRealized"/>
     </SubClassOf>
     <SubClassOf>
