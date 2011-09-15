@@ -5,11 +5,14 @@
 
 # Nome do arquivo principal .tex, sem a extensão.
 MAIN	= lucca
-FILES   = $(MAIN).tex    \
+FILES   = .OAlock		 \
+		  $(MAIN).tex    \
           resumos.tex    \
           cronograma.tex \
           estadoArte.tex \
-          trabalho.tex
+          trabalho.tex	 \
+		  Makefile
+affectiveOnto = ../../ontology/occ-tbox.owl
 
 
 # Regra simplista para gerar um PostScript do documento.
@@ -18,6 +21,10 @@ all: $(MAIN).pdf
 
 $(MAIN).pdf: $(FILES)
 	pdflatex $(MAIN) && bibtex $(MAIN) && pdflatex $(MAIN) && pdflatex $(MAIN)
+
+.OAlock: $(affectiveOnto)
+	@echo "affective ontology changed but dissertation no!" && exit 5
+
 
 # Remoção dos arquivos temporários (lista não exaustiva).
 clean:
