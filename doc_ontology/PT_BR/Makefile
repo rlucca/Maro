@@ -29,10 +29,10 @@ $(MAIN).pdf: $(FILES)
 
 # Remoção dos arquivos temporários (lista não exaustiva).
 clean:
-	rm -fv *.aux *.toc *.lo[lagft] *.bbl *.blg *.out *.nav *.snm *.ps *.synctex.gz *.tdo
+	rm -fv *.aux *.toc *.lo[lagft] *.bbl *.blg *.out *.nav *.snm *.ps *.synctex.gz *.tdo *.ent
 
 mrproper:
-	rm -fv *.aux *.toc *.lo[lagft] *.bbl *.blg *.out *.nav *.snm *.ps *.synctex.gz lucca.pdf *.dvi *.tdo
+	rm -fv *.aux *.toc *.lo[lagft] *.bbl *.blg *.out *.nav *.snm *.ps *.synctex.gz lucca.pdf *.dvi *.tdo *.ent
 
 view: all
 	open $(MAIN).pdf
