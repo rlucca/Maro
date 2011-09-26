@@ -1,15 +1,20 @@
 
 
 MAS eoaus {
-    infrastructure: Centralised
+    infrastructure: Centralised //(pool, 2)
 
-    //environment:
+    // 20 seconds, 1000 steps, FALSE when adding second action, 2 agents
+    environment: maro.example.LU2DEnv(20000, 1000, FALSE, 20)
 
     agents:
-        test
+        planets
+          #10
+          //beliefBaseClass maro.wrapper.BBAffective("../ontology/occ-tbox.owl")
+          //agentArchClass maro.wrapper.AgArchFixBB
+        ;
+        ship
           #1
-          beliefBaseClass maro.wrapper.BBAffective("../ontology/occ-tbox.owl")
-          agentArchClass maro.wrapper.AgArchFixBB
+          agentArchClass maro.example.LUAgArchViewer
         ;
 
     aslSourcePath: "asl";
