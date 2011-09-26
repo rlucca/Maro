@@ -2,6 +2,7 @@ package maro.wrapper;
 
 // jason only
 import jason.asSyntax.ListTerm;
+import jason.asSyntax.ASSyntax;
 import jason.asSyntax.Literal;
 import jason.asSyntax.Term;
 
@@ -78,7 +79,8 @@ public class Dumper {
         annots = d;
     }
 
-    static int depth = 0;
+    private int depth = 0;
+
     public String toString() {
         String ret = getFunctorComplete();
         String terms = "";
@@ -115,13 +117,12 @@ public class Dumper {
 		if (!terms.isEmpty())
 			ret += "(" + terms + pi + ")";
 
-        depth++;
         for (Dumper d: getAnnots()) {
+            d.depth = this.depth + 1;
             if (annots.isEmpty())
                 annots += d;
             else annots += ", " + d;
         }
-        depth--;
 
         if (!annots.isEmpty())
             ret += "[" + annots + "]";
@@ -228,5 +229,25 @@ public class Dumper {
         ret.setTerms(lts.toArray(new String[0]));
         ret.setAnnots(las.toArray(new Dumper[0]));
         return ret;
+	}
+
+	static public Literal
+	fromDumper(Dumper du, int e) {
+		return fromString(du.toString(), e);
+	}
+
+	static public Literal
+	fromString(String s, int e) {
+		Literal li = null;
+
+		try {
+			li = ASSyntax.parseLiteral(s);
+		} catch (Exception ex) {
+			System.out.println("Ocurred a problem on parsing: " + s);
+			ex.printStackTrace();
+			System.exit(e);
+		}
+
+		return li;
 	}
 }

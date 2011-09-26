@@ -1,0 +1,15 @@
+
+
+MAS eoaus {
+    infrastructure: Centralised //(pool, 2)
+
+    environment: maro.example.LU2DEnv(30000, 6, FALSE, 10)
+
+    agents:
+        millie
+          beliefBaseClass maro.wrapper.BBAffective("../ontology/occ-tbox.owl")
+          agentArchClass maro.wrapper.AgArchFixBB
+        ;
+
+    aslSourcePath: "asl";
+}

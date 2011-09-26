@@ -368,6 +368,20 @@ public class OwlApi {
 		OWLClass cl = factoryData.getOWLClass(IRI.create(className));
         OWLAxiom a = factoryData.getOWLClassAssertionAxiom(cl, ni, annot);
 
+        // So pode ter um axioma
+        Set<OWLClassAssertionAxiom> ocaas=ontology.getClassAssertionAxioms(ni);
+        if (ocaas != null) {
+            for (OWLClassAssertionAxiom ocaa: ocaas) {
+                if (ocaa.getClassExpression() == (OWLClassExpression) cl) {
+                    if (isAdd) {
+                        manager.removeAxiom(ontology, ocaa);
+                    } else {
+                        a = ocaa; // como so pode ter um pegamos o que esta la pra remover
+                    }
+                }
+            }
+        }
+
         afterChange(a, isAdd);
 	}
 
@@ -395,6 +409,17 @@ public class OwlApi {
 		odp = factoryData.getOWLDataProperty(IRI.create(relationName));
 		a = factoryData.getOWLDataPropertyAssertionAxiom(odp, ni, oli, annot);
 
+        //So pode ter um axioma
+        for (OWLDataPropertyAssertionAxiom odpa : ontology.getDataPropertyAssertionAxioms(ni)) {
+            if (odpa.getDataPropertiesInSignature() == odp && odpa.getObject() == oli) {
+                if ( isAdd ) {
+                    manager.removeAxiom(ontology, odpa);
+                } else {
+                    a = odpa;
+                }
+            }
+        }
+
         afterChange(a, isAdd);
 	}
 
@@ -415,6 +440,17 @@ public class OwlApi {
 		niTarget = factoryData.getOWLNamedIndividual(individualName[1], pm);
 		oop = factoryData.getOWLObjectProperty(IRI.create(relationName));
 		a = factoryData.getOWLObjectPropertyAssertionAxiom(oop, ni, niTarget, annot);
+
+        //So pode ter um axioma
+        for (OWLObjectPropertyAssertionAxiom oopa : ontology.getObjectPropertyAssertionAxioms(ni)) {
+            if (oopa.getObjectPropertiesInSignature() == oop && oopa.getObject() == niTarget) {
+                if ( isAdd ) {
+                    manager.removeAxiom(ontology, oopa);
+                } else {
+                    a = oopa;
+                }
+            }
+        }
 
         afterChange(a, isAdd);
 	}
@@ -441,6 +477,11 @@ public class OwlApi {
         } else {
             //if (relationName.equals("~"+sameas))
             a = factoryData.getOWLDifferentIndividualsAxiom(setAsOWLNamedIndividual(individualName), annot);
+        }
+
+        if (isAdd == false) {
+            String i = null;
+            i.equals("not implemented");
         }
 
         afterChange(a, isAdd);
@@ -714,6 +755,59 @@ public class OwlApi {
             }
         }
     }
+
+	public String
+	summaryOf(String name, String emotionType) {
+		String emotion = getCorrectName(1, emotionType);
+		OWLClass ce = factoryData.getOWLClass(IRI.create(emotion));
+		String translatedA = getCorrectName(2, "isAppraisalOf");
+		OWLObjectProperty oo = factoryData.getOWLObjectProperty(IRI.create(translatedA));
+		OWLNamedIndividual agent = factoryData.getOWLNamedIndividual(name, pm);
+		OWLObjectHasValue ooHm = factoryData.getOWLObjectHasValue(oo, agent);
+		OWLClassExpression oce = factoryData.getOWLObjectIntersectionOf(ce, ooHm);
+		NodeSet<OWLNamedIndividual> noni;
+		Integer sum = 0;
+		boolean temValor = false;
+		reloadReasoner();
+
+		noni = reasoner.getInstances( oce, true ); // direct only
+		for ( OWLNamedIndividual oni : noni.getFlattened() ) {
+			temValor = true; // pode ser um valor que nao eh data
+			for (Set<OWLLiteral> sl : oni.getDataPropertyValues(ontology).values()) {
+				for (OWLLiteral ls : sl) {
+					if (ls.isInteger()) {
+						sum += Math.abs(ls.parseInteger());
+					}
+				}
+			}
+		}
+
+		if (temValor) return name+","+emotionType+","+sum;
+		return null;
+	}
+
+	public Set<String>
+	getAllEmotions()
+	{
+		SortedSet<String> ret;
+		NodeSet<OWLClass> ns;
+		String emo = getCorrectName(1, "Emotion");
+
+		reloadReasoner();
+		ns = reasoner.getSubClasses(
+				factoryData.getOWLClass(IRI.create(emo)),
+				false
+			);
+
+		ret = new TreeSet<String> ();
+		for (OWLClass cls : ns.getFlattened()) {
+			if (cls.isDefined(ontology)) {
+				ret.add(cls.getIRI().getFragment().toLowerCase());
+			}
+		}
+
+		return ret;
+	}
 
 	public void
 	dumpOntology(String filename)

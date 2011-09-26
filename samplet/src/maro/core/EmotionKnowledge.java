@@ -1,23 +1,29 @@
 package maro.core;
 
+import jason.asSyntax.Literal;
+
 // my
 import maro.wrapper.Dumper;
 import maro.wrapper.OwlApi;
 
 //java only
-import java.text.DecimalFormat;
 import java.util.Iterator;
+import java.util.HashSet;
+import java.util.Set;
 
 public class EmotionKnowledge
 {
 	protected OwlApi oaw = null;
 	protected String filename;
+    protected Set<String> allEmotions;
 
 	public EmotionKnowledge(String fileName) throws Exception {
 		filename = fileName;
 
 		oaw = new OwlApi();
 		oaw.loadOntologyFromFile(filename);
+
+        allEmotions = oaw.getAllEmotions();
 	}
 
 	protected boolean
@@ -65,10 +71,24 @@ public class EmotionKnowledge
 
 		return oaw.getCandidatesByFunctorAndArity(arity, functor);
 	}
-	
+
 	public Iterator<Dumper>
 	iterator() {
 		return oaw.iterator();
+	}
+
+	public Set<Literal>
+	summarize(String agentName, int step) {
+        Set<Literal> sd = new HashSet<Literal>();
+        for (String s: allEmotions) {
+            String ret = oaw.summaryOf(agentName, s);
+            if (ret == null) continue;
+
+            ret = "hasFeeling("+ret+","+step+")";
+            Literal d = Dumper.fromString(ret, 17);
+            sd.add(d);
+        }
+		return sd;
 	}
 
 	public void dumpData() {
