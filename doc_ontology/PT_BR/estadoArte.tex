@@ -49,7 +49,13 @@ alguém para algum objeto (inanimado ou não). Por exemplo, alguém gostar de
 rosas vermelhas.  No seguinte, Ações de agentes, o julgamento das ações
 exercidas por outro indivíduo é realizado baseado nos valores morais da pessoa
 que está julgando. Exemplo: reprovar a atitude de um colega que ``colou'' no
-teste. O último ramo da árvore, mais a esquerda, é o de consequências de
+teste. Cabe salientar, que julgar ações o modelo permite um grau de
+``empatia'' que o autor chamou de ``força cognitiva'' \footnote{Traduzido
+literalmente de \emph{Strength of cognitive unit}.}. Dessa forma, é possível,
+por exemplo, ficar com orgulho porque uma atleta ganhou uma medalha ou ficar
+envergonhado ao descobrir que o vizinho bate no(s) filho(s).
+
+O último ramo da árvore, mais a esquerda na Figura~\ref{fig:occ_model}, é o de consequências de
 eventos que representa as coisas que aconteceram (e foram consideradas
 importantes), acontecem ou acontecerão (objetivos almejados)\dev{}. Essas
 emoções são avaliadas segundo as consequências para o alcance ou impedimento
@@ -96,12 +102,48 @@ ao usuário mudanças em suas rotas baseado na rotina aprendida anteriormente.
 
 \section{Ontologias Emocionais} \label{cap:eda:oe}
 
-Aqui tem que ter pelo menos 5 ontologias explicadas;
-%1
-%2
-%3
-%4
+Ontologias emocionais são ontologias que visam descrever as emoções ou
+aspectos afetivos de um indivíduo se baseando em estudos da psicologia.
+...
+
+Em \citet{benta2007ontology} foi feita a construção de uma ontologia escrita
+em \emph{OWL}. Nesse trabalho as emoções são divididas em primárias e
+secundárias, e as secundárias se originam a partir das primárias. As emoções
+primárias ou básicas, não cognitivas, são: brabo, desgosto, feliz, medo,
+neutro, surpreso e triste. As emoções secundárias, cognitivas, descritas são
+ao todo 4. O interessante aqui é que essas 4 emoções são inferidas a partir
+de propriedades de objeto. Além disso, há o conceito de emoção ativa que é a
+emoção predominante naquele momento. O valor da emoção é calculado da seguinte
+forma, a sensibilidade (predisposição a emoção que varia de 0 à 1)
+multiplicado pela intensidade da emoção. A emoção predominante é o maior valor
+entre as emoções.
+
+Não tendo nenhuma informação de uma teoria de emoções específicas modeladas em
+sua ontologia, \citet{wks2008towards} criou uma ontologia de alto nível se
+aproveitando de outra ontologia de alto nível e de uma de analise léxica. O
+principal conceito da ontologia pode ser pensado como o de sensores que são
+objetos físicos que recebem informações do ambiente e as ``transportam'' para
+o mundo mental. Sendo assim, é possível reconhecer a percepção recebida
+utilizando a memória e descrever a nova situação. Por não conter dados
+específicos de uma teoria de emoção, a ontologia gerada é de um nível mais
+alto. Todavia, o presente trabalho não tem esse objetivo\dev{}.
+
+% Esse paragrafo ficou meio que esquicito...
+%O modelo a ser explicado no Capitulo X baseado no Xyz ...........
+\todo{rewrite}No modelo definido por \citet{ortony1988cse} a diferença entre esses dois
+tipos de emoções não existe porque se pressupõe que toda emoção exige um certo
+nível de cognição. Limitar as emoções que podem ser percebidas é feito no
+modelo com a diferenciação entre sentimento e emoção. As emoções nunca são
+percebidas enquanto os sentimentos sim e, dessa forma, fica implicito a
+sensibilidade.
+
+%3 %\cite{springerlink:10.1007/978-3-642-01639-448} 2009
+%4%\cite{lera2009semantic}
 %5
+
+% nao eh ontologia eh mais formalizacao do modelo
+% adam2009alfototoe
+%	Annote = {Esse trabalho formaliza o modelo OCC com algumas restri{\c c}{\~o}es: (i) n{\~a}o menciona o ramo dos objetos (talvez por ser o mais simples); (ii) no ramo de a{\c c}{\~o}es desconsidera (ou abstrai) a 'stronger unit' (chamo de empatia pra clarear); (iii) a probabilidade no ramo de eventos {\'e} relativa sempre a ser mais provavel acontecer do que n{\~a}o acontecer e desejabilidade tamb{\'e}m n{\~a}o {\'e} numerico; (iv) o modelo formalizado necessita que cada coisa aconte{\c c}a em uma linha temporal (no modelo OCC isso n{\~a}o existe); (v) ao julgar eventos, sempre se foca nas consequencia e n{\~a}o no evento em si; (vi) a{\c c}{\~o}es s{\~a}o causadas intensionalmente pelo ator e eventos s{\~a}o coisas que ocorrem que o ator n{\~a}o tem controle (estar chovendo ou espirar, por exemplo). Com as  modifica{\c c}{\~o}es feitas pelos autores eu chamaria o modelo OCC formalizado de um modelo para reconhecer emo{\c c}{\~o}es e n{\~a}o para elicitar (gerar) emo{\c c}{\~o}es. Todavia, no livro do OCC eh mencionado que na IA ele considera reconhecimento como foco do seu trabalho e n{\~a}o a gera{\c c}{\~a}o.},
 
 
 \section{Ontologias de Humanos Virtuais} \label{cap:eda:odhv}
