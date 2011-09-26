@@ -756,7 +756,7 @@ public class OwlApi {
         }
     }
 
-	public String
+	public Integer
 	summaryOf(String name, String emotionType) {
 		String emotion = getCorrectName(1, emotionType);
 		OWLClass ce = factoryData.getOWLClass(IRI.create(emotion));
@@ -766,13 +766,12 @@ public class OwlApi {
 		OWLObjectHasValue ooHm = factoryData.getOWLObjectHasValue(oo, agent);
 		OWLClassExpression oce = factoryData.getOWLObjectIntersectionOf(ce, ooHm);
 		NodeSet<OWLNamedIndividual> noni;
-		Integer sum = 0;
-		boolean temValor = false;
+		Integer sum = null;
 		reloadReasoner();
 
 		noni = reasoner.getInstances( oce, true ); // direct only
 		for ( OWLNamedIndividual oni : noni.getFlattened() ) {
-			temValor = true; // pode ser um valor que nao eh data
+			if (sum == null) sum = new Integer(0);
 			for (Set<OWLLiteral> sl : oni.getDataPropertyValues(ontology).values()) {
 				for (OWLLiteral ls : sl) {
 					if (ls.isInteger()) {
@@ -782,8 +781,7 @@ public class OwlApi {
 			}
 		}
 
-		if (temValor) return name+","+emotionType+","+sum;
-		return null;
+		return sum;
 	}
 
 	public Set<String>

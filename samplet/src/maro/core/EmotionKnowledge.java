@@ -8,7 +8,7 @@ import maro.wrapper.OwlApi;
 
 //java only
 import java.util.Iterator;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Set;
 
 public class EmotionKnowledge
@@ -16,6 +16,8 @@ public class EmotionKnowledge
 	protected OwlApi oaw = null;
 	protected String filename;
     protected Set<String> allEmotions;
+	// emocao X (agent X (step X valence))
+	protected HashMap<String, HashMap<String, HashMap<Integer, Integer> > > emotions;
 
 	public EmotionKnowledge(String fileName) throws Exception {
 		filename = fileName;
@@ -24,6 +26,7 @@ public class EmotionKnowledge
 		oaw.loadOntologyFromFile(filename);
 
         allEmotions = oaw.getAllEmotions();
+		emotions = new HashMap<String, HashMap<String, HashMap<Integer, Integer>>>();
 	}
 
 	protected boolean
@@ -77,18 +80,27 @@ public class EmotionKnowledge
 		return oaw.iterator();
 	}
 
-	public Set<Literal>
+	public void
 	summarize(String agentName, int step) {
-        Set<Literal> sd = new HashSet<Literal>();
         for (String s: allEmotions) {
-            String ret = oaw.summaryOf(agentName, s);
+            Integer ret = oaw.summaryOf(agentName, s);
             if (ret == null) continue;
 
-            ret = "hasFeeling("+ret+","+step+")";
-            Literal d = Dumper.fromString(ret, 17);
-            sd.add(d);
+			// emotions = emocao X (agent X (step X valence))
+			HashMap<String, HashMap<Integer, Integer> > hm1 = emotions.get(s);
+			if (hm1 == null) {
+				hm1 = new HashMap<String, HashMap<Integer, Integer> > ();
+				emotions.put(s, hm1);
+			}
+
+			HashMap<Integer, Integer> hm2 = hm1.get(agentName);
+			if (hm2 == null) {
+				hm2 = new HashMap<Integer, Integer>();
+				hm1.put(agentName, hm2);
+			}
+
+			hm2.put(step, ret);
         }
-		return sd;
 	}
 
 	public void dumpData() {

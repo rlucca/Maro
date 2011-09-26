@@ -85,11 +85,8 @@ public class BBAffective
 
 			NumberTerm nt = (NumberTerm) l.getTerm(0);
 			int step = (int) nt.solve();
-			Set<Literal> ld = ek.summarize(myName, step);
-
-			for (Literal li: ld) {
-				super.add(li);
-			}
+			ek.summarize(myName, step);
+			//TODO limitar e transformar feeling em sentiment
 
 			return false;
 		}
