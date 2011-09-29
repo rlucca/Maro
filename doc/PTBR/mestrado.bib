@@ -3,12 +3,53 @@
 %% Arquivo criado no PC: darkin - Ricardo R. Lucca.
 
 
-%% Created for Ricardo rodrigues lucca at 2011-09-26 17:03:18 -0300 
+%% Created for Ricardo rodrigues lucca at 2011-09-29 11:20:16 -0300 
 
 
 %% Saved with string encoding Western (Windows Latin 1) 
 
 
+
+@inproceedings{paiva2005ontology,
+	Abstract = {A primeira ontologia a ser abordada descreve o comportamento habitual de
+atores em uma determinada cidade virtual. Essa ontologia mostrada na
+Figura~\ref{fig:UEM} foi apresentada durante a introdu{\c c}{\~a}o do \emph{Urban
+Environment Model} no trabalho de \citet{paiva2005ontology}. Nesta h{\'a} 5
+conceitos principais, o primeiro conceito \emph{Agent} se relaciona com o
+conceito \emph{Profile} para determinar o tipo de agente. Dessa forma, o
+perfil do agente pode ser \emph{Unemployed Adult}, \emph{Employed Adult},
+\emph{Child} e \emph{Dependent}. Os tipos \emph{Child} e \emph{Employed Adult}
+possuem destinos fixos em determinados momentos do dia e, depois, destinos
+rand{\^o}micos. \emph{Unemployed Adult} s{\'o} possui destinos rand{\^o}micos e
+\emph{Dependent} necessita de um adulto para se mover.
+
+Assim, o perfil do agente permite definir locais usuais (fixos) e eventuais
+(rand{\^o}micos). Esses locais s{\~a}o definidos pelo conceito \emph{Place} que cont{\^e}m
+uma descri{\c c}{\~a}o de sua capacidade (quantidade m{\'a}xima de atores), dimens{\~a}o
+(rela{\c c}{\~a}o) e hor{\'a}rio de funcionamento (rela{\c c}{\~a}o). O conceito de \emph{Dimension}
+guarda possui a posi{\c c}{\~a}o dos eixos X e Y, altura e largura. Finalmente, o
+{\'u}ltimo \emph{Schedules} possui o hor{\'a}rio de abertura e fechamento, intervalo 
+de entrada e tempo m{\'e}dio de perman{\^e}ncia.
+
+NOTA: uma coisa que nao me cheira bem aqui, Schedules tem todos os dados como strings. Quando o mais correto seria ser DateTime ou mesmo Integer e n{\~a}o STRING!},
+	Author = {D. C. Paiva and R. Vieira and S. R. Musse},
+	Booktitle = {Proceedings of the Computer Graphics International 2005},
+	Date-Added = {2011-09-28 16:21:42 -0300},
+	Date-Modified = {2011-09-29 11:19:38 -0300},
+	Organization = {IEEE Computer Society},
+	Pages = {221--226},
+	Title = {Ontology-based crowd simulation for normal life situations},
+	Year = {2005}}
+
+@inproceedings{kshirsagar2002multilayer,
+	Author = {Kshirsagar, S.},
+	Booktitle = {Proceedings of the 2nd international symposium on Smart graphics},
+	Date-Added = {2011-09-27 21:25:00 -0300},
+	Date-Modified = {2011-09-27 21:25:00 -0300},
+	Organization = {ACM},
+	Pages = {107--115},
+	Title = {A multilayer personality model},
+	Year = {2002}}
 
 @article{ribeiro2006cooking,
 	Abstract = {Lido parte do documento, mas como nao vou citar foi abandonada a leitura.},
@@ -125,19 +166,19 @@ Interessante que ele liga a ideia de "propor e revisar" com a ideia do A* (A est
 A ontologia humanos virtuais foi definida por quest{\~o}es de competencias. Ver figura 6 e secao 5.2.},
 	Acmid = {1229164},
 	Address = {Secaucus, NJ, USA},
-	Author = {Guti\&\#x00e9;rrez A., Mario and Garc\&\#x00ed;a-Rojas, Alejandra and Thalmann, Daniel and Vexo, Frederic and Moccozet, Laurent and Magnenat-Thalmann, Nadia and Mortara, Michela and Spagnuolo, Michela},
+	Author = {Mario Guti{\'e}rrez and Alejandra Garc{\'\i}a-Rojas and Daniel Thalmann and Frederic Vexo and Laurent Moccozet and Nadia Magnenat-Thalmann and Michela Mortara and Michela Spagnuolo},
 	Date-Added = {2011-08-23 22:15:16 -0300},
-	Date-Modified = {2011-09-19 11:39:20 -0300},
+	Date-Modified = {2011-09-28 16:10:53 -0300},
 	Doi = {10.1007/s00371-006-0093-4},
 	Issn = {0178-2789},
 	Issue = {3},
-	Journal = {Vis. Comput.},
+	Journal = {The {V}isual {C}omputer},
 	Keywords = {Human shape reconstruction and synthesis, Ontologies, Semantic annotations},
 	Month = {February},
 	Numpages = {12},
 	Pages = {207--218},
 	Publisher = {Springer-Verlag New York, Inc.},
-	Title = {An ontology of virtual humans: Incorporating semantics into human shapes},
+	Title = {An ontology of virtual humans: {I}ncorporating semantics into human shapes},
 	Url = {http://dl.acm.org/citation.cfm?id=1229160.1229164},
 	Volume = {23},
 	Year = {2007},
@@ -176,11 +217,29 @@ A ontologia humanos virtuais foi definida por quest{\~o}es de competencias. Ver 
 
 @incollection{springerlink:10.1007/978-3-642-01639-448,
 	Affiliation = {The Catholic University of Korea School of Computer Science and Information Engineering 43-1 Yeokgok 2-dong, Wonmi-gu Bucheon Gyeonggi-do Republic of Korea},
+	Annote = {\citet{springerlink:10.1007/978-3-642-01639-448} desenvolveu um motor de
+emo{\c c}{\~o}es que utiliza um modelo de mistura de emo{\c c}{\~o}es em conjunto com o modelo
+OCC. O trabalho deles dividiu o modelo em camadas, nas quais cada camada tem
+uma responsabilidade distinta e que visa complementar a anterior. A
+camada de classifica{\c c}{\~a}o visa determinar que categoria ou ramo ser{\'a} afetado. A
+seguinte de quantifica{\c c}{\~a}o determina a intensidade da emo{\c c}{\~a}o. A de intera{\c c}{\~a}o
+analisa os efeitos nas categorias emocionais do personagem. A pr{\'o}xima mapeia
+as 22 emo{\c c}{\~o}es do modelo para pelo menos uma express{\~a}o e a {\'u}ltima camada {\'e} a
+respons{\'a}vel por realizar a express{\~a}o propriamente dita no ator.
+
+Esse trabalho ainda utilizou um modelo dimensional para misturar as emo{\c c}{\~o}es
+prim{\'a}rias. Assim, as emo{\c c}{\~o}es secund{\'a}rias podem ser descobertas a partir dos
+eixos do n{\'\i}vel dos eixos afetados. O trabalho mostra somente 10 emo{\c c}{\~o}es do
+ramo de consequ{\^e}ncia de eventos, com exce{\c c}{\~a}o das emo{\c c}{\~o}es de esperan{\c c}a (Hope) e
+medo n{\~a}o confirmado (Fear). As emo{\c c}{\~o}es do modelo OCC s{\~a}o consideradas as
+emo{\c c}{\~o}es prim{\'a}rias e como secund{\'a}rias est{\~a}o as emo{\c c}{\~o}es constru{\'\i}das a partir da
+mistura de outras emo{\c c}{\~o}es.
+},
 	Author = {Hwang, WooYeon and Yang, Jung-Jin},
 	Bdsk-Url-1 = {http://dx.doi.org/10.1007/978-3-642-01639-4\_48},
 	Booktitle = {Agent Computing and Multi-Agent Systems},
 	Date-Added = {2011-08-23 21:35:42 -0300},
-	Date-Modified = {2011-08-23 21:35:42 -0300},
+	Date-Modified = {2011-09-27 15:17:50 -0300},
 	Editor = {Ghose, Aditya and Governatori, Guido and Sadananda, Ramakoti},
 	Isbn = {978-3-642-01638-7},
 	Keyword = {Computer Science},
@@ -225,15 +284,10 @@ A ontologia humanos virtuais foi definida por quest{\~o}es de competencias. Ver 
 	Year = {2011},
 	Bdsk-Url-1 = {http://dx.doi.org/10.1007/978-3-642-22203-0_12}}
 
-@inbook{scherer2000tnoe,
+@article{scherer2000tnoe,
 	Author = {Klaus R. Scherer},
-	Date-Added = {2011-04-27 20:46:41 -0300},
-	Date-Modified = {2011-04-27 20:49:56 -0300},
-	Editor = {Joan C. Borod},
-	Pages = {511},
 	Publisher = {Oxford University Press},
-	Series = {Series in affective science (pp.137-162)},
-	Title = {The neuropsychology of emotion},
+	Title = {Psychological models of emotion},
 	Year = {2000}}
 
 @book{bordini2009multi,
