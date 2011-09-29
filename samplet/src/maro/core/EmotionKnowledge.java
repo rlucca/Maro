@@ -16,7 +16,7 @@ public class EmotionKnowledge
 	protected OwlApi oaw = null;
 	protected String filename;
     protected Set<String> allEmotions;
-	// emocao X (agent X (step X valence))
+	// emocao X (agent X (step X valenceEmotion))
 	protected HashMap<String, HashMap<String, HashMap<Integer, Integer> > > emotions;
 
 	public EmotionKnowledge(String fileName) throws Exception {
@@ -83,17 +83,18 @@ public class EmotionKnowledge
 	public void
 	summarize(String agentName, int step) {
         for (String s: allEmotions) {
-            Integer ret = oaw.summaryOf(agentName, s);
+			HashMap<String, HashMap<Integer, Integer> > hm1 = emotions.get(s);
+			HashMap<Integer, Integer> hm2 = (hm1 == null) ? null : hm1.get(agentName);
+
+            Integer ret = oaw.summaryOf(agentName, s, step, hm2);
             if (ret == null) continue;
 
-			// emotions = emocao X (agent X (step X valence))
-			HashMap<String, HashMap<Integer, Integer> > hm1 = emotions.get(s);
 			if (hm1 == null) {
 				hm1 = new HashMap<String, HashMap<Integer, Integer> > ();
 				emotions.put(s, hm1);
 			}
 
-			HashMap<Integer, Integer> hm2 = hm1.get(agentName);
+			hm2 = hm1.get(agentName);
 			if (hm2 == null) {
 				hm2 = new HashMap<Integer, Integer>();
 				hm1.put(agentName, hm2);

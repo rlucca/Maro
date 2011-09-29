@@ -218,6 +218,8 @@ hasJudge(millie_gratitudes_car, milliesCar).
         .println("Quem conhece a dilu?", AD);
         .findall(X, love(Y) & isAppraisalOf(Y, X) & hasPerson(Y, "millie"), AL);
         .println("Quem ama a millie?", AL);
+        .findall(X, hasFeeling("millie", X, _), FL);
+        .println("Que sentimentos millie tem?", FL);
         !!summary.
 
 +!summary
@@ -227,7 +229,7 @@ hasJudge(millie_gratitudes_car, milliesCar).
 +step(6) <- .println("passo 6 waiting "); .wait(5000).
 +step(X)
      : startUpOK
-    <- .println("passo ", X, " sending nope"); nope.
+    <- .println("passo ", X, " sending nope"); nope; .stopMAS.
 +step(X)
     <- .println("passo ", X).
 //-step(X)

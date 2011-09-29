@@ -757,7 +757,7 @@ public class OwlApi {
     }
 
 	public Integer
-	summaryOf(String name, String emotionType) {
+	summaryOf(String name, String emotionType, int step, HashMap<Integer,Integer> valencesByStep) {
 		String emotion = getCorrectName(1, emotionType);
 		OWLClass ce = factoryData.getOWLClass(IRI.create(emotion));
 		String translatedA = getCorrectName(2, "isAppraisalOf");
@@ -775,13 +775,33 @@ public class OwlApi {
 			for (Set<OWLLiteral> sl : oni.getDataPropertyValues(ontology).values()) {
 				for (OWLLiteral ls : sl) {
 					if (ls.isInteger()) {
-						sum += Math.abs(ls.parseInteger());
+						sum = summaryOf(name, emotionType, step,sum,ls.parseInteger(), valencesByStep);
 					}
 				}
 			}
 		}
 
 		return sum;
+	}
+
+	/**
+		This method can be override.
+
+		@param name,				the name of agent
+		@param emotionType,			the name of the emotion
+		@param step,				current value of the step (begin at zero)
+		@param valueCurrent,		current value of the accumulator
+		@param valueToAccumulate,	value of a data relation
+		@param valencesByStep,		brute value of emotions by steps (step x intensity). Not decay!
+	*/
+	public Integer
+	summaryOf(String name, String emotionType, int step,
+				Integer valueCurrent, Integer valueToAccumulate,
+				HashMap<Integer,Integer> valencesByStep) {
+		//if (valueCurrent == 0 && step > 0) {
+		//	valueCurrent = valencesByStep.get(step-1);
+		//} // TODO descomente quando iniciar os testes do decay!
+		return valueCurrent + valueToAccumulate;
 	}
 
 	public Set<String>
