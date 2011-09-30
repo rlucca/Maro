@@ -10,6 +10,7 @@ FILES   = .OAlock		 \
           resumos.tex    \
           cronograma.tex \
           estadoArte.tex \
+          introducao.tex \
           trabalho.tex	 \
           conclusao.tex  \
 		  Makefile
