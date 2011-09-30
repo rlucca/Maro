@@ -95,7 +95,7 @@ Agents} é possibilitar aos usuários a criação de um relacionamento social e
 emocional com longa duração.  Em \citet{bickmore2009virtual}, a confiança no
 agente tornou possível discutir tarefas mais importantes como melhoria da saúde
 ou até a compra de uma casa. Da mesma forma, o projeto
-AIDA\footnote{Mais detalhes, ver http://senseable.mit.edu/aida} (do
+AIDA\footnote{Mais detalhes, ver \url{http://senseable.mit.edu/aida}.} (do
 inglês \emph{Affective Intelligent Driving Agent}) pode ser entendido como
 enquadrado na área de Interface Homem Computador, pois o interesse é entender o
 estado afetivo da pessoa dirigindo. Além disso, o agente pode tentar sugerir
@@ -190,13 +190,16 @@ metas e preferências dos atores virtuais.
 
 \section{Ontologias de Humanos Virtuais} \label{cap:eda:odhv}
 
-Uma ontologia de humanos virtuais pode servir tanto para descrever a forma
+Uma ontologia descrevendo humanos virtuais tem inúmeras utilidades tanto em
+pesquisa quanto na indústria. A mesma pode servir tanto para descrever a forma
 física quanto a forma mental ou, melhor, comportamental. Essas duas
 possibilidades podem ser de grande valia, na indústria se esta interessado em
 tentar reaproveitar o máximo possível desses recursos. Por exemplo, obter um
 personagem de um banco de dados a partir da descrição ``mulher de cabelo
-preto''. Da mesma, é possível focar no aspecto comportamental do humano
+preto''. Da mesma forma, é possível focar no aspecto comportamental do humano
 virtual descrevendo determinados comportamentos ou planos de ações de atores.
+No trabalho de \citet{Gutierrez:2007:OVH:1229160.1229164} a excelentes
+exemplos do uso de uma ontologia de humano virtual.
 
 \begin{figure}[t]
   \centering
@@ -206,31 +209,68 @@ virtual descrevendo determinados comportamentos ou planos de ações de atores.
 \end{figure}
 
 A primeira ontologia a ser abordada descreve o comportamento habitual de
-atores em uma determinada cidade virtual. Essa ontologia mostrada na
-Figura~\ref{fig:UEM} foi apresentada durante a introdução do \emph{Urban
+atores em uma determinada cidade virtual. Essa ontologia, mostrada na
+Figura~\ref{fig:UEM}\footnote{As relações de generalização possuem a mesma
+semântica que na UML, as relações direcionais são relações binárias entre as
+instâncias das classes.}, foi apresentada durante a introdução do \emph{Urban
 Environment Model} no trabalho de \citet{paiva2005ontology}. Nesta há 5
 conceitos principais, o primeiro conceito \emph{Agent} se relaciona com o
-conceito \emph{Profile} para determinar o tipo de agente. Dessa forma, o
-perfil do agente pode ser \emph{Unemployed Adult}, \emph{Employed Adult},
-\emph{Child} e \emph{Dependent}. Os tipos \emph{Child} e \emph{Employed Adult}
-possuem destinos fixos em determinados momentos do dia e, depois, destinos
-randômicos. \emph{Unemployed Adult} só possui destinos randômicos e
-\emph{Dependent} necessita de um adulto para se mover.
+conceito \emph{Profile} para determinar o tipo de agente. O perfil do agente
+pode variar entre \emph{Unemployed Adult}, \emph{Employed Adult}, \emph{Child}
+e \emph{Dependent}. Os tipos \emph{Child} e \emph{Employed Adult} possuem
+destinos fixos em determinados momentos do dia e, depois, destinos randômicos.
+\emph{Unemployed Adult} só possui destinos randômicos e \emph{Dependent}
+necessita de um adulto para se mover.
 
 Assim, o perfil do agente permite definir locais usuais (fixos) e eventuais
 (randômicos). Esses locais são definidos pelo conceito \emph{Place} que contêm
 uma descrição de sua capacidade (quantidade máxima de atores), dimensão
-(relação) e horário de funcionamento (relação). O conceito de \emph{Dimension}
-guarda possui a posição dos eixos X e Y, altura e largura. Finalmente, o
-último \emph{Schedules} possui o horário de abertura e fechamento, intervalo
-de entrada e tempo médio de permanência. Esse modelo é muito simplificado
-permitindo uma maior carga de agentes. Cada um deles não tem uma decisão ou
-desejo próprio. Quem impele o ator para os lugares é o ambiente através
-do perfil do personagem.\todo{ver comentario, mas acho q nao fica mesmo}
-% Todavia como veremos no trabalho seguinte, se este se preocupou com a
-% locomocao dos atores. O seguinte se preocupou com o fisico e com afetivo dos
-% atores e nao quais locais os atores constumam ir...
+(acessível por relação) e horário de funcionamento (acessível por relação). O
+conceito de \emph{Dimension} guarda possui a posição dos eixos X e Y, altura e
+largura. Finalmente, o último \emph{Schedules} possui o horário de abertura e
+fechamento, intervalo de entrada e tempo médio de permanência. Esse modelo é
+muito simplista porque o foco é possibilitar que uma maior quantidade de
+agentes sejam carregados. Além disso, todos os agentes não possuem uma decisão
+ou desejo sobre suas próprias metas. Essa decisão é feita pelo ambiente que
+impele o ator para ir em determinado lugar através do seu conhecimento do
+perfil dos atores.
 
+Este trabalho pode ser pensado como a tentativa de descrever a mentalidade dos
+personagens através da descrição dos atores em um ambiente urbano em sua vida
+normal. O foco da ontologia seguinte é o humano virtual propriamente dito.
+Assim, as informações gerais do personagem, como, por exemplo, raça, cor e
+outros são armazenadas na ontologia descrita visando uma descrição completa e
+reusável. A Figura~\ref{fig:OVH} apresenta os principais conceitos da
+ontologia desenvolvida por \citet{Gutierrez:2007:OVH:1229160.1229164}.
 
+O conceito principal definido na ontologia é o \emph{Virtual Human}. O modelo
+pode ser utilizado para representar pessoas virtuais ou reais. Humanos
+virtuais podem serem descritos por \emph{Structural Descriptors} e
+\emph{Morphological Descriptors}. Neste último são guardados os dados gerais
+do personagem, por exemplo idade, sexo, altura, peso e etc. No outro conceito,
+\emph{Structural Descriptors} é uma abstração que define os pontos de entrada
+para uma variedade de descritores que descrevem a organização do humano
+virtual. No modelo o foco foi organização por esqueleto e se baseando na
+especificação H-Anim\footnote{É uma especificação que descreve quantidade,
+posição e rotação dos ossos para tentar padronizar os modelos.
+Veja \url{http://www.h-anim.org/}.} e como pode ser visto é possível guardar
+informações de geometria, textura e outras informações.
 
-\cite{Gutierrez:2007:OVH:1229160.1229164}
+\begin{figure}[t]
+  \centering
+    \includegraphics[width=150mm]{figuras/gutierrezVH.png}
+  \caption{Ontologia de Humano Virtual \cite{Gutierrez:2007:OVH:1229160.1229164}.}
+  \label{fig:OVH}
+\end{figure}
+
+Assim, o corpo humano consiste de um número de \emph{Segment} (por exemplo,
+pé, mão e etc) que são conectados por \emph{Node}. Cada \emph{Node} pode
+conter outros e, também, um \emph{Segment}. Além disso, o humano virtual pode
+ser animado de duas formas. A primeira é através de uma animação sequencial
+pre-gravada representada pelo conceito \emph{Animation Sequence} e a segunda é
+utilizando o conceito de \emph{Behavioral Controller}. Esse último pode ser
+utilizado para embutir com um comportamento mais autônomo. Por fim, o conceito
+de \emph{Smart Object} representa todos os objetos que podem ser manipulados por
+um humano virtual.
+
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
