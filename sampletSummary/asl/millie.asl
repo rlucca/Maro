@@ -13,6 +13,79 @@ mid(lmid).
 low(llow).
 none(lnone).
 
+// threshold
+//   note: Essas crencas saoh removidas porque o conceito `Setup' eh carregado
+//         para memoria e liberado da ontologia. Dessa forma, o agente naoh
+//         conhece seu threshold do mesmo que nao conhece sua emocaoh.
+hasSetup(millie, setup1).
+hasSetup(millie, setup2).
+hasSetup(millie, setup3).
+hasSetup(millie, setup4).
+hasSetup(millie, setup5).
+hasSetup(millie, setup6).
+hasSetup(millie, setup7).
+hasSetup(millie, setup8).
+hasSetup(millie, setup9).
+hasSetup(millie, setup10).
+hasSetup(millie, setup11).
+hasSetup(millie, setup12).
+hasSetup(millie, setup13).
+hasSetup(millie, setup14).
+hasSetup(millie, setup15).
+hasSetup(millie, setup16).
+hasSetup(millie, setup17).
+hasSetup(millie, setup18).
+hasSetup(millie, setup19).
+hasSetup(millie, setup20).
+hasSetup(millie, setup21).
+hasSetup(millie, setup22).
+
+hasThreshold(setup1, 10).
+hasThresholdType(setup1, "Joy").
+hasThreshold(setup2, 11).
+hasThresholdType(setup2, "Distress").
+hasThreshold(setup3, 12).
+hasThresholdType(setup3, "Hope").
+hasThreshold(setup4, 13).
+hasThresholdType(setup4, "Fear").
+hasThreshold(setup5, 14).
+hasThresholdType(setup5, "FearsConfirmed").
+hasThreshold(setup6, 15).
+hasThresholdType(setup6, "Satisfaction").
+hasThreshold(setup7, 16).
+hasThresholdType(setup7, "Relief").
+hasThreshold(setup8, 17).
+hasThresholdType(setup8, "Disappointment").
+hasThreshold(setup9, 18).
+hasThresholdType(setup9, "HappyFor").
+hasThreshold(setup10, 19).
+hasThresholdType(setup10, "SorryFor").
+hasThreshold(setup11, 20).
+hasThresholdType(setup11, "Gloating").
+hasThreshold(setup12, 21).
+hasThresholdType(setup12, "Resentment").
+hasThreshold(setup13, 22).
+hasThresholdType(setup13, "Love").
+hasThreshold(setup14, 23).
+hasThresholdType(setup14, "Hate").
+hasThreshold(setup15, 24).
+hasThresholdType(setup15, "Admiration").
+hasThreshold(setup16, 25).
+hasThresholdType(setup16, "Pride").
+hasThreshold(setup17, 26).
+hasThresholdType(setup17, "Shame").
+hasThreshold(setup18, 27).
+hasThresholdType(setup18, "Reproach").
+hasThreshold(setup19, 28).
+hasThresholdType(setup19, "Gratitude").
+hasThreshold(setup20, 29).
+hasThresholdType(setup20, "Gratification").
+hasThreshold(setup21, 30).
+hasThresholdType(setup21, "Anger").
+hasThreshold(setup22, 31).
+hasThresholdType(setup22, "Remorse").
+// threshold end
+
 /////////////////////////////////////////////////////////////
 // john's appraisals
 hasAppraisal(john, john_relationsWith_millie). ////////////// BACKGROUND
@@ -218,7 +291,7 @@ hasJudge(millie_gratitudes_car, milliesCar).
         .println("Quem conhece a dilu?", AD);
         .findall(X, love(Y) & isAppraisalOf(Y, X) & hasPerson(Y, "millie"), AL);
         .println("Quem ama a millie?", AL);
-        .findall(X, hasFeeling("millie", X, _), FL);
+        .findall(X, feeling(X, _), FL);
         .println("Que sentimentos millie tem?", FL);
         !!summary.
 
@@ -226,12 +299,12 @@ hasJudge(millie_gratitudes_car, milliesCar).
     <-  // larguei de mao de fazer isso aqui...
         +startUpOK; nope.
 
-+step(6) <- .println("passo 6 waiting "); .wait(5000).
++step(6) <- .println("passo 6 waiting "). //; .stopMAS. //.wait(5000).
 +step(X)
-     : startUpOK
-    <- .println("passo ", X, " sending nope"); nope; .stopMAS.
+     : startUpOK & X < 6
+    <- .println("passo ", X, " sending nope"); nope.
 +step(X)
-    <- .println("passo ", X).
+    <- .println("passo ", X, " waiting").
 //-step(X)
 //    <- .println("removendo ", X).
 

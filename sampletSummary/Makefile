@@ -18,7 +18,7 @@ clean:
 	#@-find . -name \*.class -exec rm {} \;
 
 run: bin/build.xml
-	@$(ANT) run
+	@time $(ANT) run
 
 # Nao serve para executar sem colocar o manifest correto no xml
 jar: bin/build.xml
