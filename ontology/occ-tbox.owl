@@ -170,6 +170,9 @@ Limitações:
         <Class IRI="#Satisfaction"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Setup"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Shame"/>
     </Declaration>
     <Declaration>
@@ -212,10 +215,16 @@ Limitações:
         <ObjectProperty IRI="#hasPersonFriend"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#hasSetup"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#hasSomething"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#isAppraisalOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isSetupOf"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#hasDeserved"/>
@@ -249,6 +258,12 @@ Limitações:
     </Declaration>
     <Declaration>
         <DataProperty IRI="#hasRealized"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasThreshold"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasThresholdType"/>
     </Declaration>
     <EquivalentClasses>
         <Class IRI="#Admiration"/>
@@ -1022,6 +1037,10 @@ Limitações:
         <Class IRI="#Object"/>
     </DisjointClasses>
     <DisjointClasses>
+        <Class IRI="#Appraisal"/>
+        <Class IRI="#Setup"/>
+    </DisjointClasses>
+    <DisjointClasses>
         <Class IRI="#AspectsOfObjects"/>
         <Class IRI="#ConsequencesOfEvents"/>
     </DisjointClasses>
@@ -1042,6 +1061,14 @@ Limitações:
     <DisjointClasses>
         <Class IRI="#Likelihood"/>
         <Class IRI="#Object"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Likelihood"/>
+        <Class IRI="#Setup"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Object"/>
+        <Class IRI="#Setup"/>
     </DisjointClasses>
     <DisjointClasses>
         <Class IRI="#ProspectIrrelevant"/>
@@ -1095,11 +1122,19 @@ Limitações:
         <ObjectProperty IRI="#isAppraisalOf"/>
         <ObjectProperty IRI="#hasAppraisal"/>
     </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasSetup"/>
+        <ObjectProperty IRI="#isSetupOf"/>
+    </InverseObjectProperties>
     <SymmetricObjectProperty>
         <ObjectProperty IRI="#hasKnow"/>
     </SymmetricObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasKnow"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSetup"/>
         <Class IRI="#Agent"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
@@ -1126,6 +1161,10 @@ Limitações:
         <ObjectProperty IRI="#hasPerson"/>
         <Class IRI="#Agent"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSetup"/>
+        <Class IRI="#Setup"/>
+    </ObjectPropertyRange>
     <SubDataPropertyOf>
         <DataProperty IRI="#hasDeserved"/>
         <DataProperty abbreviatedIRI="owl:topDataProperty"/>
@@ -1138,6 +1177,14 @@ Limitações:
         <DataProperty IRI="#hasDesireSelf"/>
         <DataProperty IRI="#hasDesire"/>
     </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasThreshold"/>
+        <Class IRI="#Setup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasThresholdType"/>
+        <Class IRI="#Setup"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="#hasDeserved"/>
         <Datatype abbreviatedIRI="xsd:int"/>
@@ -1181,6 +1228,14 @@ Limitações:
     <DataPropertyRange>
         <DataProperty IRI="#hasRealized"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasThreshold"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasThresholdType"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DLSafeRule>
         <Body>
@@ -1457,8 +1512,24 @@ Limitações:
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasSetup</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Relaciona o agente com uma configuração.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#hasSomething</IRI>
         <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Permite relacionar uma emoção com alguma coisa.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasThreshold</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Limite minimo para uma emoção virar sentimento.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasThresholdType</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Relaciona uma configuração com o nome de uma emoção.
+Exemplos de strings validas: joy, distress, hope, fear e etc.</Literal>
     </AnnotationAssertion>
 </Ontology>
 
