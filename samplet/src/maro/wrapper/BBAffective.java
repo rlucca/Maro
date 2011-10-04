@@ -39,7 +39,7 @@ public class BBAffective
 	 */
 	public void
 	init(Agent ag, String[] args) {
-		myAgent = ag; 
+		myAgent = ag;
 		myName = myAgent.getTS().getUserAgArch().getAgName();
 
 		if (args.length == 1) {
@@ -85,8 +85,17 @@ public class BBAffective
 
 			NumberTerm nt = (NumberTerm) l.getTerm(0);
 			int step = (int) nt.solve();
+			Set<String> feels; // temos que botar a anotacao de percepcao ainda!
+
 			ek.summarize(myName, step);
-			//TODO limitar e transformar feeling em sentiment
+			feels = ek.feelings(myName, step);
+			for (String f: feels) {
+				Literal lit = Dumper.fromString(f, 20);
+				lit.addAnnot(BeliefBase.TPercept);
+				// sim, sentimentos são conclusoes da ontologia que ficam
+				// na base de dados mais interna...
+				super.add(lit);
+			}
 
 			return false;
 		}
@@ -305,8 +314,8 @@ public class BBAffective
         Element ebels = null;
         while (tries < 10) {
             ebels = (Element) document.createElement("beliefs");
-            try { 
-                for (Literal l: this) 
+            try {
+                for (Literal l: this)
                     ebels.appendChild(l.getAsDOM(document));
                 break;
             } catch (Exception e) {

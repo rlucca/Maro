@@ -1,7 +1,5 @@
 package maro.core;
 
-import jason.asSyntax.Literal;
-
 // my
 import maro.wrapper.Dumper;
 import maro.wrapper.OwlApi;
@@ -13,11 +11,10 @@ import java.util.Set;
 
 public class EmotionKnowledge
 {
+	protected FeelingsThreshold ft;
 	protected OwlApi oaw = null;
 	protected String filename;
-    protected Set<String> allEmotions;
-	// emocao X (agent X (step X valenceEmotion))
-	protected HashMap<String, HashMap<String, HashMap<Integer, Integer> > > emotions;
+	protected Emotion emotion;
 
 	public EmotionKnowledge(String fileName) throws Exception {
 		filename = fileName;
@@ -25,8 +22,15 @@ public class EmotionKnowledge
 		oaw = new OwlApi();
 		oaw.loadOntologyFromFile(filename);
 
+		Set<String> allEmotions;
         allEmotions = oaw.getAllEmotions();
-		emotions = new HashMap<String, HashMap<String, HashMap<Integer, Integer>>>();
+		if (allEmotions == null || allEmotions.isEmpty())
+			throw new Exception("Fail on load ontology data");
+
+		emotion = new Emotion();
+		emotion.setEmotions( allEmotions );
+
+		ft = new FeelingsThreshold();
 	}
 
 	protected boolean
@@ -80,29 +84,46 @@ public class EmotionKnowledge
 		return oaw.iterator();
 	}
 
+    boolean ignoreFlag = false;
 	public void
 	summarize(String agentName, int step) {
-        for (String s: allEmotions) {
-			HashMap<String, HashMap<Integer, Integer> > hm1 = emotions.get(s);
-			HashMap<Integer, Integer> hm2 = (hm1 == null) ? null : hm1.get(agentName);
+		if (ft.isLoaded(emotion, agentName, oaw) == true
+				&& ft.isActive() == false) {
+            if (ignoreFlag == false) {
+            System.out.println("Threshold of emotions are inconsistent ou fault, ignoring emotions...");
+            ignoreFlag = true;
+            }
+			return ; // nao temos threshold pq perder tempo?
+		}
 
-            Integer ret = oaw.summaryOf(agentName, s, step, hm2);
+        for (String s: emotion.getEmotions()) {
+			HashMap<Integer, Integer> e = emotion.getAllValences(s, agentName);
+            Integer ret = oaw.summaryOf(agentName, s, step, e);
             if (ret == null) continue;
-
-			if (hm1 == null) {
-				hm1 = new HashMap<String, HashMap<Integer, Integer> > ();
-				emotions.put(s, hm1);
-			}
-
-			hm2 = hm1.get(agentName);
-			if (hm2 == null) {
-				hm2 = new HashMap<Integer, Integer>();
-				hm1.put(agentName, hm2);
-			}
-
-			hm2.put(step, ret);
+			emotion.setValence(s, agentName, step, ret);
         }
 	}
+
+    public Set<String>
+    feelings(String agentName, int step) {
+		Set<String> feelingStrLit = new java.util.HashSet<String> ();
+
+		if (ft.isActive() == false) {
+            return feelingStrLit;
+        }
+
+        for (String s: emotion.getEmotions()) {
+            Integer valence = emotion.getValence(s, agentName, step);
+            Integer minimum = ft.getThreshold(s);
+            int feeling = (valence != null) ? valence - minimum : 0;
+
+            if (feeling > 0) {
+                feelingStrLit.add("feeling("+s+", "+feeling+")");
+            }
+        }
+
+        return feelingStrLit;
+    }
 
 	public void dumpData() {
 		if (System.getenv("emotionKnowledgeDebug") == null) return ;

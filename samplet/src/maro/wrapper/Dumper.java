@@ -132,7 +132,7 @@ public class Dumper {
 
 	static public Dumper[]
 	addOntology(Dumper[] d, String ontology) {
-		List<Dumper> sd = new LinkedList<Dumper>();
+		LinkedList<Dumper> sd = new LinkedList<Dumper>();
 		Dumper o = new Dumper();
 		o.setFunctor( "ontology" );
 		o.setNot("");
@@ -142,7 +142,7 @@ public class Dumper {
 		for (Dumper du : d) {
 			if (du.getFunctor().equals("ontology")) {
 				return d; // nao precisa fazer nada
-				}
+            }
 			sd.add(du);
 		}
 
@@ -250,4 +250,19 @@ public class Dumper {
 
 		return li;
 	}
+
+    @Override
+    public int hashCode() {
+        int ret = arity;
+        ret += negated.hashCode();
+        ret += functor.hashCode();
+        for (String s: terms) ret += s.hashCode();
+        for (Dumper d: annots) ret += d.hashCode();
+        return ret;
+    }
+
+    @Override
+    public boolean equals(Object d) {
+        return this.hashCode() == d.hashCode();
+    }
 }

@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.SortedSet;
 import java.util.HashMap;
 import java.util.Map;
@@ -274,7 +275,6 @@ public class OwlApi {
         if (type == null) return false;
 
         sa = convertToAnnotation(annots);
-        // TODO hey, lembrar de testar os gatilhos das anotacoes!
 
         ret = true;
         switch (type.charAt(0)) {
@@ -304,12 +304,14 @@ public class OwlApi {
 
     public boolean
     remove(int arity, String functor, String[] terms, Dumper[] annots) {
+		if (terms == null && annots == null)
+			return abolish(arity, functor);
         return changeBelief(arity, functor, terms, annots, false);
     }
 
     protected Set<OWLAnnotation>
     convertToAnnotation(Dumper[] d) {
-        Set<OWLAnnotation> ret = new HashSet<OWLAnnotation> ();
+        HashSet<OWLAnnotation> ret = new HashSet<OWLAnnotation> ();
 		OWLAnnotationProperty annotP =
             factoryData.getOWLAnnotationProperty(":jason", pm);
 
@@ -329,7 +331,7 @@ public class OwlApi {
 
     protected Dumper[]
     convertFromAnnotation(OWLAxiom axiom) {
-        Set<Dumper> ret = new HashSet<Dumper>();
+        LinkedList<Dumper> ret = new LinkedList<Dumper>();
 		OWLAnnotationProperty annotP =
             factoryData.getOWLAnnotationProperty(":jason", pm);
         if (axiom == null) return ret.toArray(new Dumper[0]);
@@ -339,7 +341,12 @@ public class OwlApi {
         for (OWLAnnotation a : annot) {
             String s = ((OWLLiteral)a.getValue()).getLiteral();
             Object array = Dumper.fromXmlBean(s);
-            java.util.Collections.addAll(ret, (Dumper[]) array);
+
+			for (Dumper du : (Dumper[]) array) {
+				if (ret.contains(du) == false) {
+					ret.add(du);
+				}
+			}
         }
         return ret.toArray(new Dumper[0]);
     }
@@ -489,7 +496,7 @@ public class OwlApi {
 
     public Iterator<Dumper>
     getCandidatesByFunctorAndArity(int arity, String functor)
-    {// TODO go back here to verify all chain of functions with annotation change!
+    {
         NodeSet<OWLNamedIndividual> noni;
         Set<Dumper> d;
         String fullName;
@@ -529,16 +536,17 @@ public class OwlApi {
 
 	protected Dumper[]
 	joinAndPutUserData(Set<Dumper[]> dumper) {
-		Set<Dumper> all = new HashSet<Dumper> ();
+		LinkedList<Dumper> all = new LinkedList<Dumper> ();
 
 		for (Dumper[] di : dumper) {
 			for (Dumper index : di) {
-				all.add(index);
+				if (all.contains(index)==false)
+					all.add(index);
 			}
 		}
 
 		return Dumper.addOntology(all.toArray(new Dumper[0]),
-                ontology.getOntologyID().getOntologyIRI().toString());
+				ontology.getOntologyID().getOntologyIRI().toString());
 	}
 
 	protected NodeSet<OWLNamedIndividual>
@@ -560,7 +568,6 @@ public class OwlApi {
 
         for (OWLNamedIndividual ni : getAllInstances().getFlattened()) {
             NodeSet<OWLClass> nsoc = reasoner.getTypes(ni, false);
-            String eqStr = "";
 
             filterBySpecialRelation(dumper, null, ni);
             filterByClass(dumper, ni, null);
@@ -798,10 +805,11 @@ public class OwlApi {
 	summaryOf(String name, String emotionType, int step,
 				Integer valueCurrent, Integer valueToAccumulate,
 				HashMap<Integer,Integer> valencesByStep) {
+		//Exemplo para pegar do outro turno e acumular.
 		//if (valueCurrent == 0 && step > 0) {
 		//	valueCurrent = valencesByStep.get(step-1);
-		//} // TODO descomente quando iniciar os testes do decay!
-		return valueCurrent + valueToAccumulate;
+		//}
+		return valueCurrent + Math.abs(valueToAccumulate);
 	}
 
 	public Set<String>
@@ -825,6 +833,116 @@ public class OwlApi {
 		}
 
 		return ret;
+	}
+
+    protected boolean
+    abolish(int arity, String functor) {
+        NodeSet<OWLNamedIndividual> noni;
+        String fullName;
+        String type; // domain -> target
+        boolean ret;
+
+        fullName = getCorrectName(arity, functor);
+        if (fullName == null) return false;
+        type = relationsType.get(fullName);
+        if (type == null) return false;
+        noni = getAllInstances();
+        if (noni == null) return false;
+
+        ret = true;
+        switch (type.charAt(0)) {
+            case 'C': // oncept
+                abolishInstance(fullName, noni);
+                break;
+            case 'O': // bject relation
+                abolishObjectAssertion(fullName, noni);
+                break;
+            case 'D': // ata relation
+                abolishDataAssertion(fullName, noni);
+                break;
+            case 'S': // pecial or same/different relation
+                abolishSpecialAssertion(fullName, noni);
+                break;
+            default:
+                ret = false;
+                break;
+        }
+        return ret;
+    }
+
+	protected void
+	abolishInstance(String relation, NodeSet<OWLNamedIndividual> individuals) {
+		OWLClass cl;
+		Set<OWLAxiom> axioms = new HashSet<OWLAxiom>();
+
+		if (relation == null) return ;
+		cl = factoryData.getOWLClass(IRI.create(relation));
+
+		for (OWLNamedIndividual ni : individuals.getFlattened()) {
+			for (OWLClass clse : reasoner.getTypes(ni, true).getFlattened()) {
+				if (clse.isOWLThing() == true) continue;
+				if (cl != null && cl != clse) continue;
+
+				Set<OWLClassAssertionAxiom> ocaas=ontology.getClassAssertionAxioms(ni);
+				for (OWLClassAssertionAxiom ocaa: ocaas) {
+					axioms.add(ocaa);
+				}
+			}
+		}
+
+		if (axioms.size() > 0) {
+			manager.removeAxioms(ontology, axioms);
+			dirty = true;
+		}
+	}
+
+	protected void
+	abolishObjectAssertion(String relation, NodeSet<OWLNamedIndividual> individuals) {
+		OWLObjectProperty oop;
+		Set<OWLAxiom> axioms = new HashSet<OWLAxiom>();
+		if (relation == null) return ;
+
+		oop = factoryData.getOWLObjectProperty(IRI.create(relation));
+
+		for (OWLNamedIndividual ni : individuals.getFlattened()) {
+			for (OWLObjectPropertyAssertionAxiom oopa : ontology.getObjectPropertyAssertionAxioms(ni)) {
+				if (oopa.getProperty() == oop) {
+					axioms.add(oopa);
+				}
+			}
+		}
+
+		if (axioms.size() > 0) {
+			manager.removeAxioms(ontology, axioms);
+			dirty = true;
+		}
+	}
+
+	protected void
+	abolishDataAssertion(String relation, NodeSet<OWLNamedIndividual> individuals) {
+		OWLDataProperty odp;
+		Set<OWLAxiom> axioms = new HashSet<OWLAxiom>();
+		if (relation == null) return ;
+
+		odp = factoryData.getOWLDataProperty(IRI.create(relation));
+
+		for (OWLNamedIndividual ni : individuals.getFlattened()) {
+			for (OWLDataPropertyAssertionAxiom odpa : ontology.getDataPropertyAssertionAxioms(ni)) {
+				if (odpa.getProperty() == odp) {
+					axioms.add(odpa);
+				}
+			}
+		}
+
+		if (axioms.size() > 0) {
+			manager.removeAxioms(ontology, axioms);
+			dirty = true;
+		}
+	}
+
+	protected void
+	abolishSpecialAssertion(String relation, NodeSet<OWLNamedIndividual> individuals) {
+		System.out.println("lucca TODO");
 	}
 
 	public void
