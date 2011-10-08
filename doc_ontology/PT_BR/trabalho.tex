@@ -1,38 +1,44 @@
 \chapter{Trabalho Proposto} \label{cap:tp}
 %2345678901234567890123456789012345678901234567890123456789012345678901234567890
 
-\todo{rever no final do cap}
-O trabalho visa dois objetivos principais: (i) apoiar o desenvolvimento de
-aplicações; (ii) minimizar a dificuldade de configuração existente. O primeiro
-objetivo é alcançado com a construção de artefatos de software que leem e
-questionam as ontologias via Jason. O segundo objetivo é alcançado pela
-criação das ontologias que, além de fazerem o raciocínio, definem um
-vocabulário básico a ser conhecido. Por exemplo, um desenvolvedor só
-precisa conhecer a ontologia de ambiente proposta para saber\dev{} o que o agente
-deve enviar de crenças ou percepções e o que esperar em retorno.
+O trabalho visa o desenvolvimento de uma ontologia que englobe o modelo
+psicológico de emoções explicado na seção~\ref{cap:eda:mce}, uma ontologia de
+humanos virtuais e uma de percepção. A criação das ontologias que, além de
+fazerem o raciocínio, definem um vocabulário básico a ser conhecido e, dessa
+forma, torna a configuração mais fácil para o leigo. Por exemplo, um
+desenvolvedor só precisa conhecer a ontologia de percepção proposta para
+saber\dev{} o que o agente deve enviar de crenças ou percepções e o que
+esperar em retorno.
 
-Esse capítulo visa mostrar de maneira organizada a ideia proposta e
-desenvolvida. Dessa forma, a primeira seção apresenta a ideia geral do
-trabalho sendo proposto. A seguir, a ontologia do modelo afetivo é
-apresentada. Em seguida, a ontologia do modelo de percepções é mostrado. Por
-fim, a ontologia do modelo de humanos virtuais é discutida e como foi feito a
-junção com a mesma.
-% cuidar com as palavras: seção, ontologia, modelo
+%% Reescrito acima
+%O trabalho visa dois objetivos principais: (i) apoiar o desenvolvimento de
+%aplicações; (ii) minimizar a dificuldade de configuração existente. O primeiro
+%objetivo é alcançado com a construção de artefatos de software que leem e
+%questionam as ontologias via Jason. O segundo objetivo é alcançado pela
+%criação das ontologias que, além de fazerem o raciocínio, definem um
+%vocabulário básico a ser conhecido. Por exemplo, um desenvolvedor só
+%precisa conhecer a ontologia de percepção proposta para saber\dev{} o que o agente
+%deve enviar de crenças ou percepções e o que esperar em retorno.
+
+A seção~\ref{cap:tp:oa} descreve a ontologia afetiva desenvolvida. A descrição
+de como a ontologia de humano virtual foi realizada esta explicada na
+seção~\ref{cap:tp:ruodhv}. Na seguinte, a ontologia de percepção é detalhada.
+%seção~\ref{cap:tp:odp}
+Por fim, a seção~\ref{cap:tp:cdu} demostra a utilização da ontologia final.
 
 \section{Ontologia Afetiva} \label{cap:tp:oa}
 
 A fundamentação do modelo afetivo sendo utilizado aqui é o proposto por
-\citet{ortony1988cse} e encontra-se explicado na seção \ref{cap:eda:mce}
-\todo{talvez trocar por uma mais especifica?}. A ontologia proposta tinha
-como ideia inicial não utilizar regras, porém como pode ser observado na
-Tabela~\ref{tab:oa:geral} foi necessário a criação de regras para suportar o
-raciocínio no nível de indivíduo. As regras que ajudam a conclusão das
-relações \emph{hasKnow}, \emph{hasFriend} e \emph{hasEnemy} são diferentes das
-demais por causa que elas tem como característica operar no domínio e na
-imagem da classe \emph{Agent}. Por exemplo\todo{fazer?}, se Fulano
-avalia que se relaciona bem com o Ciclano então Fulano tem amigo Ciclano. Note
-que o contrario não é necessariamente verdade, o Ciclano pode apenas saber que
-conhece o Fulano.
+\citet{ortony1988cse} e encontra-se explicado na seção \ref{cap:eda:mce}. A
+ontologia proposta tinha como ideia inicial não utilizar regras, porém como
+pode ser observado na Tabela~\ref{tab:oa:geral} foi necessário a criação de
+regras para suportar o raciocínio no nível de indivíduo corretamente. As
+regras que ajudam a conclusão das relações \emph{hasKnow}, \emph{hasFriend} e
+\emph{hasEnemy} são diferentes das demais por causa que elas tem como
+característica operar no domínio e na imagem da classe \emph{Agent}. Por
+exemplo, se John avalia que se relaciona bem com Jose então John tem amigo
+Jose. Note que o contrario não é necessariamente verdade, o Jose pode apenas
+saber que conhece o John.
 
 \begin{table}
 	\caption{Ontologia proposta com expressividade: ALCHIN(D).}
@@ -51,11 +57,12 @@ conhece o Fulano.
 	\end{center}
 \end{table}
 
-Na Figura~\ref{fig:rlocc}, as regras utilizaram funções para verificar se
-um indivíduo é diferente do outro. Assim, recomenda-se fortemente que quando
-se registrar um indivíduo da classe \emph{Object} ou \emph{Agent} que a
-informação de igualdade ou diferenciação seja preenchida\dev{}. Assim, se
-evita que o raciocinador conclua que não conhece a resposta.
+Na Figura~\ref{fig:rlocc} são mostradas as regras desenvolvidas, elas dependem
+que os indivíduos da ontologia sejam marcados como diferentes um do outro.
+Assim, recomenda-se fortemente que quando registrar um indivíduo da classe
+\emph{Object} ou \emph{Agent} que a informação de igualdade ou diferenciação
+seja preenchida\dev{}. Assim, se evita que o raciocinador conclua que não
+conhece a resposta e chegue a uma conclusão não esperada.
 
 \begin{figure}[t]
   \centering
@@ -68,14 +75,13 @@ A Figura~\ref{fig:kplocc} mostra a árvore de relações que tem como imagem
 dados ou instâncias (objetos). Ao olhar se comparar as Figuras~\ref{fig:rlocc}
 e Figura~\ref{fig:kplocc} se chega a conclusão que as propriedades que as
 regras concluem não precisam ser configuradas pelo usuário. Assim, ao invés de
-14 propriedades de objetos conforme informado na Tabela~\ref{tab:oa:geral}
-apenas 7 precisam ser conhecidas. Dessas a propriedade mais utilizada é a
+16 propriedades de objetos conforme informado na Tabela~\ref{tab:oa:geral}
+apenas 9 precisam ser conhecidas. Dessas a propriedade mais utilizada é a
 \emph{hasSomething} que serve para indicar o que esta sendo avaliado. Note que
 \emph{hasPerson} deve ser usado quando o indivíduo em avaliação for um membro
 da classe \emph{Agent}. Já, a relação \emph{hasJudge} serve para indicar que o
-membro da classe \emph{Object} esta sendo avaliado. Por exemplo, uma avaliação
-é de Alberto julgando o seu carro em determinada valoração
-negativa\todo{fazer?}.
+membro da classe \emph{Object} esta sendo avaliado. Por exemplo, Millie tem
+uma avaliação de julgando seu carro com uma valoração positiva.
 
 \begin{figure}[b]
   \centering
@@ -88,33 +94,34 @@ negativa\todo{fazer?}.
 \end{figure}
 
 Todos os dados numéricos da ontologia são inteiros. Isso foi feito com a
-finalidade de permitir o usuário normalize\dev{} o número obtido da
+finalidade de permitir que o usuário normalize\dev{} o número obtido da
 maneira que desejar. Além disso, foi tomada a decisão de não especificar o
 domínio da maioria das propriedades por causa que isso forçaria um
-enquadramento em classes não desejadas. Por exemplo\todo{fazer?}, um indivíduo
-com somente a relação \emph{hasLikelihood} seria enquadrado no conceito
-\emph{ConsequenceForSelf}, enquanto o correto seria não ser concluído nada,
+enquadramento em classes não desejadas. Por exemplo, se a relação
+\emph{hasLikelihood} tiver o domínio \emph{ConsequenceForSelf} e existir
+indivíduo com somente essa relação então o mesmo seria enquadrado no conceito
+\emph{ConsequenceForSelf}. O correto nesse caso seria não ser concluído nada,
 isto é, pertencer à classe \emph{Thing}.
 
 A estrutura da ontologia pode ser visualizada na Figura~\ref{fig:tlocc}. Além
 disso, pode ser recomendável olhar a
 Figura~\ref{fig:occ_model}~(pg.~\pageref{fig:occ_model}) do modelo criado por
 \citet{ortony1988cse} durante o resto da discussão dessa seção. Os
-sub-conceitos de \emph{Emotion} correspondem aos ramos do modelo original.
-O ramo \emph{ActionsOfAgents} julga a responsabilidade e o quanto o agente que
+sub-conceitos de \emph{Emotion} correspondem aos ramos do modelo original. O
+ramo \emph{ActionsOfAgents} julga a responsabilidade e o quanto o agente que
 realizou uma ação ou evento se desviou do esperado, o de
 \emph{ConsequencesOfEvents} julga a consequência de um evento e
 \emph{AspectsOfObjects} julga a atração para com um objeto.
 
-O primeiro a ser abordado é, o menos cognitivo, \emph{AspectsOfObjects}.
+O primeiro ramo a ser abordado é, o menos cognitivo, \emph{AspectsOfObjects}.
 As emoções desse tipo são relacionadas com atratividade e familiaridade.
 Entretanto, essas duas relações foram consideradas equivalentes porque o
-importante, para o modelo, é quando ambas são positivas ou ambas são
-negativas. Assim sendo, uma pode assumir os dois papeis sem maiores
-penalidades e simplificando a modelagem. A emoção \emph{Hate} é modelada como
-tendo a propriedade de familiaridade (\emph{hasFamiliarity}) com valores
-negativos, enquanto a emoção \emph{Love} tem valoração dessa mesma propriedade
-positiva. Caso o valor seja zero, nada pode ser concluído.
+importante, para o modelo, é quando ambas são positivas ou ambas negativas.
+Assim sendo, uma pode assumir os dois papeis sem maiores penalidades e
+simplificando a modelagem. A emoção \emph{Hate} é modelada como tendo a
+propriedade de familiaridade (\emph{hasFamiliarity}) com valores negativos,
+enquanto a emoção \emph{Love} tem valoração dessa mesma propriedade positiva.
+Caso o valor seja zero, nada pode ser concluído.
 
 \begin{wrapfigure}{r}{0.4\textwidth}
   \includegraphics[height=16cm]{figuras/hierarquiaLOCC.png}
@@ -127,31 +134,30 @@ essa emoção foi escolhida por quem montou o modelo por ser a emoção mais for
 de seu tipo. Assim, níveis menores implicam em outros tipos de emoção. Além
 disso, conforme explicado no trabalho, agentes podem ser vistos como objetos
 quando se esta avaliando a sua atração. Assim, todo agente (\emph{Agent}) é um
-objeto (\emph{Object}). Por exemplo\todo{fazer?}, Alberto odeia Blueriver ou
-Millie gosta de rosas vermelhas.
+objeto (\emph{Object}). Por exemplo, John esta apaixonado pela Millie ou
+John tem repulsa por televisão.
 
-O segundo ramo é chamado \emph{Actions of Agents}, ele pode ser pensado como
+O segundo conceito chamado \emph{ActionsOfAgents}, ele pode ser pensado como
 um ramo que julga a responsabilidade por uma determinada ação ou evento.
-Assim, esse ramo é capaz de gerar 4 emoções: Admiração (\emph{Admiration}),
+Assim, esse ramo é capaz de gerar emoções de: Admiração (\emph{Admiration}),
 Orgulho (\emph{Pride}), Vergonha (\emph{Shame}) e Reprovação
-(\emph{Reproach}). Por exemplo\todo{fazer?}, Millie possui orgulho por cozinhar ou Jane
-reprova seu carro novo (que esta apresentando problemas regularmente).
+(\emph{Reproach}). Por exemplo, Jose possui orgulho (por cozinhar) ou Dilu
+reprova Jose (porque ele come carne).
 
 Na definição, as emoções de orgulho e vergonha podem acontecer mesmo quando se
-esta avaliando ações de outras pessoas. Por exemplo, Dolares tem vergonha de
+esta avaliando ações de outras pessoas. Por exemplo, Dolores tem vergonha de
 sua mãe (que não cozinha). Essa conclusão é possível por causa de uma relação
-que ele propõem chamada força de unidade cognitiva \footnote{Traduzido
-literalmente de \emph{Strength of cognitive unit}.}. Como em nenhum momento da
-definição, ele dá mais detalhes dessa unidade cognitiva resolveu-se considerar
-que vergonha e orgulho são emoções sentidas somente quando o agente esta
-avaliando a si mesmo e, dessa forma, o exemplo anterior não é possível.
+que ele propõem de empatia. Como em nenhum momento da definição, ele dá mais
+detalhes dessa empatia resolveu-se considerar que vergonha e orgulho são
+emoções sentidas somente quando o agente esta avaliando a si mesmo e, dessa
+forma, o exemplo anterior não é possível.
 
 As emoções que julgam responsabilidade são definidas como tendo uma relação de
 julgamento (\emph{hasJudge}) e uma relação que mapeia o valor do julgamento
 (\emph{hasJudgeness}) que representa o quanto o agente se desviou do
 comportamento esperado, isto é, em casos de aprovação é um valor positivo e em
 casos de reprovação é um valor negativo. Todavia, isso ainda não permite
-diferenciar a emoção de admiração da emoção de orgulho ou a reprovação da
+diferenciar a emoção de admiração da emoção de orgulho ou a reprovação da de
 vergonha. Essa distinção é possível ao se dividir a relação de julgamento com
 duas sub-relações: tem auto-julgamento (\emph{hasJudgeMyself}) e tem
 julgamento de outro (\emph{hasJudgeOther}).
@@ -168,6 +174,7 @@ individuo é igual ou diferente que o outro e concluir que não conhece a
 resposta. Além disso, a relação de julgamento tem como imagem o conceito
 \emph{Object}. Dessa forma, os exemplos anteriores são todos válidos.
 
+%%%%%%%%%%%%%%%%%%%%%%% Revisando...
 Cabe salientar que toda avaliação tem pelo menos duas relações. A primeira
 relação serve para conhecer quem esta avaliando (\emph{isAppraisalOf}) e a
 outra serve para indicar quem ou o que esta sendo avaliado
@@ -239,7 +246,9 @@ no caso de se estar alegre (\emph{Joy}), orgulhoso (\emph{Pride}) e
 gratificado (\emph{Gratification}). Por fim, o conceito \emph{Setup}
 \todo{na diss, vale a pena abrir um paragrafo para falar mais do setup} é o
 utilizado para manter junto da ontologia criada o limite mínimo para uma
-emoção virar sentimento\dev{}.
+emoção virar sentimento\dev{}. Ele é melhor explicado na
+seção~\ref{cap:tp:cdu}~(pg.~\pageref{cap:tp:cdu})\todo{remover se ficar na
+mesma ou na seguinte!}.
 
 %a transferencia eh feita pelo sistema;
 %os dados sao carregados para memoria e eliminados;
@@ -248,7 +257,34 @@ emoção virar sentimento\dev{}.
 
 \section{Reutilizando uma ontologia de Humanos Virtuais} \label{cap:tp:ruodhv}
 
-...
+Na seção~\ref{cap:eda:odhv} foi explicado a ontologia de
+\citet{Gutierrez:2007:OVH:1229160.1229164} que descreve humanos virtuais de
+uma maneira bem detalhada. Entretanto, a nossa intenção no presente trabalho é
+focado no comportamento do personagem. Dessa forma, a ontologia que será
+utilizada é a de \citet{paiva2005ontology} que descreve uma vida normal.
+
+\begin{figure}[t]
+  \centering
+    \includegraphics[width=150mm]{figuras/uem-tbox.png}
+  \caption{T-Box baseado no modelo de ambiente urbano \cite{paiva2005ontology}.}
+  \label{fig:UEM:TBOX}
+\end{figure}
+
+A Figura~\ref{fig:UEM:TBOX} demostra a ontologia que será utilizada, como é
+possível observar as subclasses dos conceitos \emph{Profile} e \emph{Place}
+foram removidas\footnote{Compare a Figura~\ref{fig:UEM:TBOX} com a
+Figura~\ref{fig:UEM} da página~\pageref{fig:UEM}.} por serem consideradas parte
+da A-Box. Além disso, o conceito \emph{Components\_of\_the\_environments} esta
+sendo pensando como um sub-conceito do conceito \emph{Setup} na nossa
+ontologia por causa que esse representa configurações gerais.
+
+Essas configurações gerais são carregadas, normalmente, em outras partes do
+sistemas e então eliminadas por causa que elas não influenciam as emoções
+diretamente. Fora isso, foi introduzido uma nova relação chamada
+\emph{hasCharacter} que mapeia o conceito de agente da seção anterior para o
+conceito utilizado no trabalho de \citet{paiva2005ontology}. Dessa forma, um
+agente na ontologia do modelo \occ pode descobrir seu perfil e descobrir seus
+locais visitados regularmente.
 
 \section{Ontologias de Percepções} \label{cap:tp:odp}
 % de percepcoes virou do ambiente
@@ -267,3 +303,5 @@ percepções\dev{}.
 
 Ok, eu sei o que eh.
 Mas, como eu faco funcioanr?
+... tem que tomar o conceito Setup para melhor explicar ele!
+
