@@ -13,6 +13,7 @@ FILES   = .OAlock		 \
           introducao.tex \
           trabalho.tex	 \
           conclusao.tex  \
+          mestrado.bib   \
 		  Makefile
 affectiveOnto = ../../ontology/occ-tbox.owl
 

@@ -174,20 +174,18 @@ individuo é igual ou diferente que o outro e concluir que não conhece a
 resposta. Além disso, a relação de julgamento tem como imagem o conceito
 \emph{Object}. Dessa forma, os exemplos anteriores são todos válidos.
 
-%%%%%%%%%%%%%%%%%%%%%%% Revisando...
 Cabe salientar que toda avaliação tem pelo menos duas relações. A primeira
 relação serve para conhecer quem esta avaliando (\emph{isAppraisalOf}) e a
 outra serve para indicar quem ou o que esta sendo avaliado
 (\emph{hasSomething}). Em muitas avaliações essa última pode não ser
-informada sem nenhum prejuízo. O último, chamado de \emph{Consequences of
-Events} é
-dividido em: \emph{Consequences for Self}; \emph{Consequences for Others}.
-Toda essa divisão foca na consequência de um evento ou ação feito por um
-determinado agente. Por exemplo\todo{fazer?}, Millie tem pena de Alberto ou
-Alberto tem esperança (de alcançar seu objetivo) ou Blueriver tem satisfação
-(por conseguir escapar).
+informada sem nenhum prejuízo. O último ramo, chamado de
+\emph{ConsequencesOfEvents} é dividido em: \emph{ConsequencesForSelf} e
+\emph{ConsequencesForOthers}. Toda essa divisão foca na consequência de um
+evento ou ação realizado por um determinado agente. Por exemplo, Dilu tem pena
+de Jose, Jose tem esperança (de ser promovido), John tem satisfação (por
+estar almoçando) ou Millie esta alegre (por cozinhar).
 
-A \emph{Consequences for Others} expressa 4 emoções: \emph{HappyFor},
+A \emph{ConsequencesForOthers} expressa 4 emoções: \emph{HappyFor},
 \emph{SorryFor}, \emph{Gloating} e \emph{Resentment}. Na definição, essas
 emoções dependem: do grau de desejabilidade nosso para com o outro; do grau de
 desejabilidade que se presume que o outro tenha; do grau de merecimento do
@@ -209,8 +207,8 @@ dela (inimiga). Entretanto, quem precisa dessa informação é o conceito de
 avaliação quando as relações \emph{hasPersonEnemy} e \emph{hasPersonFriend}
 precisam ser descobertas.
 
-A \emph{Consequences for Self} é divida ainda entre consequências de eventos
-com probabilidade relevante (\emph{ProspectRelevant}) e irrelevante
+\emph{ConsequencesForSelf} se divide entre consequências de eventos com
+probabilidade relevante (\emph{ProspectRelevant}) e irrelevante
 (\emph{ProspectIrrelevant}). Cabe salientar que esses dois conceitos se
 relacionam com probabilidade (\emph{hasLikelihood}), entretanto enquanto o
 primeiro conceito se relaciona com a parte não nula. A outra se relaciona
@@ -221,34 +219,33 @@ realizada (\emph{ProspectNotRealized}) e realizada (\emph{ProspectRealized}).
 As emoções \emph{Hope} e \emph{Fear} fazem parte do conceito
 \emph{ProspectNotRealized}. Esse conceito usa as relações \emph{hasLikelihood}
 e \emph{hasDesireSelf}. Essa última propriedade é um número que
-representa o desejo de se obter ou repudir o evento. Além disso, quando o
+representa o desejo de se obter ou repudiar o evento. Além disso, quando o
 evento ocorre a emoção atual pode virar uma emoção do conceito
 \emph{ProspectRealized}, isto é, \emph{Fear} pode virar ou
 \emph{FearsConfirmed} ou \emph{Relief} e \emph{Hope} pode virar ou
-\emph{Disappointment} ou \emph{Satisfaction}.
+\emph{Satisfaction} ou \emph{Disappointment}.
 
-Esse conceito \emph{ProspectRealized} não se relaciona em nenhum momento com a
-relação \emph{hasLikelihood} porque o evento já aconteceu. Ela possui três
-relações distintas das anteriores, a primeira é o grau de realização de um evento
-(\emph{hasRealized}), isto é, a visão do agente sobre como a consequência do
-evento aconteceu. A segunda relação \emph{hasPreviousIntensity} recebe a
-valoração da emoção de medo ou esperança do evento que tinha probabilidade e
-serve para saber se o evento é um evento bom (esperança) ou ruim (medo). Já, a
-terceira \emph{hasEffort} tenta estimar o grau de esforço que foi dispendido
-para a atração ou repulsa da consequência do evento.
+O conceito \emph{ProspectRealized} não se relaciona em nenhum momento com a
+relação \emph{hasLikelihood} porque o evento já aconteceu ou não vai mais
+acontecer. Assim, ele possui três relações distintas das anteriores, a
+primeira é o grau de realização de um evento (\emph{hasRealized}), isto é, a
+visão do agente sobre como a consequência do evento aconteceu. A segunda
+relação \emph{hasPreviousIntensity} recebe a valoração da emoção de medo ou
+esperança do evento que tinha probabilidade e serve para saber se o evento é
+um evento bom (esperança) ou ruim (medo). Já, a terceira \emph{hasEffort}
+tenta estimar o grau de esforço que foi dispendido para a atração ou repulsa
+da consequência do evento.
 
 O conceito \emph{ProspectIrrelevant} é parecido com o conceito
 \emph{ProspectRelevant} com a diferença que a relação \emph{hasLikelihood} vai
 somente para valores nulos. Alem disso, as emoções desse conceito e do
-\emph{ActionsOfAgents} podem ser misturados formando uma composição. A
-composição é quando uma emoção pode ser encaixada em mais de uma emoção como
-no caso de se estar alegre (\emph{Joy}), orgulhoso (\emph{Pride}) e
+\emph{ActionsOfAgents} podem ser misturadas formando um conceito de composto.
+A composição é quando uma emoção pode ser encaixada em mais de uma emoção
+como no caso de se estar alegre (\emph{Joy}), orgulhoso (\emph{Pride}) e
 gratificado (\emph{Gratification}). Por fim, o conceito \emph{Setup}
-\todo{na diss, vale a pena abrir um paragrafo para falar mais do setup} é o
-utilizado para manter junto da ontologia criada o limite mínimo para uma
-emoção virar sentimento\dev{}. Ele é melhor explicado na
-seção~\ref{cap:tp:cdu}~(pg.~\pageref{cap:tp:cdu})\todo{remover se ficar na
-mesma ou na seguinte!}.
+\todo{na dissertacao falar mais sobre isso} é o utilizado para manter junto da
+ontologia criada o limite mínimo para uma emoção virar sentimento\dev{}. Ele é
+melhor explicado na seção~\ref{cap:tp:cdu}~(pg.~\pageref{cap:tp:cdu}).
 
 %a transferencia eh feita pelo sistema;
 %os dados sao carregados para memoria e eliminados;
@@ -286,6 +283,11 @@ conceito utilizado no trabalho de \citet{paiva2005ontology}. Dessa forma, um
 agente na ontologia do modelo \occ pode descobrir seu perfil e descobrir seus
 locais visitados regularmente.
 
+% eu nao tenho certeza sobre isso, porem seria interessante ter uma relacao
+% hasDimension da Object para Dimension. Dessa forma um objeto teria
+% conhecimento mesmo que abstrato sobre suas dimensões para o caso de ser
+% necessario fazer a bounding box collission...
+
 \section{Ontologias de Percepções} \label{cap:tp:odp}
 % de percepcoes virou do ambiente
 % voltou a ser de percepcoes
@@ -293,15 +295,54 @@ locais visitados regularmente.
 ... Última coisa
 
 Uma ontologia de percepção esta ligada a formas de perceber o ambiente, por
-isso foi estudado o \emph{CArtAgO}\todo{citacoes} e o \emph{EIS}
-\todo{citacoes}. Todavia, em um estudo preliminar sobre esses trabalhos foi
-visto que o foco aqui não é a descrição do ambiente em si e, sim, como o
-agente interpreta essas informações que viram de maneira anotada nas
-percepções\dev{}.
+isso foi estudado o \emph{CArtAgO}\cite{ricci31cartago} e o
+\emph{EIS}\cite{behrens2009taeisfaop}. Todavia, em um estudo preliminar sobre
+esses trabalhos foi visto que o foco aqui não é a descrição do ambiente em si
+e, sim, como o agente interpreta essas informações que viram de maneira
+anotada nas percepções\dev{}.
+
+Ulysses, Ulysses - Soaring through all the galaxies. In search of Earth, flying in to the night. Ulysses, Ulysses - Fighting evil and tyranny, with all his power, and with all of his might. Ulysses - no-one else can do the things you do. Ulysses - like a bolt of thunder from the blue. Ulysses - always fighting all the evil forces bringing peace and justice to all.
+
+Children of the sun, see your time has just begun, searching for your ways, through adventures every day. Every day and night, with the condor in flight, with all your friends in tow, you search for the Cities of Gold. Ah-ah-ah-ah-ah... wishing for The Cities of Gold. Ah-ah-ah-ah-ah... some day we will find The Cities of Gold. Do-do-do-do ah-ah-ah, do-do-do-do, Cities of Gold. Do-do-do-do, Cities of Gold. Ah-ah-ah-ah-ah... some day we will find The Cities of Gold.
+
+Ten years ago a crack commando unit was sent to prison by a military court for a crime they didn't commit. These men promptly escaped from a maximum security stockade to the Los Angeles underground. Today, still wanted by the government, they survive as soldiers of fortune. If you have a problem and no one else can help, and if you can find them, maybe you can hire the A-team.
+
+Top Cat! The most effectual Top Cat! Who's intellectual close friends get to call him T.C., providing it's with dignity. Top Cat! The indisputable leader of the gang. He's the boss, he's a pip, he's the championship. He's the most tip top, Top Cat.
+
+Just the good ol' boys, never meanin' no harm. Beats all you've ever saw, been in trouble with the law since the day they was born. Straight'nin' the curve, flat'nin' the hills. Someday the mountain might get 'em, but the law never will. Makin' their way, the only way they know how, that's just a little bit more than the law will allow. Just good ol' boys, wouldn't change if they could, fightin' the system like a true modern day Robin Hood. 
 
 \section{Caso de uso} \label{cap:tp:cdu}
 
 Ok, eu sei o que eh.
 Mas, como eu faco funcioanr?
 ... tem que tomar o conceito Setup para melhor explicar ele!
+
+Thunder, thunder, thundercats, Ho! Thundercats are on the move, Thundercats
+are loose. Feel the magic, hear the roar, Thundercats are loose. Thunder,
+thunder, thunder, Thundercats! Thunder, thunder, thunder, Thundercats!
+Thunder, thunder, thunder, Thundercats! Thunder, thunder, thunder,
+Thundercats! Thundercats!
+
+Knight Rider, a shadowy flight into the dangerous world of a man who does not
+exist. Michael Knight, a young loner on a crusade to champion the cause of the
+innocent, the helpless in a world of criminals who operate above the law.
+
+80 days around the world, we'll find a pot of gold just sitting where the
+rainbow's ending. Time - we'll fight against the time, and we'll fly on the
+white wings of the wind. 80 days around the world, no we won't say a word
+before the ship is really back. Round, round, all around the world. Round, all
+around the world. Round, all around the world. Round, all around the world.
+
+Hong Kong Phooey, number one super guy. Hong Kong Phooey, quicker than the
+human eye. He's got style, a groovy style, and a car that just won't stop.
+When the going gets tough, he's really rough, with a Hong Kong Phooey chop
+(Hi-Ya!). Hong Kong Phooey, number one super guy. Hong Kong Phooey, quicker
+than the human eye. Hong Kong Phooey, he's fan-riffic!
+
+Mutley, you snickering, floppy eared hound. When courage is needed, you're
+never around. Those medals you wear on your moth-eaten chest should be there
+for bungling at which you are best. So, stop that pigeon, stop that pigeon,
+stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop
+that pigeon. Howwww! Nab him, jab him, tab him, grab him, stop that pigeon
+now.
 
