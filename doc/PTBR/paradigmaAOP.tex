@@ -1,0 +1,36 @@
+\subsection{Paradigma de Programação}
+
+\citet{shoham1993agent} propôs em seu trabalho a linguagem \emph{Agent-0} uma
+das primeiras a serem baseadas em atos de fala e uma nova visão para se
+programar.  Esses atos de fala podem ser vistos como comandos falados entre
+atores com as mais diversas finalidades (informar, perguntar, requerer,
+aceitar, etc).  Dessa forma, \citeauthor{shoham1993agent} tentou promover a
+idéia de computação com uma interação mais social entre membros de um sistema.
+Em outras palavras, esse novo paradigma de programação precisa que exista
+cooperação e competição entre os agentes para a realização das tarefas
+desejadas.
+
+Assim, o agente encontra-se situado em um ambiente no qual pode receber
+informações de outros agentes, assim como enviar para outros.  As ações são
+estabelecidas utilizando regras que descrevem comportamentos. Assim, é
+possível, a própria entidade decidir qual ação deve ser tomada. Essas regras
+são construídas em fórmulas lógicas descrevendo-se o contexto que torna um
+curso de ação válida e sua consequência que é o conjunto de ações a serem
+desempenhadas.
+
+Atualmente, há diversas linguagens para a programação de agentes, por exemplo:
+\emph{2APL}, \emph{Agent-0}, \emph{AgentSpeak(L)}, \emph{GOAL} e
+\emph{MetateM}~\cite{bordini2009multi}. Elas são baseadas em diversos
+formalismos diferentes. MetateM por exemplo é baseada em lógica temporal,
+permitindo que formulas temporais definindo o comportamento do agente sejam
+diretamente executadas.
+
+A plataforma \jason \cite{bordini-jason} utilizada no trabalho pode ser
+pensada como um sistema de planejamento reativo, em que planos são executados
+a partir de alterações nas crenças e objetivos do agente. A plataforma
+baseia-se na arquitetura BDI e utiliza uma extensão da linguagem de
+programação abstrata, definida por \citet{rao1996agentspeak}, chamada
+AgentSpeak(L), para especificar o reciocínio sobre ações dos agentes. A grande
+vantagem dessa plataforma é a rapidez com que melhorias têm sido feitas e a
+facilidade de customização de diversos componentes da plataforma.
+

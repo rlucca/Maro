@@ -6,15 +6,22 @@
 # Nome do arquivo principal .tex, sem a extensão.
 MAIN	= lucca
 PREFIX  = ../../..
-FILES   = 	$(MAIN).tex \
-			abreviaturas.tex \
-			assinaturas.tex \
-			conclusao.tex \
-			introducao.tex \
-			levantamento.tex \
-			proposto.tex \
-			resumo.tex \
-			$(PREFIX)/Mistery.bib
+FILES   = 	$(MAIN).tex 				\
+			$(PREFIX)/Mistery.bib		\
+			conclusao.tex 				\
+			introducao.tex 				\
+			casoDeUso.tex 				\
+			levantamento.tex 			\
+			proposto.tex 				\
+			plataformaJason.tex			\
+			programacaoAgentes.tex		\
+			computacaoAfetiva.tex		\
+			trabalhosRelacionados.tex 	\
+			abreviaturas.tex 			\
+			assinaturas.tex 			\
+			conceitosAgente.tex			\
+			paradigmaAOP.tex			\
+			resumo.tex
 
 
 # Regra simplista para gerar um PostScript do documento.
