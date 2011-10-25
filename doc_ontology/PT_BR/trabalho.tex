@@ -4,11 +4,11 @@
 O trabalho visa o desenvolvimento de uma ontologia que englobe o modelo
 psicológico de emoções explicado na seção~\ref{cap:eda:mce}, uma ontologia de
 humanos virtuais e uma de percepção. A criação das ontologias que, além de
-fazerem o raciocínio, definem um vocabulário básico a ser conhecido e, dessa
-forma, torna a configuração mais fácil para o leigo. Por exemplo, um
-desenvolvedor só precisa conhecer a ontologia de percepção proposta para
-saber\dev{} o que o agente deve enviar de crenças ou percepções e o que
-esperar em retorno.
+fazerem o raciocínio, definem um vocabulário básico a ser conhecido. Dessa
+forma, o tempo de aprendizado tende a ser menor e deixa a configuração mais
+fácil para o leigo. Por exemplo, um desenvolvedor só precisa conhecer a
+ontologia de percepção proposta para saber\dev{} o que o agente deve enviar de
+crenças ou percepções e o que esperar em retorno.
 
 %% Reescrito acima
 %O trabalho visa dois objetivos principais: (i) apoiar o desenvolvimento de
@@ -20,11 +20,12 @@ esperar em retorno.
 %precisa conhecer a ontologia de percepção proposta para saber\dev{} o que o agente
 %deve enviar de crenças ou percepções e o que esperar em retorno.
 
-A seção~\ref{cap:tp:oa} descreve a ontologia afetiva desenvolvida. A descrição
-de como a ontologia de humano virtual foi realizada esta explicada na
-seção~\ref{cap:tp:ruodhv}. Na seguinte, a ontologia de percepção é detalhada.
-%seção~\ref{cap:tp:odp}
-Por fim, a seção~\ref{cap:tp:cdu} demostra a utilização da ontologia final.
+O presente capítulo foi dividido em partes. A primeira, descreve a ontologia
+afetiva desenvolvida se baseando em um modelo da psicologia. A descrição de
+como a ontologia de humano virtual foi construída esta explicada na
+seção~\ref{cap:tp:ruodhv}. Na \ref{cap:tp:odp}, a ontologia de percepção é
+detalhada. Por fim, a última demostra a utilização da mesma.
+%\ref{cap:tp:cdu}
 
 \section{Ontologia Afetiva} \label{cap:tp:oa}
 
@@ -36,9 +37,9 @@ regras para suportar o raciocínio no nível de indivíduo corretamente. As
 regras que ajudam a conclusão das relações \emph{hasKnow}, \emph{hasFriend} e
 \emph{hasEnemy} são diferentes das demais por causa que elas tem como
 característica operar no domínio e na imagem da classe \emph{Agent}. Por
-exemplo, se John avalia que se relaciona bem com Jose então John tem amigo
-Jose. Note que o contrario não é necessariamente verdade, o Jose pode apenas
-saber que conhece o John.
+exemplo, se John avalia que se relaciona bem com Jose então John
+\emph{hasFriend} Jose. Note que o contrario não é necessariamente verdade, o
+Jose pode apenas saber que conhece o John então Jose \emph{hasKnow} John.
 
 \begin{table}
 	\caption{Ontologia proposta com expressividade: ALCHIN(D).}
@@ -72,8 +73,8 @@ conhece a resposta e chegue a uma conclusão não esperada.
 \end{figure}
 
 A Figura~\ref{fig:kplocc} mostra a árvore de relações que tem como imagem
-dados ou instâncias (objetos). Ao olhar se comparar as Figuras~\ref{fig:rlocc}
-e Figura~\ref{fig:kplocc} se chega a conclusão que as propriedades que as
+dados ou instâncias (objetos). Ao se comparar as Figuras~\ref{fig:rlocc}
+e \ref{fig:kplocc} se chega a conclusão que as propriedades que as
 regras concluem não precisam ser configuradas pelo usuário. Assim, ao invés de
 16 propriedades de objetos conforme informado na Tabela~\ref{tab:oa:geral}
 apenas 9 precisam ser conhecidas. Dessas a propriedade mais utilizada é a
@@ -81,7 +82,7 @@ apenas 9 precisam ser conhecidas. Dessas a propriedade mais utilizada é a
 \emph{hasPerson} deve ser usado quando o indivíduo em avaliação for um membro
 da classe \emph{Agent}. Já, a relação \emph{hasJudge} serve para indicar que o
 membro da classe \emph{Object} esta sendo avaliado. Por exemplo, Millie tem
-uma avaliação de julgando seu carro com uma valoração positiva.
+uma avaliação julgando seu carro com uma valoração positiva.
 
 \begin{figure}[b]
   \centering
@@ -107,8 +108,8 @@ A estrutura da ontologia pode ser visualizada na Figura~\ref{fig:tlocc}. Além
 disso, pode ser recomendável olhar a
 Figura~\ref{fig:occ_model}~(pg.~\pageref{fig:occ_model}) do modelo criado por
 \citet{ortony1988cse} durante o resto da discussão dessa seção. Os
-sub-conceitos de \emph{Emotion} correspondem aos ramos do modelo original. O
-ramo \emph{ActionsOfAgents} julga a responsabilidade e o quanto o agente que
+sub-conceitos de \emph{Emotion} correspondem aos ramos do modelo \occ original.
+O ramo \emph{ActionsOfAgents} julga a responsabilidade e o quanto o agente que
 realizou uma ação ou evento se desviou do esperado, o de
 \emph{ConsequencesOfEvents} julga a consequência de um evento e
 \emph{AspectsOfObjects} julga a atração para com um objeto.
@@ -137,20 +138,21 @@ quando se esta avaliando a sua atração. Assim, todo agente (\emph{Agent}) é u
 objeto (\emph{Object}). Por exemplo, John esta apaixonado pela Millie ou
 John tem repulsa por televisão.
 
-O segundo conceito chamado \emph{ActionsOfAgents}, ele pode ser pensado como
+O segundo conceito, chamado \emph{ActionsOfAgents}, pode ser pensado como
 um ramo que julga a responsabilidade por uma determinada ação ou evento.
 Assim, esse ramo é capaz de gerar emoções de: Admiração (\emph{Admiration}),
 Orgulho (\emph{Pride}), Vergonha (\emph{Shame}) e Reprovação
-(\emph{Reproach}). Por exemplo, Jose possui orgulho (por cozinhar) ou Dilu
-reprova Jose (porque ele come carne).
+(\emph{Reproach}). Por exemplo, Jose possui orgulho por cozinhar ou Dilu
+reprova Jose porque ele come carne.
 
 Na definição, as emoções de orgulho e vergonha podem acontecer mesmo quando se
 esta avaliando ações de outras pessoas. Por exemplo, Dolores tem vergonha de
-sua mãe (que não cozinha). Essa conclusão é possível por causa de uma relação
-que ele propõem de empatia. Como em nenhum momento da definição, ele dá mais
-detalhes dessa empatia resolveu-se considerar que vergonha e orgulho são
-emoções sentidas somente quando o agente esta avaliando a si mesmo e, dessa
-forma, o exemplo anterior não é possível.
+sua mãe que não cozinha. Essa conclusão é possível por causa de uma relação
+que eles propõem de empatia. Entretanto, como em nenhum outro momento, eles
+dão mais detalhes sobre essa empatia foi resolvido considerar que vergonha e
+orgulho são emoções sentidas somente quando o agente esta avaliando a si mesmo
+e, dessa forma, o exemplo anterior não é possível. \dev{}
+% dev -> poderia ter sido usado float e ter feito 1 (para si) e 0 (para outro)
 
 As emoções que julgam responsabilidade são definidas como tendo uma relação de
 julgamento (\emph{hasJudge}) e uma relação que mapeia o valor do julgamento
@@ -163,7 +165,7 @@ duas sub-relações: tem auto-julgamento (\emph{hasJudgeMyself}) e tem
 julgamento de outro (\emph{hasJudgeOther}).
 
 A utilização de sub-propriedade torna possível escrever a ontologia da maneira
-esperada suprindo o problema. Entretanto, para o usuário pode se tornar
+esperada suprimindo o problema. Entretanto, para o usuário pode se tornar
 complicado ter que lembrar quando utilizar uma sub-propriedade ou outra.
 Assim, foi resolvido deixar o usuário sempre utilizar a relação de julgamento
 (\emph{hasJudge}) e via 2 regras inferir se é um auto-julgamento ou o
@@ -187,18 +189,18 @@ estar almoçando) ou Millie esta alegre (por cozinhar).
 
 A \emph{ConsequencesForOthers} expressa 4 emoções: \emph{HappyFor},
 \emph{SorryFor}, \emph{Gloating} e \emph{Resentment}. Na definição, essas
-emoções dependem: do grau de desejabilidade nosso para com o outro; do grau de
-desejabilidade que se presume que o outro tenha; do grau de merecimento do
-evento; do tipo de relacionamento com a pessoa. Na ontologia proposta, a principal
-diferença com o modelo original é que foi considerado que o grau de
-desejabilidade nosso para com o outro e o grau de merecimento do evento são os
-mesmos. Dessa forma, se pode utilizar apenas três relações para descrever as
-4 emoções.
+emoções dependem: do grau de desejabilidade do avaliador para com o outro; do
+grau de desejabilidade que se presume que o outro tenha; do grau de
+merecimento do evento; do tipo de relacionamento com a pessoa. Na ontologia
+proposta, a principal diferença com o modelo original é que foi considerado
+que o grau de desejabilidade do avaliador para com o outro e o grau de
+merecimento do evento são os mesmos. Dessa forma, se pode utilizar apenas três
+relações para descrever as 4 emoções.
 
 A relação de merecimento (\emph{hasDeserved}) e relação de desejabilidade
 presumida (\emph{hasDesireOther}) são avaliadas de acordo com sua valoração
-positiva ou negativa. A terceira relação é a que liga o outro individuo/agente
-(\emph{hasPerson}) sendo avaliado. Para se ter o conhecimento de quem esta
+positiva ou negativa. A relação \emph{hasPerson} liga o outro individuo
+sendo avaliado com a avaliação. Para se ter o conhecimento de quem esta
 julgando é uma pessoa amiga (\emph{GoodKnowRelation}) ou inimiga
 (\emph{BadKnowRelation}), esses conceitos foram criados e precisam ser
 configurados para cada um dos agentes em questão. O agente pode declarar que
@@ -231,7 +233,7 @@ acontecer. Assim, ele possui três relações distintas das anteriores, a
 primeira é o grau de realização de um evento (\emph{hasRealized}), isto é, a
 visão do agente sobre como a consequência do evento aconteceu. A segunda
 relação \emph{hasPreviousIntensity} recebe a valoração da emoção de medo ou
-esperança do evento que tinha probabilidade e serve para saber se o evento é
+esperança do evento que tinha probabilidade e serve para saber se o evento era
 um evento bom (esperança) ou ruim (medo). Já, a terceira \emph{hasEffort}
 tenta estimar o grau de esforço que foi dispendido para a atração ou repulsa
 da consequência do evento.
@@ -239,7 +241,7 @@ da consequência do evento.
 O conceito \emph{ProspectIrrelevant} é parecido com o conceito
 \emph{ProspectRelevant} com a diferença que a relação \emph{hasLikelihood} vai
 somente para valores nulos. Alem disso, as emoções desse conceito e do
-\emph{ActionsOfAgents} podem ser misturadas formando um conceito de composto.
+\emph{ActionsOfAgents} podem ser misturadas formando conceitos compostos.
 A composição é quando uma emoção pode ser encaixada em mais de uma emoção
 como no caso de se estar alegre (\emph{Joy}), orgulhoso (\emph{Pride}) e
 gratificado (\emph{Gratification}). Por fim, o conceito \emph{Setup}
@@ -256,8 +258,8 @@ melhor explicado na seção~\ref{cap:tp:cdu}~(pg.~\pageref{cap:tp:cdu}).
 
 Na seção~\ref{cap:eda:odhv} foi explicado a ontologia de
 \citet{Gutierrez:2007:OVH:1229160.1229164} que descreve humanos virtuais de
-uma maneira bem detalhada. Entretanto, a nossa intenção no presente trabalho é
-focado no comportamento do personagem. Dessa forma, a ontologia que será
+uma maneira bem detalhada. Entretanto, a intenção no presente trabalho é
+focar no comportamento do personagem. Dessa forma, a ontologia que será
 utilizada é a de \citet{paiva2005ontology} que descreve uma vida normal.
 
 \begin{figure}[t]
@@ -295,10 +297,10 @@ locais visitados regularmente.
 \citet{doyle1998annotated} propuseram que o mundo contivesse uma serie de
 anotações nos objetos. Assim, o agente poderia conhecer apenas a forma de
 questionar os objetos sobre suas formas de usar, suas descrições e suas outras
-características. Esse conceito veio do conceito \emph{affordance} que
-propriedades de um objeto determinam como ele será usado. Dessa forma, uma
-cadeira tem a propriedade de ser sentada e uma porta tem as propriedades de
-ser aberta ou ser fechada.
+características. Esse conceito veio do conceito \emph{affordance} que se
+refere a propriedade de um objeto que dita como o mesmo será utilizado.
+Dessa forma, uma cadeira tem a propriedade de ser sentada e uma porta tem as
+propriedades de ser aberta ou ser fechada.
 
 Nesse trabalho foi usado 5 tipos de anotações: (i) anotações emocionais,
 explicam como um agente responde ``emocionalmente''; (ii) anotações de
@@ -319,13 +321,13 @@ sobre o personagem.
 
 De uma maneira similar, o conceito de artefatos que possuem propriedades
 observáveis e utilizáveis foi criado por \citet{ricci31cartago}. Por exemplo,
-uma porta pode ter como propriedade observável se ela esta aberta ou fechada e
-como propriedade utilizável ou ação possível ela ser aberta ou ser fechada.
-Essas ações podem ficar disponíveis conforme o estado atual do objeto, mas o
-controle da disponibilidade é do próprio objeto por que é ele que sabe como
-realizar a ação propriamente dita. O agente unicamente diz de alguma forma que
-o objeto tem que realizar tal ação. Nesse trabalho, não é mencionado que o
-agente que controla o personagem delega sua animação para o objeto.
+uma porta pode ter como propriedade observável seu estado (estar aberta ou
+estar fechada) e ação possível ou propriedade utilizável ser aberta ou ser
+fechada. Essas ações podem ficar disponíveis conforme o estado atual do
+objeto, mas o controle da disponibilidade é do próprio objeto por que é ele
+que sabe como realizar a ação propriamente dita. O agente unicamente diz de
+alguma forma que o objeto tem que realizar tal ação. Nesse trabalho, não é
+mencionado que o agente pode ser temporariamente controlado por objetos.
 
 Assim, ...
 

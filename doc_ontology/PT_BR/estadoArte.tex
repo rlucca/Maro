@@ -53,35 +53,35 @@ percepções possíveis de um indivíduo.  Partindo da direita para esquerda, o
 ramo mais básico, \emph{Aspects Of Objects}, é ativado quando se avalia o
 gosto de alguém para algum objeto (inanimado ou não). Por exemplo, Millie
 gosta de rosas azuis. No seguinte, \emph{Actions Of Agents}, o julgamento das
-ações exercidas por outro indivíduo é realizado baseado nos valores morais da
-pessoa que está julgando. Exemplo: reprovar a atitude dos bancários que fazem
-greve a cada ano. Cabe salientar, que ao julgar ações, o modelo permite um
-grau de ``empatia'' chamado pelos autores de ``unidade de força
-cognitiva''\footnote{Traduzido literalmente de \emph{Strength of cognitive
-unit}.}. Dessa forma, é possível, por exemplo, ficar com orgulho porque uma
-atleta ganhou uma medalha ou ficar envergonhado ao descobrir que o vizinho
-bate no(s) filho(s).
+ações exercidas por outro indivíduo ou por si mesmo é realizado baseado nos
+valores morais da pessoa que está julgando. Exemplo: reprovar a atitude dos
+bancários que fazem greve a cada ano. Cabe salientar, que ao julgar ações, o
+modelo permite um grau de ``empatia'' chamado pelos autores de ``unidade de
+força cognitiva''\footnote{Traduzido literalmente de \emph{Strength of
+cognitive unit}.}. Dessa forma, é possível, por exemplo, ficar com orgulho
+porque uma atleta ganhou uma medalha ou ficar envergonhado ao descobrir que o
+vizinho bate no(s) filho(s).
 
 O último ramo da árvore, mais a esquerda na Figura~\ref{fig:occ_model}, é o
 \emph{Consequences Of Events} que representa as coisas que aconteceram (e
 foram consideradas importantes), acontecem ou acontecerão (objetivos
 almejados)\dev{}. Essas emoções são avaliadas segundo as suas consequências
 para o alcance ou impedimento dos seus objetivos. A emoção sentida ao receber
-uma boa nota em um teste ou a de não chegar em um destino planejado são
-exemplos possíveis desse ramo do modelo.
+uma boa nota em um teste, ao ser assaltado ou ao perceber não ser possível
+chegar em um destino planejado são exemplos possíveis desse ramo do modelo.
 
 Toda a emoção do modelo trabalha com duas intensidades. A intensidade da
 emoção que representa o físico e a intensidade do sentimento que representa o
 quanto o agente esta percebendo daquela emoção. Dessa forma, um indivíduo só
 possui sentimento quando a intensidade da emoção ultrapassa um
 determinado limite\dev{}.  Essa intensidade é obtida por uma função matemática
-que utiliza variáveis de dois tipos: local, que influência as emoções do ramo
-específico; e global, que influência todas as emoções do modelo.  Um exemplo
+que utiliza variáveis de dois tipos: locais, que influenciam as emoções do ramo
+específico; e globais, que influênciam todas as emoções do modelo.  Um exemplo
 de variável local é o desejo, enquanto que um exemplo de variável global pode
 ser o senso de realidade de uma pessoa.
 
 \citet{bates1994role} foi um dos primeiros a trabalhar na utilização de emoções
-na na área de animação. Nessa área, o estudo do comportamento humano é
+na área de animação. Nessa área, o estudo do comportamento humano é
 realizado visando imitar as ações humanas. A principal afirmativa do trabalho
 é que o comportamento emotivo de um personagem é um papel importante para que
 o mesmo pareça ter vida própria. Esse trabalho utilizou o modelo descrito
@@ -92,10 +92,10 @@ mesma emoção sendo retraído.
 Visando entender melhor o impacto da emoção na tomada de decisão,
 \citet{zhang2009emotional} desenvolveram uma aplicação que os sentimentos
 afetam o planejamento das ações à serem realizadas.
-\citet{neto2010construction} focaram no mesmo objetivo, porém foco do estudo
-foi o impacto da memória no planejamento. Sendo assim, eles fizeram um meio
+\citet{neto2010construction} focaram no mesmo objetivo, porém visando estudar
+o impacto da memória no planejamento. Sendo assim, eles fizeram um meio
 para o agente ``esquecer'' determinadas crenças quando o estado emocional
-fosse diferente daquele guardado anteriormente. Essa característica torna o
+for diferente daquele guardado anteriormente. Essa característica torna o
 planejamento e as atitudes dos personagens virtuais mais realistas.
 
 O projeto \emph{Relational Agents} de \citet{bick2003relational} possui o
@@ -108,8 +108,8 @@ o estado afetivo da pessoa dirigindo para tentar sugerir ao usuário mudanças
 em suas rotas baseado na rotina aprendida anteriormente. Ambos os trabalhos
 podem ser entendidos como enquadrados na área de IHC.
 
-Um dos trabalhos mais conhecidos utilizando o modelo \occ é, sem dúvida, o de
-\citet{kshirsagar2002multilayer}\todo{falar mais na dissertacao}. Ele utilizou
+Um dos trabalhos mais conhecidos baseado no modelo \occ é, sem dúvida, o de
+\citet{kshirsagar2002multilayer}\todo{falar mais na dissertacao?}. Ele utilizou
 as emoções levantadas no modelo em conjunto com um modelo de personalidade
 baseado na psicologia que leva em consideração 5 fatores. O primeiro fator,
 extroversão, é descrito como a preferência para o comportamento em situações
@@ -165,28 +165,27 @@ Esse trabalho ainda utilizou um modelo dimensional para misturar as emoções
 primárias. Assim, as emoções secundárias podem ser descobertas a partir do
 nível dos eixos afetados. O trabalho mostra quase todas as emoções do
 ramo de consequência de eventos, com exceção das emoções de \emph{Hope} e
-\emph{Fear}. As emoções do modelo \occ são consideradas as
-emoções primárias e como secundárias estão as emoções construídas a partir da
-mistura de outras emoções. Como dito anteriormente, estaria incorreto fazer
-essa diferenciação no modelo sendo proposto porque ela não é realizada no
-modelo \occ original.
+\emph{Fear}. As emoções primárias são as emoções do modelo \occ e como
+secundárias estão as emoções construídas a partir da mistura dessas emoções.
+Como dito anteriormente, estaria incorreto fazer essa diferenciação no modelo
+sendo proposto porque ela não é realizada no original.
 
 Um modelo genérico que representa o ambiente e eventos que estão envolta de um
 personagem, sua personalidade e preferencias foi feito por
 \citet{lera2009semantic}. Nesse trabalho o foco eram emoções que podem ser
 representadas no rosto. Assim, a identificação do contexto através de eventos
-e do retorno afetivo. Além disso, as expressões faciais são modificadas
+e do retorno afetivo. Fora isso, as expressões faciais são modificadas
 dependendo dos eventos do ambiente e, também, da personalidade, metas e
 preferências dos atores virtuais.
 
 \citet{adam2009alfototoe} formalizaram o modelo \occ de maneira lógica. A
 formalização construída possui algumas limitações, por exemplo a probabilidade
 de eventos é medida de forma comparativa, isto é, o evento A é mais provável
-que o evento B. Além disso, a foi necessário estabelecer uma ordem temporal
+que o evento B. Além disso, foi necessário estabelecer uma ordem temporal
 das ações sendo desempenhadas.  Entretanto, o autor propõem uma diferenciação
 entre ação e evento. O primeiro é causado intencionalmente pelo agente\dev{},
-enquanto o segundo o agente não tem controle da ação. Por exemplo, o ato de
-espirrar seria um evento.
+enquanto o segundo o agente não tem controle da ação. Por exemplo, ir para
+aula é uma ação e espirrar é um evento.
 
 \section{Ontologias de Humanos Virtuais} \label{cap:eda:odhv}
 
@@ -194,7 +193,7 @@ A primeira ontologia a ser abordada foi apresentada durante a introdução do
 UEM no trabalho de \citet{paiva2005ontology}. Ela descreve o comportamento
 habitual de atores em uma cidade virtual. Desse modo, os atores possuem
 lugares que se dirigem rotineiramente e eventualmente. Por exemplo, um local
-rotineiro é onde se trabalha e um local eventual pode ser à igreja.
+rotineiro é onde se trabalha e um local eventual pode ser uma igreja.
 
 Na Figura~\ref{fig:UEM}\footnote{As relações de generalização possuem a mesma
 semântica que na UML, as relações direcionais são relações binárias entre as
@@ -238,11 +237,11 @@ pode ser utilizado para representar pessoas virtuais ou reais. Humanos
 \emph{Morphological Descriptors}. Neste último são guardados os dados gerais
 do personagem, por exemplo idade, sexo, altura, peso e etc. No outro conceito,
 \emph{Structural Descriptors} é uma abstração que define os pontos de entrada
-para uma variedade de descritores\todo{descritores que descrevem soa estranho} que descrevem a organização do humano
-virtual. No modelo o foco foi organização por esqueleto e se baseando na
+para uma variedade de descritores utilizados para explicar como o humano
+virtual esta organizado. A organização por esqueleto foi o foco e se baseou na
 especificação H-Anim\footnote{É uma especificação que descreve quantidade,
 posição e rotação dos ossos para tentar padronizar os modelos.
-Veja \url{http://www.h-anim.org/}.} e como pode ser visto é possível guardar
+Veja \url{http://www.h-anim.org/}.}. Como pode ser visto, é possível guardar
 informações de geometria, textura e outras informações.
 
 \begin{figure}[t]
