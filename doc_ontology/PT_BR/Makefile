@@ -16,6 +16,10 @@ FILES   = .OAlock		 \
           mestrado.bib   \
 		  Makefile
 affectiveOnto = ../../ontology/occ-tbox.owl
+uem = ../../ontology/UEM.owl
+uemOCC = ../../ontology/UEM_occ.owl
+annotation = ../../ontology/annotation.owl
+annotationOCC = ../../ontology/annotation_occ.owl
 
 
 # Regra simplista para gerar um PostScript do documento.
@@ -25,8 +29,8 @@ all: $(MAIN).pdf
 $(MAIN).pdf: $(FILES)
 	pdflatex $(MAIN) && bibtex $(MAIN) && pdflatex $(MAIN) && pdflatex $(MAIN)
 
-.OAlock: $(affectiveOnto)
-	@echo "affective ontology changed but dissertation no!" && exit 5
+.OAlock: $(affectiveOnto) $(uem) $(uemOCC) $(annotation) $(annotationOCC)
+	@echo "ontology changed but dissertation no!" && exit 5
 
 
 # Remoção dos arquivos temporários (lista não exaustiva).
