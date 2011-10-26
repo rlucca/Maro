@@ -1,0 +1,294 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.affective.org/annotation.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.affective.org/annotation.owl">
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Annotation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dynamic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Negative"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Positive"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Preference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Static"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAnnotation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#action"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#attraction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#beauty"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#capacity"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#conflict"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#description"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#fallbackAction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#heat"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#likelihood"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#lookX"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#lookY"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#luminousness"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#name"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#owner"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#positionX"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#positionY"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#quality"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#realizer"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#resource"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#rigidness"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#security"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#sizeX"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#sizeY"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#softness"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#state"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#utility"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Dynamic"/>
+        <Class IRI="#Annotation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Negative"/>
+        <Class IRI="#Preference"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Positive"/>
+        <Class IRI="#Preference"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Preference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasAnnotation"/>
+            <Class IRI="#Annotation"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Preference"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasAnnotation"/>
+            <Class IRI="#Annotation"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Static"/>
+        <Class IRI="#Annotation"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#action"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#attraction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#beauty"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#capacity"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#conflict"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#description"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#fallbackAction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dynamic"/>
+        <NamedIndividual IRI="#heat"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#hint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dynamic"/>
+        <NamedIndividual IRI="#likelihood"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dynamic"/>
+        <NamedIndividual IRI="#lookX"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dynamic"/>
+        <NamedIndividual IRI="#lookY"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#luminousness"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#name"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dynamic"/>
+        <NamedIndividual IRI="#owner"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dynamic"/>
+        <NamedIndividual IRI="#positionX"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dynamic"/>
+        <NamedIndividual IRI="#positionY"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dynamic"/>
+        <NamedIndividual IRI="#quality"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#realizer"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dynamic"/>
+        <NamedIndividual IRI="#resource"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#rigidness"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#security"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#sizeX"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#sizeY"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#softness"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#state"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Static"/>
+        <NamedIndividual IRI="#utility"/>
+    </ClassAssertion>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAnnotation"/>
+        <Class IRI="#Annotation"/>
+    </ObjectPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Dynamic</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Anotações dinamicas são utilizadas para informar sobre todo ou algum estado do objeto.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Preference</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">O que o agente busca de alguma caracteristica?
+O agente pode buscar que uma caracteristica
+seja valorada positivamente ou negativamente
+para ele ser atraído...</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Static</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Anotações estaticas são utilizadas para descrever o objeto,
+tanto de uma maneira física (cor, tipo, posição) quanto
+de uma maneira mental (nome do objeto, ações que são
+sempre possiveis ou, até mesmo, efeitos emotivos no personagem).</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
