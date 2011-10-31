@@ -3,28 +3,17 @@
 
 O trabalho visa o desenvolvimento de uma ontologia que englobe o modelo
 psicológico de emoções explicado na seção~\ref{cap:eda:mce}, uma ontologia de
-humanos virtuais e uma de percepção. A criação das ontologias que, além de
-fazerem o raciocínio, definem um vocabulário básico a ser conhecido. Dessa
-forma, o tempo de aprendizado tende a ser menor e deixa a configuração mais
-fácil para o leigo. Por exemplo, um desenvolvedor só precisa conhecer a
-ontologia de percepção proposta para saber\dev{} o que o agente deve enviar de
-crenças ou percepções e o que esperar em retorno.
-
-%% Reescrito acima
-%O trabalho visa dois objetivos principais: (i) apoiar o desenvolvimento de
-%aplicações; (ii) minimizar a dificuldade de configuração existente. O primeiro
-%objetivo é alcançado com a construção de artefatos de software que leem e
-%questionam as ontologias via Jason. O segundo objetivo é alcançado pela
-%criação das ontologias que, além de fazerem o raciocínio, definem um
-%vocabulário básico a ser conhecido. Por exemplo, um desenvolvedor só
-%precisa conhecer a ontologia de percepção proposta para saber\dev{} o que o agente
-%deve enviar de crenças ou percepções e o que esperar em retorno.
+humanos virtuais e de características. Cada ontologia à ser explicada foi pensada
+como um modulo que pode ser usada em separado dos demais. A criação das mesmas
+tem como vantagens fazerem o raciocínio e a definição de um vocabulário
+básico. Dessa forma, o tempo de aprendizado tende a ser menor e a baixar o
+tempo de configuração.
 
 O presente capítulo foi dividido em partes. A primeira, descreve a ontologia
 afetiva desenvolvida se baseando em um modelo da psicologia. A descrição de
-como a ontologia de humano virtual foi construída esta explicada na
-seção~\ref{cap:tp:ruodhv}. Na \ref{cap:tp:odp}, a ontologia de percepção é
-detalhada. Por fim, a última demostra a utilização da mesma.
+como a ontologia de humanos virtuais foi reutilizada esta explicada na
+seção~\ref{cap:tp:ruodhv}. Na \ref{cap:tp:odp}, a ontologia de característica é
+detalhada. Por fim, a última demostra a utilização das mesmas.
 %\ref{cap:tp:cdu}
 
 \section{Ontologia Afetiva} \label{cap:tp:oa}
@@ -184,8 +173,8 @@ informada sem nenhum prejuízo. O último ramo, chamado de
 \emph{ConsequencesOfEvents} é dividido em: \emph{ConsequencesForSelf} e
 \emph{ConsequencesForOthers}. Toda essa divisão foca na consequência de um
 evento ou ação realizado por um determinado agente. Por exemplo, Dilu tem pena
-de Jose, Jose tem esperança (de ser promovido), John tem satisfação (por
-estar almoçando) ou Millie esta alegre (por cozinhar).
+de Jose, Jose tem esperança de ser promovido, John tem satisfação por
+estar almoçando ou Millie esta alegre por cozinhar.
 
 A \emph{ConsequencesForOthers} expressa 4 emoções: \emph{HappyFor},
 \emph{SorryFor}, \emph{Gloating} e \emph{Resentment}. Na definição, essas
@@ -246,15 +235,14 @@ A composição é quando uma emoção pode ser encaixada em mais de uma emoção
 como no caso de se estar alegre (\emph{Joy}), orgulhoso (\emph{Pride}) e
 gratificado (\emph{Gratification}). Por fim, o conceito \emph{Setup}
 \todo{na dissertacao falar mais sobre isso} é o utilizado para manter junto da
-ontologia criada o limite mínimo para uma emoção virar sentimento\dev{}. Ele é
-melhor explicado na seção~\ref{cap:tp:cdu}~(pg.~\pageref{cap:tp:cdu}).
+ontologia criada o limite mínimo para uma emoção virar sentimento\dev{}.
 
 %a transferencia eh feita pelo sistema;
 %os dados sao carregados para memoria e eliminados;
 %conforme reparado nao ha decaimento da emocao, a mesma eh instantanea;
 %2345678901234567890123456789012345678901234567890123456789012345678901234567890
 
-\section{Reutilizando uma ontologia de Humanos Virtuais} \label{cap:tp:ruodhv}
+\section{Reutilizando uma Ontologia de Humanos Virtuais} \label{cap:tp:ruodhv}
 
 Na seção~\ref{cap:eda:odhv} foi explicado a ontologia de
 \citet{Gutierrez:2007:OVH:1229160.1229164} que descreve humanos virtuais de
@@ -296,9 +284,10 @@ atividades.
 % conhecimento mesmo que abstrato sobre suas dimensões para o caso de ser
 % necessario fazer a bounding box collission...
 
-\section{Ontologias de Percepções} \label{cap:tp:odp}
+\section{Ontologia de Características} \label{cap:tp:odp}
 % de percepcoes virou do ambiente
 % voltou a ser de percepcoes
+% e agora virou caracteristicas hehehehe!
 
 \citet{doyle1998annotated} propuseram que o mundo contivesse uma serie de
 anotações nos objetos. Assim, o agente poderia conhecer apenas a forma de
@@ -335,31 +324,269 @@ que sabe como realizar a ação propriamente dita. O agente unicamente diz de
 alguma forma que o objeto tem que realizar tal ação. Nesse trabalho, não é
 mencionado que o agente pode ser temporariamente controlado por objetos.
 
-Assim, ...
+Assim, a foi criado dois conceitos principais \emph{Annotation} e
+\emph{Preference}. O conceito \emph{Annotation} é utilizado para representar
+características de determinadas coisas. Essas características podem ainda
+ser categorizadas entre as que mudam e não mudam durante a simulação. O
+sub-conceito \emph{Dynamic} representa as características dinâmicas, isto é,
+as características que podem ser alterados durante a ``vida'' do objeto. O
+sub-conceito \emph{Static} representa as características que não podem ser
+alteradas depois da criação do objeto. O calor e o dono são exemplos de
+características dinâmicas, enquanto o nome e a capacidade são exemplos de
+características estáticas\todo{esSA frase eu aChei meio esquisitA}.
 
-
-%... Última coisa
-%
-%Uma ontologia de percepção esta ligada a formas de perceber o ambiente, por
-%isso foi estudado o \emph{CArtAgO}\cite{ricci31cartago} e o
-%\emph{EIS}\cite{behrens2009taeisfaop}. Todavia, em um estudo preliminar sobre
-%esses trabalhos foi visto que o foco aqui não é a descrição do ambiente em si
-%e, sim, como o agente interpreta essas informações que viram de maneira
-%anotada nas percepções\dev{}.
+A representação de preferência por determinadas características é representado
+no conceito \emph{Preference}. A preferência representa como uma entidade ou
+agente é atraído por determinada característica, por exemplo algumas pessoas
+gostam de calor e outras não. Assim, as pessoas que gostam de calor são
+atraídas pela valoração positiva da anotação de calor. Já, as pessoas que não
+gostam de calor são atraídas pela valoração negativa. Dessa forma, os
+sub-conceitos da preferência representam sempre valores que fazem o agente ser
+atraído pelo objeto e repelido em caso contrário.
 
 \section{Caso de uso} \label{cap:tp:cdu}
 
-Ok, eu sei o que eh.
-Mas, como eu faco funcioanr?
-... tem que tomar o conceito Setup para melhor explicar ele!
+\begin{table}[b]
+	\caption{As três ontologias juntas possuem expressividade: ALCHIN(D).}
+	\label{tab:tp:cdu:geral}
+	\begin{center}
+	\begin{tabular}{|c|c|}
+	%\begin{tabular}{|p{34mm}|p{50mm}|p{50mm}|}
+		\hline
+		Descrição & Quantidade \\ \hline
+		Classes &  57 		\\ \hline
+		Propriedade de Objetos & 23 \\ \hline
+		Propriedade de Dados & 25 \\ \hline
+		Indivíduos &  27	\\ \hline
+		Regras & 7 \\ \hline
+	\end{tabular}
+	\end{center}
+\end{table}
 
-Thunder, thunder, thundercats, Ho! Thundercats are on the move, Thundercats are loose. Feel the magic, hear the roar, Thundercats are loose. Thunder, thunder, thunder, Thundercats! Thunder, thunder, thunder, Thundercats! Thunder, thunder, thunder, Thundercats! Thunder, thunder, thunder, Thundercats! Thundercats!
+\begin{figure}
+  \centering
+    \includegraphics[width=150mm]{figuras/occ_todos_geral.png}
+  \caption{Protege 4 mostrando as importações, dados gerais e regras das
+ontologias desenvolvidas.}
+  \label{fig:tp:cdu:geral}
+\end{figure}
 
-Knight Rider, a shadowy flight into the dangerous world of a man who does not exist. Michael Knight, a young loner on a crusade to champion the cause of the innocent, the helpless in a world of criminals who operate above the law.
+%\begin{wrapfigure}{r}{0.4\textwidth}
+\begin{figure}
+  \includegraphics[height=16cm]{figuras/hierarquiaLOCC.png}
+  \caption{Taxonomia das 3 ontologias.}
+  \label{fig:tp:cdu:classes}
+\end{figure}
+%\end{wrapfigure}
 
-80 days around the world, we'll find a pot of gold just sitting where the rainbow's ending. Time - we'll fight against the time, and we'll fly on the white wings of the wind. 80 days around the world, no we won't say a word before the ship is really back. Round, round, all around the world. Round, all around the world. Round, all around the world. Round, all around the world.
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=8cm]{figuras/occ_todos_dph.png} & \includegraphics[height=8cm]{figuras/occ_todos_oph.png} \\
+  (i) Relações de dados & (ii) Relações de Objetos
+  \end{tabular}
+  \caption{As relações existentes em todas as ontologias.}
+  \label{fig:tp:cdu:relations}
+\end{figure}
 
-Hong Kong Phooey, number one super guy. Hong Kong Phooey, quicker than the human eye. He's got style, a groovy style, and a car that just won't stop. When the going gets tough, he's really rough, with a Hong Kong Phooey chop (Hi-Ya!). Hong Kong Phooey, number one super guy. Hong Kong Phooey, quicker than the human eye. Hong Kong Phooey, he's fan-riffic!
 
-Mutley, you snickering, floppy eared hound. When courage is needed, you're never around. Those medals you wear on your moth-eaten chest should be there for bungling at which you are best. So, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon. Howwww! Nab him, jab him, tab him, grab him, stop that pigeon now.
+As ontologias explicadas nas seções anteriores foram planejadas para serem
+usadas como módulos. Sendo assim, uma ontologia especifica pode ser pega ou
+todas. Para fins de exemplificação, nessa seção será utilizada uma ontologia
+que faz a importação das três ontologias explicadas anteriormente nesse
+capítulo.
+
+Os dados das ontologias se encontram resumidos na
+Tabela~\ref{tab:tp:cdu:geral}. Além disso, a Figura~\ref{fig:tp:cdu:geral}
+serve para demonstrar a importação realizada e comprovar os dados fornecidos.
+As Figuras~\ref{fig:tp:cdu:classes}~e~\ref{fig:tp:cdu:relations}
+demonstram, respectivamente, todos os conceitos e todas as relações
+desenvolvidas durante o presente trabalho.
+
+O primeiro exemplo a ser dado, chamaremos de Ex1, é o de uma avaliação que só
+possui a relação de probabilidade indo para um indivíduo da classe \emph{Low}.
+Por essa avaliação ter sido criada sobre o conceito \emph{Thing} e só possuir
+essa única relação não é possível realizar nenhum outro enquadramento dentro
+dos conceitos propostos.
+
+O segundo exemplo, chamaremos de Ex2, é o de uma avaliação de um personagem
+chamado Dolores. Esse personagem tem vergonha de sua mãe. Assim, esse
+indivíduo é configurado conforme a
+Figura~\ref{fig:tp:cdu:shameOtherDontSupported}.
+
+\begin{figure}
+  \centering
+  \includegraphics[height=4cm]{figuras/doloresConfig.png}
+  \caption{Avaliação do agente Dolores sobre sua mãe.}
+  \label{fig:tp:cdu:shameOtherDontSupported}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=4cm]{figuras/doloresInferencia1.png} & \includegraphics[height=4cm]{figuras/doloresInferencia2.png} \\
+  (a) Esperado era uma emoção & (b) Esperado era o conceito \emph{Shame}
+  \end{tabular}
+  \caption{Exemplos de inferências incorretas.}
+  \label{fig:tp:cdu:shameOtherDontSupportedResults}
+\end{figure}
+
+Esse exemplo, como dito anteriormente, tem a avaliação considerada como de
+reprovamento porque no modelo proposto não é possível sentir vergonha por
+outra pessoa. Entretanto, se a pessoa tentar forçar a relação
+\emph{hasJudgeMyself} ao invés da \emph{hasJudge} a ontologia ficará
+inconsistente. Note ainda que a avaliação será classificado como pertence
+ao conceito \emph{ActionsOfAgents} se não for informado que Dolores e
+MaeDolores são indivíduos diferentes. A Figura~\ref{fig:tp:cdu:shameOtherDontSupportedResults}
+demonstra essas duas conclusões incorretas da ontologia.
+
+Os exemplos seguintes são baseados em um cenário especifico. Esse possui
+quatro agentes diferentes: Dilu, John, Jose e Millie. Os perfis desses agentes
+são, respectivamente, \emph{Dependent}, \emph{UnemployedAdult} e os dois
+últimos \emph{EmployedAdult}. Conforme explicado na seção~\ref{cap:eda:odhv}
+na página~\pageref{ex:tipos}, o tipo \emph{Dependent} precisa de um adulto
+para se mover, \emph{UnemployedAdult} possui destinos randômicos somente e
+\emph{EmployedAdult} possui destino fixo (o local de trabalho) e alguns
+randômicos. Entretanto, a configuração dos locais possíveis foi ignorada
+porque só faz sentido descreve-los quando se esta usando a ontologia
+dentro de uma aplicação e aqui se esta preocupado em demonstra-la de maneira
+isolada.
+
+A Figura~\ref{fig:tp:cdu:johnHasFriendJose} mostra em (a) a configuração
+existente na avaliação feita pelo personagem John sobre Jose. Em (b) é
+mostrado que o mecanismo de inferência conseguiu definir a avaliação como uma
+boa relação. Entretanto, cabe salientar que Jose pode ter outra opinião sobre
+John por que amizade não é uma relação simétrica. No próximo exemplo, na
+Figura~\ref{fig:tp:cdu:joseHasEnemyJohn}, isso é demonstrado.
+
+\newpage
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=4cm]{figuras/appraisalEx3.png} & \includegraphics[height=4cm]{figuras/infEx3.png} \\
+  (a) Configuração & (b) Resultado
+  \end{tabular}
+  \caption{Avaliação de John sobre Jose.}
+  \label{fig:tp:cdu:johnHasFriendJose}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=4cm]{figuras/appraisalEx4.png} & \includegraphics[height=4cm]{figuras/infEx4.png} \\
+  (a) Configuração & (b) Resultado
+  \end{tabular}
+  \caption{Avaliação de Jose sobre John.}
+  \label{fig:tp:cdu:joseHasEnemyJohn}
+\end{figure}
+
+% 297 de altura e tudo no x acho q nao passo de 815
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=4cm]{figuras/appraisalEx5.png} & \includegraphics[height=4cm]{figuras/infEx5.png} \\
+  (a) Configuração & (b) Resultado
+  \end{tabular}
+  \caption{Avaliação de Millie julgando seu próprio carro.}
+  \label{fig:tp:cdu:joseHasEnemyJohn}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=4cm]{figuras/appraisalEx6.png} & \includegraphics[height=4cm]{figuras/infEx6.png} \\
+  (a) Configuração & (b) Resultado
+  \end{tabular}
+  \caption{Avaliação ...}
+  \label{fig:tp:cdu:ex6}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=4cm]{figuras/appraisalEx7.png} & \includegraphics[height=4cm]{figuras/infEx7.png} \\
+  (a) Configuração & (b) Resultado
+  \end{tabular}
+  \caption{Avaliação ...}
+  \label{fig:tp:cdu:ex7}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=4cm]{figuras/appraisalEx8.png} & \includegraphics[height=4cm]{figuras/infEx8.png} \\
+  (a) Configuração & (b) Resultado
+  \end{tabular}
+  \caption{Avaliação ...}
+  \label{fig:tp:cdu:ex8}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=4cm]{figuras/appraisalEx9preparo.png} & \includegraphics[height=4cm]{figuras/infEx9preparo.png} \\
+  (a) Configuração & (b) Resultado
+  \end{tabular}
+  \caption{Avaliação ...}
+  \label{fig:tp:cdu:ex9preparo}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=4cm]{figuras/appraisalEx9.png} & \includegraphics[height=4cm]{figuras/infEx9.png} \\
+  (a) Configuração & (b) Resultado
+  \end{tabular}
+  \caption{Avaliação ...}
+  \label{fig:tp:cdu:ex9}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=4cm]{figuras/appraisalEx10.png} & \includegraphics[height=4cm]{figuras/infEx10.png} \\
+  (a) Configuração & (b) Resultado
+  \end{tabular}
+  \caption{Avaliação ...}
+  \label{fig:tp:cdu:ex10}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=4cm]{figuras/appraisalEx11.png} & \includegraphics[height=4cm]{figuras/infEx11.png} \\
+  (a) Configuração & (b) Resultado
+  \end{tabular}
+  \caption{Avaliação ...}
+  \label{fig:tp:cdu:ex11}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=4cm]{figuras/appraisalEx12.png} & \includegraphics[height=4cm]{figuras/infEx12.png} \\
+  (a) Configuração & (b) Resultado
+  \end{tabular}
+  \caption{Avaliação ...}
+  \label{fig:tp:cdu:ex12}
+\end{figure}
+
+%... tem que tomar o conceito Setup para melhor explicar ele!
+%
+Exemplos do doc:
+John - andarilha		Jose - ele trabalha			Millie - ela trabalha			Dilu - dependente
+%
+ex3 john se da bem com jose
+ex4 jose consira mal john
+ex5 millie julga bem seu carro.
+ex6 john repudia televisao.
+ex7 john gosta/familiar a millie.
+ex8 jose possui orgulho.
+ex9 dilu tem pena de jose.
+	ex9preparo dilu tem boa relacao com jose. (sem isso eh so uma avaliacao e nao SorryFor)
+ex10 Jose tem esperança.
+ex11 John tem satisfação.
+ex12 Millie esta alegre.
 
