@@ -1,24 +1,21 @@
 
+
 MAS eoaus {
-	infrastructure: Centralised
+    infrastructure: Centralised //(pool, 2)
 
-	environment: eoaus.Env // nao tinha outro nome
+    // timeout seconds, number of steps, policy of when adding second action, number of agents
+    environment: maro.example.LU2DEnv(20000, 1000, FALSE, 20)
 
-	agents:
-		sam
-			#1
-			agentArchClass eoaus.AgArchAffective
-			beliefBaseClass eoaus.BBAffective
-            ;
-		aline
-			#1
-			//agentArchClass eoaus.AgArchAffective
-			//beliefBaseClass eoaus.BBAffective
-			;
-		william
-			#1
-			//agentArchClass eoaus.AgArchAffective
-			//beliefBaseClass eoaus.BBAffective
-			;
-	aslSourcePath: "asl";
+    agents:
+        planets
+          #10
+          //beliefBaseClass maro.wrapper.BBAffective("../ontology/occ-tbox.owl")
+          //agentArchClass maro.wrapper.AgArchFixBB
+        ;
+        ship
+          #1
+          agentArchClass maro.example.LUAgArchViewer
+        ;
+
+    aslSourcePath: "asl";
 }
