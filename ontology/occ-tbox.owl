@@ -10,23 +10,44 @@
 
 
 <Ontology xmlns="http://www.w3.org/2002/07/owl#"
-     xml:base="http://www.semanticweb.org/ontologies/2011/7/occ.owl"
+     xml:base="http://www.affective.org/occ_2011.owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     ontologyIRI="http://www.semanticweb.org/ontologies/2011/7/occ.owl">
+     ontologyIRI="http://www.affective.org/occ_2011.owl">
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
-    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="" IRI="http://www.affective.org/occ_2011.owl#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Annotation>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Ontologia baseada no modelo Ortony, Collins e Clore de 1988.</Literal>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Essa ontologia representa o modelo emocional criado em 1988
+por Ortony, Clore, Collins.
+
+Limitações:
+  - Força da unidade cognitiva (Strength of cognitive unit):
+     - Nas emoções que julgam a responsabilidade de uma ação,
+        essa unidade não existe porque temos a limitação que uma
+        emoção desse tipo só deveria ser sentida se for o proprio
+        agente que esta realizando a ação.
+  - Familiaridade e Atração
+     - No modelo familiaridade e atração no ramo de objetos
+        são considerados coisas disjuntas. Essas duas relações
+        estão sendo representadas somente pela familiaridade
+        para deixar as coisas mais simples.
+  - Agentes e Objetos
+     - No modelo, agentes e objetos são coisas diferentes.
+        Entretanto, tanto agente e tanto objetos podem ter
+        responsabilidades julgadas. Logo, optou-se por
+        considerar que Agentes é subconjunto de Objetos.
+        Assim, objetos são entidades que não possui o dom
+        da &#39;&#39;inteligencia&#39;&#39;.</Literal>
     </Annotation>
     <Declaration>
-        <Class IRI="#ActionOfAgent"/>
+        <Class IRI="#ActionsOfAgents"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Admiration"/>
@@ -41,19 +62,19 @@
         <Class IRI="#Appraisal"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#AspectOfObject"/>
+        <Class IRI="#AspectsOfObjects"/>
     </Declaration>
     <Declaration>
         <Class IRI="#BadKnowRelation"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#ConsequenceForOther"/>
+        <Class IRI="#ConsequencesForOthers"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#ConsequenceForSelf"/>
+        <Class IRI="#ConsequencesForSelf"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#ConsequenceOfEvent"/>
+        <Class IRI="#ConsequencesOfEvents"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Disappointment"/>
@@ -65,10 +86,10 @@
         <Class IRI="#Emotion"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#FearsConfirmed"/>
+        <Class IRI="#Fear"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#FearsUnconfirmed"/>
+        <Class IRI="#FearsConfirmed"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Gloating"/>
@@ -89,6 +110,9 @@
         <Class IRI="#Hate"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#High"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Hope"/>
     </Declaration>
     <Declaration>
@@ -98,22 +122,37 @@
         <Class IRI="#KnowRelation"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Likelihood"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Love"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Low"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mid"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#None"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Object"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Pride"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#ProspectConfirmed"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#ProspectIrrelevant"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#ProspectRelevant"/>
+        <Class IRI="#ProspectNotRealized"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#ProspectUnconfirmed"/>
+        <Class IRI="#ProspectRealized"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProspectRelevant"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Relief"/>
@@ -129,6 +168,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#Satisfaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Setup"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Shame"/>
@@ -149,37 +191,49 @@
         <ObjectProperty IRI="#hasJudge"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#hasJudgeMyself"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasJudgeOther"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#hasKnow"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasKnowRelation"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#hasOther"/>
+        <ObjectProperty IRI="#hasLikelihood"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#hasTarget"/>
+        <ObjectProperty IRI="#hasPerson"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasPersonEnemy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasPersonFriend"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSetup"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSomething"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#isAppraisalOf"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#isJudgeOf"/>
+        <ObjectProperty IRI="#isSetupOf"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#isSelfBadKnowRelationOf"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#isSelfGoodKnowRelationOf"/>
+        <DataProperty IRI="#hasDeserved"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#hasDesire"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#hasDesireOther"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasDesirePresume"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#hasDesireSelf"/>
@@ -200,36 +254,30 @@
         <DataProperty IRI="#hasNiceness"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#hasPower"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="#hasPreviousIntensity"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasProbability"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#hasRealized"/>
     </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasThreshold"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasThresholdType"/>
+    </Declaration>
     <EquivalentClasses>
         <Class IRI="#Admiration"/>
         <ObjectIntersectionOf>
-            <ObjectIntersectionOf>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#hasJudge"/>
-                    <Class IRI="#Agent"/>
-                </ObjectSomeValuesFrom>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#isAppraisalOf"/>
-                    <Class IRI="#Agent"/>
-                </ObjectSomeValuesFrom>
-            </ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasJudgeOther"/>
+                <Class IRI="#Object"/>
+            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasJudgeness"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
@@ -247,9 +295,9 @@
         <DataSomeValuesFrom>
             <DataProperty IRI="#hasNiceness"/>
             <DatatypeRestriction>
-                <Datatype abbreviatedIRI="xsd:double"/>
+                <Datatype abbreviatedIRI="xsd:int"/>
                 <FacetRestriction facet="&xsd;maxExclusive">
-                    <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    <Literal datatypeIRI="&xsd;int">0</Literal>
                 </FacetRestriction>
             </DatatypeRestriction>
         </DataSomeValuesFrom>
@@ -260,27 +308,27 @@
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasEffort"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasPreviousIntensity"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasRealized"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
@@ -289,18 +337,39 @@
     <EquivalentClasses>
         <Class IRI="#Distress"/>
         <ObjectIntersectionOf>
-            <ObjectComplementOf>
-                <DataSomeValuesFrom>
-                    <DataProperty IRI="#hasProbability"/>
-                    <Datatype abbreviatedIRI="xsd:double"/>
-                </DataSomeValuesFrom>
-            </ObjectComplementOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasLikelihood"/>
+                <Class IRI="#None"/>
+            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasDesireSelf"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Fear"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasLikelihood"/>
+                <ObjectIntersectionOf>
+                    <Class IRI="#Likelihood"/>
+                    <ObjectComplementOf>
+                        <Class IRI="#None"/>
+                    </ObjectComplementOf>
+                </ObjectIntersectionOf>
+            </ObjectSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasDesireSelf"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:int"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
@@ -312,47 +381,29 @@
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasEffort"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasPreviousIntensity"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasRealized"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
-            </DataSomeValuesFrom>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#FearsUnconfirmed"/>
-        <ObjectIntersectionOf>
-            <DataSomeValuesFrom>
-                <DataProperty IRI="#hasDesireSelf"/>
-                <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
-                    <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
-                    </FacetRestriction>
-                </DatatypeRestriction>
-            </DataSomeValuesFrom>
-            <DataSomeValuesFrom>
-                <DataProperty IRI="#hasProbability"/>
-                <Datatype abbreviatedIRI="xsd:double"/>
             </DataSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
@@ -360,27 +411,24 @@
         <Class IRI="#Gloating"/>
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasOther"/>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#hasEnemy"/>
-                    <Class IRI="#Agent"/>
-                </ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasPersonEnemy"/>
+                <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
-                <DataProperty IRI="#hasDesireOther"/>
+                <DataProperty IRI="#hasDeserved"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
-                    <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    <Datatype abbreviatedIRI="xsd:int"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
             <DataSomeValuesFrom>
-                <DataProperty IRI="#hasDesirePresume"/>
+                <DataProperty IRI="#hasDesireOther"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
-                    <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    <Datatype abbreviatedIRI="xsd:int"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
@@ -391,9 +439,9 @@
         <DataSomeValuesFrom>
             <DataProperty IRI="#hasNiceness"/>
             <DatatypeRestriction>
-                <Datatype abbreviatedIRI="xsd:double"/>
+                <Datatype abbreviatedIRI="xsd:int"/>
                 <FacetRestriction facet="&xsd;minExclusive">
-                    <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    <Literal datatypeIRI="&xsd;int">0</Literal>
                 </FacetRestriction>
             </DatatypeRestriction>
         </DataSomeValuesFrom>
@@ -416,27 +464,24 @@
         <Class IRI="#HappyFor"/>
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasOther"/>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#hasFriend"/>
-                    <Class IRI="#Agent"/>
-                </ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasPersonFriend"/>
+                <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
-                <DataProperty IRI="#hasDesireOther"/>
+                <DataProperty IRI="#hasDeserved"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
             <DataSomeValuesFrom>
-                <DataProperty IRI="#hasDesirePresume"/>
+                <DataProperty IRI="#hasDesireOther"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
@@ -447,9 +492,9 @@
         <DataSomeValuesFrom>
             <DataProperty IRI="#hasFamiliarity"/>
             <DatatypeRestriction>
-                <Datatype abbreviatedIRI="xsd:double"/>
+                <Datatype abbreviatedIRI="xsd:int"/>
                 <FacetRestriction facet="&xsd;maxExclusive">
-                    <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    <Literal datatypeIRI="&xsd;int">0</Literal>
                 </FacetRestriction>
             </DatatypeRestriction>
         </DataSomeValuesFrom>
@@ -457,49 +502,68 @@
     <EquivalentClasses>
         <Class IRI="#Hope"/>
         <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasLikelihood"/>
+                <ObjectIntersectionOf>
+                    <Class IRI="#Likelihood"/>
+                    <ObjectComplementOf>
+                        <Class IRI="#None"/>
+                    </ObjectComplementOf>
+                </ObjectIntersectionOf>
+            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasDesireSelf"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
-            </DataSomeValuesFrom>
-            <DataSomeValuesFrom>
-                <DataProperty IRI="#hasProbability"/>
-                <Datatype abbreviatedIRI="xsd:double"/>
             </DataSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#Joy"/>
         <ObjectIntersectionOf>
-            <ObjectComplementOf>
-                <DataSomeValuesFrom>
-                    <DataProperty IRI="#hasProbability"/>
-                    <Datatype abbreviatedIRI="xsd:double"/>
-                </DataSomeValuesFrom>
-            </ObjectComplementOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasLikelihood"/>
+                <Class IRI="#None"/>
+            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasDesireSelf"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
+        <Class IRI="#KnowRelation"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasNiceness"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Likelihood"/>
+        <ObjectUnionOf>
+            <Class IRI="#High"/>
+            <Class IRI="#Low"/>
+            <Class IRI="#Mid"/>
+            <Class IRI="#None"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
         <Class IRI="#Love"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="#hasFamiliarity"/>
             <DatatypeRestriction>
-                <Datatype abbreviatedIRI="xsd:double"/>
+                <Datatype abbreviatedIRI="xsd:int"/>
                 <FacetRestriction facet="&xsd;minExclusive">
-                    <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    <Literal datatypeIRI="&xsd;int">0</Literal>
                 </FacetRestriction>
             </DatatypeRestriction>
         </DataSomeValuesFrom>
@@ -507,22 +571,16 @@
     <EquivalentClasses>
         <Class IRI="#Pride"/>
         <ObjectIntersectionOf>
-            <ObjectIntersectionOf>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#hasJudge"/>
-                    <Class IRI="#Agent"/>
-                </ObjectSomeValuesFrom>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#isAppraisalOf"/>
-                    <Class IRI="#Agent"/>
-                </ObjectSomeValuesFrom>
-            </ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasJudgeMyself"/>
+                <Class IRI="#Object"/>
+            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasJudgeness"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
@@ -534,27 +592,27 @@
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasEffort"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasPreviousIntensity"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasRealized"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
@@ -570,22 +628,16 @@
     <EquivalentClasses>
         <Class IRI="#Reproach"/>
         <ObjectIntersectionOf>
-            <ObjectIntersectionOf>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#hasJudge"/>
-                    <Class IRI="#Agent"/>
-                </ObjectSomeValuesFrom>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#isAppraisalOf"/>
-                    <Class IRI="#Agent"/>
-                </ObjectSomeValuesFrom>
-            </ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasJudgeOther"/>
+                <Class IRI="#Object"/>
+            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasJudgeness"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
@@ -595,27 +647,24 @@
         <Class IRI="#Resentment"/>
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasOther"/>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#hasEnemy"/>
-                    <Class IRI="#Agent"/>
-                </ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasPersonEnemy"/>
+                <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
-                <DataProperty IRI="#hasDesireOther"/>
+                <DataProperty IRI="#hasDeserved"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
-                    <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    <Datatype abbreviatedIRI="xsd:int"/>
+                    <FacetRestriction facet="&xsd;maxExclusive">
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
             <DataSomeValuesFrom>
-                <DataProperty IRI="#hasDesirePresume"/>
+                <DataProperty IRI="#hasDesireOther"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
-                    <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                    <Datatype abbreviatedIRI="xsd:int"/>
+                    <FacetRestriction facet="&xsd;minExclusive">
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
@@ -627,27 +676,27 @@
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasEffort"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasPreviousIntensity"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasRealized"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;minExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
@@ -656,22 +705,16 @@
     <EquivalentClasses>
         <Class IRI="#Shame"/>
         <ObjectIntersectionOf>
-            <ObjectIntersectionOf>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#hasJudge"/>
-                    <Class IRI="#Agent"/>
-                </ObjectSomeValuesFrom>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#isAppraisalOf"/>
-                    <Class IRI="#Agent"/>
-                </ObjectSomeValuesFrom>
-            </ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasJudgeMyself"/>
+                <Class IRI="#Object"/>
+            </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
                 <DataProperty IRI="#hasJudgeness"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
@@ -681,181 +724,122 @@
         <Class IRI="#SorryFor"/>
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasOther"/>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#hasFriend"/>
-                    <Class IRI="#Agent"/>
-                </ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasPersonFriend"/>
+                <Class IRI="#Agent"/>
             </ObjectSomeValuesFrom>
             <DataSomeValuesFrom>
-                <DataProperty IRI="#hasDesireOther"/>
+                <DataProperty IRI="#hasDeserved"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
             <DataSomeValuesFrom>
-                <DataProperty IRI="#hasDesirePresume"/>
+                <DataProperty IRI="#hasDesireOther"/>
                 <DatatypeRestriction>
-                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <Datatype abbreviatedIRI="xsd:int"/>
                     <FacetRestriction facet="&xsd;maxExclusive">
-                        <Literal datatypeIRI="&xsd;double">0.0</Literal>
+                        <Literal datatypeIRI="&xsd;int">0</Literal>
                     </FacetRestriction>
                 </DatatypeRestriction>
             </DataSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <SubClassOf>
-        <Class IRI="#ActionOfAgent"/>
+        <Class IRI="#ActionsOfAgents"/>
         <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ActionOfAgent"/>
-        <ObjectAllValuesFrom>
-            <ObjectProperty IRI="#hasJudge"/>
-            <Class IRI="#Agent"/>
-        </ObjectAllValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ActionOfAgent"/>
-        <ObjectExactCardinality cardinality="1">
-            <ObjectProperty IRI="#hasJudge"/>
-            <Class IRI="#Agent"/>
-        </ObjectExactCardinality>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ActionOfAgent"/>
-        <DataAllValuesFrom>
+        <Class IRI="#ActionsOfAgents"/>
+        <DataMaxCardinality cardinality="1">
             <DataProperty IRI="#hasJudgeness"/>
-            <Datatype abbreviatedIRI="xsd:double"/>
-        </DataAllValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ActionOfAgent"/>
-        <DataExactCardinality cardinality="1">
-            <DataProperty IRI="#hasJudgeness"/>
-            <Datatype abbreviatedIRI="xsd:double"/>
-        </DataExactCardinality>
+        </DataMaxCardinality>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Admiration"/>
-        <Class IRI="#ActionOfAgent"/>
+        <Class IRI="#ActionsOfAgents"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Agent"/>
-        <ObjectAllValuesFrom>
-            <ObjectProperty IRI="#hasAppraisal"/>
-            <Class IRI="#Appraisal"/>
-        </ObjectAllValuesFrom>
+        <Class IRI="#Object"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Agent"/>
-        <ObjectAllValuesFrom>
-            <ObjectProperty IRI="#hasKnowRelation"/>
-            <Class IRI="#KnowRelation"/>
-        </ObjectAllValuesFrom>
+        <Class IRI="#Anger"/>
+        <Class IRI="#Distress"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Agent"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="#hasName"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Agent"/>
-        <DataAllValuesFrom>
-            <DataProperty IRI="#hasName"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataAllValuesFrom>
+        <Class IRI="#Anger"/>
+        <Class IRI="#Reproach"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Appraisal"/>
-        <ObjectAllValuesFrom>
-            <ObjectProperty IRI="#isAppraisalOf"/>
-            <Class IRI="#Agent"/>
-        </ObjectAllValuesFrom>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSomething"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Appraisal"/>
-        <ObjectExactCardinality cardinality="1">
+        <ObjectSomeValuesFrom>
             <ObjectProperty IRI="#isAppraisalOf"/>
             <Class IRI="#Agent"/>
-        </ObjectExactCardinality>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#AspectOfObject"/>
+        <Class IRI="#AspectsOfObjects"/>
         <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#AspectOfObject"/>
-        <DataExactCardinality cardinality="1">
+        <Class IRI="#AspectsOfObjects"/>
+        <DataMaxCardinality cardinality="1">
             <DataProperty IRI="#hasFamiliarity"/>
-            <Datatype abbreviatedIRI="xsd:double"/>
-        </DataExactCardinality>
+        </DataMaxCardinality>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#BadKnowRelation"/>
         <Class IRI="#KnowRelation"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#BadKnowRelation"/>
-        <ObjectHasSelf>
-            <ObjectProperty IRI="#isSelfBadKnowRelationOf"/>
-        </ObjectHasSelf>
+        <Class IRI="#ConsequencesForOthers"/>
+        <Class IRI="#ConsequencesOfEvents"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ConsequenceForOther"/>
-        <Class IRI="#ConsequenceOfEvent"/>
+        <Class IRI="#ConsequencesForOthers"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasDeserved"/>
+        </DataMaxCardinality>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ConsequenceForOther"/>
-        <ObjectExactCardinality cardinality="1">
-            <ObjectProperty IRI="#hasOther"/>
-            <Class IRI="#Agent"/>
-        </ObjectExactCardinality>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ConsequenceForOther"/>
-        <DataExactCardinality cardinality="1">
+        <Class IRI="#ConsequencesForOthers"/>
+        <DataMaxCardinality cardinality="1">
             <DataProperty IRI="#hasDesireOther"/>
-            <Datatype abbreviatedIRI="xsd:double"/>
-        </DataExactCardinality>
+        </DataMaxCardinality>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ConsequenceForOther"/>
-        <DataExactCardinality cardinality="1">
-            <DataProperty IRI="#hasDesirePresume"/>
-            <Datatype abbreviatedIRI="xsd:double"/>
-        </DataExactCardinality>
+        <Class IRI="#ConsequencesForSelf"/>
+        <Class IRI="#ConsequencesOfEvents"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ConsequenceForSelf"/>
-        <Class IRI="#ConsequenceOfEvent"/>
+        <Class IRI="#ConsequencesForSelf"/>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="#hasLikelihood"/>
+        </ObjectMaxCardinality>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ConsequenceForSelf"/>
+        <Class IRI="#ConsequencesForSelf"/>
         <DataMaxCardinality cardinality="1">
             <DataProperty IRI="#hasDesireSelf"/>
-            <Datatype abbreviatedIRI="xsd:double"/>
         </DataMaxCardinality>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ConsequenceForSelf"/>
-        <DataMaxCardinality cardinality="1">
-            <DataProperty IRI="#hasProbability"/>
-            <Datatype abbreviatedIRI="xsd:double"/>
-        </DataMaxCardinality>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ConsequenceOfEvent"/>
+        <Class IRI="#ConsequencesOfEvents"/>
         <Class IRI="#Emotion"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Disappointment"/>
-        <Class IRI="#ProspectConfirmed"/>
+        <Class IRI="#ProspectRealized"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Distress"/>
@@ -866,52 +850,52 @@
         <Class IRI="#Appraisal"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Emotion"/>
-        <DataAllValuesFrom>
-            <DataProperty IRI="#hasPower"/>
-            <Datatype abbreviatedIRI="xsd:double"/>
-        </DataAllValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Emotion"/>
-        <DataMaxCardinality cardinality="1">
-            <DataProperty IRI="#hasPower"/>
-            <Datatype abbreviatedIRI="xsd:double"/>
-        </DataMaxCardinality>
+        <Class IRI="#Fear"/>
+        <Class IRI="#ProspectNotRealized"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#FearsConfirmed"/>
-        <Class IRI="#ProspectConfirmed"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#FearsUnconfirmed"/>
-        <Class IRI="#ProspectUnconfirmed"/>
+        <Class IRI="#ProspectRealized"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Gloating"/>
-        <Class IRI="#ConsequenceForOther"/>
+        <Class IRI="#ConsequencesForOthers"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#GoodKnowRelation"/>
         <Class IRI="#KnowRelation"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#GoodKnowRelation"/>
-        <ObjectHasSelf>
-            <ObjectProperty IRI="#isSelfGoodKnowRelationOf"/>
-        </ObjectHasSelf>
+        <Class IRI="#Gratification"/>
+        <Class IRI="#Joy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Gratification"/>
+        <Class IRI="#Pride"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Gratitude"/>
+        <Class IRI="#Admiration"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Gratitude"/>
+        <Class IRI="#Joy"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#HappyFor"/>
-        <Class IRI="#ConsequenceForOther"/>
+        <Class IRI="#ConsequencesForOthers"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Hate"/>
-        <Class IRI="#AspectOfObject"/>
+        <Class IRI="#AspectsOfObjects"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#High"/>
+        <Class IRI="#Likelihood"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Hope"/>
-        <Class IRI="#ProspectUnconfirmed"/>
+        <Class IRI="#ProspectNotRealized"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Joy"/>
@@ -923,176 +907,180 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#KnowRelation"/>
-        <ObjectExactCardinality cardinality="1">
-            <ObjectProperty IRI="#hasTarget"/>
-            <Class IRI="#Agent"/>
-        </ObjectExactCardinality>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasNiceness"/>
+        </DataMaxCardinality>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#KnowRelation"/>
-        <DataExactCardinality cardinality="1">
-            <DataProperty IRI="#hasNiceness"/>
-            <Datatype abbreviatedIRI="xsd:double"/>
-        </DataExactCardinality>
+        <Class IRI="#Likelihood"/>
+        <Class abbreviatedIRI="owl:Thing"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Love"/>
-        <Class IRI="#AspectOfObject"/>
+        <Class IRI="#AspectsOfObjects"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Low"/>
+        <Class IRI="#Likelihood"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mid"/>
+        <Class IRI="#Likelihood"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#None"/>
+        <Class IRI="#Likelihood"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Object"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Object"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasName"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Pride"/>
-        <Class IRI="#ActionOfAgent"/>
+        <Class IRI="#ActionsOfAgents"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ProspectConfirmed"/>
+        <Class IRI="#ProspectIrrelevant"/>
+        <Class IRI="#ConsequencesForSelf"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProspectNotRealized"/>
         <Class IRI="#ProspectRelevant"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ProspectConfirmed"/>
-        <ObjectIntersectionOf>
-            <ObjectComplementOf>
-                <DataSomeValuesFrom>
-                    <DataProperty IRI="#hasProbability"/>
-                    <Datatype abbreviatedIRI="xsd:double"/>
-                </DataSomeValuesFrom>
-            </ObjectComplementOf>
-            <DataSomeValuesFrom>
-                <DataProperty IRI="#hasRealized"/>
-                <Datatype abbreviatedIRI="xsd:double"/>
-            </DataSomeValuesFrom>
-        </ObjectIntersectionOf>
+        <Class IRI="#ProspectRealized"/>
+        <Class IRI="#ProspectRelevant"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ProspectConfirmed"/>
+        <Class IRI="#ProspectRealized"/>
         <DataMaxCardinality cardinality="1">
             <DataProperty IRI="#hasEffort"/>
-            <Datatype abbreviatedIRI="xsd:double"/>
         </DataMaxCardinality>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ProspectConfirmed"/>
+        <Class IRI="#ProspectRealized"/>
         <DataMaxCardinality cardinality="1">
             <DataProperty IRI="#hasPreviousIntensity"/>
-            <Datatype abbreviatedIRI="xsd:double"/>
         </DataMaxCardinality>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ProspectConfirmed"/>
+        <Class IRI="#ProspectRealized"/>
         <DataMaxCardinality cardinality="1">
             <DataProperty IRI="#hasRealized"/>
-            <Datatype abbreviatedIRI="xsd:double"/>
         </DataMaxCardinality>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ProspectIrrelevant"/>
-        <Class IRI="#ConsequenceForSelf"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ProspectIrrelevant"/>
-        <ObjectComplementOf>
-            <ObjectUnionOf>
-                <DataSomeValuesFrom>
-                    <DataProperty IRI="#hasProbability"/>
-                    <Datatype abbreviatedIRI="xsd:double"/>
-                </DataSomeValuesFrom>
-                <DataSomeValuesFrom>
-                    <DataProperty IRI="#hasRealized"/>
-                    <Datatype abbreviatedIRI="xsd:double"/>
-                </DataSomeValuesFrom>
-            </ObjectUnionOf>
-        </ObjectComplementOf>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#ProspectRelevant"/>
-        <Class IRI="#ConsequenceForSelf"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ProspectRelevant"/>
-        <ObjectUnionOf>
-            <DataSomeValuesFrom>
-                <DataProperty IRI="#hasProbability"/>
-                <Datatype abbreviatedIRI="xsd:double"/>
-            </DataSomeValuesFrom>
-            <DataSomeValuesFrom>
-                <DataProperty IRI="#hasRealized"/>
-                <Datatype abbreviatedIRI="xsd:double"/>
-            </DataSomeValuesFrom>
-        </ObjectUnionOf>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ProspectUnconfirmed"/>
-        <Class IRI="#ProspectRelevant"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ProspectUnconfirmed"/>
-        <ObjectIntersectionOf>
-            <ObjectComplementOf>
-                <DataSomeValuesFrom>
-                    <DataProperty IRI="#hasRealized"/>
-                    <Datatype abbreviatedIRI="xsd:double"/>
-                </DataSomeValuesFrom>
-            </ObjectComplementOf>
-            <DataSomeValuesFrom>
-                <DataProperty IRI="#hasProbability"/>
-                <Datatype abbreviatedIRI="xsd:double"/>
-            </DataSomeValuesFrom>
-        </ObjectIntersectionOf>
+        <Class IRI="#ConsequencesForSelf"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Relief"/>
-        <Class IRI="#ProspectConfirmed"/>
+        <Class IRI="#ProspectRealized"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Remorse"/>
+        <Class IRI="#Distress"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Remorse"/>
+        <Class IRI="#Shame"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Reproach"/>
-        <Class IRI="#ActionOfAgent"/>
+        <Class IRI="#ActionsOfAgents"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Resentment"/>
-        <Class IRI="#ConsequenceForOther"/>
+        <Class IRI="#ConsequencesForOthers"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Satisfaction"/>
-        <Class IRI="#ProspectConfirmed"/>
+        <Class IRI="#ProspectRealized"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Shame"/>
-        <Class IRI="#ActionOfAgent"/>
+        <Class IRI="#ActionsOfAgents"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SorryFor"/>
-        <Class IRI="#ConsequenceForOther"/>
+        <Class IRI="#ConsequencesForOthers"/>
     </SubClassOf>
     <DisjointClasses>
-        <Class IRI="#ActionOfAgent"/>
-        <Class IRI="#AspectOfObject"/>
+        <Class IRI="#ActionsOfAgents"/>
+        <Class IRI="#AspectsOfObjects"/>
     </DisjointClasses>
     <DisjointClasses>
-        <Class IRI="#ActionOfAgent"/>
-        <Class IRI="#ConsequenceForOther"/>
+        <Class IRI="#ActionsOfAgents"/>
+        <Class IRI="#ConsequencesForOthers"/>
     </DisjointClasses>
     <DisjointClasses>
-        <Class IRI="#ActionOfAgent"/>
+        <Class IRI="#ActionsOfAgents"/>
         <Class IRI="#ProspectRelevant"/>
     </DisjointClasses>
     <DisjointClasses>
-        <Class IRI="#Agent"/>
+        <Class IRI="#Admiration"/>
+        <Class IRI="#Pride"/>
+    </DisjointClasses>
+    <DisjointClasses>
         <Class IRI="#Appraisal"/>
+        <Class IRI="#Likelihood"/>
     </DisjointClasses>
     <DisjointClasses>
-        <Class IRI="#AspectOfObject"/>
-        <Class IRI="#ConsequenceOfEvent"/>
+        <Class IRI="#Appraisal"/>
+        <Class IRI="#Object"/>
     </DisjointClasses>
     <DisjointClasses>
-        <Class IRI="#BadKnowRelation"/>
-        <Class IRI="#GoodKnowRelation"/>
+        <Class IRI="#Appraisal"/>
+        <Class IRI="#Setup"/>
     </DisjointClasses>
     <DisjointClasses>
-        <Class IRI="#ConsequenceForOther"/>
-        <Class IRI="#ConsequenceForSelf"/>
+        <Class IRI="#AspectsOfObjects"/>
+        <Class IRI="#ConsequencesOfEvents"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#ConsequencesForOthers"/>
+        <Class IRI="#ConsequencesForSelf"/>
     </DisjointClasses>
     <DisjointClasses>
         <Class IRI="#Emotion"/>
         <Class IRI="#KnowRelation"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#High"/>
+        <Class IRI="#Low"/>
+        <Class IRI="#Mid"/>
+        <Class IRI="#None"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Likelihood"/>
+        <Class IRI="#Object"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Likelihood"/>
+        <Class IRI="#Setup"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Object"/>
+        <Class IRI="#Setup"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#ProspectIrrelevant"/>
+        <Class IRI="#ProspectRelevant"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#ProspectNotRealized"/>
+        <Class IRI="#ProspectRealized"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Reproach"/>
+        <Class IRI="#Shame"/>
     </DisjointClasses>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#hasEnemy"/>
@@ -1103,58 +1091,50 @@
         <ObjectProperty IRI="#hasKnow"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasJudge"/>
+        <ObjectProperty IRI="#hasSomething"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasJudgeMyself"/>
+        <ObjectProperty IRI="#hasJudge"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasJudgeOther"/>
+        <ObjectProperty IRI="#hasJudge"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
         <ObjectProperty IRI="#hasKnowRelation"/>
         <ObjectProperty IRI="#hasAppraisal"/>
     </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasPerson"/>
+        <ObjectProperty IRI="#hasSomething"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasPersonEnemy"/>
+        <ObjectProperty IRI="#hasPerson"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasPersonFriend"/>
+        <ObjectProperty IRI="#hasPerson"/>
+    </SubObjectPropertyOf>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#hasAppraisal"/>
         <ObjectProperty IRI="#isAppraisalOf"/>
+        <ObjectProperty IRI="#hasAppraisal"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#isJudgeOf"/>
-        <ObjectProperty IRI="#hasJudge"/>
+        <ObjectProperty IRI="#hasSetup"/>
+        <ObjectProperty IRI="#isSetupOf"/>
     </InverseObjectProperties>
     <SymmetricObjectProperty>
         <ObjectProperty IRI="#hasKnow"/>
     </SymmetricObjectProperty>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasAppraisal"/>
-        <Class IRI="#Agent"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasEnemy"/>
-        <Class IRI="#Agent"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasFriend"/>
-        <Class IRI="#Agent"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasJudge"/>
-        <Class IRI="#Appraisal"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasKnow"/>
         <Class IRI="#Agent"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasKnowRelation"/>
-        <Class IRI="#Agent"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasOther"/>
-        <Class IRI="#Appraisal"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasTarget"/>
-        <Class IRI="#KnowRelation"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <Class IRI="#Appraisal"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#isJudgeOf"/>
+        <ObjectProperty IRI="#hasSetup"/>
         <Class IRI="#Agent"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
@@ -1162,16 +1142,8 @@
         <Class IRI="#Appraisal"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasEnemy"/>
-        <Class IRI="#Agent"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasFriend"/>
-        <Class IRI="#Agent"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
         <ObjectProperty IRI="#hasJudge"/>
-        <Class IRI="#Agent"/>
+        <Class IRI="#Object"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasKnow"/>
@@ -1182,50 +1154,23 @@
         <Class IRI="#KnowRelation"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasOther"/>
+        <ObjectProperty IRI="#hasLikelihood"/>
+        <Class IRI="#Likelihood"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasPerson"/>
         <Class IRI="#Agent"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasTarget"/>
-        <Class IRI="#Agent"/>
+        <ObjectProperty IRI="#hasSetup"/>
+        <Class IRI="#Setup"/>
     </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#isAppraisalOf"/>
-        <Class IRI="#Agent"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#isJudgeOf"/>
-        <Class IRI="#Appraisal"/>
-    </ObjectPropertyRange>
-    <SubObjectPropertyOf>
-        <ObjectPropertyChain>
-            <ObjectProperty IRI="#hasKnowRelation"/>
-            <ObjectProperty IRI="#hasTarget"/>
-        </ObjectPropertyChain>
-        <ObjectProperty IRI="#hasKnow"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectPropertyChain>
-            <ObjectProperty IRI="#hasKnowRelation"/>
-            <ObjectProperty IRI="#isSelfBadKnowRelationOf"/>
-            <ObjectProperty IRI="#hasTarget"/>
-        </ObjectPropertyChain>
-        <ObjectProperty IRI="#hasEnemy"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectPropertyChain>
-            <ObjectProperty IRI="#hasKnowRelation"/>
-            <ObjectProperty IRI="#isSelfGoodKnowRelationOf"/>
-            <ObjectProperty IRI="#hasTarget"/>
-        </ObjectPropertyChain>
-        <ObjectProperty IRI="#hasFriend"/>
-    </SubObjectPropertyOf>
     <SubDataPropertyOf>
-        <DataProperty IRI="#hasDesireOther"/>
-        <DataProperty IRI="#hasDesire"/>
+        <DataProperty IRI="#hasDeserved"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
-        <DataProperty IRI="#hasDesirePresume"/>
+        <DataProperty IRI="#hasDesireOther"/>
         <DataProperty IRI="#hasDesire"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
@@ -1233,84 +1178,40 @@
         <DataProperty IRI="#hasDesire"/>
     </SubDataPropertyOf>
     <DataPropertyDomain>
-        <DataProperty IRI="#hasDesire"/>
-        <Class IRI="#Appraisal"/>
+        <DataProperty IRI="#hasThreshold"/>
+        <Class IRI="#Setup"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="#hasDesireOther"/>
-        <Class IRI="#Appraisal"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasDesirePresume"/>
-        <Class IRI="#Appraisal"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasDesireSelf"/>
-        <Class IRI="#Appraisal"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasEffort"/>
-        <Class IRI="#Appraisal"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasFamiliarity"/>
-        <Class IRI="#Appraisal"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasJudgeness"/>
-        <Class IRI="#Appraisal"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasName"/>
-        <Class IRI="#Agent"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasNiceness"/>
-        <Class IRI="#KnowRelation"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasPower"/>
-        <Class IRI="#Emotion"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasPreviousIntensity"/>
-        <Class IRI="#Appraisal"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasProbability"/>
-        <Class IRI="#Appraisal"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasRealized"/>
-        <Class IRI="#Appraisal"/>
+        <DataProperty IRI="#hasThresholdType"/>
+        <Class IRI="#Setup"/>
     </DataPropertyDomain>
     <DataPropertyRange>
+        <DataProperty IRI="#hasDeserved"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#hasDesire"/>
-        <Datatype abbreviatedIRI="xsd:double"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#hasDesireOther"/>
-        <Datatype abbreviatedIRI="xsd:double"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasDesirePresume"/>
-        <Datatype abbreviatedIRI="xsd:double"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#hasDesireSelf"/>
-        <Datatype abbreviatedIRI="xsd:double"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#hasEffort"/>
-        <Datatype abbreviatedIRI="xsd:double"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#hasFamiliarity"/>
-        <Datatype abbreviatedIRI="xsd:double"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#hasJudgeness"/>
-        <Datatype abbreviatedIRI="xsd:double"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#hasName"/>
@@ -1318,98 +1219,317 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#hasNiceness"/>
-        <Datatype abbreviatedIRI="xsd:double"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasPower"/>
-        <Datatype abbreviatedIRI="xsd:double"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#hasPreviousIntensity"/>
-        <Datatype abbreviatedIRI="xsd:double"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasProbability"/>
-        <Datatype abbreviatedIRI="xsd:double"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#hasRealized"/>
-        <Datatype abbreviatedIRI="xsd:double"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasThreshold"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasThresholdType"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#BadKnowRelation"/>
+                <Variable IRI="urn:swrl#ba"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasPerson"/>
+                <Variable IRI="urn:swrl#ba"/>
+                <Variable IRI="urn:swrl#at"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#isAppraisalOf"/>
+                <Variable IRI="urn:swrl#ba"/>
+                <Variable IRI="urn:swrl#ao"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasEnemy"/>
+                <Variable IRI="urn:swrl#ao"/>
+                <Variable IRI="urn:swrl#at"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#GoodKnowRelation"/>
+                <Variable IRI="urn:swrl#ba"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasPerson"/>
+                <Variable IRI="urn:swrl#ba"/>
+                <Variable IRI="urn:swrl#at"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#isAppraisalOf"/>
+                <Variable IRI="urn:swrl#ba"/>
+                <Variable IRI="urn:swrl#ao"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasFriend"/>
+                <Variable IRI="urn:swrl#ao"/>
+                <Variable IRI="urn:swrl#at"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#KnowRelation"/>
+                <Variable IRI="urn:swrl#ba"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasPerson"/>
+                <Variable IRI="urn:swrl#ba"/>
+                <Variable IRI="urn:swrl#at"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#isAppraisalOf"/>
+                <Variable IRI="urn:swrl#ba"/>
+                <Variable IRI="urn:swrl#ao"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasKnow"/>
+                <Variable IRI="urn:swrl#ao"/>
+                <Variable IRI="urn:swrl#at"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasEnemy"/>
+                <Variable IRI="urn:swrl#ag"/>
+                <Variable IRI="urn:swrl#at"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasPerson"/>
+                <Variable IRI="urn:swrl#ap"/>
+                <Variable IRI="urn:swrl#at"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#isAppraisalOf"/>
+                <Variable IRI="urn:swrl#ap"/>
+                <Variable IRI="urn:swrl#ag"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasPersonEnemy"/>
+                <Variable IRI="urn:swrl#ap"/>
+                <Variable IRI="urn:swrl#at"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasFriend"/>
+                <Variable IRI="urn:swrl#ag"/>
+                <Variable IRI="urn:swrl#at"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasPerson"/>
+                <Variable IRI="urn:swrl#ap"/>
+                <Variable IRI="urn:swrl#at"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#isAppraisalOf"/>
+                <Variable IRI="urn:swrl#ap"/>
+                <Variable IRI="urn:swrl#ag"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasPersonFriend"/>
+                <Variable IRI="urn:swrl#ap"/>
+                <Variable IRI="urn:swrl#at"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasJudge"/>
+                <Variable IRI="urn:swrl#a"/>
+                <Variable IRI="urn:swrl#j"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#isAppraisalOf"/>
+                <Variable IRI="urn:swrl#a"/>
+                <Variable IRI="urn:swrl#k"/>
+            </ObjectPropertyAtom>
+            <DifferentIndividualsAtom>
+                <Variable IRI="urn:swrl#j"/>
+                <Variable IRI="urn:swrl#k"/>
+            </DifferentIndividualsAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasJudgeOther"/>
+                <Variable IRI="urn:swrl#a"/>
+                <Variable IRI="urn:swrl#j"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasJudge"/>
+                <Variable IRI="urn:swrl#a"/>
+                <Variable IRI="urn:swrl#p"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#isAppraisalOf"/>
+                <Variable IRI="urn:swrl#a"/>
+                <Variable IRI="urn:swrl#p"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasJudgeMyself"/>
+                <Variable IRI="urn:swrl#a"/>
+                <Variable IRI="urn:swrl#p"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#ActionOfAgent</IRI>
-        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Avalia a responsabilidade de um agente com uma acao ou evento.</Literal>
+        <IRI>#ActionsOfAgents</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Responsabilidade das ações</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Admiration</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">TODO: agentes nao esta se julgando</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Agent</IRI>
-        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Pessoa que possui avaliacao das coisas
-ao redor e que eh capaz de desempenhar
-atividades no mundo.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Appraisal</IRI>
-        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Avaliacao de um determinado
-evento (consequencia) ou
-acao (responsabilidade) ou
-objeto (familiaridade).</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#AspectOfObject</IRI>
-        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Avalia a familiaridade e atracao de um agente ou objeto.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#ConsequenceOfEvent</IRI>
-        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Avaliacao de uma consequencia de um evento.</Literal>
+        <IRI>#AspectsOfObjects</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Aspectos de atração.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Emotion</IRI>
-        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Representa os tres ramos do modelo.</Literal>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">O modelo propriamente dito.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#KnowRelation</IRI>
-        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Relacao de amigabilidade.</Literal>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Essa avaliação é de como o agente, avaliando se relaciona com o alvo.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Pride</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">TODO: agentes esta se julgando</Literal>
+        <IRI>#hasDeserved</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Grau de merecimento da consequência de um evento que esta sendo avaliado.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#ProspectConfirmed</IRI>
-        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Avaliacao feita sobre um evento
-provavel que jah aconteceu e pode
-ter sido confirmado positivamente
-ou negativamente.</Literal>
+        <IRI>#hasDesire</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Grau de desejo de um evento, tanto pode ser para mim mesmo quanto para outro.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#ProspectUnconfirmed</IRI>
-        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Avaliacao de um evento provavel
-que ainda esta para acontecer,
-mas ainda nao foi realizado.</Literal>
+        <IRI>#hasEffort</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Grau de esforço despendido para atrair ou repelir alguma consequência.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Reproach</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">TODO: agentes nao esta se julgando</Literal>
+        <IRI>#hasEnemy</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Quando inferida essa relação diz que o agente na imagem não é bem relacionado com o que esta no dominio. </Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Shame</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">TODO: agentes esta se julgando</Literal>
+        <IRI>#hasFamiliarity</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Grau de familiaridade de um objeto.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasFriend</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Quando inferida essa relação diz que o agente na imagem bem relacionado com o que esta no dominio. </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasJudge</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">A avaliação sendo feita é de responsabilidade.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasJudgeMyself</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Quando inferida, a pessoa sendo julgada é a propria.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasJudgeOther</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Quando inferida, a pessoa sendo julgada é outra.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasJudgeness</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Grau de julgamento.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasKnowRelation</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Avalia outro agente/personagem permitindo saber o envolvimento existente entre ambos.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasNiceness</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Grau de amigabilidade com outro agente.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasPersonEnemy</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Quando inferida, a pessoa alvo é conhecida como inimiga.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasPersonFriend</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Quando inferida, a pessoa alvo é conhecida como amiga.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasPreviousIntensity</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Usado para informar na ontologia o valor do sentimento de medo e esperança.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasRealized</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Grau de realização de um evento, isto é, como foi a consequência do evento?</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasSetup</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Relaciona o agente com uma configuração.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasSomething</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Permite relacionar uma emoção com alguma coisa.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasThreshold</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Limite minimo para uma emoção virar sentimento.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasThresholdType</IRI>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Relaciona uma configuração com o nome de uma emoção.
+Exemplos de strings validas: joy, distress, hope, fear e etc.</Literal>
     </AnnotationAssertion>
 </Ontology>
 
