@@ -333,7 +333,7 @@ as características que podem ser alterados durante a ``vida'' do objeto. O
 sub-conceito \emph{Static} representa as características que não podem ser
 alteradas depois da criação do objeto. O calor e o dono são exemplos de
 características dinâmicas, enquanto o nome e a capacidade são exemplos de
-características estáticas\todo{esSA frase eu aChei meio esquisitA}.
+características estáticas.
 
 A representação de preferência por determinadas características é representado
 no conceito \emph{Preference}. A preferência representa como uma entidade ou
@@ -363,135 +363,162 @@ atraído pelo objeto e repelido em caso contrário.
 	\end{center}
 \end{table}
 
-\begin{figure}
-  \centering
-    \includegraphics[width=150mm]{figuras/occ_todos_geral.png}
-  \caption{Protege 4 mostrando as importações, dados gerais e regras das
-ontologias desenvolvidas.}
-  \label{fig:tp:cdu:geral}
-\end{figure}
-
-%\begin{wrapfigure}{r}{0.4\textwidth}
-\begin{figure}
-  \includegraphics[height=16cm]{figuras/hierarquiaLOCC.png}
+\begin{wrapfigure}{r}{0.38\textwidth}
+  \includegraphics[height=15cm]{figuras/occ_todos_classes.png}
   \caption{Taxonomia das 3 ontologias.}
   \label{fig:tp:cdu:classes}
-\end{figure}
-%\end{wrapfigure}
-
-\begin{figure}
-  \centering
-  \begin{tabular}{cc}
-  \includegraphics[height=8cm]{figuras/occ_todos_dph.png} & \includegraphics[height=8cm]{figuras/occ_todos_oph.png} \\
-  (i) Relações de dados & (ii) Relações de Objetos
-  \end{tabular}
-  \caption{As relações existentes em todas as ontologias.}
-  \label{fig:tp:cdu:relations}
-\end{figure}
-
+\end{wrapfigure}
 
 As ontologias explicadas nas seções anteriores foram planejadas para serem
-usadas como módulos. Sendo assim, uma ontologia especifica pode ser pega ou
-todas. Para fins de exemplificação, nessa seção será utilizada uma ontologia
-que faz a importação das três ontologias explicadas anteriormente nesse
-capítulo.
+usadas como módulos. Sendo assim, umas das ontologias explicadas anteriormente
+pode ser usada sem o uso das demais ou todas em conjunto. Para fins de
+exemplificação, nessa seção será utilizada uma ontologia que faz a importação
+das três ontologias explicadas anteriormente nesse capítulo.
 
 Os dados das ontologias se encontram resumidos na
-Tabela~\ref{tab:tp:cdu:geral}. Além disso, a Figura~\ref{fig:tp:cdu:geral}
-serve para demonstrar a importação realizada e comprovar os dados fornecidos.
-As Figuras~\ref{fig:tp:cdu:classes}~e~\ref{fig:tp:cdu:relations}
-demonstram, respectivamente, todos os conceitos e todas as relações
-desenvolvidas durante o presente trabalho.
+Tabela~\ref{tab:tp:cdu:geral}. As
+Figuras~\ref{fig:tp:cdu:classes}~e~\ref{fig:tp:cdu:relations} demonstram,
+respectivamente, todos os conceitos e todas as relações desenvolvidas durante
+o presente trabalho. Além disso, a Figura~\ref{fig:tp:cdu:geral} serve para
+demonstrar a importação realizada e comprovar os dados fornecidos.
 
-O primeiro exemplo a ser dado, chamaremos de Ex1, é o de uma avaliação que só
-possui a relação de probabilidade indo para um indivíduo da classe \emph{Low}.
-Por essa avaliação ter sido criada sobre o conceito \emph{Thing} e só possuir
-essa única relação não é possível realizar nenhum outro enquadramento dentro
-dos conceitos propostos.
+Os dois primeiros exemplos que serão dados são de erros possíveis na
+ontologia. O primeiro exemplo a ser dado é o de uma avaliação que só
+possui a relação de probabilidade indo para um indivíduo de conceito. No
+exemplo a relação irá para um indivíduo da classe \emph{Low} e essa avaliação
+é criada sobre o conceito \emph{Thing}. Como só possui uma única relação não é
+possível realizar nenhum outro enquadramento dentro dos conceitos propostos,
+note que se a relação de probabilidade tivesse um domínio esse indivíduo
+criado seria posto lá e isso pode não ser desejado.
 
-O segundo exemplo, chamaremos de Ex2, é o de uma avaliação de um personagem
-chamado Dolores. Esse personagem tem vergonha de sua mãe. Assim, esse
-indivíduo é configurado conforme a
-Figura~\ref{fig:tp:cdu:shameOtherDontSupported}.
-
-\begin{figure}
-  \centering
-  \includegraphics[height=4cm]{figuras/doloresConfig.png}
-  \caption{Avaliação do agente Dolores sobre sua mãe.}
-  \label{fig:tp:cdu:shameOtherDontSupported}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \begin{tabular}{cc}
-  \includegraphics[height=4cm]{figuras/doloresInferencia1.png} & \includegraphics[height=4cm]{figuras/doloresInferencia2.png} \\
-  (a) Esperado era uma emoção & (b) Esperado era o conceito \emph{Shame}
-  \end{tabular}
-  \caption{Exemplos de inferências incorretas.}
-  \label{fig:tp:cdu:shameOtherDontSupportedResults}
-\end{figure}
-
-Esse exemplo, como dito anteriormente, tem a avaliação considerada como de
+O segundo exemplo é o de uma avaliação de um personagem chamado Dolores. Esse
+personagem tem vergonha de sua mãe. Assim, esse indivíduo é configurado
+conforme a Figura~\ref{fig:tp:cdu:shameOtherDontSupported}~(a).
+Esse exemplo, como dito anteriormente, tem a avaliação sendo considerada de
 reprovamento porque no modelo proposto não é possível sentir vergonha por
-outra pessoa. Entretanto, se a pessoa tentar forçar a relação
-\emph{hasJudgeMyself} ao invés da \emph{hasJudge} a ontologia ficará
-inconsistente. Note ainda que a avaliação será classificado como pertence
-ao conceito \emph{ActionsOfAgents} se não for informado que Dolores e
-MaeDolores são indivíduos diferentes. A Figura~\ref{fig:tp:cdu:shameOtherDontSupportedResults}
-demonstra essas duas conclusões incorretas da ontologia.
+outra pessoa conforme demostrado na
+Figura~\ref{fig:tp:cdu:shameOtherDontSupported}~(b). Entretanto, se a pessoa
+tentar forçar a relação \emph{hasJudgeMyself} ao invés da \emph{hasJudge} a
+ontologia ficará inconsistente. Note ainda que a avaliação será classificado
+como pertence ao conceito \emph{ActionsOfAgents} se não for informado que
+Dolores e MaeDolores são indivíduos diferentes. Isso é demostrado na
+Figura~\ref{fig:tp:cdu:shameOtherDontSupported}~(c).
+
+\begin{figure}[ht]
+    \centering
+	\begin{minipage}[t]{\linewidth}
+		\centering
+	    \begin{tabular}{cc}
+		\includegraphics[height=8cm]{figuras/occ_todos_dph.png} \hspace{1cm} & \includegraphics[height=8cm]{figuras/occ_todos_oph.png} \\
+	    (i) Relações de dados & (ii) Relações de Objetos
+	    \end{tabular}
+		\caption{As relações existentes em todas as ontologias.}
+		\label{fig:tp:cdu:relations}
+	\end{minipage} \vspace{0.3cm} \\
+	\begin{minipage}[b]{\linewidth}
+		\centering
+		\includegraphics[width=14cm]{figuras/occ_todos_geral.png}
+		\caption{Protege 4 mostrando as importações, dados gerais e regras.}
+		\label{fig:tp:cdu:geral}
+	\end{minipage}
+\end{figure}
 
 Os exemplos seguintes são baseados em um cenário especifico. Esse possui
-quatro agentes diferentes: Dilu, John, Jose e Millie. Os perfis desses agentes
-são, respectivamente, \emph{Dependent}, \emph{UnemployedAdult} e os dois
-últimos \emph{EmployedAdult}. Conforme explicado na seção~\ref{cap:eda:odhv}
-na página~\pageref{ex:tipos}, o tipo \emph{Dependent} precisa de um adulto
-para se mover, \emph{UnemployedAdult} possui destinos randômicos somente e
+%quatro agentes diferentes: Dilu, John, Jose e Millie. Os perfis desses agentes
+dois agentes diferentes: John e Jose. Os perfis desses agentes
+%são, respectivamente, \emph{Dependent}, \emph{UnemployedAdult} e os dois
+são, respectivamente, \emph{UnemployedAdult} e \emph{EmployedAdult}.
+%últimos \emph{EmployedAdult}.
+Conforme explicado na seção~\ref{cap:eda:odhv} na página~\pageref{ex:tipos},
+%o tipo \emph{Dependent} precisa de um adulto para se mover,
+o tipo \emph{UnemployedAdult} possui destinos randômicos somente e
 \emph{EmployedAdult} possui destino fixo (o local de trabalho) e alguns
 randômicos. Entretanto, a configuração dos locais possíveis foi ignorada
 porque só faz sentido descreve-los quando se esta usando a ontologia
 dentro de uma aplicação e aqui se esta preocupado em demonstra-la de maneira
 isolada.
 
+\begin{figure}[ht]
+    \centering
+	\begin{minipage}{1.0\linewidth}
+	  \centering
+	  \begin{tabular}{m{8.5cm}c}
+	    \begin{minipage}{\linewidth}
+			\centering
+			\includegraphics[width=8cm]{figuras/doloresConfig.png} \\
+			(a) Configuração da avaliação do agente Dolores sobre sua mãe.
+		\end{minipage} &
+	    \begin{minipage}{0.40\linewidth}
+			\centering
+			\includegraphics[height=2cm]{figuras/doloresInferencia2.png} \\
+				(b) Esperado era a emoção de \emph{Shame} \vspace{0.5cm}\\
+			\includegraphics[height=2cm]{figuras/doloresInferencia1.png} \\
+				(c) Nenhum conceito de emoção foi inferido
+		\end{minipage}
+	  \end{tabular}
+	\end{minipage}
+	\caption{Exemplo com o agente Dolores e seus resultados.}
+	\label{fig:tp:cdu:shameOtherDontSupported}
+\end{figure}
+
+
 A Figura~\ref{fig:tp:cdu:johnHasFriendJose} mostra em (a) a configuração
 existente na avaliação feita pelo personagem John sobre Jose. Em (b) é
 mostrado que o mecanismo de inferência conseguiu definir a avaliação como uma
 boa relação. Entretanto, cabe salientar que Jose pode ter outra opinião sobre
-John por que amizade não é uma relação simétrica. No próximo exemplo, na
-Figura~\ref{fig:tp:cdu:joseHasEnemyJohn}, isso é demonstrado.
+John por que amizade não é uma relação simétrica. A
+Figura~\ref{fig:tp:cdu:joseHasEnemyJohn} é a avaliação que Jose faz de John
+que serve para demonstrar isso. %Além disso, a
+%Figura~\ref{fig:tp:cdu:ex9preparo} serve para demonstrar um personagem chamado
+%Dilu avaliando Jose.
 
-\newpage
-
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \begin{tabular}{cc}
-  \includegraphics[height=4cm]{figuras/appraisalEx3.png} & \includegraphics[height=4cm]{figuras/infEx3.png} \\
+  \includegraphics[height=3.5cm]{figuras/appraisalEx3.png} & \includegraphics[height=3.5cm]{figuras/infEx3.png} \\
   (a) Configuração & (b) Resultado
   \end{tabular}
   \caption{Avaliação de John sobre Jose.}
   \label{fig:tp:cdu:johnHasFriendJose}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \begin{tabular}{cc}
-  \includegraphics[height=4cm]{figuras/appraisalEx4.png} & \includegraphics[height=4cm]{figuras/infEx4.png} \\
+  \includegraphics[height=3.5cm]{figuras/appraisalEx4.png} & \includegraphics[height=3.5cm]{figuras/infEx4.png} \\
   (a) Configuração & (b) Resultado
   \end{tabular}
   \caption{Avaliação de Jose sobre John.}
   \label{fig:tp:cdu:joseHasEnemyJohn}
 \end{figure}
 
-% 297 de altura e tudo no x acho q nao passo de 815
+%\vfill
 
-\begin{figure}
-  \centering
-  \begin{tabular}{cc}
-  \includegraphics[height=4cm]{figuras/appraisalEx5.png} & \includegraphics[height=4cm]{figuras/infEx5.png} \\
-  (a) Configuração & (b) Resultado
-  \end{tabular}
-  \caption{Avaliação de Millie julgando seu próprio carro.}
-  \label{fig:tp:cdu:joseHasEnemyJohn}
-\end{figure}
+%\begin{figure}
+%  \centering
+%  \begin{tabular}{cc}
+%  \includegraphics[height=3.5cm]{figuras/appraisalEx9preparo.png} & \includegraphics[height=3.5cm]{figuras/infEx9preparo.png} \\
+%  (a) Configuração & (b) Resultado
+%  \end{tabular}
+%  \caption{Avaliação de Dilu sobre Jose.}
+%  \label{fig:tp:cdu:ex9preparo}
+%\end{figure}
+
+O próximo exemplo, é o da emoção de ódio (\emph{Hate}), serve para demonstrar
+que níveis diferentes de intensidade em uma emoção podem ser pensadas como
+outras emoções. O personagem John repudia a mídia televisiva, essa
+representação é possível de duas formas. A primeira, sendo utilizada na
+Figura~\ref{fig:tp:cdu:ex6}, é construir uma avaliação e considerar que o
+objeto ``Televisão'' representa toda a mídia televisiva. Sendo assim,
+não é possível modelar uma pessoa que não gosta desse tipo de mídia e assiste
+noticiários porque seria uma contradição.
+
+A utilização de preferências é a segunda maneira de modelar o personagem John.
+Assim, ele pode ter uma preferência negativa contra o objeto de nome
+``Televisão''. Entretanto, isso até aqui não é diferente da primeira maneira.
+Agora, pense que esse personagem tem uma preferência positiva quando a
+utilidade é ``Noticias'' e que esse valor sobrepõem o anterior. Dessa forma, o
+agente John pode repudiar a mídia televisiva e assistir um noticiário.
 
 \begin{figure}
   \centering
@@ -499,94 +526,88 @@ Figura~\ref{fig:tp:cdu:joseHasEnemyJohn}, isso é demonstrado.
   \includegraphics[height=4cm]{figuras/appraisalEx6.png} & \includegraphics[height=4cm]{figuras/infEx6.png} \\
   (a) Configuração & (b) Resultado
   \end{tabular}
-  \caption{Avaliação ...}
+  \caption{Avaliação de repudio de John sobre televisão.}
   \label{fig:tp:cdu:ex6}
 \end{figure}
 
-\begin{figure}
-  \centering
-  \begin{tabular}{cc}
-  \includegraphics[height=4cm]{figuras/appraisalEx7.png} & \includegraphics[height=4cm]{figuras/infEx7.png} \\
-  (a) Configuração & (b) Resultado
-  \end{tabular}
-  \caption{Avaliação ...}
-  \label{fig:tp:cdu:ex7}
-\end{figure}
 
-\begin{figure}
-  \centering
-  \begin{tabular}{cc}
-  \includegraphics[height=4cm]{figuras/appraisalEx8.png} & \includegraphics[height=4cm]{figuras/infEx8.png} \\
-  (a) Configuração & (b) Resultado
-  \end{tabular}
-  \caption{Avaliação ...}
-  \label{fig:tp:cdu:ex8}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \begin{tabular}{cc}
-  \includegraphics[height=4cm]{figuras/appraisalEx9preparo.png} & \includegraphics[height=4cm]{figuras/infEx9preparo.png} \\
-  (a) Configuração & (b) Resultado
-  \end{tabular}
-  \caption{Avaliação ...}
-  \label{fig:tp:cdu:ex9preparo}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \begin{tabular}{cc}
-  \includegraphics[height=4cm]{figuras/appraisalEx9.png} & \includegraphics[height=4cm]{figuras/infEx9.png} \\
-  (a) Configuração & (b) Resultado
-  \end{tabular}
-  \caption{Avaliação ...}
-  \label{fig:tp:cdu:ex9}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \begin{tabular}{cc}
-  \includegraphics[height=4cm]{figuras/appraisalEx10.png} & \includegraphics[height=4cm]{figuras/infEx10.png} \\
-  (a) Configuração & (b) Resultado
-  \end{tabular}
-  \caption{Avaliação ...}
-  \label{fig:tp:cdu:ex10}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \begin{tabular}{cc}
-  \includegraphics[height=4cm]{figuras/appraisalEx11.png} & \includegraphics[height=4cm]{figuras/infEx11.png} \\
-  (a) Configuração & (b) Resultado
-  \end{tabular}
-  \caption{Avaliação ...}
-  \label{fig:tp:cdu:ex11}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \begin{tabular}{cc}
-  \includegraphics[height=4cm]{figuras/appraisalEx12.png} & \includegraphics[height=4cm]{figuras/infEx12.png} \\
-  (a) Configuração & (b) Resultado
-  \end{tabular}
-  \caption{Avaliação ...}
-  \label{fig:tp:cdu:ex12}
-\end{figure}
-
-%... tem que tomar o conceito Setup para melhor explicar ele!
+%\newpage
+%xxx
+%\newpage % 297 de altura e tudo no x acho q nao passo de 815
+%\begin{figure}
+%  \centering
+%  \begin{tabular}{cc}
+%  \includegraphics[height=4cm]{figuras/appraisalEx7.png} & \includegraphics[height=4cm]{figuras/infEx7.png} \\
+%  (a) Configuração & (b) Resultado
+%  \end{tabular}
+%  \caption{Avaliação ...}
+%  \label{fig:tp:cdu:ex7}
+%\end{figure}
 %
-Exemplos do doc:
-John - andarilha		Jose - ele trabalha			Millie - ela trabalha			Dilu - dependente
+%\begin{figure}
+%  \centering
+%  \begin{tabular}{cc}
+%  \includegraphics[height=4cm]{figuras/appraisalEx8.png} & \includegraphics[height=4cm]{figuras/infEx8.png} \\
+%  (a) Configuração & (b) Resultado
+%  \end{tabular}
+%  \caption{Avaliação ...}
+%  \label{fig:tp:cdu:ex8}
+%\end{figure}
 %
-ex3 john se da bem com jose
-ex4 jose consira mal john
-ex5 millie julga bem seu carro.
-ex6 john repudia televisao.
-ex7 john gosta/familiar a millie.
-ex8 jose possui orgulho.
-ex9 dilu tem pena de jose.
-	ex9preparo dilu tem boa relacao com jose. (sem isso eh so uma avaliacao e nao SorryFor)
-ex10 Jose tem esperança.
-ex11 John tem satisfação.
-ex12 Millie esta alegre.
+%\begin{figure}
+%  \centering
+%  \begin{tabular}{cc}
+%  \includegraphics[height=4cm]{figuras/appraisalEx9.png} & \includegraphics[height=4cm]{figuras/infEx9.png} \\
+%  (a) Configuração & (b) Resultado
+%  \end{tabular}
+%  \caption{Avaliação ...}
+%  \label{fig:tp:cdu:ex9}
+%\end{figure}
+%
+%\begin{figure}
+%  \centering
+%  \begin{tabular}{cc}
+%  \includegraphics[height=4cm]{figuras/appraisalEx10.png} & \includegraphics[height=4cm]{figuras/infEx10.png} \\
+%  (a) Configuração & (b) Resultado
+%  \end{tabular}
+%  \caption{Avaliação ...}
+%  \label{fig:tp:cdu:ex10}
+%\end{figure}
+%
+%\begin{figure}
+%  \centering
+%  \begin{tabular}{cc}
+%  \includegraphics[height=4cm]{figuras/appraisalEx11.png} & \includegraphics[height=4cm]{figuras/infEx11.png} \\
+%  (a) Configuração & (b) Resultado
+%  \end{tabular}
+%  \caption{Avaliação ...}
+%  \label{fig:tp:cdu:ex11}
+%\end{figure}
+%
+%\begin{figure}
+%  \centering
+%  \begin{tabular}{cc}
+%  \includegraphics[height=4cm]{figuras/appraisalEx12.png} & \includegraphics[height=4cm]{figuras/infEx12.png} \\
+%  (a) Configuração & (b) Resultado
+%  \end{tabular}
+%  \caption{Avaliação ...}
+%  \label{fig:tp:cdu:ex12}
+%\end{figure}
+%
+%%... tem que tomar o conceito Setup para melhor explicar ele!
+%%
+%Exemplos do doc:
+%John - andarilha		Jose - ele trabalha			Millie - ela trabalha			Dilu - dependente
+%%
+%ex3 john se da bem com jose
+%ex4 jose consira mal john
+%ex5 millie julga bem seu carro.
+%ex6 john repudia televisao.
+%ex7 john gosta/familiar a millie.
+%ex8 jose possui orgulho.
+%ex9 dilu tem pena de jose.
+%	ex9preparo dilu tem boa relacao com jose. (sem isso eh so uma avaliacao e nao SorryFor)
+%ex10 Jose tem esperança.
+%ex11 John tem satisfação.
+%ex12 Millie esta alegre.
 

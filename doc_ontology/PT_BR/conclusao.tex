@@ -1,45 +1,45 @@
 \chapter{Conclusão} \label{cap:c}
 %2345678901234567890123456789012345678901234567890123456789012345678901234567890
 
-\todo{se a secao 3.2 ficar na 16 e a 3.4 na pagina 17 ou 18 entao remover
-referencia a pagina da secao 3.4 na 16}
-% Esse paragrafo tem q ser encaixado ou aqui ou na introducao!
+A questão inicial desse projeto foi a modelagem do modelo proposto por
+\citet{ortony1988cse} de maneira a ser o mais próximo possível do completo. A
+restrição inicial de não utilizar regras para o desenvolvimento da mesma teve
+que ser removida por causa que o \OWL foca no nível dos conceitos e quando se
+quer dizer algo mais explícito como, por exemplo, o agente avaliando e o
+agente avaliado são diferentes é uma tarefa impossível. Entretanto, as regras
+operam focando no nível dos indivíduos e, assim, o problema foi resolvido.
+
+Algumas limitações na ontologia desenvolvida existem quando comparadas com o
+modelo original. Um dos casos mais fortes é a falta da empatia que permitiria
+uma pessoa se sentir orgulhosa ou envergonhada por outra pessoa. Por exemplo,
+se ter vergonha de quem bate nos filhos ou ter orgulho por seu time ter ganho.
+Algumas simplificações menores foram que os conceitos \emph{Joy} e
+\emph{Distress} passaram a se relacionar com o domínio de probabilidade para
+deixar claro que eles não tem probabilidade. Além disso, \emph{Love} e
+\emph{Hate} possui duas relações que por ser interessante só quando ambas
+relações eram positivas ou negativas foi usado só uma relação.
+
 A ferramenta \emph{Protege}\footnote{Mais informações, consulte \url{http://protege.stanford.edu}.}
 em sua versão 4.1 foi a utilizada para o desenvolvimento das ontologias.
-Primeiro, por ser um dos mais conhecidos. Segundo, por que ele suporta a
-linguagem \OWL 2.
+Primeiro, por ser uma ferramenta bastante conhecida. Segundo, por que ele
+suportar a linguagem \OWL 2 que foi a utilizada no presente trabalho.
 %
-% nao esquecer de botar aqui uma fala de o que se pensava de ontologia de
-% percepcao e o que terminou sendo e relatar um porque...
-%
-% Isso aqui que foi por agua abaixo que me referia:
-%%Por exemplo, um desenvolvedor só precisa conhecer a ontologia de percepção proposta para saber\dev{} o que o agente deve enviar de crenças ou percepções e o que esperar em retorno.
+Cabe salientar que a ontologia de anotação passou por diferentes fases. Por
+exemplo, em alguns momentos ela foi chamada de ambiente e em outros de
+percepção. Entretanto, no final o nome terminou sendo de anotação. A principal
+ideia dessa ontologia de ``percepção'' (que agora é chamada de anotação) era
+permitir o usuário conhecer somente ela sem conhecer as demais. Todavia, isso
+violaria a modularização das mesmas e, dessa forma, foi escolhido remover essa
+asserção.
 
-\todo{escrever denovo}A questão inicial desse projeto era como modelar o modelo OCC
-\cite{ortony1988cse} de maneira a ser o mais próximo possível do completo. As
-restrições iniciais de não utilizar regras propostas no inicio do mesmo caíram
-por terra ao se ter problemas porque a linguagem de descrição escolhida tem
-foco principal nos conceitos e não nos indivíduos. Todavia, ao utilizar regras
-o que era necessario fazer nos individuos foi completamente sanado.
+A ontologia final é complexa porque a mesma realiza processamento enquadrando
+os indivíduos em seus respectivos conceitos. Os testes foram feitos na
+ferramenta de desenvolvimento da ontologia visando testar a criação de todas
+as emoções em uma ontologia separada. Assim, os resultados foram validados
+sempre depois de alguma modificação com o raciocinador \emph{Hermit}.
 
-Algumas limitacoes do modelo aqui feito, foi que ele nao possui a força de
-unidade cognitva (empatia) por considerar que esta causaria maiores problemas
-de conceitualização. Além disso, no modelo orignal as emoções de \emph{Joy} e
-\emph{Distress} não possuem probabilidade aqui. No entanto, elas se relacionam
-com o conceito de nenhuma probabilidade.
+%Isso aqui é bom de falar na dissertação...
+%A performance em testes simples como os mostrados no capitulo X\todo{fazer?},
+%tendem a uma execução que pode levar de 2 ate 5 segundos que para aplicações
+%interativas seria muito ineficiente.
 
-A performance em testes simples como os mostrados no capitulo X\todo{fazer?},
-tendem a uma execução que pode levar de 2 ate 5 segundos que para aplicações
-interativas seria muito ineficiente.
-
-...
-
-conclusao,
-resultados (revisa-los)
-e trabalhos futuros possiveis
-
-%quando concluir tem que ver se deu problema de hifenizacao em algum lugar!
-%tambem eh importante re-ler, tudo e arrumar a introducao.
-%eu tive impressao lendo que o ultimo paragrafo esta incorreto. (25/10)
-
-%posicionamento das figuras tem que ser revisto!
