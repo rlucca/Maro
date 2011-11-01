@@ -1,0 +1,79 @@
+\chapter{Introdução}
+
+%Ontologia foi caracterizada como o estudo da existência, desde Aristóteles,
+%por estar interessada em descrever todas as coisas existentes e as relações
+%que existem entre elas. Atualmente, essa forma de representar o domínio do
+%conhecimento tem se tornado popular na computação por causa da independência
+%de sistema oferecida.
+
+Segundo \citet{gruber1993translation}, uma ontologia é uma especificação
+explícita do domínio sendo tratado. Além disso, o resultado é um conjunto de
+termos, fundamentados e bem formados para se trabalhar. Entretanto
+\citet{ontoly2004Approach}, definiu ontologia como uma representação usada
+para descobrir outras informações no domínio. Atualmente, ontologias são
+vistas como um entendimento comum e compartilhado de um domínio que pode ser
+utilizado na comunicação entre máquinas ou entre pessoas
+\cite{wks2008towards}.
+
+%% O paragrafo acima foi baseado nesse...
+%Segundo \citet{gruber1993translation}, uma ontologia é uma especificação
+%explícita do domínio sendo tratado. Além disso, ele aplica esse conceito em
+%sistemas baseados em conhecimento no qual o domínio é representado por um
+%formalismo declarativo e o conjunto de conceitos e relações formam o
+%vocabulário usado pelo sistema. Esse vocabulário provém um conjunto de termos
+%bem formados para se trabalhar.
+%%
+%Entretanto \citet{ontoly2004Approach}, definiu ontologia como uma representação
+%do conhecimento usado para descobrir outras informações ou conhecimentos sobre
+%o assunto. Atualmente, ontologias são vistas como um entendimento comum e
+%compartilhado de um domínio que pode ser utilizado na comunicação entre
+%máquinas ou entre pessoas \cite{wks2008towards}.
+
+O presente trabalho foi baseado na linguagem \OWL. Essa linguagem foi
+regulamentada pela \emph{W3C}\footnote{Ver
+\url{http://www.w3.org/standards/semanticweb/ontology}.}, orgão internacional
+que regulamenta padrões na Web, para ser usada na \emph{Web} Semântica. Essa
+linguagem foi criada em 2002 com o proposito de criação de ontologias e
+trabalha com a hipótese de mundo aberto, isto é, nada é afirmado por não ser
+dito. Infelizmente, para a \emph{W3C} não há uma distinção clara entre vocabulário e
+ontologia.
+
+A linguagem \OWL permite a especificação de conceitos e de suas instâncias,
+porém não é possível descrever uma regra simples como um conceito de igualdade
+no qual duas relações distintas tem que chegar na mesma instância final.
+%Outro exemplo, o conceito de tios que são os irmãos de meus pais não é
+%possível ser feita na \OWL. A versão 2 da \OWL permite a descrição do conceito
+%de tios, porém o conceito de igualdade permanece impossível.
+%
+Entretanto, a versão 2 da \OWL passou a incorporar um mecanismo de regras.
+Dessa forma, regras lógicas podem ser usadas para melhorar a precisão dos
+conceitos sendo descritos porque permite lidar com as suas instâncias. Assim,
+é possível descrever o exemplo anterior.
+
+%% Esse era o paragrafo anterior ali reescrito
+%A linguagem \emph{SWRL}\footnote{Mais detalhes \url{http://www.w3.org/Submission/SWRL/}.}
+%recomendada pela \emph{W3C} permite escrever regras lógicas que melhoram a
+%precisão dos conceitos sendo descritos porque permite lidar com as suas
+%instâncias. Dessa forma, a \emph{SWRL} supri uma falta até então não tratada pela
+%linguagem \OWL e, por isso, seu uso em conjunto é extremamente poderoso. Essas
+%duas linguagens juntas permitem a escrita do conceito de igualdade descrito
+%anteriormente. A versão 2 da \OWL tornou essa junção desnecessária porque a
+%mesma incorporou o mecanismo de regras.
+
+A área da computação que estuda as emoções foi denominada Computação Afetiva por
+\citet{Pic98}. As emoções, segundo \citet{damasio2004erro}, podem ser divididas
+entre primárias (não-cognitivas) e secundárias (cognitivas). As emoções
+primárias surgem a partir de reações a determinados estímulos externos e são
+geradas rapidamente. Já as emoções secundárias são aprendidas ao longo da
+nossa vida, isto é, são geradas por uma avaliação de uma situação de acordo
+com nossos objetivos e valores morais. Entretanto, essa divisão ainda não esta
+consolidada porque o fato de haver menos atividade cognitiva não quer dizer
+que esta atividade não exista.
+
+O presente trabalho pretende estudar diferentes ontologias do modelo afetivo
+visando o entendimento destas e suas diferenças no capítulo~\ref{cap:eda}.
+Entretanto, nenhum trabalho propôs a junção de uma ontologia afetiva com uma
+de humanos virtuais com uma que explique como tratar as percepções do
+ambiente. Esse assunto é tratado no capítulo~\ref{cap:tp} juntamente com um
+exemplo de como se usa o desenvolvimento. O capítulo~\ref{cap:c} apresenta as
+conclusões e trabalhos futuros.

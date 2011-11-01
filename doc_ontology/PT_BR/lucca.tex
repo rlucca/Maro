@@ -1,6 +1,6 @@
-\documentclass[12pt]{sa}
-\usepackage{geometry}			% ver geometry.pdf para outros leaiutes
-\geometry{a4paper}
+\documentclass[ti]{iiufrgs}
+%\usepackage{geometry}			% ver geometry.pdf para outros leaiutes
+%\geometry{a4paper}
 \usepackage[T1]{fontenc}        % pacote para conj. de caracteres correto
 \usepackage[utf8]{inputenc}	    % pacote para acentuação
 \usepackage[alf]{abntcite}		% pacote para as referencias da abnt nao numerica
@@ -9,54 +9,58 @@
 \usepackage{color}              % pacote para usar \textcolor
 \usepackage{rotating}		   	% pacote para rotacoes
 \usepackage{xcolor,colortbl}	% colorir tabelas
+\usepackage{wrapfig}
+\usepackage{url}
+\usepackage{endnotes}
 
 % See the ``Article customise'' template for come common customisations
+% Use todo para anotar algo para ver depois
+% Criando comando \todo{algo}
+\newcommand{\todo}[1] {\endnote{TODO #1}\marginpar{\textcolor{red}{\textbf{TODO}}}}
+%\newcommand{\todo}[1] {}
+% Use dev para anotar algum comprometimento
+\newcommand{\dev}[0] {\marginpar{\textcolor{blue}{\textbf{IMPL}}}}
+%\newcommand{\dev}[0] {}
+\newcommand{\citet}{\citeonline}
+\newcommand{\jason}{\emph{Jason} }
+\newcommand{\occ}{\emph{OCC} }
+\newcommand{\OWL}{\emph{OWL} }
 
-\title{Provisorio: Estudo sobre ontologias emocionais}
-\author{Ricardo Rodrigues Lucca}
-%\date{}
+\title{Provisorio: Estudo sobre ontologias afetivas}
+\author{Lucca}{Ricardo Rodrigues}
+%\date{maio}{2011}
+\advisor[Prof.~Dr.]{Bordini}{Rafael Heitor}
+%\location{Itaquequecetuba}{SP}
+\ti[II]{456}
+
+\keyword{teste}
 
 %%% BEGIN DOCUMENT
 \begin{document}
 
 \maketitle
 
-\section{Resumo}
+\tableofcontents
 
-. ........ ........ .... ........ . .......çã. .. .......... ..... \....{.......-.....} ...
-......... .ã. ............. .. ......... ..... . .......... é ........ ... ...... ..........
-..... .......... ...... ... .......... ....., .. .......... .......... .. .....ç.. ... (..)
-..... ......... \....{......2002...,......2003..........,........2003..........}. .. ....
-.......... .... .......... .ã. ........ .. .......... ...: ...-... . .....
-...., .. .....ç. ... ...á ............ .... ...... . ........ . .. ....... .. .......... .....
-....... .. ..... ............. .. .......... ........... ..é. ....., .. ............ ..ó....
-.. á... ...á ......... .......... .. .......... ........... . ......... ............ .. á...
-\....{......2009...,...........1999....}.
-
-\section{Cronograma das atividades}
-
-	\begin{tabular}[c]{c|cccccc}
-		Atividades & \begin{sideways} \small{Jul/11} \end{sideways}& \begin{sideways} \small{Ag/11} \end{sideways}& \begin{sideways} \small{S/11} \end{sideways}& \begin{sideways} \small{O/11} \end{sideways}& \begin{sideways} \small{N/11} \end{sideways}& \begin{sideways} \small{D/11} \end{sideways} \\ \hline
-		%\cellcolor{gray!50} pendente & \\
-		%\cellcolor{green!50} feito & \\
-		%\cellcolor{blue!50} andamento & \\
-		%\cellcolor{red!85} atrasado &  \\
-	Estudo bibliográfico & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} &  &  &  \\
-	Elaboração proposta &  & \cellcolor{gray!50} &  &  &  &  \\
-	Desenv. Ontologia &  &  & \cellcolor{gray!50} & \cellcolor{gray!50} &  &  \\
-	Redação da monografia &  & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} &
-	\end{tabular}
+\include{resumos}
+\include{abreviaturas}
+\include{introducao}
+%\include{cronograma}
+\include{estadoArte}
+\include{trabalho}
+\include{conclusao}
+\include{endNotes}
 
 %\bibliographystyle{abnt-alf}
 \bibliography{mestrado}
 
 	\vfill
 
-   \begin{center}
-		\rule{8cm}{.1mm} \\ Orientador: Prof.~Dr.~Rafael Heitor Bordini
-    \end{center}
-   %\begin{center}
-	%	\rule{8cm}{.1mm} \\ Aprovação: Prof.~Dr.~Ana L.C. Bazzan
-    %\end{center}
+%   \begin{center}
+%		\rule{8cm}{.1mm} \\ Orientador: Prof.~Dr.~Rafael Heitor Bordini
+%    \end{center}
+%   \begin{center}
+%		\rule{6cm}{.1mm} \\ Aluno: Ricardo Rodrigues Lucca
+%    \end{center}
 
 \end{document}
