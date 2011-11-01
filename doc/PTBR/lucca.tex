@@ -141,35 +141,45 @@
 %\include{dedicatoria}
 %\include{agradecimentos}
 \tableofcontents % sumario
-
-\include{abreviaturas}
-
-% LISTA DE SIMBOLOS
-% o parametro deve ser o simbolo mais longo
-%\begin{listofsymbols}{$\alpha\beta\pi\omega$}
-%       \item[$\sum{\frac{a}{b}}$] Somatório do produtório
-%       \item[$\alpha\beta\pi\omega$] Fator de inconstância do resultado
-%\end{listofsymbols}
-
-%\listoffigures % lista de figuras, se houver mais de 3
-%\listoftables % lista de tabelas, se houver mais de 3
-%\lstlistoflistings % lista de listagens, se houver mais de 3
+%\include{abreviaturas}
+%
+%% LISTA DE SIMBOLOS
+%% o parametro deve ser o simbolo mais longo
+%%\begin{listofsymbols}{$\alpha\beta\pi\omega$}
+%%       \item[$\sum{\frac{a}{b}}$] Somatório do produtório
+%%       \item[$\alpha\beta\pi\omega$] Fator de inconstância do resultado
+%%\end{listofsymbols}
+%
+%%\listoffigures % lista de figuras, se houver mais de 3
+%%\listoftables % lista de tabelas, se houver mais de 3
+%%\lstlistoflistings % lista de listagens, se houver mais de 3
+%
+%\definecolor{darkgray}{rgb}{0.95,0.95,0.95}
+%\lstset{backgroundcolor=\color{darkgray}}
+%\lstset{numbers=left, basicstyle=\scriptsize\ttfamily, numberstyle=\tiny, stepnumber=2, numbersep=5pt}
+%
+%%\include{assinaturas}
+%
+%\include{resumo} % inclui o resumo da lingua nativa e estrangeira
 
 \definecolor{darkgray}{rgb}{0.95,0.95,0.95}
 \lstset{backgroundcolor=\color{darkgray}}
 \lstset{numbers=left, basicstyle=\scriptsize\ttfamily, numberstyle=\tiny, stepnumber=2, numbersep=5pt}
 
-%\include{assinaturas}
-
-\include{resumo} % inclui o resumo da lingua nativa e estrangeira
-
-% aqui comeca o texto propriamente dito
-\include{introducao} % ou tambem motivacao
-\include{levantamento} % ou tambem motivacao
-%\include{metodologia} % nao esquecer o cronograma
-\include{proposto}
-%\include{objetivos} % e resultados esperados
-\include{conclusao}
+%% aqui comeca o texto propriamente dito
+%% TODO: versoa anterior
+%\include{introducao} % ou tambem motivacao
+%\include{levantamento} % ou tambem motivacao
+%%\include{metodologia} % nao esquecer o cronograma
+%\include{proposto}
+%%\include{objetivos} % e resultados esperados
+%\include{conclusao}
+%% TODO: versoa anterior fim
+\input{introducao}
+\input{levantamento}
+\input{proposto}
+\input{casoDeUso}
+\input{conclusao}
 
 %\nocite{*} % Citar todos do arquivo bibtex, mesmo quando nao citado
 %\bibliographystyle{abnt-alf} % eh o defauult do abntcite

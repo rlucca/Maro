@@ -3,22 +3,361 @@
 %% Arquivo criado no PC: darkin - Ricardo R. Lucca.
 
 
-%% Created for Ricardo rodrigues lucca at 2011-04-27 20:49:56 -0300 
+%% Created for Ricardo rodrigues lucca at 2011-10-24 15:26:28 -0200 
 
 
 %% Saved with string encoding Western (Windows Latin 1) 
 
 
 
-@inbook{scherer2000tnoe,
+@article{dias2005feeling,
+	Abstract = {O trabalho utiliza o sistema FearNot que foi desenvolvido para reduzir os problemas de bullying nas escolas. As crian{\c c}as s{\~a}o expostas a cenas de bullying e fazem o papel do amigo imaginario da vitima que pode sugerir formas de a{\c c}{\~a}o para situa{\c c}{\~o}es parecidas. A arquitetura criada foi pensanda tendo em mente: ter capacidades reativas e cognitivas, gerar credibilidade e empatia, possuir intera{\c c}{\~a}o com o usu{\'a}rio (note que os agentes n{\~a}o seguem cegamnte o que o usuario diz porque isso baixaria a credibilidade) e ser independente de dominio.
+
+O autor cita Thomas and Johnston (Wall Disney) que falam que revelar os sentimentos dos personagens tamb{\'e}m revela sua personalidade. Eles tamb{\'e}m definem tr{\^e}s requisitos para o sucesso da express{\~a}o emocional: deve ser percebido sem nenhuma d{\'u}vida pela plateia; emo{\c c}{\~o}es podem ser acentuadas ou exageradas para um melhor entendimento;  emo{\c c}{\~o}es afeitam o processo de delibera{\c c}{\~a}o e consequencias devem ser notadas nas a{\c c}{\~o}es dos personagens.
+
+O processo de delibera{\c c}{\~a}o do agente {\'e} focado na avalia{\c c}{\~a}o feita a partir do que se percebe do ambiente em niveis reativos e deliberativos (emo{\c c}{\~o}es com probabilidade). Apos o estado emocional {\'e} gerado e a memoria atualizada paralelamente. O processo de imita{\c c}{\~a}o pode ser tamb{\'e}m no nivel reativo (tendencias de a{\c c}{\~o}es) ou deliverativo (foco no problema ou emo{\c c}{\~a}o). Quando o nivel deliverativo procede, uma reavalia{\c c}{\~a}o pode ser feita que afeta o estado emocional (NOTA: caminho do cortex?) ou o entendimento do conhecimento (memorias: modelo do mundo, metas, intencoes e planos).
+
+},
+	Author = {Dias, J. and Paiva, A.},
+	Date-Added = {2011-10-24 11:27:49 -0200},
+	Date-Modified = {2011-10-24 15:25:21 -0200},
+	Journal = {Progress in artificial intelligence},
+	Pages = {127-140},
+	Publisher = {Springer},
+	Title = {Feeling and reasoning: A computational model for emotional characters},
+	Year = {2005}}
+
+@article{gratch2004domain,
+	Abstract = {O foco do trabalho {\'e} a integra{\c c}{\~a}o de processos de raciocinadores simbolicos como planejar, agir, comuni{\c c}{\~a}o em linguagem natural e modelagem do usu{\'a}rio em um {\'u}nico sistema e o papel do processamento da emo{\c c}{\~a}o serve para tudo isso. O processo criado foi baseado em dois processos simples: avalia{\c c}{\~a}o (relacionado com o ambiente) e imita{\c c}{\~a}o (que sugere estrategias de a{\c c}{\~o}es a serem tomadas). As avalia{\c c}{\~o}es s{\~a}o baseadas em `variaveis de avalia{\c c}{\~a}o' (componentes de avalia{\c c}{\~a}o ou dimens{\~o}es de avalia{\c c}{\~a}o s{\~a}o outros nomes). O autor identificou as que mais aparecem nos trabalhos e se baseou nessas para criar seu sistema chamado EMA (EMotion and Adaptation).
+
+Al{\'e}m disso, as estrategias de imita{\c c}{\~a}o podem ser baseadas no problema ou emocional. As baseadas no problema, normalmente, possuem alguma a{\c c}{\~a}o envolvida e foram encontradas 3 estrategias (copia ativa [tenta fazer], procurar suporte social [procurar informa{\c c}{\~a}o, conselheiro, etc] e planejar). O foco emocional tem ao todo 11 estrategias encontradas, elas se baseam em muitas vezes rever as prioridades anteriormente classificadas para melhorar o entendimento do mundo. Por exemplo, {\'e} possivel aceitar uma falha, negar o que esta acontecendo, procurar uma interpreta{\c c}{\~a}o positiva ou, at{\'e} mesmo, fazer uma outra atividade para evitar fazer o que {\'e} necessario (mental disengagement. Nota: No portugues isso seria procastinar! hehehehe).  Cada uma dessas estrategias s{\~a}o bem explicadas juntamente com exemplo de como o processo de imita{\c c}{\~a}o acontece em 5 estagios (identifica{\c c}{\~a}o de oportunidade, elabora{\c c}{\~a}o da situa{\c c}{\~a}o, proposi{\c c}{\~a}o de alternativas, estimativa do potencial de imita{\c c}{\~a}o e sele{\c c}{\~a}o da estrategia). O trabalho se baseia no trabalho de Elliot (1992 - affective reasoner) que {\'e} baseado no OCC. Uma das coisas interessantes aqui {\'e} que s{\~a}o usados conceitos de frames quando esta sendo feita a avalia{\c c}{\~a}o, al{\'e}m disso o agente mantem uma rela{\c c}{\~a}o do que aconteceu no passado, o que esta acotecendo e do futuro. O mecanismo de avalia{\c c}{\~a}o permite criar avalia{\c c}{\~o}es contraditorias ou com multiplos entendimentos do mundo, entretanto para o mecanismo de cria{\c c}{\~a}o de avalia{\c c}{\~a}o n{\~a}o sair (enloquecido) criando avalia{\c c}{\~o}es foi usado um threshold que quando atingindo {\'e} considerado um evento importante e que merece ser avaliado, similar {\`a} id{\'e}ia de ter sua aten{\c c}{\~a}o focada.
+
+Eu acredito que esse trabalho eh uma estens{\~a}o do que foi iniciado em 2000 pelo Gratch.},
+	Author = {Jonathan Gratch and Stacy Marsella},
+	Date-Added = {2011-10-24 11:24:43 -0200},
+	Date-Modified = {2011-10-24 15:06:20 -0200},
+	Journal = {Cognitive Systems Research},
+	Number = {4},
+	Pages = {269-306},
+	Publisher = {Elsevier},
+	Title = {A domain-independent framework for modeling emotion},
+	Volume = {5},
+	Year = {2004}}
+
+@article{kasap2007intelligent,
+	Annote = {Eu considero que {\'e} um bom review da {\'a}rea de humanos virtuais, os assuntos discutidos s{\~a}o: comportamento autonomo (percep{\c c}{\~a}o, tomada de decis{\~a}o, controle de a{\c c}{\~a}o), intera{\c c}{\~a}o (express{\~a}o facial, gestos e gerenciamento de dialogos), personifica{\c c}{\~a}o (personalidade, emo{\c c}{\~o}es, aplica{\c c}{\~a}o).
+
+Eu tinha lido esse documento por algum proprosito e voltei a ele agora, mas decide que um resumo n{\~a}o {\'e} necess{\'a}rio...},
+	Author = {Zerrin Kasap and Nadia Magnenat-Thalmann},
+	Date-Added = {2011-10-24 11:06:25 -0200},
+	Date-Modified = {2011-10-24 11:07:14 -0200},
+	Journal = {Intelligent Decision Technologies},
+	Number = {1},
+	Pages = {3-15},
+	Publisher = {IOS Press},
+	Title = {Intelligent virtual humans with autonomy and personality: State-of-the-art},
+	Volume = {1},
+	Year = {2007}}
+
+@inproceedings{masolo2004social,
+	Annote = {Eu li e entendi at{\'e} uma determinada parte. Eu n{\~a}o entendo porque eu imprimi esse artigo, creio que eu pensei que ele ia hierarquiar papeis sociais e n{\~a}o apenas criar uma formaliza{\c c}{\~a}o para eles.},
+	Author = {Claudio Masolo and Laure Vieu and Emanuele Bottazzi and Carola Catenacci and Roberta Ferrario and Aldo Gangemi and Nicola Guarino},
+	Booktitle = {Proceedings of the Ninth International Conference on the Principles of Knowledge Representation and Reasoning, 2004},
+	Date-Added = {2011-10-24 10:59:55 -0200},
+	Date-Modified = {2011-10-24 11:03:34 -0200},
+	Organization = {AAAI Press},
+	Title = {Social roles and their descriptions},
+	Year = {2004}}
+
+@article{spyns2002data,
+	Abstract = {Faz uma analogia de ontologia com modelagem de dados (em aplica{\c c}{\~o}es e bancos de dados). Eu achei que o foco do artigo era isso, mas depois da introdu{\c c}{\~a}o pareceu que ele n{\~a}o tocou mais no assunto (ou eu li com pressa).},
+	Author = {Spyns, P. and Meersman, R. and Jarrar, M.},
+	Date-Added = {2011-10-10 11:44:26 -0300},
+	Date-Modified = {2011-10-10 11:44:37 -0300},
+	Journal = {ACM SIGMOD Record},
+	Number = {4},
+	Pages = {12--17},
+	Publisher = {Association for Computing Machinery, Inc, One Astor Plaza, 1515 Broadway, New York, NY, 10036-5701, USA,},
+	Title = {Data modelling versus ontology engineering},
+	Volume = {31},
+	Year = {2002}}
+
+@inproceedings{paiva2005ontology,
+	Abstract = {A primeira ontologia a ser abordada descreve o comportamento habitual de
+atores em uma determinada cidade virtual. Essa ontologia mostrada na
+Figura~\ref{fig:UEM} foi apresentada durante a introdu{\c c}{\~a}o do \emph{Urban
+Environment Model} no trabalho de \citet{paiva2005ontology}. Nesta h{\'a} 5
+conceitos principais, o primeiro conceito \emph{Agent} se relaciona com o
+conceito \emph{Profile} para determinar o tipo de agente. Dessa forma, o
+perfil do agente pode ser \emph{Unemployed Adult}, \emph{Employed Adult},
+\emph{Child} e \emph{Dependent}. Os tipos \emph{Child} e \emph{Employed Adult}
+possuem destinos fixos em determinados momentos do dia e, depois, destinos
+rand{\^o}micos. \emph{Unemployed Adult} s{\'o} possui destinos rand{\^o}micos e
+\emph{Dependent} necessita de um adulto para se mover.
+
+Assim, o perfil do agente permite definir locais usuais (fixos) e eventuais
+(rand{\^o}micos). Esses locais s{\~a}o definidos pelo conceito \emph{Place} que cont{\^e}m
+uma descri{\c c}{\~a}o de sua capacidade (quantidade m{\'a}xima de atores), dimens{\~a}o
+(rela{\c c}{\~a}o) e hor{\'a}rio de funcionamento (rela{\c c}{\~a}o). O conceito de \emph{Dimension}
+guarda possui a posi{\c c}{\~a}o dos eixos X e Y, altura e largura. Finalmente, o
+{\'u}ltimo \emph{Schedules} possui o hor{\'a}rio de abertura e fechamento, intervalo 
+de entrada e tempo m{\'e}dio de perman{\^e}ncia.
+
+NOTA: uma coisa que nao me cheira bem aqui, Schedules tem todos os dados como strings. Quando o mais correto seria ser DateTime ou mesmo Integer e n{\~a}o STRING!},
+	Author = {D. C. Paiva and R. Vieira and S. R. Musse},
+	Booktitle = {Proceedings of the Computer Graphics International 2005},
+	Date-Added = {2011-09-28 16:21:42 -0300},
+	Date-Modified = {2011-09-29 11:19:38 -0300},
+	Organization = {IEEE Computer Society},
+	Pages = {221--226},
+	Title = {Ontology-based crowd simulation for normal life situations},
+	Year = {2005}}
+
+@inproceedings{kshirsagar2002multilayer,
+	Author = {Kshirsagar, S.},
+	Booktitle = {Proceedings of the 2nd international symposium on Smart graphics},
+	Date-Added = {2011-09-27 21:25:00 -0300},
+	Date-Modified = {2011-09-27 21:25:00 -0300},
+	Organization = {ACM},
+	Pages = {107--115},
+	Title = {A multilayer personality model},
+	Year = {2002}}
+
+@article{ribeiro2006cooking,
+	Abstract = {Lido parte do documento, mas como nao vou citar foi abandonada a leitura.},
+	Author = {Ribeiro, R. and Batista, F. and Pardal, J. and Mamede, N. and Pinto, H.},
+	Date-Added = {2011-09-13 14:41:34 -0300},
+	Date-Modified = {2011-09-13 14:41:47 -0300},
+	Journal = {Artificial Intelligence: Methodology, Systems, and Applications},
+	Pages = {213-221},
+	Publisher = {Springer},
+	Title = {Cooking an ontology},
+	Year = {2006}}
+
+@inproceedings{campbell2007ontologies,
+	Abstract = {Lido o inicio nao pareceu ser interessante para mim citar,
+ele fala de ontologias para o sistemas de chamadas da
+policia feita via internet e seria para definir prioridades
+baseados na fala. Algo assim, por agora n{\~a}o {\'e} interessante.},
+	Author = {Campbell, G.A. and Turner, K.J.},
+	Booktitle = {Telecommunications, 2007. AICT 2007. The Third Advanced International Conference on},
+	Date-Added = {2011-09-13 14:37:30 -0300},
+	Date-Modified = {2011-09-13 14:37:36 -0300},
+	Organization = {IEEE},
+	Pages = {18--18},
+	Title = {Ontologies to support call control policies}}
+
+@misc{noy2001ontology,
+	Abstract = {Lendo isso me pareceu que eu ja tinha lido isso talvez na gradua{\c c}{\~a}o,
+mesmo assim por parecer mais um tutorial de ontologia do que um
+artigo de conferencia acho que nao vale citar.},
+	Author = {Noy, N.F. and McGuinness, D.L. and others},
+	Date-Added = {2011-09-13 14:21:12 -0300},
+	Date-Modified = {2011-09-13 14:22:53 -0300},
+	Publisher = {Citeseer},
+	Title = {Ontology development 101: A guide to creating your first ontology},
+	Year = {2001}}
+
+@article{burger2008need,
+	Abstract = {De acordo com Smeulders citado por Tobias, o verdadeiro "furo semantico" {\'e} tentar achar formas de extrair semantica de alto n{\'\i}vel de caracteristicas de baixo nivel (circulo branco e fundo verde ser inferido como quadro que lembra futebol).
+
+"As defined by Gruber [Gruber 1993], an ontology is an explicit specification of a (shared) conceptualization. The term ontology has been in use for many centuries and ontologies are widely used in applications related to information integration, information retrieval, knowledge management or in the Semantic Web. Ontolo- gies are usually used to establish a common understanding of a domain and to capture the domain knowledge. This is usually done by modeling basic terms and relations which hold between terms, and by providing rules stating restrictions on the usage of both terms and relations." (eh a definicao mais repetitiva nos artigos acho q devo aceita-la e acabo).
+
+A ideia da proposta eh propor um framework de ontologia multimidia que descreva: o nivel fisico e semantico, tenha um dominio semantico em alto nivel e informa{\c c}{\~o}es de contexto e regras. O uso na industria de jogos e entrenimento podem ser os mais diversos:
+ - Busca Semantica: visa melhorar a localiza{\c c}{\~a}o do objeto multimidia desejado. A ideia {\'e} anexar informa{\c c}{\~o}es ou contextos de maneira escondida e automaticamente para suportar a recupera{\c c}{\~a}o;
+ - Suporte de anota{\c c}{\~o}es: cria{\c c}{\~a}o de anota{\c c}{\~o}es sobre os dados (dados sobre os dados, metadata), sobretudo {\'e} uma tarefa f{\'a}cil. O desafio esta em gerenciar e manter essas anota{\c c}{\~o}es todas atualizadas.
+ - Unificar Metadados de diferentes formatos: A id{\'e}ia {\'e} que a ontologia possa ao realizar a consulta entender diferentes formatos de metadados.
+ - Suporte para aplica{\c c}{\~a}o em v{\'a}rias midias: a industria hoje possui muitas plataformas de destinos diferentes (filmes, internet, papel, jogos). Assim, {\'e} possivel reutilizar um dado* feito para filme em uma produ{\c c}{\~a}o de um jogo.
+
+Aqui estao os exemplos de como seria utilizadas essas ontologias:
+ - Reuso de dados*: A produ{\c c}{\~a}o de midia cada vez mais tem a falta de abilidade de reutilizar os dados em produ{\c c}{\~o}es feitas para multiplas midias. O problema aqui fica no contexto da cena, como o personagem ira interagir com o objeto (dado) reutilizado? ou como o objeto sera reutilizado?
+ - Produ{\c c}{\~a}o integrada e Entrega em multiplas midias de dados*: A produ{\c c}{\~a}o em diferentes formatos em parelo, tem uma complica{\c c}{\~a}o que {\'e} as diferentes formas de ver um mesmo conceito. Por exemplo, em jogos (atores/avatar) e em filmes (so atores); em jogos (estagios) e em filmes (cenas)...
+ - Ajuda na recupera{\c c}{\~a}o da informa{\c c}{\~a}o multimidia: aqui o problema come{\c c}a no tipo de consulta desejados. Por exemplo, "Ricardo se encaminhando para X". Ele deve saber que Ricardo eh provavelmente um ator, que "se encaminhando" se refere a uma a{\c c}{\~a}o que poderia ser viajar e X seria o local de destino.
+- Personaliza{\c c}{\~a}o de busca: Com uma ontologia definida {\'e} possivel personalizar busca por papeis que o usu{\'a}rio possui, por exemplo um engenheiro ter{\'a} acesso a informacoes mais tecnicas, enquanto um gerente tera aceso a informais gerais de nivel estrategico.
+
+* pode ser pensado como qualquer coisa, desde uma imagem ate uma simples propriedade abstrata},
+	Author = {B{\\"u}rger, T. and Zeiner, H.},
+	Date-Added = {2011-09-13 10:33:23 -0300},
+	Date-Modified = {2011-09-13 11:19:02 -0300},
+	Journal = {Journal of Universal Computer Science},
+	Number = {10},
+	Pages = {1775-1791},
+	Title = {The need for formalizing media semantics in the games and entertainment industry},
+	Volume = {14},
+	Year = {2008}}
+
+@inproceedings{burger2008salero,
+	Abstract = {Esse artigo tem haver com o mestrado diretamente, ele utilizou a mesma ontologia de humanos virtuais que estou pensando em utilizar, extendendo-a para fazer o que gostaria.
+Maiores detalhes ver o artigo.
+
+Outra coisa que gostei foi dos links referenciados: www.salero.eu e www.aimatshape.net 
+Porem, no primeiro nao encontrei a ontologia e no segundo sim (Garcia-rojas provavelmente).},
+	Author = {B{\\"u}rger, T. and Hofmair, P. and Kienast, G.},
+	Booktitle = {First Workshop on Semantic 3D Media at SAMT},
+	Date-Added = {2011-09-13 09:40:15 -0300},
+	Date-Modified = {2011-09-13 09:52:14 -0300},
+	Month = {December},
+	Organization = {Citeseer},
+	Title = {The SALERO Virtual Character Ontology},
+	Year = {2008}}
+
+@article{metralontologies,
+	Abstract = {Nesse artigo o "bom" s{\~a}o as seguintes coisas:
+  - Definicao de sustentabilidade como "satisfazer as necessidades do presente sem comprometer a habilidade das futuras geracoes satisfazer as suas proprias";
+  - CityGML {\'e} uma extens{\~a}o do XML para recriar cidades (eu lembro que o RobocupRescue tem uma ferramenta que cria o mapa baseado no google maps baseado nisso, mas isso nao eh citado);
+  - A ontologia montada no final nao eh importante para mim aqui, entretanto eles falam de formas de levar as coisas de uma ontologia para outra usando implicacoes de duas ontologias diferentes (Mitra, Wiederhold and Kersten, 2000) para uma ontologia final. Tamb{\'e}m foi proposto normaliza{\c c}{\~o}es metricas sobre valores. Al{\'e}m disso, a propriedade da imagem (property range) onde a ontologia fonte mapeia o dado de uma destino; conceitos com vis{\~o}es diferentes (Concepts with different viewpoints), a ideia {\'e} a cria{\c c}{\~a}o de uma classe onde h{\'a} a propriedade diferente que vai para as referidas propriedades em cada uma das ontologias e utiliza um Axioma para dizer que uma vis{\~a}o corresponde a outra (exemplo uma ontologia que tem rua com tamanho e outra que tem rua com geometria que dai tem o tamanho); Instancias que s{\~a}o derivas a partir de outras instancias em outras ontologias;},
+	Author = {Metral, C. and Falquet, G. and Karatzas, K.},
+	Date-Added = {2011-09-13 09:10:44 -0300},
+	Date-Modified = {2011-09-13 09:14:58 -0300},
+	Journal = {Conceptual Models for Urban Practitioners},
+	Pages = {18-33},
+	Title = {Ontologies for the Integration of Air Quality Models and 3D City Models},
+	Year = {2007}}
+
+@article{fensel1997using,
+	Abstract = {Tenta descrever o metodo de resolver problemas (PSM) atraves de uma ontologia formal feita baseada na logica Sloppy (S-logic) que eh baseada na logica frame.
+
+Planejamento pode ser caracterizado como dirigido a meta. Uma boa maneira de dirigir a meta, informalmente, {\'e} por necessidades e desejos[Wielinga, 1995]. Assim, o processo recebe um conjunto de necessidades, desejos, restri{\c c}oes e um poss{\'\i}vel conjunto "tarefas" possiveis e tem como resultado um artefato final.
+Essa forma de pensar tamb{\'e}m pode ser vista como dirigida a tarefa.
+
+O artigo segue a explica{\c c}{\~a}o do processo de resolver problemas de planejamento e coloca um custo em cada uma das solu{\c c}{\~o}es para ele depois poder dirigir que a melhor meta {\'e} a que tem menor custo entre todas as metas. Como normalmente, utiliza-se de backtracking (para voltar e refazer coisas) o artigo utiliza a ideia de proposta e revis{\~a}o. Essa ideia diminui ou anula o backtracking por{\'e}m o como resultado apenas o m{\'a}ximo local pode ser obtido que n{\~a}o {\'e} necessariamente o m{\'a}ximo global do sistema. O artigo definiu uma ontologia para planejamento de tarefas parametrico e "proposta e revis{\~a}o" que s{\~a}o independente de qualquer dominio ou PSM ou modelo de tarefa. Al{\'e}m de um adaptador que integra a tarefa e os metodos de especificacoes.
+Interessante que ele liga a ideia de "propor e revisar" com a ideia do A* (A estrela) ou do algoritmo de subir a colina (hill-climbing).},
+	Annote = {DOI 10.1.1.41.1698},
+	Author = {Fensel, D. and Motta, E. and Decker, S. and Zdr{\'a}hal, Z.},
+	Date-Added = {2011-09-12 13:26:55 -0300},
+	Date-Modified = {2011-09-12 13:29:05 -0300},
+	Journal = {Knowledge Acquisition, Modeling and Management},
+	Pages = {113-128},
+	Publisher = {Springer},
+	Title = {Using ontologies for defining tasks, problem-solving methods and their mappings},
+	Year = {1997}}
+
+@article{Gutierrez:2007:OVH:1229160.1229164,
+	Abstract = {Nada que analise e sintese formas humanas tem integrado informa{\c c}{\~a}o semantica relacionada a estrutura de anima{\c c}{\~a}o requirida para controlar e animar a forma. A diferentes niveis de intera{\c c}{\~a}o, o de acessorios (joiais, roupas, chapeus que s{\~a}o anexados a forma humana), o de anima{\c c}{\~a}o (considerada apenas via articulada, sequenciadores de animadores e controladores comporais) e o de manipula{\c c}{\~a}o de objetos (como o nome diz eh a interacao entre objeto e humano virtual que aqui {\'e} representado por um Smart Object).
+
+A ontologia humanos virtuais foi definida por quest{\~o}es de competencias. Ver figura 6 e secao 5.2.},
+	Acmid = {1229164},
+	Address = {Secaucus, NJ, USA},
+	Author = {Mario Guti{\'e}rrez and Alejandra Garc{\'\i}a-Rojas and Daniel Thalmann and Frederic Vexo and Laurent Moccozet and Nadia Magnenat-Thalmann and Michela Mortara and Michela Spagnuolo},
+	Date-Added = {2011-08-23 22:15:16 -0300},
+	Date-Modified = {2011-10-24 11:16:23 -0200},
+	Doi = {10.1007/s00371-006-0093-4},
+	Issn = {0178-2789},
+	Issue = {3},
+	Journal = {The {V}isual {C}omputer},
+	Month = {February},
+	Numpages = {12},
+	Pages = {207--218},
+	Publisher = {Springer-Verlag New York, Inc.},
+	Title = {An ontology of virtual humans: {I}ncorporating semantics into human shapes},
+	Url = {http://dl.acm.org/citation.cfm?id=1229160.1229164},
+	Volume = {23},
+	Year = {2007},
+	Bdsk-Url-1 = {http://dl.acm.org/citation.cfm?id=1229160.1229164},
+	Bdsk-Url-2 = {http://dx.doi.org/10.1007/s00371-006-0093-4}}
+
+@inproceedings{Rojas:2006:IRM:1174429.1174442,
+	Acmid = {1174442},
+	Address = {New York, NY, USA},
+	Author = {Garc\'{\i}a Rojas, Alejandra and Vexo, Fr\'{e}d\'{e}ric and Thalmann, Daniel},
+	Booktitle = {Proceedings of the 4th international conference on Computergraphics and interactive techniques in Australasia and Southeast Asia},
+	Date-Added = {2011-08-23 22:12:14 -0300},
+	Date-Modified = {2011-10-24 11:16:36 -0200},
+	Doi = {http://doi.acm.org/10.1145/1174429.1174442},
+	Isbn = {1-59593-564-9},
+	Location = {Kuala Lumpur, Malaysia},
+	Numpages = {7},
+	Pages = {79--85},
+	Publisher = {ACM},
+	Series = {GRAPHITE '06},
+	Title = {Individualized reaction movements for virtual humans},
+	Url = {http://doi.acm.org/10.1145/1174429.1174442},
+	Year = {2006},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/1174429.1174442}}
+
+@inproceedings{lera2009semantic,
+	Author = {Lera, I. and Arellano, D. and Varona, J. and Juiz, C. and Puigjaner, R.},
+	Booktitle = {3rd Symposium of Ubiquitous Computing and Ambient Intelligence 2008},
+	Date-Added = {2011-08-23 21:57:31 -0300},
+	Date-Modified = {2011-08-23 21:57:31 -0300},
+	Organization = {Springer},
+	Pages = {139--148},
+	Title = {Semantic model for facial emotion to improve the human computer interaction in ami},
+	Year = {2009}}
+
+@incollection{springerlink:10.1007/978-3-642-01639-448,
+	Affiliation = {The Catholic University of Korea School of Computer Science and Information Engineering 43-1 Yeokgok 2-dong, Wonmi-gu Bucheon Gyeonggi-do Republic of Korea},
+	Annote = {\citet{springerlink:10.1007/978-3-642-01639-448} desenvolveu um motor de
+emo{\c c}{\~o}es que utiliza um modelo de mistura de emo{\c c}{\~o}es em conjunto com o modelo
+OCC. O trabalho deles dividiu o modelo em camadas, nas quais cada camada tem
+uma responsabilidade distinta e que visa complementar a anterior. A
+camada de classifica{\c c}{\~a}o visa determinar que categoria ou ramo ser{\'a} afetado. A
+seguinte de quantifica{\c c}{\~a}o determina a intensidade da emo{\c c}{\~a}o. A de intera{\c c}{\~a}o
+analisa os efeitos nas categorias emocionais do personagem. A pr{\'o}xima mapeia
+as 22 emo{\c c}{\~o}es do modelo para pelo menos uma express{\~a}o e a {\'u}ltima camada {\'e} a
+respons{\'a}vel por realizar a express{\~a}o propriamente dita no ator.
+
+Esse trabalho ainda utilizou um modelo dimensional para misturar as emo{\c c}{\~o}es
+prim{\'a}rias. Assim, as emo{\c c}{\~o}es secund{\'a}rias podem ser descobertas a partir dos
+eixos do n{\'\i}vel dos eixos afetados. O trabalho mostra somente 10 emo{\c c}{\~o}es do
+ramo de consequ{\^e}ncia de eventos, com exce{\c c}{\~a}o das emo{\c c}{\~o}es de esperan{\c c}a (Hope) e
+medo n{\~a}o confirmado (Fear). As emo{\c c}{\~o}es do modelo OCC s{\~a}o consideradas as
+emo{\c c}{\~o}es prim{\'a}rias e como secund{\'a}rias est{\~a}o as emo{\c c}{\~o}es constru{\'\i}das a partir da
+mistura de outras emo{\c c}{\~o}es.
+},
+	Author = {Hwang, WooYeon and Yang, Jung-Jin},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1007/978-3-642-01639-4\_48},
+	Booktitle = {Agent Computing and Multi-Agent Systems},
+	Date-Added = {2011-08-23 21:35:42 -0300},
+	Date-Modified = {2011-09-27 15:17:50 -0300},
+	Editor = {Ghose, Aditya and Governatori, Guido and Sadananda, Ramakoti},
+	Isbn = {978-3-642-01638-7},
+	Keyword = {Computer Science},
+	Note = {10.1007/978-3-642-01639-4\_48},
+	Pages = {464-472},
+	Publisher = {Springer Berlin / Heidelberg},
+	Series = {Lecture Notes in Computer Science},
+	Title = {Ontology-Based Emotion System for Digital Environment},
+	Url = {http://dx.doi.org/10.1007/978-3-642-01639-4\_48},
+	Volume = {5044},
+	Year = {2009},
+	Bdsk-Url-2 = {http://dx.doi.org/10.1007/978-3-642-01639-4%5C_48}}
+
+@article{gruber1993translation,
+	Author = {Gruber, T.R. and others},
+	Date-Added = {2011-08-22 16:26:24 -0300},
+	Date-Modified = {2011-08-22 16:26:24 -0300},
+	Journal = {Knowledge acquisition},
+	Number = {2},
+	Pages = {199--220},
+	Publisher = {Citeseer},
+	Title = {A translation approach to portable ontology specifications},
+	Volume = {5},
+	Year = {1993}}
+
+@incollection{springerlink:10.1007/978-3-642-22203-012,
+	Affiliation = {Faculty of Computer Science, Dian Nuswantoro University, 50131 Semarang, Indonesia},
+	Author = {Santoso, Heru-Agus and Haw, Su-Cheng and Lee, Chien-Sing},
+	Booktitle = {Software Engineering and Computer Systems},
+	Date-Added = {2011-08-22 16:11:35 -0300},
+	Date-Modified = {2011-08-22 16:11:35 -0300},
+	Editor = {Zain, Jasni Mohamad and Wan Mohd, Wan Maseri bt and El-Qawasmeh, Eyas},
+	Isbn = {978-3-642-22203-0},
+	Keyword = {Computer Science},
+	Note = {10.1007/978-3-642-22203-0\_12},
+	Pages = {130-142},
+	Publisher = {Springer Berlin Heidelberg},
+	Series = {Communications in Computer and Information Science},
+	Title = {Software Reuse: MDA-Based Ontology Development to Support Data Access over Legacy Applications},
+	Url = {http://dx.doi.org/10.1007/978-3-642-22203-0\_12},
+	Volume = {181},
+	Year = {2011},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1007/978-3-642-22203-0_12}}
+
+@article{scherer2000tnoe,
 	Author = {Klaus R. Scherer},
-	Date-Added = {2011-04-27 20:46:41 -0300},
-	Date-Modified = {2011-04-27 20:49:56 -0300},
-	Editor = {Joan C. Borod},
-	Pages = {511},
 	Publisher = {Oxford University Press},
-	Series = {Series in affective science (pp.137-162)},
-	Title = {The neuropsychology of emotion},
+	Title = {Psychological models of emotion},
 	Year = {2000}}
 
 @book{bordini2009multi,
@@ -93,12 +432,33 @@
 	Year = {2001}}
 
 @conference{strauss2008eric,
+	Abstract = {Um agente que comente evento reais ou virtuais como futebol, jogos multijogador ou um tour pela cidade {\'e} uma vis{\~a}o muito sonhadora. Por exemplo, descrever lugares, apontar para eles e motivar o usuario entretendo-o {\'e} um grande desafio. A emo{\c c}{\~a}o em personagens, dessa forma {\'e} muito importante para fazer o personagem parecer vivo (por causa da intonacao da voz e feicoes corporais).
+
+O framework ERIC foi planejado para ser um agente comentarista. Ele consiste de diferentes modulos encapsulados por um motor de regras (Jess). Todas as principais atividades cognitivas s{\~a}o processadas por um sistema especialista baseado em regras. O que torna f{\'a}cil explicar para n{\~a}o especialistas o como ele funciona e elimina a necessidade de criar artefatos de software. As contribui{\c c}{\~o}es do framework para a area {\'e} que as avalia{\c c}{\~o}es afetivas s{\~a}o desvinculadas das rela{\c c}{\~o}es de causa das metas e desejos no Jess; modelos do que deve ser falados s{\~a}o providos baseados em gera{\c c}{\~a}o de linguagem natural juntamente no Jess; Analise quantitativa e qualitativa da independencia do dominio.
+
+O artigo foca em explicar os modulos de inferencia de conhecimento (IC), afetivo e NLG (Nature Language Generator).
+A parte mais importante para nos {\'e} o afetivo ent{\~a}o vamos nos concentrar nele. Uma dimens{\~a}o emocional melhora a credibilidade dos personagens e permite uma melhor imers{\~a}o no jogo[X]. Emo{\c c}{\~o}es tamb{\'e}m s{\~a}o uteis informalmente (ex. sinalizando excita{\c c}{\~a}o quando uma a{\c c}{\~a}o decisiva esta para acontecer) e para dar a predisposi{\c c}{\~a}o do comentarista com algum cavalo ou jogador.
+O modelo de emo{\c c}{\~o}es utilizados {\'e} o mesmo que o apresentado em ALMA[Y], baseado em condi{\c c}{\~o}es que a emo{\c c}{\~a}o ocorre. utilizando o modelo cognitivo OCC. 
+
+A Computa{\c c}{\~a}o afetiva em ALMA[Y]  utiliza tr{\^e}s niveis de afetividade, curta dura{\c c}{\~a}o (emo{\c c}{\~a}o), media dura{\c c}{\~a}o (humor) e longa dura{\c c}{\~a}o (personalidade). Emo{\c c}{\~o}es s{\~a}o usualmente ligadas a um evento, a{\c c}{\~a}o ou objeto e decaem ao longo do tempo. Humor n{\~a}o s{\~a}o relacionados com nenhuma causa concreta e s{\~a}o mais estaveis que as emo{\c c}{\~o}es. Personalidade descreve o comportamento afetivo do personagem. A personalidade {\'e} modelada usando "BIG FIVE MODEL" que define 5 fatores: openness, conscientiousness, extraversion, agreeableness and neuroticism. Esses valores s{\~a}o utilizados para se calcular o humor inicial do personagem e, tambem, afetam a intensidade da rea{\c c}{\~a}o emocional e o decaimento das emo{\c c}{\~o}es.
+O humor {\'e} uma media das emo{\c c}{\~o}es e esta sempre em modifica{\c c}{\~a}o de acordo com a fun{\c c}{\~a}o de transi{\c c}{\~a}o.
+As emo{\c c}{\~o}es s{\~a}o deduzidas de estimulos e s{\~a}o as apresentadas pelo OCC em cognitive structure of emotions.
+Para isso, no jess foi especificado desejos/acoes (metas) e desejos/acoes a serem evitados (antimetas) e objetos que gostamos ou n{\~a}o.
+Ha tambem um conjunto de crencas sobre os outros atores para permitir o julgamento sobre os outros jogadores.
+O artigo tamb{\'e}m relata que foi necessario criar 4 relacoes para suportar o julgamento das emo{\c c}{\~o}es de outros personagens (desejabilidade/responsabilidade/probabilidade).
+
+a leadsto b if a increases the likelihood of b;
+a hinders b if a decreases the likelihood of b;
+a supports b if knowledge of a supports belief b;
+a contradicts b if knowledge of a contradicts belief b.
+
+Ha ainda uma lida{\c c}{\~a}o com a parte facial do agente, mas vamos ignorar.},
 	Author = {Strauss, M. and Kipp, M.},
 	Booktitle = {Proceedings of the 7th international joint conference on Autonomous agents and multiagent systems-Volume 1},
 	Date-Added = {2011-01-30 15:23:57 -0200},
-	Date-Modified = {2011-01-30 15:23:57 -0200},
+	Date-Modified = {2011-09-13 23:16:23 -0300},
 	Organization = {International Foundation for Autonomous Agents and Multiagent Systems},
-	Pages = {97--104},
+	Pages = {97-104},
 	Title = {{ERIC: a generic rule-based framework for an affective embodied commentary agent}},
 	Year = {2008}}
 
@@ -328,14 +688,31 @@ reagir a um determinado evento, sugerindo a{\c c}{\~o}es e comportamentos), reso
 um agente normal pode ajudar o usuario passando-lhe dicas), papel (informa o agente
 sobre determinadas a{\c c}{\~o}es/trabalhos que ele deve realizar), game-playing (descreve o
 status de um jogo, sugere movimentos). Os quatro primeiros s{\~a}o estaticos. O ambiente
-de teste foi um MUD.},
+de teste foi um MUD.
+%%%% outra forma de dizer isso
+citet{doyle1998annotated} propuseram que o mundo contivesse uma serie de
+anota{\c c}{\~o}es nos objetos. Assim, o agente poderia conhecer apenas a forma de
+questionar os objetos sobre suas formas de usar, suas descri{\c c}{\~o}es e suas outras
+caracter{\'\i}sticas. Esse conceito veio do conceito \emph{affordance} que
+propriedades de um objeto determinam como ele ser{\'a} usado. Dessa forma, uma
+cadeira tem a propriedade de ser sentada e uma porta tem as propriedades de
+ser aberta ou ser fechada.
+%%%
+Nesse trabalho foi usado 5 tipos de anota{\c c}{\~o}es: (i) anota{\c c}{\~o}es emocionais,
+explicam como um agente responde ``emocionalmente''; (ii) anota{\c c}{\~o}es de
+resposta, explicam como o agente deve reagir ao evento no ambiente pode ser
+uma a{\c c}{\~a}o especifica ou uma sugest{\~a}o de cren{\c c}a; (iii) anota{\c c}{\~o}es de resolu{\c c}{\~a}o de
+problemas, descreve o estado do problema  e permite anotar dicas que o agente
+talvez fale ou realize; (iv) anota{\c c}{\~o}es de papel, informam o agente sobre a{\c c}{\~o}es
+relevantes para determinados trabalhos no mundo; (v) anota{\c c}{\~o}es de jogo,
+descreve o estado do jogo permitindo sugerir movimentos que um agente talvez
+fa{\c c}a.},
 	Author = {Doyle, Patrick and Hayes-Roth, Barbara},
 	Booktitle = {Proceedings of the second international conference on Autonomous agents},
 	Date-Added = {2011-01-22 22:13:33 -0200},
-	Date-Modified = {2011-01-22 22:16:15 -0200},
+	Date-Modified = {2011-10-24 11:16:46 -0200},
 	Doi = {http://doi.acm.org/10.1145/280765.280797},
 	Isbn = {0-89791-983-1},
-	Keywords = {human-computer interaction, intelligent agents, virtual worlds},
 	Location = {Minneapolis, Minnesota, United States},
 	Numpages = {8},
 	Pages = {173--180},
@@ -609,6 +986,7 @@ pre-sele{\c c}{\~a}o de planos aptos desconsiderando os planos com marcadores ne
 
 @article{KlaBor09,
 	Author = {Klapiscak, Thomas and Bordini, Rafael},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1007/978-3-540-93920-7\_7},
 	Date-Added = {2010-11-23 18:11:00 -0200},
 	Date-Modified = {2010-11-23 18:11:00 -0200},
 	Journal = {Declarative Agent Languages and Technologies VI},
@@ -618,7 +996,7 @@ pre-sele{\c c}{\~a}o de planos aptos desconsiderando os planos com marcadores ne
 	Ty = {CHAPTER},
 	Url = {http://dx.doi.org/10.1007/978-3-540-93920-7\_7},
 	Year = {2009},
-	Bdsk-Url-1 = {http://dx.doi.org/10.1007/978-3-540-93920-7\_7}}
+	Bdsk-Url-2 = {http://dx.doi.org/10.1007/978-3-540-93920-7%5C_7}}
 
 @inproceedings{Bates94anarchitecture,
 	Author = {Joseph Bates and A. Bryan Loyall and W. Scott Reilly},
@@ -1157,7 +1535,8 @@ e por um c{\'o}digo simples ficou em "standby".},
 
 @inproceedings{wks2008towards,
 	Address = {Berlin, Heidelberg},
-	Author = {L\'{o}pez, Juan Miguel and Gil, Rosa and Garc\'{\i}a, Roberto and Cearreta, Idoia and Garay, Nestor},
+	Author = {L{\'o}pez, Juan Miguel and Gil, Rosa and Garc\'{\i}a, Roberto and Cearreta, Idoia and Garay, Nestor},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1007/978-3-540-87781-3\_11},
 	Booktitle = {WSKS '08: Proceedings of the 1st world summit on The Knowledge Society},
 	Doi = {http://dx.doi.org/10.1007/978-3-540-87781-3\_11},
 	Isbn = {978-3-540-87780-6},
@@ -1166,7 +1545,7 @@ e por um c{\'o}digo simples ficou em "standby".},
 	Publisher = {Springer-Verlag},
 	Title = {Towards an Ontology for Describing Emotions},
 	Year = {2008},
-	Bdsk-Url-1 = {http://dx.doi.org/10.1007/978-3-540-87781-3\_11}}
+	Bdsk-Url-2 = {http://dx.doi.org/10.1007/978-3-540-87781-3%5C_11}}
 
 @inproceedings{ontoly2004Approach,
 	Author = {Fishwick, Paul A. and Miller, John A.},
@@ -1179,13 +1558,69 @@ e por um c{\'o}digo simples ficou em "standby".},
 	Year = {2004}}
 
 @conference{benta2007ontology,
+	Abstract = {Em \citet{benta2007ontology} foi feita a constru{\c c}{\~a}o de uma ontologia escrita
+em \emph{OWL}. Nesse trabalho as emo{\c c}{\~o}es s{\~a}o divididas em prim{\'a}rias e
+secund{\'a}rias, e as secund{\'a}rias se originam a partir das prim{\'a}rias. As emo{\c c}{\~o}es
+prim{\'a}rias ou b{\'a}sicas, n{\~a}o cognitivas, s{\~a}o: brabo, desgosto, feliz, medo,
+neutro, surpreso e triste. As emo{\c c}{\~o}es secund{\'a}rias, cognitivas, descritas s{\~a}o
+ao todo 4. O interessante aqui {\'e} que essas 4 emo{\c c}{\~o}es s{\~a}o inferidas a partir
+de propriedades de objeto. Al{\'e}m disso, h{\'a} o conceito de emo{\c c}{\~a}o ativa que {\'e} a
+emo{\c c}{\~a}o predominante naquele momento. O valor da emo{\c c}{\~a}o {\'e} calculado da seguinte
+forma, a sensibilidade (predisposi{\c c}{\~a}o a emo{\c c}{\~a}o que varia de 0 {\`a} 1)
+multiplicado pela intensidade da emo{\c c}{\~a}o. A emo{\c c}{\~a}o predominante {\'e} o maior valor
+entre as emo{\c c}{\~o}es.
+},
 	Author = {Benta, K.I. and Rar{\u{a}}u, A. and Cremene, M.},
 	Booktitle = {Proceedings of the 2007 Euro American conference on Telematics and information systems},
+	Date-Modified = {2011-09-26 17:03:16 -0300},
 	Organization = {ACM New York, NY, USA},
 	Title = {{Ontology Based Affective Context Representation}},
 	Year = {2007}}
 
 @article{liu2008cemvc,
-  title={{Computational Emotion Model for Virtual Characters}},
-  author={Liu, Z.},
-  year= {2008}}
+	Author = {Liu, Z.},
+	Title = {{Computational Emotion Model for Virtual Characters}},
+	Year = {2008}}
+
+@book{burton2010neuro,
+	Author = {Burton, K. and Ready, R.},
+	Publisher = {For Dummies},
+	Title = {Neuro-linguistic Programming For Dummies},
+	Year = {2010}}
+
+@article{grimaldo2006ontology,
+	Abstract = {ele tem uma ontologia de ambiente + mais uma camada semantica que permite saber por exemplo que o copo foi pegado for Fulano. A ontologia construida eh de alto nivel, mas instanciada para uma de dominio da aplicacao pro caso de uso.},
+	Address = {Aguascalientes (Mexico)},
+	Author = {Fran Grimaldo and Fernando Barber and Miguel Lozano},
+	Journal = {International Conference on Intelligent Virtual Environments and Virtual Agents (IVEVA)},
+	Month = {October},
+	Numpages = {10},
+	Title = {An ontology-based approach for IVE+VA},
+	Year = {2006}}
+
+@article{muller2010amabid,
+	Author = {Vinicius Magnus M{\"u}ller},
+	Date-Modified = {2011-10-11 13:56:16 -0300},
+	Journal = {Disserta{\c c}{\~a}o de Gradua{\c c}{\~a}o},
+	Publisher = {INF - UNISINOS},
+	Title = {A Multi-agent Architecture for Building Interactive Drama},
+	Url = {http://dgiovanni.sourceforge.net/TCC\_VinicisMagnus-pos\_banca.pdf},
+	Year = {2010},
+	Bdsk-Url-1 = {http://dgiovanni.sourceforge.net/TCC%5C_VinicisMagnus-pos%5C_banca.pdf}}
+
+@article{behrens2009taeisfaop,
+	Address = {Clausthal University of Technology},
+	Author = {Tristan M. Behrens and J{\~A}¼rgen Dix and Koen V. Hindriks},
+	Journal = {Technical report},
+	Month = {September},
+	Title = {Towards an Environment Interface Standard for Agent-Oriented Programming},
+	Volume = {IfI-09-09},
+	Year = {2009}}
+
+@inproceedings{kallmann1999modeling,
+	Author = {Kallmann, M. and Thalmann, D.},
+	Booktitle = {Computer animation and simulation'98: proceedings of the Eurographics Workshop in Lisbon, Portugal, August 31-September 1, 1998},
+	Organization = {Springer Verlag Wien},
+	Pages = {73},
+	Title = {Modeling objects for interaction tasks},
+	Year = {1999}}
