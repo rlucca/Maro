@@ -70,8 +70,9 @@ apenas 9 precisam ser conhecidas. Dessas a propriedade mais utilizada é a
 \emph{hasSomething} que serve para indicar o que esta sendo avaliado. Note que
 \emph{hasPerson} deve ser usado quando o indivíduo em avaliação for um membro
 da classe \emph{Agent}. Já, a relação \emph{hasJudge} serve para indicar que o
-membro da classe \emph{Object} esta sendo avaliado. Por exemplo, Millie tem
-uma avaliação julgando seu carro com uma valoração positiva.
+membro da classe \emph{Object} esta sendo avaliado pela sua responsabilidade.
+Por exemplo, Millie tem uma avaliação julgando seu carro com uma valoração
+positiva.
 
 \begin{figure}[b]
   \centering
@@ -88,7 +89,7 @@ finalidade de permitir que o usuário normalize\dev{} o número obtido da
 maneira que desejar. Além disso, foi tomada a decisão de não especificar o
 domínio da maioria das propriedades por causa que isso forçaria um
 enquadramento em classes não desejadas. Por exemplo, se a relação
-\emph{hasLikelihood} tiver o domínio \emph{ConsequenceForSelf} e existir
+\emph{hasLikelihood} tiver o domínio \emph{ConsequenceForSelf} e existir um
 indivíduo com somente essa relação então o mesmo seria enquadrado no conceito
 \emph{ConsequenceForSelf}. O correto nesse caso seria não ser concluído nada,
 isto é, pertencer à classe \emph{Thing}.
@@ -161,9 +162,9 @@ Assim, foi resolvido deixar o usuário sempre utilizar a relação de julgamento
 julgamento de outra pessoa. Para essas regras funcionarem da maneira correta,
 o usuário deve declarar que os agentes ou objetos são diferentes. Caso isso
 não ocorra, o sistema considera que não há informação para verificar se um
-individuo é igual ou diferente que o outro e concluir que não conhece a
-resposta. Além disso, a relação de julgamento tem como imagem o conceito
-\emph{Object}. Dessa forma, os exemplos anteriores são todos válidos.
+individuo é igual ou diferente e conclui que não conhece a resposta. Além
+disso, a relação de julgamento tem como imagem o conceito \emph{Object}. Dessa
+forma, os exemplos anteriores são todos válidos.
 
 Cabe salientar que toda avaliação tem pelo menos duas relações. A primeira
 relação serve para conhecer quem esta avaliando (\emph{isAppraisalOf}) e a
@@ -261,9 +262,10 @@ A Figura~\ref{fig:UEM:TBOX} demostra a ontologia que será utilizada, como é
 possível observar as subclasses dos conceitos \emph{Profile} e \emph{Place}
 foram removidas\footnote{Compare a Figura~\ref{fig:UEM:TBOX} com a
 Figura~\ref{fig:UEM} da página~\pageref{fig:UEM}.} por serem consideradas parte
-da A-Box. Além disso, o conceito \emph{Components\_of\_the\_environments} esta
-sendo pensando como um sub-conceito do conceito \emph{Setup} na ontologia
-desenvolvida por causa que esse representa configurações gerais.
+da A-Box daquele trabalho. Além disso, o conceito
+\emph{Components\_of\_the\_environments} esta sendo pensando como um
+sub-conceito do conceito \emph{Setup} na ontologia desenvolvida por causa que
+esse representa as configurações gerais.
 
 %Essas configurações gerais são carregadas, normalmente, em outras partes do
 %sistemas e então eliminadas por causa que elas não influenciam as emoções
@@ -278,16 +280,12 @@ regularmente. Da mesma forma, o conceito de \emph{Place} faz uso da relação
 inteligentes'' dado que possuem horário de abertura e fechamento das
 atividades.
 
-
 % eu nao tenho certeza sobre isso, porem seria interessante ter uma relacao
 % hasDimension da Object para Dimension. Dessa forma um objeto teria
 % conhecimento mesmo que abstrato sobre suas dimensões para o caso de ser
 % necessario fazer a bounding box collission...
 
 \section{Ontologia de Características} \label{cap:tp:odp}
-% de percepcoes virou do ambiente
-% voltou a ser de percepcoes
-% e agora virou caracteristicas hehehehe!
 
 \citet{doyle1998annotated} propuseram que o mundo contivesse uma serie de
 anotações nos objetos. Assim, o agente poderia conhecer apenas a forma de
@@ -310,21 +308,22 @@ descreve o estado do jogo permitindo sugerir movimentos.
 são os responsáveis por proverem para o personagem o como ele deve ser usado.
 Durante a animação do personagem estar abrindo a porta, por exemplo, quem esta
 no controle do mesmo é o ``agente'' que controla a porta porque o agente do
-personagem delega para o da porta realizar a sua animação. Dessa forma,
-esses objetos inteligentes precisam ter um determinado nível de conhecimento
-sobre o personagem.
+personagem delega para o da porta realizar a sua animação por causa que ele
+mesmo não sabe como realiza-la. Dessa forma, esses objetos inteligentes
+precisam ter um determinado nível de conhecimento sobre o personagem.
 
 De uma maneira similar, o conceito de artefatos que possuem propriedades
 observáveis e utilizáveis foi criado por \citet{ricci31cartago}. Por exemplo,
 uma porta pode ter como propriedade observável seu estado (estar aberta ou
 estar fechada) e ação possível ou propriedade utilizável ser aberta ou ser
 fechada. Essas ações podem ficar disponíveis conforme o estado atual do
-objeto, mas o controle da disponibilidade é do próprio objeto por que é ele
-que sabe como realizar a ação propriamente dita. O agente unicamente diz de
-alguma forma que o objeto tem que realizar tal ação. Nesse trabalho, não é
-mencionado que o agente pode ser temporariamente controlado por objetos.
+objeto, mas o controle da disponibilidade e da ação é do próprio objeto por
+que é ele que sabe como realizar a ação propriamente dita. O agente unicamente
+diz de alguma forma que o objeto tem que realizar tal ação. Nesse trabalho,
+não é mencionado que o agente pode ser temporariamente controlado por
+objetos.
 
-Assim, a foi criado dois conceitos principais \emph{Annotation} e
+Assim sendo, foi criado dois conceitos principais \emph{Annotation} e
 \emph{Preference}. O conceito \emph{Annotation} é utilizado para representar
 características de determinadas coisas. Essas características podem ainda
 ser categorizadas entre as que mudam e não mudam durante a simulação. O
@@ -436,7 +435,8 @@ o tipo \emph{UnemployedAdult} possui destinos randômicos somente e
 randômicos. Entretanto, a configuração dos locais possíveis foi ignorada
 porque só faz sentido descreve-los quando se esta usando a ontologia
 dentro de uma aplicação e aqui se esta preocupado em demonstra-la de maneira
-isolada.
+isolada. Isso também ocorre com o limite mínimo para uma emoção virar
+sentimento que não será mencionada aqui pelo mesmo motivo.
 
 \begin{figure}[ht]
     \centering
@@ -517,8 +517,8 @@ A utilização de preferências é a segunda maneira de modelar o personagem Joh
 Assim, ele pode ter uma preferência negativa contra o objeto de nome
 ``Televisão''. Entretanto, isso até aqui não é diferente da primeira maneira.
 Agora, pense que esse personagem tem uma preferência positiva quando a
-utilidade é ``Noticias'' e que esse valor sobrepõem o anterior. Dessa forma, o
-agente John pode repudiar a mídia televisiva e assistir um noticiário.
+utilidade é ``Noticias'' e que essa sobrepõem o anterior. Dessa forma, o
+agente John pode repudiar a mídia televisiva e assistir noticiários.
 
 \begin{figure}
   \centering
@@ -526,7 +526,7 @@ agente John pode repudiar a mídia televisiva e assistir um noticiário.
   \includegraphics[height=4cm]{figuras/appraisalEx6.png} & \includegraphics[height=4cm]{figuras/infEx6.png} \\
   (a) Configuração & (b) Resultado
   \end{tabular}
-  \caption{Avaliação de repudio de John sobre televisão.}
+  \caption{Avaliação de repúdio de John sobre televisão.}
   \label{fig:tp:cdu:ex6}
 \end{figure}
 
@@ -594,8 +594,6 @@ agente John pode repudiar a mídia televisiva e assistir um noticiário.
 %  \label{fig:tp:cdu:ex12}
 %\end{figure}
 %
-%%... tem que tomar o conceito Setup para melhor explicar ele!
-%%
 %Exemplos do doc:
 %John - andarilha		Jose - ele trabalha			Millie - ela trabalha			Dilu - dependente
 %%

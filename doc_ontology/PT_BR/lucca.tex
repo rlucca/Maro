@@ -11,20 +11,31 @@
 \usepackage{xcolor,colortbl}	% colorir tabelas
 \usepackage{wrapfig}
 \usepackage{url}
-\usepackage{endnotes}
+\usepackage{listings}	    % para usar listing
+\usepackage{setspace}		% para usar singlespacing
+%\usepackage{endnotes}
 
 % See the ``Article customise'' template for come common customisations
 % Use todo para anotar algo para ver depois
 % Criando comando \todo{algo}
-\newcommand{\todo}[1] {\endnote{TODO #1}\marginpar{\textcolor{red}{\textbf{TODO}}}}
-%\newcommand{\todo}[1] {}
+%\newcommand{\todo}[1] {\endnote{TODO #1}\marginpar{\textcolor{red}{\textbf{TODO}}}}
+\newcommand{\todo}[1] {}
 % Use dev para anotar algum comprometimento
-\newcommand{\dev}[0] {\marginpar{\textcolor{blue}{\textbf{IMPL}}}}
-%\newcommand{\dev}[0] {}
+%\newcommand{\dev}[0] {\marginpar{\textcolor{blue}{\textbf{IMPL}}}}
+\newcommand{\dev}[0] {}
 \newcommand{\citet}{\citeonline}
 \newcommand{\jason}{\emph{Jason} }
 \newcommand{\occ}{\emph{OCC} }
 \newcommand{\OWL}{\emph{OWL} }
+
+% Traduzindo Listing
+\renewcommand{\lstlistingname}{Listagem}
+\renewcommand{\lstlistlistingname}{Lista de Listagens}
+% Mudando estilo
+\lstset{basicstyle=\footnotesize}
+\lstset{linewidth=140mm}
+\lstset{breaklines=true}
+
 
 \title{Provisorio: Estudo sobre ontologias afetivas}
 \author{Lucca}{Ricardo Rodrigues}
@@ -33,7 +44,11 @@
 %\location{Itaquequecetuba}{SP}
 \ti[II]{456}
 
-\keyword{teste}
+\keyword{Anotações}
+\keyword{Comportamento}
+\keyword{Emoções}
+\keyword{Modelo Afetivo}
+\keyword{Ontologia}
 
 %%% BEGIN DOCUMENT
 \begin{document}
@@ -42,20 +57,27 @@
 
 \tableofcontents
 
-\include{resumos}
 \include{abreviaturas}
+\listoffigures % lista de figuras, se houver mais de 3
+%\listoftables % lista de tabelas, se houver mais de 3
+%\lstlistoflistings % lista de listagens, se houver mais de 3
+
+\include{resumos}
 \include{introducao}
 %\include{cronograma}
 \include{estadoArte}
 \include{trabalho}
 \include{conclusao}
-\include{endNotes}
+%\include{endNotes} %notas dos todos
 
 %\bibliographystyle{abnt-alf}
 \bibliography{mestrado}
 
-	\vfill
+\singlespacing
+\appendix
+\include{FonteOntologia}
 
+%	\vfill
 %   \begin{center}
 %		\rule{8cm}{.1mm} \\ Orientador: Prof.~Dr.~Rafael Heitor Bordini
 %    \end{center}

@@ -6,7 +6,7 @@ A questão inicial desse projeto foi a modelagem do modelo proposto por
 restrição inicial de não utilizar regras para o desenvolvimento da mesma teve
 que ser removida por causa que o \OWL foca no nível dos conceitos e quando se
 quer dizer algo mais explícito como, por exemplo, o agente avaliando e o
-agente avaliado são diferentes é uma tarefa impossível. Entretanto, as regras
+agente avaliado serem os mesmos é uma tarefa impossível. Entretanto, as regras
 operam focando no nível dos indivíduos e, assim, o problema foi resolvido.
 
 Algumas limitações na ontologia desenvolvida existem quando comparadas com o
@@ -16,8 +16,9 @@ se ter vergonha de quem bate nos filhos ou ter orgulho por seu time ter ganho.
 Algumas simplificações menores foram que os conceitos \emph{Joy} e
 \emph{Distress} passaram a se relacionar com o domínio de probabilidade para
 deixar claro que eles não tem probabilidade. Além disso, \emph{Love} e
-\emph{Hate} possui duas relações que por ser interessante só quando ambas
-relações eram positivas ou negativas foi usado só uma relação.
+\emph{Hate} possui duas relações (atratividade e familiaridade) que por ser
+interessante só quando ambas relações eram positivas ou negativas foi usado só
+a relação de familiaridade.
 
 A ferramenta \emph{Protege}\footnote{Mais informações, consulte \url{http://protege.stanford.edu}.}
 em sua versão 4.1 foi a utilizada para o desenvolvimento das ontologias.
@@ -37,6 +38,12 @@ os indivíduos em seus respectivos conceitos. Os testes foram feitos na
 ferramenta de desenvolvimento da ontologia visando testar a criação de todas
 as emoções em uma ontologia separada. Assim, os resultados foram validados
 sempre depois de alguma modificação com o raciocinador \emph{Hermit}.
+
+Como trabalho futuro saliento, a possibilidade de incluir a empatia como uma
+relação numérica que pode variar entre 0 e 1. Infelizmente, assim, a ontologia
+não seria capaz de detectar os extremos por causa que se o fizesse conflitaria
+com a informação que o usuário prestaria. Fora isso, o valor da probabilidade
+na implementação atual considero que, também, precisaria ser de ponto flutuante.
 
 %Isso aqui é bom de falar na dissertação...
 %A performance em testes simples como os mostrados no capitulo X\todo{fazer?},

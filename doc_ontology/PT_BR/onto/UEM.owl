@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.urban.org/UEM.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.urban.org/UEM.owl">
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">This work was based on article:
+PAIVA, D. C.; VIEIRA, R.; MUSSE, S. R. Ontology-based crowd simulation for normal life situations. In: IEEE COMPUTER SOCIETY. Proceedings of the Computer Graphics International 2005. [S.l.], 2005, p. 221-226.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal xml:lang="pt" datatypeIRI="&rdf;PlainLiteral">Esse trabalho foi baseado no artigo:
+PAIVA, D. C.; VIEIRA, R.; MUSSE, S. R. Ontology-based crowd simulation for normal life situations. In: IEEE COMPUTER SOCIETY. Proceedings of the Computer Graphics International 2005. [S.l.], 2005, p. 221-226.</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#Agent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Components_of_the_environment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dimension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Place"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Profile"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Schedules"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDimension"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasFixedDestination"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasProfile"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasRandomDestination"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasScheduleOfFunctioning"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasAverageTimeOfPermanence"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasCapacity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasClosingTime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasEnteringTimeInterval"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasIdentifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasOpeningTime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasPositionX"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasPositionY"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasSizeX"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasSizeY"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Agent"/>
+        <Class IRI="#Components_of_the_environment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Agent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasProfile"/>
+            <Class IRI="#Profile"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Agent"/>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="#hasProfile"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dimension"/>
+        <Class IRI="#Components_of_the_environment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dimension"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasPositionX"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dimension"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasPositionY"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dimension"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasSizeX"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dimension"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasSizeY"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dimension"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasPositionX"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dimension"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasPositionY"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dimension"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasSizeX"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dimension"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasSizeY"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Place"/>
+        <Class IRI="#Components_of_the_environment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Place"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDimension"/>
+            <Class IRI="#Dimension"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Place"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasScheduleOfFunctioning"/>
+            <Class IRI="#Schedules"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Place"/>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="#hasDimension"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Place"/>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="#hasScheduleOfFunctioning"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Place"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasCapacity"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Place"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasIdentifier"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Place"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasName"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Place"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasCapacity"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Place"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasIdentifier"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Place"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasName"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Profile"/>
+        <Class IRI="#Components_of_the_environment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Profile"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasFixedDestination"/>
+            <Class IRI="#Place"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Profile"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasRandomDestination"/>
+            <Class IRI="#Place"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Profile"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasIdentifier"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Profile"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasName"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Profile"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasIdentifier"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Profile"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasName"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Schedules"/>
+        <Class IRI="#Components_of_the_environment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Schedules"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasAverageTimeOfPermanence"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Schedules"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasClosingTime"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Schedules"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasEnteringTimeInterval"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Schedules"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasOpeningTime"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Schedules"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasAverageTimeOfPermanence"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Schedules"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasClosingTime"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Schedules"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasEnteringTimeInterval"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Schedules"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#hasOpeningTime"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Agent"/>
+        <Class IRI="#Dimension"/>
+        <Class IRI="#Place"/>
+        <Class IRI="#Profile"/>
+        <Class IRI="#Schedules"/>
+    </DisjointClasses>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDimension"/>
+        <Class IRI="#Place"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasFixedDestination"/>
+        <Class IRI="#Profile"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasProfile"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasRandomDestination"/>
+        <Class IRI="#Profile"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasScheduleOfFunctioning"/>
+        <Class IRI="#Place"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDimension"/>
+        <Class IRI="#Dimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasFixedDestination"/>
+        <Class IRI="#Place"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasProfile"/>
+        <Class IRI="#Profile"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasRandomDestination"/>
+        <Class IRI="#Place"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasScheduleOfFunctioning"/>
+        <Class IRI="#Schedules"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasIdentifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasName"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasAverageTimeOfPermanence"/>
+        <Class IRI="#Schedules"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasCapacity"/>
+        <Class IRI="#Place"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasClosingTime"/>
+        <Class IRI="#Schedules"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasEnteringTimeInterval"/>
+        <Class IRI="#Schedules"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasIdentifier"/>
+        <ObjectUnionOf>
+            <Class IRI="#Place"/>
+            <Class IRI="#Profile"/>
+        </ObjectUnionOf>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasName"/>
+        <ObjectUnionOf>
+            <Class IRI="#Place"/>
+            <Class IRI="#Profile"/>
+        </ObjectUnionOf>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasOpeningTime"/>
+        <Class IRI="#Schedules"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasPositionX"/>
+        <Class IRI="#Dimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasPositionY"/>
+        <Class IRI="#Dimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasSizeX"/>
+        <Class IRI="#Dimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasSizeY"/>
+        <Class IRI="#Dimension"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasAverageTimeOfPermanence"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasCapacity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasClosingTime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasEnteringTimeInterval"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasIdentifier"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasOpeningTime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasPositionX"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasPositionY"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasSizeX"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasSizeY"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+</Ontology>
