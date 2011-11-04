@@ -2,34 +2,36 @@
 %2345678901234567890123456789012345678901234567890123456789012345678901234567890
 
 Uma ontologia possui inúmeras utilidades tanto em pesquisa quanto na
-indústria. Na pesquisa o foco é uma melhor descrição dos domínio propriamente
+indústria. Na pesquisa o foco é uma melhor descrição do domínio propriamente
 dito, enquanto na indústria o foco é a melhor utilização dos recursos de seus
 colaboradores. No trabalho de \citet{Gutierrez:2007:OVH:1229160.1229164} existem
 excelentes exemplos dos usos possíveis de uma ontologia de humano virtual.
 A seção \ref{cap:eda:mce} introduz os modelos psicológicos e explica o modelo de
-\citet{ortony1988cse}. Na \ref{cap:eda:oe},são apresentadas ontologias emocionais
-existentes. A seção \ref{cap:eda:odhv} descreve os trabalhos com ontologias que visam
-descrever o físico ou o mental de um humano virtual.
+\citet{ortony1988cse}. Na \ref{cap:eda:oe}, são apresentadas ontologias emocionais
+existentes. Os trabalhos com ontologias que descrevem um humano virtual
+fisicamente ou mentalmente são abordados na seção~\ref{cap:eda:odhv}.
 
 \section{Modelo Cognitivo Emocional} \label{cap:eda:mce}
 
 Estudos neurológicos recentes \cite{ledoux1998emotional,damasio2004erro}
 mostram a importância das emoções na tomada de decisão.
-\citet{damasio2004erro} definiu emoção como sendo um estado físico do corpo e
-o sentimento sendo a percepção desse estado corporal. Além disso, na psicologia
-há diferentes modelos que tentam explicar a afetividade.
+\citet{damasio2004erro} definiu emoção como sendo um estado físico do corpo
+que se altera de forma contínua. Sendo assim, o sentimento foi definido como a
+percepção dessas alterações.
 
+Na psicologia há diferentes modelos que tentam explicar a afetividade.
 \citet{scherer2000tnoe} categorizou esses modelos afetivos em quatro
-categorias principais. A primeira categoria, modelos dimensionais, visa
-descobrir variáveis que representam eixos das classes emotivas e estabelecem
-meios de se mover por esses eixos. Os modelos discretos especificam um
-conjunto básico de emoções e especificam regras para que o mecanismo evolua.
+categorias principais: modelos dimensionais, modelos discretos, modelos
+baseados em significados e modelos baseados em componentes. A primeira
+categoria visa descobrir variáveis que representam eixos das classes emotivas
+e estabelece meios de se mover por esses eixos. A seguinte, especifica um
+conjunto básico de emoções e regras de evolução para esse conjunto.
 Já, a categoria dos baseados em significados se preocupa com as situações
-em que o sentimento foi ocasionado e tenta descrever estruturas semânticas dos
-mesmos. Por fim, os modelos baseados em componentes entendem que os
-sentimentos são aprendidos ao longo do tempo e, sendo assim, estudam o elo
-entre os sentimentos e as suas situações. Esse elo é montado de diferentes
-formas e varia de pessoa para pessoa.
+em que o sentimento foi ocasionado e tenta descrever as estruturas semânticas dos
+mesmos. A última, entende que os sentimentos são aprendidos ao longo do tempo.
+Sendo assim, os modelos baseados em componentes estudam o elo entre os
+sentimentos e as suas situações. Esse elo é montado de diferentes formas e
+varia de pessoa para pessoa.
 
 \begin{figure}[t]
   \centering
@@ -38,22 +40,22 @@ formas e varia de pessoa para pessoa.
   \label{fig:occ_model}
 \end{figure}
 
-Um modelo bastante conhecido na Inteligência Artificial foi definido por
-\citet{ortony1988cse}. Esse modelo\footnote{A partir daqui o modelo será
-referenciado como modelo \occ.} baseado em significados possui 22 emoções
-descritas com suas situações. Essas emoções são divididas em
-formas de se perceber o mundo a sua volta por consequências (importantes para
-alguma meta), ações (julga a responsabilidade) e objetos (atração ou repulsa).
-Assim sendo, essas maneiras de se perceber o mundo refletem diferentes jeitos
-de se analisar as situações que podem ser relativas aos objetivos, valores
-morais ou gostos da pessoa.
+Um modelo baseado em significados, bastante conhecido na Inteligência
+Artificial, foi definido por \citet{ortony1988cse}. Nesse modelo\footnote{A
+partir daqui o modelo será referenciado como modelo \occ.} são descritos
+22 emoções com suas situações. Essas emoções são divididas em formas de se
+perceber o mundo a sua volta por consequências (importantes para alguma meta),
+ações (julga a responsabilidade) e objetos (atração ou repulsa). Assim sendo,
+essas maneiras de se perceber o mundo refletem diferentes jeitos de se
+analisar as situações que podem ser relativas aos objetivos, valores morais ou
+gostos da pessoa.
 
 A Figura~\ref{fig:occ_model} resume esse modelo e mostra as
 percepções possíveis de um indivíduo.  Partindo da direita para esquerda, o
 ramo mais básico, \emph{Aspects Of Objects}, é ativado quando se avalia o
 gosto de alguém para algum objeto (inanimado ou não). Por exemplo, Millie
 gosta de rosas azuis. No seguinte, \emph{Actions Of Agents}, o julgamento das
-ações exercidas por outro indivíduo ou por si mesmo é realizado baseado nos
+ações exercidas por outro indivíduo ou por si mesmo é baseado nos
 valores morais da pessoa que está julgando. Exemplo: reprovar a atitude dos
 bancários que fazem greve a cada ano. Cabe salientar, que ao julgar ações, o
 modelo permite um grau de ``empatia'' chamado pelos autores de ``unidade de
@@ -66,37 +68,37 @@ O último ramo da árvore, mais a esquerda na Figura~\ref{fig:occ_model}, é o
 \emph{Consequences Of Events} que representa as coisas que aconteceram (e
 foram consideradas importantes), acontecem ou acontecerão (objetivos
 almejados)\dev{}. Essas emoções são avaliadas segundo as suas consequências
-para o alcance ou impedimento dos seus objetivos. A emoção sentida ao receber
-uma boa nota em um teste, ao ser assaltado ou ao perceber não ser possível
-chegar em um destino planejado são exemplos possíveis desse ramo do modelo.
+para o alcance ou impedimento dos seus objetivos. Exemplos possíveis desse
+ramo do modelo são a emoção sentida ao receber uma boa nota em um teste, ao
+ser assaltado ou ao perceber não ser possível chegar em um destino planejado.
 
-Toda a emoção do modelo trabalha com duas intensidades. A intensidade da
+Todas as emoções do modelo trabalham com duas intensidades. A intensidade da
 emoção que representa o físico e a intensidade do sentimento que representa o
 quanto o agente esta percebendo daquela emoção. Dessa forma, um indivíduo só
 possui sentimento quando a intensidade da emoção ultrapassa um
 determinado limite\dev{}.  Essa intensidade é obtida por uma função matemática
 que utiliza variáveis de dois tipos: locais, que influenciam as emoções do ramo
 específico; e globais, que influênciam todas as emoções do modelo.  Um exemplo
-de variável local é o desejo, enquanto que um exemplo de variável global pode
-ser o senso de realidade de uma pessoa.
+de variável local é o desejo, enquanto um exemplo de variável global pode ser
+o senso de realidade de uma pessoa.
 
 \citet{bates1994role} foi um dos primeiros a trabalhar na utilização de emoções
-na área de animação. Nessa área, o estudo do comportamento humano é
-realizado visando imitar as ações humanas. A principal afirmativa do trabalho
-é que o comportamento emotivo de um personagem é um papel importante para que
-o mesmo pareça ter vida própria. Esse trabalho utilizou o modelo descrito
-visando melhorar a credibilidade de seus atores. Por exemplo, um dos agentes
-lida com o medo sendo agressivo com os outros enquanto outro agente lida com a
-mesma emoção sendo retraído.
+na área de animação. Nessa área, o estudo do comportamento humano é realizado
+visando imitar as ações humanas. Assim, a principal afirmativa do trabalho era
+que o comportamento emotivo de um personagem é um papel importante para que o
+mesmo pareça ter vida própria. Dessa forma, esse trabalho utilizou o modelo
+descrito visando melhorar a credibilidade de seus atores. Por exemplo, um dos
+agentes lida com o medo sendo agressivo com os outros enquanto outro agente
+lida com a mesma emoção sendo retraído.
 
 Visando entender melhor o impacto da emoção na tomada de decisão,
 \citet{zhang2009emotional} desenvolveram uma aplicação que os sentimentos
 afetam o planejamento das ações à serem realizadas.
 \citet{neto2010construction} focaram no mesmo objetivo, porém visando estudar
-o impacto da memória no planejamento. Sendo assim, eles fizeram um meio
-para o agente ``esquecer'' determinadas crenças quando o estado emocional
-for diferente daquele guardado anteriormente. Essa característica torna o
-planejamento e as atitudes dos personagens virtuais mais realistas.
+o impacto da memória no planejamento. Sendo assim, um meio para o agente
+``esquecer'' determinadas crenças quando o estado emocional for diferente
+daquele guardado anteriormente foi feito. Essa característica torna o
+planejamento e as atitudes dos personagens virtuais mais realista.
 
 O projeto \emph{Relational Agents} de \citet{bick2003relational} possui o
 objetivo de possibilitar aos usuários a criação de um relacionamento social e
@@ -104,20 +106,20 @@ emocional com longa duração. Com a confiança no agente se torna possível
 discutir tarefas mais importantes como melhora da saúde ou até a compra de uma
 casa \cite{bickmore2009virtual}. Da mesma forma, o projeto AIDA\footnote{Mais
 detalhes, ver \url{http://senseable.mit.edu/aida}.} tem por objetivo entender
-o estado afetivo da pessoa dirigindo para tentar sugerir ao usuário mudanças
+o estado afetivo do motorista para tentar sugerir ao usuário mudanças
 em suas rotas baseado na rotina aprendida anteriormente. Ambos os trabalhos
 podem ser entendidos como enquadrados na área de IHC.
 
 Um dos trabalhos mais conhecidos baseado no modelo \occ é, sem dúvida, o de
 \citet{kshirsagar2002multilayer}\todo{falar mais na dissertacao?}. Ele utilizou
 as emoções levantadas no modelo em conjunto com um modelo de personalidade
-baseado na psicologia que leva em consideração 5 fatores. O primeiro fator,
-extroversão, é descrito como a preferência para o comportamento em situações
-sociais. O segundo, agradabilidade, é a interação com outros outros
-indivíduos. Outro é a conscientização que é a organização e persistência
-das metas. A tendência de pensamentos negativos é o chamada de fator
-neurótico. O último é o que descreve se a pessoa tem interesse em
-cultura ou é ``cabeça aberta''.
+baseado na psicologia que leva em consideração 5 fatores: extroversão,
+agradabilidade, conscientização, neurose e receptividade. O primeiro, descreve
+a preferência para o comportamento em situações sociais. O seguinte, a
+interação com os outros indivíduos. A conscientização é a organização e
+persistência das metas. A tendência de pensamentos negativos é a neurose ou
+fator neurótico. Por fim, o último, descreve se a pessoa tem interesse em
+cultura ou é ``cabeça aberta'' para novas ideias.
 
 \section{Ontologias Emocionais} \label{cap:eda:oe}
 
@@ -137,29 +139,31 @@ predominante é o maior valor entre as emoções.
 
 No modelo definido por \citet{ortony1988cse} a distinção entre os tipos de
 emoções não existe porque se pressupõe que toda emoção exige um certo nível de
-cognição. Também, não existe um limite no que pode ou não ser percebido em
-quantidade de emoções, mas sim no que se esta sendo perseguido como meta. Fora
-isso, se pode pensar que emoções opostas compartilham os mesmos atributos e,
-por isso, essas emoções não serão sentidas ao mesmo tempo.
+cognição. Não existem, também, um limite no que pode ou não ser percebido em
+quantidade de emoções. Mas, existe um limite de perseguir uma meta por vez.
+Fora isso, se pode pensar que emoções opostas compartilham os mesmos atributos
+e, por isso, essas emoções não serão sentidas ao mesmo tempo.
 
 Não tendo nenhuma informação de uma teoria de emoções específicas modeladas em
-sua ontologia, \citet{wks2008towards} criou uma ontologia de alto nível se
-aproveitando de outra ontologia de alto nível e de uma de analise léxica. O
-principal conceito da ontologia pode ser pensado como o de sensores que são
-objetos físicos que recebem informações do ambiente e as ``transportam'' para
-o mundo mental. Sendo assim, é possível reconhecer a percepção recebida
-utilizando a memória e descrever a nova situação. Todavia, o presente trabalho
-não tem objetivo de ser uma ontologia de alto nível\dev{}.
+sua ontologia, \citet{wks2008towards} criaram uma ontologia de alto nível se
+aproveitando de outra ontologia de alto nível e de uma de analise léxica.
+Assim, o principal conceito desse trabalho pode ser pensado como o de sensores
+que são objetos físicos que recebem informações do ambiente e as
+``transportam'' para o mundo mental. Sendo assim, é possível reconhecer a
+percepção recebida utilizando a memória e descrever a nova situação. Todavia,
+o presente trabalho não tem objetivo de ser uma ontologia de alto
+nível\dev{}.
 
 \citet{springerlink:10.1007/978-3-642-01639-448} desenvolveram um motor de
 emoções que utiliza um modelo de mistura de emoções em conjunto com o modelo
-\occ. O trabalho deles dividiu o modelo em camadas, nas quais cada camada tem
-uma responsabilidade distinta e que visa complementar a anterior. A
-camada de classificação visa determinar que categoria ou ramo será afetado. A
-seguinte de quantificação determina a intensidade da emoção. A de interação
-analisa os efeitos nas categorias emocionais do personagem. A próxima mapeia
-as 22 emoções do modelo para pelo menos uma expressão e a última camada é a
-responsável por realizar a expressão propriamente dita no ator.
+\occ. O trabalho deles utilizou o conceito de camadas onde cada camada tem uma
+responsabilidade distinta e que vis complementar a anterior. Essas são ao todo
+quatro: classificação, interação, mapeamento e expressão. A primeira visa
+determinar que categoria ou ramo será afetado. A seguinte, determina a
+intensidade da emoção. A de interação analisa os efeitos nas categorias
+emocionais do personagem. A próxima, mapeia as 22 emoções do modelo para pelo
+menos uma expressão. A camada de expressão é a responsável por realizar a
+expressão propriamente dita no ator.
 
 Esse trabalho ainda utilizou um modelo dimensional para misturar as emoções
 primárias. Assim, as emoções secundárias podem ser descobertas a partir do
@@ -167,23 +171,21 @@ nível dos eixos afetados. O trabalho mostra quase todas as emoções do
 ramo de consequência de eventos, com exceção das emoções de \emph{Hope} e
 \emph{Fear}. As emoções primárias são as emoções do modelo \occ e como
 secundárias estão as emoções construídas a partir da mistura dessas emoções.
-Como dito anteriormente, estaria incorreto fazer essa diferenciação no modelo
-sendo proposto porque ela não é realizada no original.
+Essa diferenciação, como dito anteriormente, não existe no modelo \occ.
 
 Um modelo genérico que representa o ambiente e eventos que estão envolta de um
-personagem, sua personalidade e preferencias foi feito por
+personagem, sua personalidade e suas preferências foi feito por
 \citet{lera2009semantic}. Nesse trabalho o foco eram emoções que podem ser
-representadas no rosto. Assim, a identificação do contexto através de eventos
-e do retorno afetivo. Fora isso, as expressões faciais são modificadas
+representadas no rosto. Assim, a identificação do contexto é feita através de
+eventos e do retorno afetivo. Fora isso, as expressões faciais são modificadas
 dependendo dos eventos do ambiente e, também, da personalidade, metas e
 preferências dos atores virtuais.
 
-\citet{adam2009alfototoe} formalizaram o modelo \occ de maneira lógica. A
-formalização construída possui algumas limitações, por exemplo a probabilidade
-de eventos é medida de forma comparativa, isto é, o evento A é mais provável
-que o evento B. Além disso, foi necessário estabelecer uma ordem temporal
-das ações sendo desempenhadas.  Entretanto, o autor propõem uma diferenciação
-entre ação e evento. O primeiro é causado intencionalmente pelo agente\dev{},
+\citet{adam2009alfototoe} formalizaram o modelo \occ de maneira lógica.
+Esse trabalho descreve a probabilidade de maneira comparativa, isto é, o
+evento A é mais provável que o evento B. Além disso, ha uma ordem temporal nas
+ações sendo desempenhadas. O autor propõem uma diferenciação entre ação e
+evento interessante. O primeiro é causado intencionalmente pelo agente\dev{},
 enquanto o segundo o agente não tem controle da ação. Por exemplo, ir para
 aula é uma ação e espirrar é um evento.
 
@@ -226,8 +228,8 @@ fechamento, intervalo de entrada e tempo médio de permanência. %A decisão de
 Este trabalho pode ser pensado como a descrição da mentalidade dos personagens
 através da descrição dos atores em um ambiente urbano em sua vida normal. O
 foco da ontologia seguinte é o humano virtual propriamente dito. Assim, as
-informações gerais do personagem, como, por exemplo, raça, cor e outros são
-armazenadas na ontologia descrita visando uma descrição completa e reusável.
+informações gerais do personagem de raça, cor e outras características  podem
+ser armazenadas na ontologia visando uma descrição completa e reusável.
 A Figura~\ref{fig:OVH} apresenta os principais conceitos da ontologia
 desenvolvida por \citet{Gutierrez:2007:OVH:1229160.1229164}.
 
