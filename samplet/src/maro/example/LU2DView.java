@@ -37,12 +37,18 @@ public class LU2DView extends GridWorldView {
 
     @Override
     public void drawAgent(Graphics g, int x, int y, Color c, int id) {
-        //c = Color.darkGray;
-        //g.setColor(c);
-        //g.fillRect(x * cellSizeW + 1, y * cellSizeH+1, cellSizeW-1, cellSizeH-1);
-        //g.fillOval(x * cellSizeW + 2, y * cellSizeH + 2, cellSizeW - 4, cellSizeH - 4);
         Integer type = model.getTypeById(id);
+		char orientation = ' ';
         if (type == null) return ; // unknow type
+
+		orientation = model.getOrientation(id);
+
+		if (type != 1) {
+			// Quando o tipo for diferente de planeta,
+			// perguntamos se ha um planeta para desenha-lo
+			boolean isPlanet = model.havePlanet(x, y);
+			if (isPlanet == true) return ;
+		}
 
         switch (type) {
 			case 1:
@@ -55,22 +61,50 @@ public class LU2DView extends GridWorldView {
                 break;
 			case 4:
                 g.setColor(Color.green);
-                drawTriangle(g, x, y);
+                drawTriangle(g, x, y, orientation);
                 break;
 			case 8:
                 g.setColor(Color.darkGray);
-                drawTriangle(g, x, y);
+                drawTriangle(g, x, y, orientation);
                 break;
 			default: break;
-        }        
+		}
     }
 
     private void
-    drawTriangle(Graphics g, int x, int y) { // TODO OLHAR PARA FRENTE
+    drawTriangle(Graphics g, int x, int y, char orientation) {
         int cx = x * cellSizeW + (int) (0.5 * cellSizeW);
         int cy = y * cellSizeH + (int) (0.5 * cellSizeH);
-        int [] xs = new int [] { cx + 5, cx, cx - 5 };
-        int [] ys = new int [] { cy - 3, cy + 6, cy - 3 };
+        int [] xs = new int [] { cx, cx, cx };
+        int [] ys = new int [] { cy, cy, cy };
+		int [] base = new int [] { 5, 0, -5 };
+		int [] top = new int [] { -3, 6, -3 };
+
+		switch (orientation) {
+			case 'N': // cima
+				xs[0] += base[0];	xs[1] += base[1];
+				xs[2] += base[2];	ys[0] += -top[0];
+				ys[1] += -top[1]; 	ys[2] += -top[2];
+				break;
+			case 'E': // direita
+				xs[0] += top[0];	xs[1] += top[1];
+				xs[2] += top[2];	ys[0] += base[0];
+				ys[1] += base[1];	ys[2] += base[2];
+				break;
+			case 'S':
+				xs[0] += base[0];	xs[1] += base[1];
+				xs[2] += base[2];	ys[0] += top[0];
+				ys[1] += top[1];	ys[2] += top[2];
+				break;
+			case 'W':
+				xs[0] += -top[0];	xs[1] += -top[1];
+				xs[2] += -top[2];	ys[0] += base[0];
+				ys[1] += base[1];	ys[2] += base[2];
+				break;
+			default:
+				break;
+		}
+
         g.fillPolygon(xs, ys, xs.length);
     }
 }

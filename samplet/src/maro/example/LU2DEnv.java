@@ -1,10 +1,11 @@
 package maro.example;
 
 import jason.environment.TimeSteppedEnvironment;
+import jason.environment.grid.Location;
 import jason.asSyntax.NumberTerm;
 import jason.asSyntax.Structure;
 import jason.asSyntax.ASSyntax;
-//import java.util.Set;
+import java.util.Map;
 
 public class LU2DEnv extends TimeSteppedEnvironment {
 	private int lastStep = Integer.MAX_VALUE;
@@ -92,7 +93,12 @@ public class LU2DEnv extends TimeSteppedEnvironment {
     protected void
     updateAgPercept(String name, int id) {
 		Integer type = model.getTypeById(id);
-        jason.environment.grid.Location location = model.getAgPos(id);
+        Location location = model.getAgPos(id);
+		char orientation = model.getOrientation(id);
+		Map<Integer, Map<Integer, Location> > others = model.findOthers(id, 2);
+		int countPlanets = model.countOthers(id,  1, others);
+		int countShips = model.countOthers(id,    4, others);
+		int countIShips = model.countOthers(id,   8, others);
 
         clearPercepts(name);
 
@@ -106,6 +112,37 @@ public class LU2DEnv extends TimeSteppedEnvironment {
                                 ASSyntax.createNumber(location.x),
                                 ASSyntax.createNumber(location.y)));
         }
+
+		if (orientation != ' ') {
+            addPercept(name, ASSyntax.createLiteral("orientation",
+									ASSyntax.createLiteral(""+orientation)));
+		}
+
+		addPercept(name, ASSyntax.createLiteral("qtyPlanets",
+									ASSyntax.createNumber(countPlanets)));
+		addPercept(name, ASSyntax.createLiteral("qtyShips",
+									ASSyntax.createNumber(countShips+countIShips)));
+
+		for (Map<Integer,Location> mil : others.values()) {
+			for (Integer key : mil.keySet()) {
+				Location pos = mil.get(key);
+				switch (key) {
+					case 1:
+						addPercept(name, ASSyntax.createLiteral("planet",
+									ASSyntax.createNumber(pos.x),
+									ASSyntax.createNumber(pos.y)));
+						if (pos.x == location.x && pos.y == location.y)
+							addPercept(name, ASSyntax.createLiteral("onPlanet"));
+						break;
+					case 4: // ships and iships are de same!
+					case 8:
+						addPercept(name, ASSyntax.createLiteral("ship",
+									ASSyntax.createNumber(pos.x),
+									ASSyntax.createNumber(pos.y)));
+						break;
+				}
+			}
+		}
 
         addPercept(name, ASSyntax.createLiteral("step", ASSyntax.createNumber(getStep())));
     }

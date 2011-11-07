@@ -39,6 +39,59 @@ public class LUModel extends GridWorldModel {
         }
     }
 
+	public boolean havePlanet(int x, int y) {
+		for (int id : agentId.values()) {
+			Integer type = getTypeById(id);
+			if (type != null && type == 1) {
+				Location pos = getAgPos(id);
+				if (pos != null && x == pos.x && y == pos.y)
+					return true;
+			}
+		}
+		return false;
+	}
+
+	// devolve AgId x (AgType x AgLocation)
+	public Map<Integer, Map<Integer,Location> > findOthers(int agId, int range) {
+		Location pos = getAgPos(agId);
+		Location tl = new Location(pos.x - range, pos.y - range);
+		Location br = new Location(pos.x + range, pos.y + range);
+		Map<Integer, Map<Integer,Location> > others = new HashMap<Integer, Map<Integer,Location> > ();
+
+		for (int id : agentId.values()) {
+			if (id != agId) {
+				Integer type = getTypeById(id);
+				Location posTarget = getAgPos(id);
+				if (posTarget.isInArea(tl, br) == true) {
+					Map<Integer,Location> il = new HashMap<Integer, Location>();
+					il.put(type, posTarget);
+					others.put(id, il);
+				}
+			}
+		}
+		return others;
+	}
+
+	public int countOthers(int agId, int type, int range) {
+		Map<Integer, Map<Integer,Location> > mp = findOthers(agId, range);
+		return countOthers(agId, type, mp);
+	}
+
+	public int countOthers(int agId, int type, Map<Integer, Map<Integer,Location>> mp) {
+		int count = 0;
+
+		if (mp == null) return count;
+
+		for (Map<Integer,Location> mil : mp.values()) {
+			// Mais de um tipo no mesmo id nunca vai acontecer
+			// entao eh possivel usar keySet
+			for (Integer key : mil.keySet()) {
+				if (key == type) count++;
+			}
+		}
+		return count;
+	}
+
     public String
     getNameById(Integer i) {
         if (i != null) {
@@ -69,6 +122,18 @@ public class LUModel extends GridWorldModel {
     setAgentAndType(String agName, int agId, int type) {
         agentId.put(agName, agId);
         agentType.put(agId, type);
+
+		if (type != 2) {  // 2 -> Person
+			int pop = population(agId, 0);
+			String orientation = "NESW";
+			InnerData id = agentData.get(agId);
+			if (id == null) {
+				id = new InnerData();
+                agentData.put(agId, id);
+			}
+
+			id.orientation = orientation.charAt(nextInt(4));
+		}
     }
 
     public Integer
@@ -95,7 +160,7 @@ public class LUModel extends GridWorldModel {
 			case 1: return "Planet";
 			case 2: return "Person";
 			case 4: return "Ship";
-			case 8: return "Ship";
+			case 8: return "Ship"; // Intelligent Ship
 			default: break;
 		}
 
@@ -115,13 +180,13 @@ public class LUModel extends GridWorldModel {
                 id = new InnerData();
                 switch (type) {
                     case 1:
-						id.population = 400 + nextInt(100); // pl anet
+						id.population = 5000 + nextInt(1000); // planet
 						break;
                     case 4:
 						id.population = 10 + nextInt(50); // ship
 						break;
                     case 8:
-						id.population = nextInt(5); // intelligent ship
+						id.population = 1 + nextInt(5); // intelligent ship
 						break;
                 }
                 agentData.put(agId, id);
@@ -134,7 +199,20 @@ public class LUModel extends GridWorldModel {
         return 0;
     }
 
+    public char getOrientation(int agId) {
+        InnerData id = agentData.get(agId);
+		if (id == null) return ' ';
+		return id.orientation;
+	}
+    public void setOrientation(int agId, char val) {
+        InnerData id = agentData.get(agId);
+		String s = "" + val;
+		if (id == null && val != 'N' && val != 'S' && val != 'W' && val != 'E') return ;
+		id.orientation = s.charAt(0);
+	}
+
     private class InnerData {
         public int population = 0;
+		public char orientation = 'N'; // North South West East only!
     }
 }

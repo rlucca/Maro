@@ -4,7 +4,8 @@ MAS eoaus {
     infrastructure: Centralised //(pool, 2)
 
     // timeout seconds, number of steps, policy of when adding second action, number of agents
-    environment: maro.example.LU2DEnv(20000, 1000, FALSE, 20)
+    //environment: maro.example.LU2DEnv(20000, 1000, FALSE, 20)
+    environment: maro.example.LU2DEnv(20000, 1000, FALSE, 110, TRUE)
 
     agents:
         planets
@@ -13,8 +14,8 @@ MAS eoaus {
           //agentArchClass maro.wrapper.AgArchFixBB
         ;
         ship
-          #1
-          agentArchClass maro.example.LUAgArchViewer
+          #100
+          //agentArchClass maro.example.LUAgArchViewer
         ;
 
     aslSourcePath: "asl";
