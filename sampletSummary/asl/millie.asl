@@ -221,14 +221,23 @@ hasJudge(millie_gratitudes_car, milliesCar).
 
 +!start
     <-  iam(agent);
+        !esperaAte(3);
         !!relacoes.
 
++!esperaAte(CICLO)
+     : step(CICLO)
+    <- true.
+
++!esperaAte(CICLO)
+    <-  .wait({+step(_)});
+        !esperaAte(CICLO).
+
 +!relacoes
-    <-  .findall(friend(X,Y), hasFriend(X,Y), LF); ?printBR(LF, "Background: ");
-        .findall(enemy(X,Y), hasEnemy(X,Y), LE); ?printBR(LE, "Background: ");
+    <-  .findall(friend(X,Y), hasFriend(X,Y), LF); ?printBR(LF, "Background: "); nope;
+        .findall(enemy(X,Y), hasEnemy(X,Y), LE); ?printBR(LE, "Background: "); nope;
         .findall(know(X,Y), hasKnow(X,Y), LB);
         .difference(LB, LF, LW);
-        .difference(LW, LE, LK); ?printBR(LK, "Background: ");
+        .difference(LW, LE, LK); ?printBR(LK, "Background: "); nope;
         !!emocoes.
 
 +?printBR([], _).
@@ -245,66 +254,70 @@ hasJudge(millie_gratitudes_car, milliesCar).
         !!perguntas.
 
 +!testeEmocoes(john)
-    <-  ?love("john_inlove_millie");
-        ?hate("john_repulse_television");
-        ?happyFor("john_happyFor_millie");
-        ?fear("john_fears_demission");
-        ?satisfaction("john_satisfaction_lunch");
-        ?distress("john_remorse_itself");
-        ?shame("john_remorse_itself");
-        ?remorse("john_remorse_itself");
+    <-  ?love("john_inlove_millie"); nope;
+        ?hate("john_repulse_television"); nope;
+        ?happyFor("john_happyFor_millie"); nope;
+        ?fear("john_fears_demission"); nope;
+        ?satisfaction("john_satisfaction_lunch"); nope;
+        ?distress("john_remorse_itself"); nope;
+        ?shame("john_remorse_itself"); nope;
+        ?remorse("john_remorse_itself"); nope;
         .println("john tudo certo!").
 
 +!testeEmocoes(jose)
-    <-  ?admiration("jose_admire_dilu");
-        ?resentment("jose_resentment_john");
-        ?disappointment("jose_frustation_lunch");
-        ?hope("jose_hopes_promotion");
-        ?pride("jose_gratification_itself");
-        ?joy("jose_gratification_itself");
-        ?gratification("jose_gratification_itself");
+    <-  ?admiration("jose_admire_dilu"); nope;
+        ?resentment("jose_resentment_john"); nope;
+        ?disappointment("jose_frustation_lunch"); nope;
+        ?hope("jose_hopes_promotion"); nope;
+        ?pride("jose_gratification_itself"); nope;
+        ?joy("jose_gratification_itself"); nope;
+        ?gratification("jose_gratification_itself"); nope;
         .println("jose tudo certo!").
 
 +!testeEmocoes(dilu)
-    <-  ?love("dilu_attracted_television");
-        ?sorryFor("dilu_sorryFor_jose");
-        ?fearsConfirmed("dilu_fearsc_lunch");
-        ?distress("dilu_anger_jose");
-        ?reproach("dilu_anger_jose");
-        ?anger("dilu_anger_jose");
+    <-  ?love("dilu_attracted_television"); nope;
+        ?sorryFor("dilu_sorryFor_jose"); nope;
+        ?fearsConfirmed("dilu_fearsc_lunch"); nope;
+        ?distress("dilu_anger_jose"); nope;
+        ?reproach("dilu_anger_jose"); nope;
+        ?anger("dilu_anger_jose"); nope;
         .println("dilu tudo certo!").
 
 +!testeEmocoes(millie)
-    <-  ?reproach("millie_reproach_john");
-        ?gloating("millie_gloating_dilu");
-        ?relief("millie_relief_gas");
-        ?joy("millie_enjoy_cooking");
-        ?joy("millie_gratitudes_car");
-        ?admiration("millie_gratitudes_car");
-        ?gratitude("millie_gratitudes_car");
+    <-  ?reproach("millie_reproach_john"); nope;
+        ?gloating("millie_gloating_dilu"); nope;
+        ?relief("millie_relief_gas"); nope;
+        ?joy("millie_enjoy_cooking"); nope;
+        ?joy("millie_gratitudes_car"); nope;
+        ?admiration("millie_gratitudes_car"); nope;
+        ?gratitude("millie_gratitudes_car"); nope;
         .println("millie tudo certo!").
 
 +!perguntas
     <-  .findall(X, hasKnow("jose", X), AJ);
-        .println("Quem eh conhecido por jose? ", AJ);
+        .println("Quem eh conhecido por jose? ", AJ); nope;
         .findall(X, hasKnow(X, "dilu"), AD);
-        .println("Quem conhece a dilu?", AD);
+        .println("Quem conhece a dilu?", AD); nope;
         .findall(X, love(Y) & isAppraisalOf(Y, X) & hasPerson(Y, "millie"), AL);
-        .println("Quem ama a millie?", AL);
+        .println("Quem ama a millie?", AL); nope;
         .findall(X, feeling(X, _), FL);
-        .println("Que sentimentos millie tem?", FL);
+        .println("Que sentimentos millie tem?", FL); nope;
         !!summary.
 
 +!summary
     <-  // larguei de mao de fazer isso aqui...
         +startUpOK; nope.
 
-+step(6) <- .println("passo 6 waiting "). //; .stopMAS. //.wait(5000).
 +step(X)
-     : startUpOK & X < 6
-    <- .println("passo ", X, " sending nope"); nope.
-+step(X)
-    <- .println("passo ", X, " waiting").
+    : startUpOK
+   <- .stopMAS.
+
+//+step(6) <- .println("passo 6 waiting "). //; .stopMAS. //.wait(5000).
+//+step(X)
+//     : startUpOK & X < 6
+//    <- .println("passo ", X, " sending nope"); nope.
+//+step(X)
+//    <- .println("passo ", X, " waiting").
 //-step(X)
 //    <- .println("removendo ", X).
 
