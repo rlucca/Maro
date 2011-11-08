@@ -7,6 +7,8 @@ MAS eoaus {
     //environment: maro.example.LU2DEnv(20000, 1000, FALSE, 20)
     environment: maro.example.LU2DEnv(20000, 1000, FALSE, 110, TRUE)
 
+    executionControl: jason.control.ExecutionControl
+
     agents:
         planets
           #10

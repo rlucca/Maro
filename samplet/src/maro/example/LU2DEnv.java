@@ -1,8 +1,11 @@
 package maro.example;
 
+import jason.infra.centralised.RunCentralisedMAS;
 import jason.environment.TimeSteppedEnvironment;
 import jason.environment.grid.Location;
+import jason.asSemantics.Message;
 import jason.asSyntax.NumberTerm;
+import jason.asSyntax.StringTerm;
 import jason.asSyntax.Structure;
 import jason.asSyntax.ASSyntax;
 import java.util.Map;
@@ -11,6 +14,7 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 	private int lastStep = Integer.MAX_VALUE;
 	private boolean policyIsQueue = true;
 	private long sum = 0;
+	private int numberAgsAnswered = 0;
 
 	private LUModel model;
 
@@ -95,10 +99,12 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 		Integer type = model.getTypeById(id);
         Location location = model.getAgPos(id);
 		char orientation = model.getOrientation(id);
-		Map<Integer, Map<Integer, Location> > others = model.findOthers(id, 2);
+		Map<Integer, Map<Integer, Location> > others = model.findAllOthers(id, 2);
+		Map<Integer, Map<Integer, Location> > planets = model.findOthers(id, 1, 2);
 		int countPlanets = model.countOthers(id,  1, others);
 		int countShips = model.countOthers(id,    4, others);
 		int countIShips = model.countOthers(id,   8, others);
+		int countAllShips = countShips + countIShips;
 
         clearPercepts(name);
 
@@ -115,17 +121,16 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 
 		if (orientation != ' ') {
             addPercept(name, ASSyntax.createLiteral("orientation",
-									ASSyntax.createLiteral(""+orientation)));
+									ASSyntax.createString(""+orientation)));
 		}
 
 		addPercept(name, ASSyntax.createLiteral("qtyPlanets",
 									ASSyntax.createNumber(countPlanets)));
-		addPercept(name, ASSyntax.createLiteral("qtyShips",
-									ASSyntax.createNumber(countShips+countIShips)));
 
 		for (Map<Integer,Location> mil : others.values()) {
 			for (Integer key : mil.keySet()) {
 				Location pos = mil.get(key);
+				boolean add = true;
 				switch (key) {
 					case 1:
 						addPercept(name, ASSyntax.createLiteral("planet",
@@ -136,13 +141,29 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 						break;
 					case 4: // ships and iships are de same!
 					case 8:
-						addPercept(name, ASSyntax.createLiteral("ship",
-									ASSyntax.createNumber(pos.x),
-									ASSyntax.createNumber(pos.y)));
+						for (Map<Integer, Location> mil2: planets.values()) {
+							for (Integer key2 : mil2.keySet()) {
+								Location pos2 = mil2.get(key2);
+								if (pos2.x == pos.x && pos2.y == pos.y) {
+									add = false;
+									countAllShips -= 1;
+									break;
+								}
+							}
+						}
+
+						if (add == true) {
+							addPercept(name, ASSyntax.createLiteral("ship",
+										ASSyntax.createNumber(pos.x),
+										ASSyntax.createNumber(pos.y)));
+						}
 						break;
 				}
 			}
 		}
+
+		addPercept(name, ASSyntax.createLiteral("qtyShips",
+									ASSyntax.createNumber(countAllShips)));
 
         addPercept(name, ASSyntax.createLiteral("step", ASSyntax.createNumber(getStep())));
     }
@@ -151,13 +172,20 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 	@Override
     protected void stepStarted(int step) {
 		getLogger().info("Started step " + step);
+
+		jason.environment.grid.GridWorldView v = null;
+		if (model != null) {
+			v = model.getView();
+			if (v != null) v.update();
+		}
     }
 
     /** to be overridden by the user class */
 	@Override
 	protected void stepFinished(int step, long elapsedTime, boolean byTimeout) {
 		long mean = (step > 0) ? (sum + elapsedTime) / (step + 1) : 0;
-		getLogger().info("Finished step " + step + " after " + elapsedTime + " (mean "+ mean +")");
+		getLogger().info("Finished step " + step + " after " + elapsedTime + " (mean "+ mean +") = "+ numberAgsAnswered);
+		numberAgsAnswered = 0;
 		sum = elapsedTime;
 		if (byTimeout == true) getLogger().warning("Step " + step + " finished by timeout!");
 
@@ -195,6 +223,14 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 
         if (action.getFunctor().equals("increasePopulation")) {
             return 3;
+		} else if (action.getFunctor().equals("changeOrientationTo")) {
+			return 1;
+		} else if (action.getFunctor().equals("fire")) {
+			return 1;
+		} else if (action.getFunctor().equals("death")) {
+			return 1;
+		} else if (action.getFunctor().equals("forward")) {
+			return 1;
         } else if (action.getFunctor().equals("nope")) {
             return 1;
         }
@@ -205,6 +241,8 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 
 	@Override
     public boolean executeAction(String agName, Structure act) {
+		numberAgsAnswered++;
+
 		if (getStep() == 1) {
 			if ( verifyHello(agName, act) == 1 ) {
 				Integer agId = model.getIdByName(agName);
@@ -222,12 +260,33 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 			return false;
 		}
 
-        if (act.getFunctor().equals("increasePopulation")) {
+		if (act.getFunctor().equals("death")) {
+			model.disableAgent(agName);
+			return true;
+        } else if (act.getFunctor().equals("increasePopulation")) {
             NumberTerm nt = (NumberTerm) act.getTerm(0);
             double val = nt.solve();
             Integer agId = model.getIdByName(agName);
             model.population(agId, (int)val);
             return true;
+		} else if (act.getFunctor().equals("changeOrientationTo")) {
+            StringTerm nt = (StringTerm) act.getTerm(0);
+            String val = nt.getString();
+            Integer agId = model.getIdByName(agName);
+			if (val != null)
+				model.setOrientation(agId, val.charAt(0));
+            return true;
+		} else if (act.getFunctor().equals("forward")) {
+            Integer agId = model.getIdByName(agName);
+            model.forward(agId);
+            return true;
+		} else if (act.getFunctor().equals("fire")) {
+            Integer agId = model.getIdByName(agName);
+			String agTarget = model.attackFrom(agId);
+			if (agTarget == null) return true;
+			Message message = new Message("achieve", agName, agTarget, ASSyntax.createLiteral("fire"));
+			RunCentralisedMAS.getRunner().getAg(agTarget).receiveMsg(message);
+			return true;
         } else if (act.getFunctor().equals("nope")) {
             return true;
         }

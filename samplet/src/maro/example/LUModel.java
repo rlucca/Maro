@@ -1,21 +1,35 @@
 package maro.example;
 
+import jason.infra.centralised.RunCentralisedMAS;
 import jason.environment.grid.GridWorldModel;
 import jason.environment.grid.Location;
 import jason.asSyntax.Literal;
 import jason.asSyntax.Term;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
 
 public class LUModel extends GridWorldModel {
 	private Map<String, Integer> agentId = new HashMap<String, Integer>();
 	private Map<Integer, Integer> agentType = new HashMap<Integer, Integer>();
     private Map<Integer, InnerData> agentData = new HashMap<Integer, InnerData>();
+	private Object[][] map = null;
 
     public LUModel (int agentsQty) {
         // cell's width and cell's height are 50
         super(50, 50, agentsQty);
+
+		map = new Object[50][50];
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                map[i][j] = new ArrayList<Integer>();
+            }
+        }
     }
+
+	public jason.environment.grid.GridWorldView getView() {
+		return view;
+	}
 
     public int
     nextInt(int limit) {
@@ -39,6 +53,45 @@ public class LUModel extends GridWorldModel {
         }
     }
 
+	@Override
+	public void setAgPos(int ag, int x, int y) {
+		Location o = getAgPos(ag);
+		ArrayList<Integer> ali;
+		Object local;
+
+		if (o != null) {
+			synchronized(map) {
+				int sz;
+				// removendo do antigo...
+				local = map[o.x][o.y];
+				ali = (ArrayList<Integer>) local;
+				sz = ali.size();
+				if (sz == 0) {
+					// skip only!
+				} else if (sz == 1) {
+					ali.remove(0);
+					super.remove(AGENT, o.x, o.y);
+				} else {
+					int index = ali.indexOf(ag);
+					if (index >= 0) {
+						ali.remove(index);
+						// nao se remove do tabuleiro pq a outras pecas no local
+					}
+				}
+			}
+		}
+
+		// colocando no novo...
+		synchronized (map) {
+			local = map[x][y];
+			ali = (ArrayList<Integer>) local;
+
+			ali.add(ag);
+			super.add(AGENT, x, y);
+			agPos[ag] = new Location(x, y);
+		}
+	}
+
 	public boolean havePlanet(int x, int y) {
 		for (int id : agentId.values()) {
 			Integer type = getTypeById(id);
@@ -51,17 +104,24 @@ public class LUModel extends GridWorldModel {
 		return false;
 	}
 
+	public Map<Integer, Map<Integer,Location> > findAllOthers(int agId, int range) {
+		return findOthers(agId, -1, range);
+	}
+
 	// devolve AgId x (AgType x AgLocation)
-	public Map<Integer, Map<Integer,Location> > findOthers(int agId, int range) {
+	public Map<Integer, Map<Integer,Location> > findOthers(int agId, int typeP, int range) {
+		Map<Integer, Map<Integer,Location> > others = new HashMap<Integer, Map<Integer,Location> > ();
 		Location pos = getAgPos(agId);
+		if (pos == null) return others; // nao tem o que dizer, se a posicao eh null
 		Location tl = new Location(pos.x - range, pos.y - range);
 		Location br = new Location(pos.x + range, pos.y + range);
-		Map<Integer, Map<Integer,Location> > others = new HashMap<Integer, Map<Integer,Location> > ();
 
 		for (int id : agentId.values()) {
 			if (id != agId) {
 				Integer type = getTypeById(id);
 				Location posTarget = getAgPos(id);
+				if (type == null || (typeP != -1 && type != typeP)) continue;
+
 				if (posTarget.isInArea(tl, br) == true) {
 					Map<Integer,Location> il = new HashMap<Integer, Location>();
 					il.put(type, posTarget);
@@ -73,7 +133,7 @@ public class LUModel extends GridWorldModel {
 	}
 
 	public int countOthers(int agId, int type, int range) {
-		Map<Integer, Map<Integer,Location> > mp = findOthers(agId, range);
+		Map<Integer, Map<Integer,Location> > mp = findOthers(agId, type, range);
 		return countOthers(agId, type, mp);
 	}
 
@@ -90,6 +150,55 @@ public class LUModel extends GridWorldModel {
 			}
 		}
 		return count;
+	}
+
+	public String attackFrom(int agId) {
+		Location pos = getAgPos(agId);
+		Location posTarget = pos;
+		char orientation = getOrientation(agId);
+
+		switch (orientation) {
+			case 'N':
+				posTarget.y -= 1;
+				break;
+			case 'E':
+				posTarget.x += 1;
+				break;
+			case 'S':
+				posTarget.y += 1;
+				break;
+			case 'W':
+				posTarget.x -= 1;
+				break;
+		}
+
+        // Primeiro verifica a posicao atual...
+		for (int id : agentId.values()) {
+			if (id != agId) {
+				Integer type = agentType.get(agId);
+				Location target = getAgPos(id);
+				if (type != null && type != 1
+						&& target != null && target.x == pos.x && pos.y == target.y) {
+					String name = getNameById(id);
+					return name;
+				}
+			}
+		}
+
+        // Depois verifica a posicao que esta virado...
+		for (int id : agentId.values()) {
+			if (id != agId) {
+				Integer type = agentType.get(agId);
+				Location target = getAgPos(id);
+				if (type != null && type != 1
+						&& target != null && target.x == pos.x && pos.y == target.y) {
+					String name = getNameById(id);
+					return name;
+				}
+			}
+		}
+
+		return null;
 	}
 
     public String
@@ -207,9 +316,66 @@ public class LUModel extends GridWorldModel {
     public void setOrientation(int agId, char val) {
         InnerData id = agentData.get(agId);
 		String s = "" + val;
-		if (id == null && val != 'N' && val != 'S' && val != 'W' && val != 'E') return ;
+		if (id == null || (val != 'N' && val != 'S' && val != 'W' && val != 'E')) return ;
 		id.orientation = s.charAt(0);
 	}
+
+	public void disableAgent(String agName) {
+		Integer agId = agentId.get(agName);
+		if (agId == null) return ;
+		Integer type = agentType.get(agId);
+		// planetas nao sao apagados!
+		if (type == null || type == 1) return ;
+		Location pos = getAgPos(agId);
+		agentType.remove(agId);
+		agentData.remove(agId);
+
+		ArrayList<Integer> ali;
+		Object local;
+
+		synchronized (map) {
+			local = map[pos.x][pos.y];
+			ali = (ArrayList<Integer>) local;
+			if (ali.size() == 0) {
+				// do nothing...
+			} else if (ali.size() == 1) {
+				super.remove(AGENT, pos.x, pos.y);
+			} else {
+				int index = ali.indexOf(agId);
+				if (index >= 0) {
+					ali.remove(index);
+				}
+			}
+
+			pos.x = -1; pos.y = -1;
+			agPos[agId] = pos;
+		}
+	}
+
+    public void forward(Integer agId) {
+		char orientation = getOrientation(agId);
+		Location pos = getAgPos(agId);
+
+		switch (orientation) {
+			case 'N':
+				pos.y -= 1;
+				break;
+			case 'E':
+				pos.x += 1;
+				break;
+			case 'S':
+				pos.y += 1;
+				break;
+			case 'W':
+				pos.x -= 1;
+				break;
+		}
+
+		if (pos.x < 0 || pos.y < 0 || pos.x > 49 || pos.y > 49)
+			return ;
+
+		setAgPos(agId, pos.x, pos.y);
+    }
 
     private class InnerData {
         public int population = 0;
