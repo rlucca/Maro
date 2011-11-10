@@ -32,7 +32,7 @@ PAIVA, D. C.; VIEIRA, R.; MUSSE, S. R. Ontology-based crowd simulation for norma
 PAIVA, D. C.; VIEIRA, R.; MUSSE, S. R. Ontology-based crowd simulation for normal life situations. In: IEEE COMPUTER SOCIETY. Proceedings of the Computer Graphics International 2005. [S.l.], 2005. p. 221–226.</Literal>
     </Annotation>
     <Declaration>
-        <Class IRI="#Agent"/>
+        <Class IRI="#Character"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Components_of_the_environment"/>
@@ -98,18 +98,18 @@ PAIVA, D. C.; VIEIRA, R.; MUSSE, S. R. Ontology-based crowd simulation for norma
         <DataProperty IRI="#hasSizeY"/>
     </Declaration>
     <SubClassOf>
-        <Class IRI="#Agent"/>
+        <Class IRI="#Character"/>
         <Class IRI="#Components_of_the_environment"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Agent"/>
+        <Class IRI="#Character"/>
         <ObjectSomeValuesFrom>
             <ObjectProperty IRI="#hasProfile"/>
             <Class IRI="#Profile"/>
         </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Agent"/>
+        <Class IRI="#Character"/>
         <ObjectMaxCardinality cardinality="1">
             <ObjectProperty IRI="#hasProfile"/>
         </ObjectMaxCardinality>
@@ -340,7 +340,7 @@ PAIVA, D. C.; VIEIRA, R.; MUSSE, S. R. Ontology-based crowd simulation for norma
         </DataMaxCardinality>
     </SubClassOf>
     <DisjointClasses>
-        <Class IRI="#Agent"/>
+        <Class IRI="#Character"/>
         <Class IRI="#Dimension"/>
         <Class IRI="#Place"/>
         <Class IRI="#Profile"/>
@@ -356,7 +356,7 @@ PAIVA, D. C.; VIEIRA, R.; MUSSE, S. R. Ontology-based crowd simulation for norma
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasProfile"/>
-        <Class IRI="#Agent"/>
+        <Class IRI="#Character"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasRandomDestination"/>

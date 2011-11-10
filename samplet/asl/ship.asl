@@ -1,5 +1,4 @@
 fullLife(100).
-life(40).
 lowLife(25). // 25% de 100
 
 
@@ -7,74 +6,100 @@ lowLife(25). // 25% de 100
 
 +!start <- iam(ship).
 
++life(L) <- .println("life ", L).
+
 @step1[atomic]
 +step(X)
     : life(0)
-    <- death.
+    <- .println("morreu"); death.
+
+@step10[atomic]
++step(X)
+    :  keep(TX, PX, PY) & not(onPlanet) & position(AX, AY)
+   <- .println("fuga to planet continue ", PX, "x", PY, " ", AX, AY); !orientationTo(PX, PY, NO);
+      changeOrientationTo(NO);
+      forward.
+
+@step11[atomic]
++step(X)
+    :  keep(TX, PX, PY) & onPlanet
+   <- .println("fuga to planet terminou"); -keep(TX, PX, PY); nope.
+
+@step12[atomic]
++step(X)
+    :  keep(TX, PX, PY) & X >= TX
+   <- .println("fuga to planet last"); -keep(X, PX, PY); forward.
 
 @step2[atomic]
 +step(X)
     : onPlanet & life(L) & fullLife(FL) & L < FL
-   <- nope.
+   <- .println("recover"); recover.
 
 @step3[atomic]
 +step(X)
     :  not(qtyPlanets(0)) & planet(PX,PY) & lowLife(LL) & life(L) & L < LL
-   <- !orientationTo(PX, PY, NO);
+   <- .println("fuga to planet"); !orientationTo(PX, PY, NO); +keep(X+6, PX, PY);
       changeOrientationTo(NO);
+      forward.
+
+@step7[atomic]
++step(X)
+    : qtyShips(S) & S > 1 & notFight(NF) & X < NF
+   <- .println("fuga away from atacante continue");
+      forward.
+
+@step8[atomic]
++step(X)
+    : qtyShips(0) & notFight(NF) & X < NF
+   <- .println("fuga away terminou");
+      -notFight(X);
+      nope.
+
+@step9[atomic]
++step(X)
+    : notFight(X)
+   <- .println("fuga away from atacante last");
+      -notFight(X);
       forward.
 
 @step4[atomic]
 +step(X)
     : qtyShips(S) & S > 1 & .random(Y) & K=math.round(Y*10000) & K < 10 & position(PX,PY)
-   <- ?findStriker(PX, PY, O, D);
-      ?orientation(OO);
+   <- .println("fuga away from atacante"); ?findStriker(PX, PY, O, D);
+      ?orientation(OO); +notFight(X+K);
       !goAway(D, OO, O).
 
 @step5[atomic]
 +step(X)
     : qtyShips(S) & S > 0 & position(PX, PY)
-   <- ?findStriker(PX, PY, O, D);
+   <- .println("atacar"); ?findStriker(PX, PY, O, D);
       ?orientation(OO);
       !attack(D, OO, O).
 
 @step6[atomic]
 +step(X)
     : .random(Y) & K=math.round(Y*100)
-   <- !newOrientation(K, L);
+   <- .println("andarilho"); !newOrientation(K, L);
       changeOrientationTo(L);
       forward.
 
 
 @ot1[atomic]
-+!orientationTo(X,Y, "E")
-    : position(PX,PY) & PX > X & PY > Y.
++!orientationTo(X,_, "W")
+    : position(PX,_) & PX > X.
 @ot2[atomic]
-+!orientationTo(X,Y, "E")
-    : position(PX,PY) & PX > X & PY < Y.
++!orientationTo(X,_, "E")
+    : position(PX,_) & PX < X.
 @ot3[atomic]
-+!orientationTo(X,Y, "E")
-    : position(PX,Y) & PX > X.
-@ot4[atomic]
-+!orientationTo(X,Y, "W")
-    : position(PX,PY) & PX < X & PY > Y.
-@ot5[atomic]
-+!orientationTo(X,Y, "W")
-    : position(PX,PY) & PX < X & PY < Y.
-@ot6[atomic]
-+!orientationTo(X,Y, "W")
-    : position(PX,Y) & PX < X.
-@ot7[atomic]
-+!orientationTo(X,Y, "S")
++!orientationTo(X,Y, "N")
     : position(X,PY) & PY > Y.
-@ot8[atomic]
-+!orientationTo(X,Y, "N")
+@ot4[atomic]
++!orientationTo(X,Y, "S")
     : position(X,PY) & PY < Y.
-// Se acontecer a outra regra de step antes pega...
-@ot9[atomic]
-+!orientationTo(X,Y, "N")
+// Nao deveria acontecer...
+@ot5[atomic]
++!orientationTo(X,Y, "S")
     : position(X,Y).
-
 
 @ga1[atomic]
 +!goAway(D, ActualOrientation, ActualOrientation)
@@ -97,14 +122,11 @@ lowLife(25). // 25% de 100
 +!newOrientation(K, "W").
 
 +!attack(2, Orientation, Orientation)
-    <- .println("avancar!");
-       forward.
+    <- forward.
 +!attack(D, Orientation, Orientation)
-    <- .println("fogo!");
-       fire.
+    <- fire.
 +!attack(_, OldOrientation, NewOrientation)
-    <- .println("ataca virando de ", OldOrientation, " para ", NewOrientation);
-       changeOrientationTo(NewOrientation).
+    <- changeOrientationTo(NewOrientation).
 
 
 // Se houver um atacante na mesma posicao entao a orientacao nao importa!
@@ -130,15 +152,3 @@ lowLife(25). // 25% de 100
 +?findStriker(PX, PY, "W", 2)    : ship(PX-2, PY) | ship(PX-2, PY-1) | ship(PX-2, PY+1) | ship(PX-2, PY-2) | ship(PX-2, PY+2) | ship(PX-1, PY+1).
 +?findStriker(_, _, O, 0)        : orientation(O).
 
-@fire1[atomic]
-+!fire
-     : life(X) & .random(Y) & K=X-math.round(Y*3) & K > 0
-    <- -life(X); +life(K).
-@fire2[atomic]
-+!fire
-     : life(X) & K=X-1 & K > 0
-    <- -life(X); +life(K).
-@fire3[atomic]
-+!fire
-     : life(X)
-    <- -life(X); +life(0).

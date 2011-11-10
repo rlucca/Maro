@@ -37,6 +37,7 @@ public class BBAffective
 	 *     <code>agent BeliefBaseClass(1,bla);</code><br>
 	 * the init args will be ["1", "bla"].
 	 */
+        @Override
 	public void
 	init(Agent ag, String[] args) {
 		myAgent = ag;
@@ -53,13 +54,15 @@ public class BBAffective
 	}
 
 	/** Called just before the end of MAS execution */
+        @Override
 	public void
 	stop() {
 		ek.dumpData();
 	}
 
 	/** Returns the number of beliefs in BB */
-	public int
+	@Override
+        public int
 	size() {
 		// nao pareceu ser chamado em nenhum ponto...
 		System.err.println("lucca size()");
@@ -110,6 +113,7 @@ public class BBAffective
 		return ret;
 	}
 
+    @Override
     public boolean
 	add(Literal l) {
 		boolean ret = add(l, false);
@@ -117,6 +121,7 @@ public class BBAffective
 		return super.add(l);
     }
 
+    @Override
     public boolean
 	add(int index, Literal l) {
 		boolean ret = add(l, index != 0);
@@ -179,6 +184,7 @@ public class BBAffective
 	 * Returns an iterator for all literals in BB that match the functor/arity 
 	 * of the parameter.<br>
 	 */
+        @Override
 	public Iterator<Literal>
 	getCandidateBeliefs(PredicateIndicator pi)
 	{
@@ -217,6 +223,7 @@ public class BBAffective
 	 * BB={a(10)[a,b]}, <code>contains(a(10)[d])</code> returns
 	 * a(10)[a,b].
 	 */
+        @Override
 	public Literal
 	contains(Literal l)
 	{
@@ -260,7 +267,8 @@ public class BBAffective
 //	}
 
 	/** Removes a literal from BB, returns true if succeed */
-	public boolean
+	@Override
+        public boolean
 	remove(Literal l)
 	{
 		Dumper d = null;
@@ -293,6 +301,7 @@ public class BBAffective
 	}
 
 	/** Removes all believes with some functor/arity */
+        @Override
 	public boolean
 	abolish(PredicateIndicator pi)
 	{

@@ -6,8 +6,7 @@
 @step0[atomic]
 +population(X)
     : X < 2000 & .random(Y) & K=math.round(Y*25) & K>23
-   <- VAL=K-16;
-      increasePopulation(VAL).
+   <- increasePopulation(K).
 
 @step1[atomic]
 +step(X)
@@ -16,7 +15,7 @@
 
 @step2[atomic]
 +step(X)
-     : population(P)
+     : population(P) & P > 6
     <- .println("step ", X, " com populacao ", P); increasePopulation(-4).
 
 @step3[atomic]

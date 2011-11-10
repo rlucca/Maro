@@ -57,7 +57,7 @@
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasCharacter"/>
-        <Class abbreviatedIRI="uem:Agent"/>
+        <Class abbreviatedIRI="uem:Character"/>
     </ObjectPropertyRange>
 </Ontology>
 

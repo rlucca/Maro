@@ -1,6 +1,5 @@
 package maro.example;
 
-import jason.infra.centralised.RunCentralisedMAS;
 import jason.environment.grid.GridWorldModel;
 import jason.environment.grid.Location;
 import jason.asSyntax.Literal;
@@ -19,7 +18,7 @@ public class LUModel extends GridWorldModel {
         // cell's width and cell's height are 50
         super(50, 50, agentsQty);
 
-		map = new Object[50][50];
+		map = new Object[width][height];
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 map[i][j] = new ArrayList<Integer>();
@@ -60,37 +59,50 @@ public class LUModel extends GridWorldModel {
 		Object local;
 
 		if (o != null) {
-			synchronized(map) {
-				int sz;
-				// removendo do antigo...
-				local = map[o.x][o.y];
-				ali = (ArrayList<Integer>) local;
-				sz = ali.size();
-				if (sz == 0) {
-					// skip only!
-				} else if (sz == 1) {
-					ali.remove(0);
-					super.remove(AGENT, o.x, o.y);
-				} else {
-					int index = ali.indexOf(ag);
-					if (index >= 0) {
-						ali.remove(index);
-						// nao se remove do tabuleiro pq a outras pecas no local
-					}
+			int sz;
+			// removendo do antigo...
+			local = map[o.x][o.y];
+			ali = (ArrayList<Integer>) local;
+			sz = ali.size();
+			if (sz == 1) {
+				ali.remove(0);
+				super.remove(AGENT, o.x, o.y);
+			} else {
+				int index = ali.indexOf(ag);
+				if (index >= 0) {
+					ali.remove(index);
+					// nao se remove do tabuleiro pq a outras pecas no local
 				}
 			}
 		}
 
 		// colocando no novo...
-		synchronized (map) {
-			local = map[x][y];
-			ali = (ArrayList<Integer>) local;
+		local = map[x][y];
+		ali = (ArrayList<Integer>) local;
 
-			ali.add(ag);
-			super.add(AGENT, x, y);
-			agPos[ag] = new Location(x, y);
-		}
+		ali.add(ag);
+		super.add(AGENT, x, y);
+		agPos[ag] = new Location(x, y);
 	}
+
+	@Override
+    public int getAgAtPos(int x, int y) {
+		ArrayList<Integer> ali;
+		Object local;
+
+		local = map[x][y];
+		ali = (ArrayList<Integer>) local;
+		
+		if (ali.size() == 1)
+			return ali.get(0);
+
+		for (Integer i : ali) {
+			if (agentType.get(i) == 1)
+				return i;
+		}
+
+        return ali.get(0);
+    }
 
 	public boolean havePlanet(int x, int y) {
 		for (int id : agentId.values()) {
@@ -152,48 +164,45 @@ public class LUModel extends GridWorldModel {
 		return count;
 	}
 
-	public String attackFrom(int agId) {
+	public Integer attackFrom(int agId) {
 		Location pos = getAgPos(agId);
-		Location posTarget = pos;
 		char orientation = getOrientation(agId);
-
-		switch (orientation) {
-			case 'N':
-				posTarget.y -= 1;
-				break;
-			case 'E':
-				posTarget.x += 1;
-				break;
-			case 'S':
-				posTarget.y += 1;
-				break;
-			case 'W':
-				posTarget.x -= 1;
-				break;
-		}
 
         // Primeiro verifica a posicao atual...
 		for (int id : agentId.values()) {
 			if (id != agId) {
-				Integer type = agentType.get(agId);
+				Integer type = agentType.get(id);
 				Location target = getAgPos(id);
 				if (type != null && type != 1
 						&& target != null && target.x == pos.x && pos.y == target.y) {
-					String name = getNameById(id);
-					return name;
+					return id;
 				}
 			}
+		}
+
+		switch (orientation) {
+			case 'N':
+				pos.y -= 1;
+				break;
+			case 'E':
+				pos.x += 1;
+				break;
+			case 'S':
+				pos.y += 1;
+				break;
+			case 'W':
+				pos.x -= 1;
+				break;
 		}
 
         // Depois verifica a posicao que esta virado...
 		for (int id : agentId.values()) {
 			if (id != agId) {
-				Integer type = agentType.get(agId);
+				Integer type = agentType.get(id);
 				Location target = getAgPos(id);
 				if (type != null && type != 1
 						&& target != null && target.x == pos.x && pos.y == target.y) {
-					String name = getNameById(id);
-					return name;
+					return id;
 				}
 			}
 		}
@@ -333,23 +342,20 @@ public class LUModel extends GridWorldModel {
 		ArrayList<Integer> ali;
 		Object local;
 
-		synchronized (map) {
-			local = map[pos.x][pos.y];
-			ali = (ArrayList<Integer>) local;
-			if (ali.size() == 0) {
-				// do nothing...
-			} else if (ali.size() == 1) {
-				super.remove(AGENT, pos.x, pos.y);
-			} else {
-				int index = ali.indexOf(agId);
-				if (index >= 0) {
-					ali.remove(index);
-				}
+		local = map[pos.x][pos.y];
+		ali = (ArrayList<Integer>) local;
+		if (ali.size() == 1) {
+            ali.remove(0);
+			super.remove(AGENT, pos.x, pos.y);
+		} else {
+			int index = ali.indexOf(agId);
+			if (index >= 0) {
+				ali.remove(index);
 			}
-
-			pos.x = -1; pos.y = -1;
-			agPos[agId] = pos;
 		}
+
+		pos.x = -1; pos.y = -1;
+		agPos[agId] = pos;
 	}
 
     public void forward(Integer agId) {
@@ -371,14 +377,38 @@ public class LUModel extends GridWorldModel {
 				break;
 		}
 
-		if (pos.x < 0 || pos.y < 0 || pos.x > 49 || pos.y > 49)
+		if (pos.x < 0 || pos.y < 0 || pos.x > width-1 || pos.y > height-1)
 			return ;
 
 		setAgPos(agId, pos.x, pos.y);
     }
 
+	public void fire(Integer source, Integer target) {
+		Integer sType = agentType.get(source);
+		Integer tType = agentType.get(target);
+		int damage = 1 + nextInt(5);
+
+		if (sType == null || tType == null) return ;
+
+		getLife(target, -damage);
+	}
+
+	public int getLife(Integer agId, int value) {
+        InnerData data = agentData.get(agId);
+
+		if (data == null) return 0;
+
+		if (value >= data.life)
+			data.life = 0;
+		else
+			data.life += value;
+
+		return data.life;
+	}
+
     private class InnerData {
         public int population = 0;
 		public char orientation = 'N'; // North South West East only!
+		public int life = 40;
     }
 }

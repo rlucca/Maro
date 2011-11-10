@@ -14,7 +14,6 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 	private int lastStep = Integer.MAX_VALUE;
 	private boolean policyIsQueue = true;
 	private long sum = 0;
-	private int numberAgsAnswered = 0;
 
 	private LUModel model;
 
@@ -105,8 +104,16 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 		int countShips = model.countOthers(id,    4, others);
 		int countIShips = model.countOthers(id,   8, others);
 		int countAllShips = countShips + countIShips;
+		int life = model.getLife(id, 0);
 
         clearPercepts(name);
+
+		addPercept(name, ASSyntax.createLiteral("id(",
+					ASSyntax.createNumber(id),
+					ASSyntax.createString(name)));
+
+		addPercept(name, ASSyntax.createLiteral("life",
+					ASSyntax.createNumber(life)));
 
 		if (type != null && type != 2) { // type and type different of person
 			addPercept(name, ASSyntax.createLiteral("population",
@@ -184,8 +191,7 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 	@Override
 	protected void stepFinished(int step, long elapsedTime, boolean byTimeout) {
 		long mean = (step > 0) ? (sum + elapsedTime) / (step + 1) : 0;
-		getLogger().info("Finished step " + step + " after " + elapsedTime + " (mean "+ mean +") = "+ numberAgsAnswered);
-		numberAgsAnswered = 0;
+		getLogger().info("Finished step " + step + " after " + elapsedTime + " (mean "+ mean +")");
 		sum = elapsedTime;
 		if (byTimeout == true) getLogger().warning("Step " + step + " finished by timeout!");
 
@@ -225,6 +231,8 @@ public class LU2DEnv extends TimeSteppedEnvironment {
             return 3;
 		} else if (action.getFunctor().equals("changeOrientationTo")) {
 			return 1;
+		} else if (action.getFunctor().equals("recover")) {
+			return 1;
 		} else if (action.getFunctor().equals("fire")) {
 			return 1;
 		} else if (action.getFunctor().equals("death")) {
@@ -241,8 +249,6 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 
 	@Override
     public boolean executeAction(String agName, Structure act) {
-		numberAgsAnswered++;
-
 		if (getStep() == 1) {
 			if ( verifyHello(agName, act) == 1 ) {
 				Integer agId = model.getIdByName(agName);
@@ -280,12 +286,16 @@ public class LU2DEnv extends TimeSteppedEnvironment {
             Integer agId = model.getIdByName(agName);
             model.forward(agId);
             return true;
+		} else if (act.getFunctor().equals("recover")) {
+            Integer agId = model.getIdByName(agName);
+			if (agId == null) return true;
+			model.getLife(agId, 3+model.nextInt(7));
+			return true;
 		} else if (act.getFunctor().equals("fire")) {
             Integer agId = model.getIdByName(agName);
-			String agTarget = model.attackFrom(agId);
+			Integer agTarget = model.attackFrom(agId);
 			if (agTarget == null) return true;
-			Message message = new Message("achieve", agName, agTarget, ASSyntax.createLiteral("fire"));
-			RunCentralisedMAS.getRunner().getAg(agTarget).receiveMsg(message);
+			model.fire(agId, agTarget);
 			return true;
         } else if (act.getFunctor().equals("nope")) {
             return true;

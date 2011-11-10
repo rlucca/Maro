@@ -42,6 +42,7 @@ public class LU2DView extends GridWorldView {
         if (type == null) return ; // unknow type
 
 		orientation = model.getOrientation(id);
+		if (orientation == ' ') return ; // death agent
 
 		if (type != 1) {
 			// Quando o tipo for diferente de planeta,
@@ -69,6 +70,9 @@ public class LU2DView extends GridWorldView {
                 break;
 			default: break;
 		}
+
+        g.setColor(Color.red);
+        drawString(g, x, y, defaultFont, String.valueOf(id+1));
     }
 
     private void

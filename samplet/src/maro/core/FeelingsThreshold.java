@@ -50,14 +50,20 @@ class FeelingsThreshold {
 			Integer value = null;
 			Dumper du = id.next(); // setup(X), X -> setup individual
 			String setupName = du.getTerms()[0];
-			Dumper hassetup = locate(oaw, setupName, "hasSetup", 2);
+			//Dumper hassetup = locate(oaw, setupName, "hasSetup", 2);
 			Dumper issetupof = locate(oaw, setupName, "isSetupOf", 2);
 			Dumper hasthreshold = locate(oaw, setupName, "hasThreshold", 2);
 			Dumper hasthresholdType =
 				locate(oaw, setupName, "hasThresholdType", 2);
-			String name = issetupof.getTerms()[1];
+			String name = null;
 
 			try {
+                                if (issetupof == null || hasthreshold == null
+                                        || hasthresholdType == null)
+                                   continue; // i am not interessed
+
+                                name = issetupof.getTerms()[1];
+
 				if (name.charAt(0) == '"')
 					name = name.substring(1, name.length()-1); // unquote
 
