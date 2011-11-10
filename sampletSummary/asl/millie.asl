@@ -302,6 +302,8 @@ hasJudge(millie_gratitudes_car, milliesCar).
         .println("Quem ama a millie?", AL); nope;
         .findall(X, feeling(X, _), FL);
         .println("Que sentimentos millie tem?", FL); nope;
+        ?~sameAs("millie", "jose");
+        .println("Millie difere de Jose"); nope;
         !!summary.
 
 +!summary
