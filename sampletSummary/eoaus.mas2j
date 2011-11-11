@@ -9,7 +9,6 @@ MAS eoaus {
     agents:
         millie
           beliefBaseClass maro.wrapper.BBAffective("ontology/occ-tbox.owl")
-          agentArchClass maro.wrapper.AgArchFixBB
         ;
 
     aslSourcePath: "asl";

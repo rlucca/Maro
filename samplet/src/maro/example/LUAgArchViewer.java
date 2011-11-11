@@ -1,20 +1,17 @@
 package maro.example;
 
 import jason.mas2j.ClassParameters;
-import maro.wrapper.AgArchFixBB;
+import jason.architecture.AgArch;
 import jason.runtime.Settings;
 import jason.JasonException;
 
-public class LUAgArchViewer extends AgArchFixBB
+public class LUAgArchViewer extends AgArch
 {
     LU2DEnv env;
 
 	@Override
-    public void initAg(String agClass, ClassParameters bbPars, String asSrc, Settings stts)
-					throws JasonException
+    public void init() throws Exception
 	{
-		super.initAg(agClass, bbPars, asSrc, stts);
-
         jason.infra.centralised.CentralisedAgArch infra
             = (jason.infra.centralised.CentralisedAgArch) getArchInfraTier();
         jason.infra.centralised.CentralisedEnvironment envInfra
