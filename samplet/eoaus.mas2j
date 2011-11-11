@@ -5,7 +5,7 @@ MAS eoaus {
 
     // timeout seconds, number of steps, policy of when adding second action, number of agents
     //environment: maro.example.LU2DEnv(20000, 1000, FALSE, 20)
-    environment: maro.example.LU2DEnv(20000, 1000, FALSE, 110, TRUE)
+    environment: maro.example.LU2DEnv(20000, 1000, FALSE, 111, TRUE)
 
     executionControl: jason.control.ExecutionControl
 
