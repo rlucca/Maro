@@ -254,10 +254,19 @@ public class Dumper {
     @Override
     public int hashCode() {
         int ret = arity;
+		int i;
         ret += negated.hashCode();
         ret += functor.hashCode();
-        for (String s: terms) ret += s.hashCode();
-        for (Dumper d: annots) ret += d.hashCode();
+		i = 1;
+        for (String s: terms) {
+			ret += s.hashCode() * i;
+			i++;
+		}
+		i = 1;
+        for (Dumper d: annots) {
+			ret += d.hashCode() * i;
+			i++;
+		}
         return ret;
     }
 

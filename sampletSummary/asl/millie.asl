@@ -221,8 +221,8 @@ hasJudge(millie_gratitudes_car, milliesCar).
 
 +!start
     <-  iam(agent);
-        !esperaAte(3);
-        !!relacoes.
+        !esperaAte(2);
+        !!emocoes.
 
 +!esperaAte(CICLO)
      : step(CICLO)
@@ -237,8 +237,10 @@ hasJudge(millie_gratitudes_car, milliesCar).
         .findall(enemy(X,Y), hasEnemy(X,Y), LE); ?printBR(LE, "Background: "); nope;
         .findall(know(X,Y), hasKnow(X,Y), LB);
         .difference(LB, LF, LW);
-        .difference(LW, LE, LK); ?printBR(LK, "Background: "); nope;
-        !!emocoes.
+        .difference(LW, LE, LK); ?printBR(LK, "Background: "); nope.
+
+-!relacoes
+    <- .println("teste falhou"); .stopMAS.
 
 +?printBR([], _).
 +?printBR([H|R], PROMPT)
@@ -247,7 +249,8 @@ hasJudge(millie_gratitudes_car, milliesCar).
 
 
 +!emocoes
-    <-  !testeEmocoes(john);
+    <-  !relacoes;
+        !testeEmocoes(john);
         !testeEmocoes(jose);
         !testeEmocoes(dilu);
         !testeEmocoes(millie);
@@ -293,6 +296,9 @@ hasJudge(millie_gratitudes_car, milliesCar).
         ?gratitude("millie_gratitudes_car"); nope;
         .println("millie tudo certo!").
 
+-!testeEmocoes(X)
+    <- .println(X, " falhou"); .stopMAS.
+
 +!perguntas
     <-  .findall(X, hasKnow("jose", X), AJ);
         .println("Quem eh conhecido por jose? ", AJ); nope;
@@ -302,9 +308,19 @@ hasJudge(millie_gratitudes_car, milliesCar).
         .println("Quem ama a millie?", AL); nope;
         .findall(X, feeling(X, _), FL);
         .println("Que sentimentos millie tem?", FL); nope;
-        ?~sameAs("millie", "jose");
-        .println("Millie difere de Jose"); nope;
+        .findall(diff("millie",X), ~sameAs("millie", X), SMMX);
+        .println("diff A:", SMMX); nope;
+        .findall(diff("millie",X), ~sameAs(X, "millie"), SMXM);
+        .println("diff B:", SMXM); nope;
+        .difference(SMMX, SMXM, SDAB);
+        .difference(SMXM, SMMX, SDBA);
+        .println("A minus B: ", SDAB);
+        .println("B minus A: ", SDBA);
+        SDAB = SDBA;
         !!summary.
+
+-!perguntas
+    <- .println("teste falhou!!"); .stopMAS.
 
 +!summary
     <-  // larguei de mao de fazer isso aqui...
