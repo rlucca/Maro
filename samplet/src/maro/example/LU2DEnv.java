@@ -1,7 +1,8 @@
 package maro.example;
 
+import maro.core.TimeSteppedEnvironment;
+
 import jason.infra.centralised.RunCentralisedMAS;
-import jason.environment.TimeSteppedEnvironment;
 import jason.environment.grid.Location;
 import jason.asSemantics.Message;
 import jason.asSyntax.NumberTerm;
@@ -249,7 +250,7 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 
 	@Override
     public boolean executeAction(String agName, Structure act) {
-		if (getStep() == 1) {
+		if (getStep() == 0) {
 			if ( verifyHello(agName, act) == 1 ) {
 				Integer agId = model.getIdByName(agName);
 				if (agId == null) {
