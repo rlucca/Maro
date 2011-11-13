@@ -292,29 +292,28 @@ public class LUModel extends GridWorldModel {
     public int population(int agId, int val) {
         Integer type = agentType.get(agId);
 
-        if (type == 1 || type == 4 || type == 8) { // Planet, Ship and Intelligent Ship
-            InnerData id = agentData.get(agId);
-            if (id == null) {
-                id = new InnerData();
-                switch (type) {
-                    case 1:
-						id.population = 5000 + nextInt(1000); // planet
-						break;
-                    case 4:
-						id.population = 10 + nextInt(50); // ship
-						break;
-                    case 8:
-						id.population = 1 + nextInt(5); // intelligent ship
-						break;
-                }
-                agentData.put(agId, id);
-            } else {
-                id.population += val;
-            }
-            return id.population;
-        }
+        if (type == null || type == 2) // type nulled or person are reject...
+			return 0;
 
-        return 0;
+		InnerData id = agentData.get(agId);
+		if (id == null) {
+			id = new InnerData();
+			switch (type) {
+				case 1:
+					id.population = 5000 + nextInt(1000); // planet
+					break;
+				case 4:
+					id.population = 10 + nextInt(50); // ship
+					break;
+				case 8:
+					id.population = 1 + nextInt(5); // intelligent ship
+					break;
+			}
+			agentData.put(agId, id);
+		} else {
+			id.population += val;
+		}
+		return id.population;
     }
 
     public char getOrientation(int agId) {
