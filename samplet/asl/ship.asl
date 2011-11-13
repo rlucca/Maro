@@ -4,110 +4,105 @@ lowLife(25). // 25% de 100
 
 !start.
 
-+!start <- iam(ship).
++!start <- iam(ship); !!reactive.
 
-+life(L) <- .println("life ", L).
++!reactive
+     : step(X) & .random(Y) & K=math.round(Y*10000)
+    <- !behavior(X, K);
+       !!reactive.
 
-@step1[atomic]
-+step(X)
-    : life(0)
-    <- .println("morreu"); death.
+-!reactive
+    <- .wait({+step(_)});
+       !!reactive.
 
-@step10[atomic]
-+step(X)
++!behavior(STEP, RANDOM)
+    : die(X) & X < STEP
+   <- nope.
+
++!behavior(STEP, RANDOM)
+     : life(0) & not(die(_))
+    <- .println("morreu");
+       +die(STEP);
+       death.
+
++!behavior(STEP, RANDOM)
     :  keep(TX, PX, PY) & not(onPlanet) & position(AX, AY)
-   <- .println("fuga to planet continue ", PX, "x", PY, " ", AX, AY); !orientationTo(PX, PY, NO);
+   <- .println("fuga to planet continue ", PX, "x", PY, " ", AX, AY);
+      !orientationTo(PX, PY, NO);
       changeOrientationTo(NO);
       forward.
 
-@step11[atomic]
-+step(X)
++!behavior(STEP, RANDOM)
     :  keep(TX, PX, PY) & onPlanet
-   <- .println("fuga to planet terminou"); -keep(TX, PX, PY); nope.
+   <- .println("fuga to planet terminou");
+      -keep(TX, PX, PY);
+      nope.
 
-@step12[atomic]
-+step(X)
-    :  keep(TX, PX, PY) & X >= TX
-   <- .println("fuga to planet last"); -keep(X, PX, PY); forward.
++!behavior(STEP, RANDOM)
+    :  keep(TX, PX, PY) & STEP >= TX
+   <- .println("fuga to planet last");
+      -keep(TX, PX, PY);
+      forward.
 
-@step2[atomic]
-+step(X)
++!behavior(STEP, RANDOM)
     : onPlanet & life(L) & fullLife(FL) & L < FL
-   <- .println("recover"); recover.
+   <- .println("recover");
+      recover.
 
-@step3[atomic]
-+step(X)
++!behavior(STEP, RANDOM)
     :  not(qtyPlanets(0)) & planet(PX,PY) & lowLife(LL) & life(L) & L < LL
-   <- .println("fuga to planet"); !orientationTo(PX, PY, NO); +keep(X+6, PX, PY);
+   <- .println("fuga to planet");
+      !orientationTo(PX, PY, NO);
+      +keep(STEP+6, PX, PY);
       changeOrientationTo(NO);
       forward.
 
-@step7[atomic]
-+step(X)
-    : qtyShips(S) & S > 1 & notFight(NF) & X < NF
++!behavior(STEP, RANDOM)
+    : qtyShips(S) & S > 1 & notFight(NF) & STEP < NF
    <- .println("fuga away from atacante continue");
       forward.
 
-@step8[atomic]
-+step(X)
-    : qtyShips(0) & notFight(NF) & X < NF
++!behavior(STEP, RANDOM)
+    : qtyShips(0) & notFight(NF) & STEP < NF
    <- .println("fuga away terminou");
-      -notFight(X);
+      -notFight(NF);
       nope.
 
-@step9[atomic]
-+step(X)
-    : notFight(X)
++!behavior(STEP, RANDOM)
+    : notFight(STEP)
    <- .println("fuga away from atacante last");
-      -notFight(X);
+      -notFight(STEP);
       forward.
 
-@step4[atomic]
-+step(X)
-    : qtyShips(S) & S > 1 & .random(Y) & K=math.round(Y*10000) & K < 10 & position(PX,PY)
-   <- .println("fuga away from atacante"); ?findStriker(PX, PY, O, D);
-      ?orientation(OO); +notFight(X+K);
-      !goAway(D, OO, O).
++!behavior(STEP, RANDOM)
+    : qtyShips(S) & S > 1 & RANDOM < 10 & position(PX,PY)
+   <- .println("fuga away from atacante");
+      ?findStriker(PX, PY, O, D);
+      ?orientation(OO);
+      +notFight(STEP+RANDOM);
+      !goAway(OO, O).
 
-@step5[atomic]
-+step(X)
++!behavior(STEP, RANDOM)
     : qtyShips(S) & S > 0 & position(PX, PY)
-   <- .println("atacar"); ?findStriker(PX, PY, O, D);
+   <- .println("atacar");
+      ?findStriker(PX, PY, O, D);
       ?orientation(OO);
       !attack(D, OO, O).
 
-@step6[atomic]
-+step(X)
-    : .random(Y) & K=math.round(Y*100)
++!behavior(STEP, RANDOM)
+    : K=RANDOM mod 100
    <- .println("andarilho"); !newOrientation(K, L);
       changeOrientationTo(L);
       forward.
 
 
-@ot1[atomic]
-+!orientationTo(X,_, "W")
-    : position(PX,_) & PX > X.
-@ot2[atomic]
-+!orientationTo(X,_, "E")
-    : position(PX,_) & PX < X.
-@ot3[atomic]
-+!orientationTo(X,Y, "N")
-    : position(X,PY) & PY > Y.
-@ot4[atomic]
-+!orientationTo(X,Y, "S")
-    : position(X,PY) & PY < Y.
-// Nao deveria acontecer...
-@ot5[atomic]
-+!orientationTo(X,Y, "S")
-    : position(X,Y).
 
-@ga1[atomic]
-+!goAway(D, ActualOrientation, ActualOrientation)
+
++!goAway(ActualOrientation, ActualOrientation)
     <- !oposite(ActualOrientation, L);
        changeOrientationTo(L);
        forward.
-@ga2[atomic]
-+!goAway(D, ActualOrientation, EnemyOrientation)
++!goAway(ActualOrientation, EnemyOrientation)
     <- forward.
 
 
@@ -116,10 +111,12 @@ lowLife(25). // 25% de 100
 +!oposite("S", "N").
 +!oposite("W", "E").
 
+
 +!newOrientation(K, "N") :  K < 25.
 +!newOrientation(K, "E") :  K < 50.
 +!newOrientation(K, "S") :  K < 75.
 +!newOrientation(K, "W").
+
 
 +!attack(2, Orientation, Orientation)
     <- forward.
@@ -127,6 +124,14 @@ lowLife(25). // 25% de 100
     <- fire.
 +!attack(_, OldOrientation, NewOrientation)
     <- changeOrientationTo(NewOrientation).
+
+
++!orientationTo(X,_, "W") : position(PX,_) & PX > X.
++!orientationTo(X,_, "E") : position(PX,_) & PX < X.
++!orientationTo(X,Y, "N") : position(X,PY) & PY > Y.
++!orientationTo(X,Y, "S") : position(X,PY) & PY < Y.
+// Nao deveria acontecer...
++!orientationTo(X,Y, "S") : position(X,Y).
 
 
 // Se houver um atacante na mesma posicao entao a orientacao nao importa!
@@ -146,9 +151,13 @@ lowLife(25). // 25% de 100
 +?findStriker(PX, PY, "S", 1)    : ship(PX, PY+1).
 +?findStriker(PX, PY, "W", 1)    : ship(PX-1, PY).
 // a dois de alcance...
-+?findStriker(PX, PY, "N", 2)    : ship(PX, PY-2) | ship(PX-1, PY-2) | ship(PX+1, PY-2) | ship(PX-1, PY-1).
-+?findStriker(PX, PY, "E", 2)    : ship(PX+2, PY) | ship(PX+2, PY-1) | ship(PX+2, PY+1) | ship(PX+2, PY-2) | ship(PX+2, PY+2) | ship(PX+1, PY-1).
-+?findStriker(PX, PY, "S", 2)    : ship(PX, PY+2) | ship(PX-1, PY+2) | ship(PX+1, PY+2) | ship(PX+1, PY+1).
-+?findStriker(PX, PY, "W", 2)    : ship(PX-2, PY) | ship(PX-2, PY-1) | ship(PX-2, PY+1) | ship(PX-2, PY-2) | ship(PX-2, PY+2) | ship(PX-1, PY+1).
-+?findStriker(_, _, O, 0)        : orientation(O).
-
++?findStriker(PX, PY, "N", 2) 
+    : ship(PX, PY-2) | ship(PX-1, PY-2) | ship(PX+1, PY-2) | ship(PX-1, PY-1).
++?findStriker(PX, PY, "E", 2)
+    : ship(PX+2, PY) | ship(PX+2, PY-1) | ship(PX+2, PY+1) | ship(PX+2, PY-2)
+    | ship(PX+2, PY+2) | ship(PX+1, PY-1).
++?findStriker(PX, PY, "S", 2)
+    : ship(PX, PY+2) | ship(PX-1, PY+2) | ship(PX+1, PY+2) | ship(PX+1, PY+1).
++?findStriker(PX, PY, "W", 2)
+    : ship(PX-2, PY) | ship(PX-2, PY-1) | ship(PX-2, PY+1) | ship(PX-2, PY-2)
+    | ship(PX-2, PY+2) | ship(PX-1, PY+1).

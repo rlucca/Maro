@@ -3,4 +3,6 @@
 +!start <- iam(person). // person dont have representation!
 
 +step(X)
-    <- .wait(200); nope.
+    <- .wait(200);
+       .println("nope");
+       nope.

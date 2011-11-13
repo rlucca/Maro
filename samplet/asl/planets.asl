@@ -1,23 +1,26 @@
 
 !start.
 
-+!start <- iam(planet).
++!start <- iam(planet); !!reactive.
 
-@step0[atomic]
-+population(X)
-    : X < 2000 & .random(Y) & K=math.round(Y*25) & K>23
-   <- increasePopulation(K).
++!reactive
+     : step(X) & .random(Y) & K=math.round(Y*10000) & population(P)
+    <- !behavior(X, K, P);
+       !!reactive.
 
-@step1[atomic]
-+step(X)
-     : .random(Y) & K=math.round(Y*10000) & K < 51 & population(P)
-    <- .println("step ", X, " com populacao ", P); increasePopulation(2).
+-!reactive
+    <- .wait({+step(_)});
+       !!reactive.
 
-@step2[atomic]
-+step(X)
-     : population(P) & P > 6
-    <- .println("step ", X, " com populacao ", P); increasePopulation(-4).
++!behavior(STEP, RANDOM, POPULATION)
+     : RANDOM < 51
+    <- .println("step ", STEP, " com populacao ", POPULATION);
+       increasePopulation(RANDOM).
 
-@step3[atomic]
-+step(X)
++!behavior(STEP, RANDOM, POPULATION)
+     : POPULATION > 51
+    <- .println("step ", STEP, " com populacao ", POPULATION);
+       increasePopulation(-4).
+
++!behavior(STEP, RANDOM, POPULATION)
     <- nope.
