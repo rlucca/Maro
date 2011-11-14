@@ -16,9 +16,11 @@ class Emotion {
 
 	public boolean
 	isEmotion(String emo) {
+		String emotion = emo.toLowerCase();
 		for (String e: allEmotions) {
-			if (e.equals(emo))
+			if (e.equals(emotion)) {
 				return true;
+			}
 		}
 		return false;
 	}
