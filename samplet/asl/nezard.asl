@@ -2,14 +2,30 @@ fullLife(100).
 
 !start.
 
-+life(L) <- .println("life ", L).
++!start <- iam(planet); !!reactive.
 
-+!start <- iam(agent).
 
-@step1[atomic]
-+step(X)
-    : life(0)
-    <- .println("morreu"); death.
++!reactive
+     : step(X) & .random(Y) & K=math.round(Y*10000) & population(P)
+    <- !behavior(X, K, P);
+       !!reactive.
 
-@step2[atomic]
-+step(X) <- nope.
+-!reactive
+    <- .wait({+step(_)});
+       !!reactive.
+
+
++!behavior(STEP, RANDOM, POPULATION)
+    : die(X) & X < STEP
+   <- nope.
+
++!behavior(STEP, RANDOM, POPULATION)
+     : life(0) & not(die(_))
+    <- .println("morreu");
+       +die(STEP);
+       death.
+
++!behavior(STEP, RANDOM, POPULATION)
+    <- .println("nope");
+       nope.
+
