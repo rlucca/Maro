@@ -5,7 +5,7 @@ MAS eoaus {
 
     // timeout seconds, number of steps, policy of when adding second action, number of agents
     //environment: maro.example.LU2DEnv(20000, 1000, FALSE, 20)
-    environment: maro.example.LU2DEnv(20000, 1000, FALSE, 111, TRUE)
+    environment: maro.example.LU2DEnv(20000, 1000, FALSE, 102, TRUE)
 
     executionControl: jason.control.ExecutionControl
 
@@ -14,13 +14,24 @@ MAS eoaus {
           #10
         ;
         ship
-          #100
+          #90
           //agentArchClass maro.example.LUAgArchViewer
+        ;
+        delayed
+          #1
         ;
         nezard
           #1
           beliefBaseClass maro.wrapper.BBAffective("onto/nezard.owl")
         ;
+        /*darkstar
+          #1
+          beliefBaseClass maro.wrapper.BBAffective("onto/darkstar.owl")
+        ;
+        swordbreaker
+          #1
+          beliefBaseClass maro.wrapper.BBAffective("onto/swordbreaker.owl")
+        ;*/
 
     aslSourcePath: "asl";
 }
