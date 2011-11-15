@@ -2,9 +2,7 @@ package maro.example;
 
 import maro.core.TimeSteppedEnvironment;
 
-import jason.infra.centralised.RunCentralisedMAS;
 import jason.environment.grid.Location;
-import jason.asSemantics.Message;
 import jason.asSyntax.NumberTerm;
 import jason.asSyntax.StringTerm;
 import jason.asSyntax.Structure;

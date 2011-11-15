@@ -53,6 +53,7 @@ public class LUModel extends GridWorldModel {
     }
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public void setAgPos(int ag, int x, int y) {
 		Location o = getAgPos(ag);
 		ArrayList<Integer> ali;
@@ -86,6 +87,7 @@ public class LUModel extends GridWorldModel {
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
     public int getAgAtPos(int x, int y) {
 		ArrayList<Integer> ali;
 		Object local;
@@ -328,6 +330,7 @@ public class LUModel extends GridWorldModel {
 		id.orientation = s.charAt(0);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void disableAgent(String agName) {
 		Integer agId = agentId.get(agName);
 		if (agId == null) return ;
