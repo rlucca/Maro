@@ -41,7 +41,7 @@ class FeelingsThreshold {
 		thresholds = new HashMap<String, Integer> ();
 
 		//setup(Setup) pode ter todas essas relacoes:
-		//  hasSetup(AgentName, Setup). or isSetupOf(Setup, AgentName).
+		//  isSetupOf(Setup, AgentName).
 		//  hasThreshold(Setup, Integer).
 		//  hasThresholdType(Setup, EmotionType).
 		while (id.hasNext()) {
@@ -50,7 +50,6 @@ class FeelingsThreshold {
 			Integer value = null;
 			Dumper du = id.next(); // setup(X), X -> setup individual
 			String setupName = du.getTerms()[0];
-			//Dumper hassetup = locate(oaw, setupName, "hasSetup", 2);
 			Dumper issetupof = locate(oaw, setupName, "isSetupOf", 2);
 			Dumper hasthreshold = locate(oaw, setupName, "hasThreshold", 2);
 			Dumper hasthresholdType =
@@ -98,7 +97,7 @@ class FeelingsThreshold {
 		oaw.remove(2, "hasThresholdType", null, null);
 		oaw.remove(2, "hasThreshold", null, null);
 		oaw.remove(2, "isSetupOf", null, null);
-		oaw.remove(2, "hasSetup", null, null);
+		oaw.remove(2, "hasSetup", null, null); // inverse of isSetupOf
 		// if this is null then we really have a problem!
 		oaw.remove(1, "setup", null, null);
 

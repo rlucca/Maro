@@ -7,12 +7,15 @@ import jason.asSyntax.NumberTerm;
 import jason.asSyntax.StringTerm;
 import jason.asSyntax.Structure;
 import jason.asSyntax.ASSyntax;
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.List;
 
 public class LU2DEnv extends TimeSteppedEnvironment {
 	private int lastStep = Integer.MAX_VALUE;
 	private boolean policyIsQueue = true;
 	private long sum = 0;
+	private List<String> deathRequire;
 
 	private LUModel model;
 
@@ -65,6 +68,8 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 			debugWithViewer = false;
 		}
 
+		deathRequire = new ArrayList<String> ();
+
 		model = new LUModel ( quantity );
 		model.setView( new LU2DView(model, this, "All Environment", debugWithViewer) );
 		updateAgsPercept();
@@ -77,10 +82,16 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 	}
 
 	/*@Override
-    protected boolean testEndCycle(Set<String> finishedAgs) {
-		getLogger().fine("Testing end cycle!");
-        return super.testEndCycle(finishedAgs);
-    }*/
+	public void addPercept(Literal per) {
+		Literal l = putAnnotations(null, per);
+		super.addPercept(l);
+	}
+
+	@Override
+	public void addPercept(String agName, Literal per) {
+		Literal l = putAnnotations(agName, per);
+		super.addPercept(agName, l);
+	}*/
 
     /** This method is called after the execution of the action and before to send 'continue' to the agents */
 	@Override
@@ -191,10 +202,23 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 	protected void stepFinished(int step, long elapsedTime, boolean byTimeout) {
 		long mean = (step > 0) ? (sum + elapsedTime) / (step + 1) : 0;
 		getLogger().info("Finished step " + step + " after " + elapsedTime + " (mean "+ mean +")");
-		sum = elapsedTime;
+		sum += elapsedTime;
 		if (byTimeout == true) getLogger().warning("Step " + step + " finished by timeout!");
 
 		tryStop(lastStep);
+
+		if (deathRequire.isEmpty()) {
+			return ;
+		}
+
+		while (deathRequire.isEmpty() == false) {
+			String agName = deathRequire.get(0);
+			if (getEnvironmentInfraTier().getRuntimeServices().killAgent(agName)) {
+				deathRequire.remove(0);
+			}
+		}
+
+		updateNumberOfAgents();
     }
 
 	public void tryStop(int lastStepToStop) {
@@ -267,6 +291,7 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 
 		if (act.getFunctor().equals("death")) {
 			model.disableAgent(agName);
+			deathRequire.add(agName);
 			return true;
         } else if (act.getFunctor().equals("increasePopulation")) {
             NumberTerm nt = (NumberTerm) act.getTerm(0);
