@@ -47,8 +47,15 @@ public class LU2DView extends GridWorldView {
 		if (type != 1) {
 			// Quando o tipo for diferente de planeta,
 			// perguntamos se ha um planeta para desenha-lo
-			boolean isPlanet = model.havePlanet(x, y);
+			boolean isPlanet = model.have(1, x, y);
 			if (isPlanet == true) return ;
+		}
+
+		if (type != 8) {
+			// Quando o tipo for diferente de planeta e diferente de agente,
+			// perguntamos se ha um agente no local para desenhar prioritariamente o agente
+			boolean isAgent = model.have(8, x, y);
+			if (isAgent == true) return ;
 		}
 
         switch (type) {

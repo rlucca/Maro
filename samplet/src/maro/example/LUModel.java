@@ -106,10 +106,10 @@ public class LUModel extends GridWorldModel {
         return ali.get(0);
     }
 
-	public boolean havePlanet(int x, int y) {
+	public boolean have(int ptype, int x, int y) {
 		for (int id : agentId.values()) {
 			Integer type = getTypeById(id);
-			if (type != null && type == 1) {
+			if (type != null && type == ptype) {
 				Location pos = getAgPos(id);
 				if (pos != null && x == pos.x && y == pos.y)
 					return true;
