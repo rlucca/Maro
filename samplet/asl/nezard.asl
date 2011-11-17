@@ -2,7 +2,7 @@ fullLife(100).
 
 !start.
 
-+!start <- iam(planet); !!reactive.
++!start <- iam(agent); !!reactive.
 
 
 +!reactive
