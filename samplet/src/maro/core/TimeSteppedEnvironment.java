@@ -218,7 +218,6 @@ public class TimeSteppedEnvironment extends Environment {
             //logger.info("#"+overRequests.size());
             
             try {
-
                 // execute all scheduled actions
                 for (ActRequest a: requests.values()) {
                     a.remainSteps--;
@@ -227,8 +226,6 @@ public class TimeSteppedEnvironment extends Environment {
                         a.success = executeAction(a.agName, a.action);
                     }
                 }
-                
-                updateAgsPercept();
                 
                 // notify the agents about the result of the execution
                 Iterator<ActRequest> i = requests.values().iterator();
@@ -259,8 +256,9 @@ public class TimeSteppedEnvironment extends Environment {
                     startNewStep();
 					return ; // LUCCA colocando isso some as mensagens de novos ciclos impressas 18....
                 }
-                
-				step++;
+
+				step++; // LUCCA
+                updateAgsPercept(); // LUCCA
                 stepStarted(step);
             } catch (Exception ie) {
                 if (isRunning() && !(ie instanceof InterruptedException)) {

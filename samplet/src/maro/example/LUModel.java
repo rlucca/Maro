@@ -4,14 +4,15 @@ import jason.environment.grid.GridWorldModel;
 import jason.environment.grid.Location;
 import jason.asSyntax.Literal;
 import jason.asSyntax.Term;
-import java.util.HashMap;
+
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.ArrayList;
 
 public class LUModel extends GridWorldModel {
-	private Map<String, Integer> agentId = new HashMap<String, Integer>();
-	private Map<Integer, Integer> agentType = new HashMap<Integer, Integer>();
-    private Map<Integer, InnerData> agentData = new HashMap<Integer, InnerData>();
+	private Map<String, Integer> agentId = new ConcurrentHashMap<String, Integer>();
+	private Map<Integer, Integer> agentType = new ConcurrentHashMap<Integer, Integer>();
+    private Map<Integer, InnerData> agentData = new ConcurrentHashMap<Integer, InnerData>();
 	private Object[][] map = null;
 
     public LUModel (int agentsQty) {
@@ -124,7 +125,7 @@ public class LUModel extends GridWorldModel {
 
 	// devolve AgId x (AgType x AgLocation)
 	public Map<Integer, Map<Integer,Location> > findOthers(int agId, int typeP, int range) {
-		Map<Integer, Map<Integer,Location> > others = new HashMap<Integer, Map<Integer,Location> > ();
+		Map<Integer, Map<Integer,Location> > others = new ConcurrentHashMap<Integer, Map<Integer,Location> > ();
 		Location pos = getAgPos(agId);
 		if (pos == null) return others; // nao tem o que dizer, se a posicao eh null
 		Location tl = new Location(pos.x - range, pos.y - range);
@@ -137,7 +138,7 @@ public class LUModel extends GridWorldModel {
 				if (type == null || (typeP != -1 && type != typeP)) continue;
 
 				if (posTarget.isInArea(tl, br) == true) {
-					Map<Integer,Location> il = new HashMap<Integer, Location>();
+					Map<Integer,Location> il = new ConcurrentHashMap<Integer, Location>();
 					il.put(type, posTarget);
 					others.put(id, il);
 				}

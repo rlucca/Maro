@@ -1,6 +1,6 @@
 package maro.example;
 
-import maro.core.TimeSteppedEnvironment;
+import maro.wrapper.AnnotatedEnvironment;
 
 import jason.environment.grid.Location;
 import jason.asSyntax.NumberTerm;
@@ -11,66 +11,52 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
 
-public class LU2DEnv extends TimeSteppedEnvironment {
-	private int lastStep = Integer.MAX_VALUE;
-	private boolean policyIsQueue = true;
-	private long sum = 0;
+public class LU2DEnv extends AnnotatedEnvironment {
 	private List<String> deathRequire;
-
 	private LUModel model;
 
-    @Override
-    public void init(String[] args) {
-		boolean debugWithViewer = false;
-		int quantity;
-
-		if (args.length < 4 || args.length > 5) {
-			getLogger().warning("The first argument is a number for step timeout(ms)");
-			getLogger().warning("The second argument is a number for last step possible");
-			getLogger().warning("The third argument is a boolean indicate to add next action to queue or else fail the second action");
-			getLogger().warning("The fourth argument is a quantity of agents");
-			getLogger().warning("The fiveth argument is a optional boolean to indicate if is to show the viewer");
-			return ;
-		}
-
-		super.init(args);
-
-		try {
-			lastStep = Integer.parseInt(args[1]);
-		} catch (Exception e) {
-			getLogger().warning("The second argument "+args[1]+" isn't a valid number");
-		}
-
-		try {
-			policyIsQueue = Boolean.parseBoolean(args[2]);
-		} catch (Exception e) {
-			getLogger().warning("The third argument "+args[2]+" isn't a valid boolean");
-		}
-
-		if (policyIsQueue == true) {
-			getLogger().fine("Setting over actions to queue second action.");
-			super.setOverActionsPolicy(OverActionsPolicy.queue);
-		} else {
-			getLogger().fine("Setting over actions to fail second action.");
-			super.setOverActionsPolicy(OverActionsPolicy.failSecond);
-		}
-
-		try {
-			quantity = Integer.parseInt(args[3]);
-		} catch (Exception e) {
-			getLogger().warning("The fourth argument "+args[3]+" isn't a valid number");
-			quantity = 100;
-		}
-
-		try {
-			debugWithViewer = Boolean.parseBoolean(args[4]);
-		} catch (Exception e) {
-			debugWithViewer = false;
-		}
+    public LU2DEnv () {
+        super();
 
 		deathRequire = new ArrayList<String> ();
 
-		model = new LUModel ( quantity );
+        options.add( new Option<Boolean> (false,
+                            null,
+                            "isn't a valid boolean.",
+                            false));
+    }
+
+	@SuppressWarnings("unchecked")
+    protected boolean getDebugViewer() {
+        Option<Boolean> ob = options.get(5);
+        if (ob != null) return ob.value;
+        return false;
+    }
+
+    @Override
+	@SuppressWarnings("unchecked")
+    public boolean loadOptions(String []args) {
+        boolean exit = super.loadOptions(args);
+        Option<Boolean> ob;
+
+        ob = options.get(5);
+        try {
+            ob.value = Boolean.parseBoolean(args[5]);
+        } catch (Exception e) {
+            getLogger().warning("The fiveth argument "+ob.help);
+            getLogger().warning("\tThis argument is"+ob.description);
+            if (ob.isRequired) exit = false;
+        }
+
+        return exit;
+    }
+
+    @Override
+    public void init(String[] args) {
+		super.init(args);
+
+		boolean debugWithViewer = getDebugViewer();
+		model = new LUModel ( getNumberAgentsSettings() );
 		model.setView( new LU2DView(model, this, "All Environment", debugWithViewer) );
 		updateAgsPercept();
 	}
@@ -96,16 +82,25 @@ public class LU2DEnv extends TimeSteppedEnvironment {
     /** This method is called after the execution of the action and before to send 'continue' to the agents */
 	@Override
     protected void updateAgsPercept() {
+		if (getStep() == 0) return ; // not to send. This is the handshake step
+
         for (int i = 0; i < model.getNbOfAgs(); i++) {
             String name = model.getNameById(i);
-            if (name == null) break;
-            updateAgPercept(name, i);
+            Integer type;
+            if (name == null) {
+				System.out.println("agent id "+i+" is unknow now... not sending perceptions on "+getStep());
+				continue;
+			}
+
+            type = model.getTypeById(i);
+            if (type != null)
+                updateAgPercept(name, i, type);
         }
     }
 
     protected void
-    updateAgPercept(String name, int id) {
-		Integer type = model.getTypeById(id);
+    updateAgPercept(String name, int id, Integer ptype) {
+		Integer type = ptype;
         Location location = model.getAgPos(id);
 		char orientation = model.getOrientation(id);
 		Map<Integer, Map<Integer, Location> > others = model.findAllOthers(id, 2);
@@ -195,25 +190,15 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 			v = model.getView();
 			if (v != null) v.update();
 		}
-    }
 
-    /** to be overridden by the user class */
-	@Override
-	protected void stepFinished(int step, long elapsedTime, boolean byTimeout) {
-		long mean = (step > 0) ? (sum + elapsedTime) / (step + 1) : 0;
-		getLogger().info("Finished step " + step + " after " + elapsedTime + " (mean "+ mean +")");
-		sum += elapsedTime;
-		if (byTimeout == true) getLogger().warning("Step " + step + " finished by timeout!");
+		synchronized (deathRequire) {
+			if (deathRequire.isEmpty()) {
+				return ;
+			}
 
-		tryStop(lastStep);
-
-		if (deathRequire.isEmpty()) {
-			return ;
-		}
-
-		while (deathRequire.isEmpty() == false) {
-			String agName = deathRequire.get(0);
-			if (getEnvironmentInfraTier().getRuntimeServices().killAgent(agName)) {
+			while (deathRequire.isEmpty() == false) {
+				String agName = deathRequire.get(0);
+				getEnvironmentInfraTier().getRuntimeServices().killAgent(agName);
 				deathRequire.remove(0);
 			}
 		}
@@ -221,16 +206,11 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 		updateNumberOfAgents();
     }
 
-	public void tryStop(int lastStepToStop) {
-		if (getStep() >= lastStepToStop) {
-			getLogger().fine("Trying stop simulation...");
-			try {
-				getEnvironmentInfraTier().getRuntimeServices().stopMAS();
-			} catch (Exception e) {
-				getLogger().warning("Failed trying stop simulation! " + e);
-			}
-		}
-	}
+    /** to be overridden by the user class */
+	@Override
+	protected void stepFinished(int step, long elapsedTime, boolean byTimeout) {
+        super.stepFinished(step, elapsedTime, byTimeout);
+    }
 
 	/*
 		NAO RETORNE ZERO, A FUNCAO STARTNEWCYCLE ENLOQUECE!
@@ -279,7 +259,9 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 					getLogger().warning("Agent unknow "+ agName);
 					return false;
 				}
-				model.randomInitialPosition(agId);
+				synchronized (model) {
+					model.randomInitialPosition(agId);
+				}
 				return true;
             } else if (act.getFunctor().equals("nope")) {
                 return true;
@@ -290,36 +272,50 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 		}
 
 		if (act.getFunctor().equals("death")) {
-			model.disableAgent(agName);
-			deathRequire.add(agName);
+			synchronized (model) {
+				model.disableAgent(agName);
+				synchronized (deathRequire) {
+					deathRequire.add(agName);
+				}
+			}
 			return true;
         } else if (act.getFunctor().equals("increasePopulation")) {
             NumberTerm nt = (NumberTerm) act.getTerm(0);
             double val = nt.solve();
             Integer agId = model.getIdByName(agName);
-            model.population(agId, (int)val);
+			synchronized (model) {
+				model.population(agId, (int)val);
+			}
             return true;
 		} else if (act.getFunctor().equals("changeOrientationTo")) {
             StringTerm nt = (StringTerm) act.getTerm(0);
             String val = nt.getString();
             Integer agId = model.getIdByName(agName);
 			if (val != null)
-				model.setOrientation(agId, val.charAt(0));
+				synchronized (model) {
+					model.setOrientation(agId, val.charAt(0));
+				}
             return true;
 		} else if (act.getFunctor().equals("forward")) {
             Integer agId = model.getIdByName(agName);
-            model.forward(agId);
+			synchronized (model) {
+				model.forward(agId);
+			}
             return true;
 		} else if (act.getFunctor().equals("recover")) {
             Integer agId = model.getIdByName(agName);
 			if (agId == null) return true;
-			model.getLife(agId, 3+model.nextInt(7));
+			synchronized (model) {
+				model.getLife(agId, 3+model.nextInt(7));
+			}
 			return true;
 		} else if (act.getFunctor().equals("fire")) {
             Integer agId = model.getIdByName(agName);
 			Integer agTarget = model.attackFrom(agId);
 			if (agTarget == null) return true;
-			model.fire(agId, agTarget);
+			synchronized (model) {
+				model.fire(agId, agTarget);
+			}
 			return true;
         } else if (act.getFunctor().equals("nope")) {
             return true;
@@ -344,8 +340,10 @@ public class LU2DEnv extends TimeSteppedEnvironment {
 		// se o agente voltar a aparecer o numero eh mantido o mesmo
 		Integer i = model.getIdByName(ag);
 		if (i == null) {
-			int id = model.getNextId();
-			model.setAgentAndType(ag, id, isValid);
+			synchronized (model) {
+				int id = model.getNextId();
+				model.setAgentAndType(ag, id, isValid);
+			}
 		}
 		return 1;
 	}
