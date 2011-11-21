@@ -1,15 +1,20 @@
 fullLife(100).
-
+//-----------------------------------------------------------------------------
 !start.
-
-+life(L) <- .println("life ", L).
-
-+!start <- iam(agent).
-
-@step1[atomic]
-+step(X)
-    : life(0)
-    <- .println("morreu"); death.
-
-@step2[atomic]
-+step(X) <- nope.
++!start <- iam(agent); !!reactive.
+//-----------------------------------------------------------------------------
++!reactive
+     : step(X) & .random(Y) & K=math.round(Y*10000) & population(P)
+    <- !behavior(X, K, P);
+       !!reactive.
+-!reactive
+    <- .println("reactive plan failed! Doing nope..."); nope;
+       !!reactive.
+//-----------------------------------------------------------------------------
++!behavior(STEP, RANDOM, POPULATION)
+     : life(0)
+    <- .println("morreu");
+       death.
++!behavior(STEP, RANDOM, POPULATION)
+    <- .println("nope");
+       nope.

@@ -22,6 +22,7 @@
 %\usepackage{mathptmx}          % p/ usar fonte Adobe Times nas fórmulas
 \usepackage{wrapfig}			% posiciona elementos de maneira fluante
 \usepackage{url}
+\usepackage{setspace}		% para usar onehalfspacing
 
 % Use todo para anotar algo para ver depois
 % Criando comando \todo{algo}
@@ -39,7 +40,7 @@
 %\citeauthor{ortony1988cse} - so os autores e sem o 'e'
 %atalhos para as citacoes no texto
 \newcommand{\citet}{\citeonline}
-\newcommand{\jason}{\emph{Jason}}
+\newcommand{\jason}{\emph{Jason} }
 
 % Traduzindo Listing
 \renewcommand{\lstlistingname}{Listagem}
@@ -165,6 +166,8 @@
 \definecolor{darkgray}{rgb}{0.95,0.95,0.95}
 \lstset{backgroundcolor=\color{darkgray}}
 \lstset{numbers=left, basicstyle=\scriptsize\ttfamily, numberstyle=\tiny, stepnumber=2, numbersep=5pt}
+
+\onehalfspacing %poderia ser double mas nao eh bom
 
 %% aqui comeca o texto propriamente dito
 %% TODO: versoa anterior

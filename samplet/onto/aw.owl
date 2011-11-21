@@ -1,0 +1,601 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.annotation.org/world.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.annotation.org/world.owl">
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>file:///Users/rlucca/Desktop/Maro.git/ontology/annotation.owl</Import>
+    <Declaration>
+        <ObjectProperty IRI="#hasInner"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasOuter"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasInt"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasString"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#agent"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#agentInnerActions"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#border"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#borderOuterAttraction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#borderOuterDescription"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#borderOuterPosition"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#day"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hour"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#minute"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#planet"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#planetInner"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#planetInnerActions"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#planetOuter"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#planetOuterActions"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#planetOuterDescription"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#shiftOfDay"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ship"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#shipInner"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#shipInnerActions"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#shipOuter"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#shipOuterActions"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#world"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#worldOuter"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#agent"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#agentInnerActions"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#border"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#borderOuterAttraction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#borderOuterDescription"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#borderOuterPosition"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#day"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#hour"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#minute"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#planet"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#planetInner"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#planetInnerActions"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#planetOuter"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#planetOuterActions"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#planetOuterDescription"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#shiftOfDay"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#ship"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#shipInner"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#shipInnerActions"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#shipOuter"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#shipOuterActions"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#world"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#worldOuter"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasInner"/>
+        <NamedIndividual IRI="#agent"/>
+        <NamedIndividual IRI="#agentInnerActions"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#agentInnerActions"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#action"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOuter"/>
+        <NamedIndividual IRI="#border"/>
+        <NamedIndividual IRI="#borderOuterDescription"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOuter"/>
+        <NamedIndividual IRI="#border"/>
+        <NamedIndividual IRI="#borderOuterPosition"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOuter"/>
+        <NamedIndividual IRI="#border"/>
+        <NamedIndividual IRI="#borderOuterAttraction"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#borderOuterAttraction"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#attraction"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#borderOuterDescription"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#description"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#borderOuterPosition"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#positionX"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#borderOuterPosition"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#positionY"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasInner"/>
+        <NamedIndividual IRI="#planet"/>
+        <NamedIndividual IRI="#planetInnerActions"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasInner"/>
+        <NamedIndividual IRI="#planet"/>
+        <NamedIndividual IRI="#planetInner"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOuter"/>
+        <NamedIndividual IRI="#planet"/>
+        <NamedIndividual IRI="#planetOuter"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOuter"/>
+        <NamedIndividual IRI="#planet"/>
+        <NamedIndividual IRI="#planetOuterActions"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOuter"/>
+        <NamedIndividual IRI="#planet"/>
+        <NamedIndividual IRI="#planetOuterDescription"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#positionX"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#luminousness"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#security"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#beauty"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#positionY"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#conflict"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#heat"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#attraction"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetInnerActions"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#action"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#luminousness"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#positionX"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#name"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#positionY"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#resource"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#attraction"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#beauty"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#conflict"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#security"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#heat"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetOuterActions"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#action"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#planetOuterDescription"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#description"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasInner"/>
+        <NamedIndividual IRI="#ship"/>
+        <NamedIndividual IRI="#shipInnerActions"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasInner"/>
+        <NamedIndividual IRI="#ship"/>
+        <NamedIndividual IRI="#shipInner"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOuter"/>
+        <NamedIndividual IRI="#ship"/>
+        <NamedIndividual IRI="#shipOuter"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOuter"/>
+        <NamedIndividual IRI="#ship"/>
+        <NamedIndividual IRI="#shipOuterActions"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#capacity"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#resource"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#lookX"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#quality"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#lookY"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#positionX"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#positionY"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipInner"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipInnerActions"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#action"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#lookX"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#positionY"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#lookY"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#positionX"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipOuter"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#quality"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#shipOuterActions"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#action"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOuter"/>
+        <NamedIndividual IRI="#world"/>
+        <NamedIndividual IRI="#worldOuter"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#worldOuter"/>
+        <NamedIndividual IRI="#minute"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#worldOuter"/>
+        <NamedIndividual IRI="#hour"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#worldOuter"/>
+        <NamedIndividual IRI="#day"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#worldOuter"/>
+        <NamedIndividual IRI="#shiftOfDay"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#agentInnerActions"/>
+        <Literal datatypeIRI="&xsd;string">teleport</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#agentInnerActions"/>
+        <Literal datatypeIRI="&xsd;string">absorve</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#agentInnerActions"/>
+        <Literal datatypeIRI="&xsd;string">offer</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasInt"/>
+        <NamedIndividual IRI="#borderOuterAttraction"/>
+        <Literal datatypeIRI="&xsd;int">-33</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#borderOuterDescription"/>
+        <Literal datatypeIRI="&xsd;string">This is the one where the universe grow up. We can&#39;t stay here.</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#planetInnerActions"/>
+        <Literal datatypeIRI="&xsd;string">increasePopulation</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#planetInnerActions"/>
+        <Literal datatypeIRI="&xsd;string">nope</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#planetOuterActions"/>
+        <Literal datatypeIRI="&xsd;string">absorve</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#planetOuterActions"/>
+        <Literal datatypeIRI="&xsd;string">offer</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#planetOuterDescription"/>
+        <Literal datatypeIRI="&xsd;string">This planet was destroyed by the war.</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#shipInnerActions"/>
+        <Literal datatypeIRI="&xsd;string">recover</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#shipInnerActions"/>
+        <Literal datatypeIRI="&xsd;string">forward</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#shipInnerActions"/>
+        <Literal datatypeIRI="&xsd;string">changeOrientationTo</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#shipInnerActions"/>
+        <Literal datatypeIRI="&xsd;string">death</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#shipInnerActions"/>
+        <Literal datatypeIRI="&xsd;string">nope</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#shipInnerActions"/>
+        <Literal datatypeIRI="&xsd;string">fire</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#shipOuterActions"/>
+        <Literal datatypeIRI="&xsd;string">fire</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#shipOuterActions"/>
+        <Literal datatypeIRI="&xsd;string">teleport</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasString"/>
+        <NamedIndividual IRI="#shipOuterActions"/>
+        <Literal datatypeIRI="&xsd;string">absorve</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasInt"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasString"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
