@@ -1,5 +1,7 @@
 package maro.example;
 
+import maro.wrapper.AnnotatedEnvironment;
+
 import jason.environment.grid.GridWorldModel;
 import jason.environment.grid.Location;
 import jason.asSyntax.Literal;
@@ -15,9 +17,9 @@ public class LUModel extends GridWorldModel {
     private Map<Integer, InnerData> agentData = new ConcurrentHashMap<Integer, InnerData>();
 	private Object[][] map = null;
 
-    public LUModel (int agentsQty) {
+    public LUModel (AnnotatedEnvironment ae) {
         // cell's width and cell's height are 50
-        super(50, 50, agentsQty);
+        super(50, 50, ae.getNumberAgentsSettings());
 
 		map = new Object[width][height];
         for (int i = 0; i < width; i++) {

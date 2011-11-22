@@ -56,7 +56,7 @@ public class LU2DEnv extends AnnotatedEnvironment {
 		super.init(args);
 
 		boolean debugWithViewer = getDebugViewer();
-		model = new LUModel ( getNumberAgentsSettings() );
+		model = new LUModel ( this );
 		model.setView( new LU2DView(model, this, "All Environment", debugWithViewer) );
 		updateAgsPercept();
 	}
@@ -88,7 +88,7 @@ public class LU2DEnv extends AnnotatedEnvironment {
             String name = model.getNameById(i);
             Integer type;
             if (name == null) {
-				System.out.println("agent id "+i+" is unknow now... not sending perceptions on "+getStep());
+				getLogger().warning("agent id "+i+" is unknow now... not sending perceptions on "+getStep());
 				continue;
 			}
 
@@ -218,10 +218,8 @@ public class LU2DEnv extends AnnotatedEnvironment {
 	@Override
     protected int requiredStepsForAction(String agName, Structure action) {
         if (getStep() == 0) {
-            int hellow = verifyHello(agName, action);
-
-            if (hellow > 0) {
-                return hellow;
+            if (action.getFunctor().equals("iam")) {
+                return 1;
             } else if (action.getFunctor().equals("nope")) {
                 return 1;
             }
