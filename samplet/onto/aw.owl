@@ -18,10 +18,10 @@
      ontologyIRI="http://www.annotation.org/world.owl">
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="annot" IRI="http://www.affective.org/annotation.owl#"/>
     <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
-    <Prefix name="annot" IRI="http://www.affective.org/annotation.owl#"/>
     <Import>file:///Users/rlucca/Desktop/Maro.git/ontology/annotation.owl</Import>
     <Declaration>
         <ObjectProperty IRI="#hasInner"/>
@@ -58,6 +58,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#hour"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#lookFor"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#minute"/>
@@ -135,6 +138,10 @@
     <ClassAssertion>
         <Class abbreviatedIRI="annot:Dynamic"/>
         <NamedIndividual IRI="#hour"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="annot:Dynamic"/>
+        <NamedIndividual IRI="#lookFor"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class abbreviatedIRI="annot:Dynamic"/>
@@ -214,12 +221,12 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasOuter"/>
         <NamedIndividual IRI="#border"/>
-        <NamedIndividual IRI="#borderOuterPosition"/>
+        <NamedIndividual IRI="#borderOuterAttraction"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasOuter"/>
         <NamedIndividual IRI="#border"/>
-        <NamedIndividual IRI="#borderOuterAttraction"/>
+        <NamedIndividual IRI="#borderOuterPosition"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty abbreviatedIRI="annot:hasAnnotation"/>
@@ -404,17 +411,12 @@
     <ObjectPropertyAssertion>
         <ObjectProperty abbreviatedIRI="annot:hasAnnotation"/>
         <NamedIndividual IRI="#shipInner"/>
-        <NamedIndividual abbreviatedIRI="annot:lookX"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty abbreviatedIRI="annot:hasAnnotation"/>
-        <NamedIndividual IRI="#shipInner"/>
         <NamedIndividual abbreviatedIRI="annot:quality"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty abbreviatedIRI="annot:hasAnnotation"/>
         <NamedIndividual IRI="#shipInner"/>
-        <NamedIndividual abbreviatedIRI="annot:lookY"/>
+        <NamedIndividual IRI="#lookFor"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty abbreviatedIRI="annot:hasAnnotation"/>
@@ -439,22 +441,17 @@
     <ObjectPropertyAssertion>
         <ObjectProperty abbreviatedIRI="annot:hasAnnotation"/>
         <NamedIndividual IRI="#shipOuter"/>
-        <NamedIndividual abbreviatedIRI="annot:lookX"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty abbreviatedIRI="annot:hasAnnotation"/>
-        <NamedIndividual IRI="#shipOuter"/>
         <NamedIndividual abbreviatedIRI="annot:positionY"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty abbreviatedIRI="annot:hasAnnotation"/>
         <NamedIndividual IRI="#shipOuter"/>
-        <NamedIndividual abbreviatedIRI="annot:lookY"/>
+        <NamedIndividual abbreviatedIRI="annot:positionX"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty abbreviatedIRI="annot:hasAnnotation"/>
         <NamedIndividual IRI="#shipOuter"/>
-        <NamedIndividual abbreviatedIRI="annot:positionX"/>
+        <NamedIndividual IRI="#lookFor"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty abbreviatedIRI="annot:hasAnnotation"/>
