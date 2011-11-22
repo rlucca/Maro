@@ -18,9 +18,11 @@ public class LUAgArchViewer extends AgArch
             = infra.getEnvInfraTier();
         env = (maro.example.LU2DEnv) envInfra.getUserEnvironment();
 
-        LUModel player = new LUModel(1);
-		LU2DView l2v = new LU2DPlayerView (player, env, "Environment", true);
-        player.setView(l2v);
+		// TODO LATER
+        //LUModel player; // need ask to environment the model
+		// NOTE: The responsability of the keep the model is from environment... maybe it's wrong!
+		//LU2DView l2v = new LU2DPlayerView (player, env, "Environment", true);
+        //player.setView(l2v);
 	}
 }
 
