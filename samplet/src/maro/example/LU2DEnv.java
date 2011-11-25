@@ -133,25 +133,6 @@ public class LU2DEnv extends AnnotatedEnvironment {
 
 		addPercept(name, lit);
 
-		addPercept(name, ASSyntax.createLiteral("life",
-					ASSyntax.createNumber(life)));
-
-		if (type != null && type != 2) { // type and type different of person
-			addPercept(name, ASSyntax.createLiteral("population",
-						ASSyntax.createNumber(model.population(id))));
-		}
-
-		if (location != null) {
-			addPercept(name, ASSyntax.createLiteral("position",
-						ASSyntax.createNumber(location.x),
-						ASSyntax.createNumber(location.y)));
-		}
-
-		if (orientation != ' ') {
-			addPercept(name, ASSyntax.createLiteral("orientation",
-						ASSyntax.createString(""+orientation)));
-		}
-
 		addPercept(name, ASSyntax.createLiteral("qtyPlanets",
 					ASSyntax.createNumber(countPlanets)));
 
