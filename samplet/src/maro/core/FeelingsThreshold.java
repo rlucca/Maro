@@ -109,7 +109,7 @@ class FeelingsThreshold {
 	locate(OwlApi oaw, String setupName, String relation, int arity) {
 		int lookAt = 0;
 		Iterator<Dumper> it =
-				oaw.getCandidatesByFunctorAndArity(arity, relation);
+			oaw.getCandidatesByFunctorAndArity(arity, relation);
 		if (it == null) return null;
 
 		// hasSetup eh o unico que tem o setupName no segundo termo...

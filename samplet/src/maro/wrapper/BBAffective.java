@@ -23,8 +23,7 @@ import org.w3c.dom.Element;
 
 // Nao sei, me parece q ta dando problema de acesso com corrente.
 // mas nao temos acesso concorrente, temos?
-public class BBAffective
-				extends ChainBBAdapter //implements Cloneable
+public class BBAffective extends ChainBBAdapter
 {
 	protected EmotionKnowledge ek = null;
 	private Agent myAgent = null;
@@ -37,7 +36,7 @@ public class BBAffective
 	 *     <code>agent BeliefBaseClass(1,bla);</code><br>
 	 * the init args will be ["1", "bla"].
 	 */
-        @Override
+	@Override
 	public void
 	init(Agent ag, String[] args) {
 		myAgent = ag;
@@ -54,7 +53,7 @@ public class BBAffective
 	}
 
 	/** Called just before the end of MAS execution */
-        @Override
+	@Override
 	public void
 	stop() {
 		ek.dumpData();
@@ -62,11 +61,11 @@ public class BBAffective
 
 	/** Returns the number of beliefs in BB */
 	@Override
-        public int
+	public int
 	size() {
 		// nao pareceu ser chamado em nenhum ponto...
 		System.err.println("lucca size()");
- 		return super.size();
+		return super.size();
 	}
 
 	/** Adds a belief in the begin/end of the BB, returns true if succeed.
@@ -74,7 +73,7 @@ public class BBAffective
 	 *  for example, if l is p[a,b] in a BB with p[a], l will be changed to
 	 *  p[b] to produce the event +p[b], since only the annotation b is changed
 	 *  in the BB. */
-    protected boolean
+	protected boolean
 	add(Literal l, boolean addInEnd) {
 		Dumper d = null;
 		boolean ret = false;
@@ -113,21 +112,25 @@ public class BBAffective
 		return ret;
 	}
 
-    @Override
-    public boolean
+	@Override
+	public boolean
 	add(Literal l) {
 		boolean ret = add(l, false);
 		if (ret) return true;
+        Literal inbb = super.contains(l);
+        if (inbb != null) inbb.clearAnnots();
 		return super.add(l);
-    }
+	}
 
-    @Override
-    public boolean
+	@Override
+	public boolean
 	add(int index, Literal l) {
 		boolean ret = add(l, index != 0);
 		if (ret) return true;
+        Literal inbb = super.contains(l);
+        if (inbb != null) inbb.clearAnnots();
 		return super.add(index, l);
-    }
+	}
 
 	/** Returns an iterator for all beliefs. */
 	@Override
@@ -142,7 +145,7 @@ public class BBAffective
 				return id.hasNext() || ret.hasNext();
 			}
 			@Override
-		    public Literal next() {
+			public Literal next() {
 				if (id.hasNext() == false) return ret.next();
 
 				Literal li = Dumper.fromDumper(id.next(), 43);
@@ -161,30 +164,30 @@ public class BBAffective
 		final Iterator<Dumper> id = ek.getCandidatesByFunctorAndArity(functor, arity);
 		//System.err.println("lucca iter: " + id + " for " + functor + "/" + arity);
 		if (id == null)  return null;
-        return new Iterator<Literal> () {
-            @Override
-            public boolean hasNext() {
-                return id.hasNext();
-            }
-            @Override
-            public Literal next() {
-                if (hasNext() == false) return null;
+		return new Iterator<Literal> () {
+			@Override
+			public boolean hasNext() {
+				return id.hasNext();
+			}
+			@Override
+			public Literal next() {
+				if (hasNext() == false) return null;
 
-                Literal li = Dumper.fromDumper(id.next(), 39);
-                return li;
-            }
-            @Override
-            public void remove() {
-                throw new UnsupportedOperationException();
-            }
-        };
+				Literal li = Dumper.fromDumper(id.next(), 39);
+				return li;
+			}
+			@Override
+			public void remove() {
+				throw new UnsupportedOperationException();
+			}
+		};
 	}
 
-	/** 
+	/**
 	 * Returns an iterator for all literals in BB that match the functor/arity 
 	 * of the parameter.<br>
 	 */
-        @Override
+	@Override
 	public Iterator<Literal>
 	getCandidateBeliefs(PredicateIndicator pi)
 	{
@@ -193,10 +196,10 @@ public class BBAffective
 		return super.getCandidateBeliefs(pi);
 	}
 
-	/** 
+	/**
 	 * Returns an iterator for all literals relevant for l's predicate
 	 * indicator, if l is a var, returns all beliefs.<br>
-	 * 
+	 *
 	 * The unifier <i>u</i> may contain values for variables in <i>l</i>.
 	 *
 	 * Example, if BB={a(10),a(20),a(2,1),b(f)}, then
@@ -209,10 +212,10 @@ public class BBAffective
 	public Iterator<Literal>
 	getCandidateBeliefs(Literal l, Unifier u)
 	{
-        if (l.isVar()) {
-            // all bels are relevant
-            return iterator();
-        }
+		if (l.isVar()) {
+			// all bels are relevant
+			return iterator();
+		}
 
 		return getCandidateBeliefs(l.getPredicateIndicator());
 	}
@@ -223,58 +226,58 @@ public class BBAffective
 	 * BB={a(10)[a,b]}, <code>contains(a(10)[d])</code> returns
 	 * a(10)[a,b].
 	 */
-        @Override
+	@Override
 	public Literal
 	contains(Literal l)
 	{
 		Iterator<Literal> il = getCandidateBeliefs(l.getPredicateIndicator());
 
-        if (il != null) {
-            while (il.hasNext()) {
-                Literal lit = il.next();
-                Term[] litS = lit.getTermsArray();
-                Term[] lS = l.getTermsArray();
-                boolean ok = true;
+		if (il != null) {
+			while (il.hasNext()) {
+				Literal lit = il.next();
+				Term[] litS = lit.getTermsArray();
+				Term[] lS = l.getTermsArray();
+				boolean ok = true;
 
-                for (int idx = 0; ok && idx < lS.length; idx++) {
-                    if (litS[idx].toString().equals(lS[idx].toString()) == false)
-                        ok = false;
-                }
+				for (int idx = 0; ok && idx < lS.length; idx++) {
+					if (litS[idx].toString().equals(lS[idx].toString()) == false)
+						ok = false;
+				}
 
-                if (ok == true) return lit;
-            }
-        }
+				if (ok == true) return lit;
+			}
+		}
 
-        return super.contains(l);
+		return super.contains(l);
 	}
 
 	/** Returns all beliefs that have "percept" as source */
-//	public Iterator<Literal> getPercepts() // LATER: por enquanto nao teremos percepcoes aqui
-//	{
-//		// passar pela ontologia primeiro e depois pelo default...
-//		// ...os dados da ontologia seriam por enquanto so crencas...
-//		// ...todavia uma outra poderia ser feita para mapear o 
-//		// eu ''externo'' com o eu ''interno'' ?!
-//		Iterator<Literal> perceived = super.getPercepts();
-//		
-//		while (perceived != null && perceived.hasNext()) {
-//			Literal lit = perceived.next();
-//			System.err.println("lucca "+ myName
-//						+".getPercepts(): "+lit);
-//		}
-//
-//		return super.getPercepts();
-//	}
+	//	public Iterator<Literal> getPercepts() // LATER: por enquanto nao teremos percepcoes aqui
+	//	{
+	//		// passar pela ontologia primeiro e depois pelo default...
+	//		// ...os dados da ontologia seriam por enquanto so crencas...
+	//		// ...todavia uma outra poderia ser feita para mapear o
+	//		// eu ''externo'' com o eu ''interno'' ?!
+	//		Iterator<Literal> perceived = super.getPercepts();
+	//
+	//		while (perceived != null && perceived.hasNext()) {
+	//			Literal lit = perceived.next();
+	//			System.err.println("lucca "+ myName
+	//						+".getPercepts(): "+lit);
+	//		}
+	//
+	//		return super.getPercepts();
+	//	}
 
 	/** Removes a literal from BB, returns true if succeed */
 	@Override
-        public boolean
+	public boolean
 	remove(Literal l)
 	{
 		Dumper d = null;
 		boolean ret = false;
 		int arity = l.getArity();
-        Literal s;
+		Literal s;
 
 		// Se eh uma percepcao nao temos interesse...
 		if (l.hasAnnot(BeliefBase.TPercept)) {
@@ -285,23 +288,23 @@ public class BBAffective
 		if (!l.getFunctor().equals("sameAs") && (arity < 1 || arity > 2))
 			return super.remove(l);
 
-        s = contains(l);
-        l.delAnnot( BeliefBase.TSelf );
-        if (s != null) s.delAnnots(l.getAnnots());
+		s = contains(l);
+		l.delAnnot( BeliefBase.TSelf );
+		if (s != null) s.delAnnots(l.getAnnots());
 
 		d = Dumper.dumpLiteral(s);
 
-        if (s.getAnnots().size() > 1) // ontology and source
-            ret = ek.add(d); // remove and add the replacement
-        else
-            ret = ek.remove(d);
+		if (s.getAnnots().size() > 1) // ontology and source
+			ret = ek.add(d); // remove and add the replacement
+		else
+			ret = ek.remove(d);
 		//System.err.println("lucca del " + d + " = " + ret + " based on " + l);
 		if (ret == false) return super.remove(l);
 		return ret;
 	}
 
 	/** Removes all believes with some functor/arity */
-        @Override
+	@Override
 	public boolean
 	abolish(PredicateIndicator pi)
 	{
@@ -316,28 +319,21 @@ public class BBAffective
 	// So foi necessario sobrecarregar isso porque o iterator
 	// da nossa classe por algum motivo nao era chamado... :/
 	@Override
-    public Element
+	public Element
 	getAsDOM(Document document) {
 		// codigo copiado do DefaultBeliefBase
-        int tries = 0;
-        Element ebels = null;
-        while (tries < 10) {
-            ebels = (Element) document.createElement("beliefs");
-            try {
-                for (Literal l: this)
-                    ebels.appendChild(l.getAsDOM(document));
-                break;
-            } catch (Exception e) {
-                tries++;
-            }
-        }
-        return ebels;
-    }
-
-	/*@Override
-	public BeliefBase
-	clone()
-	{
-		return (BeliefBase) super.clone();
-	}*/
+		int tries = 0;
+		Element ebels = null;
+		while (tries < 10) {
+			ebels = (Element) document.createElement("beliefs");
+			try {
+				for (Literal l: this)
+					ebels.appendChild(l.getAsDOM(document));
+				break;
+			} catch (Exception e) {
+				tries++;
+			}
+		}
+		return ebels;
+	}
 }

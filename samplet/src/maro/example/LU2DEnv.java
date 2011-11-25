@@ -7,6 +7,7 @@ import jason.asSyntax.NumberTerm;
 import jason.asSyntax.StringTerm;
 import jason.asSyntax.Structure;
 import jason.asSyntax.ASSyntax;
+import jason.asSyntax.Literal;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
@@ -15,93 +16,96 @@ public class LU2DEnv extends AnnotatedEnvironment {
 	private List<String> deathRequire;
 	private LUModel model;
 
-    public LU2DEnv () {
-        super();
+	public LU2DEnv () {
+		super();
 
 		deathRequire = new ArrayList<String> ();
 
-        options.add( new Option<Boolean> (false,
-                            null,
-                            "isn't a valid boolean.",
-                            false));
-    }
+		options.add( new Option<Boolean> (false,
+					null,
+					"isn't a valid boolean.",
+					false));
+	}
 
 	@SuppressWarnings("unchecked")
-    protected boolean getDebugViewer() {
-        Option<Boolean> ob = options.get(5);
-        if (ob != null) return ob.value;
-        return false;
-    }
+	protected boolean getDebugViewer() {
+		Option<Boolean> ob = options.get(5);
+		if (ob != null) return ob.value;
+		return false;
+	}
 
-    @Override
+	@Override
 	@SuppressWarnings("unchecked")
-    public boolean loadOptions(String []args) {
-        boolean exit = super.loadOptions(args);
-        Option<Boolean> ob;
+	public boolean loadOptions(String []args) {
+		boolean exit = super.loadOptions(args);
+		Option<Boolean> ob;
 
-        ob = options.get(5);
-        try {
-            ob.value = Boolean.parseBoolean(args[5]);
-        } catch (Exception e) {
-            getLogger().warning("The fiveth argument "+ob.help);
-            getLogger().warning("\tThis argument is"+ob.description);
-            if (ob.isRequired) exit = false;
-        }
+		ob = options.get(5);
+		try {
+			ob.value = Boolean.parseBoolean(args[5]);
+		} catch (Exception e) {
+			getLogger().warning("The fiveth argument "+ob.help);
+			getLogger().warning("\tThis argument is"+ob.description);
+			if (ob.isRequired) exit = false;
+		}
 
-        return exit;
-    }
+		return exit;
+	}
 
-    @Override
-    public void init(String[] args) {
+	@Override
+	public void init(String[] args) {
 		super.init(args);
 
 		boolean debugWithViewer = getDebugViewer();
 		model = new LUModel ( this );
 		model.setView( new LU2DView(model, this, "All Environment", debugWithViewer) );
+
+		super.destroyAnnots();
 		updateAgsPercept();
+		super.initDefault();
 	}
 
-    @Override
-    public void stop() {
+	@Override
+	public void stop() {
 		getLogger().fine("cleaning all to exit");
-        super.stop();
+		super.stop();
 	}
 
 	/*@Override
-	public void addPercept(Literal per) {
-		Literal l = putAnnotations(null, per);
-		super.addPercept(l);
-	}
+	  public void addPercept(Literal per) {
+	  Literal l = putAnnotations(null, per);
+	  super.addPercept(l);
+	  }
 
-	@Override
-	public void addPercept(String agName, Literal per) {
-		Literal l = putAnnotations(agName, per);
-		super.addPercept(agName, l);
-	}*/
+	  @Override
+	  public void addPercept(String agName, Literal per) {
+	  Literal l = putAnnotations(agName, per);
+	  super.addPercept(agName, l);
+	  }*/
 
-    /** This method is called after the execution of the action and before to send 'continue' to the agents */
+	/** This method is called after the execution of the action and before to send 'continue' to the agents */
 	@Override
-    protected void updateAgsPercept() {
+	protected void updateAgsPercept() {
 		if (getStep() == 0) return ; // not to send. This is the handshake step
 
-        for (int i = 0; i < model.getNbOfAgs(); i++) {
-            String name = model.getNameById(i);
-            Integer type;
-            if (name == null) {
+		for (int i = 0; i < model.getNbOfAgs(); i++) {
+			String name = model.getNameById(i);
+			Integer type;
+			if (name == null) {
 				getLogger().warning("agent id "+i+" is unknow now... not sending perceptions on "+getStep());
 				continue;
 			}
 
-            type = model.getTypeById(i);
-            if (type != null)
-                updateAgPercept(name, i, type);
-        }
-    }
+			type = model.getTypeById(i);
+			if (type != null)
+				updateAgPercept(name, i, type);
+		}
+	}
 
-    protected void
-    updateAgPercept(String name, int id, Integer ptype) {
+	protected void
+	updateAgPercept(String name, int id, Integer ptype) {
 		Integer type = ptype;
-        Location location = model.getAgPos(id);
+		Location location = model.getAgPos(id);
 		char orientation = model.getOrientation(id);
 		Map<Integer, Map<Integer, Location> > others = model.findAllOthers(id, 2);
 		Map<Integer, Map<Integer, Location> > planets = model.findOthers(id, 1, 2);
@@ -110,12 +114,24 @@ public class LU2DEnv extends AnnotatedEnvironment {
 		int countIShips = model.countOthers(id,   8, others);
 		int countAllShips = countShips + countIShips;
 		int life = model.getLife(id, 0);
+		Literal lit = null;
 
-        clearPercepts(name);
+		clearPercepts(name);
 
-		addPercept(name, ASSyntax.createLiteral("id(",
-					ASSyntax.createNumber(id),
-					ASSyntax.createString(name)));
+		try {
+			lit = ASSyntax.parseLiteral("myself(\""+
+						model.typeToString(ptype)+"\", \""+
+						name+"\","+
+						id+")["+model.getSourceJasonAnnotations(id)+"]");
+
+		} catch (Exception e) {
+			lit = ASSyntax.createLiteral("myself",
+						ASSyntax.createString(model.typeToString(ptype)),
+						ASSyntax.createString(name),
+						ASSyntax.createNumber(id));
+		}
+
+		addPercept(name, lit);
 
 		addPercept(name, ASSyntax.createLiteral("life",
 					ASSyntax.createNumber(life)));
@@ -125,19 +141,19 @@ public class LU2DEnv extends AnnotatedEnvironment {
 						ASSyntax.createNumber(model.population(id))));
 		}
 
-        if (location != null) {
-            addPercept(name, ASSyntax.createLiteral("position",
-                                ASSyntax.createNumber(location.x),
-                                ASSyntax.createNumber(location.y)));
-        }
+		if (location != null) {
+			addPercept(name, ASSyntax.createLiteral("position",
+						ASSyntax.createNumber(location.x),
+						ASSyntax.createNumber(location.y)));
+		}
 
 		if (orientation != ' ') {
-            addPercept(name, ASSyntax.createLiteral("orientation",
-									ASSyntax.createString(""+orientation)));
+			addPercept(name, ASSyntax.createLiteral("orientation",
+						ASSyntax.createString(""+orientation)));
 		}
 
 		addPercept(name, ASSyntax.createLiteral("qtyPlanets",
-									ASSyntax.createNumber(countPlanets)));
+					ASSyntax.createNumber(countPlanets)));
 
 		for (Map<Integer,Location> mil : others.values()) {
 			for (Integer key : mil.keySet()) {
@@ -175,14 +191,14 @@ public class LU2DEnv extends AnnotatedEnvironment {
 		}
 
 		addPercept(name, ASSyntax.createLiteral("qtyShips",
-									ASSyntax.createNumber(countAllShips)));
+					ASSyntax.createNumber(countAllShips)));
 
-        addPercept(name, ASSyntax.createLiteral("step", ASSyntax.createNumber(getStep())));
-    }
+		addPercept(name, ASSyntax.createLiteral("step", ASSyntax.createNumber(getStep())));
+	}
 
-    /** to be overridden by the user class */
+	/** to be overridden by the user class */
 	@Override
-    protected void stepStarted(int step) {
+	protected void stepStarted(int step) {
 		getLogger().info("Started step " + step);
 
 		jason.environment.grid.GridWorldView v = null;
@@ -204,32 +220,32 @@ public class LU2DEnv extends AnnotatedEnvironment {
 		}
 
 		updateNumberOfAgents();
-    }
+	}
 
-    /** to be overridden by the user class */
+	/** to be overridden by the user class */
 	@Override
 	protected void stepFinished(int step, long elapsedTime, boolean byTimeout) {
-        super.stepFinished(step, elapsedTime, byTimeout);
-    }
+		super.stepFinished(step, elapsedTime, byTimeout);
+	}
 
 	/*
-		NAO RETORNE ZERO, A FUNCAO STARTNEWCYCLE ENLOQUECE!
-	*/
+	   NAO RETORNE ZERO, A FUNCAO STARTNEWCYCLE ENLOQUECE!
+	 */
 	@Override
-    protected int requiredStepsForAction(String agName, Structure action) {
-        if (getStep() == 0) {
-            if (action.getFunctor().equals("iam")) {
-                return 1;
-            } else if (action.getFunctor().equals("nope")) {
-                return 1;
-            }
+	protected int requiredStepsForAction(String agName, Structure action) {
+		if (getStep() == 0) {
+			if (action.getFunctor().equals("iam")) {
+				return 1;
+			} else if (action.getFunctor().equals("nope")) {
+				return 1;
+			}
 
-            getLogger().warning("Agent "+ agName + " doing unknow action "+action);
-            return 10;
-        }
+			getLogger().warning("Agent "+ agName + " doing unknow action "+action);
+			return 10;
+		}
 
-        if (action.getFunctor().equals("increasePopulation")) {
-            return 3;
+		if (action.getFunctor().equals("increasePopulation")) {
+			return 3;
 		} else if (action.getFunctor().equals("changeOrientationTo")) {
 			return 1;
 		} else if (action.getFunctor().equals("recover")) {
@@ -240,16 +256,16 @@ public class LU2DEnv extends AnnotatedEnvironment {
 			return 1;
 		} else if (action.getFunctor().equals("forward")) {
 			return 1;
-        } else if (action.getFunctor().equals("nope")) {
-            return 1;
-        }
+		} else if (action.getFunctor().equals("nope")) {
+			return 1;
+		}
 
 		getLogger().warning("Agent "+ agName + " doing unknow action "+action);
-        return 10; // this is called by scheduleAction
-    }
+		return 10; // this is called by scheduleAction
+	}
 
 	@Override
-    public boolean executeAction(String agName, Structure act) {
+	public boolean executeAction(String agName, Structure act) {
 		if (getStep() == 0) {
 			if ( verifyHello(agName, act) == 1 ) {
 				Integer agId = model.getIdByName(agName);
@@ -261,9 +277,9 @@ public class LU2DEnv extends AnnotatedEnvironment {
 					model.randomInitialPosition(agId);
 				}
 				return true;
-            } else if (act.getFunctor().equals("nope")) {
-                return true;
-            }
+			} else if (act.getFunctor().equals("nope")) {
+				return true;
+			}
 
 			getLogger().warning("Agent "+ agName + " doing unknow action: " + act);
 			return false;
@@ -277,47 +293,47 @@ public class LU2DEnv extends AnnotatedEnvironment {
 				}
 			}
 			return true;
-        } else if (act.getFunctor().equals("increasePopulation")) {
-            NumberTerm nt = (NumberTerm) act.getTerm(0);
-            double val = nt.solve();
-            Integer agId = model.getIdByName(agName);
+		} else if (act.getFunctor().equals("increasePopulation")) {
+			NumberTerm nt = (NumberTerm) act.getTerm(0);
+			double val = nt.solve();
+			Integer agId = model.getIdByName(agName);
 			synchronized (model) {
 				model.population(agId, (int)val);
 			}
-            return true;
+			return true;
 		} else if (act.getFunctor().equals("changeOrientationTo")) {
-            StringTerm nt = (StringTerm) act.getTerm(0);
-            String val = nt.getString();
-            Integer agId = model.getIdByName(agName);
+			StringTerm nt = (StringTerm) act.getTerm(0);
+			String val = nt.getString();
+			Integer agId = model.getIdByName(agName);
 			if (val != null)
 				synchronized (model) {
 					model.setOrientation(agId, val.charAt(0));
 				}
-            return true;
+			return true;
 		} else if (act.getFunctor().equals("forward")) {
-            Integer agId = model.getIdByName(agName);
+			Integer agId = model.getIdByName(agName);
 			synchronized (model) {
 				model.forward(agId);
 			}
-            return true;
+			return true;
 		} else if (act.getFunctor().equals("recover")) {
-            Integer agId = model.getIdByName(agName);
+			Integer agId = model.getIdByName(agName);
 			if (agId == null) return true;
 			synchronized (model) {
 				model.getLife(agId, 3+model.nextInt(7));
 			}
 			return true;
 		} else if (act.getFunctor().equals("fire")) {
-            Integer agId = model.getIdByName(agName);
+			Integer agId = model.getIdByName(agName);
 			Integer agTarget = model.attackFrom(agId);
 			if (agTarget == null) return true;
 			synchronized (model) {
 				model.fire(agId, agTarget);
 			}
 			return true;
-        } else if (act.getFunctor().equals("nope")) {
-            return true;
-        }
+		} else if (act.getFunctor().equals("nope")) {
+			return true;
+		}
 
 		getLogger().warning("Agent "+ agName + " doing action " + act + " not implemented on step " + getStep());
 		return false;
@@ -345,5 +361,4 @@ public class LU2DEnv extends AnnotatedEnvironment {
 		}
 		return 1;
 	}
-
 }
