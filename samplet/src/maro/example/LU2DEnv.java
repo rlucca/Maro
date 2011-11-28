@@ -221,7 +221,54 @@ public class LU2DEnv extends AnnotatedEnvironment {
 		addPercept(name, ASSyntax.createLiteral("qtyShips",
 					ASSyntax.createNumber(countAllShips)));
 
-		addPercept(name, ASSyntax.createLiteral("step", ASSyntax.createNumber(getStep())));
+
+		Literal step    = ASSyntax.createLiteral("step",
+							ASSyntax.createNumber(getStep()));
+		Integer secs    = getStep() * 870;
+		Integer day;
+		Integer hour;
+		Integer mins;
+		String shift;
+
+		// secs minus days
+		day  = (secs / 86400) + 1;
+		secs = secs % 86400;
+
+		// secs minus hours
+		hour = (secs / 3600);
+		secs = (secs % 3600);
+
+		// secs minus minutes
+		mins = (secs / 60);
+		// the remain is not important
+		//secs = (secs % 60);
+
+		if (hour < 5) shift = "M"; // (M) adrugada
+		else if (hour < 12) {
+			if (hour == 5 && mins <= 30)
+				shift = "M";
+			else
+				shift = "A"; // M (a) nha
+		} else if (hour < 18) {
+			if (hour == 12 && mins == 0)
+				shift = "A";
+			else
+				shift = "T"; // (T) arde
+		} else { // 18 - 23h59
+			if (hour == 18 && mins == 0)
+				shift = "T";
+			else
+				shift = "N"; // (N) oite
+		}
+
+
+		step.addAnnot(ASSyntax.createLiteral("day", ASSyntax.createNumber(day)));
+		step.addAnnot(ASSyntax.createLiteral("hour", ASSyntax.createNumber(hour)));
+		step.addAnnot(ASSyntax.createLiteral("minute", ASSyntax.createNumber(mins)));
+		step.addAnnot(ASSyntax.createLiteral("shiftOfDay", ASSyntax.createString(shift)));
+
+
+		addPercept(name, step);
 	}
 
 	/** to be overridden by the user class */
