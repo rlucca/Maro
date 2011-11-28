@@ -107,14 +107,16 @@ public class LU2DEnv extends AnnotatedEnvironment {
 		Integer type = ptype;
 		Location location = model.getAgPos(id);
 		char orientation = model.getOrientation(id);
-		Map<Integer, Map<Integer, Location> > others = model.findAllOthers(id, 2);
-		Map<Integer, Map<Integer, Location> > planets = model.findOthers(id, 1, 2);
+		int range = 2;
+		Map<Integer, Map<Integer, Location> > others = model.findAllOthers(id, range);
+		Map<Integer, Map<Integer, Location> > planets = model.findOthers(id, 1, range);
 		int countPlanets = model.countOthers(id,  1, others);
 		int countShips = model.countOthers(id,    4, others);
 		int countIShips = model.countOthers(id,   8, others);
 		int countAllShips = countShips + countIShips;
 		int life = model.getLife(id, 0);
 		Literal lit = null;
+		Location borderPos = new Location(-1, -1);
 
 		clearPercepts(name);
 
@@ -133,44 +135,89 @@ public class LU2DEnv extends AnnotatedEnvironment {
 
 		addPercept(name, lit);
 
-		addPercept(name, ASSyntax.createLiteral("qtyPlanets",
-					ASSyntax.createNumber(countPlanets)));
+		if (location.x <= 2 && location.x >= 0)
+			borderPos.x = 0;
+		else if (location.x <= 49 && location.x >= 47)
+			borderPos.x = 49;
+			
+		if (location.y <= 2 && location.y >= 0)
+			borderPos.y = 0;
+		else if (location.y <= 49 && location.y >= 47)
+			borderPos.y = 49;
 
-		for (Map<Integer,Location> mil : others.values()) {
-			for (Integer key : mil.keySet()) {
-				Location pos = mil.get(key);
-				boolean add = true;
-				switch (key) {
-					case 1:
-						addPercept(name, ASSyntax.createLiteral("planet",
-									ASSyntax.createNumber(pos.x),
-									ASSyntax.createNumber(pos.y)));
-						if (pos.x == location.x && pos.y == location.y)
-							addPercept(name, ASSyntax.createLiteral("onPlanet"));
-						break;
-					case 4: // ships and iships are de same!
-					case 8:
-						for (Map<Integer, Location> mil2: planets.values()) {
-							for (Integer key2 : mil2.keySet()) {
-								Location pos2 = mil2.get(key2);
-								if (pos2.x == pos.x && pos2.y == pos.y) {
-									add = false;
-									countAllShips -= 1;
-									break;
-								}
-							}
-						}
+		if (borderPos.x >= 0 || borderPos.y >= 0) {
+			Map<Integer, Map<Integer, String> > borderMap = model.findBorder(location, borderPos);
+			for (Integer x : borderMap.keySet()) {
+				Map<Integer, String> subBorderMap = borderMap.get(x);
 
-						if (add == true) {
-							addPercept(name, ASSyntax.createLiteral("ship",
-										ASSyntax.createNumber(pos.x),
-										ASSyntax.createNumber(pos.y)));
-						}
-						break;
+				for (Integer y : subBorderMap.keySet()) {
+					String annotation = subBorderMap.get(y);
+					Literal lPosition;
+					try {
+						lPosition = ASSyntax.parseLiteral("border("+
+								x + "," + y
+								+")["+annotation+"]");
+
+					} catch (Exception e) {
+						lPosition = ASSyntax.createLiteral("border",
+								ASSyntax.createNumber(x),
+								ASSyntax.createNumber(y));
+					}
+					addPercept(name, lPosition);
 				}
 			}
 		}
 
+		addPercept(name, ASSyntax.createLiteral("qtyPlanets",
+					ASSyntax.createNumber(countPlanets)));
+
+        for (Integer key : others.keySet()) {
+            Map<Integer, Location> mil = others.get(key);
+
+            for (Integer keyType : mil.keySet()) {
+                Location pos = mil.get(keyType);
+                boolean add = true;
+
+                switch (keyType) {
+                    case 1: // planets
+                        addPercept(name, ASSyntax.createLiteral("planet",
+                                    ASSyntax.createNumber(pos.x),
+                                    ASSyntax.createNumber(pos.y)));
+                        if (pos.x == location.x && pos.y == location.y)
+                            addPercept(name, ASSyntax.createLiteral("onPlanet"));
+                        break;
+                    case 4: // ships and iShips are the same!
+                    case 8: 
+                        for (Map<Integer, Location> mil2: planets.values()) {
+                            for (Integer key2 : mil2.keySet()) {
+                                Location pos2 = mil2.get(key2);
+                                if (pos2.x == pos.x && pos2.y == pos.y) {
+                                    add = false;
+                                    countAllShips -= 1;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (add == true) {
+                            Literal ship = null;
+                            try {
+                                ship = ASSyntax.parseLiteral("ship("
+                                        +pos.x+","
+                                        +pos.y+")["
+                                        +model.getTargetJasonAnnotations(key)+"]");
+                            } catch (Exception e) {
+                                ship = ASSyntax.createLiteral("ship",
+                                        ASSyntax.createNumber(pos.x),
+                                        ASSyntax.createNumber(pos.y));
+                            }
+
+                            if ( ship != null ) addPercept(name, ship);
+                        }
+                        break;
+                }
+            }
+        }
 		addPercept(name, ASSyntax.createLiteral("qtyShips",
 					ASSyntax.createNumber(countAllShips)));
 

@@ -255,6 +255,59 @@ public class LUModel extends GridWorldModel {
 		return others;
 	}
 
+	// devolve X x Y x annotations
+	public Map<Integer, Map<Integer, String> > findBorder(Location source, Location target) {
+		Map<Integer, Map<Integer, String> > mimil = new ConcurrentHashMap<Integer, Map<Integer, String> > ();
+		String ret = templateData[0].getFeatureList();
+
+		if (target.x >= 0) {
+			Location [] pos = new Location [] {
+				new Location(target.x, source.y - 1),
+				new Location(target.x, source.y + 0),
+				new Location(target.x, source.y + 1)
+			};
+
+			for (Location position: pos) {
+				if (position.y < 0 || position.y > 49) continue;
+				Map<Integer, String> mil = mimil.get(position.x);
+				String data = ret;
+				if (mil == null) {
+					mil = new ConcurrentHashMap<Integer, String> ();
+					mimil.put(position.x, mil);
+				}
+				if (templateData[0].position == false) {
+					data += ",positionX("+position.x+")";
+					data += ",positionY("+position.y+")";
+				}
+				mil.put(position.y, data);
+			}
+		}
+
+		if (target.y >= 0) {
+			Location [] pos = new Location [] {
+				new Location(source.x - 1, target.y),
+				new Location(source.x + 0, target.y),
+				new Location(source.x + 1, target.y)
+			};
+
+			for (Location position: pos) {
+				if (position.x < 0 || position.x > 49) continue;
+				Map<Integer, String> mil = mimil.get(position.x);
+				String data = ret;
+				if (mil == null) {
+					mil = new ConcurrentHashMap<Integer, String> ();
+					mimil.put(position.x, mil);
+				}
+				if (templateData[0].position == false) {
+					data += ",positionX("+position.x+")";
+					data += ",positionY("+position.y+")";
+				}
+				mil.put(position.y, data);
+			}
+		}
+		return mimil;
+	}
+
 	public int countOthers(int agId, int type, int range) {
 		Map<Integer, Map<Integer,Location> > mp = findOthers(agId, type, range);
 		return countOthers(agId, type, mp);
