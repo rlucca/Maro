@@ -19,6 +19,7 @@ class FeelingsThreshold {
 	}
 
 	public Integer getThreshold(String eType) {
+		if (thresholds == null) return null;
 		return thresholds.get(eType);
 	}
 

@@ -25,4 +25,4 @@ jar: bin/build.xml
 	@-$(ANT) jar
 
 run-standalone:
-	@-java -cp `find lib -name \*jar | xargs | tr ' ' ':'` jason.infra.centralised.RunCentralisedMAS
+	@-java -cp `find lib -name \*jar | xargs | tr ' ' ':'` jason.infra.centralised.RunCentralisedMAS eoaus.mas2j

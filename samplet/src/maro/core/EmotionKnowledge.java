@@ -13,6 +13,7 @@ public class EmotionKnowledge {
 	protected OwlApi oaw = null;
 	protected String filename;
 	protected Emotion emotion;
+	protected Integer lastStepFeeling;
 
 	public EmotionKnowledge(String fileName) throws Exception {
 		filename = fileName;
@@ -104,6 +105,21 @@ public class EmotionKnowledge {
 		}
 	}
 
+	public Set<String> getEmotionType() {
+		Set<String> et = new java.util.HashSet<String>();
+		for (String s : emotion.getEmotions())
+			et.add(s);
+		return et;
+	}
+
+	public Integer getEmotionValence(String emotionType, String agentName) {
+		Integer valence = emotion.getValence(emotionType, agentName,
+				(lastStepFeeling == null) ? 0 : lastStepFeeling);
+		Integer minimum = ft.getThreshold(emotionType);
+		if (valence == null) return null;
+		return valence - minimum;
+	}
+
 	public Set<String> feelings(String agentName, int step) {
 		Set<String> feelingStrLit = new java.util.HashSet<String>();
 
@@ -111,10 +127,10 @@ public class EmotionKnowledge {
 			return feelingStrLit;
 		}
 
-		for (String s : emotion.getEmotions()) {
-			Integer valence = emotion.getValence(s, agentName, step);
-			Integer minimum = ft.getThreshold(s);
-			int feeling = (valence != null) ? valence - minimum : 0;
+		lastStepFeeling = step;
+		for (String s : getEmotionType()) {
+			Integer potence = getEmotionValence(s, agentName);
+			int feeling = (potence != null) ? potence : 0;
 
 			if (feeling > 0) {
 				feelingStrLit.add("feeling(" + s + ", " + feeling + ")");

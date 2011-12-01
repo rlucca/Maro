@@ -20,6 +20,11 @@ public class LU2DView extends GridWorldView {
 		setVisible(isVisible);
 		repaint();
 	}
+	public LU2DView(LUModel model, final LU2DEnv env, String title) {
+		super(model, title, 800); // java tosco, nao deixa nem criar uma variavel antes! :'(
+		controller = env;
+		this.model = model;
+	}
 
     @Override
     public void initComponents(int width) {

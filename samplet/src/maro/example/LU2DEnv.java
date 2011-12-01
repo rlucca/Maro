@@ -28,7 +28,7 @@ public class LU2DEnv extends AnnotatedEnvironment {
 	}
 
 	@SuppressWarnings("unchecked")
-	protected boolean getDebugViewer() {
+	public boolean getDebugViewer() {
 		Option<Boolean> ob = options.get(5);
 		if (ob != null) return ob.value;
 		return false;
@@ -43,12 +43,14 @@ public class LU2DEnv extends AnnotatedEnvironment {
 		ob = options.get(5);
 		try {
 			ob.value = Boolean.parseBoolean(args[5]);
+		} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+			// when the data for parse is null, we will only ignore it
 		} catch (Exception e) {
-			getLogger().warning("The fiveth argument "+ob.help);
+			getLogger().warning("The sixth argument "+ob.help);
 			getLogger().warning("\tThis argument is"+ob.description);
-			if (ob.isRequired) exit = false;
 		}
 
+		if (ob.isRequired) exit = false;
 		return exit;
 	}
 
@@ -58,7 +60,9 @@ public class LU2DEnv extends AnnotatedEnvironment {
 
 		boolean debugWithViewer = getDebugViewer();
 		model = new LUModel ( this );
-		model.setView( new LU2DView(model, this, "All Environment", debugWithViewer) );
+		if (debugWithViewer == true) {
+			new LU2DView(model, this, "All Environment", debugWithViewer);
+		}
 
 		super.destroyAnnots();
 		updateAgsPercept();
@@ -435,5 +439,10 @@ public class LU2DEnv extends AnnotatedEnvironment {
 			}
 		}
 		return 1;
+	}
+
+	// Please, use only methods that read data.
+	public LUModel getModel() {
+		return model;
 	}
 }

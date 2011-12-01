@@ -54,6 +54,10 @@ public class AnnotatedEnvironment extends TimeSteppedEnvironment
 	return (args.length >= mandatories && args.length <= options.size());
     }
 
+	public void setLastStep(int step) {
+	    lastStep = step;
+	}
+
     @SuppressWarnings("unchecked")
     public boolean loadOptions(String []args) {
 	Option<String> os;
@@ -93,7 +97,7 @@ public class AnnotatedEnvironment extends TimeSteppedEnvironment
 	oi = options.get(2);
 	try {
 	    oi.value = Integer.parseInt(args[2]);
-	    lastStep = oi.value;
+		setLastStep(oi.value);
 	} catch (Exception e) {
 	    getLogger().warning("The third argument "+oi.help);
 	    getLogger().warning("\tThis argument is"+oi.description);
