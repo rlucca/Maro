@@ -1,1 +1,62 @@
 \chapter{Caso de Uso} \label{ch:cdu}
+
+na questao da ontologia de comportamento, acredito q seja possivel
+fazer com que um personagem em determinado ciclo vá para um
+planeta...
+
+essa questão tras outra pergunta, se um comportamento vai ser
+disparado em determinado ciclo para parecer rotina. Quanto tempo,
+ou melhor, quantos ciclos representam um dia? E, quanto tempo
+é representado por um misero ciclo?
+
+Para responder isso, eu considero o seguinte... eu não vou arredar o
+pé de 1000 ciclos. Mas, 1000 estão variando de 4 a 7 minutos reais.
+Se considerar que 1000 ciclos possui 10 dias então cada 100 ciclos é um dia.
+Dessa forma, usaremos o ciclo equivalente a 870 segundos que correspondem
+a 14,5 minutos que equivale a aproximante 99,31 ciclos. Assim, se iniciarmos
+o relogio a partir do ciclo 1 no ciclo 100 ou 101 temos uma virada de dia.
+Além disso, é importante notar que nem todos os dias viraram no mesmo step.
+Por exemplo, alguns vao ter 99 outros 98.... o q torna interessante!
+
+Eu estou pensando em pra ligar com rotinas ter turnos, dividir o dia em
+madrugada (24h to 5h30), manha(5h31 to 12h), tarde(12h01 to 18h) e
+noite(18h01 to 23h59). Assim, teriamos um turno de 5,5h, outro de 6,5h e os
+restantes com 6h.
+
+5 -> Esse tempo pode ser uma percepcao com dia, horario e turno... Simples,
+ne?
+       E Esse turno `comanda' o que o agente faz no momento porque eh a rotina
+       dele, isto eh, pela manha ir em algum lugar amtar gente. Pela tarde
+ficar
+       matando piratas e a noite/madrugada descansar!
+
+MADRUGADA = M
+MANHA = A
+TARDE = T
+NOITE = N
+
+--
+o texto a seguir se refere sempre a ontologia aw.
+Nela não temos myself como individuo porque esse
+eh um meta individuo para cada ontologia OCC.
+Além disso, a alguns atributos novos precisam ser
+declarados em ambos. Por exemplo, life que representa
+a vida de um personagem. Não existia ate agora,
+entretanto a ideia de ter isso visivel como anotacao
+pode ser ruim, porém ao inves de life ser visivel aos
+outros seria interessante ter visivel damage...
+Assim, é interessante pensar no que se quer ver
+como exterior e o que se quer ver como myself....
+--
+Depois disso tem a questão das preferencias ainda,
+eu não pensei como nesse nosso ambiente os agentes
+vao agir.... eu sei que a maior parte eh mal, gosta de
+fazer maldade... alguns são 'companheiros' de outros,
+por exemplo podem ver um momento de maldade e
+deixar pro colega se divertir...
+
+Outros são excecoes... Vorfield pode ir no planeta
+sem matar ninguem, mas a populacao sua não discansa
+dessa forma. Ela precisa se afastar... Fora isso o radar dela
+ eh melhor com pesos e alcance de 6?
+
