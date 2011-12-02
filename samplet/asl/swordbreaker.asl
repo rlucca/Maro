@@ -16,6 +16,8 @@ fullLife(100).
      : myself(_,_,_)[quality(0)]
     <- .println("morreu");
        death.
-+!behavior(STEP, RANDOM, POPULATION)
-    <- .println("nope");
-       nope.
++!behavior(STEP, RANDOM, POPULATION).
+//    <- .println("nope");
+//       nope.
+//-----------------------------------------------------------------------------
+{ include("gui.asl") }
