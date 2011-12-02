@@ -49,19 +49,19 @@ public class LU2DView extends GridWorldView {
 		orientation = model.getOrientation(id);
 		if (orientation == ' ') return ; // death agent
 
-		if (type != 1) {
-			// Quando o tipo for diferente de planeta,
-			// perguntamos se ha um planeta para desenha-lo
-			boolean isPlanet = model.have(1, x, y);
-			if (isPlanet == true) return ;
+		boolean atLeastOnePlanet = model.have(1, x, y);
+		boolean atLeastOneAgent = model.have(8, x, y);
+
+		if (atLeastOnePlanet) {
+			if (type != 1)
+				return ; // we will draw the planet only
+		} else {
+			if (atLeastOneAgent) {
+				if (type != 8)
+					return ; // we will draw the agent only
+			}
 		}
 
-		if (type != 8) {
-			// Quando o tipo for diferente de planeta e diferente de agente,
-			// perguntamos se ha um agente no local para desenhar prioritariamente o agente
-			boolean isAgent = model.have(8, x, y);
-			if (isAgent == true) return ;
-		}
 
 		switch (type) {
 			case 1:

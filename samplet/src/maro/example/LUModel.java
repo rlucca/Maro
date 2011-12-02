@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LUModel extends GridWorldModel {
 	private Map<String, Integer> agentId = new ConcurrentHashMap<String, Integer>();
@@ -143,6 +144,23 @@ public class LUModel extends GridWorldModel {
 		nextInt(int limit) {
 			return random.nextInt(limit);
 		}
+
+    public List<Integer> getListAgPos(int x, int y) {
+        List<Integer> li = new ArrayList<Integer>();
+        int id = 0;
+
+        while (id < agPos.length) {
+            Location l = agPos[id];
+
+            if (l.x >= 0 && l.y >= 0 && x == l.x && y == l.y) {
+                li.add(id);
+            }
+
+            id = id + 1;
+        }
+
+        return li;
+    }
 
 	public void
 		randomInitialPosition(int ag) {

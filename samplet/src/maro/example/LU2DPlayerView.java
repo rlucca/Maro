@@ -4,9 +4,13 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import jason.environment.grid.Location;
+import jason.asSemantics.Message;
+import jason.asSyntax.ASSyntax;
+import jason.asSyntax.Literal;
 
 import java.util.Set;
 import java.util.Map;
+import java.util.List;
 import java.util.HashMap;
 
 public class LU2DPlayerView extends LU2DView {
@@ -43,39 +47,95 @@ public class LU2DPlayerView extends LU2DView {
 		JPanel orientation = new JPanel();
 		orientation.setBorder(BorderFactory.createTitledBorder("Orientation"));
 		orientation.setLayout(new BorderLayout());
-		control.add(orientation);
+		orientation.setPreferredSize(new Dimension(100,120));
+		control.add(orientation, BorderLayout.WEST);
 
-		JButton orientation1 = new JButton("North"); // cima
+		JButton orientation1 = new JButton("^"); // cima
 		orientation.add(orientation1, BorderLayout.NORTH);
+		orientation1.setPreferredSize(new Dimension(20,20));
+		addClick(orientation1, "orientation", "N");
 
-		JButton orientation2 = new JButton("East"); // direita
+		JButton orientation2 = new JButton(">"); // direita
 		orientation.add(orientation2, BorderLayout.EAST);
+		orientation2.setPreferredSize(new Dimension(20,20));
+		addClick(orientation2, "orientation", "E");
 
-		JButton orientation3 = new JButton("South"); // baixo
+		JButton orientation3 = new JButton("v"); // baixo
 		orientation.add(orientation3, BorderLayout.SOUTH);
+		orientation3.setPreferredSize(new Dimension(20,20));
+		addClick(orientation3, "orientation", "S");
 
-		JButton orientation4 = new JButton("West"); // esquerda
+		JButton orientation4 = new JButton("<"); // esquerda
 		orientation.add(orientation4, BorderLayout.WEST);
+		orientation4.setPreferredSize(new Dimension(20,20));
+		addClick(orientation4, "orientation", "W");
 
 		JPanel actions = new JPanel();
-		actions.setLayout(new BoxLayout(actions,BoxLayout.Y_AXIS) );
 		actions.setBorder(BorderFactory.createTitledBorder("Actions"));
-		control.add(actions);
+		control.add(actions, BorderLayout.EAST);
 
 		JButton btn1 = new JButton("Fire (normal)"); // fire
 		actions.add(btn1);
+		addClick(btn1, "fire", null);
 
 		JButton btn2 = new JButton("Fire (special)"); // teleport -- 80% de chance de morrer
 		actions.add(btn2);
+		final JTextField setupSpecial = new JTextField(3);
+		setupSpecial.setText("1");
+        btn2.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent e) {
+				Literal l = ASSyntax.createLiteral("gui", ASSyntax.createAtom("special"),
+										ASSyntax.createString(setupSpecial.getText().trim()));
+				Message m = new Message("achieve", player.getAgName(), player.getAgName(), l);
+				try {
+					player.sendMsg(m);
+				} catch (Exception ex) {
+					System.err.println("Ops...  "+ex.toString());
+				}
+            }
+            public void mouseExited(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {}
+        });
 
 		JButton btn3 = new JButton("Go straight a head"); // forward
 		actions.add(btn3);
+		addClick(btn3, "forward", null);
 
 		JButton btn4 = new JButton("Drop in/out"); // offer -2/+2
 		actions.add(btn4);
+		addClick(btn4, "drop", null);
 
 		JButton btn5 = new JButton("Nothing"); // nope
 		actions.add(btn5);
+		addClick(btn5, "nope", null);
+
+		GroupLayout actionLayout = new GroupLayout(actions);
+		actions.setLayout(actionLayout);
+		actionLayout.setHorizontalGroup(
+			actionLayout.createSequentialGroup()
+				.addGroup( actionLayout.createParallelGroup()
+								.addComponent(btn1)
+								.addComponent(btn2)
+								.addComponent(btn3)
+								.addComponent(btn4)
+								.addComponent(btn5)
+				 )
+				.addComponent(setupSpecial)
+		);
+		actionLayout.setVerticalGroup(
+			actionLayout.createSequentialGroup()
+				.addComponent(btn1)
+				.addGroup(
+					actionLayout.createParallelGroup()
+							.addComponent(btn2)
+							.addComponent(setupSpecial)
+				)
+				.addComponent(btn3)
+				.addComponent(btn4)
+				.addComponent(btn5)
+		);
 /*
 changeOrientationTo
 	recover -- a idea original era: drop off and keep yourself away from planet
@@ -90,8 +150,8 @@ changeOrientationTo
 		JPanel feelings = new JPanel();
 		//feelings.setBorder(BorderFactory.createTitledBorder("Feelings"));
 		GroupLayout gl = new GroupLayout(feelings);
-			gl.setAutoCreateGaps(true);
-			gl.setAutoCreateContainerGaps(true);
+		gl.setAutoCreateGaps(true);
+		gl.setAutoCreateContainerGaps(true);
 		feelings.setLayout(gl);
 		data.add(feelings);
 
@@ -152,22 +212,29 @@ changeOrientationTo
 			others.add(new JLabel("Planets: 0/0"));*/
 
 		getContentPane().add(p, BorderLayout.SOUTH);
+	}
 
-        /*getCanvas().addMouseListener(new MouseListener() {
+	private void addClick(Component c, final String s1, final String s2) {
+        c.addMouseListener(new MouseListener() {
             public void mouseClicked(MouseEvent e) {
-                int col = e.getX() / cellSizeW;
-                int lin = e.getY() / cellSizeH;
-                if (col >= 0 && lin >= 0 && col < getModel().getWidth() && lin < getModel().getHeight()) {
-                    getModel().add(LifeModel.LIFE, col, lin);
-                    env.updateNeighbors(getModel().getAgId(col,lin));
-                    update(col, lin);
-                }
+				Literal l;
+				if (s2 == null)
+					l = ASSyntax.createLiteral("gui", ASSyntax.createAtom(s1));
+				else
+					l = ASSyntax.createLiteral("gui", ASSyntax.createAtom(s1),
+										ASSyntax.createString(s2));
+				Message m = new Message("achieve", player.getAgName(), player.getAgName(), l);
+				try {
+					player.sendMsg(m);
+				} catch (Exception ex) {
+					System.err.println("Ops...  "+ex.toString());
+				}
             }
             public void mouseExited(MouseEvent e) {}
             public void mouseEntered(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
             public void mouseReleased(MouseEvent e) {}
-        });*/
+        });
 	}
 
 	@Override
@@ -208,10 +275,15 @@ changeOrientationTo
 				controller.setLastStep(0); // inform that the agent died and to kill the simulation
 		}
 
-		if (occlusion && delta >= range)
+		if (occlusion && delta >= range) {
 			drawObstacle(g, x, y);
-		else
-			super.draw(g, x, y);
+			return ;
+		}
+
+		List<Integer> lids = model.getListAgPos(x, y);
+		for (Integer id : lids) {
+			drawAgent(getCanvas().getGraphics(), x, y, Color.blue, id);
+		}
 	}
 
 	protected void updateLabel(javax.swing.JLabel label, Integer d) {
