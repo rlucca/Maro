@@ -20,6 +20,12 @@ public class LU2DPlayerView extends LU2DView {
 	boolean waitPosition = true;
 	boolean occlusion;
 	Map<String, JLabel> msj = new HashMap<String, JLabel>();
+	JLabel life = new JLabel();
+	JLabel population = new JLabel();
+	JLabel day = new JLabel();
+	JLabel hour = new JLabel();
+	JLabel minute = new JLabel();
+	JLabel shiftOfDay = new JLabel();
 
 	public LU2DPlayerView(LUAgArchViewer arch, String title, boolean isVisible,	boolean occlusion)
 	{
@@ -78,7 +84,7 @@ public class LU2DPlayerView extends LU2DView {
 		actions.add(btn1);
 		addClick(btn1, "fire", null);
 
-		JButton btn2 = new JButton("Fire (special)"); // teleport -- 80% de chance de morrer
+		JButton btn2 = new JButton("Fire (special)");
 		actions.add(btn2);
 		final JTextField setupSpecial = new JTextField(3);
 		setupSpecial.setText("1");
@@ -103,9 +109,29 @@ public class LU2DPlayerView extends LU2DView {
 		actions.add(btn3);
 		addClick(btn3, "forward", null);
 
-		JButton btn4 = new JButton("Drop in/out"); // offer -2/+2
+		JButton btn4 = new JButton("Drop in/out"); // offer
 		actions.add(btn4);
-		addClick(btn4, "drop", null);
+        btn4.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent e) {
+				Literal l;
+				int resource = model.population(model.getIdByName(player.getAgName()));
+
+				if (resource > 1) // offer 2, drop 2 agents on target...
+					l = ASSyntax.createLiteral("gui", ASSyntax.createAtom("dropout"));
+				else // offer -2, take 2 agents from target...
+					l = ASSyntax.createLiteral("gui", ASSyntax.createAtom("dropin"));
+				Message m = new Message("achieve", player.getAgName(), player.getAgName(), l);
+				try {
+					player.sendMsg(m);
+				} catch (Exception ex) {
+					System.err.println("Ops...  "+ex.toString());
+				}
+            }
+            public void mouseExited(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {}
+        });
 
 		JButton btn5 = new JButton("Nothing"); // nope
 		actions.add(btn5);
@@ -136,11 +162,6 @@ public class LU2DPlayerView extends LU2DView {
 				.addComponent(btn4)
 				.addComponent(btn5)
 		);
-/*
-changeOrientationTo
-	recover -- a idea original era: drop off and keep yourself away from planet
-	death -- Automatic
-*/
 
 		JPanel data = new JPanel();
 		data.setLayout(new BoxLayout(data,BoxLayout.X_AXIS) );
@@ -201,6 +222,39 @@ changeOrientationTo
 			number = number + 1;
 		}
 
+		life.setText("life: 0");
+		life.setName("life");
+		sgvl.addComponent(life);
+		sghc3.addComponent(life);
+
+		population.setText("population: 0");
+		population.setName("population");
+		sgvl.addComponent(population);
+		sghc4.addComponent(population);
+
+		day.setText("day: 0");
+		day.setName("day");
+		hour.setText("hour: 0");
+		hour.setName("hour");
+		minute.setText("minute: 0");
+		minute.setName("minute");
+		shiftOfDay.setText("shiftOfDay: ?");
+		shiftOfDay.setName("shiftOfDay");
+
+					sgvl = gl.createParallelGroup(GroupLayout.Alignment.BASELINE);
+					sgv.addGroup(sgvl);
+					sgvl.addComponent(day);
+					sghc1.addComponent(day);
+
+					sgvl.addComponent(hour);
+					sghc2.addComponent(hour);
+
+					sgvl.addComponent(minute);
+					sghc3.addComponent(minute);
+
+					sgvl.addComponent(shiftOfDay);
+					sghc4.addComponent(shiftOfDay);
+
 		gl.setHorizontalGroup( sgh );
 		gl.setVerticalGroup( sgv );
 
@@ -253,6 +307,52 @@ changeOrientationTo
 			Integer v = player.getEmotionValence(emotion);
 			updateLabel(l, (v==null)?0:v);
 		}
+
+		if (playerId != null) {
+			int vlife = model.getLife(playerId, 0);
+			vlife = (vlife < 0) ? 0 : vlife;
+			life.setText("life: "+vlife);
+			population.setText("population: "+model.population(playerId));
+		}
+
+		Integer secs    = controller.getStep() * 870;
+		Integer day;
+		Integer hour;
+		Integer mins;
+		String shift;
+		// secs minus days
+		day  = (secs / 86400) + 1;
+		secs = secs % 86400;
+
+		// secs minus hours
+		hour = (secs / 3600);
+		secs = (secs % 3600);
+
+		// secs minus minutes
+		mins = (secs / 60);
+
+		if (hour < 5) shift = "Dawn"; // (M) adrugada
+		else if (hour < 12) {
+			if (hour == 5 && mins <= 30)
+				shift = "Dawn";
+			else
+				shift = "Noon"; // M (a) nha
+		} else if (hour < 18) {
+			if (hour == 12 && mins == 0)
+				shift = "Noon";
+			else
+				shift = "Afternoon"; // (T) arde
+		} else { // 18 - 23h59
+			if (hour == 18 && mins == 0)
+				shift = "Afternoon";
+			else
+				shift = "Night"; // (N) oite
+		}
+
+		this.day.setText("day: "+day);
+		this.hour.setText("hour: "+hour);
+		this.minute.setText("minute: "+mins);
+		this.shiftOfDay.setText("shift: "+shift);
 	}
 	@Override
     public void update(int x, int y) {

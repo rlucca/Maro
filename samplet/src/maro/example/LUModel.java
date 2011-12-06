@@ -437,7 +437,7 @@ public class LUModel extends GridWorldModel {
 						id.population += 10 + nextInt(50); // ship
 						break;
 					case 8:
-						id.population += 1 + nextInt(5); // intelligent ship
+						id.population += 2 + nextInt(2); // intelligent ship
 						break;
 				}
 				agentData.put(agId, id);
@@ -490,7 +490,8 @@ public class LUModel extends GridWorldModel {
 
 		InnerData id = agentData.get(agId);
 		if (id != null) {
-			id.population += val;
+            // why I need test this? If i pass a different value on val I need a sync block
+            if (val != 0) id.population += val;
 			return id.population;
 		}
 
@@ -579,10 +580,12 @@ public class LUModel extends GridWorldModel {
 
 		if (data == null) return 0;
 
-		if (value >= data.life)
-			data.life = 0;
-		else
-			data.life += value;
+		if (value != 0) {
+			if (value >= data.life)
+				data.life = 0;
+			else
+				data.life += value;
+		}
 
 		return data.life;
 	}
@@ -633,7 +636,7 @@ public class LUModel extends GridWorldModel {
 			}
 		}
 
-		if (resource > 0) {
+		if (resource >= 0) {
 			if (ret == null) ret = "resource("+resource+")";
 			else ret += ",resource("+resource+")";
 		}
@@ -677,6 +680,15 @@ public class LUModel extends GridWorldModel {
 		return ret;
 	}
 
+    public void absorve(Integer agId, Integer burnPeople) {
+        int p = population(agId, 0);
+
+        if (p >= burnPeople) {
+            int lifeRecover = 2 + nextInt(4);
+            population(agId, -burnPeople);
+            getLife(agId, lifeRecover);
+        }
+    }
 
 
 	private class InnerData {
@@ -780,34 +792,4 @@ public class LUModel extends GridWorldModel {
 			return (ret.isEmpty())?null:ret;
 		}
 	}
-/*
-  action
-  attraction
-  beauty
-  capacity
-  conflict
-  description
-  heat
-  lookFor
-  luminousness
-  name
-  positionX
-  positionY
-  quality
-  resource
-  security
-  utility
-  -- end features. started actions list
-    absorve
-    changeOrientationTo
-    death
-    fire
-    forward
-    increasePopulation
-    nope
-    offer
-    recover
-    teleport
-  -- ended all listings.
-*/
 }

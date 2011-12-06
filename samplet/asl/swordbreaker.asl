@@ -16,6 +16,13 @@ fullLife(100).
      : myself(_,_,_)[quality(0)]
     <- .println("morreu");
        death.
++!behavior(STEP, RANDOM, POPULATION)
+     : POPULATION <= 1 & onPlanet & myself(_,_,_)[quality(L)] & fullLife(LL)
+        & L < LL
+    <- recover.
++!behavior(STEP, RANDOM, POPULATION)
+     : POPULATION <= 1
+    <- nope.
 +!behavior(STEP, RANDOM, POPULATION).
 //    <- .println("nope");
 //       nope.

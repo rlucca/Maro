@@ -45,12 +45,13 @@ public class LU2DEnv extends AnnotatedEnvironment {
 			ob.value = Boolean.parseBoolean(args[5]);
 		} catch (java.lang.ArrayIndexOutOfBoundsException e) {
 			// when the data for parse is null, we will only ignore it
+            if (ob.isRequired) exit = false;
 		} catch (Exception e) {
 			getLogger().warning("The sixth argument "+ob.help);
 			getLogger().warning("\tThis argument is"+ob.description);
+            if (ob.isRequired) exit = false;
 		}
 
-		if (ob.isRequired) exit = false;
 		return exit;
 	}
 
@@ -327,13 +328,19 @@ public class LU2DEnv extends AnnotatedEnvironment {
 			return 3;
 		} else if (action.getFunctor().equals("changeOrientationTo")) {
 			return 1;
-		} else if (action.getFunctor().equals("recover")) {
-			return 1;
 		} else if (action.getFunctor().equals("fire")) {
 			return 1;
 		} else if (action.getFunctor().equals("death")) {
 			return 1;
 		} else if (action.getFunctor().equals("forward")) {
+			return 1;
+		} else if (action.getFunctor().equals("recover")) {
+			return 1;
+		} else if (action.getFunctor().equals("teleport")) {
+			return 1;
+		} else if (action.getFunctor().equals("offer")) {
+			return 1;
+		} else if (action.getFunctor().equals("absorve")) {
 			return 1;
 		} else if (action.getFunctor().equals("nope")) {
 			return 1;
@@ -395,13 +402,6 @@ public class LU2DEnv extends AnnotatedEnvironment {
 				model.forward(agId);
 			}
 			return true;
-		} else if (act.getFunctor().equals("recover")) {
-			Integer agId = model.getIdByName(agName);
-			if (agId == null) return true;
-			synchronized (model) {
-				model.getLife(agId, 3+model.nextInt(7));
-			}
-			return true;
 		} else if (act.getFunctor().equals("fire")) {
 			Integer agId = model.getIdByName(agName);
 			Integer agTarget = model.attackFrom(agId);
@@ -410,6 +410,67 @@ public class LU2DEnv extends AnnotatedEnvironment {
 				model.fire(agId, agTarget);
 			}
 			return true;
+		} else if (act.getFunctor().equals("recover")) {
+			Integer agId = model.getIdByName(agName);
+			if (agId == null) return true;
+			synchronized (model) {
+				model.getLife(agId, 3+model.nextInt(7));
+			}
+			return true;
+		} else if (act.getFunctor().equals("teleport")) {
+            int random = model.nextInt(100001);
+			NumberTerm nt = (NumberTerm) act.getTerm(0);
+			Double val = nt.solve();
+			Integer agId = model.getIdByName(agName);
+            Integer agTarget = model.attackFrom(agId);
+            String nameTarget = model.getNameById(agTarget);
+
+            if (val == 0) { // target myself...
+                agTarget = agId;
+                nameTarget = agName;
+            }
+
+            if (random <= 80001) { // teleport unsucessful!! Teleport to a object is die!
+                synchronized (model) { // death code
+                    model.disableAgent(nameTarget);
+                    synchronized (deathRequire) {
+                        deathRequire.add(nameTarget);
+                    }
+                }
+            } else { // teleport sucessful!! Go to another place...
+                synchronized (model) {
+                    model.randomInitialPosition(agTarget);
+                }
+            }
+            return true;
+		} else if (act.getFunctor().equals("absorve")) {
+            Integer agId = model.getIdByName(agName);
+            synchronized (model) {
+                model.absorve(agId, 1+model.nextInt(3)); // absorve N,
+                // burn N people to convert to life. One person can give 2-5 points of life.
+            }
+            return true;
+		} else if (act.getFunctor().equals("offer")) {
+            Integer agId = model.getIdByName(agName);
+			NumberTerm nt = (NumberTerm) act.getTerm(0);
+			int val = (int) nt.solve();
+            Location l = model.getAgPos(agId);
+            int resource = model.population(agId);
+
+			List<Integer> li = model.getListAgPos(l.x, l.y);
+			for (Integer id : li) {
+				if (id == agId) continue; // I can't send people to myself
+				Integer type = model.getTypeById(id);
+				if (type == null) continue;
+				if (type == 1) { // planet
+					synchronized (model) {
+						model.population(agId, -val);
+						model.population(id, val);
+					}
+					return true;
+				}
+			}
+            return true;
 		} else if (act.getFunctor().equals("nope")) {
 			return true;
 		}

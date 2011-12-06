@@ -19,3 +19,5 @@ fullLife(100).
 +!behavior(STEP, RANDOM, POPULATION)
     <- .println("nope");
        nope.
+//-----------------------------------------------------------------------------
+//absorve maked, not tested!
