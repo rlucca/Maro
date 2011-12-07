@@ -131,24 +131,24 @@ public class Dumper {
 	}
 
 	static public Dumper[]
-		addOntology(Dumper[] d, String ontology) {
-			LinkedList<Dumper> sd = new LinkedList<Dumper>();
-			Dumper o = new Dumper();
-			o.setFunctor( "ontology" );
-			o.setNot("");
-			o.setTerms(new String[]  { ontology });
-			o.setAnnots(new Dumper[] { });
+	addOntology(Dumper[] d, String ontology) {
+		LinkedList<Dumper> sd = new LinkedList<Dumper>();
+		Dumper o = new Dumper();
+		o.setFunctor( "ontology" );
+		o.setNot("");
+		o.setTerms(new String[]  { ontology });
+		o.setAnnots(new Dumper[] { });
 
-			for (Dumper du : d) {
-				if (du.getFunctor().equals("ontology")) {
-					return d; // nao precisa fazer nada
-				}
-				sd.add(du);
+		for (Dumper du : d) {
+			if (du.getFunctor().equals("ontology")) {
+				return d; // nao precisa fazer nada
 			}
-
-			sd.add(o);
-			return sd.toArray(new Dumper[0]);
+			sd.add(du);
 		}
+
+		sd.add(o);
+		return sd.toArray(new Dumper[0]);
+	}
 
 	static public String asXmlBean(Object o) {
 		try {
@@ -232,24 +232,24 @@ public class Dumper {
 	}
 
 	static public Literal
-		fromDumper(Dumper du, int e) {
-			return fromString(du.toString(), e);
-		}
+	fromDumper(Dumper du, int e) {
+		return fromString(du.toString(), e);
+	}
 
 	static public Literal
-		fromString(String s, int e) {
-			Literal li = null;
+	fromString(String s, int e) {
+		Literal li = null;
 
-			try {
-				li = ASSyntax.parseLiteral(s);
-			} catch (Exception ex) {
-				System.out.println("Ocurred a problem on parsing: " + s);
-				ex.printStackTrace();
-				System.exit(e);
-			}
-
-			return li;
+		try {
+			li = ASSyntax.parseLiteral(s);
+		} catch (Exception ex) {
+			System.out.println("Ocurred a problem on parsing: " + s);
+			ex.printStackTrace();
+			System.exit(e);
 		}
+
+		return li;
+	}
 
 	@Override
 	public int hashCode() {
