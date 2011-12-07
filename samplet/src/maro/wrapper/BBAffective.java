@@ -164,7 +164,7 @@ public class BBAffective extends ChainBBAdapter
 	protected Iterator<Literal>
 	getCandidateBeliefs(String functor, int arity)
 	{
-		final Iterator<Dumper> id = ek.getCandidatesByFunctorAndArity(functor, arity);
+		final Iterator<Dumper> id = ek.getCandidatesByFunctorAndArityIter(functor, arity);
 		//System.err.println("lucca iter: " + id + " for " + functor + "/" + arity);
 		if (id == null)  return null;
 		return new Iterator<Literal> () {

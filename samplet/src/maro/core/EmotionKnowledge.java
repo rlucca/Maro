@@ -68,7 +68,7 @@ public class EmotionKnowledge {
 		return changeBelief(dumper, false);
 	}
 
-	public Iterator<Dumper> getCandidatesByFunctorAndArity(String functor, int arity) {
+	public Iterator<Dumper> getCandidatesByFunctorAndArityIter(String functor, int arity) {
 		if (functor.equals("sameAs") || functor.equals("~sameAs")) {
 			arity = 0;
 		}
@@ -77,7 +77,7 @@ public class EmotionKnowledge {
 			return null;
 		}
 
-		return oaw.getCandidatesByFunctorAndArity(arity, functor);
+		return oaw.getCandidatesByFunctorAndArityIter(arity, functor);
 	}
 
 	public Iterator<Dumper> iterator() {

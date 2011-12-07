@@ -259,170 +259,170 @@ public class AnnotatedEnvironment extends IntelligentEnvironment
 
 
     public String getAnnot(String name, String attribute, String defVal) {
-	InitialAnnotated ia = annots.get(name);
-	if (ia == null) return null;
-	return ia.getValue(attribute, defVal);
+		InitialAnnotated ia = annots.get(name);
+		if (ia == null) return null;
+		return ia.getValue(attribute, defVal);
     }
 
-    public Integer getAnnot(String name, String attribute, Integer defVal) {
-	InitialAnnotated ia = annots.get(name);
-	if (ia == null) return null;
-	return ia.getValue(attribute, defVal);
-    }
-
-    public Character getAnnot(String name, String attribute, Character defVal) {
-	InitialAnnotated ia = annots.get(name);
-	if (ia == null) return null;
-	return ia.getValue(attribute, defVal);
-    }
-
-    public String getActionsToServing(String name) {
-	InitialAnnotated ia = annots.get(name);
-	if (ia == null) return null;
-	String [] ss = ia.getActionsToOthersDo();
-	String ret = null;
-
-	if (ss == null)
-	    return null;
-
-	for (String st : ss) {
-	    if (ret == null)
-		ret = st;
-	    else
-		ret += "," + st;
-	}
-	return ret;
-    }
-
-    public String getActionsToDo(String name) {
-	InitialAnnotated ia = annots.get(name);
-	if (ia == null) return null;
-	String [] ss = ia.getActionsToMyDo();
-	String ret = null;
-
-	if (ss == null)
-	    return null;
-
-	for (String st : ss) {
-	    if (ret == null)
-		ret = st;
-	    else
-		ret += "," + st;
-	}
-	return ret;
-    }
-
-    protected void destroyAnnots() {
-	// free(annots); // snif snif... it's not C :'(
-	annots = null;
-    }
-
-
-    protected class InitialAnnotated {
-	// What features are allow? Note: String x (isOuter)
-	protected HashMap<String, Boolean> features = new HashMap<String,Boolean>();
-	// What the others can do to my?
-	protected HashMap<String, Integer> actionsOthers = new HashMap<String,Integer>();
-	// What I can do?
-	protected HashMap<String, Integer> actionsMyself = new HashMap<String,Integer>();
-	// What I have to look after the load initial?
-	protected List<String> individualsOuter = null;
-	// See above...
-	protected List<String> individualsInner = null;
-	// default elements
-	protected HashMap<String, Integer> dsiFeatures = new HashMap<String,Integer>();
-	protected HashMap<String, String> dssFeatures = new HashMap<String,String>();
-	protected String name;
-
-	public InitialAnnotated ( String prefix )
-	{
-	    name = prefix;
+	public Integer getAnnot(String name, String attribute, Integer defVal) {
+		InitialAnnotated ia = annots.get(name);
+		if (ia == null) return null;
+		return ia.getValue(attribute, defVal);
 	}
 
-	public void addIndividualInner(String s) {
-	    if (individualsInner == null) individualsInner = new ArrayList<String> ();
-	    if (individualsInner.contains(s) == false)
-		individualsInner.add(s);
+	public Character getAnnot(String name, String attribute, Character defVal) {
+		InitialAnnotated ia = annots.get(name);
+		if (ia == null) return null;
+		return ia.getValue(attribute, defVal);
 	}
 
-	public void addIndividualOuter(String s) {
-	    if (individualsOuter == null) individualsOuter = new ArrayList<String> ();
-	    if (individualsOuter.contains(s) == false)
-		individualsOuter.add(s);
+	public String getActionsToServing(String name) {
+		InitialAnnotated ia = annots.get(name);
+		if (ia == null) return null;
+		String [] ss = ia.getActionsToOthersDo();
+		String ret = null;
+
+		if (ss == null)
+			return null;
+
+		for (String st : ss) {
+			if (ret == null)
+				ret = st;
+			else
+				ret += "," + st;
+		}
+		return ret;
 	}
 
-	public void addInitialValue(String name, Integer value) {
-	    Integer i = dsiFeatures.get(name);
-	    if (i == null) {
-		dsiFeatures.put(name, value);
-	    }
+	public String getActionsToDo(String name) {
+		InitialAnnotated ia = annots.get(name);
+		if (ia == null) return null;
+		String [] ss = ia.getActionsToMyDo();
+		String ret = null;
+
+		if (ss == null)
+			return null;
+
+		for (String st : ss) {
+			if (ret == null)
+				ret = st;
+			else
+				ret += "," + st;
+		}
+		return ret;
 	}
 
-	public Integer getValue(String name, Integer defaultValue) {
-	    Integer i = dsiFeatures.get(name);
-	    if (i == null)  return defaultValue;
-	    return new Integer(i);
+	protected void destroyAnnots() {
+		// free(annots); // snif snif... it's not C :'(
+		annots = null;
 	}
 
-	public void addInitialValue(String name, String value) {
-	    String s = dssFeatures.get(name);
-	    if (s == null) {
-		s = value;
-	    } else {
-		s = s + "," + value;
-	    }
-	    dssFeatures.put(name, s);
-	}
 
-	public String getValue(String name, String defaultValue) {
-	    String i = dssFeatures.get(name);
-	    if (i == null)  return defaultValue;
-	    return new String(i);
-	}
+	protected class InitialAnnotated {
+		// What features are allow? Note: String x (isOuter)
+		protected HashMap<String, Boolean> features = new HashMap<String,Boolean>();
+		// What the others can do to my?
+		protected HashMap<String, Integer> actionsOthers = new HashMap<String,Integer>();
+		// What I can do?
+		protected HashMap<String, Integer> actionsMyself = new HashMap<String,Integer>();
+		// What I have to look after the load initial?
+		protected List<String> individualsOuter = null;
+		// See above...
+		protected List<String> individualsInner = null;
+		// default elements
+		protected HashMap<String, Integer> dsiFeatures = new HashMap<String,Integer>();
+		protected HashMap<String, String> dssFeatures = new HashMap<String,String>();
+		protected String name;
 
-	public char getValue(String name, char defaultValue) {
-	    String i = dssFeatures.get(name);
-	    if (i == null)  return defaultValue;
-	    return i.charAt(0);
-	}
+		public InitialAnnotated ( String prefix )
+		{
+			name = prefix;
+		}
 
-	public void addFeature(String name, boolean isOuter) {
-	    features.put(name, isOuter);
-	}
+		public void addIndividualInner(String s) {
+			if (individualsInner == null) individualsInner = new ArrayList<String> ();
+			if (individualsInner.contains(s) == false)
+				individualsInner.add(s);
+		}
 
-	public boolean isFeature(String name, boolean isOuter) {
-	    Boolean flag = features.get(name);
-	    if (flag == null) return false;
-	    return (flag == isOuter)?true:false;
-	}
+		public void addIndividualOuter(String s) {
+			if (individualsOuter == null) individualsOuter = new ArrayList<String> ();
+			if (individualsOuter.contains(s) == false)
+				individualsOuter.add(s);
+		}
 
-	public String[] getAllFeatures() {
-	    return features.keySet().toArray(new String[] { });
-	}
+		public void addInitialValue(String name, Integer value) {
+			Integer i = dsiFeatures.get(name);
+			if (i == null) {
+				dsiFeatures.put(name, value);
+			}
+		}
 
-	public void addActions(String name, boolean isOuter) {
-	    // What I provider need be similar to what I can do...
-	    // We can't put together because the key values can be repeated...
-	    if (isOuter) {
-		actionsOthers.put(name, 1);
-	    } else {
-		actionsMyself.put(name, 0);
-	    }
-	}
+		public Integer getValue(String name, Integer defaultValue) {
+			Integer i = dsiFeatures.get(name);
+			if (i == null)  return defaultValue;
+			return new Integer(i);
+		}
 
-	public String[] getAllActions() {
-	    Set<String> ss = new HashSet<String>();
-	    ss.addAll(actionsOthers.keySet());
-	    ss.addAll(actionsMyself.keySet());
-	    return ss.toArray(new String[] { });
-	}
+		public void addInitialValue(String name, String value) {
+			String s = dssFeatures.get(name);
+			if (s == null) {
+				s = value;
+			} else {
+				s = s + "," + value;
+			}
+			dssFeatures.put(name, s);
+		}
 
-	public String[] getActionsToMyDo() {
-	    return actionsMyself.keySet().toArray(new String[] { });
-	}
+		public String getValue(String name, String defaultValue) {
+			String i = dssFeatures.get(name);
+			if (i == null)  return defaultValue;
+			return new String(i);
+		}
 
-	public String[] getActionsToOthersDo() {
-	    return actionsOthers.keySet().toArray(new String[] { });
-	}
+		public char getValue(String name, char defaultValue) {
+			String i = dssFeatures.get(name);
+			if (i == null)  return defaultValue;
+			return i.charAt(0);
+		}
+
+		public void addFeature(String name, boolean isOuter) {
+			features.put(name, isOuter);
+		}
+
+		public boolean isFeature(String name, boolean isOuter) {
+			Boolean flag = features.get(name);
+			if (flag == null) return false;
+			return (flag == isOuter)?true:false;
+		}
+
+		public String[] getAllFeatures() {
+			return features.keySet().toArray(new String[] { });
+		}
+
+		public void addActions(String name, boolean isOuter) {
+			// What I provider need be similar to what I can do...
+			// We can't put together because the key values can be repeated...
+			if (isOuter) {
+				actionsOthers.put(name, 1);
+			} else {
+				actionsMyself.put(name, 0);
+			}
+		}
+
+		public String[] getAllActions() {
+			Set<String> ss = new HashSet<String>();
+			ss.addAll(actionsOthers.keySet());
+			ss.addAll(actionsMyself.keySet());
+			return ss.toArray(new String[] { });
+		}
+
+		public String[] getActionsToMyDo() {
+			return actionsMyself.keySet().toArray(new String[] { });
+		}
+
+		public String[] getActionsToOthersDo() {
+			return actionsOthers.keySet().toArray(new String[] { });
+		}
     }
 }

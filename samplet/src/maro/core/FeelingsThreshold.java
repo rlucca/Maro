@@ -36,7 +36,7 @@ class FeelingsThreshold {
 
 	protected void load(Emotion e, String myName, OwlApi oaw) {
 		Iterator<Dumper> id =
-			oaw.getCandidatesByFunctorAndArity(1, "setup");
+			oaw.getCandidatesByFunctorAndArityIter(1, "setup");
 		if (id == null) return ;
 
 		thresholds = new HashMap<String, Integer> ();
@@ -110,7 +110,7 @@ class FeelingsThreshold {
 	locate(OwlApi oaw, String setupName, String relation, int arity) {
 		int lookAt = 0;
 		Iterator<Dumper> it =
-			oaw.getCandidatesByFunctorAndArity(arity, relation);
+			oaw.getCandidatesByFunctorAndArityIter(arity, relation);
 		if (it == null) return null;
 
 		// hasSetup eh o unico que tem o setupName no segundo termo...

@@ -22,7 +22,7 @@ import org.semanticweb.owlapi.util.DefaultPrefixManager;
 import org.semanticweb.HermiT.Reasoner.ReasonerFactory;
 
 // LATER maybe, a cache here?
-public class OwlApi {
+public class OwlApi implements java.lang.Iterable<Dumper> {
 
 	protected Boolean dirty = null;
 	protected OWLOntologyManager manager = null;
@@ -517,7 +517,13 @@ public class OwlApi {
 		afterChange(a, isAdd);
 	}
 
-	public Iterator<Dumper> getCandidatesByFunctorAndArity(int arity, String functor) {
+	public Iterator<Dumper> getCandidatesByFunctorAndArityIter(int arity, String functor) {
+        Set<Dumper> hsd = getCandidatesByFunctorAndArity(arity, functor);
+        if (hsd == null) return null;
+        return hsd.iterator();
+    }
+
+	public Set<Dumper> getCandidatesByFunctorAndArity(int arity, String functor) {
 		NodeSet<OWLNamedIndividual> noni;
 		Set<Dumper> d;
 		String fullName;
@@ -546,16 +552,16 @@ public class OwlApi {
 		switch (type.charAt(0)) {
 			case 'C': // oncept
 				filterByClass(d, fullName, noni);
-				return d.iterator();
+				return d;
 			case 'O': // bject relation
 				filterByObjectRelation(d, fullName, noni);
-				return d.iterator();
+				return d;
 			case 'D': // ata relation
 				filterByDataRelation(d, fullName, noni);
-				return d.iterator();
+				return d;
 			case 'S':
 				filterBySpecialRelation(d, fullName, noni);
-				return d.iterator();
+				return d;
 			default:
 				break;
 		}
