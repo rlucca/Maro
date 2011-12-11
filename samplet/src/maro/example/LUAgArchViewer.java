@@ -60,19 +60,5 @@ public class LUAgArchViewer extends AgArch
 		// NOTE: The responsability of the keep the model is from environment... maybe it's wrong!
 		return getEnvironment().getModel();
 	}
-
-	private BBAffective getBB() {
-		TransitionSystem ts = getTS();
-		BBAffective bb = (BBAffective) ts.getAg().getBB();
-		return bb;
-	}
-
-	public Set<String> getEmotionType() {
-		return getBB().getEmotionType();
-	}
-
-	public Integer getEmotionValence(String emotion) {
-		return getBB().getEmotionValence(emotion);
-	}
 }
 
