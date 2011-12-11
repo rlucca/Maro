@@ -84,12 +84,8 @@ public class AnnotatedEnvironment extends IntelligentEnvironment
             }
 
             try {
-                String name = dumper.getTerms()[0];
-                String value = dumper.getTerms()[1];
-                if (name.charAt(0) == '"')
-                    name = name.substring(1, name.length()-1); // unquote
-                if (value.charAt(0) == '"')
-                    value = value.substring(1, value.length()-1); // unquote
+                String name = dumper.getTermAsString(0);
+                String value = dumper.getTermAsString(1);
 
                 InitialAnnotated ia = annots.get(name);
                 if (dumper.getFunctor().equals("hasInner"))
@@ -137,12 +133,9 @@ public class AnnotatedEnvironment extends IntelligentEnvironment
 
         for (Dumper d: dumperList) {
             String functor = d.getFunctor();
-            String name = d.getTerms()[0];
-            String value = d.getTerms()[1];
-            if (name.charAt(0) == '"')
-                name = name.substring(1, name.length()-1); // unquote
-            if (value.charAt(0) == '"')
-                value = value.substring(1, value.length()-1); // unquote
+            String name = d.getTermAsString(0);
+            String value = d.getTermAsString(1);
+
             if (!name.equals(individualName))
                 continue;
 
@@ -238,9 +231,8 @@ public class AnnotatedEnvironment extends IntelligentEnvironment
             while (removed != null) {
                 removed = null;
                 for (Dumper d: dumperList) {
-                    String name = d.getTerms()[0];
-                    if (name.charAt(0) == '"')
-                        name = name.substring(1, name.length()-1); // unquote
+                    String name = d.getTermAsString(0);
+
                     if (!name.equals(individualName))
                         continue;
 

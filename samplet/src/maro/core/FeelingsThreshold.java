@@ -47,7 +47,6 @@ class FeelingsThreshold {
 		//  hasThresholdType(Setup, EmotionType).
 		while (id.hasNext()) {
 			String emotion = null;
-			String limit = null;
 			Integer value = null;
 			Dumper du = id.next(); // setup(X), X -> setup individual
 			String setupName = du.getTerms()[0];
@@ -62,31 +61,20 @@ class FeelingsThreshold {
 						|| hasthresholdType == null)
 					continue; // i am not interessed
 
-				name = issetupof.getTerms()[1];
-
-				if (name.charAt(0) == '"')
-					name = name.substring(1, name.length()-1); // unquote
+				name = issetupof.getTermAsString(1);
 
 				if (name.equals(myName) == false) {
 					//System.out.println("skip because isnt mine threshold: "+myName+"!="+name);
 					continue; // skip too, i am not interessed
 				}
 
-				emotion = hasthresholdType.getTerms()[1];
-				limit = hasthreshold.getTerms()[1];
-
-				if (emotion.charAt(0) == '"')
-					emotion = emotion.substring(1, emotion.length()-1); // unquote
-
-				if (limit.charAt(0) == '"')
-					limit = limit.substring(1, limit.length()-1); // unquote
-
+				emotion = hasthresholdType.getTermAsString(1);
 				if (e.isEmotion(emotion) == false) {
 					//System.out.println("skip because isnt a emotion: "+emotion);
 					continue; // skip, emotion invalid
 				}
 
-				value = Integer.parseInt(limit);
+				value = hasthreshold.getTermAsInteger(1);
 			} catch (Exception ex) {
 				continue; // skip, exception
 			}

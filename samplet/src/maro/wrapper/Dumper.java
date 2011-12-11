@@ -71,6 +71,18 @@ public class Dumper {
 		terms = t;
 	}
 
+	public String getTermAsString(int position) {
+		String s = new String(terms[position]);
+		if (s.charAt(0) == '"')
+			s = s.substring(1, s.length()-1);
+		return s;
+	}
+
+	public Integer getTermAsInteger(int position) {
+		String s = getTermAsString(position);
+		return Integer.parseInt(s);
+	}
+
 	public Dumper[] getAnnots() {
 		return annots;
 	}
