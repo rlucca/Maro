@@ -7,6 +7,8 @@ import jason.environment.grid.Location;
 import jason.asSemantics.Message;
 import jason.asSyntax.ASSyntax;
 import jason.asSyntax.Literal;
+import maro.core.BBKeeper;
+import maro.wrapper.BBAffective;
 
 import java.util.Set;
 import java.util.Map;
@@ -176,7 +178,7 @@ public class LU2DPlayerView extends LU2DView {
 		feelings.setLayout(gl);
 		data.add(feelings);
 
-		for (String e : player.getEmotionType()) {
+		for (String e : BBKeeper.getInstance().getEmotionType()) {
 			JLabel j = new JLabel();
 			j.setText(e+": 0");
 			j.setName(e);
@@ -304,7 +306,8 @@ public class LU2DPlayerView extends LU2DView {
 
 		for (String emotion : msj.keySet()) {
 			JLabel l = msj.get(emotion);
-			Integer v = player.getEmotionValence(emotion);
+			BBAffective bb = BBKeeper.getInstance().get(player.getAgName());
+			Integer v = bb.getEmotionValence(emotion);
 			updateLabel(l, (v==null)?0:v);
 		}
 
