@@ -1,7 +1,7 @@
 LIBS=`ls lib/* | xargs | tr ' ' ':'`:src
 #Nao pode fazer isso, coloque a infrastrutura em .jason/user.properties
 #INFRA=-Dinfrastructure.XXX=maro.wrapper.AffectiveFactory
-PROJECT=eoaus
+PROJECT=sims
 ANT=ant -f bin/build.xml
 
 compile: bin/build.xml
@@ -25,4 +25,4 @@ jar: bin/build.xml
 	@-$(ANT) jar
 
 run-standalone:
-	@-java -cp `find lib -name \*jar | xargs | tr ' ' ':'` jason.infra.centralised.RunCentralisedMAS eoaus.mas2j
+	@-java -cp `find lib/ -name \*jar | xargs | tr ' ' ':'` jason.infra.centralised.RunCentralisedMAS sims.mas2j

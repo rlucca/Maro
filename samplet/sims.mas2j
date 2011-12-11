@@ -1,0 +1,27 @@
+
+MAS sims {
+    infrastructure: Centralised //(pool, 2)
+    //environment: maro.example.sims.House(30000, 800, 4, FALSE, "onto/sims.owl")
+    environment: maro.example.sims.House(30000, 1, 4, FALSE, "onto/sims.owl")
+    //executionControl: jason.control.ExecutionControl
+    agents:
+        millie
+            #1
+            agentClass maro.wrapper.UniqueAnnotation
+        ;
+        nina
+            #1
+            beliefBaseClass maro.wrapper.BBAffective("onto/swordbreaker.owl")
+            agentClass maro.wrapper.UniqueAnnotation
+        ;
+        john
+            #1
+            agentClass maro.wrapper.UniqueAnnotation
+        ;
+        albert
+            #1
+            agentClass maro.wrapper.UniqueAnnotation
+        ;
+
+    aslSourcePath: "asl";
+}

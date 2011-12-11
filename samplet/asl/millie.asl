@@ -1,21 +1,16 @@
-fullLife(100).
+
+//initial believes.
 //-----------------------------------------------------------------------------
 !start.
-+!start <- iam(agent); !!reactive.
++!start <- .wait(12000); iam(agent); !!reactive.
+//+!start <- iam(agent); !!reactive.
 //-----------------------------------------------------------------------------
 +!reactive
-     : step(X) & .random(Y) & K=math.round(Y*10000)
-    <- ?myself(_,_,_)[resource(P)];
-       !behavior(X, K, P);
+     : step(X) //& .random(Y) & K=math.round(Y*10000)
+    <- //?myself(_,_,_)[resource(P)];
+       nope;
        !!reactive.
 -!reactive
     <- .println("reactive plan failed! Doing nope..."); nope;
        !!reactive.
 //-----------------------------------------------------------------------------
-+!behavior(STEP, RANDOM, POPULATION)
-     : myself(_,_,_)[quality(0)]
-    <- .println("morreu");
-       death.
-+!behavior(STEP, RANDOM, POPULATION)
-    <- .println("nope");
-       nope.
