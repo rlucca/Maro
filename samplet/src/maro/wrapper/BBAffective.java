@@ -2,6 +2,7 @@ package maro.wrapper;
 
 // my only
 import maro.core.EmotionKnowledge;
+import maro.core.BBKeeper;
 
 //java only
 import java.util.Iterator;
@@ -41,6 +42,7 @@ public class BBAffective extends ChainBBAdapter
 	init(Agent ag, String[] args) {
 		myAgent = ag;
 		myName = myAgent.getTS().getUserAgArch().getAgName();
+		BBKeeper.getInstance().put(myName, this);
 
 		if (args.length == 1) {
 			try {
@@ -114,6 +116,7 @@ public class BBAffective extends ChainBBAdapter
 
 	public Set<String> getEmotionType() { return ek.getEmotionType(); }
 	public Integer getEmotionValence(String emotion) { return ek.getEmotionValence(emotion, myName); }
+	public Integer getEmotionPotence(String emotion) { return ek.getEmotionPotence(emotion, myName); }
 
 	@Override
 	public boolean

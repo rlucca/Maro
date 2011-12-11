@@ -112,9 +112,13 @@ public class EmotionKnowledge {
 		return et;
 	}
 
-	public Integer getEmotionValence(String emotionType, String agentName) {
+	public Integer getEmotionPotence(String emotionType, String agentName) {
 		Integer valence = emotion.getValence(emotionType, agentName,
 				(lastStepFeeling == null) ? 0 : lastStepFeeling);
+		return valence;
+	}
+	public Integer getEmotionValence(String emotionType, String agentName) {
+		Integer valence = getEmotionPotence(emotionType, agentName);
 		Integer minimum = ft.getThreshold(emotionType);
 		if (valence == null) return null;
 		return valence - minimum;
