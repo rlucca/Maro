@@ -1,36 +1,38 @@
-\subsection{Paradigma de Programação}
+\subsection{Paradigma de Programação} \label{sec:aoppp}
 
 \citet{shoham1993agent} propôs em seu trabalho a linguagem \emph{Agent-0} uma
 das primeiras a serem baseadas em atos de fala e uma nova visão para se
 programar.  Esses atos de fala podem ser vistos como comandos falados entre
 atores com as mais diversas finalidades (informar, perguntar, requerer,
-aceitar, etc).  Dessa forma, \citeauthor{shoham1993agent} tentou promover a
+aceitar, etc).  Dessa forma, \citeauthoronline{shoham1993agent} tentou promover a
 idéia de computação com uma interação mais social entre membros de um sistema.
 Em outras palavras, esse novo paradigma de programação precisa que exista
 cooperação e competição entre os agentes para a realização das tarefas
 desejadas.
 
-Assim, o agente encontra-se situado em um ambiente no qual pode receber
-informações de outros agentes, assim como enviar para outros.  As ações são
-estabelecidas utilizando regras que descrevem comportamentos. Assim, é
+Assim, o agente encontra-se situado em um ambiente no qual pode receber de ou
+enviar para outros agentes informações. As ações são
+estabelecidas utilizando regras que descrevem comportamentos. Logo, é
 possível, a própria entidade decidir qual ação deve ser tomada. Essas regras
 são construídas em fórmulas lógicas descrevendo-se o contexto que torna um
-curso de ação válida e sua consequência que é o conjunto de ações a serem
-desempenhadas.
+curso de ação válido e sua consequência. Essa consequência pode ser uma ação
+ou um conjunto sequencial de ações que precisam ser feitos.
 
-Atualmente, há diversas linguagens para a programação de agentes, por exemplo:
-\emph{2APL}, \emph{Agent-0}, \emph{AgentSpeak(L)}, \emph{GOAL} e
-\emph{MetateM}~\cite{bordini2009multi}. Elas são baseadas em diversos
-formalismos diferentes. MetateM por exemplo é baseada em lógica temporal,
-permitindo que formulas temporais definindo o comportamento do agente sejam
-diretamente executadas\todo{soa estranho esse `permitindo que... definindo'}.
+Atualmente, segundo \citet{bordini2009multi}, há diversas linguagens para a
+AOP. Por exemplo: \emph{2APL}, \emph{Agent-0}, \emph{AgentSpeak(L)},
+\emph{GOAL} e \emph{MetateM}. Elas são baseadas em diversos
+formalismos diferentes. \emph{MetateM}, por exemplo, é baseada em lógica temporal,
+permitindo que formulas temporais definam o comportamento do agente.
+\emph{GOAL} tem a visão que o conhecimento pode ser estático (imutável) ou
+dinâmico. \emph{Agent-0}, como dito anteriormente, é a primeira linguagem da
+área de programação orientada a agente. \emph{2APL} dividiu a linguagem em
+dois formatos básicos \cite{dastani20082apl}. O primeiro define quantos e em
+qual ambiente o agente se encontra e o segundo formato define a programação
+propriamente dita do indivíduo.
 
-A plataforma \jason \cite{bordini-jason} utilizada no trabalho pode ser
-pensada como um sistema de planejamento reativo, em que planos são executados
-a partir de alterações nas crenças e objetivos do agente. A plataforma
-baseia-se na arquitetura BDI e utiliza uma extensão da linguagem de
-programação abstrata, definida por \citet{rao1996agentspeak}, chamada
-AgentSpeak(L), para especificar o reciocínio sobre ações dos agentes. A grande
-vantagem dessa plataforma é a rapidez com que melhorias têm sido feitas e a
-facilidade de customização de diversos componentes da plataforma.
+No presente trabalho, a plataforma \jason \cite{bordini-jason} será utilizada.
+Ela usa uma extensão da linguagem \emph{AgentSpeak(L)}, definida por
+\citet{rao1996agentspeak}, para especificar as atitudes que o agente deve
+tomar frente as constantes modificações do ambiente. Assim, essa linguagem é,
+normalmente, vista como reativa as crenças, metas ou percepções.
 

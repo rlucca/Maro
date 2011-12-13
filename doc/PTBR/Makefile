@@ -16,7 +16,6 @@ FILES   = 	$(MAIN).tex 				\
 			plataformaJason.tex			\
 			programacaoAgentes.tex		\
 			computacaoAfetiva.tex		\
-			trabalhosRelacionados.tex 	\
 			abreviaturas.tex 			\
 			assinaturas.tex 			\
 			conceitosAgente.tex			\

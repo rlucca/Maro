@@ -41,6 +41,9 @@
 %atalhos para as citacoes no texto
 \newcommand{\citet}{\citeonline}
 \newcommand{\jason}{\emph{Jason} }
+\newcommand{\occ}{\emph{OCC} }
+\newcommand{\OWL}{\emph{OWL} }
+
 
 % Traduzindo Listing
 \renewcommand{\lstlistingname}{Listagem}
@@ -139,29 +142,29 @@
 % \renewcommand{\coordname}{Coordenadora do Curso}
 \maketitle
 
+%\include{assinaturas} % Maybe the last stuff or the first?
+
+\include{resumo} % inclui o resumo da lingua nativa e estrangeira
+
 %\include{dedicatoria}
 %\include{agradecimentos}
 \tableofcontents % sumario
-%\include{abreviaturas}
-%
-%% LISTA DE SIMBOLOS
-%% o parametro deve ser o simbolo mais longo
-%%\begin{listofsymbols}{$\alpha\beta\pi\omega$}
-%%       \item[$\sum{\frac{a}{b}}$] Somatório do produtório
-%%       \item[$\alpha\beta\pi\omega$] Fator de inconstância do resultado
-%%\end{listofsymbols}
-%
-%%\listoffigures % lista de figuras, se houver mais de 3
-%%\listoftables % lista de tabelas, se houver mais de 3
-%%\lstlistoflistings % lista de listagens, se houver mais de 3
-%
-%\definecolor{darkgray}{rgb}{0.95,0.95,0.95}
-%\lstset{backgroundcolor=\color{darkgray}}
-%\lstset{numbers=left, basicstyle=\scriptsize\ttfamily, numberstyle=\tiny, stepnumber=2, numbersep=5pt}
-%
-%%\include{assinaturas}
-%
-%\include{resumo} % inclui o resumo da lingua nativa e estrangeira
+\include{abreviaturas}
+
+% LISTA DE SIMBOLOS
+% o parametro deve ser o simbolo mais longo
+%\begin{listofsymbols}{$\alpha\beta\pi\omega$}
+%       \item[$\sum{\frac{a}{b}}$] Somatório do produtório
+%       \item[$\alpha\beta\pi\omega$] Fator de inconstância do resultado
+%\end{listofsymbols}
+
+\listoffigures % lista de figuras, se houver mais de 3
+\listoftables % lista de tabelas, se houver mais de 3
+\lstlistoflistings % lista de listagens, se houver mais de 3
+
+\definecolor{darkgray}{rgb}{0.95,0.95,0.95}
+\lstset{backgroundcolor=\color{darkgray}}
+\lstset{numbers=left, basicstyle=\scriptsize\ttfamily, numberstyle=\tiny, stepnumber=2, numbersep=5pt}
 
 \definecolor{darkgray}{rgb}{0.95,0.95,0.95}
 \lstset{backgroundcolor=\color{darkgray}}
@@ -170,14 +173,6 @@
 \onehalfspacing %poderia ser double mas nao eh bom
 
 %% aqui comeca o texto propriamente dito
-%% TODO: versoa anterior
-%\include{introducao} % ou tambem motivacao
-%\include{levantamento} % ou tambem motivacao
-%%\include{metodologia} % nao esquecer o cronograma
-%\include{proposto}
-%%\include{objetivos} % e resultados esperados
-%\include{conclusao}
-%% TODO: versoa anterior fim
 \input{introducao}
 \input{levantamento}
 \input{proposto}
