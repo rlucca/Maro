@@ -1,0 +1,2974 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.application.org/ontology/sims.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.application.org/ontology/sims.owl">
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>file:///Users/rlucca/Desktop/Maro.git/ontology/UEM.owl</Import>
+    <Import>file:///Users/rlucca/Desktop/Maro.git/ontology/UEM_occ.owl</Import>
+    <Import>file:///Users/rlucca/Desktop/Maro.git/ontology/annotation.owl</Import>
+    <Import>file:///Users/rlucca/Desktop/Maro.git/ontology/annotation_occ.owl</Import>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractArcade"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractHome"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractMarket"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractScheduleArcade"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractScheduleHome"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractScheduleMarket"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractScheduleSchool"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractScheduleWork"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractSchool"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractWork"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Albert"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AlbertsActor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bed"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BedLeftRoom1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BedLeftRoom1Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BedRightRoom1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BedRightRoom1Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BedRoom2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BedRoom2Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bookcase"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BookcaseLivingRoom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BookcaseLivingRoomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Door"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Faucet"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FaucetBathroomMiddle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FaucetBathroomMiddleDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FaucetKitchen"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FaucetKitchenDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FaucetSocialBathroom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FaucetSocialBathroomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FaucetSuiteBathroom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FaucetSuiteBathroomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GasStove"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GasStoveKitchen"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GasStoveKitchenDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HomeWorker"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InitialActor1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InitialActor1Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InitialActor2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InitialActor2Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InitialActor3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InitialActor3Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InitialActor4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InitialActor4Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#John"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#JohnsActor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Millie"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MilliesActor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nina"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NinasActor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RefrigeratorKitchen"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RefrigeratorKitchenDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Refrigetator"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ShelvesDeposit"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ShelvesDepositDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Shower"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ShowerBathroomMiddle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ShowerBathroomMiddleDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ShowerSuiteBathroom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ShowerSuiteBathroomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sofa"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SofaLivingRoom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SofaLivingRoomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#StudentEarly"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#StudentLate"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Support1Kitchen"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Support1KitchenDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Support2Kitchen"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Support2KitchenDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Table"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TableCorredorMiddle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TableCorredorMiddleDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TableKitchen"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TableKitchenDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TableLeftRoom1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TableLeftRoom1Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TableLivingRoom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TableLivingRoomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TableRightRoom1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TableRightRoom1Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Toilet"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ToiletBathroomMiddle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ToiletBathroomMiddleDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ToiletSocialBathroom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ToiletSocialBathroomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ToiletSuiteBathroom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ToiletSuiteBathroomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tv"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TvLivingRoom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TvLivingRoomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomBathroomBottomLeft"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomBathroomBottomLeftDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomBathroomTopLeft"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomBathroomTopLeftDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomBathroomTopTop"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomBathroomTopTopDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomBathrooms"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomBathroomsDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomRoom1Top1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomRoom1Top1Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomRoom1Top2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomRoom1Top2Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomRoom2Top"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomRoom2TopDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomRoomsDivider"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallBottomRoomsDividerDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallDepositBottom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallDepositBottomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallDepositLeft"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallDepositLeftDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallHallRight"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallHallRightDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallKitchenBottom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallKitchenBottomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallKitchenLeft"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallKitchenLeftDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallKitchenRight"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallKitchenRightDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallLeft"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallLeftDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallMiddleBathroom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallMiddleBathroomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallRightBottom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallRightBottomDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallRightTop"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallRightTopDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallTopLeft"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallTopLeftDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallTopRight"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WallTopRightDimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WardrobeBottomRoom2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WardrobeBottomRoom2Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WardrobeRoom1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WardrobeRoom1Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WardrobeTopRoom2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WardrobeTopRoom2Dimension"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Worker"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#day"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hour"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#lookFor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#minute"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#receptPositionX"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#receptPositionY"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#shiftOfDay"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#usingPositionX"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#usingPositionY"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractArcade"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractHome"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractMarket"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Schedules"/>
+        <NamedIndividual IRI="#AbstractScheduleArcade"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Schedules"/>
+        <NamedIndividual IRI="#AbstractScheduleHome"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Schedules"/>
+        <NamedIndividual IRI="#AbstractScheduleMarket"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Schedules"/>
+        <NamedIndividual IRI="#AbstractScheduleSchool"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Schedules"/>
+        <NamedIndividual IRI="#AbstractScheduleWork"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractSchool"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractWork"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Agent"/>
+        <NamedIndividual IRI="#Albert"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Character"/>
+        <NamedIndividual IRI="#AlbertsActor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
+        <NamedIndividual IRI="#Bed"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#BedLeftRoom1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#BedLeftRoom1Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#BedRightRoom1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#BedRightRoom1Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#BedRoom2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#BedRoom2Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
+        <NamedIndividual IRI="#Bookcase"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#BookcaseLivingRoom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#BookcaseLivingRoomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
+        <NamedIndividual IRI="#Door"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
+        <NamedIndividual IRI="#Faucet"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#FaucetBathroomMiddle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#FaucetBathroomMiddleDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#FaucetKitchen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#FaucetKitchenDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#FaucetSocialBathroom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#FaucetSocialBathroomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#FaucetSuiteBathroom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#FaucetSuiteBathroomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
+        <NamedIndividual IRI="#GasStove"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#GasStoveKitchen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#GasStoveKitchenDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Profile"/>
+        <NamedIndividual IRI="#HomeWorker"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#InitialActor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#InitialActor1Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#InitialActor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#InitialActor2Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#InitialActor3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#InitialActor3Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#InitialActor4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#InitialActor4Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Agent"/>
+        <NamedIndividual IRI="#John"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Character"/>
+        <NamedIndividual IRI="#JohnsActor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Agent"/>
+        <NamedIndividual IRI="#Millie"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Character"/>
+        <NamedIndividual IRI="#MilliesActor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Agent"/>
+        <NamedIndividual IRI="#Nina"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Character"/>
+        <NamedIndividual IRI="#NinasActor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#RefrigeratorKitchen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#RefrigeratorKitchenDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
+        <NamedIndividual IRI="#Refrigetator"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#ShelvesDeposit"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#ShelvesDepositDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
+        <NamedIndividual IRI="#Shower"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#ShowerBathroomMiddle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#ShowerBathroomMiddleDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#ShowerSuiteBathroom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#ShowerSuiteBathroomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
+        <NamedIndividual IRI="#Sofa"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#SofaLivingRoom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#SofaLivingRoomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Profile"/>
+        <NamedIndividual IRI="#StudentEarly"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Profile"/>
+        <NamedIndividual IRI="#StudentLate"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#Support1Kitchen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#Support1KitchenDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#Support2Kitchen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#Support2KitchenDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
+        <NamedIndividual IRI="#Table"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#TableCorredorMiddle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#TableCorredorMiddleDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#TableKitchen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#TableKitchenDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#TableLeftRoom1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#TableLeftRoom1Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#TableLivingRoom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#TableLivingRoomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#TableRightRoom1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#TableRightRoom1Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
+        <NamedIndividual IRI="#Toilet"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#ToiletBathroomMiddle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#ToiletBathroomMiddleDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#ToiletSocialBathroom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#ToiletSocialBathroomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#ToiletSuiteBathroom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#ToiletSuiteBathroomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
+        <NamedIndividual IRI="#Tv"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#TvLivingRoom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#TvLivingRoomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallBottom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallBottomBathroomBottomLeft"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallBottomBathroomBottomLeftDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopLeft"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopLeftDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopTop"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopTopDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallBottomBathrooms"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallBottomBathroomsDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallBottomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top1Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top2Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallBottomRoom2Top"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallBottomRoom2TopDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallBottomRoomsDivider"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallBottomRoomsDividerDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallDepositBottom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallDepositBottomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallDepositLeft"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallDepositLeftDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallHallRight"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallHallRightDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallKitchenBottom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallKitchenBottomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallKitchenLeft"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallKitchenLeftDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallKitchenRight"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallKitchenRightDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallLeft"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallLeftDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallMiddleBathroom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallMiddleBathroomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallRightBottom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallRightBottomDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallRightTop"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallRightTopDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallTopLeft"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallTopLeftDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WallTopRight"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WallTopRightDimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WardrobeBottomRoom2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WardrobeBottomRoom2Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WardrobeRoom1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WardrobeRoom1Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#WardrobeTopRoom2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
+        <NamedIndividual IRI="#WardrobeTopRoom2Dimension"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Profile"/>
+        <NamedIndividual IRI="#Worker"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#day"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#hour"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#lookFor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#minute"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#receptPositionX"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#receptPositionY"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#shiftOfDay"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#usingPositionX"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#usingPositionY"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasScheduleOfFunctioning"/>
+        <NamedIndividual IRI="#AbstractArcade"/>
+        <NamedIndividual IRI="#AbstractScheduleArcade"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasScheduleOfFunctioning"/>
+        <NamedIndividual IRI="#AbstractHome"/>
+        <NamedIndividual IRI="#AbstractScheduleHome"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasScheduleOfFunctioning"/>
+        <NamedIndividual IRI="#AbstractMarket"/>
+        <NamedIndividual IRI="#AbstractScheduleMarket"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasScheduleOfFunctioning"/>
+        <NamedIndividual IRI="#AbstractSchool"/>
+        <NamedIndividual IRI="#AbstractScheduleSchool"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasScheduleOfFunctioning"/>
+        <NamedIndividual IRI="#AbstractWork"/>
+        <NamedIndividual IRI="#AbstractScheduleWork"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/uem_occ.owl#hasCharacter"/>
+        <NamedIndividual IRI="#Albert"/>
+        <NamedIndividual IRI="#AlbertsActor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasProfile"/>
+        <NamedIndividual IRI="#AlbertsActor"/>
+        <NamedIndividual IRI="#StudentEarly"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#BedLeftRoom1"/>
+        <NamedIndividual IRI="#BedLeftRoom1Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#BedRightRoom1"/>
+        <NamedIndividual IRI="#BedRightRoom1Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#BedRoom2"/>
+        <NamedIndividual IRI="#BedRoom2Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#BookcaseLivingRoom"/>
+        <NamedIndividual IRI="#BookcaseLivingRoomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#FaucetBathroomMiddle"/>
+        <NamedIndividual IRI="#FaucetBathroomMiddleDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#FaucetKitchen"/>
+        <NamedIndividual IRI="#FaucetKitchenDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#FaucetSocialBathroom"/>
+        <NamedIndividual IRI="#FaucetSocialBathroomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#FaucetSuiteBathroom"/>
+        <NamedIndividual IRI="#FaucetSuiteBathroomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#GasStoveKitchen"/>
+        <NamedIndividual IRI="#GasStoveKitchenDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasFixedDestination"/>
+        <NamedIndividual IRI="#HomeWorker"/>
+        <NamedIndividual IRI="#InitialActor4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#HomeWorker"/>
+        <NamedIndividual IRI="#AbstractHome"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#HomeWorker"/>
+        <NamedIndividual IRI="#AbstractMarket"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#InitialActor1"/>
+        <NamedIndividual IRI="#InitialActor1Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#InitialActor2"/>
+        <NamedIndividual IRI="#InitialActor2Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#InitialActor3"/>
+        <NamedIndividual IRI="#InitialActor3Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#InitialActor4"/>
+        <NamedIndividual IRI="#InitialActor4Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/uem_occ.owl#hasCharacter"/>
+        <NamedIndividual IRI="#John"/>
+        <NamedIndividual IRI="#JohnsActor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasProfile"/>
+        <NamedIndividual IRI="#JohnsActor"/>
+        <NamedIndividual IRI="#HomeWorker"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/uem_occ.owl#hasCharacter"/>
+        <NamedIndividual IRI="#Millie"/>
+        <NamedIndividual IRI="#MilliesActor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasProfile"/>
+        <NamedIndividual IRI="#MilliesActor"/>
+        <NamedIndividual IRI="#StudentLate"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/uem_occ.owl#hasCharacter"/>
+        <NamedIndividual IRI="#Nina"/>
+        <NamedIndividual IRI="#NinasActor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasProfile"/>
+        <NamedIndividual IRI="#NinasActor"/>
+        <NamedIndividual IRI="#Worker"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#RefrigeratorKitchen"/>
+        <NamedIndividual IRI="#RefrigeratorKitchenDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#ShelvesDeposit"/>
+        <NamedIndividual IRI="#ShelvesDepositDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#ShowerBathroomMiddle"/>
+        <NamedIndividual IRI="#ShowerBathroomMiddleDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#ShowerSuiteBathroom"/>
+        <NamedIndividual IRI="#ShowerSuiteBathroomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#SofaLivingRoom"/>
+        <NamedIndividual IRI="#SofaLivingRoomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasFixedDestination"/>
+        <NamedIndividual IRI="#StudentEarly"/>
+        <NamedIndividual IRI="#AbstractSchool"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasFixedDestination"/>
+        <NamedIndividual IRI="#StudentEarly"/>
+        <NamedIndividual IRI="#InitialActor2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#StudentEarly"/>
+        <NamedIndividual IRI="#AbstractMarket"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#StudentEarly"/>
+        <NamedIndividual IRI="#AbstractHome"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasFixedDestination"/>
+        <NamedIndividual IRI="#StudentLate"/>
+        <NamedIndividual IRI="#AbstractSchool"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasFixedDestination"/>
+        <NamedIndividual IRI="#StudentLate"/>
+        <NamedIndividual IRI="#InitialActor1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#StudentLate"/>
+        <NamedIndividual IRI="#AbstractHome"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#StudentLate"/>
+        <NamedIndividual IRI="#AbstractMarket"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#StudentLate"/>
+        <NamedIndividual IRI="#AbstractArcade"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#Support1Kitchen"/>
+        <NamedIndividual IRI="#Support1KitchenDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#Support2Kitchen"/>
+        <NamedIndividual IRI="#Support2KitchenDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#TableCorredorMiddle"/>
+        <NamedIndividual IRI="#TableCorredorMiddleDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#TableKitchen"/>
+        <NamedIndividual IRI="#TableKitchenDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#TableLeftRoom1"/>
+        <NamedIndividual IRI="#TableLeftRoom1Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#TableLivingRoom"/>
+        <NamedIndividual IRI="#TableLivingRoomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#TableRightRoom1"/>
+        <NamedIndividual IRI="#TableRightRoom1Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#ToiletBathroomMiddle"/>
+        <NamedIndividual IRI="#ToiletBathroomMiddleDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#ToiletSocialBathroom"/>
+        <NamedIndividual IRI="#ToiletSocialBathroomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#ToiletSuiteBathroom"/>
+        <NamedIndividual IRI="#ToiletSuiteBathroomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#TvLivingRoom"/>
+        <NamedIndividual IRI="#TvLivingRoomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallBottom"/>
+        <NamedIndividual IRI="#WallBottomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallBottomBathroomBottomLeft"/>
+        <NamedIndividual IRI="#WallBottomBathroomBottomLeftDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopLeft"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopLeftDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopTop"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopTopDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallBottomBathrooms"/>
+        <NamedIndividual IRI="#WallBottomBathroomsDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top1"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top1Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top2"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top2Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallBottomRoom2Top"/>
+        <NamedIndividual IRI="#WallBottomRoom2TopDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallBottomRoomsDivider"/>
+        <NamedIndividual IRI="#WallBottomRoomsDividerDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallDepositBottom"/>
+        <NamedIndividual IRI="#WallDepositBottomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallDepositLeft"/>
+        <NamedIndividual IRI="#WallDepositLeftDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallHallRight"/>
+        <NamedIndividual IRI="#WallHallRightDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallKitchenBottom"/>
+        <NamedIndividual IRI="#WallKitchenBottomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallKitchenLeft"/>
+        <NamedIndividual IRI="#WallKitchenLeftDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallKitchenRight"/>
+        <NamedIndividual IRI="#WallKitchenRightDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallLeft"/>
+        <NamedIndividual IRI="#WallLeftDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallMiddleBathroom"/>
+        <NamedIndividual IRI="#WallMiddleBathroomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallRightBottom"/>
+        <NamedIndividual IRI="#WallRightBottomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallRightTop"/>
+        <NamedIndividual IRI="#WallRightTopDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallTopLeft"/>
+        <NamedIndividual IRI="#WallTopLeftDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WallTopRight"/>
+        <NamedIndividual IRI="#WallTopRightDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WardrobeBottomRoom2"/>
+        <NamedIndividual IRI="#WardrobeBottomRoom2Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WardrobeRoom1"/>
+        <NamedIndividual IRI="#WardrobeRoom1Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
+        <NamedIndividual IRI="#WardrobeTopRoom2"/>
+        <NamedIndividual IRI="#WardrobeTopRoom2Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasFixedDestination"/>
+        <NamedIndividual IRI="#Worker"/>
+        <NamedIndividual IRI="#AbstractWork"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasFixedDestination"/>
+        <NamedIndividual IRI="#Worker"/>
+        <NamedIndividual IRI="#InitialActor3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#Worker"/>
+        <NamedIndividual IRI="#AbstractMarket"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#Worker"/>
+        <NamedIndividual IRI="#AbstractHome"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasCapacity"/>
+        <NamedIndividual IRI="#AbstractArcade"/>
+        <Literal datatypeIRI="&xsd;int">80</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractArcade"/>
+        <Literal datatypeIRI="&xsd;string">Arcade</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasCapacity"/>
+        <NamedIndividual IRI="#AbstractHome"/>
+        <Literal datatypeIRI="&xsd;int">20</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractHome"/>
+        <Literal datatypeIRI="&xsd;string">Home</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasCapacity"/>
+        <NamedIndividual IRI="#AbstractMarket"/>
+        <Literal datatypeIRI="&xsd;int">100</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractMarket"/>
+        <Literal datatypeIRI="&xsd;string">Market</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasAverageTimeOfPermanence"/>
+        <NamedIndividual IRI="#AbstractScheduleArcade"/>
+        <Literal datatypeIRI="&xsd;string">1,1,2,1,1,3,3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasClosingTime"/>
+        <NamedIndividual IRI="#AbstractScheduleArcade"/>
+        <Literal datatypeIRI="&xsd;string">22,22,22,22,22,20,20</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasEnteringTimeInterval"/>
+        <NamedIndividual IRI="#AbstractScheduleArcade"/>
+        <Literal datatypeIRI="&xsd;string">6,5,4,4,5,3,3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasOpeningTime"/>
+        <NamedIndividual IRI="#AbstractScheduleArcade"/>
+        <Literal datatypeIRI="&xsd;string">16,16,16,16,16,10,9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasAverageTimeOfPermanence"/>
+        <NamedIndividual IRI="#AbstractScheduleHome"/>
+        <Literal datatypeIRI="&xsd;string">-</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasClosingTime"/>
+        <NamedIndividual IRI="#AbstractScheduleHome"/>
+        <Literal datatypeIRI="&xsd;string">-</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasEnteringTimeInterval"/>
+        <NamedIndividual IRI="#AbstractScheduleHome"/>
+        <Literal datatypeIRI="&xsd;string">-</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasOpeningTime"/>
+        <NamedIndividual IRI="#AbstractScheduleHome"/>
+        <Literal datatypeIRI="&xsd;string">-</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasAverageTimeOfPermanence"/>
+        <NamedIndividual IRI="#AbstractScheduleMarket"/>
+        <Literal datatypeIRI="&xsd;string">1,1,2,1,1,1,2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasClosingTime"/>
+        <NamedIndividual IRI="#AbstractScheduleMarket"/>
+        <Literal datatypeIRI="&xsd;string">22,22,22,22,22,21,20</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasEnteringTimeInterval"/>
+        <NamedIndividual IRI="#AbstractScheduleMarket"/>
+        <Literal datatypeIRI="&xsd;string">2,2,2,1,2,1,1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasOpeningTime"/>
+        <NamedIndividual IRI="#AbstractScheduleMarket"/>
+        <Literal datatypeIRI="&xsd;string">8,8,8,8,8,8,9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasAverageTimeOfPermanence"/>
+        <NamedIndividual IRI="#AbstractScheduleSchool"/>
+        <Literal datatypeIRI="&xsd;string">0,0,0,0,0,0,0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasClosingTime"/>
+        <NamedIndividual IRI="#AbstractScheduleSchool"/>
+        <Literal datatypeIRI="&xsd;string">12,12,12,12,12,0,0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasEnteringTimeInterval"/>
+        <NamedIndividual IRI="#AbstractScheduleSchool"/>
+        <Literal datatypeIRI="&xsd;string">0,0,0,0,0,0,0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasOpeningTime"/>
+        <NamedIndividual IRI="#AbstractScheduleSchool"/>
+        <Literal datatypeIRI="&xsd;string">8,8,8,8,8,0,0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasAverageTimeOfPermanence"/>
+        <NamedIndividual IRI="#AbstractScheduleWork"/>
+        <Literal datatypeIRI="&xsd;string">-</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasClosingTime"/>
+        <NamedIndividual IRI="#AbstractScheduleWork"/>
+        <Literal datatypeIRI="&xsd;string">18,18,18,18,18,0,0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasEnteringTimeInterval"/>
+        <NamedIndividual IRI="#AbstractScheduleWork"/>
+        <Literal datatypeIRI="&xsd;string">-</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasOpeningTime"/>
+        <NamedIndividual IRI="#AbstractScheduleWork"/>
+        <Literal datatypeIRI="&xsd;string">9,9,9,9,9,0,0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasCapacity"/>
+        <NamedIndividual IRI="#AbstractSchool"/>
+        <Literal datatypeIRI="&xsd;int">40</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractSchool"/>
+        <Literal datatypeIRI="&xsd;string">School</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasCapacity"/>
+        <NamedIndividual IRI="#AbstractWork"/>
+        <Literal datatypeIRI="&xsd;int">12</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractWork"/>
+        <Literal datatypeIRI="&xsd;string">Work</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#BedLeftRoom1"/>
+        <Literal datatypeIRI="&xsd;int">256</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#BedLeftRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#BedLeftRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">15</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#BedLeftRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#BedLeftRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#BedRightRoom1"/>
+        <Literal datatypeIRI="&xsd;int">256</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#BedRightRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#BedRightRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">15</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#BedRightRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#BedRightRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#BedRoom2"/>
+        <Literal datatypeIRI="&xsd;int">256</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#BedRoom2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#BedRoom2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">14</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#BedRoom2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#BedRoom2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#BookcaseLivingRoom"/>
+        <Literal datatypeIRI="&xsd;int">1024</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#BookcaseLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">17</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#BookcaseLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#BookcaseLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#BookcaseLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#FaucetBathroomMiddle"/>
+        <Literal datatypeIRI="&xsd;int">64</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#FaucetBathroomMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#FaucetBathroomMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">11</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#FaucetBathroomMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#FaucetBathroomMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#FaucetKitchen"/>
+        <Literal datatypeIRI="&xsd;int">96</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#FaucetKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#FaucetKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#FaucetKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#FaucetKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#FaucetSocialBathroom"/>
+        <Literal datatypeIRI="&xsd;int">64</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#FaucetSocialBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">18</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#FaucetSocialBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">14</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#FaucetSocialBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#FaucetSocialBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#FaucetSuiteBathroom"/>
+        <Literal datatypeIRI="&xsd;int">64</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#FaucetSuiteBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">18</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#FaucetSuiteBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">17</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#FaucetSuiteBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#FaucetSuiteBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#GasStoveKitchen"/>
+        <Literal datatypeIRI="&xsd;int">544</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#GasStoveKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#GasStoveKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#GasStoveKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#GasStoveKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#InitialActor1"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#InitialActor1"/>
+        <Literal datatypeIRI="&xsd;string">InitialActor1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#InitialActor1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#InitialActor1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">15</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#InitialActor1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#InitialActor1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#InitialActor2"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#InitialActor2"/>
+        <Literal datatypeIRI="&xsd;string">InitialActor2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#InitialActor2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#InitialActor2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#InitialActor2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#InitialActor2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#InitialActor3"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#InitialActor3"/>
+        <Literal datatypeIRI="&xsd;string">InitialActor3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#InitialActor3Dimension"/>
+        <Literal datatypeIRI="&xsd;int">17</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#InitialActor3Dimension"/>
+        <Literal datatypeIRI="&xsd;int">6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#InitialActor3Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#InitialActor3Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#InitialActor4"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#InitialActor4"/>
+        <Literal datatypeIRI="&xsd;string">InitialActor4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#InitialActor4Dimension"/>
+        <Literal datatypeIRI="&xsd;int">14</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#InitialActor4Dimension"/>
+        <Literal datatypeIRI="&xsd;int">16</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#InitialActor4Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#InitialActor4Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#RefrigeratorKitchen"/>
+        <Literal datatypeIRI="&xsd;int">8192</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#RefrigeratorKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">12</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#RefrigeratorKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#RefrigeratorKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#RefrigeratorKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#ShelvesDeposit"/>
+        <Literal datatypeIRI="&xsd;int">1024</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#ShelvesDepositDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#ShelvesDepositDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#ShelvesDepositDimension"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#ShelvesDepositDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#ShowerBathroomMiddle"/>
+        <Literal datatypeIRI="&xsd;int">128</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#ShowerBathroomMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#ShowerBathroomMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#ShowerBathroomMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#ShowerBathroomMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#ShowerSuiteBathroom"/>
+        <Literal datatypeIRI="&xsd;int">128</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#ShowerSuiteBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">17</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#ShowerSuiteBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">18</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#ShowerSuiteBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#ShowerSuiteBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#SofaLivingRoom"/>
+        <Literal datatypeIRI="&xsd;int">2048</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#SofaLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">14</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#SofaLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#SofaLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#SofaLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#Support1Kitchen"/>
+        <Literal datatypeIRI="&xsd;int">32</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#Support1KitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#Support1KitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#Support1KitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#Support1KitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#Support2Kitchen"/>
+        <Literal datatypeIRI="&xsd;int">32</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#Support2KitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#Support2KitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#Support2KitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#Support2KitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#TableCorredorMiddle"/>
+        <Literal datatypeIRI="&xsd;int">32</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#TableCorredorMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#TableCorredorMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#TableCorredorMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#TableCorredorMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#TableKitchen"/>
+        <Literal datatypeIRI="&xsd;int">32</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#TableKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#TableKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#TableKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#TableKitchenDimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#TableLeftRoom1"/>
+        <Literal datatypeIRI="&xsd;int">32</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#TableLeftRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#TableLeftRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">18</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#TableLeftRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#TableLeftRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#TableLivingRoom"/>
+        <Literal datatypeIRI="&xsd;int">32</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#TableLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">16</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#TableLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#TableLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#TableLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#TableRightRoom1"/>
+        <Literal datatypeIRI="&xsd;int">32</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#TableRightRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#TableRightRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">18</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#TableRightRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#TableRightRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#ToiletBathroomMiddle"/>
+        <Literal datatypeIRI="&xsd;int">512</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#ToiletBathroomMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#ToiletBathroomMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#ToiletBathroomMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#ToiletBathroomMiddleDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#ToiletSocialBathroom"/>
+        <Literal datatypeIRI="&xsd;int">512</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#ToiletSocialBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">18</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#ToiletSocialBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">13</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#ToiletSocialBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#ToiletSocialBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#ToiletSuiteBathroom"/>
+        <Literal datatypeIRI="&xsd;int">512</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#ToiletSuiteBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">18</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#ToiletSuiteBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">16</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#ToiletSuiteBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#ToiletSuiteBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#TvLivingRoom"/>
+        <Literal datatypeIRI="&xsd;int">4128</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#TvLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">18</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#TvLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#TvLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#TvLivingRoomDimension"/>
+        <Literal datatypeIRI="&xsd;int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallBottom"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallBottomBathroomBottomLeft"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallBottomBathroomBottomLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">16</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallBottomBathroomBottomLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">17</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallBottomBathroomBottomLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallBottomBathroomBottomLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopLeft"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">16</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">13</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopTop"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopTopDimension"/>
+        <Literal datatypeIRI="&xsd;int">18</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopTopDimension"/>
+        <Literal datatypeIRI="&xsd;int">12</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopTopDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopTopDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallBottomBathrooms"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallBottomBathroomsDimension"/>
+        <Literal datatypeIRI="&xsd;int">16</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallBottomBathroomsDimension"/>
+        <Literal datatypeIRI="&xsd;int">15</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallBottomBathroomsDimension"/>
+        <Literal datatypeIRI="&xsd;int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallBottomBathroomsDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">19</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">19</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top1"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">12</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top2"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">12</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallBottomRoom2Top"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallBottomRoom2TopDimension"/>
+        <Literal datatypeIRI="&xsd;int">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallBottomRoom2TopDimension"/>
+        <Literal datatypeIRI="&xsd;int">12</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallBottomRoom2TopDimension"/>
+        <Literal datatypeIRI="&xsd;int">7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallBottomRoom2TopDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallBottomRoomsDivider"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallBottomRoomsDividerDimension"/>
+        <Literal datatypeIRI="&xsd;int">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallBottomRoomsDividerDimension"/>
+        <Literal datatypeIRI="&xsd;int">12</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallBottomRoomsDividerDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallBottomRoomsDividerDimension"/>
+        <Literal datatypeIRI="&xsd;int">7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallDepositBottom"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallDepositBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallDepositBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallDepositBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallDepositBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallDepositLeft"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallDepositLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallDepositLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallDepositLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallDepositLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallHallRight"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallHallRightDimension"/>
+        <Literal datatypeIRI="&xsd;int">16</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallHallRightDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallHallRightDimension"/>
+        <Literal datatypeIRI="&xsd;int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallHallRightDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallKitchenBottom"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallKitchenBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallKitchenBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallKitchenBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallKitchenBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallKitchenLeft"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallKitchenLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallKitchenLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallKitchenLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallKitchenLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallKitchenRight"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallKitchenRightDimension"/>
+        <Literal datatypeIRI="&xsd;int">13</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallKitchenRightDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallKitchenRightDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallKitchenRightDimension"/>
+        <Literal datatypeIRI="&xsd;int">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallLeft"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallMiddleBathroom"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallMiddleBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallMiddleBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallMiddleBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallMiddleBathroomDimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallRightBottom"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallRightBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">19</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallRightBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">11</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallRightBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallRightBottomDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallRightTop"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallRightTopDimension"/>
+        <Literal datatypeIRI="&xsd;int">19</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallRightTopDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallRightTopDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallRightTopDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallTopLeft"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallTopLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallTopLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallTopLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallTopLeftDimension"/>
+        <Literal datatypeIRI="&xsd;int">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WallTopRight"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WallTopRightDimension"/>
+        <Literal datatypeIRI="&xsd;int">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WallTopRightDimension"/>
+        <Literal datatypeIRI="&xsd;int">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WallTopRightDimension"/>
+        <Literal datatypeIRI="&xsd;int">12</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WallTopRightDimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WardrobeBottomRoom2"/>
+        <Literal datatypeIRI="&xsd;int">1024</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WardrobeBottomRoom2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">15</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WardrobeBottomRoom2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">17</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WardrobeBottomRoom2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WardrobeBottomRoom2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WardrobeRoom1"/>
+        <Literal datatypeIRI="&xsd;int">1024</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WardrobeRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WardrobeRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">13</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WardrobeRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WardrobeRoom1Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
+        <NamedIndividual IRI="#WardrobeTopRoom2"/>
+        <Literal datatypeIRI="&xsd;int">1024</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
+        <NamedIndividual IRI="#WardrobeTopRoom2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">15</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionY"/>
+        <NamedIndividual IRI="#WardrobeTopRoom2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">13</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeX"/>
+        <NamedIndividual IRI="#WardrobeTopRoom2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasSizeY"/>
+        <NamedIndividual IRI="#WardrobeTopRoom2Dimension"/>
+        <Literal datatypeIRI="&xsd;int">3</Literal>
+    </DataPropertyAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
