@@ -18,8 +18,6 @@ public class CharacterInspectorController
 
         view = new CharacterInspectorView( agName );
         view.setController( this );
-
-        System.out.println(agName);
     }
 
     private String getName() { return agName; }

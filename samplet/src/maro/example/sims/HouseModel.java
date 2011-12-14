@@ -5,6 +5,7 @@ import jason.environment.grid.Location;
 import maro.wrapper.OwlApi;
 import maro.wrapper.Dumper;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -362,6 +363,19 @@ public class HouseModel extends GridWorldModel
 			agentData.setProfile(profileData);
 			curr += 1;
 		}
+
+		boolean excluded = true;
+
+		while (excluded == true) {
+			excluded = false;
+			for (String key : referPlace.keySet()) {
+				if (key.startsWith("Initial")) {
+					referPlace.remove(key);
+					excluded = true;
+					break;
+				}
+			}
+		}
 	}
 
 	public void loadObjectsFromOntology(OwlApi oapi) {
@@ -374,6 +388,13 @@ public class HouseModel extends GridWorldModel
     nextInt(int limit) {
         return random.nextInt(limit);
     }
+
+	public int
+	nextNormal(int average, int range) {
+		double offset = average;
+		double r = range;
+		return (int) (offset + random.nextGaussian() * r);
+	}
 
 	public String getAgentName(int agentID) {
 		Agent a = referAgent.get(agentID);
@@ -405,7 +426,6 @@ public class HouseModel extends GridWorldModel
 		private Integer[] timeClosing;
 		private Integer[] averageTime;
 		private Integer[] arriveInterval;
-		//private ArrayList<Integer> capacity;
 
 		public void setName(String i) { placeName = i; }
 		public String getName() { return placeName; }
@@ -499,12 +519,60 @@ public class HouseModel extends GridWorldModel
 		public Integer getAverageTime(int idx) { return averageTime[idx]; }
 		public Integer getArriveInterval(int idx) { return arriveInterval[idx]; }
 
-		//public void setcapacity(ArrayList<Integer> i) { capacity = i; }
-		//public ArrayList<Integer> getcapacity() { return capacity; }
-
 		public boolean haveDimension() {
 			return !(px == null || py == null || width == null || height == null || type == null);
 		}
+
+		// today,
+		//	0-monday		3-thursday		6-sunday
+		//	1-tuesday		4-friday
+		//	2-wednesday		5-saturday
+		public void update (int weekday, int hour, int step) {
+			if (placeName.equals("Home") == true) {
+				// When we will create a party, this can be used... but not for now...
+				return ;
+			}
+
+			// it's between 0 and 100
+			int relativeCapacity = 0;
+
+			if (capacity != null && totalCapacity != null)
+				relativeCapacity = (capacity.size()*100)/totalCapacity;
+
+			if (opened == false) {
+				if (hour >= timeOpening[weekday]) {
+					int halfCapacity = (int) (0.5 * totalCapacity);
+					int c = nextNormal(halfCapacity, (int)(0.1 * halfCapacity));
+
+					capacity = new ArrayList<Integer> ();
+
+					for (int i = 0; i < (int)c; i++) {
+						int forward = nextNormal(averageTime[weekday], arriveInterval[weekday]);
+						System.out.println(step+" "+forward+" "+placeName);
+						if (forward > 0) {
+							capacity.add(step+forward);
+						} else {
+							capacity.add(step+1);
+						}
+					}
+
+					opened = true;
+				}
+			} else {
+				//+" close "+ timeClosing[weekday]
+			}
+
+			System.out.println("placeName "+placeName
+				+" people "+ relativeCapacity
+				+" avgT "+ averageTime[weekday]
+				+" arvT "+ arriveInterval[weekday]
+				+" capacity "+ relativeCapacity +"%"
+				+" capacity "+ capacity.size()
+				+" weekday "+weekday+" "+hour+" step "+step);
+		}
+
+		private boolean opened = false;
+		private ArrayList<Integer> capacity;
 	}
 
 	protected class Profile {

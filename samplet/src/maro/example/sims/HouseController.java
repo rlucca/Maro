@@ -15,6 +15,16 @@ public class HouseController
     final protected House parent;
     final protected ArrayList<CharacterInspectorController> characters;
     protected int step;
+	protected int day;
+	protected int hour;
+	protected int mins;
+	protected int secs;
+	protected String shift;
+	protected String today;
+	static protected String[] weekDays = {
+			"Monday", "Tuesday", "Wednesday", "Thursday",
+			"Friday", "Saturday", "Sunday"
+		};
 
     public HouseController(House owner, OwlApi oapi) {
         parent = owner;
@@ -70,11 +80,8 @@ public class HouseController
         }
  
         if (ch == null) {
-            ch = new CharacterInspectorController(agId, agName);
-            ch.setParent(this);
+			return ;
         }
-
-        characters.add(ch);
 
         ch.repaint();
         ch.setVisible(true);
@@ -82,10 +89,61 @@ public class HouseController
 
     public void newStep(int step) {
         this.step = step;
+
+		secs = getSimulationTime();
+		// secs minus days
+		day  = (secs / 86400);
+		secs = secs % 86400;
+		// secs minus hours
+		hour = (secs / 3600);
+		secs = (secs % 3600);
+		// secs minus minutes
+		mins = (secs / 60);
+		secs = (secs % 60);
+
+		updateDay();
+
+		if (step == 1) {
+			for (HouseModel.Agent a : parent.model.referAgent.values()) {
+				CharacterInspectorController ch
+					= new CharacterInspectorController(a.getID(), a.getName());
+				ch.setParent(this);
+				characters.add(ch);
+			}
+		}
+
+		for (HouseModel.Place p : parent.model.referPlace.values()) {
+			p.update(day, hour, step);
+		}
+
         updateInspector();
     }
 
+    public int getStep() { return this.step; }
     public int getSimulationTime() { return this.step * 870; }
+
+    protected void updateDay() {
+		today = weekDays[day % 7];
+
+		if (hour < 5) shift = "Dawn"; // (M) adrugada
+		else if (hour < 12) {
+			if (hour == 5 && mins <= 30)
+				shift = "Dawn";
+			else
+				shift = "Noon"; // M (a) nha
+		} else if (hour < 18) {
+			if (hour == 12 && mins == 0)
+				shift = "Noon";
+			else
+				shift = "Afternoon"; // (T) arde
+		} else { // 18 - 23h59
+			if (hour == 18 && mins == 0)
+				shift = "Afternoon";
+			else
+				shift = "Night"; // (N) oite
+		}
+	}
+
 
     public void updateInspector() {
         for (CharacterInspectorController cic : characters) {

@@ -1,8 +1,8 @@
 
 MAS sims {
     infrastructure: Centralised //(pool, 2)
-    //environment: maro.example.sims.House(30000, 800, 4, FALSE, "onto/sims.owl")
-    environment: maro.example.sims.House(30000, 1, 4, FALSE, "onto/sims.owl")
+    //environment: maro.example.sims.House(30000, 1000, 4, FALSE, "onto/sims.owl")
+    environment: maro.example.sims.House(30000, 500, 4, FALSE, "onto/simsDoorless.owl")
     //executionControl: jason.control.ExecutionControl
     agents:
         millie

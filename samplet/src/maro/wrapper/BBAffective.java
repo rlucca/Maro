@@ -114,9 +114,18 @@ public class BBAffective extends ChainBBAdapter
 		return ret;
 	}
 
-	public Set<String> getEmotionType() { return ek.getEmotionType(); }
-	public Integer getEmotionValence(String emotion) { return ek.getEmotionValence(emotion, myName); }
-	public Integer getEmotionPotence(String emotion) { return ek.getEmotionPotence(emotion, myName); }
+	public Set<String> getEmotionType() {
+		if (ek == null) return null;
+		return ek.getEmotionType();
+	}
+	public Integer getEmotionValence(String emotion) {
+		if (ek == null) return null;
+		return ek.getEmotionValence(emotion, myName);
+	}
+	public Integer getEmotionPotence(String emotion) {
+		if (ek == null) return null;
+		return ek.getEmotionPotence(emotion, myName);
+	}
 
 	@Override
 	public boolean

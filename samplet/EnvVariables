@@ -1,2 +1,4 @@
 emotionKnowledgeDebug=true
 	Dump the ontology at /tmp/baka.owl
+dumpCharacterHistory={char}
+	Dump the csv history to /tmp/{char}.txt

@@ -5,10 +5,15 @@ import maro.wrapper.BBAffective;
 
 import java.util.Set;
 import java.util.HashMap;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import java.awt.BorderLayout;
+import javax.swing.JTextArea;
 import javax.swing.BoxLayout;
+import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
 import javax.swing.BorderFactory;
 
@@ -22,6 +27,8 @@ class CharacterInspectorView extends JFrame
 	JLabel hour;
 	JLabel minute;
 	JLabel shiftOfDay;
+	JTextArea textArea;
+	PrintWriter pw;
 
     public CharacterInspectorView (String title) {
         super(title);
@@ -32,8 +39,22 @@ class CharacterInspectorView extends JFrame
         hour = new JLabel();
         minute = new JLabel();
         shiftOfDay = new JLabel();
-
+		textArea = new JTextArea();
         msj = new HashMap<String, JLabel>();
+
+		String dump = System.getenv("dumpCharacterHistory");
+		if (dump != null && !dump.equals(title.toLowerCase()))
+			dump = null;
+
+		pw = null;
+		if (dump != null) {
+			try {
+				pw = new PrintWriter(new FileWriter("/tmp/"+dump+".txt", true));
+			} catch (Exception e) {
+				pw = null;
+			}
+		}
+
         initComponents();
 
 		pack();
@@ -47,7 +68,7 @@ class CharacterInspectorView extends JFrame
 		JPanel data = new JPanel();
 		data.setLayout(new BoxLayout(data,BoxLayout.X_AXIS) );
 		data.setBorder(BorderFactory.createTitledBorder("Data"));
-		getContentPane().add(data);
+		getContentPane().add(data, BorderLayout.NORTH);
 
 		JPanel feelings = new JPanel();
 		//feelings.setBorder(BorderFactory.createTitledBorder("Feelings"));
@@ -142,62 +163,77 @@ class CharacterInspectorView extends JFrame
 
 		gl.setHorizontalGroup( sgh );
 		gl.setVerticalGroup( sgv );
+
+		JPanel history = new JPanel();
+		history.setLayout(new BoxLayout(history,BoxLayout.X_AXIS) );
+		history.setBorder(BorderFactory.createTitledBorder("History"));
+		getContentPane().add(history, BorderLayout.SOUTH);
+
+		textArea.setColumns(20);
+        textArea.setLineWrap(true);
+        textArea.setRows(5);
+        textArea.setWrapStyleWord(true);
+        textArea.setEditable(false);
+
+		JScrollPane scroll = new JScrollPane(textArea);
+		history.add(scroll);
     }
 
+	private boolean firstLine = true;
     public void update() {
-        HouseModel.Agent a;
-
         if (cic == null) return ;
 
-        a = cic.getAgent();
+		String csv = "";
+		if (firstLine == true) {
+			csv += "step";
+			for (String emotion : msj.keySet()) {
+				csv += "," + emotion;
+			}
 
+			csv += ",energy,orientation,weekday,day,hour,minute,second,shiftOfDay\n";
+			firstLine = false;
+		}
+
+		BBAffective bb;
+        HouseModel.Agent a;
+
+		csv += cic.getParent().getStep();
+        a = cic.getAgent();
+		bb = BBKeeper.getInstance().get(a.getName());
 		for (String emotion : msj.keySet()) {
 			JLabel l = msj.get(emotion);
-			BBAffective bb = BBKeeper.getInstance().get(a.getName());
-            if (bb == null) continue;
-			Integer v = bb.getEmotionPotence(emotion);
-			updateLabel(l, (v==null)?0:v);
+			csv += ",";
+			if (bb != null) {
+				Integer v = bb.getEmotionPotence(emotion);
+				updateLabel(l, (v==null)?0:v);
+				csv += v.toString();
+			}
 		}
 
         energy.setText("energy: "+a.getEnergy());
         lookFor.setText("lookFor: "+a.getOrientationText());
 
-		Integer secs    = cic.getParent().getSimulationTime();
-		Integer day;
-		Integer hour;
-		Integer mins;
-		String shift;
-		// secs minus days
-		day  = (secs / 86400) + 1;
-		secs = secs % 86400;
-		// secs minus hours
-		hour = (secs / 3600);
-		secs = (secs % 3600);
-		// secs minus minutes
-		mins = (secs / 60);
+		csv += "," + a.getEnergy() + "," + a.getOrientationText();
 
-		if (hour < 5) shift = "Dawn"; // (M) adrugada
-		else if (hour < 12) {
-			if (hour == 5 && mins <= 30)
-				shift = "Dawn";
-			else
-				shift = "Noon"; // M (a) nha
-		} else if (hour < 18) {
-			if (hour == 12 && mins == 0)
-				shift = "Noon";
-			else
-				shift = "Afternoon"; // (T) arde
-		} else { // 18 - 23h59
-			if (hour == 18 && mins == 0)
-				shift = "Afternoon";
-			else
-				shift = "Night"; // (N) oite
-		}
+		Integer day  = cic.getParent().day;
+		Integer hour = cic.getParent().hour;
+		Integer mins = cic.getParent().mins;
+		Integer secs = cic.getParent().secs;
+		String shift = cic.getParent().shift;
 
-		this.day.setText("day: "+day);
+		this.day.setText("day: "+ (day+1));
 		this.hour.setText("hour: "+hour);
 		this.minute.setText("minute: "+mins);
 		this.shiftOfDay.setText("shift: "+shift);
+
+		csv += "," + cic.getParent().today + "," + day;
+		csv += "," + hour + "," + mins + "," + secs + "," + shift;
+
+		textArea.append(csv+"\n");
+		if (pw != null) {
+			pw.println(csv);
+			pw.flush();
+		}
     }
 
 	protected void updateLabel(javax.swing.JLabel label, Integer d) {

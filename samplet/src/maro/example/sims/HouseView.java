@@ -166,16 +166,8 @@ public class HouseView extends GridWorldView
         System.out.println("update/0");
     }
 
-	@Override
+	/*@Override
     public void update(int x, int y) {
-        int agId = hm.getAgAtPos(x, y);
-
-        if (agId >= 0) {
-            System.out.println("updateCharacterInspector of ag: "+agId);
-        }
-
         super.update(x, y);
-        System.out.println("update/2");
-	}
-
+	}*/
 }

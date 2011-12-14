@@ -1356,6 +1356,16 @@
         <NamedIndividual IRI="#InitialActor4"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#HomeWorker"/>
+        <NamedIndividual IRI="#AbstractHome"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#HomeWorker"/>
+        <NamedIndividual IRI="#AbstractMarket"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#InitialActor1"/>
         <NamedIndividual IRI="#InitialActor1Dimension"/>
@@ -1437,8 +1447,43 @@
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasFixedDestination"/>
+        <NamedIndividual IRI="#StudentEarly"/>
+        <NamedIndividual IRI="#AbstractSchool"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#StudentEarly"/>
+        <NamedIndividual IRI="#AbstractMarket"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#StudentEarly"/>
+        <NamedIndividual IRI="#AbstractHome"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasFixedDestination"/>
+        <NamedIndividual IRI="#StudentLate"/>
+        <NamedIndividual IRI="#AbstractSchool"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasFixedDestination"/>
         <NamedIndividual IRI="#StudentLate"/>
         <NamedIndividual IRI="#InitialActor1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#StudentLate"/>
+        <NamedIndividual IRI="#AbstractHome"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#StudentLate"/>
+        <NamedIndividual IRI="#AbstractMarket"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#StudentLate"/>
+        <NamedIndividual IRI="#AbstractArcade"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1618,7 +1663,22 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasFixedDestination"/>
         <NamedIndividual IRI="#Worker"/>
+        <NamedIndividual IRI="#AbstractWork"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasFixedDestination"/>
+        <NamedIndividual IRI="#Worker"/>
         <NamedIndividual IRI="#InitialActor3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#Worker"/>
+        <NamedIndividual IRI="#AbstractHome"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasRandomDestination"/>
+        <NamedIndividual IRI="#Worker"/>
+        <NamedIndividual IRI="#AbstractMarket"/>
     </ObjectPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasCapacity"/>
