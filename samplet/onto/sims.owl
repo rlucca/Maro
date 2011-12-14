@@ -1688,7 +1688,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
         <NamedIndividual IRI="#AbstractArcade"/>
-        <Literal datatypeIRI="&xsd;string">Arcade</Literal>
+        <Literal datatypeIRI="&xsd;string">AbstractArcade</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasCapacity"/>
@@ -1698,7 +1698,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
         <NamedIndividual IRI="#AbstractHome"/>
-        <Literal datatypeIRI="&xsd;string">Home</Literal>
+        <Literal datatypeIRI="&xsd;string">AbstractHome</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasCapacity"/>
@@ -1708,7 +1708,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
         <NamedIndividual IRI="#AbstractMarket"/>
-        <Literal datatypeIRI="&xsd;string">Market</Literal>
+        <Literal datatypeIRI="&xsd;string">AbstractMarket</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasAverageTimeOfPermanence"/>
@@ -1818,7 +1818,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
         <NamedIndividual IRI="#AbstractSchool"/>
-        <Literal datatypeIRI="&xsd;string">School</Literal>
+        <Literal datatypeIRI="&xsd;string">AbstractSchool</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasCapacity"/>
@@ -1828,7 +1828,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
         <NamedIndividual IRI="#AbstractWork"/>
-        <Literal datatypeIRI="&xsd;string">Work</Literal>
+        <Literal datatypeIRI="&xsd;string">AbstractWork</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
