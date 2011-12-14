@@ -17,9 +17,13 @@ public class HouseController
     protected int step;
 	protected int day;
 	protected int hour;
+	protected int lsth;
 	protected int mins;
 	protected int secs;
 	protected String shift;
+	static protected String[] shiftDay = {
+			"Dawn", "Noon", "Afternoon", "Night"
+		};
 	protected String today;
 	static protected String[] weekDays = {
 			"Monday", "Tuesday", "Wednesday", "Thursday",
@@ -29,7 +33,7 @@ public class HouseController
     public HouseController(House owner, OwlApi oapi) {
         parent = owner;
         characters = new ArrayList<CharacterInspectorController> ();
-        step = -1;
+        step = -1; lsth = -1;
 
         parent.model.setView( parent.view );
         parent.model.loadPlacesFromOntology(oapi); // It doesn't have annottion
@@ -87,7 +91,7 @@ public class HouseController
         ch.setVisible(true);
     }
 
-    public void newStep(int step) {
+    public void newStep(int step, House h) {
         this.step = step;
 
 		secs = getSimulationTime();
@@ -112,11 +116,15 @@ public class HouseController
 			}
 		}
 
-		for (HouseModel.Place p : parent.model.referPlace.values()) {
-			p.update(day, hour, step);
+		if (lsth != hour) {
+			lsth = hour;
+			for (HouseModel.Place p : parent.model.referPlace.values()) {
+				p.update(day % 7, hour, step);
+			}
 		}
 
         updateInspector();
+		updatePercepts(h);
     }
 
     public int getStep() { return this.step; }
@@ -125,22 +133,22 @@ public class HouseController
     protected void updateDay() {
 		today = weekDays[day % 7];
 
-		if (hour < 5) shift = "Dawn"; // (M) adrugada
+		if (hour < 5) shift = shiftDay[0]; // (M) adrugada
 		else if (hour < 12) {
 			if (hour == 5 && mins <= 30)
-				shift = "Dawn";
+				shift = shiftDay[0];
 			else
-				shift = "Noon"; // M (a) nha
+				shift = shiftDay[1]; // M (a) nha
 		} else if (hour < 18) {
 			if (hour == 12 && mins == 0)
-				shift = "Noon";
+				shift = shiftDay[1];
 			else
-				shift = "Afternoon"; // (T) arde
+				shift = shiftDay[2]; // (T) arde
 		} else { // 18 - 23h59
 			if (hour == 18 && mins == 0)
-				shift = "Afternoon";
+				shift = shiftDay[2];
 			else
-				shift = "Night"; // (N) oite
+				shift = shiftDay[3]; // (N) oite
 		}
 	}
 
@@ -150,6 +158,12 @@ public class HouseController
             cic.update();
         }
     }
+
+	public void updatePercepts(House h) {
+		for (HouseModel.Agent a : parent.model.referAgent.values()) {
+			a.updatePerception(h);
+		}
+	}
 
     public GridWorldModel getModel() {
         return parent.model;

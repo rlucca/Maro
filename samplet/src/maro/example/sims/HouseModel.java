@@ -1,5 +1,7 @@
 package maro.example.sims;
 
+import jason.asSyntax.Literal;
+import jason.asSyntax.ASSyntax;
 import jason.environment.grid.GridWorldModel;
 import jason.environment.grid.Location;
 import maro.wrapper.OwlApi;
@@ -7,6 +9,7 @@ import maro.wrapper.Dumper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 public class HouseModel extends GridWorldModel
@@ -258,7 +261,7 @@ public class HouseModel extends GridWorldModel
 			Dumper dimensionRelevant = getDumper(dimensions, base);
 			if (dimensionRelevant != null) {
 					String target = dimensionRelevant.getTerms()[1];
-					
+
 					placeData.setPX(getInteger(positionsX, target));
 					placeData.setPY(getInteger(positionsY, target));
 					placeData.setWidth(getInteger(sizesX, target));
@@ -426,7 +429,17 @@ public class HouseModel extends GridWorldModel
 		private Integer[] timeClosing;
 		private Integer[] averageTime;
 		private Integer[] arriveInterval;
+		private ArrayList<Integer> capacity;
+		private boolean opened = false;
 
+		public Place () {
+			debugPlace = false;
+			if (System.getenv("debugPlace") != null) {
+				debugPlace = true;
+			}
+		}
+
+		public boolean isOpen() { return opened; }
 		public void setName(String i) { placeName = i; }
 		public String getName() { return placeName; }
 		public void setPX(Integer i) { px = i; }
@@ -523,6 +536,77 @@ public class HouseModel extends GridWorldModel
 			return !(px == null || py == null || width == null || height == null || type == null);
 		}
 
+		private void consume(int step) {
+			if (capacity == null) return ;
+			Iterator<Integer> ii = capacity.iterator();
+			if (pw != null) {
+				pw.print("  "+capacity.size()+" -");
+				for (Integer i : capacity)
+					pw.print(" "+i);
+				pw.println(" BEFORE CONSUME");
+			}
+
+			while (ii.hasNext()) {
+				Integer a = ii.next();
+				if (a <= step)
+					ii.remove();
+			}
+
+			if (pw != null) {
+				pw.print("  "+capacity.size()+" -");
+				for (Integer i : capacity)
+					pw.print(" "+i);
+				pw.println(" AFTER CONSUME");
+			}
+
+			if (capacity.isEmpty()) capacity = null;
+		}
+
+		private void respawn(int weekday, int step)
+		{
+			int avgAgent = (int) (0.5 * totalCapacity);
+			int rangeAgent = (int)(0.1 * avgAgent);
+			int c = nextNormal(avgAgent, rangeAgent);
+
+			if (c <= 0) return ;
+
+			if (capacity == null)
+				capacity = new ArrayList<Integer> ();
+
+			int aHour = 5; // 3600s is 4,14 steps
+			int news = 0;
+			for (int i = 0; i < (int)c; i++) {
+				int forward = nextNormal(averageTime[weekday], arriveInterval[weekday]);
+				if (forward > 0) {
+					capacity.add(step+forward*aHour);
+					news += 1;
+				}
+			}
+
+			if (pw != null) {
+				pw.println("respawn - new person in place "+news);
+			}
+		}
+
+		// between 0 to 100
+		public int getRelativeCapacity() {
+			int ret = 0;
+			if (capacity == null || totalCapacity == null || totalCapacity <= 0)
+				return ret;
+
+			ret = (int) ((capacity.size() * 100.0) / totalCapacity);
+			return ret;
+		}
+
+		public boolean itsOpen(int weekday) {
+			int to = timeOpening[weekday] - 1;
+			int tc = timeClosing[weekday] - 1;
+			if (to >= 0 && tc >= 0) { // It's can be -1 to indicate "not-applicable"
+				return true;
+			}
+			return false;
+		}
+
 		// today,
 		//	0-monday		3-thursday		6-sunday
 		//	1-tuesday		4-friday
@@ -534,45 +618,64 @@ public class HouseModel extends GridWorldModel
 			}
 
 			// it's between 0 and 100
-			int relativeCapacity = 0;
+			int relativeCapacity;
+			int cap = 0;
+			int to = timeOpening[weekday] - 1;
+			int tc = timeClosing[weekday] - 1;
+			int mtc = (int)(1.1*tc);
 
-			if (capacity != null && totalCapacity != null)
-				relativeCapacity = (capacity.size()*100)/totalCapacity;
-
-			if (opened == false) {
-				if (hour >= timeOpening[weekday]) {
-					int halfCapacity = (int) (0.5 * totalCapacity);
-					int c = nextNormal(halfCapacity, (int)(0.1 * halfCapacity));
-
-					capacity = new ArrayList<Integer> ();
-
-					for (int i = 0; i < (int)c; i++) {
-						int forward = nextNormal(averageTime[weekday], arriveInterval[weekday]);
-						System.out.println(step+" "+forward+" "+placeName);
-						if (forward > 0) {
-							capacity.add(step+forward);
-						} else {
-							capacity.add(step+1);
-						}
+			if (itsOpen(weekday)) { // It's can be -1 to indicate "not-applicable"
+				this.consume(step);
+				if (opened == false) {
+					if (hour > to && hour <= tc) {
+						this.respawn(weekday, step);
+						opened = true;
 					}
+				} else {
+					if (hour > tc) {
+						opened = false;
+					} else {
+						if (arriveInterval[weekday] > 0 && (hour % arriveInterval[weekday]) == 0)
+							this.respawn(weekday, step);
+					}
+				}
 
-					opened = true;
+				if ((mtc == 0 && hour <= mtc) || ((mtc > 0) && hour >= mtc)) {
+					capacity = null;
 				}
 			} else {
-				//+" close "+ timeClosing[weekday]
+				capacity = null;
 			}
 
-			System.out.println("placeName "+placeName
-				+" people "+ relativeCapacity
-				+" avgT "+ averageTime[weekday]
-				+" arvT "+ arriveInterval[weekday]
-				+" capacity "+ relativeCapacity +"%"
-				+" capacity "+ capacity.size()
-				+" weekday "+weekday+" "+hour+" step "+step);
+			if (capacity != null) cap = capacity.size();
+			relativeCapacity = getRelativeCapacity();
+
+			if (debugPlace) {
+				if (pw == null) {
+					try {
+						pw = new java.io.PrintWriter(
+								new java.io.FileWriter("/tmp/place-"+placeName+".txt")
+								);
+					} catch (Exception e) {}
+				}
+
+				pw.println("placeName "+placeName
+						+" avgT "+ averageTime[weekday]
+						+" arvT "+ arriveInterval[weekday]
+						+" to "+ timeOpening[weekday]
+						+" tc "+ timeClosing[weekday]
+						+" mtc "+ mtc
+						+" capacity "+ relativeCapacity +"%"
+						+" capacity "+ cap
+						+" step "+step
+						+" opened "+opened
+						+" weekday "+weekday+" "+hour);
+				pw.flush();
+			}
 		}
 
-		private boolean opened = false;
-		private ArrayList<Integer> capacity;
+		private boolean debugPlace;
+		private java.io.PrintWriter pw = null;
 	}
 
 	protected class Profile {
@@ -591,6 +694,24 @@ public class HouseModel extends GridWorldModel
 		public void addRandomDestination(String place) {
 			randomDestinies.add(place);
 		}
+		public Set<Place> getFixedDestinations() {
+			Set<Place> places = new HashSet<Place>();
+			for (String s : fixedDestinies) {
+				Place p = referPlace.get(s);
+				if (p == null) continue;
+				places.add(p);
+			}
+			return places;
+		}
+		public Set<Place> getRandomDestinations() {
+			Set<Place> places = new HashSet<Place>();
+			for (String s : randomDestinies) {
+				Place p = referPlace.get(s);
+				if (p == null) continue;
+				places.add(p);
+			}
+			return places;
+		}
 	}
 
 	protected HashMap<Integer, Agent> referAgent;
@@ -600,7 +721,7 @@ public class HouseModel extends GridWorldModel
 		private Profile profile;
 
 		public Agent(Integer identification, String name) {
-			this.name = name;
+			this.name = name.toLowerCase();
 			id = identification;
 		}
 
@@ -644,6 +765,46 @@ public class HouseModel extends GridWorldModel
 		}
 		public void setOrientation(char o) {
 			orientation = o;
+		}
+		public void updatePerception(House h) {
+			h.clearPercepts(getName());
+
+			Literal step    = ASSyntax.createLiteral("step",
+								ASSyntax.createNumber(h.controller.getStep()));
+			Literal myself  = ASSyntax.createLiteral("myself");
+
+
+			step.addAnnot(ASSyntax.createLiteral("day", ASSyntax.createNumber(h.controller.day)));
+			step.addAnnot(ASSyntax.createLiteral("hour", ASSyntax.createNumber(h.controller.hour)));
+			step.addAnnot(ASSyntax.createLiteral("minute", ASSyntax.createNumber(h.controller.mins)));
+			// shift --> {"Dawn", "Noon", "Afternoon", "Night"}
+			step.addAnnot(ASSyntax.createLiteral("shift", ASSyntax.createString(h.controller.shift)));
+
+			myself.addAnnot(ASSyntax.createLiteral("energy", ASSyntax.createNumber(getEnergy())));
+			// lookFor --> {"N", "E", "S", "W"}
+			myself.addAnnot(ASSyntax.createLiteral("lookFor", ASSyntax.createString(getOrientation())));
+
+			int today = h.controller.day % 7;
+			for (Place p : getProfile().getFixedDestinations()) {
+				Literal place;
+
+				if (p.itsOpen(today) == false) continue;
+
+				place = ASSyntax.createLiteral("place",
+							ASSyntax.createString(p.getName()));
+
+				place.addAnnot(ASSyntax.createLiteral("opening",
+							ASSyntax.createNumber(p.getTimeOpening(today))));
+				place.addAnnot(ASSyntax.createLiteral("closing",
+							ASSyntax.createNumber(p.getTimeClosing(today))));
+				place.addAnnot(ASSyntax.createLiteral("capacity",
+							ASSyntax.createNumber(p.getRelativeCapacity())));
+
+				h.addPercept(getName(), place);
+			}
+
+			h.addPercept(getName(), myself);
+			h.addPercept(getName(), step); // this is the last
 		}
 	}
 

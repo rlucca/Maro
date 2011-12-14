@@ -24,7 +24,7 @@ public class House extends AnnotatedEnvironment
 	protected void stepStarted(int step) {
 		getLogger().info("Started step " + step);
 
-		controller.newStep(step);
+		controller.newStep(step, this);
 
 		updateNumberOfAgents();
 	}

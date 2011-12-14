@@ -206,7 +206,7 @@ class CharacterInspectorView extends JFrame
 			if (bb != null) {
 				Integer v = bb.getEmotionPotence(emotion);
 				updateLabel(l, (v==null)?0:v);
-				csv += v.toString();
+				csv += (v==null)?0:v.toString();
 			}
 		}
 
