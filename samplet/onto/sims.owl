@@ -1718,7 +1718,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasClosingTime"/>
         <NamedIndividual IRI="#AbstractScheduleArcade"/>
-        <Literal datatypeIRI="&xsd;string">22,22,22,22,22,20,20</Literal>
+        <Literal datatypeIRI="&xsd;string">22,22,22,22,22,22,22</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasEnteringTimeInterval"/>
