@@ -278,23 +278,21 @@ public class HouseModel extends GridWorldModel
 				placeData.setArriveInterval(getStringUnquoted(enteringTime, target));
 			}
 
-			if (placeData.getName() == null) {
-				// controlled agent were put later in data...
-				if (placeData.haveDimension()) {
-					int minX = placeData.getPX();
-					int minY = placeData.getPY();
-					int maxX = minX + placeData.getWidth();
-					int maxY = minY + placeData.getHeight();
-					int type = placeData.getType();
+			if (placeData.getName() == null) continue;
 
-					for (int x = minX; x < maxX; x++) {
-						for (int y = minY; y < maxY; y++) {
-							data[x][y] = type;
-						}
+			referPlace.put(placeData.getName(), placeData);
+			if (placeData.haveDimension() && placeData.getName().startsWith("Initial") == false) {
+				int minX = placeData.getPX();
+				int minY = placeData.getPY();
+				int maxX = minX + placeData.getWidth();
+				int maxY = minY + placeData.getHeight();
+				int type = placeData.getType();
+
+				for (int x = minX; x < maxX; x++) {
+					for (int y = minY; y < maxY; y++) {
+						data[x][y] = type;
 					}
 				}
-			} else {
-				referPlace.put(placeData.getName(), placeData);
 			}
 		}
 	}
@@ -366,6 +364,42 @@ public class HouseModel extends GridWorldModel
 			agentData.setProfile(profileData);
 			curr += 1;
 		}
+	}
+
+	public void loadObjectsFromOntology(OwlApi oapi) {
+		Set<Dumper> setups    // hasSetup(placeName, placeName) and others
+			= oapi.getCandidatesByFunctorAndArity(2, "hasSetup");
+		Set<Dumper> names
+			= oapi.getCandidatesByFunctorAndArity(2, "hasName");
+
+		itemView = new HashMap<Place, ArrayList<Place> > ();
+		placeView = new HashMap<Place, ArrayList<Place> > ();
+
+		for (Dumper dumper : setups) {
+			String source = dumper.getTerms()[0];
+			String target = dumper.getTerms()[1];
+			String sname = getStringUnquoted(names, source);
+			String tname = getStringUnquoted(names, target);
+			Place ps = referPlace.get(sname);
+			Place pt = referPlace.get(tname);
+
+			if (ps == null || pt == null) continue;
+
+			ArrayList<Place> rooms, items;
+			items = placeView.get(ps);
+			if (items == null) {
+				items = new ArrayList<Place> ();
+				placeView.put(ps, items);
+			}
+			rooms = itemView.get(pt);
+			if (rooms == null) {
+				rooms = new ArrayList<Place> ();
+				itemView.put(pt, rooms);
+			}
+
+			items.add(pt);
+			rooms.add(ps);
+		}
 
 		boolean excluded = true;
 
@@ -379,12 +413,6 @@ public class HouseModel extends GridWorldModel
 				}
 			}
 		}
-	}
-
-	public void loadObjectsFromOntology(OwlApi oapi) {
-		// TODO maybe to load anotations of objects?
-		//public Iterator<Dumper> getCandidatesByFunctorAndArityIter(int arity, String functor)
-		//public HashSet<Dumper> getCandidatesByFunctorAndArity(int arity, String functor)
 	}
 
 	public int
@@ -415,6 +443,8 @@ public class HouseModel extends GridWorldModel
 
 
 
+	protected HashMap<Place, ArrayList<Place> > placeView; // bathroom = [toilet, faucet, door]
+	protected HashMap<Place, ArrayList<Place> > itemView; // toilet = [bathroom1, bathroom2, bathroom3]
 
 	protected HashMap<String, Place> referPlace;
 	protected class Place {
@@ -599,6 +629,7 @@ public class HouseModel extends GridWorldModel
 		}
 
 		public boolean itsOpen(int weekday) {
+			if (timeOpening == null || timeClosing == null) return false;
 			int to = timeOpening[weekday] - 1;
 			int tc = timeClosing[weekday] - 1;
 			if (to >= 0 && tc >= 0) { // It's can be -1 to indicate "not-applicable"
@@ -612,8 +643,9 @@ public class HouseModel extends GridWorldModel
 		//	1-tuesday		4-friday
 		//	2-wednesday		5-saturday
 		public void update (int weekday, int hour, int step) {
-			if (placeName.equals("Home") == true) {
-				// When we will create a party, this can be used... but not for now...
+			if (itsOpen(weekday) == false) {
+				// When the locations dont open do nothing!
+				capacity = null;
 				return ;
 			}
 
@@ -624,26 +656,22 @@ public class HouseModel extends GridWorldModel
 			int tc = timeClosing[weekday] - 1;
 			int mtc = (int)(1.1*tc);
 
-			if (itsOpen(weekday)) { // It's can be -1 to indicate "not-applicable"
-				this.consume(step);
-				if (opened == false) {
-					if (hour > to && hour <= tc) {
-						this.respawn(weekday, step);
-						opened = true;
-					}
-				} else {
-					if (hour > tc) {
-						opened = false;
-					} else {
-						if (arriveInterval[weekday] > 0 && (hour % arriveInterval[weekday]) == 0)
-							this.respawn(weekday, step);
-					}
-				}
-
-				if ((mtc == 0 && hour <= mtc) || ((mtc > 0) && hour >= mtc)) {
-					capacity = null;
+			this.consume(step);
+			if (opened == false) {
+				if (hour > to && hour <= tc) {
+					this.respawn(weekday, step);
+					opened = true;
 				}
 			} else {
+				if (hour > tc) {
+					opened = false;
+				} else {
+					if (arriveInterval[weekday] > 0 && (hour % arriveInterval[weekday]) == 0)
+						this.respawn(weekday, step);
+				}
+			}
+
+			if ((mtc == 0 && hour <= mtc) || ((mtc > 0) && hour >= mtc)) {
 				capacity = null;
 			}
 
@@ -672,6 +700,29 @@ public class HouseModel extends GridWorldModel
 						+" weekday "+weekday+" "+hour);
 				pw.flush();
 			}
+		}
+
+		public Literal getLiteral(String functor, int today) {
+			Literal ret = ASSyntax.createLiteral(functor,
+						ASSyntax.createString(getName()));
+
+			if (today < 0) {
+				if (timeOpening != null) {
+					ret.addAnnot(ASSyntax.createLiteral("opening",
+								ASSyntax.createNumber(getTimeOpening(today))));
+				}
+				if (timeClosing != null) {
+					ret.addAnnot(ASSyntax.createLiteral("closing",
+								ASSyntax.createNumber(getTimeClosing(today))));
+				}
+			}
+
+			if (capacity != null) {
+				ret.addAnnot(ASSyntax.createLiteral("capacity",
+							ASSyntax.createNumber(getRelativeCapacity())));
+			}
+
+			return ret;
 		}
 
 		private boolean debugPlace;
@@ -770,7 +821,7 @@ public class HouseModel extends GridWorldModel
 			h.clearPercepts(getName());
 
 			Literal step    = ASSyntax.createLiteral("step",
-								ASSyntax.createNumber(h.controller.getStep()));
+					ASSyntax.createNumber(h.controller.getStep()));
 			Literal myself  = ASSyntax.createLiteral("myself");
 
 
@@ -785,29 +836,103 @@ public class HouseModel extends GridWorldModel
 			myself.addAnnot(ASSyntax.createLiteral("lookFor", ASSyntax.createString(getOrientation())));
 
 			int today = h.controller.day % 7;
-			for (Place p : getProfile().getFixedDestinations()) {
-				Literal place;
+			perceptionPlace(getProfile().getFixedDestinations(), h, today, "fixed");
+			perceptionPlace(getProfile().getRandomDestinations(), h, today, "random");
 
-				if (p.itsOpen(today) == false) continue;
-
-				place = ASSyntax.createLiteral("place",
-							ASSyntax.createString(p.getName()));
-
-				place.addAnnot(ASSyntax.createLiteral("opening",
-							ASSyntax.createNumber(p.getTimeOpening(today))));
-				place.addAnnot(ASSyntax.createLiteral("closing",
-							ASSyntax.createNumber(p.getTimeClosing(today))));
-				place.addAnnot(ASSyntax.createLiteral("capacity",
-							ASSyntax.createNumber(p.getRelativeCapacity())));
-
-				h.addPercept(getName(), place);
-			}
+			updateBasedOnVision(h);
 
 			h.addPercept(getName(), myself);
 			h.addPercept(getName(), step); // this is the last
 		}
-	}
 
+		private void perceptionPlace(Set<Place> places, House h, int today, String prefix) {
+			for (Place p : places) {
+				Literal place;
+
+				if (p.itsOpen(today) == false) continue;
+
+				place = p.getLiteral(prefix+"Place", today);
+
+				h.addPercept(getName(), place);
+			}
+		}
+
+		private void updateBasedOnVision(House h) {
+			int dx = 0, dy = 0, xrange = 0, yrange = 0;
+			switch (orientation) {
+				case 'N':
+					dy = -1;
+					dx = -1;
+					xrange = 2;
+					break;
+				case 'E':
+					dx = 1;
+					dy = -1;
+					yrange = 2;
+					break;
+				case 'S':
+					dy = 1;
+					dx = -1;
+					xrange = 2;
+					break;
+				case 'W':
+					dx = -1;
+					dy = -1;
+					yrange = 2;
+					break;
+				default:
+					return ; // fail??
+			}
+
+			Location l = agPos[getID()];
+			boolean occluded = false;
+			int x = l.x, y = l.y;
+			int mx, my;
+			for (int k = 1; k < 10; k++) // 4,77m
+			{
+				Place it = null;
+				x = x + dx;
+				y = y + dy;
+				mx = x + xrange;
+				my = y + yrange;
+
+				if (x < 0 || y < 0 || x > 20 || y > 20)
+					break;
+
+				for (Place p : referPlace.values()) {
+					int px, py, pmx, pmy;
+
+					if (p.haveDimension() == false)
+						continue;
+
+					px = p.getPX();
+					py = p.getPY();
+					pmx = p.getWidth() + px;
+					pmy = p.getHeight() + py;
+
+					if (px <= mx && pmx >= x && py <= my && pmy >= y) {
+						Literal place = p.getLiteral("object", -1);
+						place.addAnnot(ASSyntax.createLiteral("x1", ASSyntax.createNumber(px)));
+						place.addAnnot(ASSyntax.createLiteral("y1", ASSyntax.createNumber(py)));
+						place.addAnnot(ASSyntax.createLiteral("x2", ASSyntax.createNumber(pmx)));
+						place.addAnnot(ASSyntax.createLiteral("y2", ASSyntax.createNumber(pmy)));
+						//place.addAnnot(ASSyntax.createLiteral("tx1", ASSyntax.createNumber(x)));
+						//place.addAnnot(ASSyntax.createLiteral("ty1", ASSyntax.createNumber(y)));
+						//place.addAnnot(ASSyntax.createLiteral("tx2", ASSyntax.createNumber(mx)));
+						//place.addAnnot(ASSyntax.createLiteral("ty2", ASSyntax.createNumber(my)));
+						h.addPercept(getName(), place);
+
+						if (p.getName().startsWith("Wall")) {
+							occluded = true;
+						}
+					}
+				}
+				if (occluded == true) break;
+				if (xrange > 0) xrange += 2;
+				if (yrange > 0) yrange += 2;
+			}
+		}
+	}
 
 
 	private class InnerData { // TODO acho que isso vai morrer

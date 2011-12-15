@@ -2152,6 +2152,11 @@
         <Literal datatypeIRI="&xsd;int">256</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#BedLeftRoom1"/>
+        <Literal datatypeIRI="&xsd;string">BedSingle1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#BedLeftRoom1Dimension"/>
         <Literal datatypeIRI="&xsd;int">1</Literal>
@@ -2175,6 +2180,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#BedRightRoom1"/>
         <Literal datatypeIRI="&xsd;int">256</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#BedRightRoom1"/>
+        <Literal datatypeIRI="&xsd;string">BedSingle2</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -2202,6 +2212,11 @@
         <Literal datatypeIRI="&xsd;int">256</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#BedRoom2"/>
+        <Literal datatypeIRI="&xsd;string">BedCasal</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#BedRoom2Dimension"/>
         <Literal datatypeIRI="&xsd;int">9</Literal>
@@ -2225,6 +2240,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#BookcaseLivingRoom"/>
         <Literal datatypeIRI="&xsd;int">1024</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#BookcaseLivingRoom"/>
+        <Literal datatypeIRI="&xsd;string">Bookcase</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -2252,6 +2272,11 @@
         <Literal datatypeIRI="&xsd;int">16</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#DoorCorredor"/>
+        <Literal datatypeIRI="&xsd;string">DoorToCorredorOrToLivingRoom</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#DoorCorredorDimension"/>
         <Literal datatypeIRI="&xsd;int">13</Literal>
@@ -2275,6 +2300,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#DoorDeposit"/>
         <Literal datatypeIRI="&xsd;int">16</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#DoorDeposit"/>
+        <Literal datatypeIRI="&xsd;string">DoorToDepositOrToCorredor</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -2302,6 +2332,11 @@
         <Literal datatypeIRI="&xsd;int">16</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#DoorKitchen"/>
+        <Literal datatypeIRI="&xsd;string">DoorToKitchenToLivingRoom</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#DoorKitchenDimension"/>
         <Literal datatypeIRI="&xsd;int">13</Literal>
@@ -2325,6 +2360,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#DoorLeftRoom1"/>
         <Literal datatypeIRI="&xsd;int">16</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#DoorLeftRoom1"/>
+        <Literal datatypeIRI="&xsd;string">DoorToBathRoomMiddleToRoom1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -2377,6 +2417,11 @@
         <Literal datatypeIRI="&xsd;int">16</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#DoorRightRoom1"/>
+        <Literal datatypeIRI="&xsd;string">DoorToCorredorToRoom1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#DoorRightRoom1Dimension"/>
         <Literal datatypeIRI="&xsd;int">7</Literal>
@@ -2400,6 +2445,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#DoorRoom2"/>
         <Literal datatypeIRI="&xsd;int">16</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#DoorRoom2"/>
+        <Literal datatypeIRI="&xsd;string">DoorToCorredorToRoom2</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -2427,6 +2477,11 @@
         <Literal datatypeIRI="&xsd;int">8</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#DoorService"/>
+        <Literal datatypeIRI="&xsd;string">DoorToHome2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#DoorServiceDimension"/>
         <Literal datatypeIRI="&xsd;int">7</Literal>
@@ -2452,9 +2507,19 @@
         <Literal datatypeIRI="&xsd;int">8</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#DoorSocial"/>
+        <Literal datatypeIRI="&xsd;string">DoorToHome1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#DoorSocialBathroom"/>
         <Literal datatypeIRI="&xsd;int">16</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#DoorSocialBathroom"/>
+        <Literal datatypeIRI="&xsd;string">DoorToSocialBathRoomToLivingRoom</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -2502,6 +2567,11 @@
         <Literal datatypeIRI="&xsd;int">16</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#DoorSuiteBathroom"/>
+        <Literal datatypeIRI="&xsd;string">DoorToRoom2ToBathroom</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#DoorSuiteBathroomDimension"/>
         <Literal datatypeIRI="&xsd;int">16</Literal>
@@ -2525,6 +2595,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#FaucetBathroomMiddle"/>
         <Literal datatypeIRI="&xsd;int">64</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#FaucetBathroomMiddle"/>
+        <Literal datatypeIRI="&xsd;string">Faucet1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -2552,6 +2627,11 @@
         <Literal datatypeIRI="&xsd;int">96</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#FaucetKitchen"/>
+        <Literal datatypeIRI="&xsd;string">Faucet2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#FaucetKitchenDimension"/>
         <Literal datatypeIRI="&xsd;int">10</Literal>
@@ -2575,6 +2655,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#FaucetSocialBathroom"/>
         <Literal datatypeIRI="&xsd;int">64</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#FaucetSocialBathroom"/>
+        <Literal datatypeIRI="&xsd;string">Faucet3</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -2602,6 +2687,11 @@
         <Literal datatypeIRI="&xsd;int">64</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#FaucetSuiteBathroom"/>
+        <Literal datatypeIRI="&xsd;string">Faucet4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#FaucetSuiteBathroomDimension"/>
         <Literal datatypeIRI="&xsd;int">18</Literal>
@@ -2625,6 +2715,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#GasStoveKitchen"/>
         <Literal datatypeIRI="&xsd;int">544</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#GasStoveKitchen"/>
+        <Literal datatypeIRI="&xsd;string">GasStove</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -2772,6 +2867,11 @@
         <Literal datatypeIRI="&xsd;int">8192</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#RefrigeratorKitchen"/>
+        <Literal datatypeIRI="&xsd;string">Refrigerator</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#RefrigeratorKitchenDimension"/>
         <Literal datatypeIRI="&xsd;int">12</Literal>
@@ -2795,6 +2895,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#ShelvesDeposit"/>
         <Literal datatypeIRI="&xsd;int">1024</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#ShelvesDeposit"/>
+        <Literal datatypeIRI="&xsd;string">Shelves</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -2822,6 +2927,11 @@
         <Literal datatypeIRI="&xsd;int">128</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#ShowerBathroomMiddle"/>
+        <Literal datatypeIRI="&xsd;string">Shower2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#ShowerBathroomMiddleDimension"/>
         <Literal datatypeIRI="&xsd;int">1</Literal>
@@ -2845,6 +2955,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#ShowerSuiteBathroom"/>
         <Literal datatypeIRI="&xsd;int">128</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#ShowerSuiteBathroom"/>
+        <Literal datatypeIRI="&xsd;string">Shower1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -2872,6 +2987,11 @@
         <Literal datatypeIRI="&xsd;int">2048</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#SofaLivingRoom"/>
+        <Literal datatypeIRI="&xsd;string">Sofa</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#SofaLivingRoomDimension"/>
         <Literal datatypeIRI="&xsd;int">14</Literal>
@@ -2895,6 +3015,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#Support1Kitchen"/>
         <Literal datatypeIRI="&xsd;int">32</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#Support1Kitchen"/>
+        <Literal datatypeIRI="&xsd;string">Support1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -2922,6 +3047,11 @@
         <Literal datatypeIRI="&xsd;int">32</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#Support2Kitchen"/>
+        <Literal datatypeIRI="&xsd;string">Support2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#Support2KitchenDimension"/>
         <Literal datatypeIRI="&xsd;int">9</Literal>
@@ -2945,6 +3075,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#TableCorredorMiddle"/>
         <Literal datatypeIRI="&xsd;int">32</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#TableCorredorMiddle"/>
+        <Literal datatypeIRI="&xsd;string">Table1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -2972,6 +3107,11 @@
         <Literal datatypeIRI="&xsd;int">32</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#TableKitchen"/>
+        <Literal datatypeIRI="&xsd;string">Table2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#TableKitchenDimension"/>
         <Literal datatypeIRI="&xsd;int">10</Literal>
@@ -2995,6 +3135,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#TableLeftRoom1"/>
         <Literal datatypeIRI="&xsd;int">32</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#TableLeftRoom1"/>
+        <Literal datatypeIRI="&xsd;string">Table3</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3022,6 +3167,11 @@
         <Literal datatypeIRI="&xsd;int">32</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#TableLivingRoom"/>
+        <Literal datatypeIRI="&xsd;string">Table4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#TableLivingRoomDimension"/>
         <Literal datatypeIRI="&xsd;int">16</Literal>
@@ -3045,6 +3195,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#TableRightRoom1"/>
         <Literal datatypeIRI="&xsd;int">32</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#TableRightRoom1"/>
+        <Literal datatypeIRI="&xsd;string">Table5</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3072,6 +3227,11 @@
         <Literal datatypeIRI="&xsd;int">512</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#ToiletBathroomMiddle"/>
+        <Literal datatypeIRI="&xsd;string">Toilet2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#ToiletBathroomMiddleDimension"/>
         <Literal datatypeIRI="&xsd;int">1</Literal>
@@ -3095,6 +3255,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#ToiletSocialBathroom"/>
         <Literal datatypeIRI="&xsd;int">512</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#ToiletSocialBathroom"/>
+        <Literal datatypeIRI="&xsd;string">Toilet1</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3122,6 +3287,11 @@
         <Literal datatypeIRI="&xsd;int">512</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#ToiletSuiteBathroom"/>
+        <Literal datatypeIRI="&xsd;string">Toilet3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#ToiletSuiteBathroomDimension"/>
         <Literal datatypeIRI="&xsd;int">18</Literal>
@@ -3145,6 +3315,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#TvLivingRoom"/>
         <Literal datatypeIRI="&xsd;int">4128</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#TvLivingRoom"/>
+        <Literal datatypeIRI="&xsd;string">Television</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3172,9 +3347,19 @@
         <Literal datatypeIRI="&xsd;int">4</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallBottom"/>
+        <Literal datatypeIRI="&xsd;string">Wall1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#WallBottomBathroomBottomLeft"/>
         <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallBottomBathroomBottomLeft"/>
+        <Literal datatypeIRI="&xsd;string">Wall2</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3202,6 +3387,11 @@
         <Literal datatypeIRI="&xsd;int">4</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopLeft"/>
+        <Literal datatypeIRI="&xsd;string">Wall3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#WallBottomBathroomTopLeftDimension"/>
         <Literal datatypeIRI="&xsd;int">16</Literal>
@@ -3227,6 +3417,11 @@
         <Literal datatypeIRI="&xsd;int">4</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallBottomBathroomTopTop"/>
+        <Literal datatypeIRI="&xsd;string">Wall4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#WallBottomBathroomTopTopDimension"/>
         <Literal datatypeIRI="&xsd;int">18</Literal>
@@ -3250,6 +3445,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#WallBottomBathrooms"/>
         <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallBottomBathrooms"/>
+        <Literal datatypeIRI="&xsd;string">Wall5</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3297,6 +3497,11 @@
         <Literal datatypeIRI="&xsd;int">4</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top1"/>
+        <Literal datatypeIRI="&xsd;string">Wall6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#WallBottomRoom1Top1Dimension"/>
         <Literal datatypeIRI="&xsd;int">1</Literal>
@@ -3320,6 +3525,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#WallBottomRoom1Top2"/>
         <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallBottomRoom1Top2"/>
+        <Literal datatypeIRI="&xsd;string">Wall7</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3347,6 +3557,11 @@
         <Literal datatypeIRI="&xsd;int">4</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallBottomRoom2Top"/>
+        <Literal datatypeIRI="&xsd;string">Wall8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#WallBottomRoom2TopDimension"/>
         <Literal datatypeIRI="&xsd;int">10</Literal>
@@ -3370,6 +3585,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#WallBottomRoomsDivider"/>
         <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallBottomRoomsDivider"/>
+        <Literal datatypeIRI="&xsd;string">Wall9</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3397,6 +3617,11 @@
         <Literal datatypeIRI="&xsd;int">4</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallDepositBottom"/>
+        <Literal datatypeIRI="&xsd;string">Wall10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#WallDepositBottomDimension"/>
         <Literal datatypeIRI="&xsd;int">9</Literal>
@@ -3420,6 +3645,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#WallDepositLeft"/>
         <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallDepositLeft"/>
+        <Literal datatypeIRI="&xsd;string">Wall11</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3447,6 +3677,11 @@
         <Literal datatypeIRI="&xsd;int">4</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallHallRight"/>
+        <Literal datatypeIRI="&xsd;string">Wall12</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#WallHallRightDimension"/>
         <Literal datatypeIRI="&xsd;int">16</Literal>
@@ -3470,6 +3705,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#WallKitchenBottom"/>
         <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallKitchenBottom"/>
+        <Literal datatypeIRI="&xsd;string">Wall13</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3497,6 +3737,11 @@
         <Literal datatypeIRI="&xsd;int">4</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallKitchenLeft"/>
+        <Literal datatypeIRI="&xsd;string">Wall14</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#WallKitchenLeftDimension"/>
         <Literal datatypeIRI="&xsd;int">8</Literal>
@@ -3520,6 +3765,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#WallKitchenRight"/>
         <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallKitchenRight"/>
+        <Literal datatypeIRI="&xsd;string">Wall15</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3547,6 +3797,11 @@
         <Literal datatypeIRI="&xsd;int">4</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallLeft"/>
+        <Literal datatypeIRI="&xsd;string">Wall16</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#WallLeftDimension"/>
         <Literal datatypeIRI="&xsd;int">0</Literal>
@@ -3570,6 +3825,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#WallMiddleBathroom"/>
         <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallMiddleBathroom"/>
+        <Literal datatypeIRI="&xsd;string">Wall17</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3597,6 +3857,11 @@
         <Literal datatypeIRI="&xsd;int">4</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallRightBottom"/>
+        <Literal datatypeIRI="&xsd;string">Wall18</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#WallRightBottomDimension"/>
         <Literal datatypeIRI="&xsd;int">19</Literal>
@@ -3620,6 +3885,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#WallRightTop"/>
         <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallRightTop"/>
+        <Literal datatypeIRI="&xsd;string">Wall19</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3647,6 +3917,11 @@
         <Literal datatypeIRI="&xsd;int">4</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallTopLeft"/>
+        <Literal datatypeIRI="&xsd;string">Wall20</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#WallTopLeftDimension"/>
         <Literal datatypeIRI="&xsd;int">0</Literal>
@@ -3670,6 +3945,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#WallTopRight"/>
         <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WallTopRight"/>
+        <Literal datatypeIRI="&xsd;string">Wall21</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
@@ -3697,6 +3977,11 @@
         <Literal datatypeIRI="&xsd;int">1024</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WardrobeBottomRoom2"/>
+        <Literal datatypeIRI="&xsd;string">Wardrobe1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#WardrobeBottomRoom2Dimension"/>
         <Literal datatypeIRI="&xsd;int">15</Literal>
@@ -3722,6 +4007,11 @@
         <Literal datatypeIRI="&xsd;int">1024</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WardrobeRoom1"/>
+        <Literal datatypeIRI="&xsd;string">Wardrobe3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#WardrobeRoom1Dimension"/>
         <Literal datatypeIRI="&xsd;int">4</Literal>
@@ -3745,6 +4035,11 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
         <NamedIndividual IRI="#WardrobeTopRoom2"/>
         <Literal datatypeIRI="&xsd;int">1024</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#WardrobeTopRoom2"/>
+        <Literal datatypeIRI="&xsd;string">Wardrobe2</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
