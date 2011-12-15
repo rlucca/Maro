@@ -32,6 +32,33 @@
         <NamedIndividual IRI="#AbstractHome"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#AbstractHouseBathroomMiddle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractHouseCorredor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractHouseDeposit"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractHouseKitchen"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractHouseLivingRoom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractHouseRoom1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractHouseRoom2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractHouseSocialBathroom"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AbstractHouseSuiteBathroom"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#AbstractMarket"/>
     </Declaration>
     <Declaration>
@@ -542,6 +569,42 @@
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
         <NamedIndividual IRI="#AbstractHome"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractHouseBathroomMiddle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractHouseCorredor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractHouseDeposit"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractHouseKitchen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractHouseLivingRoom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractHouseRoom1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractHouseRoom2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractHouseSocialBathroom"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.urban.org/UEM.owl#Place"/>
+        <NamedIndividual IRI="#AbstractHouseSuiteBathroom"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
@@ -1224,6 +1287,246 @@
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasScheduleOfFunctioning"/>
         <NamedIndividual IRI="#AbstractHome"/>
         <NamedIndividual IRI="#AbstractScheduleHome"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseBathroomMiddle"/>
+        <NamedIndividual IRI="#DoorLeftRoom1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseBathroomMiddle"/>
+        <NamedIndividual IRI="#ShowerBathroomMiddle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseBathroomMiddle"/>
+        <NamedIndividual IRI="#FaucetBathroomMiddle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseBathroomMiddle"/>
+        <NamedIndividual IRI="#ToiletBathroomMiddle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseBathroomMiddle"/>
+        <NamedIndividual IRI="#DoorRightBathroomMiddle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseCorredor"/>
+        <NamedIndividual IRI="#DoorDeposit"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseCorredor"/>
+        <NamedIndividual IRI="#DoorRoom2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseCorredor"/>
+        <NamedIndividual IRI="#DoorRightRoom1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseCorredor"/>
+        <NamedIndividual IRI="#DoorCorredor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseCorredor"/>
+        <NamedIndividual IRI="#DoorService"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseCorredor"/>
+        <NamedIndividual IRI="#TableCorredorMiddle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseCorredor"/>
+        <NamedIndividual IRI="#DoorRightBathroomMiddle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseDeposit"/>
+        <NamedIndividual IRI="#ShelvesDeposit"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseDeposit"/>
+        <NamedIndividual IRI="#DoorDeposit"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseKitchen"/>
+        <NamedIndividual IRI="#Support2Kitchen"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseKitchen"/>
+        <NamedIndividual IRI="#GasStoveKitchen"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseKitchen"/>
+        <NamedIndividual IRI="#TableKitchen"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseKitchen"/>
+        <NamedIndividual IRI="#RefrigeratorKitchen"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseKitchen"/>
+        <NamedIndividual IRI="#DoorKitchen"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseKitchen"/>
+        <NamedIndividual IRI="#FaucetKitchen"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseKitchen"/>
+        <NamedIndividual IRI="#Support1Kitchen"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseLivingRoom"/>
+        <NamedIndividual IRI="#TableLivingRoom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseLivingRoom"/>
+        <NamedIndividual IRI="#BookcaseLivingRoom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseLivingRoom"/>
+        <NamedIndividual IRI="#DoorSocial"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseLivingRoom"/>
+        <NamedIndividual IRI="#TvLivingRoom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseLivingRoom"/>
+        <NamedIndividual IRI="#DoorSocialBathroom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseLivingRoom"/>
+        <NamedIndividual IRI="#DoorKitchen"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseLivingRoom"/>
+        <NamedIndividual IRI="#SofaLivingRoom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseLivingRoom"/>
+        <NamedIndividual IRI="#DoorCorredor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseRoom1"/>
+        <NamedIndividual IRI="#TableLeftRoom1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseRoom1"/>
+        <NamedIndividual IRI="#DoorLeftRoom1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseRoom1"/>
+        <NamedIndividual IRI="#DoorRightRoom1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseRoom1"/>
+        <NamedIndividual IRI="#WardrobeRoom1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseRoom1"/>
+        <NamedIndividual IRI="#BedRightRoom1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseRoom1"/>
+        <NamedIndividual IRI="#BedLeftRoom1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseRoom1"/>
+        <NamedIndividual IRI="#TableRightRoom1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseRoom2"/>
+        <NamedIndividual IRI="#DoorSuiteBathroom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseRoom2"/>
+        <NamedIndividual IRI="#WardrobeBottomRoom2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseRoom2"/>
+        <NamedIndividual IRI="#WardrobeTopRoom2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseRoom2"/>
+        <NamedIndividual IRI="#BedRoom2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseRoom2"/>
+        <NamedIndividual IRI="#DoorRoom2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseSocialBathroom"/>
+        <NamedIndividual IRI="#FaucetSocialBathroom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseSocialBathroom"/>
+        <NamedIndividual IRI="#ToiletSocialBathroom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseSocialBathroom"/>
+        <NamedIndividual IRI="#DoorSocialBathroom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseSuiteBathroom"/>
+        <NamedIndividual IRI="#ShowerSuiteBathroom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseSuiteBathroom"/>
+        <NamedIndividual IRI="#ToiletSuiteBathroom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseSuiteBathroom"/>
+        <NamedIndividual IRI="#DoorSuiteBathroom"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#AbstractHouseSuiteBathroom"/>
+        <NamedIndividual IRI="#FaucetSuiteBathroom"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasScheduleOfFunctioning"/>
@@ -1699,6 +2002,51 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
         <NamedIndividual IRI="#AbstractHome"/>
         <Literal datatypeIRI="&xsd;string">AbstractHome</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractHouseBathroomMiddle"/>
+        <Literal datatypeIRI="&xsd;string">AbstractHouseBathroomMiddle</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractHouseCorredor"/>
+        <Literal datatypeIRI="&xsd;string">AbstractHouseCorredor</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractHouseDeposit"/>
+        <Literal datatypeIRI="&xsd;string">AbstractHouseDeposit</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractHouseKitchen"/>
+        <Literal datatypeIRI="&xsd;string">AbstractHouseKitchen</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractHouseLivingRoom"/>
+        <Literal datatypeIRI="&xsd;string">AbstractHouseLivingRoom</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractHouseRoom1"/>
+        <Literal datatypeIRI="&xsd;string">AbstractHouseRoom1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractHouseRoom2"/>
+        <Literal datatypeIRI="&xsd;string">AbstractHouseRoom2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractHouseSocialBathroom"/>
+        <Literal datatypeIRI="&xsd;string">AbstractHouseSocialBathroom</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#AbstractHouseSuiteBathroom"/>
+        <Literal datatypeIRI="&xsd;string">AbstractHouseSuiteBathroom</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasCapacity"/>
