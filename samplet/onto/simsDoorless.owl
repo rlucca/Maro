@@ -65,9 +65,6 @@
         <NamedIndividual IRI="#AbstractScheduleArcade"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#AbstractScheduleHome"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#AbstractScheduleMarket"/>
     </Declaration>
     <Declaration>
@@ -550,10 +547,6 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Schedules"/>
-        <NamedIndividual IRI="#AbstractScheduleHome"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.urban.org/UEM.owl#Schedules"/>
         <NamedIndividual IRI="#AbstractScheduleMarket"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -1128,11 +1121,6 @@
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasScheduleOfFunctioning"/>
         <NamedIndividual IRI="#AbstractArcade"/>
         <NamedIndividual IRI="#AbstractScheduleArcade"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasScheduleOfFunctioning"/>
-        <NamedIndividual IRI="#AbstractHome"/>
-        <NamedIndividual IRI="#AbstractScheduleHome"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
@@ -1768,26 +1756,6 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasOpeningTime"/>
         <NamedIndividual IRI="#AbstractScheduleArcade"/>
         <Literal datatypeIRI="&xsd;string">16,16,16,16,16,10,9</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="http://www.urban.org/UEM.owl#hasAverageTimeOfPermanence"/>
-        <NamedIndividual IRI="#AbstractScheduleHome"/>
-        <Literal datatypeIRI="&xsd;string">-</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="http://www.urban.org/UEM.owl#hasClosingTime"/>
-        <NamedIndividual IRI="#AbstractScheduleHome"/>
-        <Literal datatypeIRI="&xsd;string">-</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="http://www.urban.org/UEM.owl#hasEnteringTimeInterval"/>
-        <NamedIndividual IRI="#AbstractScheduleHome"/>
-        <Literal datatypeIRI="&xsd;string">-</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="http://www.urban.org/UEM.owl#hasOpeningTime"/>
-        <NamedIndividual IRI="#AbstractScheduleHome"/>
-        <Literal datatypeIRI="&xsd;string">-</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasAverageTimeOfPermanence"/>
