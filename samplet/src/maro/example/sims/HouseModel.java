@@ -281,7 +281,7 @@ public class HouseModel extends GridWorldModel
 			if (placeData.getName() == null) continue;
 
 			referPlace.put(placeData.getName(), placeData);
-			if (placeData.haveDimension() && placeData.getName().startsWith("Initial") == false) {
+			if (placeData.haveDimension() && placeData.getName().startsWith("initial") == false) {
 				int minX = placeData.getPX();
 				int minY = placeData.getPY();
 				int maxX = minX + placeData.getWidth();
@@ -344,7 +344,7 @@ public class HouseModel extends GridWorldModel
 			for (Dumper d : fixedDestinations) {
 				if (profile.equals(d.getTerms()[0])) {
 					String placeName = d.getTermAsString(1);
-					if (placeName.startsWith("Initial")) {
+					if (placeName.startsWith("initial")) {
 						Place place = referPlace.get(placeName);
 						setAgPos(agentData.getID(), place.getPX(), place.getPY());
 						// It's the point that put the controlled agent in data!
@@ -406,7 +406,7 @@ public class HouseModel extends GridWorldModel
 		while (excluded == true) {
 			excluded = false;
 			for (String key : referPlace.keySet()) {
-				if (key.startsWith("Initial")) {
+				if (key.startsWith("initial")) {
 					referPlace.remove(key);
 					excluded = true;
 					break;
@@ -444,7 +444,43 @@ public class HouseModel extends GridWorldModel
 
 
 	protected HashMap<Place, ArrayList<Place> > placeView; // bathroom = [toilet, faucet, door]
+	public String[] getPlacesFromPlaceView() {
+		ArrayList<String> als = new ArrayList<String>();
+		if (placeView == null) return als.toArray(new String [0]);
+		for (Place p : placeView.keySet()) {
+			als.add(p.getName());
+		}
+		return als.toArray(new String[0]);
+	}
+	public String[] getItemsAtPlace(String name) {
+		ArrayList<String> als = new ArrayList<String>();
+		if (placeView == null || name == null) return als.toArray(new String [0]);
+		Place base = referPlace.get(name);
+		if (base == null) return als.toArray(new String [0]);
+		for (Place p : placeView.get(base)) {
+			als.add(p.getName());
+		}
+		return als.toArray(new String[0]);
+	}
 	protected HashMap<Place, ArrayList<Place> > itemView; // toilet = [bathroom1, bathroom2, bathroom3]
+	public String[] getItemsFromItemView() {
+		ArrayList<String> als = new ArrayList<String>();
+		if (itemView == null) return als.toArray(new String [0]);
+		for (Place p : itemView.keySet()) {
+			als.add(p.getName());
+		}
+		return als.toArray(new String[0]);
+	}
+	public String[] getPlacesByItem(String name) {
+		ArrayList<String> als = new ArrayList<String>();
+		if (itemView == null || name == null) return als.toArray(new String [0]);
+		Place base = referPlace.get(name);
+		if (base == null) return als.toArray(new String [0]);
+		for (Place p : itemView.get(base)) {
+			als.add(p.getName());
+		}
+		return als.toArray(new String[0]);
+	}
 
 	protected HashMap<String, Place> referPlace;
 	protected class Place {
@@ -557,8 +593,8 @@ public class HouseModel extends GridWorldModel
 			}
 		}
 
-		public Integer getTimeOpening(int idx) { return timeOpening[idx]; }
-		public Integer getTimeClosing(int idx) { return timeClosing[idx]; }
+		public Integer getTimeOpening(int idx) { return timeOpening[idx] - 1; }
+		public Integer getTimeClosing(int idx) { return timeClosing[idx] - 1; }
 		public Integer getAverageTime(int idx) { return averageTime[idx]; }
 		public Integer getArriveInterval(int idx) { return arriveInterval[idx]; }
 
@@ -630,8 +666,8 @@ public class HouseModel extends GridWorldModel
 
 		public boolean itsOpen(int weekday) {
 			if (timeOpening == null || timeClosing == null) return false;
-			int to = timeOpening[weekday] - 1;
-			int tc = timeClosing[weekday] - 1;
+			int to = getTimeOpening(weekday);
+			int tc = getTimeClosing(weekday);
 			if (to >= 0 && tc >= 0) { // It's can be -1 to indicate "not-applicable"
 				return true;
 			}
@@ -652,8 +688,8 @@ public class HouseModel extends GridWorldModel
 			// it's between 0 and 100
 			int relativeCapacity;
 			int cap = 0;
-			int to = timeOpening[weekday] - 1;
-			int tc = timeClosing[weekday] - 1;
+			int to = getTimeOpening(weekday);
+			int tc = getTimeClosing(weekday);
 			int mtc = (int)(1.1*tc);
 
 			this.consume(step);
@@ -706,7 +742,7 @@ public class HouseModel extends GridWorldModel
 			Literal ret = ASSyntax.createLiteral(functor,
 						ASSyntax.createString(getName()));
 
-			if (today < 0) {
+			if (today >= 0 && today < 7) {
 				if (timeOpening != null) {
 					ret.addAnnot(ASSyntax.createLiteral("opening",
 								ASSyntax.createNumber(getTimeOpening(today))));

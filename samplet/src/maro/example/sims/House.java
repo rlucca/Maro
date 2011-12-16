@@ -28,4 +28,6 @@ public class House extends AnnotatedEnvironment
 
 		updateNumberOfAgents();
 	}
+
+	public HouseModel getModel() { return model; }
 }
