@@ -1,10 +1,36 @@
 \chapter{Arquitetura Emocional Constru\'ida} \label{ch:aec}
 
 \section{Visão Geral}
-...
-\todo{talvez botar umas figuras introdutorias aqui...}
 
-\section{Ontologia do Modelo Cognitivo Emocional}
+A presente arquitetura sendo construída foi pensada conforme mostrado na
+Figura~\ref{fig:vasc}. Como se pode observar, o sistema depende de um ambiente
+desenvolvido pelo usuário que entenderá as ontologias de anotações e de
+rotinas para construir a visualização que será mostrada. Dessa forma, o que o
+usuário vê é exibido conforme descrito na ontologia de rotinas. Mais detalhes
+ver seção~\ref{ch:aec:ocu}. Já a de anotações, explicada na
+seção~\ref{ch:aec:oda} permite guardar junto dos
+objetos do mundo virtual informações e, ainda, criar as preferências dos
+agentes sobre essas informações.
+
+O agente é a mente de um ator nesse mundo anotado sendo criado e o mundo
+disponibiliza, além da percepção dos objetos, as preferências do agente\dev{}.
+Essa escolha foi feita para permitir que a escolha do que fazer seja toda ela
+escrita em código\dev{} que a plataforma \jason entende. As emoções são
+concluídas pelo agente através de ontologia (ver seção~\ref{ch:aec:omce}) e
+por isso a base de crenças padrão da plataforma que escolhemos foi estendida
+para consultar, guardar e recuperar os dados diretamente nessa ontologia. Caso
+a informação não seja relevante para a mesma, ela é guardada na base de
+crenças padrão. Desse jeito, é como se a base de crenças tivesse dois níveis.
+O primeiro formado pela ontologia e a segunda formada pre-existente.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=10cm]{figuras/visao-geral.png}
+  \caption{Visão abstrata do sistema construído.}
+  \label{fig:vasc}
+\end{figure}
+
+\section{Ontologia do Modelo Cognitivo Emocional} \label{ch:aec:omce}
 
 A fundamentação do modelo afetivo sendo utilizado aqui é o proposto por
 \citet{ortony1988cse} e encontra-se explicado na seção \ref{ch-ca-mce}. A
@@ -18,7 +44,7 @@ exemplo, se John avalia que se relaciona bem com Jose então John
 \emph{hasFriend} Jose. Note que o contrario não é necessariamente verdade, o
 Jose pode apenas saber que conhece o John então Jose \emph{hasKnow} John.
 
-\begin{table}
+\begin{table}[h]
 	\caption{Ontologia proposta com expressividade: ALCHIN(D).}
 	\label{tab:oa:geral}
 	\begin{center}
@@ -42,7 +68,7 @@ Assim, recomenda-se fortemente que quando registrar um indivíduo da classe
 seja preenchida\dev{}. Assim, se evita que o raciocinador conclua que não
 conhece a resposta e chegue a uma conclusão não esperada.
 
-\begin{figure}[t]
+\begin{figure}[b]
   \centering
   \includegraphics[width=14cm]{figuras/rules-LOCC.png}
   \caption{Regras da ontologia proposta.}
@@ -102,12 +128,6 @@ propriedade de familiaridade (\emph{hasFamiliarity}) com valores negativos,
 enquanto a emoção \emph{Love} tem valoração dessa mesma propriedade positiva.
 Caso o valor seja zero, nada pode ser concluído.
 
-\begin{wrapfigure}{r}{0.4\textwidth}
-  \includegraphics[height=16cm]{figuras/hierarquiaLOCC.png}
-  \caption{Taxonomia da ontologia proposta baseado no modelo.}
-  \label{fig:tlocc}
-\end{wrapfigure}
-
 Cabe notar que parece estranho uma emoção \emph{Love} com um objeto, porém
 essa emoção foi escolhida por quem montou o modelo por ser a emoção mais forte
 de seu tipo. Assim, níveis menores implicam em outros tipos de emoção. Além
@@ -164,6 +184,12 @@ ser concluída quando usada uma de suas sub-relações. O último ramo, chamado 
 evento ou ação realizado por algum agente. Por exemplo, Dilu tem pena
 de Jose, Jose tem esperança de ser promovido, John tem satisfação por
 estar almoçando ou Millie esta alegre por cozinhar.
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \includegraphics[height=16cm]{figuras/hierarquiaLOCC.png}
+  \caption{Taxonomia da ontologia proposta baseado no modelo.}
+  \label{fig:tlocc}
+\end{wrapfigure}
 
 A \emph{ConsequencesForOthers} expressa 4 emoções: \emph{HappyFor},
 \emph{SorryFor}, \emph{Gloating} e \emph{Resentment}. Na definição, essas
@@ -231,7 +257,7 @@ emoção virar sentimento\dev{}.
 %conforme reparado nao ha decaimento da emocao, a mesma eh instantanea;
 %2345678901234567890123456789012345678901234567890123456789012345678901234567890
 
-\section{Ontologia de Comportamento Urbano}
+\section{Ontologia de Comportamento Urbano} \label{ch:aec:ocu}
 
 O presente trabalho foca no comportamento de personagens. Dessa forma, uma
 ontologia de comportamento urbano tenta descrever a vida normal que um
@@ -283,8 +309,10 @@ adiante, como um ``objeto inteligente''.
 % hasDimension da Object para Dimension. Dessa forma um objeto teria
 % conhecimento mesmo que abstrato sobre suas dimensões para o caso de ser
 % necessario fazer a bounding box collission...
+\todo{caberia aqui dizer como essa ontologia pode ser usada para se construir
+um ambiente}
 
-\section{Ontologia de Anotações}
+\section{Ontologia de Anotações} \label{ch:aec:oda}
 
 \citet{doyle1998annotated} propuseram que o mundo contivesse uma série de
 anotações nos objetos. Assim, o agente poderia conhecer apenas a forma de
@@ -343,8 +371,41 @@ gostam de calor são atraídas pela valoração negativa. Dessa forma, os
 sub-conceitos da preferência representam sempre valores que fazem o agente ser
 atraído pelo objeto e repelido caso contrário.
 
+\todo{como as preferencias sao usadas? como as anotacoes sao usadas?}
+
 \section{Integrando a Plataforma \jason com a Ontologia}
+
+\begin{table}[b]
+	\caption{As três ontologias juntas possuem expressividade: ALCHIN(D).}
+	\label{tab:tp:cdu:geral}
+	\begin{center}
+	\begin{tabular}{|c|c|}
+	%\begin{tabular}{|p{34mm}|p{50mm}|p{50mm}|}
+		\hline
+		Descrição & Quantidade \\ \hline
+		Classes &  57 		\\ \hline
+		Propriedade de Objetos & 23 \\ \hline
+		Propriedade de Dados & 25 \\ \hline
+		Indivíduos &  27	\\ \hline
+		Regras & 7 \\ \hline
+	\end{tabular}
+	\end{center}
+\end{table}
+
+As ontologias explicadas, nas seções anteriores, foram planejadas para serem
+usadas como módulos. Sendo assim, umas das ontologias explicadas anteriormente
+pode ser usada sem o uso das demais ou todas em conjunto. Os dados das
+ontologias se encontram resumidos na Tabela~\ref{tab:tp:cdu:geral}.
+
 ...
+Figura~\ref{fig:dcs}
 
 \todo{falar aqui porque Place tem uma relacao hasSetup}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=14cm]{figuras/implementacao-15dez2011.png}
+  \caption{Diagrama de classes do sistema.}
+  \label{fig:dcs}
+\end{figure}
 
