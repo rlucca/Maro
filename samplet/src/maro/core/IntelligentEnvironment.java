@@ -1,5 +1,6 @@
 package maro.core;
 
+import jason.asSyntax.Structure;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ public class IntelligentEnvironment extends TimeSteppedEnvironment
 
     public IntelligentEnvironment () {
         sum = 0;
+		ActionLoader.getInstance().loadActions();
         options = new ArrayList<Option> ();
         options.add( new Option<Integer> (true,
                 "the number for step's timeout(ms)",
@@ -95,6 +97,7 @@ public class IntelligentEnvironment extends TimeSteppedEnvironment
         oi = options.get(2);
         try {
             oi.value = Integer.parseInt(args[2]);
+			setNbAgs(oi.value);
         } catch (Exception e) {
             getLogger().warning("The third argument "+oi.help);
             getLogger().warning("\tThis argument is"+oi.description);
@@ -179,6 +182,24 @@ public class IntelligentEnvironment extends TimeSteppedEnvironment
             }
         }
     }
+
+	@Override
+	protected int requiredStepsForAction(String agName, Structure action) {
+		ActionLoader al = ActionLoader.getInstance();
+		if (al == null) return super.requiredStepsForAction(agName, action);
+		Integer i = al.requiredStepsForAction(action);
+		if (i == null) return super.requiredStepsForAction(agName, action);
+		return i;
+	}
+
+	@Override
+	public boolean executeAction(String agName, Structure action) {
+		ActionLoader al = ActionLoader.getInstance();
+		if (al == null) return super.executeAction(agName, action);
+		Boolean b = al.executeAction(agName, action, this);
+		if (b == null) return super.executeAction(agName, action);
+		return b;
+	}
 
 
 

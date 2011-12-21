@@ -2,12 +2,14 @@ package maro.example.sims;
 
 import jason.environment.grid.GridWorldView;
 
+import java.awt.Font;
 import java.awt.Color;
 import java.awt.Graphics;
 
 public class HouseView extends GridWorldView
 {
     private HouseModel hm;
+	private Font myFont = new Font("Arial", Font.BOLD, 8);
 
     public HouseView(HouseModel model, String windowTitle, int windowSize) {
         super(model, windowTitle, windowSize);
@@ -112,7 +114,7 @@ public class HouseView extends GridWorldView
         String agName = a.getName();
         if (agName != null) {
             g.setColor(Color.red);
-            drawString(g, x, y, defaultFont, agName);
+            drawString(g, x, y, myFont, agName);
         }
     }
 

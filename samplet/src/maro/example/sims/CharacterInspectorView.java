@@ -128,6 +128,11 @@ class CharacterInspectorView extends JFrame
 			number = number + 1;
 		}
 
+        if (sgvl == null) {
+            sgvl = gl.createParallelGroup(GroupLayout.Alignment.BASELINE);
+            sgv.addGroup(sgvl);
+        }
+
 		energy.setText("energy: ?");
 		energy.setName("energy");
 		sgvl.addComponent(energy);

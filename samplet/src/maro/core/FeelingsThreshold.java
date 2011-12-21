@@ -4,7 +4,7 @@ import maro.wrapper.OwlApi;
 import maro.wrapper.Dumper;
 
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Set;
 
 
 
@@ -35,9 +35,15 @@ class FeelingsThreshold {
 	}
 
 	protected void load(Emotion e, String myName, OwlApi oaw) {
-		Iterator<Dumper> id =
-			oaw.getCandidatesByFunctorAndArityIter(1, "setup");
-		if (id == null) return ;
+		Set<Dumper> ids =
+			oaw.getCandidatesByFunctorAndArity(1, "setup");
+		if (ids == null) return ;
+		Set<Dumper> isSetupOfs =
+			oaw.getCandidatesByFunctorAndArity(2, "isSetupOf");
+		Set<Dumper> hasThresholds =
+			oaw.getCandidatesByFunctorAndArity(2, "hasThreshold");
+		Set<Dumper> hasThresholdTypes =
+			oaw.getCandidatesByFunctorAndArity(2, "hasThresholdType");
 
 		thresholds = new HashMap<String, Integer> ();
 
@@ -45,15 +51,13 @@ class FeelingsThreshold {
 		//  isSetupOf(Setup, AgentName).
 		//  hasThreshold(Setup, Integer).
 		//  hasThresholdType(Setup, EmotionType).
-		while (id.hasNext()) {
+		for (Dumper du : ids) {
 			String emotion = null;
 			Integer value = null;
-			Dumper du = id.next(); // setup(X), X -> setup individual
 			String setupName = du.getTerms()[0];
-			Dumper issetupof = locate(oaw, setupName, "isSetupOf", 2);
-			Dumper hasthreshold = locate(oaw, setupName, "hasThreshold", 2);
-			Dumper hasthresholdType =
-				locate(oaw, setupName, "hasThresholdType", 2);
+			Dumper issetupof = locate(setupName, isSetupOfs, 0);
+			Dumper hasthreshold = locate(setupName, hasThresholds, 0);
+			Dumper hasthresholdType = locate(setupName, hasThresholdTypes, 0);
 			String name = null;
 
 			try {
@@ -83,31 +87,19 @@ class FeelingsThreshold {
 			thresholds.put(emotion, value);
 		}
 
-		oaw.remove(2, "hasThresholdType", null, null);
-		oaw.remove(2, "hasThreshold", null, null);
-		oaw.remove(2, "isSetupOf", null, null);
-		oaw.remove(2, "hasSetup", null, null); // inverse of isSetupOf
-		// if this is null then we really have a problem!
-		oaw.remove(1, "setup", null, null);
-
 		loaded = true;
 		if (thresholds.size() == 22) actived = true;
 	}
 
 	private Dumper
-	locate(OwlApi oaw, String setupName, String relation, int arity) {
-		int lookAt = 0;
-		Iterator<Dumper> it =
-			oaw.getCandidatesByFunctorAndArityIter(arity, relation);
+	locate(String setupName, Set<Dumper> it, int lookAt) {
 		if (it == null) return null;
 
 		// hasSetup eh o unico que tem o setupName no segundo termo...
-		if (relation.equals("hasSetup"))
-			lookAt = 1;
+		//if (relation.equals("hasSetup"))
+		//	lookAt = 1;
 
-		while (it.hasNext()) {
-			Dumper d = it.next();
-
+		for (Dumper d : it) {
 			if (d.getTerms()[lookAt].equals(setupName)) {
 				return d;
 			}

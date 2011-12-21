@@ -26,7 +26,9 @@ public class House extends AnnotatedEnvironment
 
 		controller.newStep(step, this);
 
-		updateNumberOfAgents();
+		if (step > 0) {
+			updateNumberOfAgents();
+		}
 	}
 
 	public HouseModel getModel() { return model; }

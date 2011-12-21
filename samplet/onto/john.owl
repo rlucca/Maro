@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.mas.org/samplet/char/john.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.mas.org/samplet/char/john.owl">
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>file:///Users/rlucca/Desktop/Maro.git/samplet/onto/basicAgent.owl</Import>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGloating"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdDisappointment"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHope"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdShame"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHate"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdSatisfaction"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdRemorse"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdLove"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHappyFor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdDistress"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdAdmiration"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGratification"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdRelief"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGratitude"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdResentment"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdAnger"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdFearsConfirmed"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdPride"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdReproach"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdFear"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdJoy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#john"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdSorryFor"/>
+    </ObjectPropertyAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

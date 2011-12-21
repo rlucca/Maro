@@ -2,6 +2,7 @@ package maro.core;
 
 import maro.wrapper.Dumper;
 import maro.wrapper.OwlApi;
+import maro.wrapper.PreferenceLoader;
 
 import java.util.Iterator;
 import java.util.HashMap;
@@ -12,11 +13,13 @@ public class EmotionKnowledge {
 	protected FeelingsThreshold ft;
 	protected OwlApi oaw = null;
 	protected String filename;
+	protected String agName;
 	protected Emotion emotion;
 	protected Integer lastStepFeeling;
 
-	public EmotionKnowledge(String fileName) throws Exception {
+	public EmotionKnowledge(String name, String fileName) throws Exception {
 		filename = fileName;
+		agName = name;
 
 		oaw = new OwlApi();
 		oaw.loadOntologyFromFile(filename);
@@ -31,6 +34,19 @@ public class EmotionKnowledge {
 		emotion.setEmotions(allEmotions);
 
 		ft = new FeelingsThreshold();
+        PreferenceLoader.getInstance().prepare(oaw);
+
+		// Erase all itens from setup et al.
+		oaw.remove(2, "hasAnnotationValue", null, null);
+		oaw.remove(2, "hasAnnotation", null, null);
+		oaw.remove(2, "hasName", null, null);
+
+		oaw.remove(1, "static", null, null);
+		oaw.remove(1, "dynamic", null, null);
+		oaw.remove(1, "annotation", null, null);
+		oaw.remove(1, "positive", null, null);
+		oaw.remove(1, "negative", null, null);
+		oaw.remove(1, "preference", null, null);
 	}
 
 	protected boolean changeBelief(Dumper dumper, boolean isAdd) {
@@ -85,23 +101,34 @@ public class EmotionKnowledge {
 	}
 	boolean ignoreFlag = false;
 
-	public void summarize(String agentName, int step) {
-		if (ft.isLoaded(emotion, agentName, oaw) == true
-				&& ft.isActive() == false) {
-			if (ignoreFlag == false) {
-				System.out.println("Threshold of emotions are inconsistent ou fault, ignoring emotions...");
-				ignoreFlag = true;
+	public void summarize(int step) {
+		if (ft.isLoaded(emotion, agName, oaw) == true) {
+			if (ft.isActive() == false) {
+				if (ignoreFlag == false) {
+					System.out.println("Threshold of emotions are "
+						+ "inconsistent ou fault, ignoring emotions...");
+					ignoreFlag = true;
+				}
+				return; // nao temos threshold pq perder tempo?
+			} else {
+				if (ignoreFlag == false) {
+					oaw.remove(2, "hasThresholdType", null, null);
+					oaw.remove(2, "hasThreshold", null, null);
+					oaw.remove(2, "isSetupOf", null, null);
+					oaw.remove(2, "hasSetup", null, null); // inverse of isSetupOf
+					oaw.remove(1, "setup", null, null);
+					ignoreFlag = true;
+				}
 			}
-			return; // nao temos threshold pq perder tempo?
 		}
 
 		for (String s : emotion.getEmotions()) {
-			HashMap<Integer, Integer> e = emotion.getAllValences(s, agentName);
-			Integer ret = oaw.summaryOf(agentName, s, step, e);
+			HashMap<Integer, Integer> e = emotion.getAllValences(s, agName);
+			Integer ret = oaw.summaryOf(agName, s, step, e);
 			if (ret == null) {
 				continue;
 			}
-			emotion.setValence(s, agentName, step, ret);
+			emotion.setValence(s, agName, step, ret);
 		}
 	}
 
@@ -124,7 +151,7 @@ public class EmotionKnowledge {
 		return valence - minimum;
 	}
 
-	public Set<String> feelings(String agentName, int step) {
+	public Set<String> feelings(int step) {
 		Set<String> feelingStrLit = new java.util.HashSet<String>();
 
 		if (ft.isActive() == false) {
@@ -133,7 +160,7 @@ public class EmotionKnowledge {
 
 		lastStepFeeling = step;
 		for (String s : getEmotionType()) {
-			Integer potence = getEmotionValence(s, agentName);
+			Integer potence = getEmotionValence(s, agName);
 			int feeling = (potence != null) ? potence : 0;
 
 			if (feeling > 0) {

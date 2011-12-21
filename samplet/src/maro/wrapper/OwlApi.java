@@ -532,7 +532,6 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 		if (ontology == null) {
 			return null;
 		}
-		reloadReasoner();
 
 		fullName = getCorrectName(arity, functor);
 		if (fullName == null) {
@@ -542,6 +541,7 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 		if (type == null) {
 			return null;
 		}
+		reloadReasoner();
 		noni = getAllInstances();
 		if (noni == null) {
 			return null;
@@ -592,6 +592,7 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 		return reasoner.getInstances(cl, false);
 	}
 
+	@Override
 	public Iterator<Dumper> iterator() {
 		Set<Dumper> dumper = new HashSet<Dumper>();
 
@@ -795,6 +796,7 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 	}
 
 	public Integer summaryOf(String name, String emotionType, int step, HashMap<Integer, Integer> valencesByStep) {
+		reloadReasoner();
 		String emotion = getCorrectName(1, emotionType);
 		OWLClass ce = factoryData.getOWLClass(IRI.create(emotion));
 		String translatedA = getCorrectName(2, "isAppraisalOf");
@@ -804,7 +806,6 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 		OWLClassExpression oce = factoryData.getOWLObjectIntersectionOf(ce, ooHm);
 		NodeSet<OWLNamedIndividual> noni;
 		Integer sum = null;
-		reloadReasoner();
 
 		noni = reasoner.getInstances(oce, true); // direct only
 		for (OWLNamedIndividual oni : noni.getFlattened()) {
@@ -905,78 +906,83 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 
 	protected void abolishInstance(String relation, NodeSet<OWLNamedIndividual> individuals) {
 		OWLClass cl;
-		Set<OWLAxiom> axioms = new HashSet<OWLAxiom>();
 
 		if (relation == null) {
 			return;
 		}
 		cl = factoryData.getOWLClass(IRI.create(relation));
 
-		for (OWLNamedIndividual ni : individuals.getFlattened()) {
-			for (OWLClass clse : reasoner.getTypes(ni, true).getFlattened()) {
-				if (clse.isOWLThing() == true) {
-					continue;
-				}
-				if (cl != null && cl != clse) {
-					continue;
-				}
+		for (OWLOntology onto : manager.getOntologies()) {
+			Set<OWLAxiom> axioms = new HashSet<OWLAxiom>();
+			for (OWLNamedIndividual ni : individuals.getFlattened()) {
+				for (OWLClass clse : reasoner.getTypes(ni, true).getFlattened()) {
+					if (clse.isOWLThing() == true) {
+						continue;
+					}
+					if (cl != null && cl != clse) {
+						continue;
+					}
 
-				Set<OWLClassAssertionAxiom> ocaas = ontology.getClassAssertionAxioms(ni);
-				for (OWLClassAssertionAxiom ocaa : ocaas) {
-					axioms.add(ocaa);
+					Set<OWLClassAssertionAxiom> ocaas = onto.getClassAssertionAxioms(ni);
+					for (OWLClassAssertionAxiom ocaa : ocaas) {
+						axioms.add(ocaa);
+					}
 				}
 			}
-		}
-
-		if (axioms.size() > 0) {
-			manager.removeAxioms(ontology, axioms);
-			dirty = true;
+			if (axioms.size() > 0) {
+				manager.removeAxioms(onto, axioms);
+				dirty = true;
+			}
 		}
 	}
 
 	protected void abolishObjectAssertion(String relation, NodeSet<OWLNamedIndividual> individuals) {
 		OWLObjectProperty oop;
-		Set<OWLAxiom> axioms = new HashSet<OWLAxiom>();
 		if (relation == null) {
 			return;
 		}
 
 		oop = factoryData.getOWLObjectProperty(IRI.create(relation));
 
-		for (OWLNamedIndividual ni : individuals.getFlattened()) {
-			for (OWLObjectPropertyAssertionAxiom oopa : ontology.getObjectPropertyAssertionAxioms(ni)) {
-				if (oopa.getProperty() == oop) {
-					axioms.add(oopa);
+		for (OWLOntology onto : manager.getOntologies()) {
+			Set<OWLAxiom> axioms = new HashSet<OWLAxiom>();
+			for (OWLNamedIndividual ni : individuals.getFlattened()) {
+				for (OWLObjectPropertyAssertionAxiom oopa : onto.getObjectPropertyAssertionAxioms(ni)) {
+					if (oopa.getProperty() == oop) {
+						axioms.add(oopa);
+					}
 				}
 			}
-		}
 
-		if (axioms.size() > 0) {
-			manager.removeAxioms(ontology, axioms);
-			dirty = true;
+			if (axioms.size() > 0) {
+				manager.removeAxioms(onto, axioms);
+				dirty = true;
+			}
 		}
 	}
 
 	protected void abolishDataAssertion(String relation, NodeSet<OWLNamedIndividual> individuals) {
 		OWLDataProperty odp;
-		Set<OWLAxiom> axioms = new HashSet<OWLAxiom>();
 		if (relation == null) {
 			return;
 		}
 
 		odp = factoryData.getOWLDataProperty(IRI.create(relation));
 
-		for (OWLNamedIndividual ni : individuals.getFlattened()) {
-			for (OWLDataPropertyAssertionAxiom odpa : ontology.getDataPropertyAssertionAxioms(ni)) {
-				if (odpa.getProperty() == odp) {
-					axioms.add(odpa);
+		for (OWLOntology onto : manager.getOntologies()) {
+			Set<OWLAxiom> axioms = new HashSet<OWLAxiom>();
+			for (OWLNamedIndividual ni : individuals.getFlattened()) {
+				for (OWLDataPropertyAssertionAxiom odpa : onto.getDataPropertyAssertionAxioms(ni)) {
+					if (odpa.getProperty() == odp) {
+						axioms.add(odpa);
+					}
 				}
 			}
-		}
 
-		if (axioms.size() > 0) {
-			manager.removeAxioms(ontology, axioms);
-			dirty = true;
+			if (axioms.size() > 0) {
+				manager.removeAxioms(onto, axioms);
+				dirty = true;
+			}
 		}
 	}
 

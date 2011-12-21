@@ -11,7 +11,7 @@ MAS sims {
         ;
         nina basicAgent.asl
             #1
-            beliefBaseClass maro.wrapper.BBAffective("onto/swordbreaker.owl")
+            beliefBaseClass maro.wrapper.BBAffective("onto/nina.owl")
             agentClass maro.wrapper.UniqueAnnotation
         ;
         john basicAgent.asl

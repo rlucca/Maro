@@ -1,5 +1,7 @@
 package maro.example.sims;
 
+import jason.asSyntax.Term;
+import jason.asSyntax.ListTerm;
 import jason.asSyntax.Literal;
 import jason.asSyntax.ASSyntax;
 import jason.environment.grid.GridWorldModel;
@@ -34,134 +36,134 @@ public class HouseModel extends GridWorldModel
     }
 
     public void createMap() {
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                data[i][j] = CLEAN;
-            }
-        }
-        // make the borders
-        for (int i = 0; i < width; i++) data[i][0]   = OBSTACLE;
-        for (int i = 0; i < width; i++) data[i][height-1]  = OBSTACLE;
-        for (int k = 0; k < height; k++) data[0][k]  = OBSTACLE;
-        for (int k = 0; k < height; k++) data[width-1][k] = OBSTACLE;
-		// make the pool of light == 6x8
-        for (int i = 1; i < 7; i++)
-			for (int k = 1; k < 9; k++)
-				data[i][k]   = OBSTACLE;
-        // make two singleroom on bottom left == 7x6
-        for (int k = height-7; k < height; k++) data[8][k] = OBSTACLE;
-        for (int k = height-7; k < height; k++) data[16][k] = OBSTACLE;
-        for (int i = 1; i < width-1; i++) data[i][height-8] = OBSTACLE;
-		// make two bathroom on bottom left == the upper 2x2 and other 2x3
-        for (int i = width-3; i < width-1; i++) data[i][height-5] = OBSTACLE;
-		// wall to make a little hall = 3x1
-        for (int i = width-4; i < width-1; i++) data[i][height-11] = OBSTACLE;
-		// wall to make a living room on top right == 5x8
-        for (int k = 1; k < 11; k++) data[width-7][k] = OBSTACLE;
-		// make a bathroom across of the first bedroom = 3x3
-        for (int k = 9; k < 12; k++) data[4][k] = OBSTACLE;
-		// make a deposit and kitchen on middle == 2x4 and 4x6
-        for (int k = 1; k < 11; k++) data[width-12][k] = OBSTACLE;
-        for (int i = width-11; i < width-7; i++) data[i][3] = OBSTACLE;
-        for (int i = width-11; i < width-7; i++) data[i][10] = OBSTACLE;
-		// make the doors == 1x1
-		data[7][height-8] = OPENED_DOOR;
-		data[9][height-8] = OPENED_DOOR;
-		data[4][height-9] = OPENED_DOOR;
-		data[3][height-8] = OPENED_DOOR;
-		data[13][height-11] = OPENED_DOOR;
-		data[13][height-9] = OPENED_DOOR;
-		data[width-1][height-10] = CLOSED_DOOR;
-		data[width-3][height-8] = OPENED_DOOR;
-		data[width-4][height-4] = OPENED_DOOR;
-		data[7][0] = CLOSED_DOOR;
-		data[8][2] = OPENED_DOOR;
+			for (int i = 0; i < width; i++) {
+				for (int j = 0; j < height; j++) {
+					data[i][j] = CLEAN;
+				}
+			}
+			// make the borders
+			for (int i = 0; i < width; i++) data[i][0]   = OBSTACLE;
+			for (int i = 0; i < width; i++) data[i][height-1]  = OBSTACLE;
+			for (int k = 0; k < height; k++) data[0][k]  = OBSTACLE;
+			for (int k = 0; k < height; k++) data[width-1][k] = OBSTACLE;
+			// make the pool of light == 6x8
+			for (int i = 1; i < 7; i++)
+				for (int k = 1; k < 9; k++)
+					data[i][k]   = OBSTACLE;
+			// make two singleroom on bottom left == 7x6
+			for (int k = height-7; k < height; k++) data[8][k] = OBSTACLE;
+			for (int k = height-7; k < height; k++) data[16][k] = OBSTACLE;
+			for (int i = 1; i < width-1; i++) data[i][height-8] = OBSTACLE;
+			// make two bathroom on bottom left == the upper 2x2 and other 2x3
+			for (int i = width-3; i < width-1; i++) data[i][height-5] = OBSTACLE;
+			// wall to make a little hall = 3x1
+			for (int i = width-4; i < width-1; i++) data[i][height-11] = OBSTACLE;
+			// wall to make a living room on top right == 5x8
+			for (int k = 1; k < 11; k++) data[width-7][k] = OBSTACLE;
+			// make a bathroom across of the first bedroom = 3x3
+			for (int k = 9; k < 12; k++) data[4][k] = OBSTACLE;
+			// make a deposit and kitchen on middle == 2x4 and 4x6
+			for (int k = 1; k < 11; k++) data[width-12][k] = OBSTACLE;
+			for (int i = width-11; i < width-7; i++) data[i][3] = OBSTACLE;
+			for (int i = width-11; i < width-7; i++) data[i][10] = OBSTACLE;
+			// make the doors == 1x1
+			data[7][height-8] = OPENED_DOOR;
+			data[9][height-8] = OPENED_DOOR;
+			data[4][height-9] = OPENED_DOOR;
+			data[3][height-8] = OPENED_DOOR;
+			data[13][height-11] = OPENED_DOOR;
+			data[13][height-9] = OPENED_DOOR;
+			data[width-1][height-10] = CLOSED_DOOR;
+			data[width-3][height-8] = OPENED_DOOR;
+			data[width-4][height-4] = OPENED_DOOR;
+			data[7][0] = CLOSED_DOOR;
+			data[8][2] = OPENED_DOOR;
 
-		data[1][height-10] = TOILET;
-		data[width-2][height-7] = TOILET;
-		data[width-2][height-4] = TOILET;
+			data[1][height-10] = TOILET;
+			data[width-2][height-7] = TOILET;
+			data[width-2][height-4] = TOILET;
 
-		data[1][height-9] = FAUCET;
-		data[width-2][height-6] = FAUCET;
-		data[width-2][height-3] = FAUCET;
+			data[1][height-9] = FAUCET;
+			data[width-2][height-6] = FAUCET;
+			data[width-2][height-3] = FAUCET;
 
-		data[1][height-11] = SHOWER;
-		data[2][height-11] = SHOWER;
-		data[3][height-11] = SHOWER;
-		data[width-2][height-2] = SHOWER;
-		data[width-3][height-2] = SHOWER;
+			data[1][height-11] = SHOWER;
+			data[2][height-11] = SHOWER;
+			data[3][height-11] = SHOWER;
+			data[width-2][height-2] = SHOWER;
+			data[width-3][height-2] = SHOWER;
 
-		// Solteiro 2x4 aproximadamente 1x2m
-		for (int i = 1; i < 3; i++)
-			for (int k = height-5; k < height-1; k++)
-				data[i][k] = BED;
-		for (int i = 6; i < 8; i++)
-			for (int k = height-5; k < height-1; k++)
-				data[i][k] = BED;
-		data[3][height-2] = TABLE;
-		data[5][height-2] = TABLE;
+			// Solteiro 2x4 aproximadamente 1x2m
+			for (int i = 1; i < 3; i++)
+				for (int k = height-5; k < height-1; k++)
+					data[i][k] = BED;
+			for (int i = 6; i < 8; i++)
+				for (int k = height-5; k < height-1; k++)
+					data[i][k] = BED;
+			data[3][height-2] = TABLE;
+			data[5][height-2] = TABLE;
 
-		for (int i = 4; i < 7; i++)
-			data[i][height-7] = BOOKCASE;
+			for (int i = 4; i < 7; i++)
+				data[i][height-7] = BOOKCASE;
 
-		// Casal 4x4 aproximadamente 2x2m
-		for (int i = 9; i < 13; i++)
-			for (int k = height-6; k < height-2; k++)
-				data[i][k] = BED;
+			// Casal 4x4 aproximadamente 2x2m
+			for (int i = 9; i < 13; i++)
+				for (int k = height-6; k < height-2; k++)
+					data[i][k] = BED;
 
-		for (int k = height-7; k < height-4; k++)
-			data[15][k] = BOOKCASE;
+			for (int k = height-7; k < height-4; k++)
+				data[15][k] = BOOKCASE;
 
-		for (int k = height-3; k < height-1; k++)
-			data[15][k] = BOOKCASE;
+			for (int k = height-3; k < height-1; k++)
+				data[15][k] = BOOKCASE;
 
-		// living room
-		for (int i = width-3; i < width-1; i++)
-			data[i][height-12] = BOOKCASE;
+			// living room
+			for (int i = width-3; i < width-1; i++)
+				data[i][height-12] = BOOKCASE;
 
-		for (int i = width-6; i < width-4; i++)
-			for (int k = 1; k < 6; k++)
-				data[i][k] = SOFA;
+			for (int i = width-6; i < width-4; i++)
+				for (int k = 1; k < 6; k++)
+					data[i][k] = SOFA;
 
-		for (int k = 2; k < 5; k++)
-			data[width-2][k] = TABLE | TV;
+			for (int k = 2; k < 5; k++)
+				data[width-2][k] = TABLE | TV;
 
-		// deposit
-        for (int i = width-11; i < width-7; i++) data[i][1] = BOOKCASE;
+			// deposit
+			for (int i = width-11; i < width-7; i++) data[i][1] = BOOKCASE;
 
-		// kitchen
-		data[width-10][4] = TABLE;
-		data[width-9][4] = TABLE;
-		data[width-10][5] = TABLE;
-		data[width-9][5] = TABLE;
+			// kitchen
+			data[width-10][4] = TABLE;
+			data[width-9][4] = TABLE;
+			data[width-10][5] = TABLE;
+			data[width-9][5] = TABLE;
 
-		data[width-11][7] = TABLE;
-		data[width-11][8] = TABLE | TOILET; // forge
-		data[width-11][9] = TABLE;
-		data[width-10][9] = TABLE | FAUCET;
-		data[width-8][7] = REFRIGERATOR;
+			data[width-11][7] = TABLE;
+			data[width-11][8] = TABLE | TOILET; // forge
+			data[width-11][9] = TABLE;
+			data[width-10][9] = TABLE | FAUCET;
+			data[width-8][7] = REFRIGERATOR;
 
-		// calls
-		data[width-4][height-12] = TABLE;
-		data[5][height-11] = TABLE;
+			// calls
+			data[width-4][height-12] = TABLE;
+			data[5][height-11] = TABLE;
 
-        // position agents
-		setAgPos(0, 2, height-3); // in the single room on the left
-		setAgPos(1, 6, height-3); // in the single room on the right
-		setAgPos(2, 10, height-3); // in the marriage room on the bottom
-		setAgPos(3, 10, height-6); // in the marriage room on the top
+			// position agents
+			setAgPos(0, 2, height-3); // in the single room on the left
+			setAgPos(1, 6, height-3); // in the single room on the right
+			setAgPos(2, 10, height-3); // in the marriage room on the bottom
+			setAgPos(3, 10, height-6); // in the marriage room on the top
 
-        for (int id = 4; id < getNumberOfAgents(); id++) {
-            Location l = getAgPos(id);
-            int x, y;
-            if (l != null) continue;
-            // No inicio nao eh permitido duas coisas no mesmo lugar
-            do {
-                x = nextInt(getWidth());
-                y = nextInt(getHeight());
-            } while ( !isFree(ALL, x, y) );
-            setAgPos(id, x, y);
-        }
+			for (int id = 4; id < getNumberOfAgents(); id++) {
+				Location l = getAgPos(id);
+				int x, y;
+				if (l != null) continue;
+				// No inicio nao eh permitido duas coisas no mesmo lugar
+				do {
+					x = nextInt(getWidth());
+					y = nextInt(getHeight());
+				} while ( !isFree(ALL, x, y) );
+				setAgPos(id, x, y);
+			}
     }
 
 	private String getString(Set<Dumper> names, String base, boolean unquote) {
@@ -304,6 +306,8 @@ public class HouseModel extends GridWorldModel
 			= oapi.getCandidatesByFunctorAndArity(2, "hasCharacter");
 		Set<Dumper> profiles
 			= oapi.getCandidatesByFunctorAndArity(2, "hasProfile");
+		Set<Dumper> names
+			= oapi.getCandidatesByFunctorAndArity(2, "hasName");
 		Set<Dumper> fixedDestinations
 			= oapi.getCandidatesByFunctorAndArity(2, "hasFixedDestination");
 		Set<Dumper> randomDestinations
@@ -342,22 +346,33 @@ public class HouseModel extends GridWorldModel
 			referAgent.put(curr, agentData);
 
 			for (Dumper d : fixedDestinations) {
-				if (profile.equals(d.getTerms()[0])) {
-					String placeName = d.getTermAsString(1);
-					if (placeName.startsWith("initial")) {
-						Place place = referPlace.get(placeName);
-						setAgPos(agentData.getID(), place.getPX(), place.getPY());
-						// It's the point that put the controlled agent in data!
-					} else {
-						profileData.addFixedDestination(placeName);
-					}
+				if (profile.equals(d.getTerms()[0]) == false) {
+					continue;
+				}
+
+				String placeNameIndividual = d.getTerms()[1];
+				String placeName = getStringUnquoted(names, placeNameIndividual);
+				Place place = referPlace.get(placeName);
+				if (place == null) continue;
+				String name = place.getName();
+				if (name.startsWith("initial")) {
+					setAgPos(agentData.getID(), place.getPX(), place.getPY());
+					// It's the point that put the controlled agent in data!
+				} else {
+					profileData.addFixedDestination(name);
 				}
 			}
 			for (Dumper d : randomDestinations) {
-				if (profile.equals(d.getTerms()[0])) {
-					String placeName = d.getTermAsString(1);
-					profileData.addRandomDestination(placeName);
+				if (profile.equals(d.getTerms()[0]) == false) {
+					continue;
 				}
+
+				String placeNameIndividual = d.getTerms()[1];
+				String placeName = getStringUnquoted(names, placeNameIndividual);
+				Place place = referPlace.get(placeName);
+				if (place == null) continue;
+				String name = place.getName();
+				profileData.addRandomDestination(name);
 			}
 
 			agentData.randomOrientation();
@@ -366,11 +381,16 @@ public class HouseModel extends GridWorldModel
 		}
 	}
 
+	// yeah yeah, the better name of this is loadMaps or something like that... LATER
 	public void loadObjectsFromOntology(OwlApi oapi) {
-		Set<Dumper> setups    // hasSetup(placeName, placeName) and others
+		Set<Dumper> setups    // hasSetup(placeName1, placeName2) and others
 			= oapi.getCandidatesByFunctorAndArity(2, "hasSetup");
 		Set<Dumper> names
 			= oapi.getCandidatesByFunctorAndArity(2, "hasName");
+		Set<Dumper> values // placeName2 to string
+			= oapi.getCandidatesByFunctorAndArity(2, "hasAnnotationValue");
+		Set<Dumper> annots // placeName2 to annotation
+			= oapi.getCandidatesByFunctorAndArity(2, "hasAnnotation");
 
 		itemView = new HashMap<Place, ArrayList<Place> > ();
 		placeView = new HashMap<Place, ArrayList<Place> > ();
@@ -383,22 +403,31 @@ public class HouseModel extends GridWorldModel
 			Place ps = referPlace.get(sname);
 			Place pt = referPlace.get(tname);
 
-			if (ps == null || pt == null) continue;
+			if (ps == null) continue;
 
-			ArrayList<Place> rooms, items;
-			items = placeView.get(ps);
-			if (items == null) {
-				items = new ArrayList<Place> ();
-				placeView.put(ps, items);
-			}
-			rooms = itemView.get(pt);
-			if (rooms == null) {
-				rooms = new ArrayList<Place> ();
-				itemView.put(pt, rooms);
-			}
+			if (pt != null) {
+				ArrayList<Place> rooms, items;
+				items = placeView.get(ps);
+				if (items == null) {
+					items = new ArrayList<Place> ();
+					placeView.put(ps, items);
+				}
+				rooms = itemView.get(pt);
+				if (rooms == null) {
+					rooms = new ArrayList<Place> ();
+					itemView.put(pt, rooms);
+				}
 
-			items.add(pt);
-			rooms.add(ps);
+				items.add(pt);
+				rooms.add(ps);
+			} else {
+				String aname = getStringUnquoted(annots, target);
+				String vname = getStringUnquoted(values, target);
+
+				if (aname == null || vname == null) continue;
+
+				ps.setAnnot(aname, vname);
+			}
 		}
 
 		boolean excluded = true;
@@ -433,10 +462,64 @@ public class HouseModel extends GridWorldModel
 		return new String (a.getName());
 	}
 
+	protected Agent getAgentFromName(String ag) {
+		if (ag == null) return null;
+		for (Agent a : referAgent.values()) {
+			if (a.getName().equals(ag)) {
+				return a;
+			}
+		}
+		return null;
+	}
+
 	public int getNumberOfAgents() {
 		return agPos.length;
 	}
 
+	public boolean changeOrientation(String ag, char newOrientation) {
+		Agent a = getAgentFromName(ag);
+		if (a == null) return false;
+		Location l = getAgPos(a.getID());
+		synchronized (data) {
+			a.setOrientation(newOrientation);
+		}
+        if (view != null && l != null) view.update(l.x,l.y);
+		return true;
+	}
+
+	public boolean forward(String ag) {
+		Agent a = getAgentFromName(ag);
+		if (a == null) return false;
+		Location l = getAgPos(a.getID());
+		if (l == null) return false;
+
+		switch (a.getOrientation()) {
+			case 'N':
+				if (l.y > 0) l.y -= 1;
+				break;
+			case 'E':
+				if (l.x < 19) l.x += 1;
+				break;
+			case 'S':
+				if (l.y < 19) l.y += 1;
+				break;
+			case 'W':
+				if (l.x > 0) l.x -= 1;
+				break;
+			default:
+				return false;
+		}
+
+        boolean ret = true;
+		synchronized (data) {
+			if (data[l.x][l.y] != 0) {
+                ret = false;
+            } else {
+                setAgPos(a.getID(), l);
+            }
+		}
+		return ret;
+	}
 
 
 
@@ -495,10 +578,12 @@ public class HouseModel extends GridWorldModel
 		private Integer[] timeClosing;
 		private Integer[] averageTime;
 		private Integer[] arriveInterval;
+		private HashMap<String,String> annots; // static annotations
 		private ArrayList<Integer> capacity;
 		private boolean opened = false;
 
 		public Place () {
+			annots = new HashMap<String,String>();
 			debugPlace = false;
 			if (System.getenv("debugPlace") != null) {
 				debugPlace = true;
@@ -506,7 +591,7 @@ public class HouseModel extends GridWorldModel
 		}
 
 		public boolean isOpen() { return opened; }
-		public void setName(String i) { placeName = i; }
+		public void setName(String i) { placeName = i;}
 		public String getName() { return placeName; }
 		public void setPX(Integer i) { px = i; }
 		public Integer getPX() { return px; }
@@ -520,6 +605,16 @@ public class HouseModel extends GridWorldModel
 		public Integer getType() { return type; }
 		public void setCapacity(Integer i) { totalCapacity = i; }
 		public Integer getCapacity() { return totalCapacity; }
+		public void setAnnot(String key, String value) {
+			String checkAppend = getAnnot(key);
+			if (checkAppend != null)
+				checkAppend += "," + value;
+			else
+				checkAppend = value;
+
+			annots.put(key, checkAppend);
+		}
+		public String getAnnot(String key) { return annots.get(key); }
 
 		public void setTimeOpening(String line) {
 			String [] days = line.split(",");
@@ -758,6 +853,36 @@ public class HouseModel extends GridWorldModel
 							ASSyntax.createNumber(getRelativeCapacity())));
 			}
 
+			if (px != null) {
+				ret.addAnnot(ASSyntax.createLiteral("positionX",
+							ASSyntax.createNumber(getPX())));
+				ret.addAnnot(ASSyntax.createLiteral("positionY",
+							ASSyntax.createNumber(getPY())));
+			}
+
+			if (placeName != null) {
+				ret.addAnnot(ASSyntax.createLiteral("name",
+							ASSyntax.createString(getName())));
+			}
+
+			// LATER verify if need send annotation as Number
+			for (String key : annots.keySet()) {
+				String[] value = annots.get(key).split(",");
+				Term v;
+
+				if (value.length > 1) {
+					ListTerm lt = ASSyntax.createList();
+					for (String s : value) {
+						lt.append(ASSyntax.createAtom(s));
+					}
+					v = lt;
+				} else {
+					v = ASSyntax.createAtom(value[0]);
+				}
+
+				ret.addAnnot(ASSyntax.createLiteral(key, v));
+			}
+
 			return ret;
 		}
 
@@ -846,6 +971,7 @@ public class HouseModel extends GridWorldModel
 		public void randomOrientation() {
 			String os = "NESW";
 			orientation = os.charAt(nextInt(os.length()));
+			orientation = 'N';
 		}
 		public Character getOrientation() {
 			return orientation;
@@ -870,6 +996,19 @@ public class HouseModel extends GridWorldModel
 			myself.addAnnot(ASSyntax.createLiteral("energy", ASSyntax.createNumber(getEnergy())));
 			// lookFor --> {"N", "E", "S", "W"}
 			myself.addAnnot(ASSyntax.createLiteral("lookFor", ASSyntax.createString(getOrientation())));
+
+			if (name != null) {
+				myself.addAnnot(ASSyntax.createLiteral("name",
+							ASSyntax.createString(getName())));
+			}
+
+			Location l = getAgPos(getID());
+			if (l != null) {
+				myself.addAnnot(ASSyntax.createLiteral("positionX",
+							ASSyntax.createNumber(l.x)));
+				myself.addAnnot(ASSyntax.createLiteral("positionY",
+							ASSyntax.createNumber(l.y)));
+			}
 
 			int today = h.controller.day % 7;
 			perceptionPlace(getProfile().getFixedDestinations(), h, today, "fixed");
@@ -935,6 +1074,24 @@ public class HouseModel extends GridWorldModel
 				if (x < 0 || y < 0 || x > 20 || y > 20)
 					break;
 
+				for (Agent a : referAgent.values()) {
+					int id;
+					Location ll;
+
+					// When is doing a self annotation is used myself
+					if (a.getID() == null || a.getID() < 0 || a.getID() == getID())
+						continue;
+
+					id = a.getID();
+					ll = getAgPos(id);
+
+					if (ll == null) continue;
+
+					if (ll.x <= mx && ll.x >= x && ll.y <= my && ll.y >= y) {
+						Literal literal = a.getLiteral();
+						h.addPercept(getName(), literal);
+					}
+				}
 				for (Place p : referPlace.values()) {
 					int px, py, pmx, pmy;
 
@@ -948,17 +1105,9 @@ public class HouseModel extends GridWorldModel
 
 					if (px <= mx && pmx >= x && py <= my && pmy >= y) {
 						Literal place = p.getLiteral("object", -1);
-						place.addAnnot(ASSyntax.createLiteral("x1", ASSyntax.createNumber(px)));
-						place.addAnnot(ASSyntax.createLiteral("y1", ASSyntax.createNumber(py)));
-						place.addAnnot(ASSyntax.createLiteral("x2", ASSyntax.createNumber(pmx)));
-						place.addAnnot(ASSyntax.createLiteral("y2", ASSyntax.createNumber(pmy)));
-						//place.addAnnot(ASSyntax.createLiteral("tx1", ASSyntax.createNumber(x)));
-						//place.addAnnot(ASSyntax.createLiteral("ty1", ASSyntax.createNumber(y)));
-						//place.addAnnot(ASSyntax.createLiteral("tx2", ASSyntax.createNumber(mx)));
-						//place.addAnnot(ASSyntax.createLiteral("ty2", ASSyntax.createNumber(my)));
 						h.addPercept(getName(), place);
 
-						if (p.getName().startsWith("Wall")) {
+						if (p.getName().startsWith("wall")) {
 							occluded = true;
 						}
 					}
@@ -968,134 +1117,29 @@ public class HouseModel extends GridWorldModel
 				if (yrange > 0) yrange += 2;
 			}
 		}
-	}
 
+		public Literal getLiteral() {
+			Literal ret = ASSyntax.createLiteral("agent",
+						ASSyntax.createString(getName())
+					);
 
-	private class InnerData { // TODO acho que isso vai morrer
-		// resource is equivalent to population
-		public Integer population = 0;
-		// quality is equivalent to life/energy
-		public Integer life = 40;
-		// lookFor is equivalent to orientation
-		public Character orientation = 'N'; // North South West East only!
-		public Integer attraction = null;
-		public Integer beauty = null;
-		public Integer capacity = null;
-		public Integer conflict = null;
-		public Integer heat = null;
-		public Integer luminousness = null;
-		public Integer security = null;
-		public String utility = null;
-		public String action = null;
-		public String description = null;
-		public String name = null;
-		//public Boolean position = null; // this value need be putted be the called of getFeatureList
-
-		public InnerData makeCopy () {
-			InnerData id = new InnerData ();
-			id.population = this.population;
-			id.life = this.life;
-			id.orientation = this.orientation;
-			id.attraction = this.attraction;
-			id.beauty = this.beauty;
-			id.capacity = this.capacity;
-			id.conflict = this.conflict;
-			id.heat = this.heat;
-			id.luminousness = this.luminousness;
-			id.security = this.security;
-			id.utility = this.utility;
-			id.action = this.action;
-			id.description = this.description;
-			id.name = this.name;
-			//id.position = this.position;
-			return id;
-		}
-
-		public String getFeatureList() {
-			String ret = "";
-			if (attraction != null) {
-				ret += "attraction("+attraction+")";
-			}
-			if (beauty != null) {
-				if (!ret.isEmpty())
-					ret += ",beauty("+beauty+")";
-				else
-					ret += "beauty("+beauty+")";
-			}
-			if (capacity != null) {
-				if (!ret.isEmpty())
-					ret += ",capacity("+capacity+")";
-				else
-					ret += "capacity("+capacity+")";
-			}
-			if (conflict != null) {
-				if (!ret.isEmpty())
-					ret += ",conflict("+conflict+")";
-				else
-					ret += "conflict("+conflict+")";
-			}
-			if (heat != null) {
-				if (!ret.isEmpty())
-					ret += ",heat("+heat+")";
-				else
-					ret += "heat("+heat+")";
-			}
-			if (luminousness != null) {
-				if (!ret.isEmpty())
-					ret += ",luminousness("+luminousness+")";
-				else
-					ret += "luminousness("+luminousness+")";
-			}
-			if (security != null) {
-				if (!ret.isEmpty())
-					ret += ",security("+security+")";
-				else
-					ret += "security("+security+")";
-			}
-			if (utility != null && !utility.isEmpty()) {
-				if (!ret.isEmpty())
-					ret += ",utility(\""+utility+"\")";
-				else
-					ret += "utility(\""+utility+"\")";
-			}
-			if (description != null && !description.isEmpty()) {
-				if (!ret.isEmpty())
-					ret += ",description(\""+description+"\")";
-				else
-					ret += "description(\""+description+"\")";
-			}
-			if (orientation != null && orientation!=' ') {
-				if (!ret.isEmpty())
-					ret += ",lookFor(\""+orientation+"\")";
-				else
-					ret += "lookFor(\""+orientation+"\")";
-			}
-			if (population != null && population >= 0) {
-				if (!ret.isEmpty())
-					ret += ",resource("+population+")";
-				else
-					ret += "resource("+population+")";
-			}
-			if (life != null && life >= 0) {
-				if (!ret.isEmpty())
-					ret += ",quality("+life+")";
-				else
-					ret += "quality("+life+")";
-			}
-			if (action != null && !action.isEmpty()) {
-				if (!ret.isEmpty())
-					ret += ",action(\""+action+"\")";
-				else
-					ret += "action(\""+action+"\")";
-			}
-			if (name != null && !name.isEmpty()) {
-				if (!ret.isEmpty())
-					ret += ",name(\""+name+"\")";
-				else
-					ret += "name(\""+name+"\")";
+			if (name != null) {
+				ret.addAnnot(ASSyntax.createLiteral("name",
+							ASSyntax.createString(getName())));
 			}
 
-			return (ret.isEmpty())?null:ret;
+			Location l = getAgPos(getID());
+			if (l != null) {
+				ret.addAnnot(ASSyntax.createLiteral("positionX",
+							ASSyntax.createNumber(l.x)));
+				ret.addAnnot(ASSyntax.createLiteral("positionY",
+							ASSyntax.createNumber(l.y)));
+			}
+
+			ret.addAnnot(ASSyntax.createLiteral("lookFor",
+				ASSyntax.createString(getOrientation())));
+
+			return ret;
 		}
 	}
 }

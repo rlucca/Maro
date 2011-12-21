@@ -13,7 +13,7 @@ public class UniqueAnnotation extends Agent
         if (percepts == null) return ;
 
         Iterator<Literal> perceptsInBB = getBB().getPercepts();
-        while (perceptsInBB.hasNext()) { 
+        while (perceptsInBB.hasNext()) {
             Literal l = perceptsInBB.next();
             if (l.hasAnnot() && l.getAnnots().size() >= 4) {
                 Iterator<Literal> ip = percepts.iterator();
@@ -32,4 +32,12 @@ public class UniqueAnnotation extends Agent
 
         super.buf(percepts);
     }
+
+	//@Override
+    //public Intention selectIntention(Queue<Intention> intentions) {
+        // make sure the selected Intention is removed from 'intentions'
+        // and make sure no intention will "starve"!!!
+	    // See example: ~/Desktop/jason.git_svn/trunk/examples/airport/mds/MDSAgent.java
+    //    return intentions.poll();
+    //}
 }

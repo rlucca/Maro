@@ -46,7 +46,9 @@ public class BBAffective extends ChainBBAdapter
 
 		if (args.length == 1) {
 			try {
-				ek = new EmotionKnowledge(args[0]);
+				ek = new EmotionKnowledge(myName, args[0]);
+
+				PreferenceLoader.getInstance().load(nextBB);
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.exit(22);
@@ -91,8 +93,8 @@ public class BBAffective extends ChainBBAdapter
 			int step = (int) nt.solve();
 			Set<String> feels; // temos que botar a anotacao de percepcao ainda!
 
-			ek.summarize(myName, step);
-			feels = ek.feelings(myName, step);
+			ek.summarize(step);
+			feels = ek.feelings(step);
 			for (String f: feels) {
 				Literal lit = Dumper.fromString(f, 20);
 				lit.addAnnot(BeliefBase.TPercept);

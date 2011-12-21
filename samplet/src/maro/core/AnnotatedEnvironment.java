@@ -4,16 +4,16 @@ import maro.wrapper.OwlApi;
 import java.util.HashMap;
 import java.io.File;
 
+// Annotations moved to Model
+//     Maybe change the name LATER?
 public class AnnotatedEnvironment extends IntelligentEnvironment
 {
-	protected Annotations annots;
 	protected OwlApi oapi;
 	private int indexFileName;
 
 	public AnnotatedEnvironment () {
 		super();
 		oapi = null;
-		annots = new Annotations();
 		indexFileName = options.size();
         options.add( new Option<String> (true,
                         " the filename of the annotated ontology",
@@ -53,13 +53,5 @@ public class AnnotatedEnvironment extends IntelligentEnvironment
             getLogger().warning("Problem reading ontology from " + filename);
             System.exit(52);
         }
-	}
-
-
-	protected class DataAnnotation {
-	}
-
-	protected class Annotations {
-		protected HashMap<String, DataAnnotation> annotation;
 	}
 }

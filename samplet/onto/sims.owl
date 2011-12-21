@@ -26,6 +26,9 @@
     <Import>file:///Users/rlucca/Desktop/Maro.git/ontology/annotation.owl</Import>
     <Import>file:///Users/rlucca/Desktop/Maro.git/ontology/annotation_occ.owl</Import>
     <Declaration>
+        <DataProperty IRI="#hasAnnotationValue"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#AbstractArcade"/>
     </Declaration>
     <Declaration>
@@ -86,7 +89,52 @@
         <NamedIndividual IRI="#AlbertsActor"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Bed"/>
+        <NamedIndividual IRI="#AnnotationOwnerAlbert"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationOwnerJohn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationOwnerMillie"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationOwnerNina"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationUtilityBath"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationUtilityClothes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationUtilityConfort"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationUtilityExit"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationUtilityFaucet"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationUtilityKeepFood"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationUtilityPrepareFood"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationUtilityRead"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationUtilitySleep"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationUtilityTable"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationUtilityTelephone"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnotationUtilityWay"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#BedLeftRoom1"/>
@@ -107,16 +155,10 @@
         <NamedIndividual IRI="#BedRoom2Dimension"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Bookcase"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#BookcaseLivingRoom"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#BookcaseLivingRoomDimension"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Door"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#DoorCorredor"/>
@@ -185,9 +227,6 @@
         <NamedIndividual IRI="#DoorSuiteBathroomDimension"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Faucet"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#FaucetBathroomMiddle"/>
     </Declaration>
     <Declaration>
@@ -210,9 +249,6 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#FaucetSuiteBathroomDimension"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#GasStove"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#GasStoveKitchen"/>
@@ -272,16 +308,10 @@
         <NamedIndividual IRI="#RefrigeratorKitchenDimension"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Refrigetator"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#ShelvesDeposit"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#ShelvesDepositDimension"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Shower"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#ShowerBathroomMiddle"/>
@@ -294,9 +324,6 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#ShowerSuiteBathroomDimension"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Sofa"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#SofaLivingRoom"/>
@@ -321,9 +348,6 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Support2KitchenDimension"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Table"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#TableCorredorMiddle"/>
@@ -356,9 +380,6 @@
         <NamedIndividual IRI="#TableRightRoom1Dimension"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#Toilet"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#ToiletBathroomMiddle"/>
     </Declaration>
     <Declaration>
@@ -375,9 +396,6 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#ToiletSuiteBathroomDimension"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#Tv"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#TvLivingRoom"/>
@@ -545,19 +563,7 @@
         <NamedIndividual IRI="#minute"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#receptPositionX"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#receptPositionY"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#shiftOfDay"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#usingPositionX"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#usingPositionY"/>
     </Declaration>
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
@@ -640,8 +646,68 @@
         <NamedIndividual IRI="#AlbertsActor"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
-        <NamedIndividual IRI="#Bed"/>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationOwnerAlbert"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationOwnerJohn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationOwnerMillie"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationOwnerNina"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationUtilityBath"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationUtilityClothes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationUtilityConfort"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationUtilityExit"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationUtilityFaucet"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationUtilityKeepFood"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationUtilityPrepareFood"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationUtilityRead"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationUtilitySleep"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationUtilityTable"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationUtilityTelephone"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
+        <NamedIndividual IRI="#AnnotationUtilityWay"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
@@ -668,20 +734,12 @@
         <NamedIndividual IRI="#BedRoom2Dimension"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
-        <NamedIndividual IRI="#Bookcase"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
         <NamedIndividual IRI="#BookcaseLivingRoom"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
         <NamedIndividual IRI="#BookcaseLivingRoomDimension"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
-        <NamedIndividual IRI="#Door"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
@@ -772,10 +830,6 @@
         <NamedIndividual IRI="#DoorSuiteBathroomDimension"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
-        <NamedIndividual IRI="#Faucet"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
         <NamedIndividual IRI="#FaucetBathroomMiddle"/>
     </ClassAssertion>
@@ -806,10 +860,6 @@
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
         <NamedIndividual IRI="#FaucetSuiteBathroomDimension"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
-        <NamedIndividual IRI="#GasStove"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
@@ -888,20 +938,12 @@
         <NamedIndividual IRI="#RefrigeratorKitchenDimension"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
-        <NamedIndividual IRI="#Refrigetator"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
         <NamedIndividual IRI="#ShelvesDeposit"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
         <NamedIndividual IRI="#ShelvesDepositDimension"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
-        <NamedIndividual IRI="#Shower"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
@@ -918,10 +960,6 @@
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
         <NamedIndividual IRI="#ShowerSuiteBathroomDimension"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
-        <NamedIndividual IRI="#Sofa"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
@@ -954,10 +992,6 @@
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
         <NamedIndividual IRI="#Support2KitchenDimension"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
-        <NamedIndividual IRI="#Table"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
@@ -1000,10 +1034,6 @@
         <NamedIndividual IRI="#TableRightRoom1Dimension"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
-        <NamedIndividual IRI="#Toilet"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
         <NamedIndividual IRI="#ToiletBathroomMiddle"/>
     </ClassAssertion>
@@ -1026,10 +1056,6 @@
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Dimension"/>
         <NamedIndividual IRI="#ToiletSuiteBathroomDimension"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#Object"/>
-        <NamedIndividual IRI="#Tv"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.urban.org/UEM.owl#Place"/>
@@ -1253,23 +1279,7 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
-        <NamedIndividual IRI="#receptPositionX"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
-        <NamedIndividual IRI="#receptPositionY"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
         <NamedIndividual IRI="#shiftOfDay"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
-        <NamedIndividual IRI="#usingPositionX"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
-        <NamedIndividual IRI="#usingPositionY"/>
     </ClassAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasScheduleOfFunctioning"/>
@@ -1542,9 +1552,99 @@
         <NamedIndividual IRI="#StudentEarly"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationOwnerAlbert"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#owner"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationOwnerJohn"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#owner"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationOwnerMillie"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#owner"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationOwnerNina"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#owner"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationUtilityClothes"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationUtilityExit"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationUtilityFaucet"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationUtilityKeepFood"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationUtilityPrepareFood"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationUtilityRead"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationUtilitySleep"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationUtilityTable"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationUtilityTelephone"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#AnnotationUtilityWay"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#BedLeftRoom1"/>
+        <NamedIndividual IRI="#AnnotationOwnerAlbert"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#BedLeftRoom1"/>
+        <NamedIndividual IRI="#AnnotationUtilitySleep"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#BedLeftRoom1"/>
         <NamedIndividual IRI="#BedLeftRoom1Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#BedRightRoom1"/>
+        <NamedIndividual IRI="#AnnotationOwnerMillie"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#BedRightRoom1"/>
+        <NamedIndividual IRI="#AnnotationUtilitySleep"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1552,9 +1652,29 @@
         <NamedIndividual IRI="#BedRightRoom1Dimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#BedRoom2"/>
+        <NamedIndividual IRI="#AnnotationUtilitySleep"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#BedRoom2"/>
+        <NamedIndividual IRI="#AnnotationOwnerNina"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#BedRoom2"/>
+        <NamedIndividual IRI="#AnnotationOwnerJohn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#BedRoom2"/>
         <NamedIndividual IRI="#BedRoom2Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#BookcaseLivingRoom"/>
+        <NamedIndividual IRI="#AnnotationUtilityRead"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1562,9 +1682,19 @@
         <NamedIndividual IRI="#BookcaseLivingRoomDimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#DoorCorredor"/>
+        <NamedIndividual IRI="#AnnotationUtilityWay"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#DoorCorredor"/>
         <NamedIndividual IRI="#DoorCorredorDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#DoorDeposit"/>
+        <NamedIndividual IRI="#AnnotationUtilityWay"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1572,9 +1702,19 @@
         <NamedIndividual IRI="#DoorDepositDimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#DoorKitchen"/>
+        <NamedIndividual IRI="#AnnotationUtilityWay"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#DoorKitchen"/>
         <NamedIndividual IRI="#DoorKitchenDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#DoorLeftRoom1"/>
+        <NamedIndividual IRI="#AnnotationUtilityWay"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1582,9 +1722,19 @@
         <NamedIndividual IRI="#DoorLeftRoom1Dimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#DoorRightBathroomMiddle"/>
+        <NamedIndividual IRI="#AnnotationUtilityWay"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#DoorRightBathroomMiddle"/>
         <NamedIndividual IRI="#DoorRightBathroomMiddleDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#DoorRightRoom1"/>
+        <NamedIndividual IRI="#AnnotationUtilityWay"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1592,9 +1742,19 @@
         <NamedIndividual IRI="#DoorRightRoom1Dimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#DoorRoom2"/>
+        <NamedIndividual IRI="#AnnotationUtilityWay"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#DoorRoom2"/>
         <NamedIndividual IRI="#DoorRoom2Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#DoorService"/>
+        <NamedIndividual IRI="#AnnotationUtilityExit"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1602,9 +1762,19 @@
         <NamedIndividual IRI="#DoorServiceDimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#DoorSocial"/>
+        <NamedIndividual IRI="#AnnotationUtilityExit"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#DoorSocial"/>
         <NamedIndividual IRI="#DoorSocialDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#DoorSocialBathroom"/>
+        <NamedIndividual IRI="#AnnotationUtilityWay"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1612,9 +1782,19 @@
         <NamedIndividual IRI="#DoorSocialBathroomDimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#DoorSuiteBathroom"/>
+        <NamedIndividual IRI="#AnnotationUtilityWay"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#DoorSuiteBathroom"/>
         <NamedIndividual IRI="#DoorSuiteBathroomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#FaucetBathroomMiddle"/>
+        <NamedIndividual IRI="#AnnotationUtilityFaucet"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1622,9 +1802,19 @@
         <NamedIndividual IRI="#FaucetBathroomMiddleDimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#FaucetKitchen"/>
+        <NamedIndividual IRI="#AnnotationUtilityFaucet"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#FaucetKitchen"/>
         <NamedIndividual IRI="#FaucetKitchenDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#FaucetSocialBathroom"/>
+        <NamedIndividual IRI="#AnnotationUtilityFaucet"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1632,9 +1822,19 @@
         <NamedIndividual IRI="#FaucetSocialBathroomDimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#FaucetSuiteBathroom"/>
+        <NamedIndividual IRI="#AnnotationUtilityFaucet"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#FaucetSuiteBathroom"/>
         <NamedIndividual IRI="#FaucetSuiteBathroomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#GasStoveKitchen"/>
+        <NamedIndividual IRI="#AnnotationUtilityPrepareFood"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1707,9 +1907,19 @@
         <NamedIndividual IRI="#Worker"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#RefrigeratorKitchen"/>
+        <NamedIndividual IRI="#AnnotationUtilityKeepFood"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#RefrigeratorKitchen"/>
         <NamedIndividual IRI="#RefrigeratorKitchenDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#ShelvesDeposit"/>
+        <NamedIndividual IRI="#AnnotationUtilityClothes"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1717,14 +1927,29 @@
         <NamedIndividual IRI="#ShelvesDepositDimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#ShowerBathroomMiddle"/>
+        <NamedIndividual IRI="#AnnotationUtilityBath"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#ShowerBathroomMiddle"/>
         <NamedIndividual IRI="#ShowerBathroomMiddleDimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#ShowerSuiteBathroom"/>
+        <NamedIndividual IRI="#AnnotationUtilityBath"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#ShowerSuiteBathroom"/>
         <NamedIndividual IRI="#ShowerSuiteBathroomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#SofaLivingRoom"/>
+        <NamedIndividual IRI="#AnnotationUtilityConfort"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1777,9 +2002,19 @@
         <NamedIndividual IRI="#AbstractArcade"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#Support1Kitchen"/>
+        <NamedIndividual IRI="#AnnotationUtilityPrepareFood"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#Support1Kitchen"/>
         <NamedIndividual IRI="#Support1KitchenDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#Support2Kitchen"/>
+        <NamedIndividual IRI="#AnnotationUtilityPrepareFood"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1787,9 +2022,19 @@
         <NamedIndividual IRI="#Support2KitchenDimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#TableCorredorMiddle"/>
+        <NamedIndividual IRI="#AnnotationUtilityTelephone"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#TableCorredorMiddle"/>
         <NamedIndividual IRI="#TableCorredorMiddleDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#TableKitchen"/>
+        <NamedIndividual IRI="#AnnotationUtilityTable"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1797,9 +2042,19 @@
         <NamedIndividual IRI="#TableKitchenDimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#TableLeftRoom1"/>
+        <NamedIndividual IRI="#AnnotationUtilityTable"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#TableLeftRoom1"/>
         <NamedIndividual IRI="#TableLeftRoom1Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#TableLivingRoom"/>
+        <NamedIndividual IRI="#AnnotationUtilityTelephone"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1807,9 +2062,19 @@
         <NamedIndividual IRI="#TableLivingRoomDimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#TableRightRoom1"/>
+        <NamedIndividual IRI="#AnnotationUtilityTable"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#TableRightRoom1"/>
         <NamedIndividual IRI="#TableRightRoom1Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#ToiletBathroomMiddle"/>
+        <NamedIndividual IRI="#AnnotationUtilityBath"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1817,9 +2082,19 @@
         <NamedIndividual IRI="#ToiletBathroomMiddleDimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#ToiletSocialBathroom"/>
+        <NamedIndividual IRI="#AnnotationUtilityBath"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#ToiletSocialBathroom"/>
         <NamedIndividual IRI="#ToiletSocialBathroomDimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#ToiletSuiteBathroom"/>
+        <NamedIndividual IRI="#AnnotationUtilityBath"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -1937,14 +2212,49 @@
         <NamedIndividual IRI="#WallTopRightDimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#WardrobeBottomRoom2"/>
+        <NamedIndividual IRI="#AnnotationOwnerJohn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#WardrobeBottomRoom2"/>
+        <NamedIndividual IRI="#AnnotationUtilityClothes"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#WardrobeBottomRoom2"/>
         <NamedIndividual IRI="#WardrobeBottomRoom2Dimension"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#WardrobeRoom1"/>
+        <NamedIndividual IRI="#AnnotationOwnerAlbert"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#WardrobeRoom1"/>
+        <NamedIndividual IRI="#AnnotationUtilityClothes"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#WardrobeRoom1"/>
+        <NamedIndividual IRI="#AnnotationOwnerMillie"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
         <NamedIndividual IRI="#WardrobeRoom1"/>
         <NamedIndividual IRI="#WardrobeRoom1Dimension"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#WardrobeTopRoom2"/>
+        <NamedIndividual IRI="#AnnotationUtilityClothes"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="#WardrobeTopRoom2"/>
+        <NamedIndividual IRI="#AnnotationOwnerNina"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.urban.org/UEM.owl#hasDimension"/>
@@ -2145,6 +2455,76 @@
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
         <NamedIndividual IRI="#AbstractWork"/>
         <Literal datatypeIRI="&xsd;string">abstractWork</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationOwnerAlbert"/>
+        <Literal datatypeIRI="&xsd;string">albert</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationOwnerJohn"/>
+        <Literal datatypeIRI="&xsd;string">john</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationOwnerMillie"/>
+        <Literal datatypeIRI="&xsd;string">millie</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationOwnerNina"/>
+        <Literal datatypeIRI="&xsd;string">nina</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationUtilityClothes"/>
+        <Literal datatypeIRI="&xsd;string">clothes</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationUtilityExit"/>
+        <Literal datatypeIRI="&xsd;string">exit</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationUtilityFaucet"/>
+        <Literal datatypeIRI="&xsd;string">faucet</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationUtilityKeepFood"/>
+        <Literal datatypeIRI="&xsd;string">keepFood</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationUtilityPrepareFood"/>
+        <Literal datatypeIRI="&xsd;string">prepareFood</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationUtilityRead"/>
+        <Literal datatypeIRI="&xsd;string">reading</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationUtilitySleep"/>
+        <Literal datatypeIRI="&xsd;string">sleep</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationUtilityTable"/>
+        <Literal datatypeIRI="&xsd;string">table</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationUtilityTelephone"/>
+        <Literal datatypeIRI="&xsd;string">telephone</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <NamedIndividual IRI="#AnnotationUtilityWay"/>
+        <Literal datatypeIRI="&xsd;string">way</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasIdentifier"/>
@@ -4061,6 +4441,10 @@
         <NamedIndividual IRI="#WardrobeTopRoom2Dimension"/>
         <Literal datatypeIRI="&xsd;int">3</Literal>
     </DataPropertyAssertion>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
 </Ontology>
 
 

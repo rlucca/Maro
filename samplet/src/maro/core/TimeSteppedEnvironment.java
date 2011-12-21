@@ -218,7 +218,7 @@ public class TimeSteppedEnvironment extends Environment {
             //logger.info("#"+overRequests.size());
             
             try {
-                // execute all scheduled actions
+                /*// execute all scheduled actions
                 for (ActRequest a: requests.values()) {
                     a.remainSteps--;
                     if (a.remainSteps == 0) {
@@ -226,7 +226,7 @@ public class TimeSteppedEnvironment extends Environment {
                         a.success = executeAction(a.agName, a.action);
                     }
                 }
-                
+
                 // notify the agents about the result of the execution
                 Iterator<ActRequest> i = requests.values().iterator();
                 while (i.hasNext()) {
@@ -235,11 +235,20 @@ public class TimeSteppedEnvironment extends Environment {
                         getEnvironmentInfraTier().actionExecuted(a.agName, a.action, a.success, a.infraData);
                         i.remove();
                     }
+                }*/ // LUCCA
+                Iterator<ActRequest> i = requests.values().iterator();
+                while (i.hasNext()) {
+                    ActRequest a = i.next();
+                    a.remainSteps--;
+                    if (a.remainSteps == 0) {
+                        // calls the user implementation of the action
+                        a.success = executeAction(a.agName, a.action);
+						// notify the agent about the result of the execution
+                        getEnvironmentInfraTier().actionExecuted(a.agName, a.action, a.success, a.infraData);
+                        i.remove();
+                    }
                 }
-                
-                // clear all requests
-                //requests.clear();
-                
+
                 // add actions waiting in over requests into the requests
                 Iterator<ActRequest> io = overRequests.iterator();
                 while (io.hasNext()) {
@@ -249,7 +258,7 @@ public class TimeSteppedEnvironment extends Environment {
                         io.remove();
                     }
                 }
-                
+
                 // the over requests could complete the requests
                 // so test end of step again
                 if (nbAgs > 0 && testEndCycle(requests.keySet())) {
