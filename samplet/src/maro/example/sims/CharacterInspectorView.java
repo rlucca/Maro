@@ -21,6 +21,9 @@ class CharacterInspectorView extends JFrame
 {
 	HashMap<String, JLabel> msj; // nameLabel X JLabel
     CharacterInspectorController cic;
+	JLabel hungry;
+	JLabel social;
+	JLabel cleaning;
 	JLabel energy;
 	JLabel lookFor;
 	JLabel day;
@@ -33,6 +36,9 @@ class CharacterInspectorView extends JFrame
     public CharacterInspectorView (String title) {
         super(title);
         this.cic = null;
+        hungry = new JLabel();
+        social = new JLabel();
+        cleaning = new JLabel();
         energy = new JLabel();
         lookFor = new JLabel();
         day = new JLabel();
@@ -133,15 +139,10 @@ class CharacterInspectorView extends JFrame
             sgv.addGroup(sgvl);
         }
 
-		energy.setText("energy: ?");
-		energy.setName("energy");
-		sgvl.addComponent(energy);
-		sghc3.addComponent(energy);
-
 		lookFor.setText("lookFor: ?");
 		lookFor.setName("lookFor");
 		sgvl.addComponent(lookFor);
-		sghc4.addComponent(lookFor);
+		sghc3.addComponent(lookFor);
 
 		day.setText("day: ?");
 		day.setName("day");
@@ -165,6 +166,30 @@ class CharacterInspectorView extends JFrame
 
         sgvl.addComponent(shiftOfDay);
         sghc4.addComponent(shiftOfDay);
+
+        sgvl = gl.createParallelGroup(GroupLayout.Alignment.BASELINE);
+        sgv.addGroup(sgvl);
+
+		cleaning.setText("cleaning: ?");
+		cleaning.setName("cleaning");
+		sgvl.addComponent(cleaning);
+		sghc1.addComponent(cleaning);
+
+		social.setText("social: ?");
+		social.setName("social");
+		sgvl.addComponent(social);
+		sghc2.addComponent(social);
+
+		energy.setText("energy: ?");
+		energy.setName("energy");
+		sgvl.addComponent(energy);
+		sghc3.addComponent(energy);
+
+		hungry.setText("hungry: ?");
+		hungry.setName("hungry");
+		sgvl.addComponent(hungry);
+		sghc4.addComponent(hungry);
+
 
 		gl.setHorizontalGroup( sgh );
 		gl.setVerticalGroup( sgv );
@@ -195,16 +220,17 @@ class CharacterInspectorView extends JFrame
 				csv += "," + emotion;
 			}
 
-			csv += ",energy,orientation,weekday,day,hour,minute,second,shiftOfDay\n";
+			csv += "hungry,social,cleaning,energy,orientation,weekday,day,hour,minute,second,shiftOfDay\n";
 			firstLine = false;
 		}
 
-		BBAffective bb;
+		BBAffective bb = null;
         HouseModel.Agent a;
 
 		csv += cic.getParent().getStep();
         a = cic.getAgent();
-		bb = BBKeeper.getInstance().get(a.getName());
+        if (a != null)
+            bb = BBKeeper.getInstance().get(a.getName());
 		for (String emotion : msj.keySet()) {
 			JLabel l = msj.get(emotion);
 			csv += ",";
@@ -215,10 +241,22 @@ class CharacterInspectorView extends JFrame
 			}
 		}
 
-        energy.setText("energy: "+a.getEnergy());
-        lookFor.setText("lookFor: "+a.getOrientationText());
-
-		csv += "," + a.getEnergy() + "," + a.getOrientationText();
+        if (a != null) {
+            hungry.setText("hungry: "+a.getHungry());
+            social.setText("social: "+a.getSocial());
+            cleaning.setText("cleaning: "+a.getCleaning());
+            energy.setText("energy: "+a.getEnergy());
+            lookFor.setText("lookFor: "+a.getOrientationText());
+            csv += "," + a.getHungry() + "," + a.getSocial() + "," + a.getCleaning()
+                + "," + a.getEnergy() + "," + a.getOrientationText();
+        } else {
+            hungry.setText("hungry: 0");
+            social.setText("social: 0");
+            cleaning.setText("cleaning: 0");
+            energy.setText("energy: 0");
+            lookFor.setText("lookFor: Unknow");
+            csv += ",0,0,0,0,Unknow";
+        }
 
 		Integer day  = cic.getParent().day;
 		Integer hour = cic.getParent().hour;

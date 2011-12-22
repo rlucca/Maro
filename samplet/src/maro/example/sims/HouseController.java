@@ -161,6 +161,9 @@ public class HouseController
 
 	public void updatePercepts(House h) {
 		for (HouseModel.Agent a : parent.model.referAgent.values()) {
+			if (a == null) {
+				continue; // death
+			}
 			a.updatePerception(h);
 		}
 	}

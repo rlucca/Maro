@@ -6,10 +6,10 @@ import maro.example.sims.HouseModel;
 import maro.core.IntelligentEnvironment;
 import jason.asSyntax.Structure;
 
-public class NopeAction extends EnvironmentAction
+public class HideMeAction extends EnvironmentAction
 {
 	@Override
-	public String getName() { return "nope"; }
+	public String getName() { return "hide"; }
 
 	//@Override
 	//public int requiredSteps() { return 1; }
@@ -20,6 +20,6 @@ public class NopeAction extends EnvironmentAction
 		if (h == null) return false;
 		HouseModel hm = h.getModel();
 		if (hm == null) return false;
-		return hm.nope(agName);
+		return hm.hideMe(agName);
 	}
 }

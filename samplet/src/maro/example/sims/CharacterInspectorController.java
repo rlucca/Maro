@@ -28,7 +28,7 @@ public class CharacterInspectorController
         if (hm == null || agId < 0) return null;
 
         Agent a = hm.referAgent.get(agId);
-        if (a.getName().equals(agName))
+        if (a != null && a.getName().equals(agName))
             return a;
         return null;
     }

@@ -465,7 +465,7 @@ public class HouseModel extends GridWorldModel
 	protected Agent getAgentFromName(String ag) {
 		if (ag == null) return null;
 		for (Agent a : referAgent.values()) {
-			if (a.getName().equals(ag)) {
+			if (a != null && a.getName().equals(ag)) {
 				return a;
 			}
 		}
@@ -484,6 +484,7 @@ public class HouseModel extends GridWorldModel
 			a.setOrientation(newOrientation);
 		}
         if (view != null && l != null) view.update(l.x,l.y);
+		a.addHungry(-1);
 		return true;
 	}
 
@@ -511,6 +512,7 @@ public class HouseModel extends GridWorldModel
 		}
 
         boolean ret = true;
+		int e = nextNormal(4,2);
 		synchronized (data) {
 			if (data[l.x][l.y] != 0) {
                 ret = false;
@@ -518,7 +520,31 @@ public class HouseModel extends GridWorldModel
                 setAgPos(a.getID(), l);
             }
 		}
+		if (e > 8) e = 8;
+		if (e < 0) e = 1;
+		if (e > 0) e = -e;
+		a.addEnergy(e);
+		a.addHungry(-2);
+		a.addCleaning(-1);
 		return ret;
+	}
+
+	public boolean nope(String ag) {
+		Agent a = getAgentFromName(ag);
+		if (a == null) return false;
+		a.addHungry(-1);
+		a.addEnergy(-1);
+		return true;
+	}
+
+	public boolean hideMe(String ag) { // death
+		Agent a = getAgentFromName(ag);
+		if (a == null) return false;
+		referAgent.put(a.getID(), null);
+		Location l = agPos[a.getID()];
+		remove(AGENT, l.x, l.y);
+		agPos[a.getID()] = null;
+		return true;
 	}
 
 
@@ -951,8 +977,32 @@ public class HouseModel extends GridWorldModel
 		}
 
 		// Anotations?
-		private Integer energy = 40;
+		private Integer hungry = 50; // 0-100, 0 death
+		private Integer social = 50; // 0-100, 0 death
+		private Integer cleaning = 50; // 0-100
+		private Integer energy = 40; // 0-105, 0 death
 		private Character orientation = ' ';
+
+		public Integer getHungry() { return hungry; }
+		public void addHungry(Integer e) {
+			hungry += e;
+			if (hungry < 0) hungry = 0;
+			if (hungry > 105) hungry = 105;
+		}
+
+		public Integer getSocial() { return social; }
+		public void addSocial(Integer e) {
+			social += e;
+			if (social < 0) social = 0;
+			if (social > 105) social = 105;
+		}
+
+		public Integer getCleaning() { return cleaning; }
+		public void addCleaning(Integer e) {
+			cleaning += e;
+			if (cleaning < 0) cleaning = 0;
+			if (cleaning > 100) cleaning = 100;
+		}
 
 		public Integer getEnergy() { return energy; }
 		public void addEnergy(Integer e) {
@@ -993,6 +1043,9 @@ public class HouseModel extends GridWorldModel
 			// shift --> {"Dawn", "Noon", "Afternoon", "Night"}
 			step.addAnnot(ASSyntax.createLiteral("shift", ASSyntax.createString(h.controller.shift)));
 
+			myself.addAnnot(ASSyntax.createLiteral("hungry", ASSyntax.createNumber(getHungry())));
+			myself.addAnnot(ASSyntax.createLiteral("social", ASSyntax.createNumber(getSocial())));
+			myself.addAnnot(ASSyntax.createLiteral("cleaning", ASSyntax.createNumber(getCleaning())));
 			myself.addAnnot(ASSyntax.createLiteral("energy", ASSyntax.createNumber(getEnergy())));
 			// lookFor --> {"N", "E", "S", "W"}
 			myself.addAnnot(ASSyntax.createLiteral("lookFor", ASSyntax.createString(getOrientation())));
