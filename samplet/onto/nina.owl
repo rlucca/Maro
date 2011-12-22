@@ -23,9 +23,6 @@
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Import>file:///Users/rlucca/Desktop/Maro.git/samplet/onto/basicAgent.owl</Import>
     <Declaration>
-        <DataProperty IRI="#hasAnnotationValue"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#PNSleep"/>
     </Declaration>
     <Declaration>
@@ -203,34 +200,30 @@
         <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
     </ObjectPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#PNSleep"/>
         <Literal datatypeIRI="&xsd;string">53</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#PNWay"/>
         <Literal datatypeIRI="&xsd;string">way</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#PPExit"/>
         <Literal datatypeIRI="&xsd;string">exit</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#PPPrepareFood"/>
         <Literal datatypeIRI="&xsd;string">prepareFood</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#PPTelephone"/>
         <Literal datatypeIRI="&xsd;string">telephone</Literal>
     </DataPropertyAssertion>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasAnnotationValue"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
 </Ontology>
 
 

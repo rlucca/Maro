@@ -22,25 +22,59 @@
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Import>file:///Users/rlucca/Desktop/Maro.git/samplet/onto/basicAgent.owl</Import>
+    <Declaration>
+        <NamedIndividual IRI="#PNExit"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PNReading"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PNSleep"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PPClothes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PPFaucet"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PPTelephone"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#energy"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Negative"/>
+        <NamedIndividual IRI="#PNExit"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Negative"/>
+        <NamedIndividual IRI="#PNReading"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Negative"/>
+        <NamedIndividual IRI="#PNSleep"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Positive"/>
+        <NamedIndividual IRI="#PPClothes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Positive"/>
+        <NamedIndividual IRI="#PPFaucet"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Positive"/>
+        <NamedIndividual IRI="#PPTelephone"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Dynamic"/>
+        <NamedIndividual IRI="#energy"/>
+    </ClassAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
         <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHope"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdSatisfaction"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHappyFor"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdResentment"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdAdmiration"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
@@ -50,7 +84,12 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
         <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdLove"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdFearsConfirmed"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdJoy"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
@@ -60,12 +99,22 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
         <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdAdmiration"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdResentment"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
         <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdPride"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdSatisfaction"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGratitude"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdReproach"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
@@ -80,7 +129,7 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
         <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdJoy"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdLove"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
@@ -90,27 +139,7 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
         <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdReproach"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHate"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdShame"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdSorryFor"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdFearsConfirmed"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdRemorse"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
@@ -120,18 +149,98 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
         <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGratitude"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHappyFor"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
         <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdRemorse"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdShame"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHope"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdPride"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
         <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
         <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdFear"/>
     </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHate"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdSorryFor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#PNExit"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#PNReading"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#PNSleep"/>
+        <NamedIndividual IRI="#energy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#PPClothes"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#PPFaucet"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#PPTelephone"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
+        <NamedIndividual IRI="#PNExit"/>
+        <Literal datatypeIRI="&xsd;string">exit</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
+        <NamedIndividual IRI="#PNReading"/>
+        <Literal datatypeIRI="&xsd;string">reading</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
+        <NamedIndividual IRI="#PNSleep"/>
+        <Literal datatypeIRI="&xsd;string">50</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
+        <NamedIndividual IRI="#PPClothes"/>
+        <Literal datatypeIRI="&xsd;string">clothes</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
+        <NamedIndividual IRI="#PPFaucet"/>
+        <Literal datatypeIRI="&xsd;string">faucet</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
+        <NamedIndividual IRI="#PPTelephone"/>
+        <Literal datatypeIRI="&xsd;string">telephone</Literal>
+    </DataPropertyAssertion>
 </Ontology>
 
 

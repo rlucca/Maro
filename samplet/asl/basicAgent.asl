@@ -1,57 +1,5 @@
 //initial believes.
 //-----------------------------------------------------------------------------
-//!start.
-//+!start : .my_name(K) <- .println("my name is ", K).
-//+!start <- iam(agent); !!reactive.
-//-----------------------------------------------------------------------------
-/*+!reactive
-     : step(X) //& .random(Y) & K=math.round(Y*10000)
-    <- //?myself(_,_,_)[resource(P)];
-       nope;
-       !!reactive.
--!reactive
-    <- .println("reactive plan failed! Doing nope..."); nope;
-       !!reactive.*/
-//-----------------------------------------------------------------------------
-/*+X <- .println("add/? ", X); !!foo.
--X <- .println("del/? ", X); !!foo.
-
-
-+!foo : printed & .findall(L, agent(L), L)
-    <- !printAgentP(L);
-       foo.
-
-+!foo : not(printed)
-    <- !printPlaceView;
-       !printItemView;
-       +printed;
-       !!foo.
-
-+!printPlaceView
-    <- sims.ia.getPlaces(K);
-       !printPlace(K).
-
-+!printPlace([]).
-+!printPlace([H|R])
-    <- !printPlace(R);
-       sims.ia.getItemsAtPlace(H, K);
-       .println(H,": ", K).
-
-+!printItemView
-    <- sims.ia.getItems(K);
-       !printItem(K).
-
-+!printItem([]).
-+!printItem([H|R])
-    <- !printItem(R);
-       sims.ia.getPlacesByItem(H, K);
-       .println(H, ": ", K).
-
-+!printAgentP([]).
-+!printAgentP([H|R]) : agent(H) & .findall(K, agent(H)[K], M)
-    <- !printAgentP(R);
-       .println(H, " ==> ", M). */
-
 !start.
 +!start : step(STEP) & STEP < 4
     <- .println("Step: ", STEP);
@@ -60,6 +8,9 @@
        .findall(L, isSetupOf(L,_), ISO); .println("List of isSetupOf knowledge: ", ISO);
        .findall(L, hasSetup(L,_), HS); .println("List of hasSetup knowledge: ", HS);
        .findall(L, setup(L), S); .println("List of setup knowledge: ", S);
+       .findall(pp(A,P), priority(attract,A,P), AT); .println("List of attract knowledge: ", AT);
+       .findall(pn(A,P), priority(repulse,A,P), RT); .println("List of repulse knowledge: ", RT);
+       .findall(L, L, ALL); .println("List of all knowledge: ", ALL);
        //.wait({+step(_)});
        nope;
        !!start.

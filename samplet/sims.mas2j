@@ -5,21 +5,24 @@ MAS sims {
     environment: maro.example.sims.House(30000, 10, 4, FALSE, "onto/sims.owl")
     //executionControl: jason.control.ExecutionControl
     agents:
-        millie basicAgent.asl
+        millie basicAgent2.asl
             #1
+            beliefBaseClass maro.wrapper.BBAffective("onto/millie.owl")
             agentClass maro.wrapper.UniqueAnnotation
         ;
-        nina basicAgent.asl
+        nina basicAgent2.asl
             #1
             beliefBaseClass maro.wrapper.BBAffective("onto/nina.owl")
             agentClass maro.wrapper.UniqueAnnotation
         ;
-        john basicAgent.asl
+        john basicAgent2.asl
             #1
+            beliefBaseClass maro.wrapper.BBAffective("onto/john.owl")
             agentClass maro.wrapper.UniqueAnnotation
         ;
-        albert basicAgent.asl
+        albert basicAgent2.asl
             #1
+            beliefBaseClass maro.wrapper.BBAffective("onto/albert.owl")
             agentClass maro.wrapper.UniqueAnnotation
         ;
 
