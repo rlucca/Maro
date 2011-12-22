@@ -43,6 +43,9 @@
         <ObjectProperty IRI="#hasAnnotation"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#hasAnnotationValue"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#action"/>
     </Declaration>
     <Declaration>
@@ -265,6 +268,10 @@
         <ObjectProperty IRI="#hasAnnotation"/>
         <Class IRI="#Annotation"/>
     </ObjectPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasAnnotationValue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Dynamic</IRI>
