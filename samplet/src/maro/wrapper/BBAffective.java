@@ -48,7 +48,7 @@ public class BBAffective extends ChainBBAdapter
 			try {
 				ek = new EmotionKnowledge(myName, args[0]);
 
-				PreferenceLoader.getInstance().load(nextBB);
+				ek.loadPreferences(nextBB);
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.exit(22);

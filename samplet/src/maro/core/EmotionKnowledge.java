@@ -2,7 +2,9 @@ package maro.core;
 
 import maro.wrapper.Dumper;
 import maro.wrapper.OwlApi;
-import maro.wrapper.PreferenceLoader;
+
+import jason.asSyntax.ASSyntax;
+import jason.bb.BeliefBase;
 
 import java.util.Iterator;
 import java.util.HashMap;
@@ -34,19 +36,6 @@ public class EmotionKnowledge {
 		emotion.setEmotions(allEmotions);
 
 		ft = new FeelingsThreshold();
-        PreferenceLoader.getInstance().prepare(oaw);
-
-		// Erase all itens from setup et al.
-		oaw.remove(2, "hasAnnotationValue", null, null);
-		oaw.remove(2, "hasAnnotation", null, null);
-		oaw.remove(2, "hasName", null, null);
-
-		oaw.remove(1, "static", null, null);
-		oaw.remove(1, "dynamic", null, null);
-		oaw.remove(1, "annotation", null, null);
-		oaw.remove(1, "positive", null, null);
-		oaw.remove(1, "negative", null, null);
-		oaw.remove(1, "preference", null, null);
 	}
 
 	protected boolean changeBelief(Dumper dumper, boolean isAdd) {
@@ -109,9 +98,10 @@ public class EmotionKnowledge {
 						+ "inconsistent ou fault, ignoring emotions...");
 					ignoreFlag = true;
 				}
-				return; // nao temos threshold pq perder tempo?
+				return; // why lost time?
 			} else {
 				if (ignoreFlag == false) {
+					// Erase items from setup after the loaded
 					oaw.remove(2, "hasThresholdType", null, null);
 					oaw.remove(2, "hasThreshold", null, null);
 					oaw.remove(2, "isSetupOf", null, null);
@@ -183,5 +173,98 @@ public class EmotionKnowledge {
 			e.printStackTrace();
 			System.exit(29);
 		}
+	}
+
+	public void loadPreferences(BeliefBase base) throws Exception
+	{
+		Set<Dumper> negatives =
+			oaw.getCandidatesByFunctorAndArity(1, "negative");
+		Set<Dumper> positives =
+			oaw.getCandidatesByFunctorAndArity(1, "positive");
+
+		if (negatives == null && positives == null) {
+			erasePreferenceItens();
+			return ;
+		}
+
+		Set<Dumper> hasAnnotations =
+			oaw.getCandidatesByFunctorAndArity(2, "hasAnnotation");
+		Set<Dumper> hasAnnotationValues =
+			oaw.getCandidatesByFunctorAndArity(2, "hasAnnotationValue");
+
+		if (hasAnnotationValues == null && hasAnnotations == null) {
+			erasePreferenceItens();
+			return ;
+		}
+
+		for (Dumper d : negatives) {
+			String text  = d.getTerms()[0];
+			String value = null;
+			String annot = null;
+
+			for (Dumper a : hasAnnotations) {
+				if (a.getTerms()[0].equals(text)) {
+					annot = a.getTermAsString(1);
+					break;
+				}
+			}
+			for (Dumper v : hasAnnotationValues) {
+				if (v.getTerms()[0].equals(text)) {
+					value = v.getTermAsString(1);
+					break;
+				}
+			}
+
+			if (value != null && annot != null) {
+				base.add(
+					ASSyntax.parseLiteral(
+					new String("priority(repulse,"+annot+","+value+")[source(self)]")
+					)
+				);
+			}
+		}
+
+		for (Dumper d : positives) {
+			String text  = d.getTerms()[0];
+			String value = null;
+			String annot = null;
+
+			for (Dumper a : hasAnnotations) {
+				if (a.getTerms()[0].equals(text)) {
+					annot = a.getTermAsString(1);
+					break;
+				}
+			}
+			for (Dumper v : hasAnnotationValues) {
+				if (v.getTerms()[0].equals(text)) {
+					value = v.getTermAsString(1);
+					break;
+				}
+			}
+
+			if (value != null && annot != null) {
+				base.add(
+					ASSyntax.parseLiteral(
+					new String("priority(attract,"+annot+","+value+")[source(self)]")
+					)
+				);
+			}
+		}
+
+		erasePreferenceItens();
+	}
+
+	private void erasePreferenceItens() {
+		// Erase itens from preference after the preparation
+		oaw.remove(2, "hasAnnotationValue", null, null);
+		oaw.remove(2, "hasAnnotation", null, null);
+		oaw.remove(2, "hasName", null, null);
+
+		oaw.remove(1, "static", null, null);
+		oaw.remove(1, "dynamic", null, null);
+		oaw.remove(1, "annotation", null, null);
+		oaw.remove(1, "positive", null, null);
+		oaw.remove(1, "negative", null, null);
+		oaw.remove(1, "preference", null, null);
 	}
 }
