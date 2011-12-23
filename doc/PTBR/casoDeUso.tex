@@ -63,3 +63,66 @@ sem matar ninguem, mas a populacao sua não discansa
 dessa forma. Ela precisa se afastar... Fora isso o radar dela
  eh melhor com pesos e alcance de 6?
 
+--
+
+sofa pequeno 1,4x0,9 => 3x2
+sofa grande 2,3x1 => 5x2
+cama de casal usar => 4x4
+1x2,1m minha cama => 2x4
+3,5x3m meu quarto => 7quadrado x 6
+andada mais ou menos 55cm
+assumindo 55cm por quadrado
+20x20 tem 11mx11m
+
+--
+
+Emoção
+	A afetividade dita o como o agente se comportará ou o que ele fará.
+	Desse jeito, o nivel afetivo é o mais alto de todos.
+
+Rotinas
+	Rotinas são um comportamento abaixo da emoção para se conseguir
+	aceitação e segurança. Digamos que a afetividade apoia as rotinas.
+
+Preferencias
+	Nivel mais baixo entre todos. Enquanto a emoção dita o comportamento
+	e a rotina o que deve ser feito em parte do dia, as preferencias ditam o
+como será feito.
+
+Exemplo prático	
+	Emocao: Buscar divertimento
+	Rotina (da cidade): fliperama
+	não definido: leitura, assistir televisao
+	Preferencias: leitura e tv não prestam
+	 -> conclusao, vou ao fliperama! :-)
+
+	Emocao: Buscar aprovacao
+	Rotina (pessoal): aula (pela manha) e trabalho (pela tarde)
+	Preferencias: não se aplica
+	 -> conclusao, ir (em parte da) aula e comparecer ao trabalho
+
+--
+
+Preferencias dos agentes
+nome do agente	utility	name	positionX	positionY	lookFor	energy	owner
+shift	capacity
+albert – student early	neg(exit,reading); pos(clothes. faucet, telephone)
+<50 (bed)			
+john – home worker	neg(reading,telephone);
+pos(exit,clothes,table,prepareFood,keepFood)					<55 (bed)			
+millie – student late	neg(exit); pos(faucet, telephone)
+<70 (bed)			
+nina – worker	neg(way); pos(telephone, prepareFood,exit)
+<53 (bed)			
+
+Ok ok, nao da pra ver tambem aqui. Mas, basicamente sao usados tres colunas
+nome do agente, utility e energy.
+
+--
+
+Actions/Attributes	hungry	social	energy	cleaning
+changeOrientaion	  -1      0        0       0
+forward				  -2      0    -1 to -8	  -1
+nope				  -1      0       -1       0
+death				   -      -        -       -
+
