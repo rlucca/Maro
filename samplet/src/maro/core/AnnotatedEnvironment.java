@@ -4,8 +4,6 @@ import maro.wrapper.OwlApi;
 import java.util.HashMap;
 import java.io.File;
 
-// Annotations moved to Model
-//     Maybe change the name LATER?
 public class AnnotatedEnvironment extends IntelligentEnvironment
 {
 	protected OwlApi oapi;

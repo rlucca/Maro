@@ -3,25 +3,28 @@
 \section{Visão Geral}
 
 A presente arquitetura sendo construída foi pensada conforme mostrado na
-Figura~\ref{fig:vasc}. Como se pode observar, o sistema depende de um ambiente
-desenvolvido pelo usuário que entenderá as ontologias de anotações e de
-rotinas para construir a visualização que será mostrada. Dessa forma, o que o
-usuário vê é exibido conforme descrito na ontologia de rotinas. Mais detalhes
-ver seção~\ref{ch:aec:ocu}. Já a de anotações, explicada na
-seção~\ref{ch:aec:oda} permite guardar junto dos
-objetos do mundo virtual informações e, ainda, criar as preferências dos
-agentes sobre essas informações.
+Figura~\ref{fig:vasc}. Como se pode observar, o sistema é dividido em um
+ambiente e em agentes. O ambiente utiliza as ontologias de preferências e de
+rotinas para construir a visualização que será mostrada no
+capítulo~\ref{ch:cdu}. Dessa forma, o que o usuário vê é exibido conforme
+descrito na ontologia de rotinas. Mais detalhes ver seção~\ref{ch:aec:ocu}. Já
+a de preferências, explicada na seção~\ref{ch:aec:oda}, permite guardar junto
+dos objetos do mundo virtual informações quando as mesmas forem estáticas e
+criar as preferências dos agentes sobre essas informações.\dev{}
+% O dev colocado acima se deve ao fato de a de preferencias ser guardarem
+% informacoes, alem das proprias preferencias.
 
-O agente é a mente de um ator nesse mundo anotado sendo criado e o mundo
-disponibiliza, além da percepção dos objetos, as preferências do agente\dev{}.
-Essa escolha foi feita para permitir que a escolha do que fazer seja toda ela
-escrita em código\dev{} que a plataforma \jason entende. As emoções são
-concluídas pelo agente através de ontologia (ver seção~\ref{ch:aec:omce}) e
-por isso a base de crenças padrão da plataforma que escolhemos foi estendida
-para consultar, guardar e recuperar os dados diretamente nessa ontologia. Caso
-a informação não seja relevante para a mesma, ela é guardada na base de
-crenças padrão. Desse jeito, é como se a base de crenças tivesse dois níveis.
-O primeiro formado pela ontologia e a segunda formada pre-existente.
+A segunda parte do sistema utiliza os agentes. Um agente é a mente de um ator
+que esta agindo nesse mundo anotado. O mundo disponibiliza, além da percepção
+dos objetos, as preferências do agente e suas rotinas\dev{}. Essa escolha foi
+feita para permitir que a escolha do que fazer seja toda ela escrita em
+código\dev{} que a plataforma \jason entende. As emoções são concluídas pelo
+agente através de ontologia (ver seção~\ref{ch:aec:omce}) e, portanto, a base
+de crenças padrão da plataforma foi estendida para consultar, guardar e
+recuperar os dados diretamente nessa ontologia quando a mesma interessa. Caso
+contrário, a informação é guardada na base de crenças padrão. Desse jeito, é
+como se houvesse dois níveis de consulta: o primeiro formado pela ontologia e
+o segundo pela base de crença padrão.
 
 \begin{figure}
   \centering
@@ -300,19 +303,18 @@ Dessa forma, um agente na ontologia do
 modelo \occ pode descobrir seu perfil e descobrir seus locais visitados
 regularmente. O conceito de \emph{Place} pode ser pensado, como veremos
 adiante, como um ``objeto inteligente''.
-%Da mesma forma, o conceito de \emph{Place} faz uso da relação
-%\emph{hasSetup} porque os locais podem ser pensados como ``objetos
-%inteligentes'' dado que possuem horário de abertura e fechamento das
-%atividades.
 
-% eu nao tenho certeza sobre isso, porem seria interessante ter uma relacao
-% hasDimension da Object para Dimension. Dessa forma um objeto teria
-% conhecimento mesmo que abstrato sobre suas dimensões para o caso de ser
-% necessario fazer a bounding box collission...
-\todo{caberia aqui dizer como essa ontologia pode ser usada para se construir
-um ambiente}
+\todo{depois de escrever isso fiquei pensando porque nao levar isso pro caso
+de uso e so finalizar aqui dizendo que explicacoes de utilizacao estao no cap.
+seguinte...}
+Essa ontologia é utilizada no presente trabalho de duas formas. A primeira
+forma de utilização é para desenhar um mapa 2D do ambiente que os agentes
+atuam. Isso é permitido porque o conceito \emph{Place} relaciona-se com o
+\emph{Dimension}. Assim, todos os itens do mapa são retângulos. A outra forma
+de utilização é a que trouxe a ontologia para o trabalho e é definir que um
+agente tenha seus locais usuais descritos.
 
-\section{Ontologia de Anotações} \label{ch:aec:oda}
+\section{Ontologia de Preferências} \label{ch:aec:oda}
 
 \citet{doyle1998annotated} propuseram que o mundo contivesse uma série de
 anotações nos objetos. Assim, o agente poderia conhecer apenas a forma de
@@ -371,21 +373,20 @@ gostam de calor são atraídas pela valoração negativa. Dessa forma, os
 sub-conceitos da preferência representam sempre valores que fazem o agente ser
 atraído pelo objeto e repelido caso contrário.
 
-\todo{como as preferencias sao usadas? como as anotacoes sao usadas?}
+\todo{como as preferencias sao usadas? como as anotacoes sao usadas?} % isso eh bom dizer no caso de uso
 
-\section{Integrando a Plataforma \jason com a Ontologia}
+\section{Integrando a Plataforma \jason com as ontologias}
 
 \begin{table}[b]
 	\caption{As três ontologias juntas possuem expressividade: ALCHIN(D).}
 	\label{tab:tp:cdu:geral}
 	\begin{center}
 	\begin{tabular}{|c|c|}
-	%\begin{tabular}{|p{34mm}|p{50mm}|p{50mm}|}
 		\hline
 		Descrição & Quantidade \\ \hline
 		Classes &  57 		\\ \hline
 		Propriedade de Objetos & 23 \\ \hline
-		Propriedade de Dados & 25 \\ \hline
+		Propriedade de Dados & 26 \\ \hline
 		Indivíduos &  27	\\ \hline
 		Regras & 7 \\ \hline
 	\end{tabular}
