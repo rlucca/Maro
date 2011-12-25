@@ -220,7 +220,7 @@ class CharacterInspectorView extends JFrame
 				csv += "," + emotion;
 			}
 
-			csv += "hungry,social,cleaning,energy,orientation,weekday,day,hour,minute,second,shiftOfDay\n";
+			csv += ",hungry,social,cleaning,energy,orientation,weekday,day,hour,minute,second,shiftOfDay\n";
 			firstLine = false;
 		}
 
