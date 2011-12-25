@@ -2772,6 +2772,11 @@
         <Literal datatypeIRI="&xsd;int">16</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="http://www.urban.org/UEM.owl#hasName"/>
+        <NamedIndividual IRI="#DoorRightBathroomMiddle"/>
+        <Literal datatypeIRI="&xsd;string">doorRightBathroomMiddle</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="http://www.urban.org/UEM.owl#hasPositionX"/>
         <NamedIndividual IRI="#DoorRightBathroomMiddleDimension"/>
         <Literal datatypeIRI="&xsd;int">4</Literal>
