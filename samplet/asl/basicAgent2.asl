@@ -13,7 +13,8 @@
        .kill_agent(NAME).
 +!deliberation
      : .random(R) & NRANDOM=math.round(X*100000)
-    <- !behaviour(NRANDOM); // 0 to 100000
+    <- ?appraisal;
+       !behaviour(NRANDOM); // 0 to 100000
        !!deliberation.
 //-----------------------------------------------------------------------------
 +!behaviour(_)
