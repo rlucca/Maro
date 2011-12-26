@@ -424,7 +424,9 @@ public class HouseModel extends GridWorldModel
 				String aname = getStringUnquoted(annots, target);
 				String vname = getStringUnquoted(values, target);
 
-				if (aname == null || vname == null) continue;
+				if (aname == null || vname == null) {
+                    continue;
+                }
 
 				ps.setAnnot(aname, vname);
 			}
@@ -1021,7 +1023,7 @@ public class HouseModel extends GridWorldModel
 		public void randomOrientation() {
 			String os = "NESW";
 			orientation = os.charAt(nextInt(os.length()));
-			orientation = 'N';
+            orientation = 'N'; // TODO don't forget of removed this
 		}
 		public Character getOrientation() {
 			return orientation;

@@ -33,5 +33,18 @@ actors
 // put some actos in love and repulsion by objects too
 
 
+// 
++?appraisal
+     : object("wardrobe2")
+    <- .findall(X, object("wardrobe2")[X], L);
+       .println("wardrobe2: ", L).
+
+// 
++?appraisal
+     : object("doorToBathRoomMiddleToRoom1")
+    <- .findall(X, object("doorToBathRoomMiddleToRoom1")[X], L);
+       .println("doorToBathRoomMiddleToRoom1: ", L).
+
+// This is necessary to not give error.
 +?appraisal.
 

@@ -163,10 +163,8 @@ public class BBAffective extends ChainBBAdapter
 			}
 			@Override
 			public Literal next() {
-				if (id.hasNext() == false) return ret.next();
-
-				Literal li = Dumper.fromDumper(id.next(), 43);
-				return li;
+                if (id.hasNext() == false) return ret.next();
+                return Dumper.fromDumper(id.next(), 43);
 			}
 			@Override
 			public void remove() {
@@ -176,22 +174,23 @@ public class BBAffective extends ChainBBAdapter
 	}
 
 	protected Iterator<Literal>
-	getCandidateBeliefs(String functor, int arity)
+	getCandidateBeliefs2(PredicateIndicator pi)
 	{
+        final String functor = pi.getFunctor();
+        final int arity = pi.getArity();
 		final Iterator<Dumper> id = ek.getCandidatesByFunctorAndArityIter(functor, arity);
 		//System.err.println("lucca iter: " + id + " for " + functor + "/" + arity);
 		if (id == null)  return null;
+        final Iterator<Literal> lit = super.getCandidateBeliefs(pi);
 		return new Iterator<Literal> () {
 			@Override
 			public boolean hasNext() {
-				return id.hasNext();
+				return id.hasNext() || lit.hasNext();
 			}
 			@Override
 			public Literal next() {
-				if (hasNext() == false) return null;
-
-				Literal li = Dumper.fromDumper(id.next(), 39);
-				return li;
+                if (id.hasNext() == false) return lit.next();
+                return Dumper.fromDumper(id.next(), 39);
 			}
 			@Override
 			public void remove() {
@@ -208,7 +207,7 @@ public class BBAffective extends ChainBBAdapter
 	public Iterator<Literal>
 	getCandidateBeliefs(PredicateIndicator pi)
 	{
-		Iterator<Literal> it = getCandidateBeliefs(pi.getFunctor(), pi.getArity());
+		Iterator<Literal> it = getCandidateBeliefs2(pi);
 		if (it != null) return it;
 		return super.getCandidateBeliefs(pi);
 	}
