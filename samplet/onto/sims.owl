@@ -26,9 +26,6 @@
     <Import>file:///Users/rlucca/Desktop/Maro.git/ontology/annotation.owl</Import>
     <Import>file:///Users/rlucca/Desktop/Maro.git/ontology/annotation_occ.owl</Import>
     <Declaration>
-        <DataProperty IRI="#hasAnnotationValue"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="#AbstractArcade"/>
     </Declaration>
     <Declaration>
@@ -2457,72 +2454,72 @@
         <Literal datatypeIRI="&xsd;string">abstractWork</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationOwnerAlbert"/>
         <Literal datatypeIRI="&xsd;string">albert</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationOwnerJohn"/>
         <Literal datatypeIRI="&xsd;string">john</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationOwnerMillie"/>
         <Literal datatypeIRI="&xsd;string">millie</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationOwnerNina"/>
         <Literal datatypeIRI="&xsd;string">nina</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationUtilityClothes"/>
         <Literal datatypeIRI="&xsd;string">clothes</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationUtilityExit"/>
         <Literal datatypeIRI="&xsd;string">exit</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationUtilityFaucet"/>
         <Literal datatypeIRI="&xsd;string">faucet</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationUtilityKeepFood"/>
         <Literal datatypeIRI="&xsd;string">keepFood</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationUtilityPrepareFood"/>
         <Literal datatypeIRI="&xsd;string">prepareFood</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationUtilityRead"/>
         <Literal datatypeIRI="&xsd;string">reading</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationUtilitySleep"/>
         <Literal datatypeIRI="&xsd;string">sleep</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationUtilityTable"/>
         <Literal datatypeIRI="&xsd;string">table</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationUtilityTelephone"/>
         <Literal datatypeIRI="&xsd;string">telephone</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#hasAnnotationValue"/>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#AnnotationUtilityWay"/>
         <Literal datatypeIRI="&xsd;string">way</Literal>
     </DataPropertyAssertion>
@@ -4446,10 +4443,6 @@
         <NamedIndividual IRI="#WardrobeTopRoom2Dimension"/>
         <Literal datatypeIRI="&xsd;int">3</Literal>
     </DataPropertyAssertion>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasAnnotationValue"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
 </Ontology>
 
 
