@@ -2,8 +2,10 @@ package maro.core;
 
 import jason.asSyntax.Structure;
 import java.net.URL;
+import java.util.Set;
 import java.util.List;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.ArrayList;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -28,7 +30,7 @@ public class ActionLoader
 	public void loadActions() { loadAllActions("maro.example.sims.ea"); }
 
 	private void loadAllActions(String packet) {
-		List<String> names = new ArrayList<String> ();
+		Set<String> names = new HashSet<String> ();
 
 		try {
 			names = getAllClasses(packet);
@@ -71,7 +73,7 @@ public class ActionLoader
 		return ea.execute(agName, action, ie);
 	}
 
-	private static List<String> getAllClasses(String packageName)
+	private static Set<String> getAllClasses(String packageName)
             throws Exception
     {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -83,7 +85,7 @@ public class ActionLoader
             URL resource = resources.nextElement();
             dirs.add(resource.openConnection());
         }
-		List<String> classes = new ArrayList<String>();
+		Set<String> classes = new HashSet<String>();
 		for (URLConnection uc : dirs) {
 			try {
 				// sai com o nome da classe com o .class e com o path completo
@@ -93,8 +95,9 @@ public class ActionLoader
 					JarEntry je = eje.nextElement();
 					String name = je.getName();
 					if (name.endsWith(".class") && name.startsWith(path)) {
-						if (name.contains("$") == false)
-							classes.add(name);
+						if (name.contains("$") == false) {
+							classes.add(packageName+'.'+name.substring(name.lastIndexOf("/")+1, name.length()-6));
+						}
 					}
 				}
 			} catch (java.lang.ClassCastException e) {
@@ -107,8 +110,9 @@ public class ActionLoader
 				while (name != null) {
 					// here dont have the path complete to test again :'(
 					if (name.endsWith(".class") /*&& name.startsWith(path)*/) {
-						if (name.contains("$") == false)
+						if (name.contains("$") == false) {
 							classes.add(packageName+'.'+name.substring(0, name.length()-6));
+						}
 					}
 					name = br.readLine();
 				}
