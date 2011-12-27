@@ -24,21 +24,6 @@
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Import>http://www.urban.org/UEM.owl</Import>
-    <Declaration>
-        <Class abbreviatedIRI="occ:Agent"/>
-    </Declaration>
-    <Declaration>
-        <Class abbreviatedIRI="occ:Object"/>
-    </Declaration>
-    <Declaration>
-        <Class abbreviatedIRI="occ:Setup"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty abbreviatedIRI="occ:hasSetup"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasCharacter"/>
-    </Declaration>
     <SubClassOf>
         <Class abbreviatedIRI="occ:Agent"/>
         <Class abbreviatedIRI="occ:Object"/>

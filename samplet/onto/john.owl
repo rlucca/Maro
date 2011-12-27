@@ -22,33 +22,6 @@
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Import>file:///Users/rlucca/Desktop/Maro.git/samplet/onto/basicAgent.owl</Import>
-    <Declaration>
-        <NamedIndividual IRI="#PNReading"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#PNSleep"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#PNTelephone"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#PPClothes"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#PPExit"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#PPKeepFood"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#PPPrepareFood"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#PPTable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#energy"/>
-    </Declaration>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/annotation.owl#Negative"/>
         <NamedIndividual IRI="#PNReading"/>

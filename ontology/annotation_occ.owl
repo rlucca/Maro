@@ -22,9 +22,6 @@
     <Prefix name="occ" IRI="http://www.affective.org/occ_2011.owl#"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Import>http://www.affective.org/annotation.owl</Import>
-    <Declaration>
-        <Class abbreviatedIRI="occ:Setup"/>
-    </Declaration>
     <SubClassOf>
         <Class IRI="http://www.affective.org/annotation.owl#Annotation"/>
         <Class abbreviatedIRI="occ:Setup"/>
