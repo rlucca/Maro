@@ -167,7 +167,12 @@ public class EmotionKnowledge {
 		}
 
 		try {
-			oaw.dumpOntology("/tmp/baka.owl");
+			String filenameDump;
+
+			if (agName.isEmpty()) filenameDump = "/tmp/baka.owl";
+			else filenameDump = "/tmp/"+agName+".owl";
+
+			oaw.dumpOntology(filenameDump);
 		} catch (Exception e) {
 			System.err.println("Error dumping ontology");
 			e.printStackTrace();
