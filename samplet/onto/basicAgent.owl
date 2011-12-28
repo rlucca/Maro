@@ -33,22 +33,6 @@
         <NamedIndividual IRI="#john"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#High"/>
-        <NamedIndividual IRI="#lhigh"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#Low"/>
-        <NamedIndividual IRI="#llow"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#Mid"/>
-        <NamedIndividual IRI="#lmid"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.affective.org/occ_2011.owl#None"/>
-        <NamedIndividual IRI="#lnone"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Agent"/>
         <NamedIndividual IRI="#millie"/>
     </ClassAssertion>
@@ -58,310 +42,310 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdAdmiration"/>
+        <NamedIndividual IRI="#thresholdAdmiration"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdAnger"/>
+        <NamedIndividual IRI="#thresholdAnger"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdDisappointment"/>
+        <NamedIndividual IRI="#thresholdDisappointment"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdDistress"/>
+        <NamedIndividual IRI="#thresholdDistress"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdFear"/>
+        <NamedIndividual IRI="#thresholdFear"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdFearsConfirmed"/>
+        <NamedIndividual IRI="#thresholdFearsConfirmed"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGloating"/>
+        <NamedIndividual IRI="#thresholdGloating"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGratification"/>
+        <NamedIndividual IRI="#thresholdGratification"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGratitude"/>
+        <NamedIndividual IRI="#thresholdGratitude"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHappyFor"/>
+        <NamedIndividual IRI="#thresholdHappyFor"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHate"/>
+        <NamedIndividual IRI="#thresholdHate"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHope"/>
+        <NamedIndividual IRI="#thresholdHope"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdJoy"/>
+        <NamedIndividual IRI="#thresholdJoy"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdLove"/>
+        <NamedIndividual IRI="#thresholdLove"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdPride"/>
+        <NamedIndividual IRI="#thresholdPride"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdRelief"/>
+        <NamedIndividual IRI="#thresholdRelief"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdRemorse"/>
+        <NamedIndividual IRI="#thresholdRemorse"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdReproach"/>
+        <NamedIndividual IRI="#thresholdReproach"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdResentment"/>
+        <NamedIndividual IRI="#thresholdResentment"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdSatisfaction"/>
+        <NamedIndividual IRI="#thresholdSatisfaction"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdShame"/>
+        <NamedIndividual IRI="#thresholdShame"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/occ_2011.owl#Setup"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdSorryFor"/>
+        <NamedIndividual IRI="#thresholdSorryFor"/>
     </ClassAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdAdmiration"/>
+        <NamedIndividual IRI="#thresholdAdmiration"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdAdmiration"/>
+        <NamedIndividual IRI="#thresholdAdmiration"/>
         <Literal datatypeIRI="&xsd;string">Admiration</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdAnger"/>
+        <NamedIndividual IRI="#thresholdAnger"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdAnger"/>
+        <NamedIndividual IRI="#thresholdAnger"/>
         <Literal datatypeIRI="&xsd;string">Anger</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdDisappointment"/>
+        <NamedIndividual IRI="#thresholdDisappointment"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdDisappointment"/>
+        <NamedIndividual IRI="#thresholdDisappointment"/>
         <Literal datatypeIRI="&xsd;string">Disappointment</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdDistress"/>
+        <NamedIndividual IRI="#thresholdDistress"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdDistress"/>
+        <NamedIndividual IRI="#thresholdDistress"/>
         <Literal datatypeIRI="&xsd;string">Distress</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdFear"/>
+        <NamedIndividual IRI="#thresholdFear"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdFear"/>
+        <NamedIndividual IRI="#thresholdFear"/>
         <Literal datatypeIRI="&xsd;string">Fear</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdFearsConfirmed"/>
+        <NamedIndividual IRI="#thresholdFearsConfirmed"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdFearsConfirmed"/>
+        <NamedIndividual IRI="#thresholdFearsConfirmed"/>
         <Literal datatypeIRI="&xsd;string">FearsConfirmed</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGloating"/>
+        <NamedIndividual IRI="#thresholdGloating"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGloating"/>
+        <NamedIndividual IRI="#thresholdGloating"/>
         <Literal datatypeIRI="&xsd;string">Gloating</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGratification"/>
+        <NamedIndividual IRI="#thresholdGratification"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGratification"/>
+        <NamedIndividual IRI="#thresholdGratification"/>
         <Literal datatypeIRI="&xsd;string">Gratification</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGratitude"/>
+        <NamedIndividual IRI="#thresholdGratitude"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdGratitude"/>
+        <NamedIndividual IRI="#thresholdGratitude"/>
         <Literal datatypeIRI="&xsd;string">Gratitude</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHappyFor"/>
+        <NamedIndividual IRI="#thresholdHappyFor"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHappyFor"/>
+        <NamedIndividual IRI="#thresholdHappyFor"/>
         <Literal datatypeIRI="&xsd;string">HappyFor</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHate"/>
+        <NamedIndividual IRI="#thresholdHate"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHate"/>
+        <NamedIndividual IRI="#thresholdHate"/>
         <Literal datatypeIRI="&xsd;string">Hate</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHope"/>
+        <NamedIndividual IRI="#thresholdHope"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdHope"/>
+        <NamedIndividual IRI="#thresholdHope"/>
         <Literal datatypeIRI="&xsd;string">Hope</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdJoy"/>
+        <NamedIndividual IRI="#thresholdJoy"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdJoy"/>
+        <NamedIndividual IRI="#thresholdJoy"/>
         <Literal datatypeIRI="&xsd;string">Joy</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdLove"/>
+        <NamedIndividual IRI="#thresholdLove"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdLove"/>
+        <NamedIndividual IRI="#thresholdLove"/>
         <Literal datatypeIRI="&xsd;string">Love</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdPride"/>
+        <NamedIndividual IRI="#thresholdPride"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdPride"/>
+        <NamedIndividual IRI="#thresholdPride"/>
         <Literal datatypeIRI="&xsd;string">Pride</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdRelief"/>
+        <NamedIndividual IRI="#thresholdRelief"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdRelief"/>
+        <NamedIndividual IRI="#thresholdRelief"/>
         <Literal datatypeIRI="&xsd;string">Relief</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdRemorse"/>
+        <NamedIndividual IRI="#thresholdRemorse"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdRemorse"/>
+        <NamedIndividual IRI="#thresholdRemorse"/>
         <Literal datatypeIRI="&xsd;string">Remorse</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdReproach"/>
+        <NamedIndividual IRI="#thresholdReproach"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdReproach"/>
+        <NamedIndividual IRI="#thresholdReproach"/>
         <Literal datatypeIRI="&xsd;string">Reproach</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdResentment"/>
+        <NamedIndividual IRI="#thresholdResentment"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdResentment"/>
+        <NamedIndividual IRI="#thresholdResentment"/>
         <Literal datatypeIRI="&xsd;string">Resentment</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdSatisfaction"/>
+        <NamedIndividual IRI="#thresholdSatisfaction"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdSatisfaction"/>
+        <NamedIndividual IRI="#thresholdSatisfaction"/>
         <Literal datatypeIRI="&xsd;string">Satisfaction</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdShame"/>
+        <NamedIndividual IRI="#thresholdShame"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdShame"/>
+        <NamedIndividual IRI="#thresholdShame"/>
         <Literal datatypeIRI="&xsd;string">Shame</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThreshold"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdSorryFor"/>
+        <NamedIndividual IRI="#thresholdSorryFor"/>
         <Literal datatypeIRI="&xsd;int">20</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/occ_2011.owl#hasThresholdType"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdSorryFor"/>
+        <NamedIndividual IRI="#thresholdSorryFor"/>
         <Literal datatypeIRI="&xsd;string">SorryFor</Literal>
     </DataPropertyAssertion>
 </Ontology>

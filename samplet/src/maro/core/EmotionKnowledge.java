@@ -102,10 +102,10 @@ public class EmotionKnowledge {
 			} else {
 				if (ignoreFlag == false) {
 					// Erase items from setup after the loaded
+					oaw.remove(2, "hasSetup", null, null);
+					oaw.remove(2, "isSetupOf", null, null); // inverse of hasSetup
 					oaw.remove(2, "hasThresholdType", null, null);
 					oaw.remove(2, "hasThreshold", null, null);
-					oaw.remove(2, "isSetupOf", null, null);
-					oaw.remove(2, "hasSetup", null, null); // inverse of isSetupOf
 					oaw.remove(1, "setup", null, null);
 					ignoreFlag = true;
 				}
@@ -265,11 +265,11 @@ public class EmotionKnowledge {
 		oaw.remove(2, "hasAnnotation", null, null);
 		oaw.remove(2, "hasName", null, null);
 
-		oaw.remove(1, "static", null, null);
-		oaw.remove(1, "dynamic", null, null);
-		oaw.remove(1, "annotation", null, null);
 		oaw.remove(1, "positive", null, null);
 		oaw.remove(1, "negative", null, null);
 		oaw.remove(1, "preference", null, null);
+		oaw.remove(1, "static", null, null);
+		oaw.remove(1, "dynamic", null, null);
+		oaw.remove(1, "annotation", null, null);
 	}
 }

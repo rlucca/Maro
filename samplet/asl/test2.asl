@@ -15,9 +15,9 @@
 
 +!start
     : not(remove)
-//   <- +remove; -agent("darkstar")[like(50)]; !!start. // isso funciona e remove so o like
+   <- +remove; -agent("darkstar")[like(50),source(self)]; !!start. // isso funciona e remove so o like
 //   <-   +remove; -agent("darkstar"); !!start. // nao funciona e nao gera evento, use o debaixo...
-    <- +remove; .abolish(agent("darkstar")); !!start. // funciona
+//    <- +remove; .abolish(agent("darkstar")); !!start. // funciona
 // nota isso nao foi testado para as relacoes, mas a implementacao foi 'largada' la.
 
 +!start
@@ -39,7 +39,8 @@
 +!start
     <- .println("waiting..."); .wait(5000); .stopMAS.
 
-+agent(X)[Y]
-    <- .println(X, ": ", Y).
++agent(X)
+    <- .findall(Y, agent(X)[Y], L);
+       .println(X, ": ", L).
 -agent(X)[Y]
     <- .println(X, "- ", Y).

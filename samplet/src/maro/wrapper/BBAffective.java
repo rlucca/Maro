@@ -7,6 +7,7 @@ import maro.core.BBKeeper;
 //java only
 import java.util.Iterator;
 import java.util.Set;
+import java.util.NoSuchElementException;
 
 // jason only
 import jason.bb.BeliefBase;
@@ -153,8 +154,8 @@ public class BBAffective extends ChainBBAdapter
 	@Override
 	public Iterator<Literal>
 	iterator() {
-		final Iterator<Literal> ret = super.iterator();
-		final Iterator<Dumper> id = ek.iterator();
+		final Iterator<Literal> ret = checkIteratorNull(super.iterator());
+		final Iterator<Dumper> id = checkIteratorNull(ek.iterator());
 
 		return new Iterator<Literal> () {
 			@Override
@@ -181,7 +182,7 @@ public class BBAffective extends ChainBBAdapter
 		final Iterator<Dumper> id = ek.getCandidatesByFunctorAndArityIter(functor, arity);
 		//System.err.println("lucca iter: " + id + " for " + functor + "/" + arity);
 		if (id == null)  return null;
-        final Iterator<Literal> lit = super.getCandidateBeliefs(pi);
+        final Iterator<Literal> lit = checkIteratorNull(super.getCandidateBeliefs(pi));
 		return new Iterator<Literal> () {
 			@Override
 			public boolean hasNext() {
@@ -305,15 +306,20 @@ public class BBAffective extends ChainBBAdapter
 			return super.remove(l);
 
 		s = contains(l);
-		l.delAnnot( BeliefBase.TSelf );
-		if (s != null) s.delAnnots(l.getAnnots());
+		//l.delAnnot( BeliefBase.TSelf );
+		if (s == null) return super.remove(l);
 
-		d = Dumper.dumpLiteral(s);
+		s.delAnnots(l.getAnnots());
 
-		if (s.getAnnots().size() > 1) // ontology and source
-			ret = ek.add(d); // remove and add the replacement
-		else
+		if (s.hasAnnot() == true) {
+			if (s.hasSource() == false) s.addAnnot( BeliefBase.TSelf );
+			d = Dumper.dumpLiteral(s);
+			ret = ek.add(d); // remove and replace
+		} else {
+			d = Dumper.dumpLiteral(l);
 			ret = ek.remove(d);
+		}
+
 		//System.err.println("lucca del " + d + " = " + ret + " based on " + l);
 		if (ret == false) return super.remove(l);
 		return ret;
@@ -352,4 +358,23 @@ public class BBAffective extends ChainBBAdapter
 		}
 		return ebels;
 	}
+
+    private <T> Iterator<T>
+    checkIteratorNull(Iterator<T> it) {
+        if (it != null) return it;
+		return new Iterator<T> () {
+			@Override
+			public boolean hasNext() {
+				return false;
+			}
+			@Override
+			public T next() {
+                throw new NoSuchElementException();
+			}
+			@Override
+			public void remove() {
+				throw new UnsupportedOperationException();
+			}
+		};
+    }
 }
