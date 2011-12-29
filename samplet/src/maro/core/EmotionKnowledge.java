@@ -137,7 +137,7 @@ public class EmotionKnowledge {
 	public Integer getEmotionValence(String emotionType, String agentName) {
 		Integer valence = getEmotionPotence(emotionType, agentName);
 		Integer minimum = ft.getThreshold(emotionType);
-		if (valence == null) return null;
+		if (valence == null || minimum == null) return null;
 		return valence - minimum;
 	}
 

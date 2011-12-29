@@ -145,15 +145,17 @@ actors
 
 //updateAppraisal-Joy-----------------------------------------------------
 +?updateAppraisal(joy, INDIVIDUAL, VALUE)
-     : not(hasLikelihood(INDIVIDUAL, "lnone"))
-    <- +hasLikelihood(INDIVIDUAL, "lnone");
+     : not(hasLikelihood(INDIVIDUAL, "lnone")) & .my_name(NAME)
+    <- +isAppraisalOf(INDIVIDUAL, NAME);
+       +hasLikelihood(INDIVIDUAL, "lnone");
        +hasDesireSelf(INDIVIDUAL, VALUE).
 +?updateAppraisal(joy, INDIVIDUAL, VALUE)
     <- +hasDesireSelf(INDIVIDUAL, VALUE).
 //updateAppraisal-Distress------------------------------------------------
 +?updateAppraisal(distress, INDIVIDUAL, VALUE)
-     : not(hasLikelihood(INDIVIDUAL, "lnone"))
-    <- +hasLikelihood(INDIVIDUAL, "lnone");
+     : not(hasLikelihood(INDIVIDUAL, "lnone")) & .my_name(NAME)
+    <- +isAppraisalOf(INDIVIDUAL, NAME);
+       +hasLikelihood(INDIVIDUAL, "lnone");
        +hasDesireSelf(INDIVIDUAL, VALUE).
 +?updateAppraisal(distress, INDIVIDUAL, VALUE)
     <- +hasDesireSelf(INDIVIDUAL, VALUE).
