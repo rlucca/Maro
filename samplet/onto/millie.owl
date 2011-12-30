@@ -27,12 +27,12 @@
         <NamedIndividual IRI="#PNExit"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="http://www.affective.org/annotation.owl#Negative"/>
-        <NamedIndividual IRI="#PNSleep"/>
+        <Class IRI="http://www.affective.org/annotation.owl#Positive"/>
+        <NamedIndividual IRI="#PPFaucet"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/annotation.owl#Positive"/>
-        <NamedIndividual IRI="#PPFaucet"/>
+        <NamedIndividual IRI="#PPSleep"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/annotation.owl#Positive"/>
@@ -159,13 +159,13 @@
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
-        <NamedIndividual IRI="#PNSleep"/>
-        <NamedIndividual IRI="#energy"/>
+        <NamedIndividual IRI="#PPFaucet"/>
+        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
-        <NamedIndividual IRI="#PPFaucet"/>
-        <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+        <NamedIndividual IRI="#PPSleep"/>
+        <NamedIndividual IRI="#energy"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
@@ -179,13 +179,13 @@
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
-        <NamedIndividual IRI="#PNSleep"/>
-        <Literal datatypeIRI="&xsd;string">70</Literal>
+        <NamedIndividual IRI="#PPFaucet"/>
+        <Literal datatypeIRI="&xsd;string">faucet</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
-        <NamedIndividual IRI="#PPFaucet"/>
-        <Literal datatypeIRI="&xsd;string">faucet</Literal>
+        <NamedIndividual IRI="#PPSleep"/>
+        <Literal datatypeIRI="&xsd;string">70</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>

@@ -31,16 +31,16 @@
         <NamedIndividual IRI="#PNReading"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="http://www.affective.org/annotation.owl#Negative"/>
-        <NamedIndividual IRI="#PNSleep"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="http://www.affective.org/annotation.owl#Positive"/>
         <NamedIndividual IRI="#PPClothes"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/annotation.owl#Positive"/>
         <NamedIndividual IRI="#PPFaucet"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.affective.org/annotation.owl#Positive"/>
+        <NamedIndividual IRI="#PPSleep"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.affective.org/annotation.owl#Positive"/>
@@ -53,12 +53,12 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
         <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdAdmiration"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdRelief"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
         <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#albert"/>
-        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdRelief"/>
+        <NamedIndividual IRI="http://www.mas.org/samplet/basicAgent.owl#thresholdAdmiration"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/occ_2011.owl#hasSetup"/>
@@ -172,11 +172,6 @@
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
-        <NamedIndividual IRI="#PNSleep"/>
-        <NamedIndividual IRI="#energy"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
         <NamedIndividual IRI="#PPClothes"/>
         <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
     </ObjectPropertyAssertion>
@@ -184,6 +179,11 @@
         <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
         <NamedIndividual IRI="#PPFaucet"/>
         <NamedIndividual IRI="http://www.affective.org/annotation.owl#utility"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
+        <NamedIndividual IRI="#PPSleep"/>
+        <NamedIndividual IRI="#energy"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.affective.org/annotation.owl#hasAnnotation"/>
@@ -202,11 +202,6 @@
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
-        <NamedIndividual IRI="#PNSleep"/>
-        <Literal datatypeIRI="&xsd;string">50</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#PPClothes"/>
         <Literal datatypeIRI="&xsd;string">clothes</Literal>
     </DataPropertyAssertion>
@@ -214,6 +209,11 @@
         <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
         <NamedIndividual IRI="#PPFaucet"/>
         <Literal datatypeIRI="&xsd;string">faucet</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
+        <NamedIndividual IRI="#PPSleep"/>
+        <Literal datatypeIRI="&xsd;string">50</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.affective.org/annotation.owl#hasAnnotationValue"/>
