@@ -1023,7 +1023,6 @@ public class HouseModel extends GridWorldModel
 		public void randomOrientation() {
 			String os = "NESW";
 			orientation = os.charAt(nextInt(os.length()));
-            orientation = 'N'; // TODO don't forget of removed this
 		}
 		public Character getOrientation() {
 			return orientation;
@@ -1144,6 +1143,15 @@ public class HouseModel extends GridWorldModel
 
 					if (ll.x <= mx && ll.x >= x && ll.y <= my && ll.y >= y) {
 						Literal literal = a.getLiteral();
+						String laction = h.getLastAction(getName());
+						if (laction != null) {
+							literal.addAnnot(
+								ASSyntax.createLiteral("lastAction",
+									ASSyntax.createString(laction),
+                                    ASSyntax.createNumber(h.getStep()-1)
+								)
+							);
+						}
 						h.addPercept(getName(), literal);
 					}
 				}
