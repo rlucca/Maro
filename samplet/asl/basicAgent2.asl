@@ -21,4 +21,9 @@
     <- //.findall(X, X, L); .println("all things: ", L);
        .println("doing nope "); nope.
 //-----------------------------------------------------------------------------
--!X <- .println("Handler failure: ", X).
+-!X <- .println("Handler failure: ", X);
+       !deliberation.
+//-----------------------------------------------------------------------------
+//+agent(NAME)[lastAction(ANAME,ASTEP)]
+//    : step(STEP)
+//    <- .println("agent ",NAME," previous action ", ANAME," on time ", ASTEP, " now ", STEP, " LK").
