@@ -8,7 +8,7 @@ data
     hasName ---------------- USELESS
     hasThresholdType ------- OK
     hasThreshold ----------- OK
-    hasDesireSelf ---------- NO/i
+    hasDesireSelf ---------- OK (joy/distress)
     hasDesireOther --------- NO/i
     hasDeserved ------------ NO/i
     hasEffort -------------- NO/i
@@ -18,36 +18,37 @@ data
     hasPreviousIntensity --- NO/i
     hasRealized ------------ NO/i
 object
-    hasLikelihood ---------- NO/I
+    hasAppraisal ----------- DO NOT FORGET (or isAppraisalOf)
+    hasSetup --------------- OK
+    hasLikelihood ---------- OK (none) / NO (other)
     hasKnowRelation -------- NO/I
-    hasKnow ---------------- NO/I
-        hasEnemy ----------- NO/I
-        hasFriend ---------- NO/I
-    hasSetup --------------- NO/I
+    hasEnemy --------------- NO/I
+    hasFriend -------------- NO/I
     hasJudgeMyself --------- NO/I
     hasJudgeOther ---------- NO/I
     hasPersonEnemy --------- NO/I
     hasPersonFriend -------- NO/I
-    hasAppraisal ----------- NO/I
 emotion
-    Joy -------------------- NO           Distress --------------- NO
-    Hope ------------------- NO           Fear ------------------- NO
-    Satisfaction ----------- NO           FearConfirmed ---------- NO
-    Relief ----------------- NO           Disappointment --------- NO
-    Happy-for -------------- NO           Gloating --------------- NO
-    Resentment ------------- NO           Sorry-for -------------- NO
-    Love ------------------- NO           Hate ------------------- NO
-    Pride ------------------ NO           Shame ------------------ NO
-    Admiration ------------- NO           Reproach --------------- NO
-    Gratification ---------- NO           Remorse ---------------- NO
-    Gratitude -------------- NO           Anger ------------------ NO
+    Joy -------------------- YES          Distress --------------- YES
+    Hope ------------------- NO           Fear ------------------- NO ......... goals not finished!
+    Admiration ------------- NO           Reproach --------------- NO ......... responsability of actions of other
+    Pride ------------------ NO           Shame ------------------ NO ......... responsability of actions of yourself
+    Gratification ---------- NO           Remorse ---------------- NO ......... responsability of actions of yourself + (joy/distress)
+    Gratitude -------------- NO           Anger ------------------ NO ......... responsability of actions of other + (joy/distress)
+    Love ------------------- NO           Hate ------------------- NO ......... ???
+    Satisfaction ----------- NO           FearConfirmed ---------- NO ......... goals finished! Happens...
+    Relief ----------------- NO           Disappointment --------- NO ......... goals finished! Not happens...
+    Happy-for -------------- NO           Gloating --------------- NO ......... goals of other... happens...
+    Resentment ------------- NO           Sorry-for -------------- NO ......... goals of other... not happens...
 actors
     John,     Nina
     Millie,   Albert
-*/
 
+// TODO:
 // John and Nina in love by each other
 // put some actos in love and repulsion by objects too
+*/
+
 
 +?appraisal
     <- // startin' get the priorities!
@@ -65,6 +66,7 @@ actors
        ?appraisalOnePercept(PERCEPT, ANNOTS, LAT, VALP);
        .println("percept ", PERCEPT, " == ", FUNCTOR, "(", TERMS, ") = ",VALR+VALP).
        // Actually, VALR or VALP represents attraction and repulse. Attraction when the value is positive and Repulse when the value is negative.
+       // But, if you think about attention's focus the positive values do not need attention. Only negative value need atention to protect yourself.
 
 +?appraisalOnePercept(_, _, [], 0).
 +?appraisalOnePercept(PERCEPT, ANNOTS, [PR|L], NEWVAL)
