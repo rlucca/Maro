@@ -20,7 +20,7 @@ class FeelingsThreshold {
 
 	public Integer getThreshold(String eType) {
 		if (thresholds == null) return null;
-		return thresholds.get(eType);
+		return thresholds.get(eType.toLowerCase());
 	}
 
 	public boolean isActive() {
@@ -84,7 +84,7 @@ class FeelingsThreshold {
 			}
 
 			//System.out.println("putting "+emotion+" with "+value);
-			thresholds.put(emotion, value);
+			thresholds.put(emotion.toLowerCase(), value);
 		}
 
 		loaded = true;
