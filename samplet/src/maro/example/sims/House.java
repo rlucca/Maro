@@ -22,13 +22,20 @@ public class House extends AnnotatedEnvironment
     }
 	@Override
 	protected void stepStarted(int step) {
-		getLogger().info("Started step " + step);
-
-		controller.newStep(step, this);
-
 		if (step > 0) {
 			updateNumberOfAgents();
 		}
+
+		if (getNbAgs() == 0) {
+			try {
+				getLogger().info("All agents died... exiting");
+				getEnvironmentInfraTier().getRuntimeServices().stopMAS();
+			} catch (Exception e) { }
+		}
+
+		getLogger().info("Started step " + step);
+
+		controller.newStep(step, this);
 	}
 
 	public HouseModel getModel() { return model; }
