@@ -220,7 +220,7 @@ class CharacterInspectorView extends JFrame
 				csv += "," + emotion;
 			}
 
-			csv += ",hungry,social,cleaning,energy,orientation,weekday,day,hour,minute,second,shiftOfDay\n";
+			csv += ",hungry,social,cleaning,energy,orientation,lastAction,weekday,day,hour,minute,second,shiftOfDay\n";
 			firstLine = false;
 		}
 
@@ -249,6 +249,12 @@ class CharacterInspectorView extends JFrame
             lookFor.setText("lookFor: "+a.getOrientationText());
             csv += "," + a.getHungry() + "," + a.getSocial() + "," + a.getCleaning()
                 + "," + a.getEnergy() + "," + a.getOrientationText();
+
+			String lact = cic.getParent().parent.getLastAction(a.getName());
+			if (lact == null || lact.isEmpty())
+				csv += ",";
+			else
+				csv += "," + lact;
         } else {
             hungry.setText("hungry: 0");
             social.setText("social: 0");
@@ -256,6 +262,7 @@ class CharacterInspectorView extends JFrame
             energy.setText("energy: 0");
             lookFor.setText("lookFor: Unknow");
             csv += ",0,0,0,0,Unknow";
+			csv += ","; // dont have last action
         }
 
 		Integer day  = cic.getParent().day;
