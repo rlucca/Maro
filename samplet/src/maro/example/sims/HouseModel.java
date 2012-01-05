@@ -568,6 +568,8 @@ public class HouseModel extends GridWorldModel
 		if (placeView == null || name == null) return als.toArray(new String [0]);
 		Place base = referPlace.get(name);
 		if (base == null) return als.toArray(new String [0]);
+        ArrayList<Place> alp = placeView.get(base);
+		if (alp == null) return als.toArray(new String [0]);
 		for (Place p : placeView.get(base)) {
 			als.add(p.getName());
 		}
@@ -587,6 +589,8 @@ public class HouseModel extends GridWorldModel
 		if (itemView == null || name == null) return als.toArray(new String [0]);
 		Place base = referPlace.get(name);
 		if (base == null) return als.toArray(new String [0]);
+        ArrayList<Place> alp = itemView.get(base);
+		if (alp == null) return als.toArray(new String [0]);
 		for (Place p : itemView.get(base)) {
 			als.add(p.getName());
 		}
@@ -1133,7 +1137,7 @@ public class HouseModel extends GridWorldModel
 					Location ll;
 
 					// When is doing a self annotation is used myself
-					if (a.getID() == null || a.getID() < 0 || a.getID() == getID())
+					if (a == null || a.getID() == null || a.getID() < 0 || a.getID() == getID())
 						continue;
 
 					id = a.getID();
