@@ -4,7 +4,9 @@ import jason.asSemantics.TransitionSystem;
 import jason.asSemantics.Unifier;
 import jason.asSyntax.Term;
 import jason.asSyntax.Atom;
+import jason.asSyntax.ASSyntax;
 import jason.asSyntax.ListTerm;
+import jason.asSyntax.StringTerm;
 import jason.asSyntax.ListTermImpl;
 import jason.infra.centralised.CentralisedAgArch;
 import jason.infra.centralised.CentralisedEnvironment;
@@ -21,8 +23,8 @@ public class getItemsAtPlace extends getPlaces {
 					throws JasonException
 	{
 		super.checkArguments(args);
-		if (!args[0].isAtom()) {
-            throw JasonException.createWrongArgument(this,"first argument must be a atom");
+		if (!args[0].isAtom() && !args[0].isString()) {
+            throw JasonException.createWrongArgument(this,"first argument must be a atom or a string");
 		}
 	}
 
@@ -32,14 +34,19 @@ public class getItemsAtPlace extends getPlaces {
 	{
 		checkArguments(args);
 
-		String place = ((Atom) args[0]).getFunctor();
+		String place;
+
+        if (args[0].isAtom())
+		    place = ((Atom) args[0]).getFunctor();
+        else
+            place = ((StringTerm)args[0]).getString();
 		
 		ListTerm ln = new ListTermImpl();
 		ListTerm tail = ln;
 		HouseModel hm = getTerrain(ts);
 		if (hm == null) return un.unifies(args[1], ln);
 		for (String itemName : hm.getItemsAtPlace(place)) {
-			tail = tail.append(new Atom(itemName));
+			tail = tail.append(ASSyntax.createString(itemName));
 		}
 		return un.unifies(args[1], ln);
 	}

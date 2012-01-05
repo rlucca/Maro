@@ -3,7 +3,7 @@ package sims.ia;
 import jason.asSemantics.TransitionSystem;
 import jason.asSemantics.Unifier;
 import jason.asSyntax.Term;
-import jason.asSyntax.Atom;
+import jason.asSyntax.ASSyntax;
 import jason.asSyntax.ListTerm;
 import jason.asSyntax.ListTermImpl;
 import jason.infra.centralised.CentralisedAgArch;
@@ -28,7 +28,7 @@ public class getItems extends getPlaces
 		HouseModel hm = getTerrain(ts);
 		if (hm == null) return un.unifies(args[0], ln);
 		for (String placeName : hm.getItemsFromItemView()) {
-			tail = tail.append(new Atom(placeName));
+			tail = tail.append(ASSyntax.createString(placeName));
 		}
 		return un.unifies(args[0], ln);
 	}
