@@ -59,7 +59,7 @@ actors
 
 +?appraisalPercept([], LRE, LAT).
 +?appraisalPercept([PERCEPT|R], LRE, LAT)
-     : sims.ia.deconstructionAsList(PERCEPT, [FUNCTOR|TERMS])
+     : PERCEPT =.. [FUNCTOR,TERMS,_]
     <- ?appraisalPercept(R, LRE, LAT);
        .findall(X, PERCEPT[X], ANNOTS);
        ?appraisalOnePercept(PERCEPT, ANNOTS, LRE, VALR);
@@ -78,8 +78,8 @@ actors
 
 +?appraisalOneAnnotation([], _, VAL, VAL).
 +?appraisalOneAnnotation([H|R], PR, OLDVAL, NEWVAL)
-     : sims.ia.deconstructionAsList(H, [NAMEPRI,VALTER|TERMS])
-     & sims.ia.deconstructionAsList(PR,[FUNCPRI,NAMEPRI,PARTPRI])
+     :  H =.. [NAMEPRI,          [VALTER|_], _]
+     & PR =.. [FUNCPRI, [NAMEPRI,PARTPRI|_], _]
     <- ?appraisalOneAnnotationValue(VALTER, PARTPRI, FUNCPRI, OLDVAL, VAL);
        ?appraisalOneAnnotation(R, PR, VAL, NEWVAL).
 +?appraisalOneAnnotation([H|R], PR, OLDVAL, NEWVAL)
@@ -119,29 +119,29 @@ actors
 //evalAppraisal-----------------------------------------------------------------
 +?evalAppraisal(_, _, OLDVAL, OLDVAL).
 +?evalAppraisal(PCP, PREF, OLDVAL, NEWVAL)
-     : sims.ia.deconstructionAsList(PCP,  [FUNCP, TERM1P | [] ])
-     & sims.ia.deconstructionAsList(PREF, [FUNCF, TERM1F | TERMF])
+     : PCP =..  [FUNCP, [TERM1P|[]], _]
+     & PREF =.. [FUNCF,  [TERM1F|_], _]
      & NEWVAL > 0
     <- //.println("   (",FUNCP,",",TERM1P,") against ", TERM1F, " oldval ", OLDVAL, " newval ", NEWVAL);
        .concat("", FUNCP, "_", TERM1P, "_", TERM1F, INDIVIDUAL);
        ?updateAppraisal(love, INDIVIDUAL, NEWVAL).
 +?evalAppraisal(PCP, PREF, OLDVAL, NEWVAL)
-     : sims.ia.deconstructionAsList(PCP,  [FUNCP, TERM1P | [] ])
-     & sims.ia.deconstructionAsList(PREF, [FUNCF, TERM1F | TERMF])
+     : PCP =..  [FUNCP, [TERM1P|[]], _]
+     & PREF =.. [FUNCF,  [TERM1F|_], _]
      & NEWVAL < 0
     <- //.println("   (",FUNCP,",",TERM1P,") against ", TERM1F, " oldval ", OLDVAL, " newval ", NEWVAL);
        .concat("", FUNCP, "_", TERM1P, "_", TERM1F, INDIVIDUAL);
        ?updateAppraisal(hate, INDIVIDUAL, NEWVAL).
 +?evalAppraisal(PCP, PREF, OLDVAL, NEWVAL)
-     : sims.ia.deconstructionAsList(PCP,  [FUNCP         | []   ])
-     & sims.ia.deconstructionAsList(PREF, [FUNCF, TERM1F | TERMF])
+     : PCP =..  [FUNCP,         [], _]
+     & PREF =.. [FUNCF, [TERM1F|_], _]
      & NEWVAL > 0
     <- //.println("   (",FUNCP,",[]) against ", TERM1F, " oldval ", OLDVAL, " newval ", NEWVAL);
        .concat("", FUNCP, "_", TERM1F, INDIVIDUAL);
        ?updateAppraisal(joy, INDIVIDUAL, NEWVAL).
 +?evalAppraisal(PCP, PREF, OLDVAL, NEWVAL)
-     : sims.ia.deconstructionAsList(PCP,  [FUNCP         | []   ])
-     & sims.ia.deconstructionAsList(PREF, [FUNCF, TERM1F | TERMF])
+     : PCP =..  [FUNCP,         [], _]
+     & PREF =.. [FUNCF, [TERM1F|_], _]
      & NEWVAL < 0
     <- //.println("   (",FUNCP,",[]) against ", TERM1F, " oldval ", OLDVAL, " newval ", NEWVAL);
        .concat("", FUNCP, "_", TERM1F, INDIVIDUAL);

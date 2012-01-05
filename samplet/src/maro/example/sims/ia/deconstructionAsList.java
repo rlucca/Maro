@@ -22,6 +22,7 @@ public class deconstructionAsList extends DefaultInternalAction
             throw JasonException.createWrongArgument(this,"first argument '"+args[0]+"'is not a structure.");
         if (!args[1].isVar() && !args[1].isList())
             throw JasonException.createWrongArgument(this,"last argument '"+args[1]+"'is not a list nor a variable.");
+		throw JasonException.createWrongArgument(this,"deprecated. Use operator `=..'");
     }
 
     @Override
