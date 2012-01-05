@@ -138,7 +138,13 @@ public class EmotionKnowledge {
 		Integer valence = getEmotionPotence(emotionType, agentName);
 		Integer minimum = ft.getThreshold(emotionType);
 		if (valence == null || minimum == null) return null;
-		return valence - minimum;
+		if ((valence > 0 && valence >= minimum)) {
+			return valence - minimum;
+		}
+		if ((valence < 0 && valence <= -minimum)) {
+			return valence + minimum;
+		}
+		return null;
 	}
 
 	public Set<String> feelings(int step) {
