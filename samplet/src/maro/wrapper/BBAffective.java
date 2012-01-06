@@ -107,8 +107,8 @@ public class BBAffective extends ChainBBAdapter
 			return false;
 		}
 		// Se for o functor 'sameAs' aceitamos, independente da aridade
-		// Caso contrario, a aridade tem que estar em 1 ou 2.
-		if (!l.getFunctor().equals("sameAs") && (arity < 1 || arity > 2))
+		// Caso contrario, tem que ser relevante
+		if (!l.getFunctor().equals("sameAs") && !ek.isRelevant(arity, l.getFunctor()))
 			return false;
 
 		d = Dumper.dumpLiteral(l);
@@ -301,8 +301,8 @@ public class BBAffective extends ChainBBAdapter
 			return super.remove(l);
 		}
 		// Se for o functor 'sameAs' aceitamos, independente da aridade...
-		// Caso contrario, a aridade tem que estar em 1 ou 2.
-		if (!l.getFunctor().equals("sameAs") && (arity < 1 || arity > 2))
+		// Caso contrario, tem que ser relevante
+		if (!l.getFunctor().equals("sameAs") && !ek.isRelevant(arity, l.getFunctor()))
 			return super.remove(l);
 
 		s = contains(l);

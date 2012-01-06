@@ -278,4 +278,8 @@ public class EmotionKnowledge {
 		oaw.remove(1, "dynamic", null, null);
 		oaw.remove(1, "annotation", null, null);
 	}
+
+	public boolean isRelevant(int arity, String functor) {
+		return oaw.isRelevant(arity, functor);
+	}
 }
