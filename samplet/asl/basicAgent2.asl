@@ -39,6 +39,7 @@
     : myself[lookFor(ORIENTATION)] & not(perceived(ORIENTATION, _, _))
    <- .println("perceiving the around environment");
       .findall(OBJ, object(OBJ)[source(percept)], LISTA);
+      // this need be arity 3 because Dumper class not support list...
       +perceived(ORIENTATION, LISTA, 0);
       !!planDiscoverLocation(RANDOM).
 //-----------------------------------------------------------------------------
@@ -62,11 +63,14 @@
 +!planRest(_, LastStep)
     :  step(LastStep)
     <- .println("forget plan rest");
+       // TODO put disappointment emotion
        !!deliberation.
 //-----------------------------------------------------------------------------
 +!planRest(RANDOM, LastStep)
     <- .println("planning rest");
        ?appraisal;
+       ?room(ROOM);
+       !planRoute("bed", ROOM, ROUTE);
        nope;
        !!planRest(RANDOM, LastStep).
 //-----------------------------------------------------------------------------

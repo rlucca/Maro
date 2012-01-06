@@ -1,3 +1,4 @@
+{ include("routes.asl") }
 //-----------------------------------------------------------------------------
 +!calculatePosition([])
      : .findall(L, room(L), []).
@@ -31,4 +32,28 @@
 +!computatePlaces([H|R])
     <- +room(H)[likelihood(1)];
        !computatePlaces(R).
+//-----------------------------------------------------------------------------
++!planRoute(PREFIX, SOURCE, ROUTE)
+    <- sims.ia.getItems(ITEMS);
+       !filterListByPrefix(PREFIX, ITEMS, ITEMSFILTERED);
+       !planRouteByItem(ITEMSFILTERED, SOURCE, ROUTE).
+       //.println("Route found to all items: ", ROUTE, " LK").
+//-----------------------------------------------------------------------------
++!filterListByPrefix(PrefixName, [], []).
+//-----------------------------------------------------------------------------
++!filterListByPrefix(PrefixName, [Item|Items], NewItemsFiltered)
+     : .substring(PrefixName, Item, 0)
+    <- !filterListByPrefix(PrefixName, Items, ItemsFiltered);
+       .concat([Item], ItemsFiltered, NewItemsFiltered).
+//-----------------------------------------------------------------------------
++!filterListByPrefix(PrefixName, [Item|Items], ItemsFiltered)
+    <- !filterListByPrefix(PrefixName, Items, ItemsFiltered).
+//-----------------------------------------------------------------------------
++!planRouteByItem([], _, []).
+//-----------------------------------------------------------------------------
++!planRouteByItem([ITEM|ITEMS], SOURCE, [route(ITEM,RL,R)|ROUTE])
+    <- !planRouteByItem(ITEMS, SOURCE, ROUTE);
+       sims.ia.getPlacesByItem(ITEM, [TARGET]);
+       ?routeTo(SOURCE, TARGET, R);
+       .length(R, RL).
 //-----------------------------------------------------------------------------
