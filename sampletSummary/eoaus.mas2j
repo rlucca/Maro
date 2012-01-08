@@ -3,12 +3,22 @@
 MAS eoaus {
     infrastructure: Centralised //(pool, 2)
 
-    // timeout seconds, number of steps, policy of when adding second action, number of agents
-    environment: maro.example.LU2DEnv(30000, 50, FALSE, 1)
+    // timeout seconds, number of steps, numer of agents, policy of when adding second action, ontology
+    environment: maro.example.sims.House(30000, 1000, 4, FALSE, "empty.owl")
 
     agents:
         millie
           beliefBaseClass maro.wrapper.BBAffective("ontology/occ-tbox.owl")
+          agentClass maro.wrapper.UniqueAnnotation
+        ;
+        nina nope.asl
+          #1
+        ;
+        john nope.asl
+          #1
+        ;
+        albert nope.asl
+          #1
         ;
 
     aslSourcePath: "asl";

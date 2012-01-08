@@ -12,6 +12,7 @@ high(lhigh).
 mid(lmid).
 low(llow).
 none(lnone).
+none(lmoo).
 
 // threshold
 //   note: Essas crencas saoh removidas porque o conceito `Setup' eh carregado
@@ -220,7 +221,7 @@ hasJudge(millie_gratitudes_car, milliesCar).
 !start.
 
 +!start
-    <-  iam(agent);
+    <-  nope; -none("lmoo");
         !esperaAte(2);
         !!emocoes.
 
@@ -229,7 +230,7 @@ hasJudge(millie_gratitudes_car, milliesCar).
     <- true.
 
 +!esperaAte(CICLO)
-    <-  .wait({+step(_)});
+    <-  nope;
         !esperaAte(CICLO).
 
 +!relacoes
@@ -329,13 +330,3 @@ hasJudge(millie_gratitudes_car, milliesCar).
 +step(X)
     : startUpOK
    <- .stopMAS.
-
-//+step(6) <- .println("passo 6 waiting "). //; .stopMAS. //.wait(5000).
-//+step(X)
-//     : startUpOK & X < 6
-//    <- .println("passo ", X, " sending nope"); nope.
-//+step(X)
-//    <- .println("passo ", X, " waiting").
-//-step(X)
-//    <- .println("removendo ", X).
-
