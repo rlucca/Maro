@@ -1,4 +1,4 @@
-emotionKnowledgeDebug=true
+emotionKnowledgeDebug={char}
 	Dump the ontology at /tmp/{char}.owl
 dumpCharacterHistory={char}
 	Dump the csv history to /tmp/{char}.txt

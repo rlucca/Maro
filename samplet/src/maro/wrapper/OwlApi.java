@@ -421,7 +421,6 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 		afterChange(a, isAdd);
 	}
 
-	// Was tested in 12/27
 	protected void changeDataAssertion(String[] individualName,
 			String relationName, Set<OWLAnnotation> annot, boolean isAdd) {
 		OWLDatatype odt;
@@ -446,7 +445,7 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 
 		//So pode ter um axioma
 		for (OWLDataPropertyAssertionAxiom odpa : ontology.getDataPropertyAssertionAxioms(ni)) {
-			if (odpa.getProperty() == odp && odpa.getSubject() == ni) {
+			if (odpa.getProperty() == odp && odpa.getSubject() == ni && odpa.getObject() == oli) {
 				if (isAdd) {
 					manager.removeAxiom(ontology, odpa);
 				} else {
@@ -477,8 +476,8 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 
 		//So pode ter um axioma
 		for (OWLObjectPropertyAssertionAxiom oopa : ontology.getObjectPropertyAssertionAxioms(ni)) {
-			//if (oopa.getObjectPropertiesInSignature() == oop && oopa.getObject() == niTarget) {
-			if (oopa.getProperty() == oop && oopa.getSubject() == ni) {
+			//System.out.println(oopa.getProperty()+" "+oopa.getSubject()+" "+oopa.getObject());
+			if (oopa.getProperty() == oop && oopa.getSubject() == ni && oopa.getObject() == niTarget) {
 				if (isAdd) {
 					manager.removeAxiom(ontology, oopa);
 				} else {

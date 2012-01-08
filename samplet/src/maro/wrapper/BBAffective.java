@@ -12,6 +12,7 @@ import java.util.NoSuchElementException;
 // jason only
 import jason.bb.BeliefBase;
 import jason.asSyntax.Term;
+import jason.asSyntax.Structure;
 import jason.asSyntax.Literal;
 import jason.bb.ChainBBAdapter;
 import jason.asSemantics.Agent;
@@ -311,8 +312,18 @@ public class BBAffective extends ChainBBAdapter
 
 		s.delAnnots(l.getAnnots());
 
+		Term annotOntology = null;
+		for(Term annot: s.getAnnots()) {
+			if (annot instanceof Structure && ((Structure)annot).getFunctor().equals("ontology")) {
+				s.delAnnot(annot);
+				annotOntology = annot;
+				break;
+			}
+		}
+
 		if (s.hasAnnot() == true) {
 			if (s.hasSource() == false) s.addAnnot( BeliefBase.TSelf );
+			if (annotOntology == null) s.addAnnot(annotOntology);
 			d = Dumper.dumpLiteral(s);
 			ret = ek.add(d); // remove and replace
 		} else {
