@@ -23,7 +23,7 @@ import org.semanticweb.HermiT.Reasoner.ReasonerFactory;
 
 // LATER maybe, a cache here?
 public class OwlApi implements java.lang.Iterable<Dumper> {
-
+	private java.util.logging.Logger logger = java.util.logging.Logger.getLogger(OwlApi.class.getName());
 	protected Boolean dirty = null;
 	protected OWLOntologyManager manager = null;
 	protected ReasonerFactory factoryReasoner = null;
@@ -292,12 +292,16 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 		String type; // domain -> target
 		boolean ret;
 
+		logger.fine("changeBelief "+functor+"/"+arity+" is add "+isAdd);
+
 		fullName = getCorrectName(arity, functor);
 		if (fullName == null) {
+			logger.fine("changeBelief "+functor+"/"+arity+" isnt relevant");
 			return false;
 		}
 		type = relationsType.get(fullName);
 		if (type == null) {
+			logger.fine("changeBelief "+functor+"/"+arity+" isnt a type relevant");
 			return false;
 		}
 
@@ -321,6 +325,7 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 				ret = false;
 				break;
 		}
+		logger.fine("changeBelief "+functor+"/"+arity+" finish: "+ret);
 		return ret;
 	}
 
@@ -534,17 +539,22 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 			return null;
 		}
 
+		logger.fine("getCandidatesByFunctorAndArity "+functor+"/"+arity);
+
 		fullName = getCorrectName(arity, functor);
 		if (fullName == null) {
+			logger.fine("getCandidatesByFunctorAndArity "+functor+"/"+arity+" isnt relevant");
 			return null;
 		}
 		type = relationsType.get(fullName);
 		if (type == null) {
+			logger.fine("getCandidatesByFunctorAndArity "+functor+"/"+arity+" isnt a type relevant");
 			return null;
 		}
 		reloadReasoner();
 		noni = getAllInstances();
 		if (noni == null) {
+			logger.fine("getCandidatesByFunctorAndArity "+functor+"/"+arity+" not found elements");
 			return null;
 		}
 
@@ -553,24 +563,29 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 		switch (type.charAt(0)) {
 			case 'C': // oncept
 				filterByClass(d, fullName, noni);
+				logger.fine("getCandidatesByFunctorAndArity "+functor+"/"+arity+" found "+d.size()+" elements");
 				return d;
 			case 'O': // bject relation
 				filterByObjectRelation(d, fullName, noni);
+				logger.fine("getCandidatesByFunctorAndArity "+functor+"/"+arity+" found "+d.size()+" elements");
 				return d;
 			case 'D': // ata relation
 				filterByDataRelation(d, fullName, noni);
+				logger.fine("getCandidatesByFunctorAndArity "+functor+"/"+arity+" found "+d.size()+" elements");
 				return d;
 			case 'S':
 				filterBySpecialRelation(d, fullName, noni);
+				logger.fine("getCandidatesByFunctorAndArity "+functor+"/"+arity+" found "+d.size()+" elements");
 				return d;
 			default:
+				logger.fine("getCandidatesByFunctorAndArity "+functor+"/"+arity+" type "+type+" not filtered");
 				break;
 		}
 
+		logger.fine("getCandidatesByFunctorAndArity "+functor+"/"+arity+" not found elements");
 		return null;
 	}
 
-	// TODO esse codigo nao foi analisado!!
 	protected Dumper[] joinAndPutUserData(Set<Dumper[]> dumper) {
 		LinkedList<Dumper> all = new LinkedList<Dumper>();
 
@@ -676,11 +691,17 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 			String fullName, NodeSet<OWLNamedIndividual> nodesIndividual) {
 		OWLObjectProperty oop = factoryData.getOWLObjectProperty(IRI.create(fullName));
 
+		logger.fine("object relation "+fullName);
+
 		if (oop.isOWLTopObjectProperty()) {
+			logger.fine("object relation "+fullName+" is a top property");
 			return;
 		}
 
+		logger.fine("object relation "+fullName+" is a normal property");
+
 		for (OWLNamedIndividual ni : nodesIndividual.getFlattened()) {
+			logger.fine("object relation "+fullName+" checking individual "+ni);
 			NodeSet<OWLNamedIndividual> targets = reasoner.getObjectPropertyValues(ni, oop);
 			filterByObjectRelation(dumper, ni, oop, targets.getFlattened());
 		}

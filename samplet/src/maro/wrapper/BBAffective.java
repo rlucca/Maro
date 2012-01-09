@@ -8,6 +8,7 @@ import maro.core.BBKeeper;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.NoSuchElementException;
+import java.util.logging.Logger;
 
 // jason only
 import jason.bb.BeliefBase;
@@ -28,6 +29,7 @@ import org.w3c.dom.Element;
 // mas nao temos acesso concorrente, temos?
 public class BBAffective extends ChainBBAdapter
 {
+	private Logger logger = Logger.getLogger(BBAffective.class.getName());
 	protected EmotionKnowledge ek = null;
 	private Agent myAgent = null;
 	protected String myName = null;
@@ -112,9 +114,16 @@ public class BBAffective extends ChainBBAdapter
 		if (!l.getFunctor().equals("sameAs") && !ek.isRelevant(arity, l.getFunctor()))
 			return false;
 
-		d = Dumper.dumpLiteral(l);
+		Literal s = contains(l);
+		if (s != null) {
+			s.addAnnots(l.getAnnots());
+		} else {
+			s = l;
+		}
+
+		d = Dumper.dumpLiteral(s);
 		ret = ek.add(d);
-		//System.err.println("lucca add " + d + " = " + ret);
+		logger.fine("added "+d+" = "+ret);
 		return ret;
 	}
 
@@ -166,7 +175,10 @@ public class BBAffective extends ChainBBAdapter
 			@Override
 			public Literal next() {
                 if (id.hasNext() == false) return ret.next();
-                return Dumper.fromDumper(id.next(), 43);
+                Literal l = Dumper.fromDumper(id.next(), 43);
+				if (l == null) return l;
+				if (l.hasSource() == false) l.addAnnot( BeliefBase.TSelf );
+				return l;
 			}
 			@Override
 			public void remove() {
@@ -192,7 +204,10 @@ public class BBAffective extends ChainBBAdapter
 			@Override
 			public Literal next() {
                 if (id.hasNext() == false) return lit.next();
-                return Dumper.fromDumper(id.next(), 39);
+                Literal l = Dumper.fromDumper(id.next(), 39);
+				if (l == null) return l;
+				if (l.hasSource() == false) l.addAnnot( BeliefBase.TSelf );
+				return l;
 			}
 			@Override
 			public void remove() {
@@ -258,7 +273,15 @@ public class BBAffective extends ChainBBAdapter
 				boolean ok = true;
 
 				for (int idx = 0; ok && idx < lS.length; idx++) {
-					if (litS[idx].toString().equals(lS[idx].toString()) == false)
+					String termRight = lS[idx].toString(); // request
+					String termLeft = litS[idx].toString(); // candidate
+
+					if (lS[idx].isAtom() && litS[idx].isString()) {
+						// when right is a atom and left is a string...
+						termRight = '"' + termRight + '"';
+					}
+
+					if (termLeft.equals(termRight) == false)
 						ok = false;
 				}
 
@@ -297,37 +320,53 @@ public class BBAffective extends ChainBBAdapter
 		int arity = l.getArity();
 		Literal s;
 
+		logger.fine("Testing to remove `"+l+"'");
+
 		// Se eh uma percepcao nao temos interesse...
 		if (l.hasAnnot(BeliefBase.TPercept)) {
+			logger.fine("Testing to remove `"+l+"' bypassed because is a perception");
 			return super.remove(l);
 		}
 		// Se for o functor 'sameAs' aceitamos, independente da aridade...
 		// Caso contrario, tem que ser relevante
-		if (!l.getFunctor().equals("sameAs") && !ek.isRelevant(arity, l.getFunctor()))
+		if (!l.getFunctor().equals("sameAs") && !ek.isRelevant(arity, l.getFunctor())) {
+			logger.fine("Testing to remove `"+l+"' bypassed because is not relevant");
 			return super.remove(l);
+		}
 
 		s = contains(l);
-		//l.delAnnot( BeliefBase.TSelf );
-		if (s == null) return super.remove(l);
+		if (s == null) {
+			logger.fine("Testing to remove `"+l+"' not found the literal");
+			return super.remove(l);
+		}
 
 		s.delAnnots(l.getAnnots());
 
-		Term annotOntology = null;
+		Term annotOntology = null; // I believe that have only one...
+		Term annotSource = null; // Will be null, when I informed in variable `l'
 		for(Term annot: s.getAnnots()) {
+			if (annotSource != null && annotOntology != null) {
+				break;
+			}
 			if (annot instanceof Structure && ((Structure)annot).getFunctor().equals("ontology")) {
 				s.delAnnot(annot);
 				annotOntology = annot;
-				break;
+			}
+			if (annot instanceof Structure && ((Structure)annot).getFunctor().equals("source")) {
+				s.delAnnot(annot);
+				annotSource = annot;
 			}
 		}
 
 		if (s.hasAnnot() == true) {
-			if (s.hasSource() == false) s.addAnnot( BeliefBase.TSelf );
-			if (annotOntology == null) s.addAnnot(annotOntology);
+			if (annotSource != null) s.addAnnot(annotSource);
+			if (annotOntology != null) s.addAnnot(annotOntology);
+			logger.fine("Testing to remove `"+l+"' decided replace by `"+s+"'");
 			d = Dumper.dumpLiteral(s);
 			ret = ek.add(d); // remove and replace
 		} else {
-			d = Dumper.dumpLiteral(l);
+			logger.fine("Testing to remove `"+l+"' decided remove the literal `"+s+"'");
+			d = Dumper.dumpLiteral(s);
 			ret = ek.remove(d);
 		}
 

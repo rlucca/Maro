@@ -5,10 +5,13 @@ import maro.wrapper.Dumper;
 
 import java.util.HashMap;
 import java.util.Set;
+import java.util.logging.Logger;
 
 
 
 class FeelingsThreshold {
+	private Logger logger = Logger.getLogger(FeelingsThreshold.class.getName());
+
 	protected HashMap<String, Integer> thresholds;
 	protected boolean actived;
 	protected boolean loaded;
@@ -68,13 +71,13 @@ class FeelingsThreshold {
 				name = issetupof.getTermAsString(1);
 
 				if (name.equals(myName) == false) {
-					//System.out.println("skip because isnt mine threshold: "+myName+"!="+name);
+					logger.fine("skip because isnt mine threshold: "+myName+"!="+name);
 					continue; // skip too, i am not interessed
 				}
 
 				emotion = hasthresholdType.getTermAsString(1);
 				if (e.isEmotion(emotion) == false) {
-					//System.out.println("skip because isnt a emotion: "+emotion);
+					logger.fine("skip because isnt a emotion: "+emotion);
 					continue; // skip, emotion invalid
 				}
 
@@ -83,7 +86,7 @@ class FeelingsThreshold {
 				continue; // skip, exception
 			}
 
-			//System.out.println("putting "+emotion+" with "+value);
+			logger.fine("putting "+emotion+" with "+value);
 			thresholds.put(emotion.toLowerCase(), value);
 		}
 
