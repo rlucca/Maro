@@ -326,75 +326,89 @@ hasJudge(millie_gratitudes_car, milliesCar).
        !!summary.
 
 +!function(object)
-    <- +hasLikelihood(test1, lnone);
+    <- +hasLikelihood("test1", lnone);
        ?hasLikelihood("test1", "lnone");
        .println("insertion of relation ok"); nope;
-       +hasLikelihood(test1, lnone)[foo];
+       +hasLikelihood("test1", lnone)[foo];
        ?hasLikelihood("test1", "lnone")[foo];
        .println("changing the relation to add a annotation ok"); nope;
-       +hasLikelihood(test1, lnone)[bar];
+       +hasLikelihood("test1", lnone)[bar];
        ?hasLikelihood("test1", "lnone")[bar];
        .println("changing the relation to add another annotation ok"); nope;
        ?hasLikelihood("test1", "lnone")[foo,bar];
        .println("testing the relation to get the two annotation ok"); nope;
        .eval(false, hasLikelihood(test1, lnone)[foo,bar]); // I'll be not supported
        .println("testing the relation as string to get the two annotation ok"); nope;
-       -hasLikelihood(test1, lnone)[bar];
+       -hasLikelihood("test1", lnone)[bar];
        ?hasLikelihood("test1", "lnone")[foo];
-       .eval(false, hasLikelihood(test1, lnone)[bar]);
+       .eval(false, hasLikelihood("test1", lnone)[bar]);
        .println("removing annot from relation ok"); nope;
-       -hasLikelihood(test1, lnone); // because have anothers annots fail silence
+       -hasLikelihood("test1", lnone); // because have anothers annots fail silence
        ?hasLikelihood("test1", "lnone")[foo];
        -hasLikelihood("test1", "lnone")[foo]; // remove the last annot and remove the literal after
-       .eval(false, hasLikelihood(test1, lnone));
+       .eval(false, hasLikelihood("test1", lnone));
        .println("removing another annot from relation ok"); nope.
 
 +!function(data)
-    <- +hasDesireSelf(test2, 10);
+    <- +hasDesireSelf("test2", 10);
        ?hasDesireSelf("test2", 10);
        .println("insertion of a data relation ok"); nope;
-       +hasDesireSelf(test2, 10)[foo];
+       +hasDesireSelf("test2", 10)[foo];
        ?hasDesireSelf("test2", 10)[foo];
        .println("changing the data relation to add a annotation ok"); nope;
-       +hasDesireSelf(test2, 10)[bar];
+       +hasDesireSelf("test2", 10)[bar];
        ?hasDesireSelf("test2", 10)[bar];
        .println("changing the data relation to add another annotation ok"); nope;
        ?hasDesireSelf("test2", 10)[foo,bar];
        .println("testing the data relation to get the two annotation ok"); nope;
        .eval(false, hasDesireSelf(test2, 10)[foo,bar]); // I'll be not supported
        .println("testing the relation as string to get the two annotation ok"); nope;
-       -hasDesireSelf(test2, 10)[bar];
+       -hasDesireSelf("test2", 10)[bar];
        ?hasDesireSelf("test2", 10)[foo];
-       .eval(false, hasDesireSelf(test2, 10)[bar]);
+       .eval(false, hasDesireSelf("test2", 10)[bar]);
        .println("removing annot from relation ok"); nope;
-       -hasDesireSelf(test2, 10); // because have anothers annots fail silence
+       -hasDesireSelf("test2", 10); // because have anothers annots fail silence
        ?hasDesireSelf("test2", 10)[foo];
        -hasDesireSelf("test2", 10)[foo]; // remove the last annot and remove the literal after
-       .eval(false, hasDesireSelf(test2, 10));
-       .println("removing another annot from relation ok"); nope.
-       
+       .eval(false, hasDesireSelf("test2", 10));
+       .println("removing another annot from relation ok"); nope;
+       +hasDesireSelf("test4", -10);
+       ?hasDesireSelf("test4", -10);
+       .println("insertion of negative integers ok"); nope;
+       +hasDesireSelf("test4", -10)[foo];
+       ?hasDesireSelf("test4", -10);
+       .println("insertion of negative integers with annot ok"); nope;
+       -hasDesireSelf("test4", -10)[foo];
+       .eval(false, hasDesireSelf("test4", -10));
+       .println("removing negative integers with annot ok"); nope;
+       +hasDesireSelf("test4", -10);
+       ?hasDesireSelf("test4", -10);
+       -hasDesireSelf("test4", -10);
+       .eval(false, hasDesireSelf("test4", -10));
+       .println("removing negative integers ok"); nope.
+
 +!function(instance)
-    <- +low(test3);
+    <- +low("test3");
        ?low("test3");
        .println("insertion of concept ok"); nope;
-       +low(test3)[foo];
+       +low("test3")[foo];
        ?low("test3")[foo];
        .println("changing the concept to add a annotation ok"); nope;
-       +low(test3)[bar];
+       +low("test3")[bar];
        ?low("test3")[bar];
        .println("changing the concept to add another annotation ok"); nope;
        ?low("test3")[foo,bar];
        .println("testing the concept to get the two annotation ok"); nope;
        .eval(false, low(test3)[foo,bar]); // I'll be not supported
        .println("testing the concept as string to get the two annotation ok"); nope;
-       -low(test3)[bar];
+       -low("test3")[bar];
        ?low("test3")[foo];
-       .eval(false, low(test3)[bar]);
+       .eval(false, low("test3")[bar]);
        .println("removing annot from concept ok"); nope;
-       -low(test3); // because have anothers annots fail silence
+       -low("test3"); // because have anothers annots fail silence
        ?low("test3")[foo];
        -low("test3")[foo]; // remove the last annot and remove the literal after
-       .eval(false, low(test3));
+       .eval(false, low("test3"));
        .println("removing another annot from concept ok"); nope.
 
 +!summary

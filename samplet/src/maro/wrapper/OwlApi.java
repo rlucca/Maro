@@ -450,7 +450,8 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 
 		//So pode ter um axioma
 		for (OWLDataPropertyAssertionAxiom odpa : ontology.getDataPropertyAssertionAxioms(ni)) {
-			if (odpa.getProperty() == odp && odpa.getSubject() == ni && odpa.getObject() == oli) {
+			if (odpa.getProperty().equals(odp) && odpa.getSubject().equals(ni) 
+                    && odpa.getObject().equals(oli)) {
 				if (isAdd) {
 					manager.removeAxiom(ontology, odpa);
 				} else {
@@ -482,7 +483,8 @@ public class OwlApi implements java.lang.Iterable<Dumper> {
 		//So pode ter um axioma
 		for (OWLObjectPropertyAssertionAxiom oopa : ontology.getObjectPropertyAssertionAxioms(ni)) {
 			//System.out.println(oopa.getProperty()+" "+oopa.getSubject()+" "+oopa.getObject());
-			if (oopa.getProperty() == oop && oopa.getSubject() == ni && oopa.getObject() == niTarget) {
+			if (oopa.getProperty().equals(oop) && oopa.getSubject().equals(ni)
+                    && oopa.getObject().equals(niTarget)) {
 				if (isAdd) {
 					manager.removeAxiom(ontology, oopa);
 				} else {

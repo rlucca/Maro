@@ -272,25 +272,35 @@ public class BBAffective extends ChainBBAdapter
 				Term[] lS = l.getTermsArray();
 				boolean ok = true;
 
-				for (int idx = 0; ok && idx < lS.length; idx++) {
-					String termRight = lS[idx].toString(); // request
-					String termLeft = litS[idx].toString(); // candidate
+                for (int idx = 0; ok && idx < lS.length; idx++) {
+                    String termRight = lS[idx].toString(); // request
+                    String termLeft = litS[idx].toString(); // candidate
 
-					if (lS[idx].isAtom() && litS[idx].isString()) {
-						// when right is a atom and left is a string...
-						termRight = '"' + termRight + '"';
-					}
+                    if (litS[idx].isNumeric()) {
+                        NumberTerm nt = (NumberTerm) litS[idx];
+                        termLeft = ""+((int)nt.solve());
+                    }
 
-					if (termLeft.equals(termRight) == false)
-						ok = false;
-				}
+                    // remember always pass string... this dont fix all points
+                    if (lS[idx].isAtom() && litS[idx].isString()) {
+                        // when right is a atom and left is a string...
+                        termRight = '"' + termRight + '"';
+                    }
 
-				if (ok == true) return lit;
-			}
-		}
+                    if (termLeft.equals(termRight)) {
+                        if (litS[idx].isNumeric()) // well, is equal and is evaluated then change
+                            lit.setTerm(idx, l.getTerm(idx));
+                    } else {
+                        ok = false;
+                    }
+                }
 
-		return super.contains(l);
-	}
+                if (ok == true) return lit;
+            }
+        }
+
+        return super.contains(l);
+    }
 
 	/** Returns all beliefs that have "percept" as source */
 	//	public Iterator<Literal> getPercepts() // LATER: por enquanto nao teremos percepcoes aqui
