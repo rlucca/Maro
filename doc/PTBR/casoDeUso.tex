@@ -1,8 +1,106 @@
 \chapter{Caso de Uso} \label{ch:cdu}
 
+O presente capítulo visa explicar o caso de uso da ontologia. O caso de uso da
+ontologia é uma simulação de uma casa em sua vida cotidiana normal, isto é, os
+personagens vão para escola, trabalho, fazem compras e ficam em casa.
+Entretanto, antes desse caso de uso ser abordado na seção~\ref{ch:cdu:svc}
+será falado como a ontologia foi testada juntamente com a plataforma \jason.
+A seção~\ref{ch:cdu:tbc} explica as ferramentas desenvolvidas para testar a base
+de crenças e, consequentemente, a ontologia. Elas são duas uma interativa e
+outra não interativa que serve como uma especie de teste unitário.
+
+\section{Teste da Base de Crenças} \label{ch:cdu:tbc}
+
+Os testes da base de crenças tem como finalidade checar se a utilização normal
+esta acontecendo da maneira esperada. Assim, eles fazem testes de inserção,
+recuperação, remoção e listagem. A listagem é feita implementando a interface
+\emph{Iterable} da plataforma Java e é usada, principalmente, quando a
+interface gráfica da plataforma \jason esta em modo depuração e
+exibindo a base de crenças.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=70mm]{figuras/introductionDF.png}
+	\end{center}
+	\caption{Interface para mostrar os sentimentos dos agentes.}
+	\label{fig:introducaoDF}
+\end{figure}
+
+A primeira aplicação de teste desenvolvida foi de maneira interativa conforme
+pode ser observado na Figura~\ref{fig:introducaoDF}. A aplicação permite que o
+usuário escreva as crenças do agente em um campo texto (área 2 na figura) e
+esse é enviado diretamente para a base de crença do agente. A área 1 na mesma
+figura é utilizada para demostrar a valência das emoções.
+Essas informações podem aparecer em: preto, se não houve alteração com o ciclo
+anterior; azul, se houve um aumento; vermelho, se houve uma diminuição do
+valor.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=150mm]{figuras/beforeLastInsertionOfPride.png}
+		\includegraphics[width=150mm]{figuras/afterLastInsertionOfPride.png}
+	\end{center}
+	\caption{Exemplo de utilização criando uma emoção de orgulho.}
+	\label{fig:testeJasonIntBase}
+\end{figure}
+
+Na Figura~\ref{fig:testeJasonIntBase} estão representados dois momentos da
+criação de uma emoção de orgulho da parte do usuário. Na parte de cima, o
+agente tem configurado uma avaliação de e sobre si próprio. Além disso, a
+avaliação tem probabilidade nula ou irrelevante e o desejo para si mesmo foi
+considerado com o valor 10. Esse valor poderia ser qualquer número inteiro,
+mas se fosse negativo ao invés de alegria (\emph{joy}) o resultado atual seria
+sofrimento (\emph{distress}). No campo de texto, o usuário irá inserir a
+última relação para ser construída a percepção de orgulho.
+
+Na parte de baixo da Figura~\ref{fig:testeJasonIntBase} pode se ver o
+resultado obtido para a inserção da última crença. Conforme pode ser visto,
+foi necessário três ciclos deliberativos para o agente ter a percepção do
+sentimento. Na verdade, essa percepção não veio de um novo ciclo de simulação
+rodando e sim que o agente acrescentou uma nova crença dizendo que havia um
+passo novo então foi feita a avaliação das emoções quanto a necessidade de
+se criar a percepção afetiva. Se fosse um passo normal da simulação, não se
+teria na base de crenças duas percepções \emph{feeling} sobre uma emoção
+porque a todo novo passo as percepções são limpas.
+
+Na Listagem~\ref{lst:testeJasonIntBase} pode ser observado uma configuração
+para se rodar a apresente aplicação\footnote{Veja a seção
+\ref{sec-jason-overview} na página~\pageref{sec-jason-overview}
+para ver uma introdução sobre esse tipo de arquivo.}. O ambiente na linha 4
+espera que todos os agentes (configurados inicialmente no parâmetro 3) mandem
+uma ação para prosseguir. O simulador espera pelo tempo (em milissegundos)
+configurado no primeiro parâmetro por essas ações, caso não venha ignora o
+agente e segue para o próximo ciclo. O segundo parâmetro permite que seja
+configura um número que representa o último passo de simulação e no quarto
+parâmetro permite configurar se uma segunda ação enviada no mesmo passo de
+simulação é para ser enfileirada ou resultar em erro (essa é a opção atual).
+
+\begin{center}
+    \begin{minipage}{130mm}
+	\lstset{linewidth=130mm}
+	\lstinputlisting[frame=trbl, caption=Arquivo de projeto do \jason para a
+aplicação interativa de teste, label=lst:testeJasonIntBase]{../../sampletConsole/eoaus.mas2j}
+    \end{minipage}
+\end{center}
+
+A agente millie configurada da linha 7 à 11 utiliza opções do \jason para
+alterar a base de crença sendo utilizada, arquitetura do agente e o próprio
+agente. ...
+
+
+interativo		EXPLICANDO
+nao interativo	.
+...
+
+\section{Simulando a Vida Cotidiana} \label{ch:cdu:svc}
+
+...
 \todo{comprometimento. Mostrar aqui um arquivo de projeto jason usando opcoes no agente}
 \todo{Nao eh ontologia de anotacoes eh ontologia de preferencia usando anotacoes}
 
+
+
+\section{trash... dont look please}
 na questao da ontologia de comportamento, acredito q seja possivel
 fazer com que um personagem em determinado ciclo vá para um
 planeta...
