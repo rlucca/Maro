@@ -339,14 +339,14 @@ hasJudge(millie_gratitudes_car, milliesCar).
        .println("testing the relation to get the two annotation ok"); nope;
        .eval(false, hasLikelihood(test1, lnone)[foo,bar]); // I'll be not supported
        .println("testing the relation as string to get the two annotation ok"); nope;
-       -hasLikelihood("test1", lnone)[bar];
+       -hasLikelihood("test1", "lnone")[bar]; // imortant send as string all terms
        ?hasLikelihood("test1", "lnone")[foo];
-       .eval(false, hasLikelihood("test1", lnone)[bar]);
+       .eval(false, hasLikelihood("test1", "lnone")[bar]);
        .println("removing annot from relation ok"); nope;
-       -hasLikelihood("test1", lnone); // because have anothers annots fail silence
+       -hasLikelihood("test1", "lnone"); // because have anothers annots fail silence
        ?hasLikelihood("test1", "lnone")[foo];
        -hasLikelihood("test1", "lnone")[foo]; // remove the last annot and remove the literal after
-       .eval(false, hasLikelihood("test1", lnone));
+       .eval(false, hasLikelihood("test1", "lnone"));
        .println("removing another annot from relation ok"); nope.
 
 +!function(data)
