@@ -276,21 +276,14 @@ public class BBAffective extends ChainBBAdapter
                     String termRight = lS[idx].toString(); // request
                     String termLeft = litS[idx].toString(); // candidate
 
-                    if (litS[idx].isNumeric()) {
-                        NumberTerm nt = (NumberTerm) litS[idx];
-                        termLeft = ""+((int)nt.solve());
-                    }
-
                     // remember always pass string... this dont fix all points
                     if (lS[idx].isAtom() && litS[idx].isString()) {
                         // when right is a atom and left is a string...
                         termRight = '"' + termRight + '"';
                     }
 
-                    if (termLeft.equals(termRight)) {
-                        if (litS[idx].isNumeric()) // well, is equal and is evaluated then change
-                            lit.setTerm(idx, l.getTerm(idx));
-                    } else {
+                    logger.fine("checking "+termLeft+"=="+termRight);
+                    if (termLeft.equals(termRight) == false) {
                         ok = false;
                     }
                 }

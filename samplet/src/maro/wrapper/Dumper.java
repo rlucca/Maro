@@ -204,6 +204,7 @@ public class Dumper {
 		if (l == null) return null;
 
 		l = l.makeVarsAnnon();
+		l.apply(null); // fix bug with ArithExpr putted as (number) because isn't evaluate
 		lts_raw = l.getTerms();
 		las_raw = l.getAnnots();
 
@@ -254,6 +255,7 @@ public class Dumper {
 
 		try {
 			li = ASSyntax.parseLiteral(s);
+			li.apply(null);
 		} catch (Exception ex) {
 			System.out.println("Ocurred a problem on parsing: " + s);
 			ex.printStackTrace();
