@@ -51,6 +51,10 @@
 //-----------------------------------------------------------------------------
 +!planRouteByItem([], _, []).
 //-----------------------------------------------------------------------------
++!planRouteByItem([ITEM|ITEMS], SOURCE, ROUTE)
+     : ~rest(ITEM) // exist the information that I cannot rest on item
+    <- !planRouteByItem(ITEMS, SOURCE, ROUTE).
+//-----------------------------------------------------------------------------
 +!planRouteByItem([ITEM|ITEMS], SOURCE, [route(ITEM,RL,R)|ROUTE])
     <- !planRouteByItem(ITEMS, SOURCE, ROUTE);
        sims.ia.getPlacesByItem(ITEM, [TARGET]);
