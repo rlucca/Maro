@@ -1,9 +1,6 @@
-
-
 MAS eoaus {
     infrastructure: Centralised //(pool, 2)
 
-    // timeout seconds, number of steps, numer of agents, policy of when adding second action
     environment: maro.example.console.Environment(30000, 1000, 1, FALSE)
 
     agents:
