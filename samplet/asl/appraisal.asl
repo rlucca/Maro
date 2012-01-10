@@ -154,7 +154,9 @@ actors
        +hasLikelihood(INDIVIDUAL, "lnone");
        +hasDesireSelf(INDIVIDUAL, VALUE).
 +?updateAppraisal(joy, INDIVIDUAL, VALUE)
-    <- +hasDesireSelf(INDIVIDUAL, VALUE).
+     : hasDesireSelf(INDIVIDUAL, OLDVAL)
+    <- -hasDesireSelf(INDIVIDUAL, OLDVAL);
+       +hasDesireSelf(INDIVIDUAL, VALUE).
 //updateAppraisal-Distress------------------------------------------------------
 +?updateAppraisal(distress, INDIVIDUAL, VALUE)
      : not(hasLikelihood(INDIVIDUAL, "lnone")) & .my_name(NAME)
@@ -162,20 +164,26 @@ actors
        +hasLikelihood(INDIVIDUAL, "lnone");
        +hasDesireSelf(INDIVIDUAL, VALUE).
 +?updateAppraisal(distress, INDIVIDUAL, VALUE)
-    <- +hasDesireSelf(INDIVIDUAL, VALUE).
+     : hasDesireSelf(INDIVIDUAL, OLDVAL)
+    <- -hasDesireSelf(INDIVIDUAL, OLDVAL);
+       +hasDesireSelf(INDIVIDUAL, VALUE).
 //updateAppraisal-Love----------------------------------------------------------
 +?updateAppraisal(love, INDIVIDUAL, VALUE)
      : not(hasFamiliarity(INDIVIDUAL, _)) & .my_name(NAME)
     <- +isAppraisalOf(INDIVIDUAL, NAME);
        +hasFamiliarity(INDIVIDUAL, VALUE).
 +?updateAppraisal(love, INDIVIDUAL, VALUE)
-    <- +hasFamiliarity(INDIVIDUAL, VALUE).
+     : hasFamiliarity(INDIVIDUAL, OLDVAL)
+    <- -hasFamiliarity(INDIVIDUAL, OLDVAL);
+       +hasFamiliarity(INDIVIDUAL, VALUE).
 //updateAppraisal-Hate----------------------------------------------------------
 +?updateAppraisal(hate, INDIVIDUAL, VALUE)
      : not(hasFamiliarity(INDIVIDUAL, _)) & .my_name(NAME)
     <- +isAppraisalOf(INDIVIDUAL, NAME);
        +hasFamiliarity(INDIVIDUAL, VALUE).
 +?updateAppraisal(hate, INDIVIDUAL, VALUE)
-    <- +hasFamiliarity(INDIVIDUAL, VALUE).
+     : hasFamiliarity(INDIVIDUAL, OLDVAL)
+    <- -hasFamiliarity(INDIVIDUAL, OLDVAL);
+       +hasFamiliarity(INDIVIDUAL, VALUE).
 //updateAppraisal-Emotion-------------------------------------------------------
 //+?updateAppraisal(EMOTION, INDIVIDUAL, VALUE).
