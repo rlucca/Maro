@@ -22,12 +22,14 @@ FILES   = 	$(MAIN).tex 				\
 			paradigmaAOP.tex			\
 			resumo.tex
 
+.sampleConsoleLock: ../../sampletConsole
+	@echo "dissertation not changed, but samplet console yes" && exit 5
 
 # Regra simplista para gerar um PostScript do documento.
 all: $(MAIN).pdf
 	@-echo "feito."
 
-$(MAIN).pdf: $(FILES) mestrado.bib
+$(MAIN).pdf: .sampleConsoleLock $(FILES) mestrado.bib
 	pdflatex $(MAIN) && bibtex $(MAIN) && pdflatex $(MAIN) && pdflatex $(MAIN)
 
 mestrado.bib: $(PREFIX)/Mistery.bib
