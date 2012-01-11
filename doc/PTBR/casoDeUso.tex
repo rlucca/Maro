@@ -84,13 +84,81 @@ aplicação interativa de teste, label=lst:testeJasonIntBase]{../../sampletConso
 \end{center}
 
 A agente millie configurada da linha 7 à 11 utiliza opções do \jason para
-alterar a base de crença sendo utilizada, arquitetura do agente e o próprio
-agente. ...
+alterar a base de crença sendo utilizada (\emph{beliefBaseClass}),
+arquitetura do agente (\emph{agentArchClass}) e o próprio agente
+(\emph{agentClass}). Dessas alterações, a mudança da base de crença e da
+classe do agente foram explicadas na seção~\ref{ch:p:ipjo}\todo{garantir isso
+depois}. Assim, para o presente exemplo a mudança da arquitetura na linha 9
+foi realizada para criar e atualizar a janela que exibe os dados emotivos.
+
+Cabe chamar a atenção que na linha 8 da Listagem~\ref{lst:testeJasonIntBase}
+foi usada a ontologia afetiva desenvolvida somente. Assim, para o agente
+utilizar as emoções ainda é necessário incluir as configurações do valor
+excedido para se ter a emoção presente via código do agente. Uma amostra do
+código utilizado para se fazer isso pode ser vista na
+Listagem~\ref{lst:testeJasonIntSetup} e todo o código pode ser visto no
+Anexo~X\todo{referencia e pagina}.
+
+\lstset{linewidth=80mm}
+\begin{wrapfigure}{l}{90mm}
+	\begin{lstlisting}[frame=trbl,
+caption=Parte do código do agente para aplicação interativa de teste,
+label=lst:testeJasonIntSetup]
+step(0)[source(percept),source(self)].
+
+agent(millie).
+
+hasSetup(millie, setup1).
+hasThreshold(setup1, 0).
+hasThresholdType(setup1, "Joy").
+
+hasSetup(millie, setup2).
+hasThreshold(setup2, 0).
+hasThresholdType(setup2, "Distress").
+	\end{lstlisting}
+\end{wrapfigure}
+
+A Listagem~\ref{lst:testeJasonIntSetup} mostra crenças que o agente terá
+no inicio da simulação na plataforma \jason. Essas são populadas na memória
+de acordo com a classe especificada na linha 8 da
+Listagem~\ref{lst:testeJasonIntBase}. Esse processo já foi explicado na
+seção~\ref{ch:p:ipjo}\todo{garantir isso}, a crença de \emph{step} como não
+consta na ontologia será carregada na base de crenças padrão do \jason e as
+demais mostradas serão inseridas na ontologia. Como pode ser observado, esse
+processo é bastante transparente para o usuário.
+
+Note também que o usuário precisou definir o limite para uma emoção virar
+sentimento. No exemplo esse valor esta sendo definido como zero para que a
+potência e a valência sejam iguais. Se for definido algum outro valor, a
+potência será o valor total da emoção e esse valor não é de conhecimento do
+agente. Ele conhece apenas a valência que será a diferença do valor total
+menos o limite para ativação definido pela relação \emph{hasThreshold}. Por
+exemplo, se o limite da pena (\emph{sorryFor}) é 6 e o valor atual é 8 então o
+agente terá o sentimento com o valor 2 que será expresso por uma crença da
+seguinte forma ``feeling("sorryFor",2).''.
+
+%%%% fim da explicacao da aplicação interativa %%%%%
+
+\begin{center}
+    \begin{minipage}{140mm}
+	\lstset{linewidth=140mm}
+	\lstinputlisting[frame=trbl, caption=Arquivo de projeto do \jason para a
+aplicação não interativa de teste,
+label=lst:testeJasonNIBase]{../../sampletSummary/eoaus.mas2j}
+    \end{minipage}
+\end{center}
+
+A aplicação não interativa utiliza a Listagem~\ref{lst:testeJasonNIBase} para
+configurar o seu projeto. O ambiente especificado na linha 4 possui os mesmos
+parâmetros do anterior com o acréscimo de um novo que indica uma ontologia.
+Essa ontologia serve para o ambiente conhecer as rotinas dos agentes na
+simulação, como deve ser desenhado o mapa exibido e as posições iniciais dos
+agentes. O agente millie aqui é o utilizado para os testes e os limiares de
+ativação de emoção estão configurados para valores diferentes. A uma
+variedade de testes para as propriedades de objeto ou de dados e para as
+instâncias de classes, além de testes das conclusões esperadas pela ontologia.
 
 
-interativo		EXPLICANDO
-nao interativo	.
-...
 
 \section{Simulando a Vida Cotidiana} \label{ch:cdu:svc}
 
