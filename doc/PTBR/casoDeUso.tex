@@ -154,141 +154,14 @@ parâmetros do anterior com o acréscimo de um novo que indica uma ontologia.
 Essa ontologia serve para o ambiente conhecer as rotinas dos agentes na
 simulação, como deve ser desenhado o mapa exibido e as posições iniciais dos
 agentes. O agente millie aqui é o utilizado para os testes e os limiares de
-ativação de emoção estão configurados para valores diferentes. A uma
+ativação de emoção estão configurados para valores diferentes. Existe uma
 variedade de testes para as propriedades de objeto ou de dados e para as
 instâncias de classes, além de testes das conclusões esperadas pela ontologia.
-
-
+Veja o anexo~X\todo{botar o xodigo} para ver o código do agente.
 
 \section{Simulando a Vida Cotidiana} \label{ch:cdu:svc}
+\todo{era ``Simulando a Vida Cotidiana'' sem nada escrito}
 
 ...
-\todo{comprometimento. Mostrar aqui um arquivo de projeto jason usando opcoes no agente}
-\todo{Nao eh ontologia de anotacoes eh ontologia de preferencia usando anotacoes}
 
-
-
-\section{trash... dont look please}
-na questao da ontologia de comportamento, acredito q seja possivel
-fazer com que um personagem em determinado ciclo vá para um
-planeta...
-
-essa questão tras outra pergunta, se um comportamento vai ser
-disparado em determinado ciclo para parecer rotina. Quanto tempo,
-ou melhor, quantos ciclos representam um dia? E, quanto tempo
-é representado por um misero ciclo?
-
-Para responder isso, eu considero o seguinte... eu não vou arredar o
-pé de 1000 ciclos. Mas, 1000 estão variando de 4 a 7 minutos reais.
-Se considerar que 1000 ciclos possui 10 dias então cada 100 ciclos é um dia.
-Dessa forma, usaremos o ciclo equivalente a 870 segundos que correspondem
-a 14,5 minutos que equivale a aproximante 99,31 ciclos. Assim, se iniciarmos
-o relogio a partir do ciclo 1 no ciclo 100 ou 101 temos uma virada de dia.
-Além disso, é importante notar que nem todos os dias viraram no mesmo step.
-Por exemplo, alguns vao ter 99 outros 98.... o q torna interessante!
-
-Eu estou pensando em pra ligar com rotinas ter turnos, dividir o dia em
-madrugada (24h to 5h30), manha(5h31 to 12h), tarde(12h01 to 18h) e
-noite(18h01 to 23h59). Assim, teriamos um turno de 5,5h, outro de 6,5h e os
-restantes com 6h.
-
-5 -> Esse tempo pode ser uma percepcao com dia, horario e turno... Simples,
-ne?
-       E Esse turno `comanda' o que o agente faz no momento porque eh a rotina
-       dele, isto eh, pela manha ir em algum lugar amtar gente. Pela tarde
-ficar
-       matando piratas e a noite/madrugada descansar!
-
-MADRUGADA = M
-MANHA = A
-TARDE = T
-NOITE = N
-
---
-o texto a seguir se refere sempre a ontologia aw.
-Nela não temos myself como individuo porque esse
-eh um meta individuo para cada ontologia OCC.
-Além disso, a alguns atributos novos precisam ser
-declarados em ambos. Por exemplo, life que representa
-a vida de um personagem. Não existia ate agora,
-entretanto a ideia de ter isso visivel como anotacao
-pode ser ruim, porém ao inves de life ser visivel aos
-outros seria interessante ter visivel damage...
-Assim, é interessante pensar no que se quer ver
-como exterior e o que se quer ver como myself....
---
-Depois disso tem a questão das preferencias ainda,
-eu não pensei como nesse nosso ambiente os agentes
-vao agir.... eu sei que a maior parte eh mal, gosta de
-fazer maldade... alguns são 'companheiros' de outros,
-por exemplo podem ver um momento de maldade e
-deixar pro colega se divertir...
-
-Outros são excecoes... Vorfield pode ir no planeta
-sem matar ninguem, mas a populacao sua não discansa
-dessa forma. Ela precisa se afastar... Fora isso o radar dela
- eh melhor com pesos e alcance de 6?
-
---
-
-sofa pequeno 1,4x0,9 => 3x2
-sofa grande 2,3x1 => 5x2
-cama de casal usar => 4x4
-1x2,1m minha cama => 2x4
-3,5x3m meu quarto => 7quadrado x 6
-andada mais ou menos 55cm
-assumindo 55cm por quadrado
-20x20 tem 11mx11m
-
---
-
-Emoção
-	A afetividade dita o como o agente se comportará ou o que ele fará.
-	Desse jeito, o nivel afetivo é o mais alto de todos.
-
-Rotinas
-	Rotinas são um comportamento abaixo da emoção para se conseguir
-	aceitação e segurança. Digamos que a afetividade apoia as rotinas.
-
-Preferencias
-	Nivel mais baixo entre todos. Enquanto a emoção dita o comportamento
-	e a rotina o que deve ser feito em parte do dia, as preferencias ditam o
-como será feito.
-
-Exemplo prático	
-	Emocao: Buscar divertimento
-	Rotina (da cidade): fliperama
-	não definido: leitura, assistir televisao
-	Preferencias: leitura e tv não prestam
-	 -> conclusao, vou ao fliperama! :-)
-
-	Emocao: Buscar aprovacao
-	Rotina (pessoal): aula (pela manha) e trabalho (pela tarde)
-	Preferencias: não se aplica
-	 -> conclusao, ir (em parte da) aula e comparecer ao trabalho
-
---
-
-Preferencias dos agentes
-nome do agente	utility	name	positionX	positionY	lookFor	energy	owner
-shift	capacity
-albert – student early	neg(exit,reading); pos(clothes. faucet, telephone)
-<50 (bed)			
-john – home worker	neg(reading,telephone);
-pos(exit,clothes,table,prepareFood,keepFood)					<55 (bed)			
-millie – student late	neg(exit); pos(faucet, telephone)
-<70 (bed)			
-nina – worker	neg(way); pos(telephone, prepareFood,exit)
-<53 (bed)			
-
-Ok ok, nao da pra ver tambem aqui. Mas, basicamente sao usados tres colunas
-nome do agente, utility e energy.
-
---
-
-Actions/Attributes	hungry	social	energy	cleaning
-changeOrientaion	  -1      0        0       0
-forward				  -2      0    -1 to -8	  -1
-nope				  -1      0       -1       0
-death				   -      -        -       -
 
