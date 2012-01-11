@@ -373,43 +373,74 @@ gostam de calor são atraídas pela valoração negativa. Dessa forma, os
 sub-conceitos da preferência representam sempre valores que fazem o agente ser
 atraído pelo objeto e repelido caso contrário.
 
-\todo{como as preferencias sao usadas? como as anotacoes sao usadas?} % isso eh bom dizer no caso de uso
+Essas anotações em objetos foram planejadas para serem colocadas pelo ambiente
+nos objetos e nos agentes. As rotinas são disponibilizadas pelo ambiente
+para cada um dos agentes como percepção de acordo com o dia sendo simulado,
+isto é, cada passo corresponde aproximadamente à 15 minutos e a cada 96 passos
+temos um dia. As preferências também são disponibilizadas em formas de
+percepção, mas o usuário que deve criar regras no \jason para realizar as
+conclusões necessárias.
 
 \section{Integrando a Plataforma \jason com as ontologias} \label{ch:p:ipjo}
 
-\begin{table}[b]
-	\caption{As três ontologias juntas possuem expressividade: ALCHIN(D).}
-	\label{tab:tp:cdu:geral}
-	\begin{center}
-	\begin{tabular}{|c|c|}
-		\hline
-		Descrição & Quantidade \\ \hline
-		Classes &  57 		\\ \hline
-		Propriedade de Objetos & 23 \\ \hline
-		Propriedade de Dados & 26 \\ \hline
-		Indivíduos &  27	\\ \hline
-		Regras & 7 \\ \hline
-	\end{tabular}
-	\end{center}
-\end{table}
-
 As ontologias explicadas, nas seções anteriores, foram planejadas para serem
 usadas como módulos. Sendo assim, umas das ontologias explicadas anteriormente
-pode ser usada sem o uso das demais ou todas em conjunto. Os dados das
-ontologias se encontram resumidos na Tabela~\ref{tab:tp:cdu:geral}.
+pode ser usada sem implicar no uso de outra. Cabe salientar que elas podem ser
+usadas tanto pelo agente quanto pelo ambiente.
+
+No capítulo~\ref{ch:cdu}, um dos agentes utiliza a ontologia afetiva e o
+ambiente utiliza a ontologia de preferência e rotinas. Assim, um lugar
+definido pelo conceito \emph{Place} possui a relação \emph{hasSetup} visando
+duas coisas. A primeira é que objetos em um determinado lugar possuem
+anotações que são relacionadas com dessa forma. A segunda é que alguns lugares
+são conceitos abstratos para o agente gerar um mapa abstrato, por exemplo o
+agente sabe que a sala 1 possui um armário, dois criados mundos, 2 duas camas
+e duas portas. Mas, não conhece nenhuma das anotações desses objetos no mapa
+abstrato.
+
+Na figura~\ref{fig:dcs} pode ser observado as classes desenvolvidas para
+realizar a integração das ontologias com os agentes \emph{Jason}. Para essas classes
+serem usadas, o agente deve ser configurado para utilizar a classe
+\emph{BBAffective} como base de crença e a \emph{UniqueAnnotation} como classe
+do agente para a implementação da afetividade funcionar perfeitamente. Essas
+configurações podem ser feitas conforme explicado na
+seção~\ref{sec-jason-architecture} (pág.~\pageref{sec-jason-architecture}) e
+demostrado na seção~\ref{ch:cdu:tbc} (pág.~\pageref{ch:cdu:tbc}).
+
+A classe \emph{UniqueAnnotation} é responsável por garantir a não duplicidade
+de anotações. Assim, quando se insere por algum motivo duas vezes a mesma
+anotação apenas valerá a última. A responsabilidade da classe
+\emph{BBAffective} é fazer a ligação entre o código da plataforma e do
+presente desenvolvimento. Ela realiza a manipulação das crenças em dois
+níveis. O primeiro nível é a ontologia e o segundo é a base de crença padrão
+que é utilizada quando o elemento não considerado relevante para o primeiro
+nível. A relevância é descoberta consultando os conceitos e propriedades
+existentes na ontologia. A classe \emph{EmotionKnowledge} é responsável pelo
+conhecimento das emoções e sentimentos. Ela responde as requisições do
+primeiro nível da base de crenças e ...
 
 
-...
-Figura~\ref{fig:dcs}
 
-\todo{falar aqui porque Place tem uma relacao hasSetup}
-\todo{explicar aqui a BBAffective e UniqueAnnotation}
 \todo{explicar aqui o processo de como uma crença vai para ontologia}
 
-\begin{figure}
+\begin{figure}[b]
   \centering
-  \includegraphics[width=14cm]{figuras/implementacao-15dez2011.png}
+  \includegraphics[width=8cm]{figuras/implementacao-15dez2011.png}
   \caption{Diagrama de classes do sistema.}
   \label{fig:dcs}
 \end{figure}
 
+Emotion					NOT
+	EmotionValence		NOT
+	AgentValence		NOT
+	SteppedValence		NOT
+EmotionKnowledge		NOT
+OwlApi					NOT
+BBAffective				OK
+FeelingsThreshold		NOT
+AnnotatedEnvironment	NOT
+IntelligentEnvironment	NOT
+TimeSteppedEnvironment	NOT
+BBKeeper				NOT
+Dumper					NOT
+UniqueAnnotation		OK
