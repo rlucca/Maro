@@ -12,7 +12,6 @@ high(lhigh).
 mid(lmid).
 low(llow).
 none(lnone).
-none(lmoo).
 
 // threshold
 //   note: Essas crencas saoh removidas porque o conceito `Setup' eh carregado
@@ -221,26 +220,16 @@ hasJudge(millie_gratitudes_car, milliesCar).
 !start.
 
 +!start
-    <-  nope; -none("lmoo");
+    <-  !functions;
         !!emocoes.
 
-+!esperaAte(CICLO)
-     : step(CICLO)
-    <- true.
-
-+!esperaAte(CICLO)
-    <-  nope;
-        !esperaAte(CICLO).
-
 +!relacoes
-    <-  .findall(friend(X,Y), hasFriend(X,Y), LF); ?printBR(LF, "Background: "); nope;
-        .findall(enemy(X,Y), hasEnemy(X,Y), LE); ?printBR(LE, "Background: "); nope;
-        .findall(know(X,Y), hasKnow(X,Y), LB);
-        .difference(LB, LF, LW);
-        .difference(LW, LE, LK); ?printBR(LK, "Background: "); nope.
-
--!relacoes
-    <- .println("teste falhou"); .stopMAS.
+    <-  .findall(friend(X,Y), hasFriend(X,Y), LF); ?printBR(LF, "Background: ");
+        LF=[friend("jose","dilu"), friend("dilu","jose"), friend("john","millie"), friend("john","jose")]; nope;
+        .findall(enemy(X,Y), hasEnemy(X,Y), LE); ?printBR(LE, "Background: ");
+        LE=[enemy("millie","dilu"), enemy("jose","john")]; nope;
+        .findall(know(X,Y), hasKnow(X,Y), LB); ?printBR(LB, "Background: ");
+        LB=[know("jose","john"), know("john","millie"), know("jose","dilu"), know("john","jose"), know("millie","john"), know("millie","jose"), know("jose","millie"), know("dilu","jose"), know("dilu","millie"), know("millie","dilu")]; nope.
 
 +?printBR([], _).
 +?printBR([H|R], PROMPT)
@@ -265,6 +254,7 @@ hasJudge(millie_gratitudes_car, milliesCar).
         ?distress("john_remorse_itself"); nope;
         ?shame("john_remorse_itself"); nope;
         ?remorse("john_remorse_itself"); nope;
+        .eval(false, feeling(remorse, _)); nope;
         .println("john tudo certo!").
 
 +!testeEmocoes(jose)
@@ -275,6 +265,7 @@ hasJudge(millie_gratitudes_car, milliesCar).
         ?pride("jose_gratification_itself"); nope;
         ?joy("jose_gratification_itself"); nope;
         ?gratification("jose_gratification_itself"); nope;
+        .eval(false, feeling(gratification, _)); nope;
         .println("jose tudo certo!").
 
 +!testeEmocoes(dilu)
@@ -284,46 +275,48 @@ hasJudge(millie_gratitudes_car, milliesCar).
         ?distress("dilu_anger_jose"); nope;
         ?reproach("dilu_anger_jose"); nope;
         ?anger("dilu_anger_jose"); nope;
+        .eval(false, feeling(anger, _)); nope;
         .println("dilu tudo certo!").
 
 +!testeEmocoes(millie)
     <-  ?reproach("millie_reproach_john"); nope;
+        .eval(false, feeling(reproach,_)); nope;
         ?gloating("millie_gloating_dilu"); nope;
+        ?feeling(gloating, 38); nope;
         ?relief("millie_relief_gas"); nope;
+        .eval(false, feeling(relief, _)); nope;
         ?joy("millie_enjoy_cooking"); nope;
         ?joy("millie_gratitudes_car"); nope;
+        ?feeling(joy, 72); nope;
         ?admiration("millie_gratitudes_car"); nope;
+        ?feeling(admiration, 47); nope;
         ?gratitude("millie_gratitudes_car"); nope;
+        ?feeling(gratitude, 43); nope;
         .println("millie tudo certo!").
-
--!testeEmocoes(X)
-    <- .println(X, " falhou"); .stopMAS.
 
 +!perguntas
     <-  .findall(X, hasKnow("jose", X), AJ);
-        .println("Quem eh conhecido por jose? ", AJ); nope;
+        .println("Quem eh conhecido por jose? ", AJ);
+         AJ=["john","dilu","millie"]; nope;
         .findall(X, hasKnow(X, "dilu"), AD);
-        .println("Quem conhece a dilu?", AD); nope;
+        .println("Quem conhece a dilu?", AD);
+        AD=["jose","millie"]; nope;
         .findall(X, love(Y) & isAppraisalOf(Y, X) & hasPerson(Y, "millie"), AL);
-        .println("Quem ama a millie?", AL); nope;
+        .println("Quem ama a millie?", AL);
+        AL=["john"]; nope;
         .findall(X, feeling(X, _), FL);
-        .println("Que sentimentos millie tem?", FL); nope;
+        .println("Que sentimentos millie tem?", FL);
+        FL=[joy,gratitude,gloating,admiration]; nope;
         .findall(diff("millie",X), ~sameAs("millie", X), SMMX);
-        .println("diff A:", SMMX); nope;
         .findall(diff("millie",X), ~sameAs(X, "millie"), SMXM);
-        .println("diff B:", SMXM); nope;
-        .difference(SMMX, SMXM, SDAB);
-        .difference(SMXM, SMMX, SDBA);
-        .println("A minus B: ", SDAB);
-        .println("B minus A: ", SDBA);
-        SDAB = SDBA;
-        !!functions.
+        .difference(SMMX, SMXM, []);
+        .difference(SMXM, SMMX, []); nope;
+        !!summary.
 
 +!functions
     <- !function(object);
        !function(data);
-       !function(instance);
-       !!summary.
+       !function(instance).
 
 +!function(object)
     <- +hasLikelihood("test1", lnone);
@@ -412,7 +405,7 @@ hasJudge(millie_gratitudes_car, milliesCar).
        .println("removing another annot from concept ok"); nope.
 
 +!summary
-    <-  // larguei de mao de fazer isso aqui...
+    <-
         +startUpOK; nope.
 
 +step(X)
