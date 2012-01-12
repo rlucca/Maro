@@ -390,13 +390,20 @@ usadas tanto pelo agente quanto pelo ambiente.
 
 No capítulo~\ref{ch:cdu}, um dos agentes utiliza a ontologia afetiva e o
 ambiente utiliza a ontologia de preferência e rotinas. Assim, um lugar
-definido pelo conceito \emph{Place} possui a relação \emph{hasSetup} visando
-duas coisas. A primeira é que objetos em um determinado lugar possuem
-anotações que são relacionadas com dessa forma. A segunda é que alguns lugares
-são conceitos abstratos para o agente gerar um mapa abstrato, por exemplo o
-agente sabe que a sala 1 possui um armário, dois criados mundos, 2 duas camas
-e duas portas. Mas, não conhece nenhuma das anotações desses objetos no mapa
-abstrato.
+definido pelo conceito \emph{Place} pode possuir a relação \emph{hasSetup} visando
+duas coisas. A primeira é determinar as anotações existentes em um objeto que
+esta em um determinado lugar. A segunda é indicar que objetos fazem parte dos
+lugares para que o agente tenha uma especie de mapa abstrato do local, por
+exemplo o agente sabe que a sala 1 possui um armário, dois criados mundos, 2
+duas camas e duas portas. Mas, não conhece nenhuma das anotações desses
+objetos no mapa abstrato sendo necessário ir até eles para tal.
+
+\begin{figure}[b]
+  \centering
+  \includegraphics[width=8cm]{figuras/implementacao-15dez2011.png}
+  \caption{Diagrama de classes do sistema.}
+  \label{fig:dcs}
+\end{figure}
 
 Na figura~\ref{fig:dcs} pode ser observado as classes desenvolvidas para
 realizar a integração das ontologias com os agentes \emph{Jason}. Para essas classes
@@ -409,38 +416,82 @@ demostrado na seção~\ref{ch:cdu:tbc} (pág.~\pageref{ch:cdu:tbc}).
 
 A classe \emph{UniqueAnnotation} é responsável por garantir a não duplicidade
 de anotações. Assim, quando se insere por algum motivo duas vezes a mesma
-anotação apenas valerá a última. A responsabilidade da classe
-\emph{BBAffective} é fazer a ligação entre o código da plataforma e do
-presente desenvolvimento. Ela realiza a manipulação das crenças em dois
-níveis. O primeiro nível é a ontologia e o segundo é a base de crença padrão
-que é utilizada quando o elemento não considerado relevante para o primeiro
-nível. A relevância é descoberta consultando os conceitos e propriedades
-existentes na ontologia. A classe \emph{EmotionKnowledge} é responsável pelo
-conhecimento das emoções e sentimentos. Ela responde as requisições do
-primeiro nível da base de crenças e ...
+anotação apenas valerá a última. Já, a responsabilidade da classe
+\emph{BBAffective} é manter as crenças dos agentes e atender as solicitações
+da plataforma \jason sobre a manipulação dessas em dois níveis. O primeiro
+nível é a ontologia e o segundo é a base de crença padrão que é utilizada
+quando o elemento não é considerado relevante para o primeiro nível. A
+relevância é descoberta consultando os conceitos e propriedades existentes na
+ontologia, por exemplo instâncias de conceitos são crenças no formato
+``nomeDoConceito(nomeDaInstancia)'' e relações são similares
+``nomeDaRelacao(nomeDaInstanciaDominio, Imagem)''. A base de crenças delega
+todo o assunto relacionado com as crenças da ontologia para a classe
+\emph{EmotionKnowledge}. Essa é responsável por conhecer todo o assunto
+relacionado com as emoções e sentimentos e delega a manipulação e consulta da
+ontologia, propriamente dita, para a classe \emph{OwlApi}.
 
+A classe \emph{SteppedValence}, \emph{AgentValence} e \emph{EmotionValence}
+são extensões da classe \emph{HashMap}. A primeira usa como chave o passo da
+simulação e obtém um número que representa a valência da emoção no momento. A
+próxima, usa o nome do agente como chave para obter uma instância da
+\emph{SteppedValence}. A terceira, devolve uma instância da segunda
+baseando-se no nome da emoção. Esse último \emph{hash} é mantido na classe
+\emph{Emotion} juntamente com uma lista de todas as emoções possíveis
+retiradas da própria ontologia.
 
+Conhecer o limite mínimo para uma emoção ser sentida e virar sentimento é de
+responsabilidade da classe \emph{FeelingsThreshold}. As classes de ambiente,
+isto é, as classes que possuem \emph{Environment} no nome são responsáveis por
+manter os passos de simulação com um tempo máximo, conhecer a quantidade de
+agentes que tem que esperar responderem para dai ir ao passo de simulação
+seguinte e carregar as ações definidas do ambiente a partir do pacote
+especificado estendendo a classe \emph{ActionLoader} (não desenhada). O
+conhecimento do formato das crenças e como converte-lo para o formato interno
+com a finalidade de proteção de mudanças da plataforma \jason é
+responsabilidade da classe \emph{Dumper}. Já, a classe \emph{BBKeeper} é um
+\emph{singleton} e é responsável por conhecer todas as instâncias da classe
+\emph{BBAffective}. Essa classe precisa ser um \emph{singleton} para, dessa
+forma, poder em qualquer ponto do código as emoções ou outras crenças serem
+consultadas.
 
-\todo{explicar aqui o processo de como uma crença vai para ontologia}
+Na figura~\ref{fig:addBelief} esta representado o processo de inserção de
+uma crença. No UML a possibilidade de se colocar guardas que são etiquetas que
+dizem a condição para o código ser executado. Essas guardas foram colocadas
+perto de um quadrado para simbolizar que todas as chamadas feitas dentro dele
+estão relacionadas aquelas condições. Dessa forma, quando estiver sendo
+inserida uma crença de percepção com o termo diferente de ``step'' nenhum código será
+executado pelo diagrama e o insere no segundo nível.
 
-\begin{figure}[b]
+A chamada do \jason para a função \emph{add} não se encontra representada na
+figura~\ref{fig:addBelief}, porém essa função chama uma outra de mesmo nome e
+quando essa retorna falso é chamada a função \emph{add} da instância
+\emph{next}. Cabe chamar atenção que quando uma percepção esta sendo inserida,
+ela é sempre posta no segundo nível da base de crença. Entretanto, quando o
+termo da crença é ``step'' aproveitamos para realizar o processo de
+sumarização que calcula e guarda a potência da emoção na classe
+\emph{Emotion}. Além disso, se aproveita o momento para obter e inserir na
+base de crenças padrão os sentimentos que acabaram de sofrer atualização em
+seus valores.
+
+Agora quando o esta sendo feita uma inserção de uma crença que não é uma
+percepção, é feita a verificação se ele é relevante. Caso ele seja considerado
+irrelevante, a crença sera inserida no segundo nível. Entretanto, se ele for
+considerado relevante então será feita a recuperação do elemento atualmente
+armazenado e, após isso, é feita a inserção das novas anotações nesse
+elemento. Se o elemento não existir na base de crenças ainda então esse último
+procedimento é ignorado, porém ele é necessário para haver a correta
+atualização das anotações. Por fim, a crença é transformada no tipo interno e
+enviado para ser acrescentado na ontologia.
+%
+O processo de inserção na ontologia depende se o que esta sendo inserido é uma
+instância de objeto ou de propriedade de objeto ou de propriedade de dados. Se
+houver interesse em conhecer em por menores o código, ele encontra-se
+disponível no \emph{GitHub}\footnote{http://github.com/rlucca/Maro}.
+
+\begin{figure}
   \centering
-  \includegraphics[width=8cm]{figuras/implementacao-15dez2011.png}
-  \caption{Diagrama de classes do sistema.}
-  \label{fig:dcs}
+  \includegraphics[width=12cm]{figuras/addB.png}
+  \caption{Diagrama de sequência para adicionar uma crença.}
+  \label{fig:addBelief}
 \end{figure}
 
-Emotion					NOT
-	EmotionValence		NOT
-	AgentValence		NOT
-	SteppedValence		NOT
-EmotionKnowledge		NOT
-OwlApi					NOT
-BBAffective				OK
-FeelingsThreshold		NOT
-AnnotatedEnvironment	NOT
-IntelligentEnvironment	NOT
-TimeSteppedEnvironment	NOT
-BBKeeper				NOT
-Dumper					NOT
-UniqueAnnotation		OK
