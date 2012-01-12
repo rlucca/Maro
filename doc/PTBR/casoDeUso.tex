@@ -1,8 +1,8 @@
 \chapter{Caso de Uso} \label{ch:cdu}
 
 O presente capítulo visa explicar o caso de uso da ontologia. O caso de uso da
-ontologia é uma simulação de uma casa em sua vida cotidiana normal, isto é, os
-personagens vão para escola, trabalho, fazem compras e ficam em casa.
+ontologia é uma simulação de uma parte da vida dos personagens. Eles
+encontram-se observando um jogo de futebol e cada um torce para um time.
 Entretanto, antes desse caso de uso ser abordado na seção~\ref{ch:cdu:svc}
 será falado como a ontologia foi testada juntamente com a plataforma \jason.
 A seção~\ref{ch:cdu:tbc} explica as ferramentas desenvolvidas para testar a base
@@ -160,9 +160,22 @@ instâncias de classes, além de testes das conclusões esperadas na ontologia d
 agente. Veja o código do agente no repositório disponível no
 \emph{GitHub}\footnote{http://github.com/rlucca/Maro}.
 
-\section{Simulando a Vida Cotidiana} \label{ch:cdu:svc}
-\todo{era ``Simulando a Vida Cotidiana'' sem nada escrito}
+\section{Assistindo um jogo de futebol} \label{ch:cdu:svc}
 
-...
+O caso de uso utilizado para demostrar a ontologia representa dois personagens
+que se encontram no mesmo lugar e encontram-se assistindo ao mesmo jogo de
+futebol. O jogo tem ao todo 60 turnos que representam os 90 minutos de um jogo
+regulamentar. Em cada turno é sorteado um número randômico de 0 à 1000 e se o
+estiver a baixo de 100 então é porque saiu gol. Nesse caso, o valor abaixo de
+50 vai para o time direito e o valor superior ou igual vai para o time
+esquerdo.
 
+Esse exemplo simples propicia um cenário bastante rico para as emoções por
+causa que um personagem pode ter diferentes emoções sendo disparadas aqui.
+Essas emoções são muitas vezes do ramo de consequências de eventos que tem
+haver com a desejabilidade do evento ou do ramo de ações de agentes que tem
+haver com os padrões do agentes.
 
+Os agentes que estão assistindo ao jogo de futebol decidem no inicio da
+simulação os nomes de seus times. Ambos acreditam que seus times vão ganhar e
+esperam ter um gol logo no primeiro tempo.
