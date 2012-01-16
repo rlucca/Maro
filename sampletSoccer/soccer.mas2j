@@ -1,0 +1,20 @@
+
+MAS soccer {
+    infrastructure: Centralised
+
+    environment: maro.example.soccer.Environment(30000, 70, 3, FALSE)
+
+    agents:
+        watch1
+          #1
+          beliefBaseClass maro.wrapper.BBAffective("ontology/occ-tbox.owl")
+          agentClass maro.wrapper.UniqueAnnotation
+        ;
+        watch2
+          #1
+          beliefBaseClass maro.wrapper.BBAffective("ontology/occ-tbox.owl")
+          agentClass maro.wrapper.UniqueAnnotation
+        ;
+        stadium;
+	aslSourcePath: "asl";
+}
