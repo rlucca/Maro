@@ -1,29 +1,27 @@
 \chapter{Conclusão} \label{ch:cf}
 
-\todo{apos escrever, isso olhar o posicionamento das figuras}
-\todo{falar de trabalhos futuros aqui}
+O presente trabalho apresentou um \emph{framework} que estende a base de
+crenças do agente \jason para permitir que o mesmo tenha emoções segundo o
+modelo desenvolvido por \cite{ortony1988cse}. O desenvolvimento se baseou em
+utilizar uma ontologia para concluir qual seria a emoção sendo sentida. Dessa
+forma, a base de crenças manipula a ontologia inserindo, removendo e
+consultando-a conforme necessário e de maneira transparente.
 
-O presente artigo visa apresentar uma visão do trabalho que está sendo feito
-para a construção de um simulador no qual os atores e ambientes interagem.
-Entretanto, a ontologia foi omitida porque está ainda sendo aprimorada.  A
-idéia apresentada não é nova, porém, o ponto chave é a ontologia permitir aos
-agentes raciocinarem sobre suas emoções de forma transparente.  Essa
-transparência é útil porque permite ao animador conhecer e, até mesmo,
-especificar o personagem com um grau bastante elevado de abstração.
-%
-Dessa forma, dois agentes com a mesma especificação, ao enfrentarem a mesma
-situação, terão o mesmo comportamento quando tiverem vivenciado as mesmas
-experiências. Essa experiência inclui as informações adquiridas sobre o
-ambiente e sobre os demais atores e não somente os interesses e metas do
-mesmo.
+Todavia, a ideia de permitir aos agentes raciocinarem sobre suas emoções de
+maneira transparente não foi alcança. Cada agente tem uma preferência e cada
+um precisa acrescentar as relações para disparar aquela emoção da maneira que
+se deseja. Tentar reduzir esse problema parece um trabalho futuro interessante
+porque abre portas para uma facilidade imensa.
 
-O modelo OCC em uso no presente trabalho, foi definido em
-\citeyear{ortony1988cse} e possui ao todo 22 emoções especificadas por regras
-que demonstram quando a mesma acontece. Entretanto, em nenhum momento da sua
-definição foi tratado explicitamente como uma emoção afeta as outras presentes
-no personagem.
-%
-A ferramenta em desenvolvimento tem como interesse a simulação computacional
-do comportamento humano e, dessa forma, ela pode ser utilizada de diferentes
-maneiras e pode coletar diferentes informações para análises com diversos
-propósitos.
+As ontologias em todo caso são um trabalho a parte. Elas podem ser usadas em
+separado ou em conjunto, no \emph{framework} ou em outra aplicação. O
+principal ponto a melhorar na ontologia digo que é transformar a probabilidade
+em um valor numérico e não conceitos que representam faixas de probabilidade.
+
+Além disso, a interface construída foi considerada rápida. Cada passo da
+simulação ficou em torno de 1 à 2 segundos em média, com exceção do primeiro
+passo no qual o tempo fica perto de 30 segundos por causa que é feita a
+leitura do arquivo e carga na base de crenças do que esta em arquivos de
+código \jason como crenças iniciais.
+
+

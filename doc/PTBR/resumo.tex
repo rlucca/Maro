@@ -1,29 +1,43 @@
 % resumo na língua do documento
 \begin{abstract}
-O estudo das emoções é feito dentro da computação na área chamada computação
-afetiva. Essa área estuda tudo relacionado ou surgido das emoções e o presente
-trabalho foca na síntese de emoções utilizando o modelo baseado em
-significados proposto por \citet{ortony1988cse} na plataforma \jason
-\cite{bordini-jason}. Assim, o desenvolvimento de uma integração entre \jason
-e ontologias foi feito. As emoções são guardadas em uma ontologia desenvolvida
-e se uma crença for concluída como emoção, ela vira um sentimento quando o
-valor atingir um determinado limite mínimo. Dessa forma, a emoção (não
-perceptível) passa a ser um sentimento percebido.
+Este trabalho apresenta um \emph{framework} que permite aos agentes perceberem
+suas próprias emoções. Ele foi feito em \emph{Java} e usa a plataforma
+multi-agente \jason \cite{bordini-jason}, sendo que estende a base de crenças
+da última a fim de utilizar uma ontologia desenvolvida baseada no modelo
+afetivo proposto por \citet{ortony1988cse}.
+%
+Além disso, uma ontologia de rotinas e de preferência sobre as anotações
+utilizadas no ambiente foram criadas. Dessa forma, aplicações de
+entretenimento poderiam utilizar as três ontologias juntas para criar um mapa
+da cidade, para criar as rotinas de cada agente e para dar preferências sobre
+as anotações utilizadas nas crenças vindas do ambiente. Para validação desse
+desenvolvimento, um exemplo de jogo de futebol foi utilizado e este atingiu os
+principais grupos emotivos do modelo afetivo.
 \end{abstract}
+
+%Example:
+%http://www.sbgames.org/sbgames2011/proceedings/sbgames/papers/comp/full/11-92076_2.pdf
+%1º, o que é o trabalho
+%2º, o que uso e para que
+%3º, para que posso utiliza-la
+%4º, foi falado que um experimento para validar a arquitetura foi criado
 
 % resumo na outra língua
 % como parametros devem ser passados o titulo e as palavras-chave
 % na outra língua, separadas por vírgulas
-\begin{englishabstract}{Maro: An emotional model using ontology}{virtual agents, programming of
-agents, simulation, affective computing, OCC's model, ontology}
-The study of emotions is made in computing at the field called affective
-computing. That field studies all things related or emerged from emotions. The
-present work is focused on emotional synthesis using a meaning-based emotion
-model \cite{ortony1988cse} at \jason platform \cite{bordini-jason}. Thus, the
-development of a integration between \jason and ontology was created. All
-emotions are saved in an ontology development. Therefore, the ontology is used
-to classify the belief of an agent as emotion and when that emotion hits a
-threshold it becomes a feeling. In that way, the emotion (not perceived)
-passes to be a perceived feeling.
-\end{englishabstract}
-
+%\begin{englishabstract}{Maro: An emotional model using ontology}{virtual
+%agents, programming, agents, simulation, affective computing, OCC's model, ontology}
+%This work presents a framework built to work with Jason's platform
+%\cite{bordini-jason} to allow agents acknowledge their own emotions. This work have
+%been developed in \emph{Java} and extended the belief base from agent of
+%platform to utilize an developed ontology based on the affective model
+%\cite{ortony1988cse}. For so the development of a belief base permits an agent
+%perceive emotions based on your appraisal of environment and conclude new
+%beliefs. In addition, an ontology to make the schedules of agents and to make
+%yours preferences about annotations on belief were developed. So,
+%entertainment applications and games could use the three ontologies together
+%to create a map of the city, to create schedules or routines of each
+%agent and to give preferences about annotations used in beliefs that came from
+%environment. Finally, to validate the framework has been developed an
+%soccer's application to demonstrate many emotions from affective model.
+%\end{englishabstract}

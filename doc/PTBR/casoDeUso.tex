@@ -165,17 +165,250 @@ agente. Veja o código do agente no repositório disponível no
 O caso de uso utilizado para demostrar a ontologia representa dois personagens
 que se encontram no mesmo lugar e encontram-se assistindo ao mesmo jogo de
 futebol. O jogo tem ao todo 60 turnos que representam os 90 minutos de um jogo
-regulamentar. Em cada turno é sorteado um número randômico de 0 à 1000 e se o
-estiver a baixo de 100 então é porque saiu gol. Nesse caso, o valor abaixo de
-50 vai para o time direito e o valor superior ou igual vai para o time
-esquerdo.
+regulamentar. Em cada turno é sorteado um número randômico com probabilidade
+de 1.67 de probabilidade para cada time de marcar gol, isto é, há 98.33\% de
+chance à cada turno de nada acontecer e o placar permanecer inalterado.
 
-Esse exemplo simples propicia um cenário bastante rico para as emoções por
-causa que um personagem pode ter diferentes emoções sendo disparadas aqui.
-Essas emoções são muitas vezes do ramo de consequências de eventos que tem
-haver com a desejabilidade do evento ou do ramo de ações de agentes que tem
-haver com os padrões do agentes.
+Esse exemplo aparentemente simples, propicia um cenário bastante rico para as
+emoções por causa que um personagem pode ter diferentes emoções acontecendo.
+Essas emoções são muitas vezes do ramo de consequências de eventos por esta
+estar ligada com a desejabilidade do evento ou do ramo de ações de agentes que
+tem haver com os padrões do agentes. Assim, os agentes que estão assistindo ao
+jogo de futebol decidem no inicio da simulação os times que estarão torcendo e
+ambos acreditam que seus times vão ganhar.
 
-Os agentes que estão assistindo ao jogo de futebol decidem no inicio da
-simulação os nomes de seus times. Ambos acreditam que seus times vão ganhar e
-esperam ter um gol logo no primeiro tempo.
+\begin{center}
+    \begin{minipage}{140mm}
+	\lstset{linewidth=140mm}
+	\lstinputlisting[frame=trbl, caption=Arquivo de projeto do \jason para o
+exemplo de futebol,
+label=lst:soccer]{../../sampletSoccer/soccer.mas2j}
+    \end{minipage}
+\end{center}
+
+A Listagem~\ref{lst:soccer} mostra o arquivo de projetos que cria dois agentes
+um chamado ``watch1'' e ``watch2'', cada um com seu próprio código fonte.
+Dessa forma, cada um desses agentes inclui em seus códigos as configurações
+necessárias para utilizar o \emph{framework}. Um exemplo dessas configurações
+é o limite de ativação para uma emoção virar sentimento. Outro exemplo é que
+os times que participam do jogo são considerados pelos personagens como outros
+agentes, dessa forma o time que eu torço pode ser considerado um ``agente
+amigo'' e o time adversário um ``agente inimigo''.
+
+Cabe salientar que cada um dos agentes realizam as mesmas avaliações sobre os
+mesmos eventos. Esses eventos foram pensados como o estado atual do jogo
+(Listagem~\ref{lst:soccerTeam}), o estado final do jogo
+(Listagem~\ref{lst:soccerEnd1} e Listagem~\ref{lst:soccerEnd2}) e a marcação de um gol
+(Listagem~\ref{lst:soccerGoal}). Esses são alguns exemplos escritos escritos
+na plataforma \jason para exemplificar o \emph{framework} construído.
+
+\begin{center}
+    \begin{minipage}{120mm}
+	\lstset{linewidth=120mm}
+	\begin{lstlisting}[frame=trbl,
+caption=Parte do código do agente referente à avaliação de gol,
+label=lst:soccerGoal]
++?appraisalGoal
+    :  goal(TEAM) & myPoints(TEAM, PF, _, _)
+    <- ?fib(8-(PF+1), VAL);
+       ?updateEmotion(prospectIrrelevant, "goal_myteam_pi", VAL);
+       +removeEmotion("goal_myteam_pi").
+
++?appraisalGoal
+    :  goal(TEAM) & myPoints(_, _, TEAM, PE)
+    <- ?fib(PE+1, VAL);
+       ?updateEmotion(prospectIrrelevant, "goal_enemyteam_pi", -VAL);
+       +removeEmotion("goal_enemyteam_pi").
+
++?appraisalGoal
+    : removeEmotion(INDIVIDIDUAL)
+   <- ?removeEmotion(prospectIrrelevant, INDIVIDIDUAL);
+      -removeEmotion(INDIVIDIDUAL).
+
++?appraisalGoal.
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+
+A Listagem~\ref{lst:soccerGoal} realiza o processamento das emoções sentidas
+por um personagem quando um time marca um gol. Nessa primeira listagem, a 4
+condições possíveis: gol do time que torço, gol do time adversário, gol já
+não é mais percebido e não foi nenhum gol. As emoções envolvidas em gols foram
+consideradas alegria e sofrimento. Assim, quando o agente percebe o mesmo pode
+ficar alegre ou em agonia. As linhas 4 e 15 sera vista mais adiante por hora
+basta saber que elas realizam a inserção, atualização ou remoção dos dados
+guardados na ontologia.
+
+A Listagem~\ref{lst:soccerTeam} é similar. Ela é responsável por inserir uma
+emoção de esperança no agente com valoração 50 e inicia o calculo de
+realização do evento assumindo o valor positivo 1. Após, a cada gol percebido
+do próprio time esse valor é incrementado em 10 e se o gol for do time
+adversário é feito o decremento. A emoção de esperança não sofre alteração
+depois que é criada porque esta sendo considerado que as emoções são baseadas
+na percepção dos eventos. Dessa forma, a esperança do jogo ser ganho só
+termina quando há a percepção do encerramento do mesmo. O mesmo vale para a
+emoção sentida em gols.
+
+\begin{center}
+    \begin{minipage}{130mm}
+	\lstset{linewidth=130mm}
+	\begin{lstlisting}[frame=trbl,
+caption=Parte do código do agente referente ao andamento do jogo,
+label=lst:soccerTeam]
++?appraisalTeam
+    :  not(hasLikelihood("team_hope_prn", PROB)) & step(STEP) & STEP < 10
+    <- ?updateEmotion(prospectNotRealized, "team_hope_prn", 50);
+       +realizedCalculation(1).
+
++?appraisalTeam
+    :  goal(TEAM) & myPoints(_,_, TEAM, _) // ponto que nao eh meu
+    &  realizedCalculation(CALC)
+    <- -realizedCalculation(CALC);
+       +realizedCalculation(CALC-10).
+
++?appraisalTeam
+    :  goal(TEAM) & myPoints(TEAM, _, _,_) // ponto que eh meu
+    &  realizedCalculation(CALC)
+    <- -realizedCalculation(CALC);
+       +realizedCalculation(CALC+10).
+
++?appraisalTeam.
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+
+\begin{center}
+    \begin{minipage}{140mm}
+	\lstset{linewidth=140mm}
+	\begin{lstlisting}[frame=trbl,
+caption=Parte do código do agente referente à avaliação do final do jogo,
+label=lst:soccerEnd1]
++?appraisalEndMatch
+    :  realizedCalculation(CALC) & match(_,_)
+    &  hasLikelihood("team_hope_prn", PROB)
+    &  feeling(hope, HOPEVAL)
+    <- ?removeEmotion(prospectNotRealized, "team_hope_prn");
+       ?updateEmotion(prospectRealized, "team_satisfaction_pr", HOPEVAL, CALC);
+       -realizedCalculation(CALC).
+
++?appraisalEndMatch
+    :  realizedCalculation(CALC) & match(_,_)
+    &  hasLikelihood("team_hope_prn", PROB)
+    <- ?removeEmotion(prospectNotRealized, "team_hope_prn");
+       -realizedCalculation(CALC).
+
++?appraisalEndMatch.
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+
+Nas Listagens~\ref{lst:soccerEnd1}~e~\ref{lst:soccerEnd2} são realizadas
+avaliações depois do termino do jogo. O jogo pode terminar empatado ou um dos
+dois times ganhar. Entretanto, para a primeira listagem basta que o jogo tenha
+terminado para uma atitude ser tomada. Essa atitude é remoção da emoção de
+esperança e a criação de uma nova emoção baseado na realização do jogo e no
+valor atual da esperança. Sendo assim, um personagem pode ficar satisfeito ou
+desapontado.
+
+Já, a Listagem~\ref{lst:soccerEnd2} permite um personagem sentir-se feliz
+por um resultado ou ficar com pena de seu time. Quando o time do personagem
+tiver ganho o jogo ele pode sentir-se feliz ou neutro e quando o time perde
+ele pode sentir-se com pena ou neutro da mesma forma. Esse valor de
+neutralidade é porque o modelo de emoções só diz que a felicidade por alguém
+ou a pena só serão sentidas quando o merecimento e o desejo do outro forem
+ambas positivas ou ambas negativas.
+
+\begin{center}
+    \begin{minipage}{140mm}
+	\lstset{linewidth=140mm}
+	\begin{lstlisting}[frame=trbl,
+caption=Parte do código do agente referente à avaliação do final do jogo,
+label=lst:soccerEnd2]
++?appraisalEndMatchHappy
+     : match(win, TEAM) & myPoints(TEAM, _, _, _)
+     & not(hasAppraisal(NAME, "team_happy_foo"))
+    <- .random(N); DE=math.round(N*20)-10; DT=20;
+       ?updateEmotion(fortunesOfOthers, "team_happy_foo", DE, DT).
+
++?appraisalEndMatchHappy
+     : match(lose, TEAM) & myPoints(TEAM, _, _, _)
+     & not(hasAppraisal(NAME, "team_happy_foo"))
+    <- .random(N); DE=math.round(N*20)-10;
+       DT=-20; // eh negativo para implificar na emocao de pena
+       ?updateEmotion(fortunesOfOthers, "team_happy_foo", DE, DT).
+
++?appraisalEndMatchHappy
+     : match(draw, _) & myPoints(TEAM, _, _, _)
+     & not(hasAppraisal(NAME, "team_happy_foo"))
+    <- .random(N); DE=math.round(N*20)-10; DT=10;
+       ?updateEmotion(fortunesOfOthers, "team_happy_foo", DE, DT).
+
++?appraisalEndMatchHappy.
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+
+As consultas de ``removeEmotion'' recebem o tipo de emoção e o nome do
+indivíduo que deve ser removido. Com base nessas informações, as relações
+que foram outrora inseridas são removidos da base de conhecimento e,
+consequentemente, da base de crenças. Um exemplo é amostrado na
+Listagem~\ref{lst:removeSample} no qual são removidas às relações de
+merecimento, de desejo por outros, de qual pessoa esta sendo avaliada e que
+esta avaliando.
+
+\begin{center}
+    \begin{minipage}{130mm}
+	\lstset{linewidth=130mm}
+	\begin{lstlisting}[frame=trbl,
+caption=Amostra de remoção de emoção do tipo destino de outros,
+label=lst:removeSample]
++?removeEmotion(fortunesOfOthers, INDIVIDUAL)
+     : hasDeserved(INDIVIDUAL, OLDDE) & hasDesireOther(INDIVIDUAL, OLDDO)
+     & hasPerson(INDIVIDUAL, TEAM)
+    <- ?myName(NAME);
+       -hasPerson(INDIVIDUAL, TEAM);
+       -hasDeserved(INDIVIDUAL, OLDDE);
+       -hasDesireOther(INDIVIDUAL, OLDDO);
+       -hasAppraisal(NAME, INDIVIDUAL).
+
++?removeEmotion(fortunesOfOthers, INDIVIDUAL).
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+
+As consultas de ``updateEmotion'' funcionam de maneiras similares. Elas
+removem e acrescentam uma outra relação para repor a mesma relação com outro
+valor. Dessa forma, para a construção do exemplo tanto as atualizações como as
+remoções foram agrupadas por grupo de emoções por causa que essa é a forma que
+o próprio modelo agrupa remoções com regras similares. A Listagem~\ref{lst:update}
+mostra a regra para o tipo de emoções que tem haver com a consequência dos
+destinos dos outros. Sendo assim, as relações de merecimento, de nível de
+desejo dos outros e de quem esta avaliando e que pessoa. Todo o código pode
+ser consultado no repositório disponível via
+\emph{GitHub}\footnote{http://github.com/rlucca/Maro}.
+
+\begin{center}
+    \begin{minipage}{130mm}
+	\lstset{linewidth=130mm}
+	\begin{lstlisting}[frame=trbl,
+caption=Amostra de código referente as atualizações de emoções do tipo destino de outros,
+label=lst:update]
++?updateEmotion(fortunesOfOthers, INDIVIDUAL, DESERVED, DESIREOTHER)
+     : team(TEAM) & not(hasPerson(INDIVIDUAL, TEAM))
+    <- ?myName(NAME);
+       +hasAppraisal(NAME, INDIVIDUAL);
+       +hasPerson(INDIVIDUAL, TEAM);
+       +hasDeserved(INDIVIDUAL, DESERVED);
+       +hasDesireOther(INDIVIDUAL, DESIREOTHER).
+
++?updateEmotion(fortunesOfOthers, INDIVIDUAL, DESERVED, DESIREOTHER)
+     : hasDeserved(INDIVIDUAL, OLDDE) & hasDesireOther(INDIVIDUAL, OLDDO)
+    <- -hasDeserved(INDIVIDUAL, OLDDE);
+       +hasDeserved(INDIVIDUAL, DESERVED);
+       -hasDesireOther(INDIVIDUAL, OLDDO);
+       +hasDesireOther(INDIVIDUAL, DESIREOTHER).
+
++?updateEmotion(fortunesOfOthers, INDIVIDUAL, DE, DO).
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
