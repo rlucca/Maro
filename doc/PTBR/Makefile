@@ -35,9 +35,6 @@ all: $(MAIN).pdf
 $(MAIN).pdf: .sampleConsoleLock .sampletSummaryLock $(FILES) mestrado.bib
 	pdflatex $(MAIN) && bibtex $(MAIN) && pdflatex $(MAIN) && pdflatex $(MAIN)
 
-mestrado.bib: $(PREFIX)/Mistery.bib
-	@-cp -i $(PREFIX)/Mistery.bib mestrado.bib && echo remove the ISSNs && exit
-
 # Remoção dos arquivos temporários (lista não exaustiva).
 clean:
 	rm -fv *.aux *.toc *.lo[lagft] *.bbl *.blg *.out *.nav *.snm *.ps *.synctex.gz *.tdo
