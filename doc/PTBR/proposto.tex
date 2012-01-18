@@ -267,7 +267,7 @@ ontologia de comportamento urbano tenta descrever a vida normal que um
 personagem leva. De outro modo, isso pode ser visto como a rotina regular que
 o ator possui em sua cidade virtual.
 
-\begin{figure}[t]
+\begin{figure}
   \centering
     \includegraphics[width=150mm]{figuras/uem-tbox.png}
   \caption[T-Box baseado no modelo de ambiente urbano.]{T-Box baseado no modelo de ambiente urbano \cite{paiva2005ontology}.}
@@ -309,7 +309,7 @@ forma de utilização é para desenhar um mapa 2D do ambiente que os agentes
 atuam. Isso é permitido porque o conceito \emph{Place} relaciona-se com o
 \emph{Dimension}. Assim, todos os itens do mapa são retângulos. A outra forma
 de utilização é a que trouxe a ontologia para o trabalho e é definir que um
-agente tenha seus locais usuais descritos.
+agente tenha sua rotina descrita.
 
 \section{Ontologia de Preferências} \label{ch:aec:oda}
 
@@ -371,12 +371,14 @@ sub-conceitos da preferência representam sempre valores que fazem o agente ser
 atraído pelo objeto e repelido caso contrário.
 
 Essas anotações em objetos foram planejadas para serem colocadas pelo ambiente
-nos objetos e nos agentes. As rotinas são disponibilizadas pelo ambiente
-para cada um dos agentes como percepção de acordo com o dia sendo simulado,
-isto é, cada passo corresponde aproximadamente à 15 minutos e a cada 96 passos
-temos um dia. As preferências também são disponibilizadas em formas de
-percepção, mas o usuário que deve criar regras no \jason para realizar as
-conclusões necessárias.
+nos objetos e nos agentes. As anotações em agentes permitem que outros saibam
+o que o agente esta fazendo e como ele parece. Além disso, as rotinas são
+disponibilizadas pelo ambiente para cada um dos agentes pela percepção de
+acordo com o dia sendo simulado, isto é, cada passo corresponde
+aproximadamente à 15 minutos e a cada 96 passos temos um dia. Dessa forma, é
+possível tomar atitudes diferentes em dias específicos. As preferências também
+são disponibilizadas em formas de percepção, mas o usuário que deve criar
+regras ou planos no \jason para montar as relações usadas pela afetividade.
 
 \section{Integrando a Plataforma \jason com as ontologias} \label{ch:p:ipjo}
 
@@ -475,15 +477,18 @@ percepção, é feita a verificação se ele é relevante. Caso ele seja conside
 irrelevante, a crença sera inserida no segundo nível. Entretanto, se ele for
 considerado relevante então será feita a recuperação do elemento atualmente
 armazenado e, após isso, é feita a inserção das novas anotações nesse
-elemento. Se o elemento não existir na base de crenças ainda então esse último
+elemento. Se o elemento não existir na base de crenças então esse último
 procedimento é ignorado, porém ele é necessário para haver a correta
 atualização das anotações. Por fim, a crença é transformada no tipo interno e
 enviado para ser acrescentado na ontologia.
-%
 O processo de inserção na ontologia depende se o que esta sendo inserido é uma
-instância de objeto ou de propriedade de objeto ou de propriedade de dados. Se
-houver interesse em conhecer em por menores o código, ele encontra-se
-disponível no \emph{GitHub}\footnote{http://github.com/rlucca/Maro}.
+instância de objeto ou de propriedade de objeto ou de propriedade de dados.
+
+A potência de uma emoção é calculada usando as relações de dados de indivíduos
+classificados como sendo uma avaliação. Dessa forma, a potência é a soma de
+todas as relações de um mesmo indivíduos. Se houver interesse em conhecer em
+por menores o código, ele encontra-se disponível no
+\emph{GitHub}\footnote{http://github.com/rlucca/Maro}.
 
 \begin{figure}
   \centering
