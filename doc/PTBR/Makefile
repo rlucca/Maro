@@ -32,7 +32,7 @@ FILES   = 	$(MAIN).tex 				\
 all: $(MAIN).pdf
 	@-echo "feito."
 
-$(MAIN).pdf: .sampleConsoleLock .sampletSummaryLock $(FILES) mestrado.bib
+$(MAIN).pdf: .sampleConsoleLock .sampletSummaryLock $(FILES)
 	pdflatex $(MAIN) && bibtex $(MAIN) && pdflatex $(MAIN) && pdflatex $(MAIN)
 
 # Remoção dos arquivos temporários (lista não exaustiva).
@@ -40,7 +40,7 @@ clean:
 	rm -fv *.aux *.toc *.lo[lagft] *.bbl *.blg *.out *.nav *.snm *.ps *.synctex.gz *.tdo
 
 mrproper:
-	rm -fv *.aux *.toc *.lo[lagft] *.bbl *.blg *.out *.nav *.snm *.ps *.synctex.gz lucca.pdf *.dvi *.tdo mestrado.bib
+	rm -fv *.aux *.toc *.lo[lagft] *.bbl *.blg *.out *.nav *.snm *.ps *.synctex.gz lucca.pdf *.dvi *.tdo
 
 view: $(MAIN).pdf
 	open $(MAIN).pdf
