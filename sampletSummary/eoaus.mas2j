@@ -1,10 +1,8 @@
-
-
 MAS eoaus {
     infrastructure: Centralised //(pool, 2)
 
-    // timeout seconds, number of steps, numer of agents, policy of when adding second action, ontology
-    environment: maro.example.sims.House(60000, 1000, 4, FALSE, "empty.owl")
+    // timeout = 2 minutes
+    environment: maro.example.sims.House(120000, 1000, 4, FALSE, "sims.owl")
 
     agents:
         millie
