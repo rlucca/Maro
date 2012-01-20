@@ -27,12 +27,12 @@
 
 +!step(X)
      : timeL(C1, N1) & timeR(C2, N2) & timeAL(C1) & timeAR(C2)
-    <- .random(GOAL); G=math.round(GOAL*1000);
+    <- .random(GOAL); G=math.round(GOAL*3000);
        !goal(G).
 
 +!step(X)
      : timeL(C1, N1) & timeR(C2, N2) 
-    <- .random(GOAL); G=math.round(GOAL*1000);
+    <- .random(GOAL); G=math.round(GOAL*3000);
        !goal(G);
        .print(N1, " ", C1, " X ", C2, " ", N2);
        +timeAL(C1); +timeAR(C2).
