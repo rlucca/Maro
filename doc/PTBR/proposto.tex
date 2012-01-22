@@ -405,17 +405,8 @@ afetividade.
 As ontologias explicadas, nas seções anteriores, foram planejadas para serem
 usadas como módulos. Sendo assim, as ontologias explicadas anteriormente
 podem ser usada sem implicar no uso das demais. Cabe salientar que elas podem ser
-usadas tanto pelo agente quanto pelo ambiente.
-
-No capítulo~\ref{ch:cdu}, um dos agentes utiliza a ontologia afetiva e o
-ambiente utiliza a ontologia de preferência e rotinas. Assim, um lugar
-definido pelo conceito \emph{Place} pode possuir a relação \emph{hasSetup} visando
-duas coisas. A primeira é determinar as anotações existentes em um objeto que
-esta em um determinado lugar. A segunda é indicar que objetos fazem parte dos
-lugares para que o agente tenha uma especie de mapa abstrato do local, por
-exemplo o agente sabe que a sala 1 possui um armário, dois criados mundos, 2
-duas camas e duas portas. Mas, não conhece nenhuma das anotações desses
-objetos no mapa abstrato sendo necessário ir até eles para tal.
+usadas tanto pelo agente quanto pelo ambiente conforme poderá ser visto no
+capítulo~~\ref{ch:cdu}.
 
 \begin{figure}[b]
   \centering
@@ -425,49 +416,82 @@ objetos no mapa abstrato sendo necessário ir até eles para tal.
 \end{figure}
 
 Na figura~\ref{fig:dcs} pode ser observado as classes desenvolvidas para
-realizar a integração das ontologias com os agentes \emph{Jason}. Para essas classes
+realizar a integração das ontologias com os agentes \jason e o suporte
+afetivo. Para essas classes
 serem usadas, o agente deve ser configurado para utilizar a classe
 \emph{BBAffective} como base de crença e a \emph{UniqueAnnotation} como classe
 do agente para a implementação da afetividade funcionar perfeitamente. Essas
 configurações podem ser feitas conforme explicado na
 seção~\ref{sec-jason-architecture} (pág.~\pageref{sec-jason-architecture}) e
-demostrado na seção~\ref{ch:cdu:tbc} (pág.~\pageref{ch:cdu:tbc}).
+demostrado na seção~\ref{ch:cdu:tbc} (pág.~\pageref{ch:cdu:tbc}). Essa última
+classe é a responsável por garantir a não duplicidade de anotações. %Assim,
+%quando se insere por algum motivo duas vezes a mesma anotação apenas valerá a
+%última.
 
-A classe \emph{UniqueAnnotation} é responsável por garantir a não duplicidade
-de anotações. Assim, quando se insere por algum motivo duas vezes a mesma
-anotação apenas valerá a última. Já, a responsabilidade da classe
-\emph{BBAffective} é manter as crenças dos agentes e atender as solicitações
-da plataforma \jason sobre a manipulação dessas em dois níveis. O primeiro
-nível é a ontologia e o segundo é a base de crença padrão que é utilizada
-quando o elemento não é considerado relevante para o primeiro nível. A
-relevância é descoberta consultando os conceitos e propriedades existentes na
-ontologia, por exemplo instâncias de conceitos são crenças no formato
-``nomeDoConceito(nomeDaInstancia)'' e relações são similares
-``nomeDaRelacao(nomeDaInstanciaDominio, Imagem)''. A base de crenças delega
-todo o assunto relacionado com as crenças da ontologia para a classe
-\emph{EmotionKnowledge}. Essa é responsável por conhecer todo o assunto
-relacionado com as emoções e sentimentos e delega a manipulação e consulta da
-ontologia, propriamente dita, para a classe \emph{OwlApi}.
+Já, a responsabilidade da classe \emph{BBAffective} é manter as crenças dos
+agentes e atender as solicitações da plataforma \jason sobre a manipulação
+dessas em dois níveis. O primeiro nível é a ontologia e o segundo é a base de
+crença padrão que é utilizada quando o elemento não é considerado relevante
+para o primeiro nível. A relevância é descoberta consultando os conceitos e
+propriedades existentes na ontologia, por exemplo instâncias de conceitos são
+crenças no formato ``nomeDoConceito(nomeDaInstancia)'' e relações são
+similares à ``nomeDaRelacao(nomeDaInstanciaDominio, Imagem)''. Conhecer o que
+é relevante para a ontologia é necessário porque a mesma é lenta e quanto
+menos elementos contiver nela melhor será seu desempenho.
 
-A classe \emph{SteppedValence}, \emph{AgentValence} e \emph{EmotionValence}
-são extensões da classe \emph{HashMap}. A primeira usa como chave o passo da
-simulação e obtém um número que representa a valência da emoção no momento. A
-próxima, usa o nome do agente como chave para obter uma instância da
-\emph{SteppedValence}. A terceira, devolve uma instância da segunda
-baseando-se no nome da emoção. Esse último \emph{hash} é mantido na classe
-\emph{Emotion} juntamente com uma lista de todas as emoções possíveis
-retiradas da própria ontologia.
+A base de crenças delega todo o assunto relacionado com as crenças da
+ontologia para a classe \emph{EmotionKnowledge}. Essa é responsável por
+conhecer todo o assunto relacionado com as emoções e sentimentos, porém ela
+delega o conhecimento da história da potência das emoções para a classe
+\emph{Emotion} e o conhecimento dos limites de ativação para a
+\emph{FeelingsThreshold}. Da mesma forma, a manipulação e consulta da
+ontologia, propriamente dita, é de responsabilidade da classe \emph{OwlApi}.
 
-Conhecer o limite mínimo para uma emoção ser sentida e virar sentimento é de
-responsabilidade da classe \emph{FeelingsThreshold}. As classes de ambiente,
-isto é, as classes que possuem \emph{Environment} no nome são responsáveis por
-manter os passos de simulação com um tempo máximo, conhecer a quantidade de
-agentes que tem que esperar responderem para dai ir ao passo de simulação
-seguinte e carregar as ações definidas do ambiente a partir do pacote
-especificado estendendo a classe \emph{ActionLoader} (não desenhada). O
-conhecimento do formato das crenças e como converte-lo para o formato interno
-com a finalidade de proteção de mudanças da plataforma \jason é
-responsabilidade da classe \emph{Dumper}. Já, a classe \emph{BBKeeper} é um
+A classe \emph{Emotion} é responsável por conhecer todas as emoções presentes
+e seus valores de potência. Para isso, no inicio da simulação a ontologia é
+consultada procurando por todas as classes definidas\footnote{As classes
+definidas possuem condições necessárias e suficientes, isto é, qualquer
+indivíduo pode ser enquadrado nessa classe desde que obedeça as condições
+suficientes.} sobre o conceito ``Emotion''. Isso é utilizado pela classe
+\emph{EmotionKnowledge} quando a mesma precisa consultar o nome de uma emoção
+por algum motivo. Por exemplo, na hora de calcular a valência da emoção em um
+determinado passo é pedido pelo nome de todas as emoções à essa classe. Essa
+ainda mantém a história da potência das emoções por agente para cada ciclo
+armazenado utilizando um objeto da classe \emph{EmotionValence} que é um
+extensão da classe \emph{HashMap} do \emph{Java}.
+
+Para o suporte emotivo funcionar a classe \emph{FeelingsThreshold} precisa
+retornar que todos os limites mínimos de sentimentos estão configurados.
+Assim, ela é responsável por fazer essa verificação e por disponibilizar esses
+limites para quando for realizado o calculo da valência. Esse calculo é
+coordenado pela \emph{EmotionKnowledge} que consulta a ontologia, via instância
+da classe \emph{OwlApi}, procurando os indivíduos do conceito ``Appraisal''
+visando obter as relações de dados desses indivíduos. Dessa forma, a potência
+é a soma de todas as relações de um mesmo indivíduo.
+
+As classes de ambiente, isto é, as classes que possuem \emph{Environment} no
+nome são responsáveis por diversas coisas relacionadas com o mesmo. Por
+exemplo, manter os passos de simulação com um tempo máximo, conhecer a
+quantidade de agentes que tem que esperar responderem para ir ao passo de
+simulação seguinte, carregar as ações definidas pelo usuário a partir de um
+determinado pacote especificado via classe \emph{ActionLoader} (não
+desenhada), etc. Cabe salientar, as ações definidas no ambiente precisam
+estender a classe \emph{EnvironmentAction} e estarem no pacote a ser
+especificado na chamada a função ``loadAllActions'' da classe \emph{ActionLoader}.
+
+A classe \emph{Dumper} é responsável por conhecer o formato das crenças \jason
+e converte-lo para um formato interno. Isso é necessário para proteger o
+código feito de mudanças que a plataforma venha a ter. Assim, essa classe é
+utilizada por todas as classes internas do sistema e, principalmente, pela
+\emph{BBAffective} após constatada a relevância do elemento. Algumas funções
+desse tipo são devolver os parâmetros do literal como \emph{string} ou número,
+retornar uma instância de seu tipo a partir de um literal, criar o literal a
+partir de uma \emph{string} ou a partir de uma outra instância de seu tipo e,
+até mesmo, realizar a criação de um \emph{XML} para transferir os dados para
+à ontologia.
+
+%%%
+Já, a classe \emph{BBKeeper} é um
 \emph{singleton} e é responsável por conhecer todas as instâncias da classe
 \emph{BBAffective}. Essa classe precisa ser um \emph{singleton} para, dessa
 forma, poder em qualquer ponto do código as emoções ou outras crenças serem
@@ -503,12 +527,6 @@ atualização das anotações. Por fim, a crença é transformada no tipo intern
 enviado para ser acrescentado na ontologia.
 O processo de inserção na ontologia depende se o que esta sendo inserido é uma
 instância de objeto ou de propriedade de objeto ou de propriedade de dados.
-
-A potência de uma emoção é calculada usando as relações de dados de indivíduos
-classificados como sendo uma avaliação. Dessa forma, a potência é a soma de
-todas as relações de um mesmo indivíduos. Se houver interesse em conhecer em
-por menores o código, ele encontra-se disponível no
-\emph{GitHub}\footnote{http://github.com/rlucca/Maro}.
 
 \begin{figure}
   \centering
