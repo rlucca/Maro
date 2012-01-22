@@ -2,29 +2,29 @@
 
 \section{Visão Geral}
 
-A presente arquitetura sendo construída foi pensada conforme mostrado na
+A presente arquitetura construída foi pensada conforme mostrado na
 Figura~\ref{fig:vasc}. Como se pode observar, o sistema é dividido em um
 ambiente e em agentes. O ambiente utiliza as ontologias de preferências e de
-rotinas para construir a visualização que será mostrada no
-capítulo~\ref{ch:cdu}. Dessa forma, o que o usuário vê é exibido conforme
-descrito na ontologia de rotinas. Mais detalhes ver seção~\ref{ch:aec:ocu}. Já
-a de preferências, explicada na seção~\ref{ch:aec:oda}, permite guardar junto
-dos objetos do mundo virtual informações quando as mesmas forem estáticas e
-criar as preferências dos agentes sobre essas informações.\dev{}
+rotinas para construir a visualização mostrada no capítulo~\ref{ch:cdu}. Dessa
+forma, o que o usuário vê é exibido a partir da descrição da ontologia de
+rotinas. Mais detalhes ver seção~\ref{ch:aec:ocu}. Já a de preferências,
+explicada na seção~\ref{ch:aec:oda}, permite guardar junto dos objetos do
+mundo virtual informações quando as mesmas forem estáticas e criar as
+preferências dos agentes sobre essas informações.\dev{}
 % O dev colocado acima se deve ao fato de a de preferencias ser guardarem
 % informacoes, alem das proprias preferencias.
 
-A segunda parte do sistema utiliza os agentes. Um agente é a mente de um ator
-que esta agindo nesse mundo anotado. O mundo disponibiliza, além da percepção
-dos objetos, as preferências do agente e suas rotinas\dev{}. Essa escolha foi
-feita para permitir que a escolha do que fazer seja toda ela escrita em
-código\dev{} que a plataforma \jason entende. As emoções são concluídas pelo
-agente através de ontologia (ver seção~\ref{ch:aec:omce}) e, portanto, a base
-de crenças padrão da plataforma foi estendida para consultar, guardar e
-recuperar os dados diretamente nessa ontologia quando a mesma interessa. Caso
-contrário, a informação é guardada na base de crenças padrão. Desse jeito, é
-como se houvesse dois níveis de consulta: o primeiro formado pela ontologia e
-o segundo pela base de crença padrão.
+A segunda parte do sistema altera a mente dos atores agindo para acrescentar
+anotações em suas percepções e para alterar local que essas crenças são
+salvas. A mente dos atores é chamada agente e eles recebem via percepção as suas
+preferências e rotinas\dev{}. Essa escolha foi feita para permitir que a
+escolha do que fazer seja toda ela escrita em código\dev{} da plataforma
+\emph{Jason}. As emoções são concluídas pelo agente através de ontologia
+(ver seção~\ref{ch:aec:omce}) e, portanto, a base de crenças padrão da
+plataforma foi estendida para consultar, guardar e recuperar os dados
+diretamente nessa quando a crença for relevante. Sendo assim, é como se
+houvesse dois níveis. O primeiro formado pela ontologia e o segundo pela base
+de crença padrão.
 
 \begin{figure}
   \centering
@@ -111,8 +111,9 @@ indivíduo com somente essa relação então o mesmo seria enquadrado no conceit
 \emph{ConsequenceForSelf}. Mas, o correto nesse caso seria não ser concluído nada,
 ou seja, pertencer à classe \emph{Thing}.
 
-A estrutura da ontologia pode ser visualizada na Figura~\ref{fig:tlocc}. Além
-disso, pode ser recomendável olhar a
+A estrutura da ontologia pode ser visualizada na
+Figura~\ref{fig:tlocc}~(pág.~\pageref{fig:tlocc}). Além disso, pode ser
+recomendável olhar a
 Figura~\ref{fig:occ_model}~(pág.~\pageref{fig:occ_model}) do modelo \occ
 durante o resto da discussão dessa seção. Os sub-conceitos de \emph{Emotion}
 correspondem aos três ramos do modelo original.
@@ -132,12 +133,13 @@ enquanto a emoção \emph{Love} tem valoração dessa mesma propriedade positiva
 Caso o valor seja zero, nada pode ser concluído.
 
 Cabe notar que parece estranho uma emoção \emph{Love} com um objeto, porém
-essa emoção foi escolhida por quem montou o modelo por ser a emoção mais forte
-de seu tipo. Assim, níveis menores implicam em outros tipos de emoção. Além
-disso, conforme explicado no trabalho, agentes podem ser vistos como objetos
-quando se esta avaliando a sua atração. Assim, todo agente (\emph{Agent}) é um
-objeto (\emph{Object}). Por exemplo, John esta apaixonado pela Millie
-(\emph{Agent} visto como \emph{Object}) ou John tem repulsa por televisão.
+essa emoção foi escolhida por quem montou o modelo para representar seu tipo
+por ser a mais forte de sua categoria. Assim, níveis menores implicam em
+outros tipos de emoção. Além disso, agentes
+podem ser vistos como objetos quando se esta avaliando a sua atração. Assim,
+todo agente (\emph{Agent}) é um objeto (\emph{Object}). Por exemplo, John esta
+apaixonado pela Millie (\emph{Agent} visto como \emph{Object}) ou John tem
+repulsa por televisão.
 
 O segundo conceito, chamado \emph{ActionsOfAgents}, pode ser pensado como
 um ramo que julga a responsabilidade por uma determinada ação ou evento.
@@ -152,7 +154,7 @@ sua mãe que não cozinha. Essa conclusão é possível por causa de uma relaç�
 que eles propõem de empatia. Entretanto, como em nenhum outro momento, eles
 dão mais detalhes sobre essa empatia foi resolvido considerar que vergonha e
 orgulho são emoções sentidas somente quando o agente esta avaliando a si mesmo
-e, dessa forma, o exemplo anterior não é possível. \dev{}
+e, dessa forma, o exemplo anterior não é possível no sistema desenvolvido. \dev{}
 % dev -> poderia ter sido usado float e ter feito 1 (para si) e 0 (para outro)
 
 As emoções que julgam responsabilidade são definidas como tendo uma relação de
@@ -171,7 +173,8 @@ complicado ter que lembrar quando utilizar uma sub-propriedade ou outra.
 Assim, foi resolvido deixar o usuário sempre utilizar a relação de julgamento
 (\emph{hasJudge}) e via 2 regras inferir se é um auto-julgamento ou o
 julgamento de outra pessoa. Para essas regras funcionarem da maneira correta,
-o usuário deve declarar que os agentes ou objetos são diferentes. Caso isso
+o usuário deve declarar que os agentes ou objetos são diferentes uns dos
+outros. Caso isso
 não ocorra, o sistema considera que não há informação para verificar se um
 indivíduo é igual ou diferente e conclui que não conhece a resposta. Além
 disso, a relação de julgamento tem como imagem o conceito \emph{Object}. Dessa
@@ -189,7 +192,7 @@ de Jose, Jose tem esperança de ser promovido, John tem satisfação por
 estar almoçando ou Millie esta alegre por cozinhar.
 
 \begin{wrapfigure}{r}{0.4\textwidth}
-  \includegraphics[height=16cm]{figuras/hierarquiaLOCC.png}
+  \includegraphics[height=149mm]{figuras/hierarquiaLOCC.png}
   \caption{Taxonomia da ontologia proposta baseado no modelo.}
   \label{fig:tlocc}
 \end{wrapfigure}
@@ -198,7 +201,7 @@ A \emph{ConsequencesForOthers} expressa 4 emoções: \emph{HappyFor},
 \emph{SorryFor}, \emph{Gloating} e \emph{Resentment}. Na definição, essas
 emoções dependem: do grau de desejabilidade do avaliador para com o outro; do
 grau de desejabilidade que se presume que o outro tenha; do grau de
-merecimento do evento; do tipo de relacionamento com a pessoa. Na ontologia
+merecimento do evento; e, do tipo de relacionamento com a pessoa. Na ontologia
 proposta, a principal diferença com o modelo \occ é que foi considerado
 que o grau de desejabilidade do avaliador para com o outro e o grau de
 merecimento do evento são os mesmos. Dessa forma, se pode utilizar apenas três
@@ -207,14 +210,13 @@ relações para descrever as 4 emoções.
 A relação de merecimento (\emph{hasDeserved}) e relação de desejabilidade
 presumida (\emph{hasDesireOther}) são avaliadas de acordo com sua valoração
 positiva ou negativa. A relação \emph{hasPerson} liga o outro indivíduo
-sendo avaliado com a avaliação. Para se ter o conhecimento de quem esta
-julgando é uma pessoa amiga (\emph{GoodKnowRelation}) ou inimiga
-(\emph{BadKnowRelation}), esses conceitos foram criados e precisam ser
-configurados para cada um dos agentes em questão. O agente pode declarar que
-só conhece uma pessoa, que conhece e é um amigo ou que conhece e não gosta
-dela (inimiga). Entretanto, quem precisa dessa informação é o conceito de
-avaliação quando as relações \emph{hasPersonEnemy} e \emph{hasPersonFriend}
-precisam ser descobertas.
+sendo avaliado com a avaliação. Para se ter o conhecimento esta sendo julgado
+é amigo (\emph{GoodKnowRelation}) ou inimigo (\emph{BadKnowRelation}), esses
+conceitos foram criados e precisam ser configurados para cada um dos agentes
+em questão. O mesmo pode declarar que só conhece uma pessoa, que conhece e é
+um amigo ou que conhece e não gosta dela (inimiga). Entretanto, quem precisa
+dessa informação é o conceito de avaliação quando as relações
+\emph{hasPersonEnemy} e \emph{hasPersonFriend} precisam ser descobertas.
 
 \emph{ConsequencesForSelf} se divide entre consequências de eventos com
 probabilidade relevante (\emph{ProspectRelevant}) e irrelevante

@@ -1,13 +1,13 @@
 \subsection{Plataforma \jason} \label{sec:aoppj}
 
 A presente seção visa explicar a plataforma \jason baseada na arquitetura BDI.
-Assim, na seção \ref{sec-jason-overview} uma visão geral é apresentada.
-A engenharia da plataforma é discutida na seção \ref{sec-jason-architecture}.
+Assim, na seção \ref{sec-jason-overview} uma visão geral é apresentada e em
+seguida a engenharia da plataforma é discutida.
 
 \subsubsection{Visão Geral} \label{sec-jason-overview}
 
-Para uma explicação mais didática será utilizado o
-exemplo \emph{Room} que acompanha \emph{Jason}. Para isso será introduzido
+Para uma explicação mais didática será utilizado o exemplo \emph{Room} que
+acompanha o \emph{Jason}. Para isso será introduzido
 o arquivo de projeto do exemplo e, a partir desse, os demais arquivos.
 A Listagem~\ref{lst-roomMas2j} contém o arquivo de projeto.
 Na linha 2, \emph{room} é o nome do projeto e, por isso, pode ser qualquer
@@ -41,8 +41,7 @@ normalmente não aparece, é a \emph{executionControl} utilizada para
 mudar a forma com que os agentes são executados. O valor no exemplo é uma
 classe que obriga o próximo ciclo de deliberação somente acontecer quando
 todos os agentes terminaram o seu ciclo. O valor padrão é iniciar um novo
-ciclo de deliberação após 500ms do ciclo de deliberação anterior ter sido
-concluído, porém, algumas vezes isso
+após 500ms do anterior ter sido concluído, porém, algumas vezes isso
 pode vir a apresentar problemas de sincronismo e, por isso, é interessante
 mostrar que há uma opção para controlar a forma de execução dos ciclos
 deliberativos. O usuário, inclusive, pode colocar sua própria classe como
@@ -57,7 +56,7 @@ capítulo~\ref{ch:cdu} são mostrados exemplos dessas opções.
 
 Os agentes são desenvolvidos em arquivos texto com extensão \emph{ASL}, porém
 antes de entrar em discussão sobre os agentes será explicado o exemplo sendo
-utilizado. No cenário desse exemplo tem-se uma porta na sala e duas pessoas, uma
+utilizado. Nesse cenário tem-se uma porta na sala e duas pessoas, uma
 claustrofóbica e outra paranoica. A pessoa claustrofóbica deseja que a
 porta da sala esteja aberta, enquanto que a paranoica deseja que a porta
 fique fechada.
@@ -67,7 +66,7 @@ Logo, há três agentes na linha 6 da Listagem~\ref{lst-roomMas2j}:
 como abri-lá ou fecha-lá;
 (ii) \emph{claustrophobe} é o agente que deseja deixar a porta sempre aberta;
 (iii) \emph{paranoid} é o agente que deseja deixar a porta sempre fechada.
-A implementação desses agentes torna-se simples com o uso de eventos.
+A implementação desses agentes faz uso de eventos.
 
 Esses eventos podem ser de adição (+) ou de remoção (-) de crenças, metas ou
 consultas. Todas as estruturas são semelhantes a chamada de função. No
@@ -75,7 +74,7 @@ exemplo ``telefone(808080822)'', telefone pode ser uma crença ou uma ação de
 ambiente que pode ser executada dependendo de onde a entrada se localiza.
 Note que, se essa entrada for precedida pelo sinal de exclamação (!) ou de
 interrogação (?) então o significado é alterado, respectivamente, para uma meta
-ou uma consulta. Ainda há a possibilidade de preceder uma crença ou meta
+ou para uma consulta. Ainda há a possibilidade de preceder uma crença ou meta
 com sinal de adição ou de subtração significando ou adicionar/remover uma
 crença ou estar recebendo/removendo uma crença, meta ou consulta.
 
@@ -121,17 +120,16 @@ importante tomar cuidado no que vai no contexto em razão dele sempre ser
 executado previamente para definir quais planos devem ser descartados.
 A segunda divisão vai até a seta (<-) e não é obrigatória.
 A terceira divisão, também não é obrigatória, possui todas as ações a serem
-executadas quando o plano tornar-se ativo. No exemplo o plano tem em seu corpo
+executadas quando o plano tornar-se ativo.
+
+No exemplo o plano tem em seu corpo
 uma ação interna do \jason denominada \emph{send} que envia determinado dado
 (terceiro parâmetro) para o agente especificado (primeiro parâmetro) com
-determinado formato (segundo parâmetro).
-
-Cabe chamar atenção para uma coisa, as ações internas podem ser definidas pelo
-usuário. Uma ação interna possui o seguinte formato ``tcp.send'', assim essa
-ação está definida no pacote \emph{tcp} pela classe \emph{send} que
-deve especializar a classe \emph{DefaultInternalAction} do \emph{Jason}.
-Entretanto, uma ação interna definida pelo \jason não possui indicativo de
-pacote que é o caso do ``.send'' presente no código dos agentes.
+determinado formato (segundo parâmetro). Uma ação interna possui o seguinte
+formato ``tcp.send'', assim essa ação está definida no pacote \emph{tcp} pela
+classe \emph{send} que deve especializar a classe \emph{DefaultInternalAction}
+do \emph{Jason}. Entretanto, uma ação interna pelo \jason não possui
+indicativo de pacote que é o caso do ``.send'' presente no código dos agentes.
 
 No exemplo da linha 3 na Listagem~\ref{lst-agente}, o agente
 \emph{claustrophobe} está enviando uma mensagem para o agente denominado \emph{porter}
@@ -140,14 +138,14 @@ da porta estar fechada. Analogamente, o agente denominado \emph{paranoid}, defin
 na linha 5 à 7, envia como crença ter a porta fechada. Logo, o agente \emph{porter} pode ser entendido
 em sua quase totalidade na Listagem~\ref{lst-agente}. Um entendimento completo
 do exemplo vem com o aprendizado das anotações que são dados que podem
-ser guardados juntos das crenças e essas anotações podem ter suas anotações também.
+ser guardados juntos das crenças e essas anotações podem ter suas próprias anotações também.
 No agente \emph{porter} essas anotações são utilizadas somente
 para dizer que determinado plano só é válido quando tiver como fonte 
 (do inglês \emph{source}) um determinado agente. O presente exemplo possui
 as anotações, pois assume a hipótese do mundo aberto. Vale observar que, essas
-anotações podem ser removidas sem nenhum problema adicional, visto que, no
-mundo proposto o agente \emph{porter} recebe a meta a ser alcançada de um dos
-dois agentes existentes.
+anotações podem ser removidas sem nenhum problema adicional, entretanto,
+se isso for feito assume-se a hipótese do mundo fechado e não seria possível
+ter um novo agente que o \emph{porter} ignora.
 
 A execução dos agentes acontece de forma arbitrária e deve-se ter em conta
 que o primeiro agente que irá enviar a mensagem para o agente \emph{porter} dependerá
@@ -169,8 +167,8 @@ na parte inferior. Ela pode ser configurada através da chave de configuração
 A infraestrutura define todas as classes padrões que o usuário irá utilizar,
 por exemplo observe que o barramento liga-se a dois adaptadores: um do tipo
 agente e um de ambiente. Esses adaptadores permitem a compatibilidade entre
-implementações distintas de classes permitindo que as implementações não
-padrão variem sem ter que alterar a estrutura do barramento.
+implementações distintas permitindo que ocorram variações sem ter que alterar
+a estrutura do barramento.
 
 \begin{figure}
                \begin{center}

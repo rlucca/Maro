@@ -76,22 +76,22 @@ Sendo assim, os modelos baseados em componentes estudam o elo entre os
 sentimentos e as suas situações. Esse elo é montado de diferentes formas e
 varia de pessoa para pessoa.
 
-\begin{figure}[t]
-  \centering
-    \includegraphics[width=150mm]{figuras/occ.png}
-  \caption[Estrutura de emoções.]{Estrutura de emoções \cite{ortony1988cse}.}
-  \label{fig:occ_model}
-\end{figure}
-
 Um modelo baseado em significados, bastante conhecido na Inteligência
 Artificial, foi definido por \citet{ortony1988cse}. Nesse modelo\footnote{A
-partir daqui o modelo será referenciado como modelo \emph{OCC}.} são descritos
+partir daqui o modelo será referenciado por modelo \emph{OCC}.} são descritos
 22 emoções com suas situações. Essas emoções são divididas em formas de se
 perceber o mundo a sua volta por consequências (importância das metas),
 ações (responsabilidade) e objetos (atração ou repulsa). Assim sendo,
-essas maneiras de se perceber o mundo refletem diferentes jeitos de se
+essas maneiras refletem diferentes jeitos de se
 analisar as situações que podem ser relativas aos objetivos, valores morais ou
 gostos da pessoa.
+
+\begin{figure}[t]
+  \centering
+    \includegraphics[width=128mm]{figuras/occ.png}
+  \caption[Estrutura de emoções.]{Estrutura de emoções \cite{ortony1988cse}.}
+  \label{fig:occ_model}
+\end{figure}
 
 A Figura~\ref{fig:occ_model} resume esse modelo e mostra as
 percepções possíveis de um indivíduo.  Partindo da direita para esquerda, o
@@ -113,7 +113,8 @@ foram consideradas importantes), acontecem ou acontecerão (objetivos
 almejados)\dev{}. Essas emoções são avaliadas segundo as suas consequências
 para o alcance ou impedimento dos seus objetivos. Exemplos possíveis desse
 ramo do modelo são a emoção sentida ao receber uma boa nota em um teste, ao
-ser assaltado ou ao perceber não ser possível chegar em um destino planejado.
+ser assaltado ou ao perceber seu voo ser cancelado por algum problema não
+esperado.
 
 Todas as emoções do modelo trabalham com duas intensidades. A intensidade da
 emoção que representa o físico e a intensidade do sentimento que representa o
@@ -148,8 +149,9 @@ afetam o planejamento das ações à serem realizadas.
 \citet{neto2010construction} focaram no mesmo objetivo, porém visando estudar
 o impacto da memória no planejamento. Sendo assim, um meio para o agente
 ``esquecer'' determinadas crenças quando o estado emocional for diferente
-daquele guardado anteriormente foi feito. Essa característica torna o
-planejamento e as atitudes dos personagens virtuais mais realista.
+daquele guardado anteriormente foi feito. Eles acreditam que essa
+característica torna o planejamento e as atitudes dos personagens virtuais
+mais realista.
 
 Um dos trabalhos mais conhecidos baseado no modelo \occ é, sem dúvida, o de
 \citet{kshirsagar2002multilayer}. Ele utilizou
@@ -207,8 +209,7 @@ quatro: classificação, interação, mapeamento e expressão. A primeira visa
 determinar que categoria ou ramo será afetado. A seguinte, determina a
 intensidade da emoção. A de interação analisa os efeitos nas categorias
 emocionais do personagem. A próxima, mapeia as 22 emoções do modelo para pelo
-menos uma expressão. A expressão propriamente dita é feita pela camada de
-expressão.
+menos uma expressão. A expressão propriamente dita é feita pela última camada.
 
 Esse trabalho ainda utilizou um modelo dimensional para misturar as emoções
 primárias. Assim, as emoções secundárias podem ser descobertas a partir do
@@ -216,7 +217,7 @@ nível dos eixos afetados. O trabalho mostra quase todas as emoções do
 ramo de consequência de eventos, com exceção das emoções de \emph{Hope} e
 \emph{Fear}. As emoções primárias são as emoções do modelo \occ e como
 secundárias estão as emoções construídas a partir da mistura dessas emoções.
-Essa diferenciação, como dito anteriormente, não existe no modelo \occ.
+Essa diferenciação, como dito anteriormente, não existe no modelo \emph{OCC}.
 
 Um modelo genérico que representa o ambiente e eventos que estão envolta de um
 personagem, sua personalidade e suas preferências foi feito por
@@ -230,7 +231,7 @@ preferências dos atores virtuais.
 Esse trabalho descreve a probabilidade de maneira comparativa, isto é, o
 evento A é mais provável que o evento B. Além disso, ha uma ordem temporal nas
 ações sendo desempenhadas. O autor propõem uma diferenciação entre ação e
-evento interessante. O primeiro é causado intencionalmente pelo agente\dev{},
+evento. O primeiro é causado intencionalmente pelo agente\dev{},
 enquanto o segundo o agente não tem controle da ação. Por exemplo, ir para
 aula é uma ação e espirrar é um evento.
 
@@ -239,11 +240,12 @@ aula é uma ação e espirrar é um evento.
 \citet{elliott1992tar} em sua tese ``O raciocinador afetivo'' foi um dos
 primeiros a trabalhar com emoções na área de sistemas multi-agentes. Em seu
 modelo 24 tipos de emoções são usadas, isto é, duas à mais que o modelo
-\emph{OCC}. Nesse trabalho, um mesmo evento pode gerar mais de uma emoção ao
-mesmo tempo. Por exemplo, estar feliz por que recebe um bom salário e triste
-porque o trabalho é chato. Além disso, os agentes podem observar os outros
-e explicar situações usando regras emotivas e um sistema de classificação
-baseado por casos.
+\emph{OCC} por causa que ele dividiu as emoções do ramo de objetos para
+diferenciar amor de gostar e ódio de não gostar. Nesse trabalho, um mesmo
+evento pode gerar mais de uma emoção ao mesmo tempo. Por exemplo, estar feliz
+por que recebe um bom salário e triste porque o trabalho é chato. Além disso,
+os agentes podem observar os outros e explicar situações usando regras
+emotivas e um sistema de classificação baseado por casos.
 
 Já, \citet{gratch2000empitae} focou a sua arquitetura emocional diretamente
 nos planos e metas dos agentes. O modelo criado por ele permite agentes
