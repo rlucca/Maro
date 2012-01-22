@@ -17,15 +17,9 @@ import java.net.JarURLConnection;
 
 public class ActionLoader
 {
-	static private ActionLoader instance = null;
 	private HashMap<String, EnvironmentAction> eahm;
 
-	synchronized static public ActionLoader getInstance() {
-		if (instance == null) instance = new ActionLoader();
-		return instance;
-	}
-
-	private ActionLoader () { eahm = new HashMap<String, EnvironmentAction> (); }
+	protected ActionLoader () { eahm = new HashMap<String, EnvironmentAction> (); }
 
 	public void loadAllActions(String packet) {
 		Set<String> names = new HashSet<String> ();

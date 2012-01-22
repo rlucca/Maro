@@ -13,10 +13,12 @@ public class IntelligentEnvironment extends TimeSteppedEnvironment
     protected long sum;
     protected List<Option> options;
     protected Integer lastStep;
+	protected ActionLoader actionLoader;
 
     public IntelligentEnvironment () {
         sum = 0;
-		ActionLoader.getInstance().loadAllActions("maro.example.sims.ea");
+		actionLoader = new ActionLoader ();
+		actionLoader.loadAllActions("maro.example.sims.ea");
         options = new ArrayList<Option> ();
         options.add( new Option<Integer> (true,
                 "the number for step's timeout(ms)",
@@ -185,18 +187,16 @@ public class IntelligentEnvironment extends TimeSteppedEnvironment
 
 	@Override
 	protected int requiredStepsForAction(String agName, Structure action) {
-		ActionLoader al = ActionLoader.getInstance();
-		if (al == null) return super.requiredStepsForAction(agName, action);
-		Integer i = al.requiredStepsForAction(action);
+		if (actionLoader == null) return super.requiredStepsForAction(agName, action);
+		Integer i = actionLoader.requiredStepsForAction(action);
 		if (i == null) return super.requiredStepsForAction(agName, action);
 		return i;
 	}
 
 	@Override
 	public boolean executeAction(String agName, Structure action) {
-		ActionLoader al = ActionLoader.getInstance();
-		if (al == null) return super.executeAction(agName, action);
-		Boolean b = al.executeAction(agName, action, this);
+		if (actionLoader == null) return super.executeAction(agName, action);
+		Boolean b = actionLoader.executeAction(agName, action, this);
 		if (b == null) return super.executeAction(agName, action);
 		return b;
 	}

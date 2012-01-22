@@ -8,7 +8,7 @@ public class Environment extends IntelligentEnvironment
 {
 	public Environment () {
 		super();
-		ActionLoader.getInstance().loadAllActions("maro.example.soccer.ea");
+		actionLoader.loadAllActions("maro.example.soccer.ea");
 	}
 
 	@Override
