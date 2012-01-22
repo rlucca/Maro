@@ -311,7 +311,12 @@ forma de utilização é para desenhar um mapa 2D do ambiente que os agentes
 atuam. Isso é permitido porque o conceito \emph{Place} relaciona-se com o
 \emph{Dimension}. Assim, todos os itens do mapa são retângulos. A outra forma
 de utilização é a que trouxe a ontologia para o trabalho e é definir que um
-agente tenha sua rotina descrita.
+agente tenha sua rotina descrita e disponibilizada pelo ambiente. Para o
+ambiente disponibiliza-la via percepção, no ambiente simulado construído cada
+dia simulado equivale a aproximadamente 96 ciclos. Isso quer dizer que cada
+passo simulado seria em torno de 15 minutos de um dia. Dessa forma, o ambiente
+é responsável por conhecer que dia é e informa-lo junto das rotinas daquele
+dia para cada agente.
 
 \section{Ontologia de Preferências} \label{ch:aec:oda}
 
@@ -352,16 +357,24 @@ diz de alguma forma que o objeto tem que realizar tal ação. Nesse trabalho,
 não é mencionado que o agente pode ser temporariamente controlado por
 objetos.
 
-Assim sendo, foi criado dois conceitos principais \emph{Annotation} e
-\emph{Preference}. O conceito \emph{Annotation} é utilizado para representar
-características de determinadas coisas. Essas características podem ainda
-ser categorizadas entre as que mudam e não mudam durante a simulação. O
-sub-conceito \emph{Dynamic} representa as características dinâmicas, isto é,
-as características que podem ser alterados durante a ``vida'' do objeto. O
-sub-conceito \emph{Static} representa as características que não podem ser
-alteradas depois da criação do objeto. O calor e o dono são exemplos de
-características dinâmicas, enquanto o nome e a capacidade total são exemplos
-de características estáticas.
+\begin{figure}
+  \centering
+    \includegraphics[width=130mm]{figuras/preferences.png}
+  \caption{T-Box da ontologia de preferências proposta.}
+  \label{fig:preferences}
+\end{figure}
+
+A ontologia proposta para as preferências pode ser vista na
+Figura~\ref{fig:preferences}. Como pode ser observado, foi criado dois
+conceitos principais \emph{Annotation} e \emph{Preference}. O conceito
+\emph{Annotation} é utilizado para representar características de determinadas
+coisas. Essas características podem ainda ser categorizadas entre as que mudam
+e não mudam durante a simulação. O sub-conceito \emph{Dynamic} representa as
+características dinâmicas, isto é, as características que podem ser alterados
+durante a ``vida'' do objeto. O sub-conceito \emph{Static} representa as
+características que não podem ser alteradas depois da criação do objeto. O
+calor e o dono são exemplos de características dinâmicas, enquanto o nome e a
+capacidade total são exemplos de características estáticas.
 
 O conceito \emph{Preference} é usado para representar as preferências por
 determinadas características ou anotações. A preferência define como uma entidade ou
@@ -372,21 +385,26 @@ gostam de calor são atraídas pela valoração negativa. Dessa forma, os
 sub-conceitos da preferência representam sempre valores que fazem o agente ser
 atraído pelo objeto e repelido caso contrário.
 
+Entretanto, esse exemplo não funciona para todos os casos. Por exemplo, um
+agente tem conhecimento de seu nível de energia e este é sempre positivo. Para
+resolver esse problema foi criada a relação \emph{hasAnnotationValue}
+representada na Figura~\ref{fig:preferences} pelo atributo
+\emph{annotationValue}. Sendo assim, é possível descrever que um agente com
+nível de energia abaixo de um determinado limite é atraído pelo seu centro de
+controle.
+
 Essas anotações em objetos foram planejadas para serem colocadas pelo ambiente
 nos objetos e nos agentes. As anotações em agentes permitem que outros saibam
-o que o agente esta fazendo e como ele parece. Além disso, as rotinas são
-disponibilizadas pelo ambiente para cada um dos agentes pela percepção de
-acordo com o dia sendo simulado, isto é, cada passo corresponde
-aproximadamente à 15 minutos e a cada 96 passos temos um dia. Dessa forma, é
-possível tomar atitudes diferentes em dias específicos. As preferências também
-são disponibilizadas em formas de percepção, mas o usuário que deve criar
-regras ou planos no \jason para montar as relações usadas pela afetividade.
+o que o agente esta fazendo e como ele parece de forma similar aos objetos. As
+preferências também são disponibilizadas em formas de percepção, mas o usuário
+que deve criar regras ou planos no \jason para montar as relações usadas pela
+afetividade.
 
 \section{Integrando a Plataforma \jason com as ontologias} \label{ch:p:ipjo}
 
 As ontologias explicadas, nas seções anteriores, foram planejadas para serem
-usadas como módulos. Sendo assim, umas das ontologias explicadas anteriormente
-pode ser usada sem implicar no uso de outra. Cabe salientar que elas podem ser
+usadas como módulos. Sendo assim, as ontologias explicadas anteriormente
+podem ser usada sem implicar no uso das demais. Cabe salientar que elas podem ser
 usadas tanto pelo agente quanto pelo ambiente.
 
 No capítulo~\ref{ch:cdu}, um dos agentes utiliza a ontologia afetiva e o
