@@ -27,9 +27,7 @@ public class ActionLoader
 
 	private ActionLoader () { eahm = new HashMap<String, EnvironmentAction> (); }
 
-	public void loadActions() { loadAllActions("maro.example.sims.ea"); }
-
-	private void loadAllActions(String packet) {
+	public void loadAllActions(String packet) {
 		Set<String> names = new HashSet<String> ();
 
 		try {

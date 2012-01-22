@@ -1,10 +1,16 @@
 package maro.example.soccer;
 
 import maro.core.IntelligentEnvironment;
+import maro.core.ActionLoader;
 import jason.asSyntax.ASSyntax;
 
 public class Environment extends IntelligentEnvironment
 {
+	public Environment () {
+		super();
+		ActionLoader.getInstance().loadAllActions("maro.example.soccer.ea");
+	}
+
 	@Override
 	protected void stepStarted(int step) {
 		//clearAllPercepts();

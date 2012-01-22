@@ -16,7 +16,7 @@ public class IntelligentEnvironment extends TimeSteppedEnvironment
 
     public IntelligentEnvironment () {
         sum = 0;
-		ActionLoader.getInstance().loadActions();
+		ActionLoader.getInstance().loadAllActions("maro.example.sims.ea");
         options = new ArrayList<Option> ();
         options.add( new Option<Integer> (true,
                 "the number for step's timeout(ms)",
