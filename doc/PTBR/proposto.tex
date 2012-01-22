@@ -490,33 +490,52 @@ partir de uma \emph{string} ou a partir de uma outra instância de seu tipo e,
 até mesmo, realizar a criação de um \emph{XML} para transferir os dados para
 à ontologia.
 
-%%%
-Já, a classe \emph{BBKeeper} é um
-\emph{singleton} e é responsável por conhecer todas as instâncias da classe
-\emph{BBAffective}. Essa classe precisa ser um \emph{singleton} para, dessa
-forma, poder em qualquer ponto do código as emoções ou outras crenças serem
-consultadas.
+Já, a classe \emph{BBKeeper} serve para facilitar o acesso a base de crenças.
+Essa classe é a única \emph{singleton} do sistema e cada instância da
+\emph{BBAffective} é conhecida por esta a partir do nome de seu respectivo
+agente. Isso é muito útil para os exemplos porque torna possível acessar a
+base de crenças e exibir os valores de potência e valência ou conhecer os
+tipos emotivos disponíveis. Cabe salientar que os tipos emotivos disponíveis
+do simulador não levam em conta o agente e, por isso, mesmo que seja usado um
+agente que não esteja utilizando a base estendida os tipos serão retornados
+corretamente.
 
+% add
+%   como?
+%   pq?
+%   pra q?
+% remove
+%   como?
+%   pq?
+%   pra q?
+% consulta (contains?)
+%   como?
+%   pq?
+%   pra q?
+% listagem (iterator?)
+%   como?
+%   pq?
+%   pra q?
+%%%
+%% em teoria daqui por diante eh add
 Na figura~\ref{fig:addBelief} esta representado o processo de inserção de
-uma crença. No UML a possibilidade de se colocar guardas que são etiquetas que
+uma crença. No UML existe a possibilidade de se colocar guardas que são etiquetas que
 dizem a condição para o código ser executado. Essas guardas foram colocadas
 perto de um quadrado para simbolizar que todas as chamadas feitas dentro dele
 estão relacionadas aquelas condições. Dessa forma, quando estiver sendo
 inserida uma crença de percepção com o termo diferente de ``step'' nenhum código será
-executado pelo diagrama e o insere no segundo nível.
+executado pelo diagrama e a mesma será inserida no segundo nível.
 
 A chamada do \jason para a função \emph{add} não se encontra representada na
 figura~\ref{fig:addBelief}, porém essa função chama uma outra de mesmo nome e
 quando essa retorna falso é chamada a função \emph{add} da instância
-\emph{next}. Cabe chamar atenção que quando uma percepção esta sendo inserida,
-ela é sempre posta no segundo nível da base de crença. Entretanto, quando o
-termo da crença é ``step'' aproveitamos para realizar o processo de
-sumarização que calcula e guarda a potência da emoção na classe
-\emph{Emotion}. Além disso, se aproveita o momento para obter e inserir na
-base de crenças padrão os sentimentos que acabaram de sofrer atualização em
-seus valores.
+\emph{next}. Cabe chamar atenção que quando uma percepção esta sendo inserida
+e o termo da crença é ``step'' é realizado o processo de sumarização que
+calcula e guarda a potência da emoção na classe \emph{Emotion}. Além disso, se
+aproveita o momento para obter e inserir na base de crenças padrão os
+sentimentos que acabaram de sofrer atualização em seus valores.
 
-Agora quando o esta sendo feita uma inserção de uma crença que não é uma
+Agora quando esta sendo feita uma inserção de uma crença que não é uma
 percepção, é feita a verificação se ele é relevante. Caso ele seja considerado
 irrelevante, a crença sera inserida no segundo nível. Entretanto, se ele for
 considerado relevante então será feita a recuperação do elemento atualmente
