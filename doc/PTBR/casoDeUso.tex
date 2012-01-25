@@ -1,22 +1,23 @@
 \chapter{Caso de Uso} \label{ch:cdu}
 
-O presente capítulo visa explicar o caso de uso da ontologia. O caso de uso da
-ontologia é uma simulação de uma parte da vida dos personagens. Eles
-encontram-se observando um jogo de futebol e cada um torce para um time.
-Entretanto, antes desse caso de uso ser abordado na seção~\ref{ch:cdu:svc}
-será falado como a ontologia foi testada juntamente com a plataforma \jason.
-A seção~\ref{ch:cdu:tbc} explica as ferramentas desenvolvidas para testar a base
-de crenças e, consequentemente, a ontologia. Elas são duas uma interativa e
-outra não interativa que serve como uma especie de teste unitário.
+O presente capítulo visa explicar o caso de uso utilizado para validar o
+sistema desenvolvido. Os casos de uso são simulações de parte da vida dos
+personagens. No primeiro, eles encontram-se observando um jogo de futebol e
+cada um torce para um time. No segundo, uma casa é simulada com quatro atores
+e suas rotinas. Entretanto, antes desses casos serem abordados na
+seção~\ref{ch:cdu:svc} e na seção~\ref{ch:cdu:home}
+será falado como a ontologia foi testada juntamente com a plataforma
+\emph{Jason}. A seção~\ref{ch:cdu:tbc} explica as ferramentas desenvolvidas
+para o teste da base de crenças e, consequentemente, a ontologia. Elas são duas
+uma interativa e outra não interativa que serve como uma especie de teste
+unitário dos artefatos explicados no capítulo~\ref{ch:aec}.
 
 \section{Teste da Base de Crenças} \label{ch:cdu:tbc}
 
 Os testes da base de crenças tem como finalidade checar se a utilização normal
 esta acontecendo da maneira esperada. Assim, eles fazem testes de inserção,
-recuperação, remoção e listagem. A listagem é feita implementando a interface
-\emph{Iterable} da plataforma Java e é usada, principalmente, quando a
-interface gráfica da plataforma \jason esta em modo depuração e
-exibindo a base de crenças.
+recuperação, remoção e listagem. Os testes foram escritos na linguagem
+\emph{AgentSpeak}.
 
 \begin{figure}
 	\begin{center}
@@ -45,23 +46,23 @@ valor.
 \end{figure}
 
 Na Figura~\ref{fig:testeJasonIntBase} estão representados dois momentos da
-criação de uma emoção de orgulho da parte do usuário. Na parte de cima, o
+criação de uma emoção de orgulho pelo usuário. Na parte de cima, o
 agente tem configurado uma avaliação de e sobre si próprio. Além disso, a
 avaliação tem probabilidade nula ou irrelevante e o desejo para si mesmo foi
 considerado com o valor 10. Esse valor poderia ser qualquer número inteiro,
 mas se fosse negativo ao invés de alegria (\emph{joy}) o resultado atual seria
-sofrimento (\emph{distress}). No campo de texto, o usuário irá inserir a
-última relação para ser construída a percepção de orgulho.
+sofrimento (\emph{distress}).
 
-Na parte de baixo da Figura~\ref{fig:testeJasonIntBase} pode se ver o
-resultado obtido para a inserção da última crença. Conforme pode ser visto,
+Na parte de baixo da Figura~\ref{fig:testeJasonIntBase} esta o resultado
+obtido após a inserção da última crença para criação da emoção de orgulho.
+Conforme pode ser visto,
 foi necessário três ciclos deliberativos para o agente ter a percepção do
 sentimento. Na verdade, essa percepção não veio de um novo ciclo de simulação
-rodando e sim que o agente acrescentou uma nova crença dizendo que havia um
-passo novo então foi feita a avaliação das emoções quanto a necessidade de
-se criar a percepção afetiva. Se fosse um passo normal da simulação, não se
+rodando e sim que o agente acredita que há um passo de simulação novo
+então o processo emotivo foi disparado e as emoções criadas conforme a
+a configuração. Se fosse um passo normal da simulação, não se
 teria na base de crenças duas percepções \emph{feeling} sobre uma emoção
-porque a todo novo passo as percepções são limpas.
+porque a todo novo ciclo as percepções são apagadas.
 
 Na Listagem~\ref{lst:testeJasonIntBase} pode ser observado uma configuração
 para se rodar a presente aplicação\footnote{Veja a seção
@@ -413,6 +414,7 @@ label=lst:update]
     \end{minipage}
 \end{center}
 
+\section{Nome nao definido} \label{ch:cdu:home}
 %% Talvez esse paragrafo vah aqui em uma secao nova explicando um novo caso de uso
 %um lugar
 %definido pelo conceito \emph{Place} pode possuir a relação \emph{hasSetup} visando
