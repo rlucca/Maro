@@ -25,8 +25,6 @@ import jason.asSyntax.PredicateIndicator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-// Nao sei, me parece q ta dando problema de acesso com corrente.
-// mas nao temos acesso concorrente, temos?
 public class BBAffective extends ChainBBAdapter
 {
 	private Logger logger = Logger.getLogger(BBAffective.class.getName());
