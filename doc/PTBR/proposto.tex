@@ -500,30 +500,73 @@ do simulador não levam em conta o agente e, por isso, mesmo que seja usado um
 agente que não esteja utilizando a base estendida os tipos serão retornados
 corretamente.
 
-% add
-%   como?
-%   pq?
-%   pra q?
-% remove
-%   como?
-%   pq?
-%   pra q?
-% consulta (contains?)
-%   como?
-%   pq?
-%   pra q?
-% listagem (iterator?)
-%   como?
-%   pq?
-%   pra q?
-%%%
-%% em teoria daqui por diante eh add
-Na figura~\ref{fig:addBelief} esta representado o processo de inserção de
-uma crença. No UML existe a possibilidade de se colocar guardas que são etiquetas que
-dizem a condição para o código ser executado. Essas guardas foram colocadas
-perto de um quadrado para simbolizar que todas as chamadas feitas dentro dele
-estão relacionadas aquelas condições. Dessa forma, quando estiver sendo
-inserida uma crença de percepção com o termo diferente de ``step'' nenhum código será
+As seções seguintes, explicam os novos processos de inserção, remoção,
+consulta e listagem das crenças. Exemplos desses em código \jason são,
+respectivamente, \emph{+crencca}, \emph{-crencca}, \emph{?crencca} e
+\emph{?X}. A listagem, também, é utilizada pela tela de visualização de
+crenças quando se esta realizando uma depuração no agente.
+
+\subsection{Processo de Listagem e Consulta de Crenças}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{figuras/sd-getCB.png}
+  \caption{Diagrama de sequência para consultar uma crença.}
+  \label{fig:getCandidates}
+\end{figure}
+
+O processo de listagem serve para exibir todas as crenças e percepções do
+agente. Isso é importante em momentos de depuração ou em momentos que se
+deseja consultar uma crença que é uma variável não unificada, isto é, sem
+valor definido. Dessa forma, a base de crenças implementa a interface
+\emph{java.lang.Iterable} que permite a classe ser usada em construções
+\emph{for-each}. A implementação devolve todos os elementos dos dois níveis
+sendo que o nível da ontologia é recuperado primeiro.
+
+De maneira similar, o processo de consulta de crenças foi implementado.
+Entretanto, ele pode ser chamado via código \jason ou pelo código \emph{Java}.
+Esse processo tem como entrada os métodos com nome \emph{getCandidateBeliefs}
+que chamam um método comum denominado \emph{getCandidateBeliefs2} conforme
+pode ser visto na Figura~\ref{fig:getCandidates}. O resultado dessa operação é
+um objeto \emph{Iterator} com todas as crenças recuperadas da base que possuem
+o mesmo nome e mesma aridade que a informada na chamada. Isso é importante
+porque esses candidatos podem ter seus parâmetros verificados pela própria
+base de crenças ou por outros pontos de acesso do \emph{Jason}.
+
+\subsection{Processo de Recuperação de Crenças}
+
+O processo de recuperação de uma crença é necessário para o entendimento das
+inserções e remoções de crenças. Ele serve para recuperar uma única crença
+quando ela já existir na base. Esse processo leva em consideração toda a
+estrutura do literal, desconsiderando somente as anotações do mesmo em suas
+buscas.
+
+A Figura~\ref{fig:recover} mostra esse processo de recuperação. Ele inicia com
+a chamada à \emph{getCandidateBeliefs} que foi explicada na seção anterior.
+Cada um dos candidatos retornados pela chamada são verificados para ver se
+conferem com o informado pelo cliente, se conferir então o candidato é
+retornado. Se nenhum candidato for retornado, o resultado da base de crenças
+padrão será retornado porque o mesmo pode estar localizado neste nível.
+Conforme foi falado anteriormente, tanto a inserção e remoção utilizam esse
+procedimento para recuperar o elemento armazenado na base de crença, porém os
+motivos serão vistos em suas respectivas seções.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=100mm]{figuras/sd-contains.png}
+  \caption{Diagrama de sequência para recuperar uma crença.}
+  \label{fig:recover}
+\end{figure}
+
+\subsection{Processo de Adição de Crenças}
+
+O procedimento de inserção de uma crença pode ser visto na
+figura~\ref{fig:addBelief}. Essa figura utiliza as guardas do UML que são
+etiquetas com o texto entre colchetes para informar a condição que o código
+deve ter para ser executa. Além disso, elas encontram-se localizadas perto de
+um quadrado para simbolizar que todas as chamadas feitas dentro deste estão
+relacionadas aquelas condições. Dessa forma, quando estiver sendo inserida uma
+crença de percepção com o termo diferente de ``step'' nenhum código será
 executado pelo diagrama e a mesma será inserida no segundo nível.
 
 A chamada do \jason para a função \emph{add} não se encontra representada na
@@ -535,6 +578,13 @@ calcula e guarda a potência da emoção na classe \emph{Emotion}. Além disso, 
 aproveita o momento para obter e inserir na base de crenças padrão os
 sentimentos que acabaram de sofrer atualização em seus valores.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{figuras/addB.png}
+  \caption{Diagrama de sequência para adicionar uma crença.}
+  \label{fig:addBelief}
+\end{figure}
+
 Agora quando esta sendo feita uma inserção de uma crença que não é uma
 percepção, é feita a verificação se ele é relevante. Caso ele seja considerado
 irrelevante, a crença sera inserida no segundo nível. Entretanto, se ele for
@@ -544,13 +594,67 @@ elemento. Se o elemento não existir na base de crenças então esse último
 procedimento é ignorado, porém ele é necessário para haver a correta
 atualização das anotações. Por fim, a crença é transformada no tipo interno e
 enviado para ser acrescentado na ontologia.
-O processo de inserção na ontologia depende se o que esta sendo inserido é uma
-instância de objeto ou de propriedade de objeto ou de propriedade de dados.
+
+Assim, o processo de inserção serve para inserir os axiomas necessários para
+representar essa crença na ontologia quando a mesma for relevante. Para a
+criação na ontologia, é necessário ainda diferenciar se é uma instância de
+objeto ou propriedade de dados ou de objetos. Essa diferenciação é feita pela
+aridade e, em caso de ambiguidade, o nome do termo é usado para se perguntar à
+ontologia.
+
+\subsection{Processo de Remoção de Crenças}
+
+O processo de remoção de crenças permite remover uma crença da base de crenças
+ou, apenas, atualiza-la retirando alguma anotação que não devia existir. Dessa
+forma, o procedimento ao final do mesmo remove os axiomas postos anteriormente
+e os insere novamente quando for uma atualização. A Figura~\ref{fig:delBelief}
+mostra a rotina da base de crenças.
 
 \begin{figure}
   \centering
-  \includegraphics[width=12cm]{figuras/addB.png}
-  \caption{Diagrama de sequência para adicionar uma crença.}
-  \label{fig:addBelief}
+  \includegraphics[width=10cm]{figuras/delB.png}
+  \caption{Diagrama de sequência para remover uma crença.}
+  \label{fig:delBelief}
 \end{figure}
+
+A rotina de remoção desenvolvida, inicia verificando se o termo pode ser
+considerado relevante. Se ele for uma percepção então ele é irrelevante para
+esse procedimento. Caso não seja uma percepção, a relevância é verificada e
+se for relevante então é recuperado o elemento armazenado. Se não for
+recuperado nenhum elemento ou se ele for irrelevante então é realizada a
+chamada a remoção da base de crenças padrão e retornado o resultado.
+
+Nesse momento que se sabe a crença armazenada pelo agente e que a mesma
+é relevante. As anotações informadas são removidas da crença obtida e a nova
+crença é testada para ver se ainda possui anotações. Se possuir e não for uma
+anotação de fonte e não é um indicativo de estar sendo armazenada em
+determinada ontologia então é feita a atualização do valor armazenado. No caso
+de não possuir anotação ou possuir somente as anotações anteriores mencionadas
+é feita a remoção do elemento.
+
+\subsection{Processo Compartilhado de Remoção e Adição de Crenças}
+
+O processo de adição e remoção de crenças compartilham pedaços de códigos. A
+classe \emph{EmotionKnowledge} possui dois pontos de entrada, um pelo método
+\emph{add} e outro pelo método \emph{remove} tanto um quanto outro fazem uma
+chamada para uma função denominada \emph{changeBelief} informando esta se é um
+procedimento de inserção ou remoção. A partir dai a sequência de chamadas
+mostradas na Figura~\ref{fig:shareBelief} segue de maneira igual. Isso foi
+feito porque muito código é igual tanto para um quanto para outra parte.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{figuras/shareBelief.png}
+  \caption{Diagrama de sequência para adicionar uma crença.}
+  \label{fig:shareBelief}
+\end{figure}
+
+A classe \emph{OwlApi} é a única que consulta a ontologia diretamente via
+biblioteca. No inicio da aplicação são extraídas as informações de quais
+conceitos existem, quais relações e de que tipos elas são. Sendo assim,
+consultar o nome completo de uma determinada entidade ou qual é seu tipo não
+precisa ir na ontologia. A função \emph{updateByType} é a responsável por
+realizar a inserção e remoção das entidades. Uma alteração é feita removendo
+a entidade anterior e acrescentando uma nova e marcando a ontologia como suja
+para quando uma consulta for feita a mesma ter o raciocinador atualizado.
 
