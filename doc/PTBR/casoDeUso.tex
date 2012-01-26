@@ -429,13 +429,48 @@ label=lst:update]
     \end{minipage}
 \end{center}
 
-\section{Nome nao definido} \label{ch:cdu:home}
-%% Talvez esse paragrafo vah aqui em uma secao nova explicando um novo caso de uso
-%um lugar
-%definido pelo conceito \emph{Place} pode possuir a relação \emph{hasSetup} visando
-%duas coisas. A primeira é determinar as anotações existentes em um objeto que
-%esta em um determinado lugar. A segunda é indicar que objetos fazem parte dos
-%lugares para que o agente tenha uma especie de mapa abstrato do local, por
-%exemplo o agente sabe que a sala 1 possui um armário, dois criados mundos, 2
-%duas camas e duas portas. Mas, não conhece nenhuma das anotações desses
-%objetos no mapa abstrato sendo necessário ir até eles para tal.
+\section{Simulando uma casa} \label{ch:cdu:home}
+
+O presente caso de uso tem por finalidade demonstrar as ontologias de rotinas
+e preferências trabalhando junto da afetividade. Ele utiliza o ambiente e os
+agentes de maneira diferente do caso anterior. O agente aqui não carrega os
+limites de ativação dos sentimentos de crenças iniciais e sim da própria
+ontologia. Todos seus valores estão configurados para a emoção virar
+sentimento a partir do valor 20.
+
+O ambiente utilizado nesse exemplo foi explicado brevemente quando introduzindo o
+aplicativo de teste não-interativo. Esse ambiente carrega uma ontologia que
+tem por finalidade conhecer as preferências e as rotinas dos agentes e por
+construir uma visualização do ambiente no qual os atores desses agentes atuam.
+Além disso, a cada passo de simulação as percepções são apagadas e as
+preferências e rotinas do agente informadas.
+
+Para a construção da visualização, cada um dos indivíduos do conceito
+\emph{Place} são considerados como objetos que devem ser desenhados se
+estiverem associados à uma dimensão. Assim, todos os objetos na tela são
+desenhados a partir de retângulos. Além disso, esse conceito pode usar a
+relação \emph{hasSetup} visando determinar que um objeto tem determinada
+anotação ou, ainda, determinar que objetos fazem parte de um objeto maior. Por
+exemplo, permitir que o agente saiba que o objeto sem visualização chamado
+sala1 possui um armário, dois criados mundos, 2 duas camas e duas portas. Mas,
+não conhece nenhuma das anotações desses objetos.
+%Esse conhecimento serve para permitir que um agente que esta em um quarto se
+%dirija para cozinha sem ter que conhecer previamente toda a casa.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=10cm]{figuras/sims.png}
+	\end{center}
+	\caption{Interface de visualização da casa sendo simulada.}
+	\label{fig:sims}
+\end{figure}
+
+A Figura~\ref{fig:sims} possui quatro atores diferentes chamados: millie,
+albert, nina e john. Esses atores estão localizados em diferentes pontos da
+casa e cada um pode ter sua própria orientação. No inicio da simulação eles
+devem averiguar os objetos próximos para perceberem em qual sala se encontram
+e depois decidem um objetivo próprio baseado em seu estado interno atual.
+Muito provavelmente no inicio da simulação, os agentes tentaram ir para suas
+respectivas camas dormirem para obter energia para o próximo dia.
+
+TODO
