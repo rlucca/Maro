@@ -1,9 +1,6 @@
-
 MAS soccer {
     infrastructure: Centralised
-
     environment: maro.example.soccer.Environment(30000, 70, 3, FALSE)
-
     agents:
         watch1
           #1
