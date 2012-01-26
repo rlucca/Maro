@@ -89,9 +89,9 @@ aplicação interativa de teste, label=lst:testeJasonIntBase]{../../sampletConso
 
 A agente millie configurada da linha 5 à 9 utiliza opções do \jason para
 alterar a base de crença sendo utilizada (\emph{beliefBaseClass}),
-arquitetura do agente (\emph{agentArchClass}) e o raciocinador do agente
-(\emph{agentClass}). Essas alterações foram explicadas anteriormente.
-%na seção~\ref{ch:p:ipjo}.
+arquitetura (\emph{agentArchClass}) e o raciocinador
+(\emph{agentClass}). Essas alterações foram explicadas anteriormente
+na seção~\ref{ch:p:ipjo}~(pág.~\pageref{ch:p:ipjo}).
 Assim, para o presente exemplo a mudança da arquitetura na linha 7, única
 classe não mencionada até agora, foi realizada para criar e atualizar a janela
 que exibe os dados emotivos.
@@ -135,7 +135,7 @@ zero para que a potência e a valência sejam iguais. O agente somente conhece
 a valência de uma emoção, ela é o valor da potência menos o limite de
 ativação. Entretanto, tanto o limite de ativação quanto a potência não são
 conhecidos pelo agente. Por exemplo, se o limite da pena (\emph{sorryFor}) é 6
-e o valor atual é 8 então o agente terá o sentimento com o valor 2 que será
+e o valor atual é 8 então o sentimento com o valor 2 será criado sendo
 expresso por uma crença da seguinte forma ``feeling("sorryFor",2).''.
 
 %%%% fim da explicacao da aplicação interativa %%%%%
@@ -152,13 +152,12 @@ label=lst:testeJasonNIBase]{../../sampletSummary/eoaus.mas2j}
 A aplicação não interativa utiliza a Listagem~\ref{lst:testeJasonNIBase} para
 configurar o seu projeto. O ambiente especificado na linha 4 possui os mesmos
 parâmetros do anterior com o acréscimo de um novo que indica uma ontologia.
-Essa ontologia serve para o ambiente conhecer as rotinas dos agentes na
-simulação, como deve ser desenhado o mapa exibido e as posições iniciais dos
-agentes. O agente millie aqui é o utilizado para os testes e os limiares de
+Essa ontologia serve para o ambiente conhecer as rotinas dos agentes, como
+deve ser desenhado o mapa à ser exibido e as posições iniciais de cada
+agente. O agente millie aqui é o utilizado para os testes e os limiares de
 ativação de emoção estão configurados para valores diferentes. Existe uma
 variedade de testes para as propriedades de objeto ou de dados e para as
-instâncias de classes, além de testes das conclusões esperadas na ontologia do
-agente.
+instâncias de classes, além de testes das conclusões esperadas.
 
 \section{Assistindo um jogo de futebol} \label{ch:cdu:svc}
 
@@ -173,9 +172,9 @@ Esse exemplo aparentemente simples, propicia um cenário bastante rico para as
 emoções por causa que um personagem pode ter diferentes emoções acontecendo.
 Essas emoções são muitas vezes do ramo de consequências de eventos por esta
 estar ligada com a desejabilidade do evento ou do ramo de ações de agentes que
-tem haver com os padrões do agentes. Assim, os agentes que estão assistindo ao
-jogo de futebol decidem no inicio da simulação os times que estarão torcendo e
-ambos acreditam que seus times vão ganhar.
+tem haver com os padrões dos agentes. Assim, a mente dos atores que estão
+assistindo ao jogo de futebol decidem no inicio da simulação os nomes de seus
+times e ambos acreditam que venceram.
 
 \begin{center}
     \begin{minipage}{140mm}
@@ -186,21 +185,22 @@ label=lst:soccer]{../../sampletSoccer/soccer.mas2j}
     \end{minipage}
 \end{center}
 
-A Listagem~\ref{lst:soccer} mostra o arquivo de projetos que cria dois agentes
-um chamado ``watch1'' e ``watch2'', cada um com seu próprio código fonte.
-Dessa forma, cada um desses agentes inclui em seus códigos as configurações
-necessárias para utilizar o \emph{framework}. Um exemplo dessas configurações
+A Listagem~\ref{lst:soccer} mostra o arquivo de projeto que cria dois agentes:
+``watch1'' e ``watch2''. Cada um com seu próprio código fonte e,
+dessa forma, cada um deles inclui em seus códigos as configurações
+necessárias para utilizar o sistema. Um exemplo dessas configurações
 é o limite de ativação para uma emoção virar sentimento. Outro exemplo é que
 os times que participam do jogo são considerados pelos personagens como outros
-agentes, dessa forma o time que eu torço pode ser considerado um ``agente
-amigo'' e o time adversário um ``agente inimigo''.
+agentes, assim o time que se torçe pode ser considerado ``amigo'' e o outro
+``inimigo''.
 
 Cabe salientar que cada um dos agentes realizam as mesmas avaliações sobre os
-mesmos eventos. Esses eventos foram pensados como o estado atual do jogo
+mesmos eventos. Esses eventos foram pensados como a marcação de um gol
+(Listagem~\ref{lst:soccerGoal}), o estado atual do jogo
 (Listagem~\ref{lst:soccerTeam}), o estado final do jogo
-(Listagem~\ref{lst:soccerEnd1} e Listagem~\ref{lst:soccerEnd2}) e a marcação de um gol
-(Listagem~\ref{lst:soccerGoal}). Esses são alguns exemplos escritos escritos
-na plataforma \jason para exemplificar o \emph{framework} construído.
+(Listagem~\ref{lst:soccerEnd1} e Listagem~\ref{lst:soccerEnd2}).
+Esses são alguns exemplos escritos escritos na plataforma \jason para
+fins de validação.
 
 \begin{center}
     \begin{minipage}{120mm}
@@ -231,23 +231,37 @@ label=lst:soccerGoal]
 \end{center}
 
 A Listagem~\ref{lst:soccerGoal} realiza o processamento das emoções sentidas
-por um personagem quando um time marca um gol. Nessa primeira listagem, a 4
-condições possíveis: gol do time que torço, gol do time adversário, gol já
-não é mais percebido e não foi nenhum gol. As emoções envolvidas em gols foram
-consideradas alegria e sofrimento. Assim, quando o agente percebe o mesmo pode
-ficar alegre ou em agonia. As linhas 4 e 15 sera vista mais adiante por hora
-basta saber que elas realizam a inserção, atualização ou remoção dos dados
-guardados na ontologia.
+por um personagem quando um time marca um gol. Cada um dos planos criados
+visam atender as 4 condições possíveis: gol do meu time, gol do adversário,
+gol removido (não é mais percebido) e não houve gols. O plano da
+linha 4 (\emph{updateEmotion}) e o da linha 15 (\emph{removeEmotion}, não
+confundir o plano com a crença) serão explicados adiante por hora basta saber
+que eles atualização ou removem as relações necessárias para a afetividade.
 
-A Listagem~\ref{lst:soccerTeam} é similar. Ela é responsável por inserir uma
+Na última listagem, as linhas 3 e 9 chamam um plano que consulta os números de
+\emph{fibonacci}. Esse plano tem no primeiro parâmetro a posição do número na
+sequência e o retorno correspondente. Entretanto, foi montado um plano que se
+preocupa somente com a terceira à sétima posição e às demais posições são
+assumidas com o valor 1. Os times quando jogam no simulador dificilmente
+marcam mais que 5 gols então foi decidido limitar os números de
+\emph{fibonacci} até a posição 7. Entretanto, valores de posição negativos ou
+superiores à 7 terão retorno um. Cabe salientar que quando um gol é marcado
+a favor do time que se torce o \emph{fibonacci} é usado de maneira
+decrescente, isto é, o primeiro gol retornará a sétima posição, a segunda à
+sexta e etc. No caso de gols do time adversário é utilizado o cálculo de
+\emph{fibonacci} de maneira crescente. Logo, o valor 1 é retornado para os
+dois primeiros gols, o terceiro terá valor 2 e assim por diante.
+
+A Listagem~\ref{lst:soccerTeam} é similar à anterior. Ela é responsável por inserir uma
 emoção de esperança no agente com valoração 50 e inicia o calculo de
 realização do evento assumindo o valor positivo 1. Após, a cada gol percebido
 do próprio time esse valor é incrementado em 10 e se o gol for do time
-adversário é feito o decremento. A emoção de esperança não sofre alteração
-depois que é criada porque esta sendo considerado que as emoções são baseadas
-na percepção dos eventos. Dessa forma, a esperança do jogo ser ganho só
-termina quando há a percepção do encerramento do mesmo. O mesmo vale para a
-emoção sentida em gols.
+adversário é feito um decremento no mesmo valor. A emoção de esperança não
+sofre alteração depois que é criada porque esta sendo considerado que as
+emoções são baseadas na percepção dos eventos. Dessa forma, a esperança do
+jogo ser ganho só termina quando há a percepção do encerramento do mesmo. Isso
+vale para a emoção sentida em gols também.%, porém a emoção do gol só dura
+%enquanto for percebido o gol.
 
 \begin{center}
     \begin{minipage}{130mm}
@@ -281,7 +295,8 @@ label=lst:soccerTeam]
     \begin{minipage}{140mm}
 	\lstset{linewidth=140mm}
 	\begin{lstlisting}[frame=trbl,
-caption=Parte do código do agente referente à avaliação do final do jogo,
+caption=Parte do código do agente referente à avaliação do final do jogo para
+as emoções de probabilidade,
 label=lst:soccerEnd1]
 +?appraisalEndMatch
     :  realizedCalculation(CALC) & match(_,_)
@@ -305,24 +320,25 @@ label=lst:soccerEnd1]
 Nas Listagens~\ref{lst:soccerEnd1}~e~\ref{lst:soccerEnd2} são realizadas
 avaliações depois do termino do jogo. O jogo pode terminar empatado ou um dos
 dois times ganhar. Entretanto, para a primeira listagem basta que o jogo tenha
-terminado para uma atitude ser tomada. Essa atitude é remoção da emoção de
-esperança e a criação de uma nova emoção baseado na realização do jogo e no
-valor atual da esperança. Sendo assim, um personagem pode ficar satisfeito ou
-desapontado.
+terminado para uma atitude ser tomada. Essa atitude é a remoção da emoção de
+esperança e a criação de uma nova emoção baseado em como foi o andamento do
+jogo e no valor atual da esperança. Sendo assim, um personagem pode ficar
+satisfeito ou desapontado.
 
 Já, a Listagem~\ref{lst:soccerEnd2} permite um personagem sentir-se feliz
-por um resultado ou ficar com pena de seu time. Quando o time do personagem
+por ou com pena do resultado de seu time. Quando o time do personagem
 tiver ganho o jogo ele pode sentir-se feliz ou neutro e quando o time perde
 ele pode sentir-se com pena ou neutro da mesma forma. Esse valor de
 neutralidade é porque o modelo de emoções só diz que a felicidade por alguém
-ou a pena só serão sentidas quando o merecimento e o desejo do outro forem
-ambas positivas ou ambas negativas.
+ou a pena serão sentidas quando o merecimento e o desejo presumido sobre o
+outro forem ambas positivas ou ambas negativas.
 
 \begin{center}
     \begin{minipage}{140mm}
 	\lstset{linewidth=140mm}
 	\begin{lstlisting}[frame=trbl,
-caption=Parte do código do agente referente à avaliação do final do jogo,
+caption=Parte do código do agente referente à avaliação do final do jogo para
+as emoções relacionadas com a consequência de eventos para outros,
 label=lst:soccerEnd2]
 +?appraisalEndMatchHappy
      : match(win, TEAM) & myPoints(TEAM, _, _, _)
@@ -348,13 +364,13 @@ label=lst:soccerEnd2]
     \end{minipage}
 \end{center}
 
-As consultas de ``removeEmotion'' recebem o tipo de emoção e o nome do
-indivíduo que deve ser removido. Com base nessas informações, as relações
-que foram outrora inseridas são removidos da base de conhecimento e,
-consequentemente, da base de crenças. Um exemplo é amostrado na
-Listagem~\ref{lst:removeSample} no qual são removidas às relações de
-merecimento, de desejo por outros, de qual pessoa esta sendo avaliada e que
-esta avaliando.
+As consultas de ``removeEmotion'', presentes nas listagens anteriores, recebem
+o tipo de emoção e o nome do indivíduo que deve ser removido. Com base nessas
+informações, as relações que foram outrora inseridas são removidas da base de
+conhecimento e, consequentemente, da base de crenças. Um exemplo é amostrado
+na Listagem~\ref{lst:removeSample} no qual são removidas às relações: de
+merecimento, de desejo por outros, de qual pessoa esta sendo avaliada e de
+quem esta avaliando.
 
 \begin{center}
     \begin{minipage}{130mm}
@@ -376,16 +392,16 @@ label=lst:removeSample]
     \end{minipage}
 \end{center}
 
-As consultas de ``updateEmotion'' funcionam de maneiras similares. Elas
-removem e acrescentam uma outra relação para repor a mesma relação com outro
-valor. Dessa forma, para a construção do exemplo tanto as atualizações como as
+As consultas de ``updateEmotion'' funcionam de maneira parecida à
+``removeEmotion''. Ela fazem a inserção das relações e caso já exista o
+indivíduo removem e acrescentam novas relações para alterar o valor guardado.
+Dessa forma, para a construção do exemplo tanto as atualizações como as
 remoções foram agrupadas por grupo de emoções por causa que essa é a forma que
-o próprio modelo agrupa remoções com regras similares. A Listagem~\ref{lst:update}
+o próprio modelo \occ agrupa emoções com regras similares. A Listagem~\ref{lst:update}
 mostra a regra para o tipo de emoções que tem haver com a consequência dos
-destinos dos outros. Sendo assim, as relações de merecimento, de nível de
-desejo dos outros e de quem esta avaliando e que pessoa. Todo o código pode
-ser consultado no repositório disponível via
-\emph{GitHub}\footnote{http://github.com/rlucca/Maro}.
+destinos dos outros, isto é, as relações de merecimento, de nível de
+desejo presumido e de quem esta avaliando e de qual pessoa esta sendo
+avaliada.
 
 \begin{center}
     \begin{minipage}{130mm}

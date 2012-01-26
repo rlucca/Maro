@@ -1,27 +1,30 @@
 \chapter{Conclusão} \label{ch:cf}
 
-O presente trabalho apresentou um \emph{framework} que estende a base de
+%%Tem que essa frase ir aqui...
+%Todo o código pode ser consultado no repositório disponível via
+%\emph{GitHub}\footnote{http://github.com/rlucca/Maro}.
+
+O presente trabalho apresentou um sistema que estende a base de
 crenças do agente \jason para permitir que o mesmo tenha emoções segundo o
 modelo desenvolvido por \citet{ortony1988cse}. O desenvolvimento se baseou em
 utilizar uma ontologia para concluir qual seria a emoção sendo sentida. Dessa
 forma, a base de crenças da plataforma foi alterada para manipular ontologias
 permitindo, de maneira transparente, realizar inserções, remoções e consultas.
 
-O \emph{framework} desenvolvido é uma ferramenta que ainda pode melhorar.
-Primeiro, ao utilizar inserir crenças podem ser inseridas como parâmetro
+O desenvolvimento é uma ferramenta que ainda pode melhorar.
+Primeiro, ao inserir crenças podem ser inseridas como parâmetro
 átomos que são convertidos automaticamente para \emph{strings}. Todavia, esse
 mesmo comportamento não se encontra expresso corretamente nas consultas e
 remoções. Segundo, a empatia desenvolvida poderia ser informada pelo usuário
 como um número. Por exemplo, zero são agentes distintos e um são agentes que
-se consideram semelhantes por alguma razão. Terceiro, cada agente para ter sua
-avaliação classificada corretamente precisa incluir como suas crenças valores
-equivalentes as relações esperadas.
+se consideram semelhantes por alguma razão. Terceiro, a relação de
+probabilidade poderia ser números ao invés de conceitos.
 
-Assim sendo, a configuração para uma emoção ser disparada é trabalhosa. O
+A configuração para uma emoção ser disparada é trabalhosa. O
 ideal seria ter um mecanismo abstrato utilizando as preferências de alguma
 forma para concluírem as crenças que hoje precisam ser inseridas pelo usuário.
 Dessa forma, a ideia de emoções serem transparente ao agente não foi
-alcançada. Todavia, se for necessário ser realizado um plano que só fica
+alcançada por completo. Todavia, se for necessário ser realizado um plano que só fica
 ativo quando o agente possui um determinado grau de emoção então este teste
 pode ser facilmente criado na área de contexto.
 
@@ -32,14 +35,10 @@ pode ser facilmente criado na área de contexto.
 %e gera uma facilidade muito grande para os novos usuários da ferramenta.
 
 As ontologias que foram desenvolvidas foram pensadas para não serem utilizadas
-só pela nossa ferramenta. Elas podem ser usadas em separado ou em conjunto. Na
-ontologia afetiva, o principal ponto a melhorar é deixar a probabilidade ser
-um valor numérico e não conceitos que representam faixas de valores.
-%
+somente pela nossa ferramenta. Elas podem ser usadas em separado ou em conjunto.
 Além disso, os exemplos construídos possuíram um tempo médio de passo de
-simulação em torno de 1 à 2 segundos em média. O primeiro passo foi sempre o
-que teve um tempo maior de duração, possivelmente, por causa que é nele que é
-feita a leitura da ontologia e carga na base de crenças do que esta em
-arquivos de código \jason como crenças iniciais.
-
+simulação em torno de 2 segundos em média. Sendo que o primeiro passo foi sempre o
+que teve um tempo maior de duração (em média 30 segundos), possivelmente, por
+causa que é nele que é feita a leitura da ontologia e carga na base de crenças
+iniciais que estão em código \emph{AgentSpeak}.
 
