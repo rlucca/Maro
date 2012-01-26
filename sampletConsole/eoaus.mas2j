@@ -1,14 +1,11 @@
 MAS eoaus {
     infrastructure: Centralised //(pool, 2)
-
     environment: maro.example.console.Environment(30000, 1000, 1, FALSE)
-
     agents:
         millie
           beliefBaseClass maro.wrapper.BBAffective("ontology/occ-tbox.owl")
           agentArchClass maro.example.console.AddGui
           agentClass maro.wrapper.UniqueAnnotation
         ;
-
     aslSourcePath: "asl";
 }
