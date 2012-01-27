@@ -890,6 +890,14 @@ public class HouseModel extends GridWorldModel
 							ASSyntax.createNumber(getPX())));
 				ret.addAnnot(ASSyntax.createLiteral("positionY",
 							ASSyntax.createNumber(getPY())));
+				if (width != null) {
+					ret.addAnnot(ASSyntax.createLiteral("sizeX",
+								ASSyntax.createNumber(getWidth())));
+				}
+				if (height != null) {
+					ret.addAnnot(ASSyntax.createLiteral("sizeY",
+								ASSyntax.createNumber(getHeight())));
+				}
 			}
 
 			if (placeName != null) {
