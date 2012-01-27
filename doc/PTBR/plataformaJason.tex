@@ -195,13 +195,24 @@ configura a classe de ambiente que será utilizada. Assim, somente um
 ambiente é implementar as ações que o agente poderá realizar no mesmo. Aliás,
 também, é possível alterar como os agentes ``visualizam'' o meio para, por
 exemplo, inserir percepções incorretas em alguns momentos.
-%
-%% -> Esse paragrafo comentado parece que caiu de paraquedas...
-%Um agente pode ser implementado deixando as ações tanto em uma
-%especialização da infraestrutura quanto direto no ambiente. Por ser o
-%ambiente, o responsável pelas percepções então seria nele que a implementação
-%de falhas em sensores ocorreria. Essas falhas podem ser implementadas através
-%da remoção ou alteração das percepções. O agente, nesse ambiente, deveria ser
-%capaz de aplicar regras para verificar essas falhas e assumir que há erros em
-%seus dados.
+
+Essa infraestrutura extensível permitiu a implementação do trabalho de
+\citet{moreira2006agent} por \citet{KlaBor09} sem nenhuma alteração profunda
+nas classes da plataforma. Esse trabalho permitiu que o \jason usa-se
+ontologias, inclusive definindo classes e compartilhando o conhecimento. Por
+exemplo, um agente pode dizer para outro que a informação que ele deseja
+encontra-se em uma determinada ontologia. Além disso, há outras extensões como
+não usar arquivos de projeto e sim uma ontologia para definir a simulação.
+
+O presente trabalho segue uma ideia parecida desses dois anteriores. A
+principal preocupação era ter as crenças que a ontologia considere relevantes
+em sua base de conhecimento e as outras guardadas na base padrão. Isso não é
+diferente no trabalho anterior, o que é diferente é o como a relevância é
+verificada. No trabalho anterior, o que era salvo era tudo que estivesse com a
+anotação usada para indicar a ontologia e no desenvolvimento feito os dados da
+ontologia são extraídos da própria ontologia. Assim, se na ontologia contiver
+o conceito Pizza e inserimos uma crença ``pizza(p1)''. O mecanismo
+desenvolvido sabe que essa crença é relevante para a ontologia. Já o do
+trabalho anterior para saber que o mesmo é relevante precisa ser marcado
+com uma anotação, por exemplo ``pizza(p1)[ontology(URL)]''.
 
