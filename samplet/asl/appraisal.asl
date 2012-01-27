@@ -31,11 +31,11 @@ object
 emotion
     Joy -------------------- YES          Distress --------------- YES
     Love ------------------- YES          Hate ------------------- YES
-    Hope ------------------- NO           Fear ------------------- NO ......... goals not finished!
     Admiration ------------- NO           Reproach --------------- NO ......... responsability of actions of other
     Pride ------------------ NO           Shame ------------------ NO ......... responsability of actions of yourself
     Gratification ---------- NO           Remorse ---------------- NO ......... responsability of actions of yourself + (joy/distress)
     Gratitude -------------- NO           Anger ------------------ NO ......... responsability of actions of other + (joy/distress)
+    Hope ------------------- NO           Fear ------------------- NO ......... goals not finished!
     Satisfaction ----------- NO           FearConfirmed ---------- NO ......... goals finished! Happens...
     Relief ----------------- NO           Disappointment --------- NO ......... goals finished! Not happens...
     Happy-for -------------- NO           Gloating --------------- NO ......... goals of other... happens...
@@ -43,10 +43,6 @@ emotion
 actors
     John,     Nina
     Millie,   Albert
-
-// TODO:
-// John and Nina in love by each other
-// put some actos in love and repulsion by objects too
 */
 
 

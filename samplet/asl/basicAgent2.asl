@@ -1,5 +1,6 @@
 { include("appraisal.asl") }
 { include("supportDiscoverLocation.asl") }
+{ include("util.asl") }
 //-----------------------------------------------------------------------------
 !start.
 //-----------------------------------------------------------------------------
@@ -21,7 +22,8 @@
 +!behaviour(RANDOM)
      : not(room(_))
     <- .println("doing discover location");
-       !!planDiscoverLocation(RANDOM).
+       !planDiscoverLocation(RANDOM);
+       !!deliberation.
 //-----------------------------------------------------------------------------
 +!behaviour(N)
      : feeling(distress, DV) & DV > 0
@@ -36,43 +38,112 @@
        !!deliberation.
 //-----------------------------------------------------------------------------
 +!planDiscoverLocation(RANDOM)
-    : myself[lookFor(ORIENTATION)] & not(perceived(ORIENTATION, _, _))
+    : myself[lookFor(ORIENTATION)] & not(perceived(ORIENTATION, _))
    <- .println("perceiving the around environment");
       .findall(OBJ, object(OBJ)[source(percept)], LISTA);
-      // this need be arity 3 because Dumper class not support list...
-      +perceived(ORIENTATION, LISTA, 0);
-      !!planDiscoverLocation(RANDOM).
+      +perceived(ORIENTATION, LISTA);
+      !planDiscoverLocation(RANDOM).
 //-----------------------------------------------------------------------------
 +!planDiscoverLocation(RANDOM)
-     : .findall(O, perceived(O, _, _), OS)
+     : .findall(O, perceived(O, _), OS)
      & .difference(["N","E","S","W"], OS, LS)
      & .length(LS, LENGTH) & LENGTH > 0
     <- .println("look for a new orientation");
        POSITION=RANDOM mod LENGTH;
        .nth(POSITION, LS, NEWO);
        changeOrientation(NEWO);
-       !!planDiscoverLocation(RANDOM).
+       !planDiscoverLocation(RANDOM).
 //-----------------------------------------------------------------------------
 +!planDiscoverLocation(RANDOM)
-     : .findall(O, perceived(_, O, _), OS)
+     : .findall(O, perceived(_, O), OS)
      & .length(OS, LENGTH) & LENGTH > 2
     <- .println("calculate position");
-       !calculatePosition(OS);
-       !!deliberation.
+       !calculatePosition(OS).
 //-----------------------------------------------------------------------------
 +!planRest(_, LastStep)
     :  step(LastStep)
     <- .println("forget plan rest");
-       // TODO put disappointment emotion
+       -target(_, _);
        !!deliberation.
 //-----------------------------------------------------------------------------
 +!planRest(RANDOM, LastStep)
+    :  target(O, [])
+    <- .println("plan rest try to reach ", O);
+        nope; // search the object and go to...
+        !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  target(O, [P|R]) & fixMeOrientation(P, NEWO) & myself[lookFor(NEWO)]
+    <- .println("plan rest try to reach ", P, " perceived: use object");
+       tryUseObject;
+       .abolish(perceived(_,_));
+       -target(_,_); +target(O, R);
+       -room(_); !planDiscoverLocation(RANDOM);
+       !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  target(O, [P|R]) & fixMeOrientation(P, NEWO)
+    <- .println("plan rest try to reach ", P, " perceived: fix me orientation");
+       changeOrientation(NEWO);
+       !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  target(O, [P|R]) & perceived(ORIENTATION, LISTA) & .sublist([P], LISTA)
+    &  myself[lookFor(ORIENTATION)]
+    <- .println("plan rest try to reach ", P, " perceived: forward");
+       forward;
+       !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  target(O, [P|R]) & perceived(ORIENTATION, LISTA) & .sublist([P], LISTA)
+    <- .println("plan rest try to reach ", P, " perceived: new direction");
+       changeOrientation(ORIENTATION);
+       !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  target(O, [P|R]) & object(P) & myself[lookFor(ORIENTATION)]
+    <- .println("plan rest try to reach ", P, " not perceived: perceived");
+       .findall(L, object(L), LIST);
+       -perceived(ORIENTATION, _);
+       +perceived(ORIENTATION, LIST);
+       !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  target(O, [P|R]) & .my_name(nina) & not(fixCycle)
+    <- .println("plan rest try to reach ", P, " not perceived: direction");
+       changeOrientation("W"); +fixCycle;
+       !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  target(O, [P|R]) 
+    <- .println("plan rest try to reach ", P, " not perceived: forward");
+       forward;
+       !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  not(target(_,_))
     <- .println("planning rest");
        ?appraisal;
        ?room(ROOM);
        !planRoute("bed", ROOM, ROUTE);
-       nope;
+       !nearRouteOf(ROUTE, _, _, route(O, DISTANCE, PLAN));
+       +target(O, PLAN);
        !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
+-!planRest(R,L)[code(forward),code_line(94),error(action_failed)]
+     : myself[lookFor(O)]
+    <- .println("plan rest erasing actual perceived list");
+       -perceived(O,_);
+       !!planRest(R,L).
+//-----------------------------------------------------------------------------
+-!planRest(R,L)[code(forward),code_line(120),error(action_failed)]
+     : myself[lookFor(O), positionX(MX), positionY(MY)]
+     & ARRAY=["N","W","S","E","N"]
+     & myNth(POS, ARRAY, O)
+     & myNth(POS+1, ARRAY, NEWO)
+    <- .println("plan rest changing direction: turn left");
+       changeOrientation(NEWO);
+       !!planRest(R,L).
 //-----------------------------------------------------------------------------
 -!X <- .println("Handler failure: ", X);
        !!deliberation.

@@ -1,13 +1,13 @@
 { include("routes.asl") }
 //-----------------------------------------------------------------------------
 +!calculatePosition([])
-     : .findall(L, room(L), []).
+     : .findall(L, roomP(L), []).
 //-----------------------------------------------------------------------------
 +!calculatePosition([])
-    <- .findall(L, room(_)[likelihood(L)], RRL);
+    <- .findall(L, roomP(_)[likelihood(L)], RRL);
        .max(RRL, AR);
-       .findall(R, room(R)[likelihood(AR)], RR);
-       .abolish(room(_));
+       .findall(R, roomP(R)[likelihood(AR)], RR);
+       .abolish(roomP(_));
        .nth(0, RR, VAL);
        +room(VAL).
 //-----------------------------------------------------------------------------
@@ -25,19 +25,19 @@
 +!computatePlaces([]).
 //-----------------------------------------------------------------------------
 +!computatePlaces([H|R])
-     : room(H)[likelihood(N)]
-    <- +room(H)[likelihood(N+1)];
+     : roomP(H)[likelihood(N)]
+    <- +roomP(H)[likelihood(N+1)];
        !computatePlaces(R).
 //-----------------------------------------------------------------------------
 +!computatePlaces([H|R])
-    <- +room(H)[likelihood(1)];
+    <- +roomP(H)[likelihood(1)];
        !computatePlaces(R).
 //-----------------------------------------------------------------------------
 +!planRoute(PREFIX, SOURCE, ROUTE)
     <- sims.ia.getItems(ITEMS);
        !filterListByPrefix(PREFIX, ITEMS, ITEMSFILTERED);
+       //.println("internal prefix ", PREFIX, " filtered: ", ITEMSFILTERED);
        !planRouteByItem(ITEMSFILTERED, SOURCE, ROUTE).
-       //.println("Route found to all items: ", ROUTE, " LK").
 //-----------------------------------------------------------------------------
 +!filterListByPrefix(PrefixName, [], []).
 //-----------------------------------------------------------------------------
@@ -58,6 +58,21 @@
 +!planRouteByItem([ITEM|ITEMS], SOURCE, [route(ITEM,RL,R)|ROUTE])
     <- !planRouteByItem(ITEMS, SOURCE, ROUTE);
        sims.ia.getPlacesByItem(ITEM, [TARGET]);
-       ?routeTo(SOURCE, TARGET, R);
+       ?routeCompleteTo(SOURCE, TARGET, R);
+       //.println("internal from ", SOURCE, " to ", TARGET, " = ", R);
        .length(R, RL).
+//-----------------------------------------------------------------------------
++!nearRouteOf([], L, R, R) : .ground(L).
+//-----------------------------------------------------------------------------
++!nearRouteOf([H|R], LESSER, _, ROUTE)
+     : H =.. [route, [_, LESSER, _], _]
+    <- !nearRouteOf(R, LESSER, H, ROUTE).
+//-----------------------------------------------------------------------------
++!nearRouteOf([H|R], LESSER, _, ROUTE)
+     : H =.. [route, [_, DISTANCE, _], _] & DISTANCE < LESSER
+    <- !nearRouteOf(R, DISTANCE, H, ROUTE).
+//-----------------------------------------------------------------------------
++!nearRouteOf([H|R], LESSER, K, ROUTE)
+     : H =.. [route, [_, DISTANCE, _], _]
+    <- !nearRouteOf(R, LESSER, K, ROUTE).
 //-----------------------------------------------------------------------------

@@ -1,3 +1,31 @@
+anotherSource([], _, []).
+anotherSource([S|R], S, FOUND) :- anotherSource(R, S, FOUND).
+anotherSource([H|R], S, [H]).
+
+routeCompleteTo(SOURCE, SOURCE, []).
+routeCompleteTo(SOURCE, TARGET, [WAY|FOUND])
+    :- routeTo(SOURCE, TARGET, [WAY])
+     & sims.ia.getPlacesByItem(WAY, LIST)
+     & anotherSource(LIST, SOURCE, [NEWSOURCE])
+     & routeCompleteTo(NEWSOURCE, TARGET, FOUND).
+//routeCompleteTo(SOURCE, TARGET, _)
+//    :- .println("problem internal routeTo ", SOURCE, " to ", TARGET).
+
+isAdjacent("W", MX, MY, X, Y, SX, SY) // right
+    :- Y >= MY & (Y+SY) <= MY & MX = (X+SX+1).
+isAdjacent("E", MX, MY, X, Y, SX, SY) // left
+    :- Y >= MY & (Y+SY) <= MY & MX = (X-1).
+isAdjacent("N", MX, MY, X, Y, SX, SY) // down
+    :- X >= MX & (X+SX) <= MX & MY = (Y+SY+1).
+isAdjacent("S", MX, MY, X, Y, SX, SY) // upper
+    :- X >= MX & (X+SX) <= MX & MY = (Y-1).
+
+fixMeOrientation(OBJECT, NEWO)
+    :- object(OBJECT)[positionX(X), positionY(Y), sizeX(SX), sizeY(SY)]
+     & myself[positionX(MX), positionY(MY)]
+     // size of 1 need be zero
+     & isAdjacent(NEWO, MX, MY, X, Y, SX-1, SY-1).
+
 //LATER: put all route to reach the target.
 routeTo("abstractHouseCorredor","abstractHouseCorredor",       []).
 routeTo("abstractHouseCorredor","abstractHouseKitchen",        ["doorToCorredorOrToLivingRoom"]).
@@ -39,7 +67,7 @@ routeTo("abstractHouseKitchen","abstractHouseRoom2",          ["doorToKitchenToL
 routeTo("abstractHouseKitchen","abstractHouseSocialBathroom", ["doorToKitchenToLivingRoom"]).
 routeTo("abstractHouseKitchen","abstractHouseSuiteBathroom",  ["doorToKitchenToLivingRoom"]).
 
-routeTo("abstractHouseLivingRoom","abstractHouseLivingRoom",    []).
+routeTo("abstractHouseLivingRoom","abstractHouseLivingRoom",     []).
 routeTo("abstractHouseLivingRoom","abstractHouseBathroomMiddle", ["doorToCorredorOrToLivingRoom"]).
 routeTo("abstractHouseLivingRoom","abstractHouseCorredor",       ["doorToCorredorOrToLivingRoom"]).
 routeTo("abstractHouseLivingRoom","abstractHouseDeposit",        ["doorToCorredorOrToLivingRoom"]).
@@ -95,3 +123,4 @@ routeTo("abstractHouseSuiteBathroom","abstractHouseSocialBathroom",  ["doorToRoo
 //"abstractMarket"
 //"abstractSchool"
 //"abstractWork"
+

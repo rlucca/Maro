@@ -490,27 +490,37 @@ public class HouseModel extends GridWorldModel
 		return true;
 	}
 
-	public boolean forward(String ag) {
-		Agent a = getAgentFromName(ag);
-		if (a == null) return false;
-		Location l = getAgPos(a.getID());
-		if (l == null) return false;
-
-		switch (a.getOrientation()) {
+	protected boolean positionByOrientation(Location l, Character c, boolean flag) {
+		switch (c) {
 			case 'N':
 				if (l.y > 0) l.y -= 1;
+				else if (flag && l.y == 0) return false;
 				break;
 			case 'E':
 				if (l.x < 19) l.x += 1;
+				else if (flag && l.x == 19) return false;
 				break;
 			case 'S':
 				if (l.y < 19) l.y += 1;
+				else if (flag && l.y == 19) return false;
 				break;
 			case 'W':
 				if (l.x > 0) l.x -= 1;
+				else if (flag && l.x == 0) return false;
 				break;
 			default:
 				return false;
+		}
+		return true;
+	}
+
+	protected boolean forward2(Location l, Character c, Agent a) {
+		if ( a == null || a.getID() == null || agPos[a.getID()] == null) {
+			return false;
+		}
+
+		if ( positionByOrientation(l, c, false) == false ) {
+			return false;
 		}
 
         boolean ret = true;
@@ -522,13 +532,24 @@ public class HouseModel extends GridWorldModel
                 setAgPos(a.getID(), l);
             }
 		}
+		if (ret == false) return false;
 		if (e > 8) e = 8;
 		if (e < 0) e = 1;
 		if (e > 0) e = -e;
 		a.addEnergy(e);
 		a.addHungry(-2);
 		a.addCleaning(-1);
-		return ret;
+		return true;
+	}
+
+	public boolean forward(String ag) {
+		Agent a = getAgentFromName(ag);
+		if (a == null) return false;
+		Location l = getAgPos(a.getID());
+		Character c = a.getOrientation();
+		if (l == null || c == null) return false;
+
+		return forward2(l, c, a);
 	}
 
 	public boolean nope(String ag) {
@@ -545,8 +566,34 @@ public class HouseModel extends GridWorldModel
 		referAgent.put(a.getID(), null);
 		Location l = agPos[a.getID()];
 		remove(AGENT, l.x, l.y);
-		agPos[a.getID()] = null;
+		agPos[a.getID()] = new Location(-1, -1);
 		return true;
+	}
+
+	public boolean tryUseObject(String ag) {
+		Agent a = getAgentFromName(ag);
+		if (a == null) return false;
+		Location l = getAgPos(a.getID());
+		Character c = a.getOrientation();
+		if (l == null || c == null) return false;
+
+		if ( positionByOrientation(l, c, true) == false ) {
+			return false;
+		}
+
+		int d = data[l.x][l.y];
+
+		// Is my type?
+		if ((d & ALL) == 0) return false;
+
+		// implementations for objects
+		if ((d & CLOSED_DOOR) == CLOSED_DOOR) {
+			return false; // not a problem, cannt accross
+		} else if ((d & OPENED_DOOR) == OPENED_DOOR) {
+			return forward2(l, c, a);
+		}
+
+		return false; // problem or not implemented
 	}
 
 
