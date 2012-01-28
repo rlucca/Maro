@@ -12,19 +12,22 @@ routeCompleteTo(SOURCE, TARGET, [WAY|FOUND])
 //    :- .println("problem internal routeTo ", SOURCE, " to ", TARGET).
 
 isAdjacent("W", MX, MY, X, Y, SX, SY) // right
-    :- Y >= MY & (Y+SY) <= MY & MX = (X+SX+1).
+    :- Y <= MY & (Y+SY) >= MY & MX = (X+SX+1).
 isAdjacent("E", MX, MY, X, Y, SX, SY) // left
-    :- Y >= MY & (Y+SY) <= MY & MX = (X-1).
+    :- Y <= MY & (Y+SY) >= MY & MX = (X-1).
 isAdjacent("N", MX, MY, X, Y, SX, SY) // down
-    :- X >= MX & (X+SX) <= MX & MY = (Y+SY+1).
+    :- X <= MX & (X+SX) >= MX & MY = (Y+SY+1).
 isAdjacent("S", MX, MY, X, Y, SX, SY) // upper
-    :- X >= MX & (X+SX) <= MX & MY = (Y-1).
+    :- X <= MX & (X+SX) >= MX & MY = (Y-1).
 
 fixMeOrientation(OBJECT, NEWO)
     :- object(OBJECT)[positionX(X), positionY(Y), sizeX(SX), sizeY(SY)]
      & myself[positionX(MX), positionY(MY)]
      // size of 1 need be zero
      & isAdjacent(NEWO, MX, MY, X, Y, SX-1, SY-1).
+
+//9 14 4 4 12 13
+//9-12 14-17  12 13
 
 //LATER: put all route to reach the target.
 routeTo("abstractHouseCorredor","abstractHouseCorredor",       []).

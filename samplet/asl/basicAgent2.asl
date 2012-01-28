@@ -9,8 +9,10 @@
        !!deliberation.
 //-----------------------------------------------------------------------------
 +!deliberation
-    : myself[hungry(H), social(S), energy(E)] & (H=0 | S=0 | E=0) & .my_name(NAME)
-    <- .println("agent ", NAME, " died by one of (hungry=", H,", social=",S,", energy=",E,")");
+    : myself[energy(0)] & .my_name(NAME)
+    //: myself[hungry(H), social(S), energy(E)] & (H=0 | S=0 | E=0) & .my_name(NAME)
+    //<- .println("agent ", NAME, " died by one of (hungry=", H,", social=",S,", energy=",E,")");
+    <- .println("agent ", NAME, " died by one of (energy=",E,")");
        hide;
        .kill_agent(NAME).
 //-----------------------------------------------------------------------------
@@ -67,9 +69,56 @@
        !!deliberation.
 //-----------------------------------------------------------------------------
 +!planRest(RANDOM, LastStep)
-    :  target(O, [])
+    :  object(O)[utility(sleep),owner(K)] & not(rest(O))
+    & .my_name(NAME)
+    & (K=NAME | (.list(K) & .sublist([NAME], K)))
     <- .println("plan rest try to reach ", O);
-        nope; // search the object and go to...
+       +rest(O);
+       !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  object(O)[utility(sleep),owner(K)] & not(rest(O)) & not(~rest(O))
+    <- .println("plan rest try to reach ", O, ": isnt my bed");
+       +~rest(O);
+       !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    : target(O, _) & ~rest(O)
+    <- .println("plan rest forget target ", O, " because isnt my bed");
+       -target(O, _);
+       !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  target(O, []) & rest(O) & fixMeOrientation(O, NEWO)
+    &  myself[lookFor(NEWO)]
+    <- .println("plan rest try to reach ", O, ": try use");
+        tryUseObject;
+        !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  target(O, []) & rest(O) & fixMeOrientation(O, NEWO)
+    <- .println("plan rest try to reach ", O, ": fix orientation to use");
+        changeOrientation(NEWO);
+        !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  target(O, []) & perceived(ORIENTATION, LISTA)
+    & .sublist([O], LISTA) & myself[lookFor(ORIENTATION)]
+    <- .println("plan rest try to reach ", O, ": approach");
+        forward;
+        !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  target(O, []) & perceived(ORIENTATION, LISTA)
+    & .sublist([O], LISTA)
+    <- .println("plan rest try to reach ", O, ": approach fix direction");
+        changeOrientation(ORIENTATION);
+        !!planRest(RANDOM, LastStep).
+//-----------------------------------------------------------------------------
++!planRest(RANDOM, LastStep)
+    :  target(O, [])
+    <- .println("plan rest try to reach ", O, ": what?");
+        nope; /// what I do?
         !!planRest(RANDOM, LastStep).
 //-----------------------------------------------------------------------------
 +!planRest(RANDOM, LastStep)
@@ -78,7 +127,7 @@
        tryUseObject;
        .abolish(perceived(_,_));
        -target(_,_); +target(O, R);
-       -room(_); !planDiscoverLocation(RANDOM);
+       !changeRoom(P); !planDiscoverLocation(RANDOM);
        !!planRest(RANDOM, LastStep).
 //-----------------------------------------------------------------------------
 +!planRest(RANDOM, LastStep)
@@ -108,20 +157,20 @@
        +perceived(ORIENTATION, LIST);
        !!planRest(RANDOM, LastStep).
 //-----------------------------------------------------------------------------
-+!planRest(RANDOM, LastStep)
++!planRest(RANDOM, LastStep) // FIX LATER
     :  target(O, [P|R]) & .my_name(nina) & not(fixCycle)
     <- .println("plan rest try to reach ", P, " not perceived: direction");
        changeOrientation("W"); +fixCycle;
        !!planRest(RANDOM, LastStep).
 //-----------------------------------------------------------------------------
 +!planRest(RANDOM, LastStep)
-    :  target(O, [P|R]) 
+    :  target(O, [P|R])
     <- .println("plan rest try to reach ", P, " not perceived: forward");
        forward;
        !!planRest(RANDOM, LastStep).
 //-----------------------------------------------------------------------------
 +!planRest(RANDOM, LastStep)
-    :  not(target(_,_))
+    :  not(target(_,_)) & not(rest(_))
     <- .println("planning rest");
        ?appraisal;
        ?room(ROOM);
@@ -130,13 +179,17 @@
        +target(O, PLAN);
        !!planRest(RANDOM, LastStep).
 //-----------------------------------------------------------------------------
--!planRest(R,L)[code(forward),code_line(94),error(action_failed)]
-     : myself[lookFor(O)]
-    <- .println("plan rest erasing actual perceived list");
-       -perceived(O,_);
-       !!planRest(R,L).
++!planRest(RANDOM, LastStep)
+    :  not(target(_,_)) & rest(REST)
+    <- .println("planning rest");
+       ?appraisal;
+       ?room(ROOM);
+       !planRoute(REST, ROOM, ROUTE);
+       .member(route(REST, _, PLAN), ROUTE);
+       +target(REST, PLAN);
+       !!planRest(RANDOM, LastStep).
 //-----------------------------------------------------------------------------
--!planRest(R,L)[code(forward),code_line(120),error(action_failed)]
+-!planRest(R,L)[code(forward),code_line(169),error(action_failed)]
      : myself[lookFor(O), positionX(MX), positionY(MY)]
      & ARRAY=["N","W","S","E","N"]
      & myNth(POS, ARRAY, O)
@@ -144,6 +197,22 @@
     <- .println("plan rest changing direction: turn left");
        changeOrientation(NEWO);
        !!planRest(R,L).
+//-----------------------------------------------------------------------------
+-!planRest(R,L)[code(forward),error(action_failed)]
+     : myself[lookFor(O)] & perceived(O,_)
+    <- .println("plan rest erasing actual perceived list");
+       -perceived(O,_);
+       !!planRest(R,L).
+//-----------------------------------------------------------------------------
+-!planRest(R,L)[code(forward),error(action_failed)]
+     : myself[lookFor(O)]
+    <- .println("plan rest actual perceived list lost.. rebuild");
+       !planDiscoverLocation(R);
+       !!planRest(R,L).
+//-----------------------------------------------------------------------------
+-!planRest(R,L)[code(tryUseObject),error(action_failed)]
+    // We only retry it because the another agent moved.
+    <- !!planRest(R,L).
 //-----------------------------------------------------------------------------
 -!X <- .println("Handler failure: ", X);
        !!deliberation.

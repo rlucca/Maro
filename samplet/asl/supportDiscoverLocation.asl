@@ -1,5 +1,8 @@
 { include("routes.asl") }
 //-----------------------------------------------------------------------------
++!calculatePosition(_)
+    : room(_).
+//-----------------------------------------------------------------------------
 +!calculatePosition([])
      : .findall(L, roomP(L), []).
 //-----------------------------------------------------------------------------
@@ -75,4 +78,10 @@
 +!nearRouteOf([H|R], LESSER, K, ROUTE)
      : H =.. [route, [_, DISTANCE, _], _]
     <- !nearRouteOf(R, LESSER, K, ROUTE).
+//-----------------------------------------------------------------------------
++!changeRoom(OBJECT)
+    : room(R)
+    <- sims.ia.getPlacesByItem(OBJECT, LIST);
+       ?anotherSource(LIST, R, [NEWSOURCE]);
+       -room(R); +room(NEWSOURCE).
 //-----------------------------------------------------------------------------
