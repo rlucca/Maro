@@ -436,26 +436,42 @@ e preferências trabalhando junto da afetividade. Ele utiliza o ambiente e os
 agentes de maneira diferente do caso anterior. O agente aqui não carrega os
 limites de ativação dos sentimentos de crenças iniciais e sim da própria
 ontologia. Todos seus valores estão configurados para a emoção virar
-sentimento a partir do valor 20.
+sentimento a partir do valor 20\label{mark:emo} por simplicidade, mas poderiam ter qualquer
+valor configurado pelo usuário.
 
 O ambiente utilizado nesse exemplo foi explicado brevemente quando introduzindo o
 aplicativo de teste não-interativo. Esse ambiente carrega uma ontologia que
-tem por finalidade conhecer as preferências e as rotinas dos agentes e por
-construir uma visualização do ambiente no qual os atores desses agentes atuam.
-Além disso, a cada passo de simulação as percepções são apagadas e as
-preferências e rotinas do agente informadas.
+tem por finalidade conhecer as preferências e as rotinas dos agentes e
+disponibiliza-las em formas de percepções aos agentes, além de
+construir uma visualização do ambiente onde é possível visualizar os atores
+desses agentes atuando. As percepções nesse ambiente são apagadas e criadas
+novamente em cada passo de simulação.
 
 Para a construção da visualização, cada um dos indivíduos do conceito
 \emph{Place} são considerados como objetos que devem ser desenhados se
 estiverem associados à uma dimensão. Assim, todos os objetos na tela são
 desenhados a partir de retângulos. Além disso, esse conceito pode usar a
 relação \emph{hasSetup} visando determinar que um objeto tem determinada
-anotação ou, ainda, determinar que objetos fazem parte de um objeto maior. Por
-exemplo, permitir que o agente saiba que o objeto sem visualização chamado
-sala1 possui um armário, dois criados mundos, 2 duas camas e duas portas. Mas,
-não conhece nenhuma das anotações desses objetos.
-%Esse conhecimento serve para permitir que um agente que esta em um quarto se
-%dirija para cozinha sem ter que conhecer previamente toda a casa.
+anotação ou, ainda, determinar que objetos fazem parte de um objeto maior.
+Para o ambiente é importante conhecer as anotações dos objetos por causa que
+quando esses são percebidos junto das suas percepções vai junto as anotações
+que esses objetos possuem. Por exemplo, o objeto ``camaSolteiro1'' tem as
+anotações de posição nos eixos x e y, tamanhos nos dois eixos, utilidade
+``dormir'' e dono um ou mais personagens.
+
+Cabe chamar a atenção que o personagem em nenhum momento recebe a informação
+do ambiente de onde ele se encontra. Essa informação o agente descobre baseado
+na percepção do ambiente. Por exemplo, agente sabe que o ``quarto1'' possui um
+um armário, dois criados mundos, 2 duas camas e duas portas. Ele sabe o nome
+correto de cada um dos itens que estão no quarto então ele pode a partir da
+percepção buscar em seu mapa onde os objetos que percebe estão e então
+concluir que ele se encontra em uma determinada sala. Assim, usando o
+conhecimento extraído de um objeto que possui outros objetos. Ele é capaz de
+construir um mapa mental com a finalidade principalmente de se localizar e
+saber quais objetos ele deve alcançar para chegar em um destino. Mas, esse
+mapa não carrega consigo as informações de anotações que só são obtidas via
+percepção. Dessa forma, um ator precisa a primeira vez descobrir qual é a sua
+cama e onde ela se encontra quando quiser descansar.
 
 \begin{figure}
 	\begin{center}
@@ -466,17 +482,277 @@ não conhece nenhuma das anotações desses objetos.
 \end{figure}
 
 A Figura~\ref{fig:sims} possui quatro atores diferentes chamados: millie,
-albert, nina e john. Esses atores estão localizados em diferentes pontos da
-casa e cada um pode ter sua própria orientação. No inicio da simulação eles
+albert, nina e john. Esses atores estão localizados inicialmente em diferentes
+pontos da casa e cada um possui uma orientação própria. No inicio da simulação eles
 devem averiguar os objetos próximos para perceberem em qual sala se encontram
 e depois decidem um objetivo próprio baseado em seu estado interno atual.
-Muito provavelmente no inicio da simulação, os agentes tentaram ir para suas
-respectivas camas dormirem para obter energia para o próximo dia.
+Esse estado interno encontra-se representado por uma característica
+fundamental que é a energia que o ator possui para gastar e todos os agentes
+iniciam com ela no valor 40 podendo a mesma ir de 0 (morto) à 100. Sendo
+assim, muito provavelmente no inicio da simulação os agentes tentaram ir
+descansar em suas respectivas camas para obter energia para o dia seguinte.
 
-O agente utiliza uma crença que o informar quanta energia ele possui. Quando
-esse valor esta abaixo de um determinado limite a emoção de sofrimento começa
-a ser utilizada e quanto mais baixa a energia maior o nível da emoção. A
-emoção de alegria também pode ser disparada quando se esta com energia acima
-do limite mencionado.
+O valor de energia mencionando antes é informado pelo ambiente que informar o
+agente. Para isso cada um dos agentes recebem uma percepção sobre seu estado
+interno que foi denominada ``myself''. O agente usa essa informação junto de
+sua preferência pelas anotações para determinar que emoção ele irá sentir.
+Quando o valor de energia esta abaixo de um determinado limite estipulado pela
+preferência positiva da anotação de energia o agente começa a ter um
+determinado nível de sofrimento. No caso de ele estar com a energia acima do
+limite, o mesmo possuirá a emoção que corresponde à alegria.
 
-A atração e repulsa por um objeto pode ser usado...
+Esse exemplo simples com duas emoções serve para demonstrar o uso de todas as
+ontologias desenvolvidas. Sendo assim, o ambiente possui 206 indivíduos com
+aproximadamente 70\% deles sendo necessários para a criação dos 60 objetos
+presentes na tela (paredes, mesa, camas, etc). A
+Figura~\ref{fig:abstractWindow} mostra na esquerda o mapa abstrato que o agente
+pode consultar via ação interna. A direita o mapa da visualização é novamente
+exibido com explicações.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=70mm]{figuras/abstract.png} % esquerda
+		\includegraphics[width=70mm]{figuras/visualization.png} % direita
+	\end{center}
+	\caption{Mapa do agente (esquerda) e visualização (direita).}
+	\label{fig:abstractWindow}
+\end{figure}
+
+A Figura~\ref{fig:abstractWindow} é util para entender a forma que o agente
+conhece a casa. Esse grafo é utilizado pelo mesmo para ir de um lugar para
+outro. Assim, este é construído antes da simulação iniciar, a partir dos dados
+da ontologia informada para o ambiente. Entretanto, esse mapa não possui
+informações de anotações de objetos somente de cada lugar e seus itens
+(adiante). Além disso, essas informações são disponibilizadas por ações
+internas: retornar todos os itens, retornar todos os cômodos, retornar o
+cômodo de determinado item ou retornar todos os itens de um cômodo.
+
+Conforme dito anteriormente, a primeira coisa que o agente faz é descobrir
+onde ele se encontra. Assim, quando o agente entra em uma sala, ele busca por
+todos os itens que ele percebe por duas razões. Primeira, é para manter uma
+lista dizendo a orientação e o que foi percebido lá. A segunda razão é que
+quando o agente não sabe onde se encontra, o mesmo pergunta ao ambiente a
+localização de todos os itens percebidos e a localização mais citada é a
+considerada atual. Isso é necessário porque mesmo havendo obstaculos que o
+agente não consegue passar ou ver, algumas vezes objetos de outros lugares são
+percebidos. Por exemplo, o agente que inicia no norte (deposito) quando olha
+para baixo pode perceber a mesa (cozinha).
+
+O mapa abstrato mostrado na Figura~\ref{fig:abstractWindow} é apresentado
+com os respectivos itens em suas respectivas localizações na
+Figura~\ref{fig:abstractAnother}. Novamente, esse mapa é montado antes do
+inicio da simulação com os dados configurados na ontologia informada para o
+ambiente. Além disso, a posição inicial dos personagens também encontram-se
+configurados nesta juntamente com seus perfis.
+
+\begin{wrapfigure}{l}{9cm}
+	\begin{center}
+		\includegraphics[width=7cm]{figuras/abstract-comitens.png}
+	\end{center}
+	\caption{Grafo usado para descobrir os itens.}
+	\label{fig:abstractAnother}
+\end{wrapfigure}
+
+Esses perfis são usados para definir a rotina diária de um ator porque eles
+permitem relacionar estabelecimentos como destinos possíveis ou fixos.
+Assim, ao todo existem 4 perfis configurados, dois para estudantes e
+outros dois para trabalhadores. Os estudantes vão para escola pela manhã e
+após possuem destinos eventuais. Enquanto um dos perfis vai eventualmente ao
+mercado o outro vai ao fliperama. O perfil ``trabalhador'' tem o local de
+trabalho como fixo e o mercado como eventual. Já, o último perfil esta sendo
+considerado como um trabalhador caseiro. Dessa forma, ele não possui nenhum
+destino fixo somente destinos eventuais.
+
+Os locais existentes são, basicamente, a casa, a escola, o fliperama, o
+mercado e o trabalho. Desses locais, a casa é a única visualizada por ser o
+local que os agentes passam a maior parte de seu tempo e tempos de abertura e
+fechamento não são aplicáveis. A Tabela~\ref{tab:estaloca} mostra os horários
+de funcionamento dos estabelecimentos. Os horários estão no formato 0-23
+horas, sendo que ``-'' significa que não abre naquele dia. Além disso, os
+horarios são em formato texto porque são passados os horarios para todos os
+dias da semana. A semana esta sendo considerada como iniciando em uma
+segunda-feira e terminando no domingo. Fora isso, os locais marcados como
+fixos são locais que o agente deve permanecer até que o horário de
+funcionamento termine. Já, os considerados eventuais pode se ir algumas vezes
+e ficar por um tempo indeterminado.
+
+\begin{table}[h]
+	\caption{Horário de funcionamento dos estabelecimentos.}
+	\label{tab:estaloca}
+	\begin{center}
+	\begin{tabular}{|c|c|c|}
+	%\begin{tabular}{|p{34mm}|p{50mm}|p{50mm}|}
+		\hline
+		Local & Abertura & Encerramento \\ \hline
+		Casa & X & X \\ \hline
+		Escola & 7,7,7,7,7,-,- & 11,11,11,11,11,-,- \\ \hline
+		Fliperama & 15,15,15,15,15,9,8 & 21,21,21,21,21,21,21 \\ \hline
+		Mercado & 7,7,7,7,7,7,8 & 21,21,21,21,21,20,19 \\ \hline
+		Trabalho & 8,8,8,8,8,-,- & 17,17,17,17,17,-,- \\ \hline
+	\end{tabular}
+	\end{center}
+\end{table}
+
+As preferências do agente sobre as anotações estão sendo usadas para ajudar o
+agente a decidir o que fazer. Elas permitem o agente sentir-se ou alegre ou
+sofrer. Basicamente, cada um dos agentes tem seu próprio conjunto de
+preferências. Entretanto, o presente exemplo irá focar somente na anotação de
+energia. Cada um dos agentes é atraído por uma valoração positiva desse valor.
+Por exemplo, o limite de Albert é 50. John é 55. Millie é 30 e Nina é 53.
+
+Esses valores de limite permite a aplicação determinar quando uma emoção será
+sentida. Para Albert o valor 50 é o ponto médio de energia no qual ele não
+sente nenhuma emoção e qualquer valor acima ou abaixo disso ocasiona uma que
+poderá virar sentimento. Dessa forma, quando Albert passar a ter 71 de energia
+ele passará a experimentar alegria. De forma igual, quando Millie atingir o
+valor 9 de energia estara sentindo sofrimento. O valor de 71 e 9 são
+justificados porque o processo de avaliação cria com base nas preferências as
+emoções. Albert quando a energia esta em 71 possui a emoção de alegria no
+valor 21. Sendo assim, o agente experimenta o sentimento de alegria com valor
+1 por causa que limite para uma emoção virar sentimento esta configurada com o
+valor 20 (pág.~\pageref{mark:emo}). A mesma coisa acontece com o agente Millie,
+sua energia esta no valor 9 que garante a emoção de sofrimento com valor 21.
+
+O presente exemplo possui 4 agentes que compartilham o mesmo código
+\emph{AgentSpeak}. Entretanto, as suas bases de crenças estão configuradas com
+ontologias diferentes. Assim, eles tem diferentes crenças iniciais sem
+precisar escrever código. O processo de deliberação inicia avaliando a
+percepção de energia, se ela chegou em zero então o personagem é removido da
+visualização. Depois, é feita a avaliação das emoções e um comportamento é
+escolhido.
+
+\begin{figure}
+\begin{center}
+    \begin{minipage}{130mm}
+	\lstset{linewidth=130mm}
+	\begin{lstlisting}[frame=trbl,
+caption=Amostra de código referente ao processo de avaliação considerando as
+preferências.,
+label=lst:appraisal]
++?appraisal
+    <- .findall(prRe(A,P), priority(repulse, A, P), LRE);
+       .findall(prAt(A,P), priority(attract, A, P), LAT);
+       .findall(OBJ, OBJ[source(percept)], PERCEPTS);
+       ?appraisalPercept(PERCEPTS, LRE, LAT).
+
++?appraisalPercept([], LRE, LAT).
++?appraisalPercept([PERCEPT|R], LRE, LAT)
+     : PERCEPT =.. [FUNCTOR,TERMS,_]
+    <- ?appraisalPercept(R, LRE, LAT);
+       .findall(X, PERCEPT[X], ANNOTS);
+       ?appraisalOnePercept(PERCEPT, ANNOTS, LRE, VALR);
+       ?appraisalOnePercept(PERCEPT, ANNOTS, LAT, VALP).
+
++?appraisalOnePercept(_, _, [], 0).
++?appraisalOnePercept(PERCEPT, ANNOTS, [PR|L], NEWVAL)
+    <- ?appraisalOnePercept(PERCEPT, ANNOTS, L, VAL);
+       ?appraisalOneAnnotation(ANNOTS, PR, VAL, NEWVAL);
+       ?evalAppraisal(PERCEPT, PR, VAL, NEWVAL).
+
++?appraisalOneAnnotation([], _, VAL, VAL).
++?appraisalOneAnnotation([H|R], PR, OLDVAL, NEWVAL)
+     :  H =.. [NAMEPRI,          [VALTER|_], _]
+     & PR =.. [FUNCPRI, [NAMEPRI,PARTPRI|_], _]
+    <- ?appraisalOneAnnotationValue(VALTER, PARTPRI, FUNCPRI, OLDVAL, VAL);
+       ?appraisalOneAnnotation(R, PR, VAL, NEWVAL).
++?appraisalOneAnnotation([H|R], PR, OLDVAL, NEWVAL)
+    <- ?appraisalOneAnnotation(R, PR, OLDVAL, NEWVAL).
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+\end{figure}
+
+No inicio da simulação a base de crenças converte os itens guardados na
+ontologia como preferências para crenças no formato ``priority(Type,
+Annotation, Partition)''. Assim, o processo pega todas essas crenças em listas
+e cria uma lista de objetos percebidos também e as envia para a proxima etapa
+que recupera todas as anotações de um objeto e realiza o calculo baseado nas
+prioridades do que é importante. A Listagem~\ref{lst:appraisal} mostra esse
+procedimento, o operador ``=..'' é usado para desmanchar a variavel em uma
+lista com três elementos o termo, os parâmetros e as anotações.
+
+O calculo que dispara as emoções baseando-se nas preferências do indivíduo é
+realizado pela consulta ``appraisalOneAnnotationValue''. Esaa consulta recebe
+por parâmetro: o valor da anotação; o valor de limite da mesma; seu tipo
+(atração por números abaixo ou acima do limite); valor atual das anotações do
+objeto; e, o resultado do calculo. Esse calculo pode ser visto na
+Listagem~\ref{lst:anotcalc}.
+
+\begin{figure}
+\begin{center}
+    \begin{minipage}{130mm}
+	\lstset{linewidth=130mm}
+	\begin{lstlisting}[frame=trbl,
+caption=Amostra de código referente ao calculo de uma anotação.,
+label=lst:anotcalc]
+// NUMBER
++?appraisalOneAnnotationValue(VALT, VALP, _, OLDV, NEWV)
+     : .number(VALT) & .number(VALP) & VALT = VALP
+    <- NEWV = OLDV.
++?appraisalOneAnnotationValue(VALT, VALP, prRe, OLDV, NEWV)
+     : .number(VALT) & .number(VALP) & VALT < VALP
+    <- NEWV = OLDV+(VALP-VALT).
++?appraisalOneAnnotationValue(VALT, VALP, prRe, OLDV, NEWV)
+     : .number(VALT) & .number(VALP) & VALT > VALP
+    <- NEWV = OLDV+(VALP-VALT).
++?appraisalOneAnnotationValue(VALT, VALP, prAt, OLDV, NEWV)
+     : .number(VALT) & .number(VALP) & VALT > VALP
+    <- NEWV = OLDV+(VALT-VALP).
++?appraisalOneAnnotationValue(VALT, VALP, prAt, OLDV, NEWV)
+     : .number(VALT) & .number(VALP) & VALT < VALP
+    <- NEWV = OLDV+(VALT-VALP).
+
+// ATOM
++?appraisalOneAnnotationValue(VALT, VALT, FUNCTOR, OLDV, OLDV+1)
+     : .atom(VALT).
++?appraisalOneAnnotationValue(VALT, VALP, FUNCTOR, OLDV, OLDV)
+     : .atom(VALT) & .atom(VALP).
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+\end{figure}
+
+Esse processo leva em consideração o tipo da anotação sendo analisada. Por
+exemplo, elas podem ser números ou atomos. O calculo verifica se os dois
+valores informados nos dois primeiros parâmetros são iguais, se for então o
+resultado é a devolução do valor antigo. No caso de ser uma preferencia de
+repudio então o segundo parâmetro menos o primeiro que representa o valor
+de divisão informado na ontologia menos o valor calculado. No caso de ser uma
+preferência de atração então esses valores são invertidos.
+
+O processo de atualização de emoções é disparado pela consulta
+``evalAppraisal'' presente na Listagem~\ref{lst:appraisal} na linha 19.
+Essa consulta recebe como parâmetro: a percepção; a crença de prioridade;
+o valor anterior; e, o valor calculado das anotações presentes na percepção.
+Assim, a consulta ``evalAppraisal'' é utilizada para averiguar os dados antes
+de ocorrer a chamada a consulta ``updateEmotion'' que é similar a explicada
+anteriormente. O código dessa consulta esta apresentado na
+Listagem~\ref{lst:acEmotion}. Ele é responsável simplesmente por construir o
+nome do indivíduo usando o termo da percepção e o valor de divisão informado
+na ontologia.
+
+\begin{figure}
+\begin{center}
+    \begin{minipage}{130mm}
+	\lstset{linewidth=130mm}
+	\begin{lstlisting}[frame=trbl,
+caption=Amostra de código referente à atualização das emoções.,
+label=lst:acEmotion]
++?evalAppraisal(_, _, OLDVAL, OLDVAL).
++?evalAppraisal(PCP, PREF, OLDVAL, NEWVAL)
+     : PCP =..  [FUNCP,         [], _]
+     & PREF =.. [FUNCF, [TERM1F|_], _]
+     & NEWVAL > 0
+    <- .concat("", FUNCP, "_", TERM1F, INDIVIDUAL);
+       ?updateAppraisal(joy, INDIVIDUAL, NEWVAL).
++?evalAppraisal(PCP, PREF, OLDVAL, NEWVAL)
+     : PCP =..  [FUNCP,         [], _]
+     & PREF =.. [FUNCF, [TERM1F|_], _]
+     & NEWVAL < 0
+    <- .concat("", FUNCP, "_", TERM1F, INDIVIDUAL);
+       ?updateAppraisal(distress, INDIVIDUAL, NEWVAL).
+	\end{lstlisting}
+    \end{minipage}
+\end{center}
+\end{figure}
+
