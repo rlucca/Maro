@@ -20,7 +20,6 @@ FILES   = 	$(MAIN).tex 				\
 			assinaturas.tex 			\
 			conceitosAgente.tex			\
 			paradigmaAOP.tex			\
-			avaliacao.tex				\
 			resumo.tex
 
 .sampleConsoleLock: ../../sampletConsole
