@@ -1,44 +1,133 @@
 \chapter{Conclusão} \label{ch:cf}
 
-%%Tem que essa frase ir aqui...
-%Todo o código pode ser consultado no repositório disponível via
-%\emph{GitHub}\footnote{http://github.com/rlucca/Maro}.
+O presente trabalho apresentou um mecanismo desenvolvido para a plataforma
+\jason que permite aos agentes da simulação possuírem sentimentos. Todo o
+código do sistema, incluído os exemplos e o presente texto, pode ser acessado
+pelo repositório \emph{on-line} hospedado via
+\emph{GitHub}\footnote{http://github.com/rlucca/Maro}.
+%
+O presente capítulo esta dividido em duas seções. A primeira serve para
+avaliar o sistema desenvolvido e discutir melhorias futuras. A segunda seção,
+serve para apresentar as considerações finais fazendo um pequeno retrospecto
+sobre o que se esperava do trabalho inicialmente e o que foi alcançado.
 
-O presente trabalho apresentou um sistema que estende a base de
-crenças do agente \jason para permitir que o mesmo tenha emoções segundo o
-modelo desenvolvido por \citet{ortony1988cse}. O desenvolvimento se baseou em
-utilizar uma ontologia para concluir qual seria a emoção sendo sentida. Dessa
-forma, a base de crenças da plataforma foi alterada para manipular ontologias
-permitindo, de maneira transparente, realizar inserções, remoções e consultas.
 
-O desenvolvimento é uma ferramenta que ainda pode melhorar.
-Primeiro, ao inserir crenças podem ser inseridas como parâmetro
-átomos que são convertidos automaticamente para \emph{strings}. Todavia, esse
-mesmo comportamento não se encontra expresso corretamente nas consultas e
-remoções. Segundo, a empatia desenvolvida poderia ser informada pelo usuário
-como um número. Por exemplo, zero são agentes distintos e um são agentes que
-se consideram semelhantes por alguma razão. Terceiro, a relação de
-probabilidade poderia ser números ao invés de conceitos.
+\section{Avaliação e Trabalhos Futuros}
 
-A configuração para uma emoção ser disparada é trabalhosa. O
-ideal seria ter um mecanismo abstrato utilizando as preferências de alguma
-forma para concluírem as crenças que hoje precisam ser inseridas pelo usuário.
-Dessa forma, a ideia de emoções serem transparente ao agente não foi
-alcançada por completo. Todavia, se for necessário ser realizado um plano que só fica
-ativo quando o agente possui um determinado grau de emoção então este teste
-pode ser facilmente criado na área de contexto.
+Para avaliar o sistema criado, os critérios levados em consideração são de
+simplicidade de uso e configuração. Uma coisa é considerada simples de usar
+quando requer nenhum esforço para ser usada, enquanto simplicidade de
+configuração quer dizer que se o usuário desejar alterar determinados
+parâmetros ele deve ser capaz disso sem um grande esforço. Alguns exemplos de
+parâmetros podem ser as próprias emoções porque o usuário deseja utilizar
+apenas um subconjunto delas ou ser a alteração do processo de avaliação que
+resulta no valor da emoção.
 
-%Cada agente possui preferências diferentes. Essas preferências nos exemplos
-%vistos não foram aproveitadas. Trabalhos futuros utilizando as preferências do
-%agente para concluir as relações de avaliação necessárias para se disparar a
-%emoção são interessantes porque podem gerar contribuições em mais de uma área
-%e gera uma facilidade muito grande para os novos usuários da ferramenta.
+Conforme dito anteriormente no capítulo~\ref{ch:cdu}, a configuração mínima
+exigida é que o usuário especifique na configuração do \jason a base de
+crenças desenvolvida. Fora isso, o sistema ainda precisa conhecer os limites
+mínimos para uma emoção virar sentimento que pode ser informada de duas
+formas. A primeira é como crenças iniciais dos agentes, conforme demostrado na
+Listagem~\ref{lst:testeJasonIntSetup}~(pág.~\pageref{lst:testeJasonIntSetup}),
+porém essa forma de uso é extremamente cansativa porque se precisa informar
+várias coisas. Cada uma das emoções precisa ser configurada, existem ao todo
+22 delas e para cada uma são necessárias 3 relações que dizem de quem é a
+configuração, de qual emoção esta sendo configurada e de qual é o valor mínimo
+para sua ativação. O segundo é o formato utilizado pela
+seção~\ref{ch:cdu:home}~(pág.~\pageref{ch:cdu:home}). Esse armazena esses
+valores de configuração na própria ontologia. Sendo assim, basta informar para
+a base de crenças a ontologia correta e essa configuração não precisa ser
+feita via código \emph{AgentSpeak}.
 
-As ontologias que foram desenvolvidas foram pensadas para não serem utilizadas
-somente pela nossa ferramenta. Elas podem ser usadas em separado ou em conjunto.
-Além disso, os exemplos construídos possuíram um tempo médio de passo de
-simulação em torno de 2 segundos em média. Sendo que o primeiro passo foi sempre o
-que teve um tempo maior de duração (em média 30 segundos), possivelmente, por
-causa que é nele que é feita a leitura da ontologia e carga na base de crenças
-iniciais que estão em código \emph{AgentSpeak}.
+Agora, a plataforma \jason será capaz de criar as percepções das emoções
+quando for adicionada uma percepção ``step''. Sendo assim, o ambiente ou algum
+agente deve informar essa crença para os demais.  Essas duas formas foram
+usadas na seção~\ref{ch:cdu:tbc}~(pág.~\pageref{ch:cdu:tbc}). Entretanto, cabe
+salientar novamente que antes de o agente acreditar que essa crença foi
+recebida ele deveria limpar as crenças existentes sobre seus sentimentos para
+evitar duplicações (ver figura da pág.~\pageref{fig:testeJasonIntBase}).
+
+Logo, a necessidade de uma percepção ``step'' ser adicionada à base de crenças
+sempre que se deseja fazer uma avaliação das emoções atuais afeta o projeto do
+usuário. Essa é uma necessidade do mecanismo construído invasiva porque torna
+o sistema do usuário descontinuo nessa parte das emoções. Além disso, ele deve
+se preocupar com quem irá informar essa percepção. Eliminar essa necessidade é
+um plano futuro pois torna o desenvolvido mais transparente permitindo-o ser
+melhor utilizado. Essa atualização pode ser colocada no momento da consulta da
+percepção ``feeling'' ou em algum outro ponto.
+
+Hoje se o usuário desejar utilizar apenas um subconjunto de emoções não é
+possível. Ele sempre precisa configurar todos os limites mínimos de todas as
+emoções e, no decorrer da simulação, não inserir as referidas relações para
+aquelas emoções se tornarem ativas. Isso no futuro será ajustado para o
+sistema aguardar somente as emoções presentes no conceitos \emph{Emotion}.
+Além disso, remover a necessidade de o calcula da potência da emoção ser feita
+em \emph{Java} para ser interessante. A vantagem de fazer isso em código
+\emph{AgentSpeak} é uma maior transparência no que esta sendo feito e como se
+esta fazendo quando for necessário fugir da forma proposta. Entretanto,
+alterar o calculo hoje é possível estendendo a classe \emph{OwlApi} de leitura
+da ontologia com a finalidade de sobrecarregar as funções \emph{summaryOf} que
+realizam esses cálculos.
+
+De maneira similar, as consultas de crenças feitas em código \emph{AgentSpeak}
+são transparentes para o usuário quanto ao local de armazenamento. Entretanto,
+se o usuário precisar saber onde a crença esta sendo salva. Ele pode verificar
+a existência da anotação ``ontology''. Se ela existir então a crença esta
+sendo armazenada na ontologia especificada. Caso contrário, ela esta sendo
+guardada na base de crenças da plataforma.
+
+Infelizmente, o mecanismo de consulta de crenças não esta ainda perfeito e
+exige que o usuário quando faça uma consulta utilize sempre \emph{strings} ou
+números inteiros. Além disso, como foi visto nos exemplos do
+capítulo~\ref{ch:cdu}, a responsabilidade de ligar as percepções as relações
+necessárias à ontologia afetiva é do usuário. Mesmo sendo capaz de fazer uso
+da ontologia de preferência, todas as emoções não podem ainda ser concluídas
+só com base no que se encontra configurado. Isso se deve principalmente ao
+fato de que algumas emoções são complexas exigindo conhecimento de que um
+personagem esta interferindo com um determinado objetivo ou que uma meta afeta
+outra.
+
+Sobre a ontologia afetiva, ela foi testada de diferentes formas na integração
+com o \jason e em separado com uma \emph{a-box} que foi usada para ver se
+todas as conclusões esperadas estavam corretas. Os pontos de melhora dessa
+ontologia são três. O primeiro seria a inclusão do conceito de empatia
+(pág.~\pageref{mark:empat}) como sendo um número a ser informado pelo usuário.
+O segundo é a remoção do conhecimento de amigo e inimigo. Esse conhecimento
+pode ou deveria ser deduzido a partir das emoções \emph{Love} e \emph{Hate}.
+Terceiro, transformar o conceito de probabilidade em uma relação numérica.
+Essas alterações não melhoram a facilidade do usuário, mas aumentam o controle
+sobre o ator.
+%Além disso, a última tornaria possível testar técnicas de aprendizado juntamente com a afetividade.
+
+\section{Considerações Finais}
+
+Um sistema que estende a base de crenças do agente \jason para permitir que o
+mesmo tenha emoções segundo o modelo desenvolvido por \citet{ortony1988cse}
+foi apresentado. Assim, o desenvolvimento se baseou em utilizar uma ontologia
+para classificar qual é a emoção sendo sentida com base nas crenças do agente.
+Dessa forma, a base de crenças da plataforma foi alterada para manipular
+ontologias permitindo, de maneira transparente, realizar inserções, remoções e
+consultas.
+
+Inicialmente, o objetivo do trabalho era simular a construção do comportamento
+afetivo usando os agentes da plataforma \jason de maneira integrada com alguma
+aplicação em outra linguagem. Todavia, criar mecanismo para possibilitar o
+\jason rodar externamente e adaptar a aplicação especifica para utiliza-lo foi
+considerado fora do escopo do trabalho. Sendo por isso, removido da lista de
+objetivos almejados.
+
+O objetivo principal foi a construção de uma ferramenta que permita definir o
+comportamento emocional de personagens virtuais. Sendo por isso, as ontologias
+seus principais elementos por serem artefatos reutilizares. Infelizmente, o
+objetivo de ter uma configuração mínima não foi alcançado e nem o objetivo de
+não possuir regras para ajudar a inferência. Entretanto, esse último objetivo
+foi removido porque na versão 2 da \emph{OWL} as regras são parte da linguagem
+e, por isso, foram utilizam.
+
+Os principais resultados são as aplicações construídas com o sistema. Elas
+servem, principalmente, para validar o sistema desenvolvido e possuem
+diferentes propósitos conforme foi visto no capítulo anterior. Ao todo foram
+feitas quatro aplicações e demonstram que mesmo sem um conceito de decaimento
+automático do valor da emoção o mecanismo desenvolvido funciona de uma maneira
+adequada.
 
