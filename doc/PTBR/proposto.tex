@@ -136,7 +136,7 @@ Cabe notar que parece estranho uma emoção \emph{Love} com um objeto, porém
 essa emoção foi escolhida por quem montou o modelo para representar seu tipo
 por ser a mais forte de sua categoria. Assim, níveis menores implicam em
 outros tipos de emoção. Além disso, agentes
-podem ser vistos como objetos quando se esta avaliando a sua atração. Assim,
+podem ser vistos como objetos quando se esta avaliando a sua atração. Logo,
 todo agente (\emph{Agent}) é um objeto (\emph{Object}). Por exemplo, John esta
 apaixonado pela Millie (\emph{Agent} visto como \emph{Object}) ou John tem
 repulsa por televisão.
@@ -207,11 +207,11 @@ que o grau de desejabilidade do avaliador para com o outro e o grau de
 merecimento do evento são os mesmos. Dessa forma, se pode utilizar apenas três
 relações para descrever as 4 emoções.
 
-A relação de merecimento (\emph{hasDeserved}) e relação de desejabilidade
+A relação de merecimento (\emph{hasDeserved}) e de desejabilidade
 presumida (\emph{hasDesireOther}) são avaliadas de acordo com sua valoração
 positiva ou negativa. A relação \emph{hasPerson} liga o outro indivíduo
-sendo avaliado com a avaliação. Para se ter o conhecimento esta sendo julgado
-é amigo (\emph{GoodKnowRelation}) ou inimigo (\emph{BadKnowRelation}), esses
+sendo avaliado com a avaliação. Para se ter o conhecimento do que esta sendo julgado
+ser amigo (\emph{GoodKnowRelation}) ou inimigo (\emph{BadKnowRelation}), esses
 conceitos foram criados e precisam ser configurados para cada um dos agentes
 em questão. O mesmo pode declarar que só conhece uma pessoa, que conhece e é
 um amigo ou que conhece e não gosta dela (inimiga). Entretanto, quem precisa
@@ -229,7 +229,7 @@ realizada (\emph{ProspectNotRealized}) e realizada (\emph{ProspectRealized}).
 
 As emoções \emph{Hope} e \emph{Fear} fazem parte do conceito
 \emph{ProspectNotRealized}. Esse conceito usa as relações \emph{hasLikelihood}
-e \emph{hasDesireSelf}. Essa última propriedade é um número que
+e \emph{hasDesireSelf}. Essa última é um número que
 representa o desejo de se obter ou repudiar o evento. Além disso, quando o
 evento ocorre a emoção atual pode virar uma emoção do conceito
 \emph{ProspectRealized}, isto é, \emph{Fear} pode virar ou
@@ -249,7 +249,7 @@ da consequência do evento.
 
 O conceito \emph{ProspectIrrelevant} é parecido com o conceito
 \emph{ProspectRelevant} com a diferença que a relação \emph{hasLikelihood} vai
-somente para valores nulos. Alem disso, as emoções desse conceito e do
+somente para valores nulos. Fora isso, as emoções desse conceito e do
 \emph{ActionsOfAgents} podem ser misturadas formando conceitos compostos.
 A composição é quando uma emoção pode ser encaixada em mais de uma emoção
 como no caso de se estar alegre (\emph{Joy}), orgulhoso (\emph{Pride}) e
@@ -293,16 +293,15 @@ o conceito de \emph{Schedules} possui o horário de abertura e fechamento,
 intervalo de entrada e tempo médio de permanência.
 
 Além disso, o conceito \emph{Components\_of\_the\_environments} esta sendo
-pensando como um sub-conceito do conceito \emph{Setup} na ontologia
+pensando como um sub-conceito de \emph{Setup} na ontologia
 desenvolvida por causa que esse representa as configurações gerais.
 %
 %Essas configurações gerais são carregadas, normalmente, em outras partes do
 %sistemas e então eliminadas por causa que elas não influenciam as emoções
 %diretamente.
 Fora isso, foi introduzido uma nova relação chamada \emph{hasCharacter} que
-mapeia o conceito de agente do modelo \occ para o conceito apresentado aqui.
-Dessa forma, um agente na ontologia do
-modelo \occ pode descobrir seu perfil e descobrir seus locais visitados
+mapeia o conceito de agente da ontologia anterior para o conceito apresentado aqui.
+Dessa forma, um agente na ontologia afetiva pode descobrir seu perfil e descobrir seus locais visitados
 regularmente. O conceito de \emph{Place} pode ser pensado, como veremos
 adiante, como um ``objeto inteligente''.
 
@@ -315,8 +314,8 @@ agente tenha sua rotina descrita e disponibilizada pelo ambiente. Para o
 ambiente disponibiliza-la via percepção, no ambiente simulado construído cada
 dia simulado equivale a aproximadamente 96 ciclos. Isso quer dizer que cada
 passo simulado seria em torno de 15 minutos de um dia. Dessa forma, o ambiente
-é responsável por conhecer que dia é e informa-lo junto das rotinas daquele
-dia para cada agente.
+é responsável por conhecer que dia é e informar cada agente de sua rotina para
+aquele dia simulado.
 
 \section{Ontologia de Preferências} \label{ch:aec:oda}
 
@@ -370,7 +369,7 @@ conceitos principais \emph{Annotation} e \emph{Preference}. O conceito
 \emph{Annotation} é utilizado para representar características de determinadas
 coisas. Essas características podem ainda ser categorizadas entre as que mudam
 e não mudam durante a simulação. O sub-conceito \emph{Dynamic} representa as
-características dinâmicas, isto é, as características que podem ser alterados
+características dinâmicas, isto é, as características que podem ser alteradas
 durante a ``vida'' do objeto. O sub-conceito \emph{Static} representa as
 características que não podem ser alteradas depois da criação do objeto. O
 calor e o dono são exemplos de características dinâmicas, enquanto o nome e a
@@ -393,8 +392,8 @@ representada na Figura~\ref{fig:preferences} pelo atributo
 nível de energia abaixo de um determinado limite é atraído pelo seu centro de
 controle.
 
-Essas anotações em objetos foram planejadas para serem colocadas pelo ambiente
-nos objetos e nos agentes. As anotações em agentes permitem que outros saibam
+Essas anotações foram planejadas para serem colocadas pelo ambiente
+nos objetos e nos agentes. As anotações em agentes permitem que os outros saibam
 o que o agente esta fazendo e como ele parece de forma similar aos objetos. As
 preferências também são disponibilizadas em formas de percepção, mas o usuário
 que deve criar regras ou planos no \jason para montar as relações usadas pela
@@ -419,16 +418,16 @@ Na figura~\ref{fig:dcs} pode ser observado as classes desenvolvidas para
 realizar a integração das ontologias com os agentes \jason e o suporte
 afetivo. Para essas classes
 serem usadas, o agente deve ser configurado para utilizar a classe
-\emph{BBAffective} como base de crença e a \emph{UniqueAnnotation} como classe
-do agente para a implementação da afetividade funcionar perfeitamente. Essas
-configurações podem ser feitas conforme explicado na
+\emph{BBAffective} como base de crença. Essas para a implementação da
+afetividade funcionar perfeitamente. Essa configuração pode ser feita conforme explicado na
 seção~\ref{sec-jason-architecture} (pág.~\pageref{sec-jason-architecture}) e
-demostrado na seção~\ref{ch:cdu:tbc} (pág.~\pageref{ch:cdu:tbc}). Essa última
-classe é a responsável por garantir a não duplicidade de anotações. %Assim,
+demostrado na seção~\ref{ch:cdu:tbc} (pág.~\pageref{ch:cdu:tbc}). A classe
+\emph{UniqueAnnotation} é a responsável por garantir a não duplicidade de
+anotações. %Assim,
 %quando se insere por algum motivo duas vezes a mesma anotação apenas valerá a
 %última.
 
-Já, a responsabilidade da classe \emph{BBAffective} é manter as crenças dos
+A responsabilidade da classe \emph{BBAffective} é manter as crenças dos
 agentes e atender as solicitações da plataforma \jason sobre a manipulação
 dessas em dois níveis. O primeiro nível é a ontologia e o segundo é a base de
 crença padrão que é utilizada quando o elemento não é considerado relevante
@@ -460,24 +459,23 @@ ainda mantém a história da potência das emoções por agente para cada ciclo
 armazenado utilizando um objeto da classe \emph{EmotionValence} que é um
 extensão da classe \emph{HashMap} do \emph{Java}.
 
-Para o suporte emotivo funcionar a classe \emph{FeelingsThreshold} precisa
+Para o suporte emotivo funcionar, a classe \emph{FeelingsThreshold} precisa
 retornar que todos os limites mínimos de sentimentos estão configurados.
 Assim, ela é responsável por fazer essa verificação e por disponibilizar esses
 limites para quando for realizado o calculo da valência. Esse calculo é
 coordenado pela \emph{EmotionKnowledge} que consulta a ontologia, via instância
 da classe \emph{OwlApi}, procurando os indivíduos do conceito ``Appraisal''
 visando obter as relações de dados desses indivíduos. Dessa forma, a potência
-é a soma de todas as relações de um mesmo indivíduo.
+é a soma de todas as propriedades numéricas de um mesmo indivíduo.
 
 As classes de ambiente, isto é, as classes que possuem \emph{Environment} no
 nome são responsáveis por diversas coisas relacionadas com o mesmo. Por
 exemplo, manter os passos de simulação com um tempo máximo, conhecer a
 quantidade de agentes que tem que esperar responderem para ir ao passo de
 simulação seguinte, carregar as ações definidas pelo usuário a partir de um
-determinado pacote especificado via classe \emph{ActionLoader} (não
-desenhada), etc. Cabe salientar, as ações definidas no ambiente precisam
-estender a classe \emph{EnvironmentAction} e estarem no pacote a ser
-especificado na chamada a função ``loadAllActions'' da classe \emph{ActionLoader}.
+determinado pacote especificado e etc. Cabe salientar, as ações definidas no
+ambiente precisam estender a classe \emph{EnvironmentAction} (não desenhada) e
+estarem no pacote especificado na chamada a função ``loadAllActions''.
 
 A classe \emph{Dumper} é responsável por conhecer o formato das crenças \jason
 e converte-lo para um formato interno. Isso é necessário para proteger o
@@ -523,8 +521,8 @@ valor definido. Dessa forma, a base de crenças implementa a interface
 \emph{for-each}. A implementação devolve todos os elementos dos dois níveis
 sendo que o nível da ontologia é recuperado primeiro.
 
-De maneira similar, o processo de consulta de crenças foi implementado.
-Entretanto, ele pode ser chamado via código \jason ou pelo código \emph{Java}.
+De maneira similar, o processo de consulta de crenças foi alterado.
+%Entretanto, ele pode ser chamado via código \jason ou pelo código \emph{Java}.
 Esse processo tem como entrada os métodos com nome \emph{getCandidateBeliefs}
 que chamam um método comum denominado \emph{getCandidateBeliefs2} conforme
 pode ser visto na Figura~\ref{fig:getCandidates}. O resultado dessa operação é
@@ -599,8 +597,8 @@ Assim, o processo de inserção serve para inserir os axiomas necessários para
 representar essa crença na ontologia quando a mesma for relevante. Para a
 criação na ontologia, é necessário ainda diferenciar se é uma instância de
 objeto ou propriedade de dados ou de objetos. Essa diferenciação é feita pela
-aridade e, em caso de ambiguidade, o nome do termo é usado para se perguntar à
-ontologia.
+aridade e, em caso de ambiguidade, se pergunta o tipo à ontologia usando o
+nome da entidade.
 
 \subsection{Processo de Remoção de Crenças}
 

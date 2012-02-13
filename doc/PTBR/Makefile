@@ -9,6 +9,7 @@ PREFIX  = ../../..
 FILES   = 	$(MAIN).tex 				\
 			$(PREFIX)/Mistery.bib		\
 			conclusao.tex 				\
+			appendix.tex				\
 			introducao.tex 				\
 			casoDeUso.tex 				\
 			levantamento.tex 			\

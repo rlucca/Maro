@@ -5,7 +5,8 @@ O presente trabalho apresentou um mecanismo desenvolvido para a plataforma
 código do sistema, incluído os exemplos e o presente texto, pode ser acessado
 pelo repositório \emph{on-line} hospedado via
 \emph{GitHub}\footnote{http://github.com/rlucca/Maro}.
-%
+Os apêndices presentes visam facilitar a consulta de alguns dos artefatos lá
+presentes e debatidos no presente trabalho.
 O presente capítulo esta dividido em duas seções. A primeira serve para
 avaliar o sistema desenvolvido e discutir melhorias futuras. A segunda seção,
 serve para apresentar as considerações finais fazendo um pequeno retrospecto
@@ -61,7 +62,7 @@ possível. Ele sempre precisa configurar todos os limites mínimos de todas as
 emoções e, no decorrer da simulação, não inserir as referidas relações para
 aquelas emoções se tornarem ativas. Isso no futuro será ajustado para o
 sistema aguardar somente as emoções presentes no conceitos \emph{Emotion}.
-Além disso, remover a necessidade de o calcula da potência da emoção ser feita
+Além disso, remover a necessidade de o calculo da potência da emoção ser feita
 em \emph{Java} para ser interessante. A vantagem de fazer isso em código
 \emph{AgentSpeak} é uma maior transparência no que esta sendo feito e como se
 esta fazendo quando for necessário fugir da forma proposta. Entretanto,
@@ -88,8 +89,8 @@ personagem esta interferindo com um determinado objetivo ou que uma meta afeta
 outra.
 
 Sobre a ontologia afetiva, ela foi testada de diferentes formas na integração
-com o \jason e em separado com uma \emph{a-box} que foi usada para ver se
-todas as conclusões esperadas estavam corretas. Os pontos de melhora dessa
+com o \emph{Jason}.
+Os pontos de melhora dessa
 ontologia são três. O primeiro seria a inclusão do conceito de empatia
 (pág.~\pageref{mark:empat}) como sendo um número a ser informado pelo usuário.
 O segundo é a remoção do conhecimento de amigo e inimigo. Esse conhecimento
@@ -118,11 +119,11 @@ objetivos almejados.
 
 O objetivo principal foi a construção de uma ferramenta que permita definir o
 comportamento emocional de personagens virtuais. Sendo por isso, as ontologias
-seus principais elementos por serem artefatos reutilizares. Infelizmente, o
+seus principais elementos por serem artefatos reutilizáveis. Infelizmente, o
 objetivo de ter uma configuração mínima não foi alcançado e nem o objetivo de
-não possuir regras para ajudar a inferência. Entretanto, esse último objetivo
-foi removido porque na versão 2 da \emph{OWL} as regras são parte da linguagem
-e, por isso, foram utilizam.
+não possuir regras. Entretanto, esse último objetivo foi cancelado
+porque na versão 2 da \emph{OWL} as regras são parte da linguagem
+e, por isso, foram utilizadas.
 
 Os principais resultados são as aplicações construídas com o sistema. Elas
 servem, principalmente, para validar o sistema desenvolvido e possuem

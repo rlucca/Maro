@@ -1,8 +1,11 @@
 \subsection{Plataforma \jason} \label{sec:aoppj}
 
 A presente seção visa explicar a plataforma \jason baseada na arquitetura BDI.
-Assim, na seção \ref{sec-jason-overview} uma visão geral é apresentada e em
-seguida a engenharia da plataforma é discutida.
+Essa arquitetura é baseada no que o agente sabe ou guarda (crenças), as opções
+que ele possui de atuação baseado em suas próprias regras (desejos) e seus
+comprometimentos (intenções). Assim, na seção \ref{sec-jason-overview} uma
+visão geral da plataforma é apresentada e em seguida a engenharia da mesma é
+discutida.
 
 \subsubsection{Visão Geral} \label{sec-jason-overview}
 
@@ -10,7 +13,7 @@ Para uma explicação mais didática será utilizado o exemplo \emph{Room} que
 acompanha o \emph{Jason}. Para isso será introduzido
 o arquivo de projeto do exemplo e, a partir desse, os demais arquivos.
 A Listagem~\ref{lst-roomMas2j} contém o arquivo de projeto.
-Na linha 2, \emph{room} é o nome do projeto e, por isso, pode ser qualquer
+Na linha 2 da listagem, \emph{room} é o nome do projeto e, por isso, pode ser qualquer
 identificador. A partir da linha 3 os valores antes dos dois-pontos (:)
 são palavras reservadas que o \jason entende para diferentes propósitos e o valor
 a seguir (depois dos dois-pontos) é o valor associado.
@@ -62,10 +65,10 @@ porta da sala esteja aberta, enquanto que a paranoica deseja que a porta
 fique fechada.
 
 Logo, há três agentes na linha 6 da Listagem~\ref{lst-roomMas2j}:
-(i) \emph{porter} é o agente responsável pela porta e o único que conhece
+(i) \emph{porter}, o agente responsável pela porta e o único que conhece
 como abri-lá ou fecha-lá;
-(ii) \emph{claustrophobe} é o agente que deseja deixar a porta sempre aberta;
-(iii) \emph{paranoid} é o agente que deseja deixar a porta sempre fechada.
+(ii) \emph{claustrophobe}, o agente que deseja deixar a porta sempre aberta;
+(iii) \emph{paranoid}, o agente que deseja deixar a porta sempre fechada.
 A implementação desses agentes faz uso de eventos.
 
 Esses eventos podem ser de adição (+) ou de remoção (-) de crenças, metas ou
@@ -75,8 +78,9 @@ ambiente que pode ser executada dependendo de onde a entrada se localiza.
 Note que, se essa entrada for precedida pelo sinal de exclamação (!) ou de
 interrogação (?) então o significado é alterado, respectivamente, para uma meta
 ou para uma consulta. Ainda há a possibilidade de preceder uma crença ou meta
-com sinal de adição ou de subtração significando ou adicionar/remover uma
-crença ou estar recebendo/removendo uma crença, meta ou consulta.
+com sinal de adição ou de subtração significando ou estar
+adicionando/removendo uma crença ou estar adicionando/removendo uma meta ou
+consulta.
 
 \lstset{linewidth=75mm}
 \begin{wrapfigure}{l}{85mm}
@@ -114,10 +118,11 @@ Em um plano há sempre três divisões: gatilho do evento, contexto e corpo.
 A primeira e única à ser explicita é o gatilho do evento, que deve ocorrer para
 o plano ser disparado. No exemplo ele está limitado do carácter inicial até
 o dois-pontos (:). A divisão de contexto é onde se coloca as ações, crenças
-ou regras de inferência que tem que ser válidas para o corpo do plano ser
+ou regras que tem que ser válidas para o corpo do plano ser
 considerado válido. Dessa forma, é
 importante tomar cuidado no que vai no contexto em razão dele sempre ser
-executado previamente para definir quais planos devem ser descartados.
+executado previamente para definir quais planos devem ser descartados da lista
+de opções.
 A segunda divisão vai até a seta (<-) e não é obrigatória.
 A terceira divisão, também não é obrigatória, possui todas as ações a serem
 executadas quando o plano tornar-se ativo.
@@ -128,7 +133,7 @@ uma ação interna do \jason denominada \emph{send} que envia determinado dado
 determinado formato (segundo parâmetro). Uma ação interna possui o seguinte
 formato ``tcp.send'', assim essa ação está definida no pacote \emph{tcp} pela
 classe \emph{send} que deve especializar a classe \emph{DefaultInternalAction}
-do \emph{Jason}. Entretanto, uma ação interna pelo \jason não possui
+do \emph{Jason}. Entretanto, uma ação interna definida pelo \jason não possui
 indicativo de pacote que é o caso do ``.send'' presente no código dos agentes.
 
 No exemplo da linha 3 na Listagem~\ref{lst-agente}, o agente
@@ -184,7 +189,7 @@ dos demais agentes. Para se fazer isso no momento que se declara os agentes
 no projeto informa-se as chaves que encontram-se dentro das caixas com
 cantos arqueados na Figura~\ref{fig-jason-infra-1}. O exemplo
 ``fb agArchClass KosMos.FireBrigadeArch agClass KosMos.Agent \#1;'' define
-o agente \emph{fb} com a arquitetura usando a classe \emph{FireBrigadeArch}
+um (\#1) agente \emph{fb} com a arquitetura usando a classe \emph{FireBrigadeArch}
 do pacote \emph{KosMos} (pode ser qualquer nome desejado) e utilizando como
 raciocinador a classe \emph{Agent} do mesmo pacote. Note que, essas classes
 não existem no \jason e devem ser providas pelo usuário de alguma forma.
@@ -201,16 +206,17 @@ Essa infraestrutura extensível permitiu a implementação do trabalho de
 nas classes da plataforma. Esse trabalho permitiu que o \jason usa-se
 ontologias, inclusive definindo classes e compartilhando o conhecimento. Por
 exemplo, um agente pode dizer para outro que a informação que ele deseja
-encontra-se em uma determinada ontologia. Além disso, há outras extensões como
-não usar arquivos de projeto e sim uma ontologia para definir a simulação.
+encontra-se em determinada ontologia. Além disso, há outras extensões como
+não usar arquivos de projeto e sim uma base de conhecimento para definir a
+simulação.
 
 O presente trabalho segue uma ideia parecida desses dois anteriores. A
 principal preocupação era ter as crenças que a ontologia considere relevantes
 em sua base de conhecimento e as outras guardadas na base padrão. Isso não é
 diferente no trabalho anterior, o que é diferente é o como a relevância é
-verificada. No trabalho anterior, o que era salvo era tudo que estivesse com a
-anotação usada para indicar a ontologia e no desenvolvimento feito os dados da
-ontologia são extraídos da própria ontologia. Assim, se na ontologia contiver
+verificada. No trabalho anterior, o que era salvo na base era tudo que estivesse com a
+anotação usada para indicar a ontologia e no presente desenvolvimento isso é
+extraído da própria. Assim, se na ontologia contiver
 o conceito Pizza e inserimos uma crença ``pizza(p1)''. O mecanismo
 desenvolvido sabe que essa crença é relevante para a ontologia. Já o do
 trabalho anterior para saber que o mesmo é relevante precisa ser marcado
