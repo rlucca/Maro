@@ -591,9 +591,25 @@ public class HouseModel extends GridWorldModel
 			return false; // not a problem, cannt accross
 		} else if ((d & OPENED_DOOR) == OPENED_DOOR) {
 			return forward2(l, c, a);
+		} else if ((d & BED) == BED) {
+			a.addEnergy(3);
+			a.addHungry(1);
+			return true;
 		}
 
 		return false; // problem or not implemented
+	}
+
+	public String [] planRoute(String ag, String place) {
+		Agent a = getAgentFromName(ag);
+		if (a == null) return null;
+		Place p = referPlace.get(place);
+		if (p == null) return null;
+		Location l = getAgPos(a.getID());
+		if (l == null) return null;
+		AStar astar = new AStar();
+		return astar.astar(l.x, l.y, p.getPX(), p.getPY(),
+					p.getWidth(), p.getHeight(), data);
 	}
 
 
@@ -912,18 +928,22 @@ public class HouseModel extends GridWorldModel
 			}
 		}
 
-		public Literal getLiteral(String functor, int today) {
+		public Literal getLiteral(String functor, int today, House h) {
 			Literal ret = ASSyntax.createLiteral(functor,
 						ASSyntax.createString(getName()));
 
 			if (today >= 0 && today < 7) {
 				if (timeOpening != null) {
+                    int open = getTimeOpening(today);
+                    int openStep = h.controller.convertToStep(open);
 					ret.addAnnot(ASSyntax.createLiteral("opening",
-								ASSyntax.createNumber(getTimeOpening(today))));
+								ASSyntax.createNumber(openStep)));
 				}
 				if (timeClosing != null) {
+                    int close = getTimeClosing(today);
+                    int closeStep = h.controller.convertToStep(close);
 					ret.addAnnot(ASSyntax.createLiteral("closing",
-								ASSyntax.createNumber(getTimeClosing(today))));
+								ASSyntax.createNumber(closeStep)));
 				}
 			}
 
@@ -1139,7 +1159,7 @@ public class HouseModel extends GridWorldModel
 
 				if (p.itsOpen(today) == false) continue;
 
-				place = p.getLiteral(prefix+"Place", today);
+				place = p.getLiteral(prefix+"Place", today, h);
 
 				h.addPercept(getName(), place);
 			}
@@ -1226,7 +1246,7 @@ public class HouseModel extends GridWorldModel
 					pmy = p.getHeight() + py;
 
 					if (px <= mx && pmx >= x && py <= my && pmy >= y) {
-						Literal place = p.getLiteral("object", -1);
+						Literal place = p.getLiteral("object", -1, h);
 						h.addPercept(getName(), place);
 
 						if (p.getName().startsWith("wall")) {

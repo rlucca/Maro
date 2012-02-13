@@ -1,26 +1,25 @@
 
 MAS sims {
     infrastructure: Centralised //(pool, 2)
-    //NAO ARREDAR O PE DE 1000 CICLOS!
-    environment: maro.example.sims.House(30000, 10, 4, FALSE, "onto/sims.owl")
+    environment: maro.example.sims.House(30000, 1000, 4, FALSE, "onto/sims.owl")
     //executionControl: jason.control.ExecutionControl
     agents:
-        millie basicAgent2.asl
+        millie basicAgent3.asl
             #1
             beliefBaseClass maro.wrapper.BBAffective("onto/millie.owl")
             agentClass maro.wrapper.UniqueAnnotation
         ;
-        nina basicAgent2.asl
+        nina basicAgent3.asl
             #1
             beliefBaseClass maro.wrapper.BBAffective("onto/nina.owl")
             agentClass maro.wrapper.UniqueAnnotation
         ;
-        john basicAgent2.asl
+        john basicAgent3.asl
             #1
             beliefBaseClass maro.wrapper.BBAffective("onto/john.owl")
             agentClass maro.wrapper.UniqueAnnotation
         ;
-        albert basicAgent2.asl
+        albert basicAgent3.asl
             #1
             beliefBaseClass maro.wrapper.BBAffective("onto/albert.owl")
             agentClass maro.wrapper.UniqueAnnotation

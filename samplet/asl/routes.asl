@@ -4,30 +4,29 @@ anotherSource([H|R], S, [H]).
 
 routeCompleteTo(SOURCE, SOURCE, []).
 routeCompleteTo(SOURCE, TARGET, [WAY|FOUND])
-    :- routeTo(SOURCE, TARGET, [WAY])
+    :- routeTo(SOURCE, TARGET, ROUTE)
+     & .random(N) & NUM=math.round(N*100000)
+     & .length(ROUTE, LENGTH)
+     & .nth(NUM mod LENGTH, ROUTE, WAY)
      & sims.ia.getPlacesByItem(WAY, LIST)
      & anotherSource(LIST, SOURCE, [NEWSOURCE])
      & routeCompleteTo(NEWSOURCE, TARGET, FOUND).
-//routeCompleteTo(SOURCE, TARGET, _)
-//    :- .println("problem internal routeTo ", SOURCE, " to ", TARGET).
 
-isAdjacent("W", MX, MY, X, Y, SX, SY) // right
-    :- Y <= MY & (Y+SY) >= MY & MX = (X+SX+1).
-isAdjacent("E", MX, MY, X, Y, SX, SY) // left
-    :- Y <= MY & (Y+SY) >= MY & MX = (X-1).
-isAdjacent("N", MX, MY, X, Y, SX, SY) // down
-    :- X <= MX & (X+SX) >= MX & MY = (Y+SY+1).
-isAdjacent("S", MX, MY, X, Y, SX, SY) // upper
-    :- X <= MX & (X+SX) >= MX & MY = (Y-1).
+isAdjacent(NEXTTO, "W", MX, MY, X, Y, SX, SY) // right
+    :- Y <= MY & (Y+SY) >= MY & ((MX = (X+SX+1) & NEXTTO=true) | (MX > (X+SX) & NEXTTO=false)).
+isAdjacent(NEXTTO, "E", MX, MY, X, Y, SX, SY) // left
+    :- Y <= MY & (Y+SY) >= MY & ((MX = (X-1) & NEXTTO=true) | (MX < X & NEXTTO=false)).
+isAdjacent(NEXTTO, "N", MX, MY, X, Y, SX, SY) // down
+    :- X <= MX & (X+SX) >= MX & ((MY = (Y+SY+1) & NEXTTO=true) | (MY > (Y+SY) & NEXTTO=false)).
+isAdjacent(NEXTTO, "S", MX, MY, X, Y, SX, SY) // upper
+    :- X <= MX & (X+SX) >= MX & ((MY = (Y-1) & NEXTTO=true) | (MY < Y & NEXTTO=false)).
 
-fixMeOrientation(OBJECT, NEWO)
+fixMeOrientation(OBJECT, NEWO, NEXTTO)
     :- object(OBJECT)[positionX(X), positionY(Y), sizeX(SX), sizeY(SY)]
      & myself[positionX(MX), positionY(MY)]
      // size of 1 need be zero
-     & isAdjacent(NEWO, MX, MY, X, Y, SX-1, SY-1).
+     & isAdjacent(NEXTTO, NEWO, MX, MY, X, Y, SX-1, SY-1).
 
-//9 14 4 4 12 13
-//9-12 14-17  12 13
 
 //LATER: put all route to reach the target.
 routeTo("abstractHouseCorredor","abstractHouseCorredor",       []).
@@ -38,7 +37,7 @@ routeTo("abstractHouseCorredor","abstractHouseRoom2",          ["doorToCorredorT
 routeTo("abstractHouseCorredor","abstractHouseSuiteBathroom",  ["doorToCorredorToRoom2"]).
 routeTo("abstractHouseCorredor","abstractHouseDeposit",        ["doorToDepositOrToCorredor"]).
 routeTo("abstractHouseCorredor","abstractHouseBathroomMiddle", ["doorRightBathroomMiddle"]).
-routeTo("abstractHouseCorredor","abstractHouseRoom1",          ["doorToCorredorToRoom1"]).
+routeTo("abstractHouseCorredor","abstractHouseRoom1",          ["doorToCorredorToRoom1","doorRightBathroomMiddle"]).
 
 routeTo("abstractHouseBathroomMiddle","abstractHouseBathroomMiddle", []).
 routeTo("abstractHouseBathroomMiddle","abstractHouseCorredor",       ["doorRightBathroomMiddle"]).
@@ -82,7 +81,7 @@ routeTo("abstractHouseLivingRoom","abstractHouseSuiteBathroom",  ["doorToCorredo
 
 routeTo("abstractHouseRoom1","abstractHouseRoom1",          []).
 routeTo("abstractHouseRoom1","abstractHouseBathroomMiddle", ["doorToBathRoomMiddleToRoom1"]).
-routeTo("abstractHouseRoom1","abstractHouseCorredor",       ["doorToCorredorToRoom1"]).
+routeTo("abstractHouseRoom1","abstractHouseCorredor",       ["doorToCorredorToRoom1", "doorRightBathroomMiddle"]).
 routeTo("abstractHouseRoom1","abstractHouseDeposit",        ["doorToCorredorToRoom1"]).
 routeTo("abstractHouseRoom1","abstractHouseKitchen",        ["doorToCorredorToRoom1"]).
 routeTo("abstractHouseRoom1","abstractHouseLivingRoom",     ["doorToCorredorToRoom1"]).
@@ -121,9 +120,9 @@ routeTo("abstractHouseSuiteBathroom","abstractHouseRoom2",           ["doorToRoo
 routeTo("abstractHouseSuiteBathroom","abstractHouseSocialBathroom",  ["doorToRoom2ToBathroom"]).
 
 //TODO: necessary when the agents go out of home...
-//"abstractHome"
+//"abstractHome"    
 //"abstractArcade"
 //"abstractMarket"
-//"abstractSchool"
-//"abstractWork"
+//"abstractSchool" F
+//"abstractWork"   F
 

@@ -100,7 +100,9 @@ actors
      : .number(VALT) & .number(VALP) & VALT < VALP
     <- NEWV = OLDV+(VALT-VALP).
 //appraisalOneAnnotationValue----ATOM-------------------------------------------
-+?appraisalOneAnnotationValue(VALT, VALT, FUNCTOR, OLDV, OLDV+1)
++?appraisalOneAnnotationValue(VALT, VALT, prAt, OLDV, OLDV+1)
+     : .atom(VALT).
++?appraisalOneAnnotationValue(VALT, VALT, prRe, OLDV, OLDV-1)
      : .atom(VALT).
 +?appraisalOneAnnotationValue(VALT, VALP, FUNCTOR, OLDV, OLDV)
      : .atom(VALT) & .atom(VALP).
@@ -114,7 +116,7 @@ actors
 
 //evalAppraisal-----------------------------------------------------------------
 +?evalAppraisal(_, _, OLDVAL, OLDVAL).
-+?evalAppraisal(PCP, PREF, OLDVAL, NEWVAL)
+/*+?evalAppraisal(PCP, PREF, OLDVAL, NEWVAL)
      : PCP =..  [FUNCP, [TERM1P|[]], _]
      & PREF =.. [FUNCF,  [TERM1F|_], _]
      & NEWVAL > 0
@@ -127,7 +129,7 @@ actors
      & NEWVAL < 0
     <- //.println("   (",FUNCP,",",TERM1P,") against ", TERM1F, " oldval ", OLDVAL, " newval ", NEWVAL);
        .concat("", FUNCP, "_", TERM1P, "_", TERM1F, INDIVIDUAL);
-       ?updateAppraisal(hate, INDIVIDUAL, NEWVAL).
+       ?updateAppraisal(hate, INDIVIDUAL, NEWVAL).*/
 +?evalAppraisal(PCP, PREF, OLDVAL, NEWVAL)
      : PCP =..  [FUNCP,         [], _]
      & PREF =.. [FUNCF, [TERM1F|_], _]
@@ -142,6 +144,8 @@ actors
     <- //.println("   (",FUNCP,",[]) against ", TERM1F, " oldval ", OLDVAL, " newval ", NEWVAL);
        .concat("", FUNCP, "_", TERM1F, INDIVIDUAL);
        ?updateAppraisal(distress, INDIVIDUAL, NEWVAL).
++?evalAppraisal(PCP, PREF, OLDVAL, NEWVAL). // ignoring others
+    //<- .println( "INT   PCP ", PCP, " PREF ", PREF, " OLDVAL ", OLDVAL, " NEWVAL ", NEWVAL).
 
 //updateAppraisal-Joy-----------------------------------------------------------
 +?updateAppraisal(joy, INDIVIDUAL, VALUE)

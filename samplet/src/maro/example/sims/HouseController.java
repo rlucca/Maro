@@ -14,6 +14,7 @@ public class HouseController
 {
     final protected House parent;
     final protected ArrayList<CharacterInspectorController> characters;
+    private int factorTime = 870;
     protected int step;
 	protected int day;
 	protected int hour;
@@ -128,7 +129,7 @@ public class HouseController
     }
 
     public int getStep() { return this.step; }
-    public int getSimulationTime() { return this.step * 870; }
+    public int getSimulationTime() { return this.step * factorTime; }
 
     protected void updateDay() {
 		today = weekDays[day % 7];
@@ -170,5 +171,14 @@ public class HouseController
 
     public GridWorldModel getModel() {
         return parent.model;
+    }
+
+    public int convertToStep(int hour) {
+        int offset = hour * 3600;
+        int time = day * 86400 + offset;
+        // round up always
+        int fix = time % factorTime;
+        fix = (fix == 0) ? 0 : factorTime - fix;
+        return 1 + ((time + fix) / factorTime);
     }
 }

@@ -33,7 +33,9 @@ public class House extends AnnotatedEnvironment
 			} catch (Exception e) { }
 		}
 
-		getLogger().info("Started step " + step);
+		getLogger().info("Started step " + step + "(day="+controller.day+";hour="+
+				controller.hour+";minute="+controller.mins+";shift="+controller.shift
+				+")");
 
 		controller.newStep(step, this);
 	}
