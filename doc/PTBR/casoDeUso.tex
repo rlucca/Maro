@@ -252,7 +252,7 @@ sexta e etc. No caso de gols do time adversário é utilizado o cálculo de
 dois primeiros gols, o terceiro terá valor 2 e assim por diante.
 
 A Listagem~\ref{lst:soccerTeam} é similar à anterior. Ela é responsável por inserir uma
-emoção de esperança no agente com valoração 50 e inicia o calculo de
+emoção de esperança no agente com valoração 50 e inicia o cálculo de
 realização do evento assumindo o valor positivo 1. Cada gol percebido
 do próprio time incrementa esse valor em 10 e se o gol for do time
 adversário é feito um decremento no mesmo valor. A emoção de esperança não
@@ -662,16 +662,16 @@ No inicio da simulação a base de crenças converte os itens guardados na
 ontologia como preferências para crenças no formato ``priority(Type,
 Annotation, Partition)''. Assim, o processo pega todas essas crenças em listas
 e cria uma lista de objetos percebidos também e as envia para a proxima etapa
-que recupera todas as anotações de um objeto e realiza o calculo baseado nas
+que recupera todas as anotações de um objeto e realiza o cálculo baseado nas
 prioridades do que é importante. A Listagem~\ref{lst:appraisal} mostra esse
 procedimento, o operador ``=..'' é usado para desmanchar a variavel em uma
 lista com três elementos o termo, os parâmetros e as anotações.
 
-O calculo que dispara as emoções baseando-se nas preferências do indivíduo é
+O cálculo que dispara as emoções baseando-se nas preferências do indivíduo é
 realizado pela consulta ``appraisalOneAnnotationValue''. Esaa consulta recebe
 por parâmetro: o valor da anotação; o valor de limite da mesma; seu tipo
 (atração por números abaixo ou acima do limite); valor atual das anotações do
-objeto; e, o resultado do calculo. Esse calculo pode ser visto na
+objeto; e, o resultado do cálculo. Esse cálculo pode ser visto na
 Listagem~\ref{lst:anotcalc}.
 
 \begin{figure}
@@ -679,7 +679,7 @@ Listagem~\ref{lst:anotcalc}.
     \begin{minipage}{130mm}
 	\lstset{linewidth=130mm}
 	\begin{lstlisting}[frame=trbl,
-caption=Amostra de código referente ao calculo de uma anotação.,
+caption=Amostra de código referente ao cálculo de uma anotação.,
 label=lst:anotcalc]
 // NUMBER
 +?appraisalOneAnnotationValue(VALT, VALP, _, OLDV, NEWV)
@@ -709,7 +709,7 @@ label=lst:anotcalc]
 \end{figure}
 
 Esse processo leva em consideração o tipo da anotação sendo analisada. Por
-exemplo, elas podem ser números ou atomos. O calculo verifica se os dois
+exemplo, elas podem ser números ou atomos. O cálculo verifica se os dois
 valores informados nos dois primeiros parâmetros são iguais, se for então o
 resultado é a devolução do valor antigo. No caso de ser uma preferencia de
 repudio então o segundo parâmetro menos o primeiro que representa o valor
