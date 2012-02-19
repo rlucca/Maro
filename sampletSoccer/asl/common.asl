@@ -1,8 +1,11 @@
 !start.
 //------------------------------------------------------------------------------
 +!start
-    <- !buildTestName("", NAME); +team(NAME);
-       .send(stadium, tell, name(NAME));
+     : .my_name(NAME)
+    <- !buildTestName("", TEAM);
+       +agent(TEAM); +agent(NAME); +~sameAs(TEAM, NAME);
+       +team(TEAM);
+       .send(stadium, tell, name(TEAM));
        !!deliberation.
 //------------------------------------------------------------------------------
 +!deliberation

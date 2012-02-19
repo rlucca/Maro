@@ -27,7 +27,7 @@ emotion
     Love ------------------- USELESS      Hate ------------------- USELESS
     Joy -------------------- YES          Distress --------------- YES
     Hope ------------------- YES          Fear ------------------- NO  ........ goals not finished!
-    Admiration ------------- NO           Reproach --------------- NO  ........ responsability of actions of other
+    Admiration ------------- YES          Reproach --------------- YES ........ responsability of actions of other
     Pride ------------------ NO           Shame ------------------ NO  ........ responsability of actions of yourself
     Gratification ---------- NO           Remorse ---------------- NO  ........ responsability of actions of yourself + (joy/distress)
     Gratitude -------------- NO           Anger ------------------ NO  ........ responsability of actions of other + (joy/distress)
@@ -70,17 +70,32 @@ myName(NAME) :- .my_name(ATOM) & .term2string(ATOM, NAME).
     :  goal(TEAM) & myPoints(TEAM, PF, _, _)
     <- ?fib(8-(PF+1), VAL);
        ?updateEmotion(prospectIrrelevant, "goal_myteam_pi", VAL);
-       +removeEmotion("goal_myteam_pi").
+       +removeEmotion("goal_myteam_pi");
+       .random(N); FIRST=math.round(N*10);
+       .random(M); SECOND=math.round(M*10);
+        if (FIRST >= 8 & SECOND >= 8) { // 9%
+            ?updateEmotion(actionsOfAgents, "goal_myteam_pi", TEAM, -VAL);
+        } else {
+            if (FIRST >= 8 | SECOND >= 8) { // 30%
+                ?updateEmotion(actionsOfAgents, "goal_myteam_pi", TEAM, VAL);
+            }
+        }.
 //------------------------------------------------------------------------------
 +?appraisalGoal
     :  goal(TEAM) & myPoints(_, _, TEAM, PE)
     <- ?fib(PE+1, VAL);
        ?updateEmotion(prospectIrrelevant, "goal_enemyteam_pi", -VAL);
-       +removeEmotion("goal_enemyteam_pi").
+       +removeEmotion("goal_enemyteam_pi");
+       .random(N); FIRST=math.round(N*10);
+       .random(M); SECOND=math.round(M*10);
+       if (FIRST >= 10 & SECOND >= 10) { // 1%
+           ?updateEmotion(actionsOfAgents, "goal_enemyteam_pi", TEAM, -VAL);
+       }.
 //------------------------------------------------------------------------------
 +?appraisalGoal
     : removeEmotion(INDIVIDIDUAL)
    <- ?removeEmotion(prospectIrrelevant, INDIVIDIDUAL);
+      ?removeEmotion(actionsOfAgents, INDIVIDIDUAL);
       -removeEmotion(INDIVIDIDUAL).
 //------------------------------------------------------------------------------
 +?appraisalGoal.
@@ -227,14 +242,36 @@ myName(NAME) :- .my_name(ATOM) & .term2string(ATOM, NAME).
        -hasAppraisal(NAME, INDIVIDUAL).
 //------------------------------------------------------------------------------
 +?removeEmotion(fortunesOfOthers, INDIVIDUAL).
+//-- update ADMIRATION or REPROACH or PRIDE or SHAME ---------------------------
++?updateEmotion(actionsOfAgents, INDIVIDUAL, WHO, VAL)
+    : not(hasJudgeness(INDIVIDUAL, _))
+    <- ?myName(NAME);
+       +hasAppraisal(NAME, INDIVIDUAL);
+       +hasJudge(INDIVIDUAL, WHO);
+       +hasJudgeness(INDIVIDUAL, VAL).
+//------------------------------------------------------------------------------
++?updateEmotion(actionsOfAgents, INDIVIDUAL, WHO, VAL)
+    : hasJudgeness(INDIVIDUAL, OLDVAL)
+    <- -hasJudgeness(INDIVIDUAL, OLDVAL);
+       +hasJudgeness(INDIVIDUAL, VAL).
+//------------------------------------------------------------------------------
++?removeEmotion(actionsOfAgents, INDIVIDUAL)
+    : hasJudgeness(INDIVIDUAL, OLDVAL) & hasJudge(INDIVIDUAL, OLDWHO)
+    <- ?myName(NAME);
+       -hasAppraisal(NAME, INDIVIDUAL);
+       -hasJudgeness(INDIVIDUAL, OLDVAL);
+       -hasJudge(INDIVIDUAL, OLDWHO).
+//------------------------------------------------------------------------------
++?removeEmotion(actionsOfAgents, INDIVIDUAL).
 //-- update EMOTION ------------------------------------------------------------
 //+?updateEmotion(TYPE, INDIVIDUAL, VAL).
 //+?removeEmotion(TYPE, INDIVIDUAL)
 //------------------------------------------------------------------------------
 +?printEmotions
-    <- .findall(feel(L,V), feeling(L,V), FS);
-       ?myPoints(N,P,M,O); ?team(T);
+     : .findall(feel(L,V), feeling(L,V), FS) & .length(FS, VAL) & VAL > 0
+    <- ?myPoints(N,P,M,O); ?team(T);
        .print("Emotion: ", FS, "team ", T, "==",N, " ", P, " x ", O, " ", M).
++?printEmotions.
 //------------------------------------------------------------------------------
 -?X <- .print("Error ",X).
 -!X <- .print("Error ",X).
