@@ -57,13 +57,17 @@ um plano futuro pois torna o desenvolvido mais transparente permitindo-o ser
 melhor utilizado. Essa atualização pode ser colocada no momento da consulta da
 percepção ``feeling'' ou em algum outro ponto.
 
-Hoje se o usuário desejar utilizar apenas um subconjunto de emoções isso não é
-possível. Ele sempre precisa configurar todos os limites mínimos de todas as
-emoções e, no decorrer da simulação, não inserir as referidas relações para
-aquelas emoções se tornarem ativas. Isso no futuro será ajustado para o
-sistema aguardar somente as emoções presentes no conceitos \emph{Emotion} e
-que exista um modelo de percepção baseado nas preferências do agente para
-tornar a escrita de código menor.
+Hoje se o usuário não quiser escrever código para ligar percepções com as
+emoções então elas não podem ser criadas e percebidas. Esse é um ponto
+altamente invasivo e crítico. %porque é uma preocupação que o usuário não deveria ter.
+Todavia, um modelo de percepção padrão baseado nas preferências do personagem
+é simplista e não pode alcançar todas as emoções existentes. A necessidade de
+sempre ter os limites mínimos para todas as 22 emoções precisa ser revista
+porque em determinadas simulações somente um conjunto ou algumas emoções
+selecionadas poderiam ser desejadas para virarem sentimentos. Esse
+comportamento é alcançado na atual implementação simplesmente não inserido as
+relações necessárias para aquela emoção.
+
 Além disso, remover a necessidade de o cálculo da potência da emoção ser feita
 em \emph{Java} para ser interessante. A vantagem de fazer isso em código
 \emph{AgentSpeak} é uma maior transparência no que esta sendo feito e como se

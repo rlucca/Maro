@@ -233,29 +233,6 @@ evento ocorre a emoção atual pode virar uma emoção do conceito
 \emph{FearsConfirmed} ou \emph{Relief} e \emph{Hope} pode virar ou
 \emph{Satisfaction} ou \emph{Disappointment}.
 
-O conceito \emph{ProspectRealized} não se relaciona em nenhum momento com a
-relação \emph{hasLikelihood} porque o evento já aconteceu ou não vai mais
-acontecer. Assim, ele possui três relações distintas das anteriores, a
-primeira é o grau de realização do evento (\emph{hasRealized}), isto é, a
-visão do agente sobre como a consequência do evento aconteceu. A segunda
-relação \emph{hasPreviousIntensity} recebe a valoração da emoção \emph{Fear}
-ou \emph{Hope} do evento que tinha probabilidade e serve para saber se o evento era
-um evento bom (\emph{Hope}) ou ruim (\emph{Fear}). Já, a terceira propriedade
-(\emph{hasEffort}) tenta estimar o grau de esforço que foi dispendido para a
-atração ou repulsa da consequência.
-
-O conceito \emph{ProspectIrrelevant} é parecido com o conceito
-\emph{ProspectRelevant} com a diferença que a relação \emph{hasLikelihood} vai
-somente para valores nulos. Fora isso, as emoções desse conceito e do
-\emph{ActionsOfAgents} podem ser misturadas formando conceitos compostos.
-A composição é quando uma emoção pode ser encaixada em mais de uma emoção
-como no caso de se estar alegre (\emph{Joy}), orgulhoso (\emph{Pride}) e
-gratificado (\emph{Gratification}). Por fim, o conceito \emph{Setup}
-é o utilizado para manter junto da ontologia criada o limite mínimo para uma
-emoção virar sentimento\dev{}. A Tabela~\ref{table:lucca-emo}
-(pág.~\pageref{table:lucca-emo}) resume as definições
-utilizadas para classificar as avaliações como emoções.
-
 \begin{table}[pt]
 	\caption{Regras de classificação de indivíduos como emoções.}
 	\label{table:lucca-emo}
@@ -288,6 +265,29 @@ utilizadas para classificar as avaliações como emoções.
 	\end{tabular}
 	\end{center}
 \end{table}
+
+O conceito \emph{ProspectRealized} não se relaciona em nenhum momento com a
+relação \emph{hasLikelihood} porque o evento já aconteceu ou não vai mais
+acontecer. Assim, ele possui três relações distintas das anteriores, a
+primeira é o grau de realização do evento (\emph{hasRealized}), isto é, a
+visão do agente sobre como a consequência do evento aconteceu. A segunda
+relação \emph{hasPreviousIntensity} recebe a valoração da emoção \emph{Fear}
+ou \emph{Hope} do evento que tinha probabilidade e serve para saber se o evento era
+um evento bom (\emph{Hope}) ou ruim (\emph{Fear}). Já, a terceira propriedade
+(\emph{hasEffort}) tenta estimar o grau de esforço que foi dispendido para a
+atração ou repulsa da consequência.
+
+O conceito \emph{ProspectIrrelevant} é parecido com o conceito
+\emph{ProspectRelevant} com a diferença que a relação \emph{hasLikelihood} vai
+somente para valores nulos. Fora isso, as emoções desse conceito e do
+\emph{ActionsOfAgents} podem ser misturadas formando conceitos compostos.
+A composição é quando uma emoção pode ser encaixada em mais de uma emoção
+como no caso de se estar alegre (\emph{Joy}), orgulhoso (\emph{Pride}) e
+gratificado (\emph{Gratification}). Por fim, o conceito \emph{Setup}
+é o utilizado para manter junto da ontologia criada o limite mínimo para uma
+emoção virar sentimento\dev{}. A Tabela~\ref{table:lucca-emo}
+(pág.~\pageref{table:lucca-emo}) resume as definições
+utilizadas para classificar as avaliações como emoções.
 
 \section{Ontologia de Comportamento Urbano} \label{ch:aec:ocu}
 
@@ -621,6 +621,8 @@ objeto ou propriedade de dados ou de objetos. Essa diferenciação é feita pela
 aridade e, em caso de ambiguidade, se pergunta o tipo à ontologia usando o
 nome da entidade. A chamada \emph{Add} presente na Figura~\ref{fig:addBelief}
 é explicada adiante.
+
+\vfill
 
 \subsection{Processo de Remoção de Crenças}
 
