@@ -39,8 +39,7 @@ existem 5 estados emocionais: muito feliz, feliz, neutro, triste e muito
 triste. Todos, com exceção do neutro, possuem alguma síntese vocal como um
 rosnado (tristeza) ou uma risada (muito feliz). Assim, esse brinquedo, por ser
 considerado um ser robótico que reage à criança com seus próprios estados
-emocionais, fica enquadrado na segunda área.  Portanto, o desenvolvimento
-desse brinquedo serviu para aprimorar os seres robóticos.
+emocionais, fica enquadrado na segunda área.
 
 O projeto AIDA\footnote{Mais detalhes, ver http://senseable.mit.edu/aida} (do
 inglês \emph{Affective Intelligent Driving Agent}) pode ser entendido como
@@ -49,12 +48,12 @@ pessoa dirigindo. Além disso, interessa-se em ter um relacionamento com o
 usuário sugerindo alterações nas rotas baseando-se na rotina aprendida depois de
 um tempo de aprendizado.  A pesquisa relatada em \citet{dias-agents} visou
 melhorar a simulação de agentes através do uso da emoção guiando o processo
-deliberativo e melhorando o entendimento e gerência das emoções.  O presente
-trabalho se enquadra na área de síntese de emoção, pois o interesse é em
-entender o estado emocional e como ele pode afetar o comportamento de um
-personagem.
+deliberativo e melhorando o entendimento e gerência das emoções, portanto,
+fica enquadrado na área de síntese de emoção. O presente trabalho se enquadra
+na área de síntese de emoção, pois o interesse é em entender e gerar estados
+emocionais e como esses podem afetar o comportamento de um personagem.
 
-\subsection{Modelo Cognitivo Emocional} \label{ch-ca-mce}
+\subsection{Modelo Emocional} \label{ch-ca-mce}
 
 Estudos neurológicos recentes \cite{ledoux1998emotional,damasio2004erro}
 mostram a importância das emoções na tomada de decisão.
@@ -69,7 +68,7 @@ baseados em significados e modelos baseados em componentes. A primeira
 categoria visa descobrir variáveis que representam eixos das classes emotivas
 e estabelecem meios de se mover por esses eixos. A seguinte, especifica um
 conjunto básico de emoções e regras de evolução para esse conjunto.
-Já, a categoria dos baseados em significados se preocupa com as situações
+Já a categoria dos baseados em significados se preocupa com as situações
 em que o sentimento foi ocasionado e tenta descrever as estruturas semânticas dos
 mesmos. A última, entende que os sentimentos são aprendidos ao longo do tempo.
 Sendo assim, os modelos baseados em componentes estudam o elo entre os
@@ -101,8 +100,8 @@ gosta de rosas azuis. No seguinte, \emph{Actions Of Agents}, o julgamento das
 ações exercidas por outro indivíduo ou por si mesmo é baseado nos
 valores morais da pessoa que está julgando. Exemplo: reprovar a atitude dos
 bancários que fazem greve a cada ano. Cabe salientar, que ao julgar ações, o
-modelo permite um grau de ``empatia'' chamado pelos autores de ``unidade de
-força cognitiva''\footnote{Traduzido literalmente de \emph{Strength of
+modelo permite um grau de ``empatia'' chamado pelos autores de ``força de unidade
+cognitiva''\footnote{Traduzido literalmente de \emph{Strength of
 cognitive unit}.}. Dessa forma, é possível, por exemplo, ficar com orgulho
 porque uma atleta ganhou uma medalha ou ficar envergonhado ao descobrir que o
 vizinho bate no(s) filho(s).
@@ -181,7 +180,7 @@ não cognitivas, são: \emph{Angry}, \emph{Disgust}, \emph{Fear},
 secundárias, cognitivas, descritas são ao todo 4. O interessante aqui é que
 essas 4 emoções são inferidas a partir das anteriores. Além disso,
 há o conceito de emoção ativa que é a emoção predominante naquele momento. O
-valor da emoção é calculado da seguinte forma, a sensibilidade (predisposição
+valor da emoção é calculado da seguinte forma: a sensibilidade (predisposição
 a emoção varia de 0 à 1) multiplicado pela intensidade da emoção. A emoção
 predominante é o maior valor entre as emoções.
 
@@ -197,9 +196,10 @@ sua ontologia, \citet{wks2008towards} criaram uma ontologia de alto nível se
 aproveitando de outra ontologia de alto nível e de uma de analise léxica.
 Assim, o principal conceito desse trabalho é o de sensor que é um objeto
 físico no ambiente e que recebe as informações do meio e as ``transportam''
-para o mundo mental do agente. Sendo assim, é possível reconhecer a
-percepções similares e descrever novas situações. Todavia, o presente trabalho
-não tem objetivo de criar uma ontologia de alto nível\dev{}.
+para o mundo mental do agente. Sendo assim, é possível reconhecer
+percepções similares e descrever novas situações.
+%Todavia, o presente trabalho
+%não tem objetivo de criar uma ontologia de alto nível\dev{}.
 
 \citet{springerlink:10.1007/978-3-642-01639-448} desenvolveram um motor de
 emoções que utiliza um modelo de mistura de emoções em conjunto com o modelo
@@ -214,12 +214,12 @@ menos uma expressão. A expressão propriamente dita é feita pela última camad
 Esse trabalho ainda utilizou um modelo dimensional para misturar as emoções
 primárias. Assim, as emoções secundárias podem ser descobertas a partir do
 nível dos eixos afetados. O trabalho mostra quase todas as emoções do
-ramo de consequência de eventos, com exceção das emoções de \emph{Hope} e
+ramo de consequência de eventos com exceção das emoções de \emph{Hope} e
 \emph{Fear}. As emoções primárias são as emoções do modelo \occ e como
 secundárias estão as emoções construídas a partir da mistura dessas emoções.
 Essa diferenciação, como dito anteriormente, não existe no modelo \emph{OCC}.
 
-Um modelo genérico que representa o ambiente e eventos que estão envolta de um
+Um modelo genérico que representa o ambiente e eventos que estão a volta de um
 personagem, sua personalidade e suas preferências foi feito por
 \citet{lera2009semantic}. Nesse trabalho o foco eram emoções que podem ser
 representadas no rosto. Assim, a identificação do contexto é feita através de
@@ -229,8 +229,8 @@ preferências dos atores virtuais.
 
 \citet{adam2009alfototoe} formalizaram o modelo \occ de maneira lógica.
 Esse trabalho descreve a probabilidade de maneira comparativa, isto é, o
-evento A é mais provável que o evento B. Além disso, ha uma ordem temporal nas
-ações sendo desempenhadas. O autor propõem uma diferenciação entre ação e
+evento A é mais provável que o evento B. Além disso, há uma ordem temporal nas
+ações sendo desempenhadas. Os autores propõem uma diferenciação entre ação e
 evento. O primeiro é causado intencionalmente pelo agente\dev{},
 enquanto o segundo o agente não tem controle da ação. Por exemplo, ir para
 aula é uma ação que pode ser julgada pela responsabilidade e espirrar é um
@@ -240,15 +240,15 @@ evento que só pode ser julgado pela sua consequência.
 
 \citet{elliott1992tar} em sua tese ``O raciocinador afetivo'' foi um dos
 primeiros a trabalhar com emoções na área de sistemas multi-agentes. Em seu
-modelo 24 tipos de emoções são usadas, isto é, duas à mais que o modelo
+modelo, 24 tipos de emoções são usadas, isto é, duas à mais que o modelo
 \emph{OCC} por causa que ele dividiu as emoções do ramo de objetos para
 diferenciar amor de gostar e ódio de não gostar. Nesse trabalho, um mesmo
 evento pode gerar mais de uma emoção ao mesmo tempo. Por exemplo, estar feliz
 por que recebe um bom salário e triste porque o trabalho é chato. Além disso,
 os agentes podem observar os outros e explicar situações usando regras
-emotivas e um sistema de classificação baseado por casos.
+emotivas e um sistema de classificação baseado em casos.
 
-Já, \citet{gratch2000empitae} focou a sua arquitetura emocional diretamente
+Já \citet{gratch2000empitae} focou a sua arquitetura emocional diretamente
 nos planos e metas dos agentes. O modelo criado por ele permite agentes
 avaliarem o significado emocional de eventos que se relacionam com os planos e
 metas, modelando e predizendo os estados afetivos de outros agentes e
@@ -258,21 +258,22 @@ elas são reconhecidas por determinadas características. O trabalho estava
 restrito a eventos comunicados ou ações dos agentes e utilizou apenas cinco
 emoções: esperança, alegria, medo, sofrimento e raiva.
 
-\citet{gratch2004domain} utilizaram os dois primeiros trabalhos explicados para
-desenvolver este. Com um acrescimento, ele explicou um processo de avaliação
-que observa o ambiente e configura ``variáveis de avaliação'' e, após, o
+\citet{gratch2004domain} utilizaram os dois primeiros trabalhos explicados
+anteriores e ampliaram as emoções possíveis e a forma de avaliação que o
+agente realiza. Eles explicaram um processo de avaliação no qual observa-se
+o ambiente para configurar ``variáveis de avaliação'' e, após, o
 processo de imitação acontece. O processo de imitação pode ser de duas formas,
-ser resolvido por problema ou por emoção. Se for feita uma solução por
+ser focado no problema ou na emoção. Se for feita uma solução focada no
 problema o autor apontou várias estrategias possíveis: cópia ativa (tentar
 fazer), buscar suporte (procurar conselheiro, informação, etc) e planejar. Se
-for adotada uma solução emocional tem se ao todo 11 estrategias muito bem
-explicadas em seu trabalho. Além disso, o trabalho menciona que o agente
-mantem a historia do que aconteceu, esta acontecendo e pode vir a
+for adotada uma solução emocional tem-se ao todo 11 estrategias possíveis.
+Além disso, o trabalho menciona que o agente
+mantem a história do que aconteceu, esta acontecendo e pode vir a
 acontecer para ser consultada durante seu planejamento. O trabalho usa como
-exemplo um medico que tem que decidir aplicar um medicamento agora e fazer o
+exemplo um médico que tem que decidir aplicar um medicamento agora e fazer o
 paciente morrer mais tarde ou deixa-lo morrer agora.
 
-O trabalho \emph{FearNot} foi desenvolvido visando reduzir os bullying nas
+O trabalho \emph{FearNot} foi desenvolvido visando reduzir o bullying nas
 escolas \cite{dias2005feeling}. As crianças são expostas as cenas de bullying
 e fazem o papel do amigo imaginário da vitima que pode sugerir formas de ação
 para as situações. A arquitetura criada foi pensada tendo em
@@ -284,9 +285,18 @@ domínio.
 O processo de deliberação do agente é focado na avaliação feita a partir do
 que se percebe do ambiente em níveis reativos e deliberativos (emoções com
 probabilidade). Depois, o estado emocional é gerado e a memória atualizada
-paralelamente. Esse trabalho, também, utiliza um processo de imitação que pode
+paralelamente. Esse trabalho também utiliza um processo de imitação que pode
 ser no nível reativo (tendencias de ações) ou deliberativo (foco no problema
-ou emoção). Dessa forma, de maneira similar com o trabalho anterior quando o
+ou emoção). Dessa forma, de maneira similar com o trabalho anterior, quando o
 processo de imitação é deliberativo uma reavaliação do problema é feita que
 pode afetar o estado emocional ou o entendimento do problema.
 
+Todos os trabalhos anteriores descrevem um processo de imitação que é o
+responsável pela estrategia mental do ator. Por exemplo, fazer, re-planejar ou
+re-avaliar a prioridade. Quando essas estrategias são decididas emoções podem
+acontecer, todavia o presente trabalho não possui um modelo mental do ator. A
+arquitetura proposta (cap.~\ref{ch:aec}) depende que o usuário defina como uma percepção se ligará
+ao agente e isso pode determinar uma emoção. Mesmo sendo isso sendo um ponto
+fraco do trabalho, isso aumenta o controle sobre o mesmo.
+
+\todo{citar bassteunebrink! -prof} \cite{steunebrink2010emotions}

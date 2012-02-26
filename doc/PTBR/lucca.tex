@@ -26,11 +26,13 @@
 
 % Use todo para anotar algo para ver depois
 % Criando comando \todo{algo}
-%\newcommand{\todo}[1] {\footnote{TODO #1}\marginpar{\textcolor{red}{\textbf{TODO}}}}
-\newcommand{\todo}[1] {}
+\newcommand{\todo}[1] {\footnote{TODO #1}\marginpar{\textcolor{red}{\textbf{TODO}}}}
+%\renewcommand{\todo}[1] {}
 % Use dev para anotar algum comprometimento
-%\newcommand{\dev}[0] {\marginpar{\textcolor{blue}{\textbf{IMPL}}}}
-\newcommand{\dev}[0] {}
+\newcommand{\dev}[0] {\marginpar{\textcolor{blue}{\textbf{IMPL}}}}
+\renewcommand{\dev}[0] {}
+
+\newcommand\UP{\mathbin{\char`\^}}
 
 %Citacoes possiveis
 %\cite{ortony1988cse} - parenteseses
@@ -138,7 +140,12 @@
 %\include{agradecimentos}
 %\setcounter{tocdepth}{0} % only chapters
 \setcounter{tocdepth}{1} % only chapters and sections
+\onehalfspacing %poderia ser double mas nao eh bom
+
+\include{resumo} % inclui o resumo da lingua nativa e estrangeira
+\singlespacing %poderia ser double mas nao eh bom
 \tableofcontents % sumario
+\onehalfspacing %poderia ser double mas nao eh bom
 \include{abreviaturas}
 
 % LISTA DE SIMBOLOS
@@ -156,9 +163,6 @@
 \lstset{backgroundcolor=\color{darkgray}}
 \lstset{numbers=left, basicstyle=\scriptsize\ttfamily, numberstyle=\tiny, stepnumber=2, numbersep=5pt}
 
-\onehalfspacing %poderia ser double mas nao eh bom
-
-\include{resumo} % inclui o resumo da lingua nativa e estrangeira
 
 %% aqui comeca o texto propriamente dito
 \input{introducao}

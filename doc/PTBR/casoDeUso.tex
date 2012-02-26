@@ -1,6 +1,6 @@
-\chapter{Caso de Uso} \label{ch:cdu}
+\chapter{Casos de Uso} \label{ch:cdu}
 
-O presente capítulo visa explicar o caso de uso utilizado para validar o
+O presente capítulo visa explicar os casos de uso utilizados para validar o
 sistema desenvolvido. Os casos de uso são simulações de parte da vida dos
 personagens. No primeiro, eles encontram-se observando um jogo de futebol e
 cada um torce para um time. No segundo, uma casa é simulada com quatro atores
@@ -8,7 +8,7 @@ e suas rotinas. Entretanto, antes desses casos serem abordados na
 seção~\ref{ch:cdu:svc} e na \ref{ch:cdu:home}
 será falado como a ontologia foi testada juntamente com a plataforma
 \emph{Jason}. A seção~\ref{ch:cdu:tbc} explica as ferramentas desenvolvidas
-para o teste da base de crenças e, consequentemente, a ontologia. Elas são duas
+para o teste da base de crenças desenvolvida. Elas são duas
 uma interativa e outra não interativa que serve como uma especie de teste
 unitário dos artefatos explicados no capítulo~\ref{ch:aec}.
 
@@ -30,7 +30,7 @@ recuperação, remoção e listagem. Os testes foram escritos na linguagem
 A primeira aplicação de teste desenvolvida foi de maneira interativa conforme
 pode ser observado na Figura~\ref{fig:introducaoDF}. A aplicação permite que o
 usuário escreva as crenças do agente em um campo texto (área 2 na figura) e
-esse é enviado diretamente para a base de crença do agente. A área 1 na mesma
+esse é enviado diretamente para a base de crenças do agente. A área 1 na mesma
 figura é utilizada para demostrar a valência das emoções.
 Essas informações podem aparecer em: preto, se não houve alteração com o ciclo
 anterior; azul, se houve um aumento; vermelho, se houve uma diminuição do
@@ -63,7 +63,7 @@ então o processo emotivo foi disparado e as emoções criadas conforme
 a configuração. Se fosse um passo normal da simulação, não se
 teria na base de crenças duas percepções \emph{feeling} sobre uma emoção
 porque a todo novo ciclo as percepções são apagadas. Cabe chamar atenção que
-no sistema desenvolvimento não existe a ideia de decaimento dos valores com o
+no sistema desenvolvimento não existe o decaimento dos valores com o
 passar do tempo, para isso ser feito o agente deve reavaliar o problema e
 atualizar os valores nas suas crenças.
 
@@ -72,12 +72,12 @@ para se rodar a presente aplicação\footnote{Veja a seção
 \ref{sec-jason-overview} na página~\pageref{sec-jason-overview}
 para ver uma introdução sobre esse tipo de arquivo.}. O ambiente na linha 3
 espera que todos os agentes (quantidade informada no parâmetro 3) mandem
-uma ação para prosseguir. O simulador espera pelo tempo (em milissegundos)
+uma ação para prosseguir. O simulador espera pelo tempo em milissegundos
 configurado no primeiro parâmetro por essas ações, caso não venha ignora o
 agente e segue para o próximo ciclo. O segundo parâmetro permite informar
 um número que representa o último passo de simulação e no quarto
-parâmetro permite configurar se uma segunda ação enviada no mesmo passo de
-simulação é para ser enfileirada ou resultar em erro (essa é a opção atual).
+parâmetro permite configurar o enfileiramento ou a falha (atual do exemplo) em
+uma segunda ação enviada no mesmo passo de simulação.
 
 \begin{center}
     \begin{minipage}{130mm}
@@ -94,9 +94,9 @@ arquitetura (\emph{agentArchClass}) e o raciocinador
 na seção~\ref{ch:p:ipjo}~(pág.~\pageref{ch:p:ipjo}).
 Assim, para o presente exemplo a mudança da arquitetura na linha 7, única
 classe não mencionada até agora, foi realizada para criar e atualizar a janela
-que exibe os dados emotivos.
+mostrada na Figura~\ref{fig:testeJasonIntBase} que exibe os dados emotivos.
 
-Cabe chamar a atenção que na linha 6 da Listagem~\ref{lst:testeJasonIntBase}
+Na linha 6 da Listagem~\ref{lst:testeJasonIntBase}
 foi usada a ontologia afetiva desenvolvida somente. Assim, para o agente
 utilizar as emoções ainda é necessário incluir as configurações de ativação
 dos sentimentos via código. Uma amostra do código utilizado para se fazer isso
@@ -107,9 +107,9 @@ As crenças iniciais são carregadas no agente no inicio da simulação. O proce
 de carga segue conforme a classe da linha 6 da
 Listagem~\ref{lst:testeJasonIntBase}. Sendo assim, a crença ``step'' como não
 consta na ontologia será carregada na base de crenças padrão e as demais serão
-criadas para popular a base de conhecimento. Esse processo fica transparente
-para o código \emph{AgentSpeak}. Note que o usuário precisa definir o limite
-para uma emoção virar sentimento em cada uma das 22 emoções.
+criadas na base de conhecimento. Esse processo fica transparente
+para o código \emph{AgentSpeak}, porém o usuário precisa definir para as 22
+emoções o limite mínimo para as mesmas serem percebidas como sentimento.
 
 \lstset{linewidth=80mm}
 \begin{wrapfigure}{l}{80mm}
@@ -135,21 +135,13 @@ zero para que a potência e a valência sejam iguais. O agente somente conhece
 a valência de uma emoção, ela é o valor da potência menos o limite de
 ativação. Entretanto, tanto o limite de ativação quanto a potência não são
 conhecidos pelo agente. Por exemplo, se o limite da pena (\emph{sorryFor}) é 6
-e o valor atual é 8 então o sentimento com o valor 2 será criado sendo
+e o valor atual é 8 então o sentimento de pena terá valor 2 sendo
 expresso por uma crença da seguinte forma ``feeling("sorryFor",2).''.
 
 %%%% fim da explicacao da aplicação interativa %%%%%
 
-\begin{center}
-    \begin{minipage}{140mm}
-	\lstset{linewidth=140mm}
-	\lstinputlisting[frame=trbl, caption=Arquivo de projeto do \jason para a
-aplicação não interativa de teste,
-label=lst:testeJasonNIBase]{../../sampletSummary/eoaus.mas2j}
-    \end{minipage}
-\end{center}
-
-A aplicação não interativa utiliza a Listagem~\ref{lst:testeJasonNIBase} para
+A aplicação não interativa utiliza o arquivo de projeto mostrado no
+Apêndice~\ref{atni} (pág.\pageref{atni}) para
 configurar o seu projeto. O ambiente especificado na linha 4 possui os mesmos
 parâmetros do anterior com o acréscimo de um novo que indica uma ontologia.
 Essa serve para o ambiente conhecer as rotinas dos agentes, como
@@ -162,30 +154,22 @@ instâncias de classes, além de testes das conclusões esperadas.
 \section{Assistindo um jogo de futebol} \label{ch:cdu:svc}
 
 O caso de uso utilizado para demostrar a ontologia representa dois personagens
-que se encontram no mesmo lugar e encontram-se assistindo ao mesmo jogo de
+estão no mesmo lugar e assistindo ao mesmo jogo de
 futebol. O jogo tem ao todo 60 turnos que representam os 90 minutos de um jogo
 regulamentar. Em cada turno é sorteado um número randômico com probabilidade
-de 1.67 de probabilidade para os times marcarem gol, isto é, há 98.33\% de
+de 1.67\% para os times marcarem gol, isto é, há 98.33\% de
 chance à cada turno de nada acontecer e o placar permanecer inalterado.
 
 Esse exemplo aparentemente simples, propicia um cenário bastante rico para as
 emoções por causa que um personagem pode ter diferentes emoções acontecendo.
-Essas emoções são muitas vezes do ramo de consequências de eventos por esta
+Essas emoções são muitas vezes do ramo de consequências de eventos por
 estar ligada com a desejabilidade do evento ou do ramo de ações de agentes que
-tem haver com os padrões dos agentes. Assim, a mente dos atores que estão
+tem haver com os seus padrões. Assim, a mente dos atores que estão
 assistindo ao jogo de futebol decidem no inicio da simulação os nomes de seus
 times e ambos acreditam que venceram.
 
-\begin{center}
-    \begin{minipage}{140mm}
-	\lstset{linewidth=140mm}
-	\lstinputlisting[frame=trbl, caption=Arquivo de projeto do \jason para o
-exemplo de futebol,
-label=lst:soccer]{../../sampletSoccer/soccer.mas2j}
-    \end{minipage}
-\end{center}
-
-A Listagem~\ref{lst:soccer} mostra o arquivo de projeto que cria dois agentes:
+O arquivo de projeto dessa aplicação pode ser consultada no Apêndice~\ref{adps}
+(pág.~\pageref{adps}) e cria dois agentes:
 ``watch1'' e ``watch2''. Cada um com seu próprio código fonte e,
 dessa forma, cada um deles inclui em seus códigos as configurações
 necessárias para utilizar o sistema. Um exemplo dessas configurações
@@ -233,9 +217,9 @@ label=lst:soccerGoal]
 A Listagem~\ref{lst:soccerGoal} realiza o processamento das emoções sentidas
 por um personagem quando um time marca um gol. Cada um dos planos criados
 visam atender as 4 condições possíveis: gol do meu time, gol do adversário,
-gol removido (não é mais percebido) e não houve gols. O plano da
+gol que não é mais percebido e não houve gols. O plano da
 linha 4 (\emph{updateEmotion}) e o da linha 15 (\emph{removeEmotion}, não
-confundir o plano com a crença) serão explicados adiante por hora basta saber
+confundir o plano com a crença) serão explicados adiante, por hora basta saber
 que eles atualizam ou removem as relações necessárias para a afetividade.
 
 Na última listagem, as linhas 3 e 9 chamam um plano que consulta os números de
@@ -243,21 +227,21 @@ Na última listagem, as linhas 3 e 9 chamam um plano que consulta os números de
 sequência e o retorno correspondente.
 Os times quando jogam no simulador dificilmente
 marcam mais que 5 gols então foi decidido limitar os números de
-\emph{fibonacci} até a posição 7. Entretanto, valores de posição negativos ou
-superiores à 7 terão retorno um. Cabe salientar que quando um gol é marcado
-a favor do time que se torce o \emph{fibonacci} é usado de maneira
-decrescente, isto é, o primeiro gol retornará a sétima posição, a segunda à
+\emph{fibonacci} até a sétima posição. Valores de posição negativos ou
+superiores à 7 terão retorno um. Quando um gol é marcado
+a favor do time que o agente torce o \emph{fibonacci} é usado de maneira
+decrescente, isto é, o primeiro gol retornará a sétima posição, o segundo à
 sexta e etc. No caso de gols do time adversário é utilizado o cálculo de
 \emph{fibonacci} de maneira crescente. Logo, o valor 1 é retornado para os
-dois primeiros gols, o terceiro terá valor 2 e assim por diante.
+dois primeiros gols, o terceiro valor 2 e assim por diante.
 
 A Listagem~\ref{lst:soccerTeam} é similar à anterior. Ela é responsável por inserir uma
 emoção de esperança no agente com valoração 50 e inicia o cálculo de
 realização do evento assumindo o valor positivo 1. Cada gol percebido
-do próprio time incrementa esse valor em 10 e se o gol for do time
+do próprio time incrementa esse valor em 10 e quando o gol é do
 adversário é feito um decremento no mesmo valor. A emoção de esperança não
 sofre alteração depois que é criada porque esta sendo considerado que as
-emoções são baseadas na percepção dos eventos. Dessa forma, a esperança do
+emoções são baseadas na percepção dos eventos ou ações. Dessa forma, a esperança do
 jogo ser ganho só termina quando há a percepção do encerramento do mesmo.
 
 \begin{center}
@@ -362,9 +346,9 @@ label=lst:soccerEnd2]
 \end{center}
 
 As consultas de ``removeEmotion'', presentes nas listagens anteriores, recebem
-o tipo de emoção e o nome do indivíduo que deve ser removido. Com base nessas
+o grupo emotivo e o nome do indivíduo que deve ser removido. Com base nessas
 informações, as relações que foram outrora inseridas são removidas da base de
-conhecimento e, consequentemente, da base de crenças. Um exemplo é amostrado
+conhecimento e, consequentemente, da base de crenças. Um exemplo é mostrado
 na Listagem~\ref{lst:removeSample} no qual são removidas às relações: de
 merecimento, de desejo por outros, de qual pessoa esta sendo avaliada e de
 quem esta avaliando.
@@ -390,12 +374,12 @@ label=lst:removeSample]
 \end{center}
 
 As consultas de ``updateEmotion'' funcionam de maneira parecida à
-``removeEmotion''. Elas fazem a inserção das relações e caso já exista o
-indivíduo removem e acrescentam novas relações para alterar o valor guardado.
+``removeEmotion'' e fazem a inserção das relações. Caso já exista o
+indivíduo, removem e acrescentam novas relações para alterar o valor guardado.
 Dessa forma, para a construção do exemplo tanto as atualizações como as
 remoções foram agrupadas por grupo de emoções por causa que essa é a forma que
-o próprio modelo \occ agrupa emoções com regras similares. A Listagem~\ref{lst:update}
-mostra a regra para o tipo de emoções que tem haver com a consequência dos
+o próprio modelo \occ agrupa as emoções com regras similares. A Listagem~\ref{lst:update}
+mostra as regras para o grupo emotivo que tem haver com a consequência dos
 destinos dos outros, isto é, as relações de merecimento, de nível de
 desejo presumido e de quem esta avaliando e de qual pessoa esta sendo
 avaliada.
@@ -456,10 +440,10 @@ que esses objetos possuem. Por exemplo, o objeto ``camaSolteiro1'' tem as
 anotações de posição nos eixos x e y, tamanhos nos dois eixos, utilidade
 ``dormir'' e dono um ou mais personagens.
 
-Cabe chamar a atenção que o personagem em nenhum momento recebe a informação
+Cabe chamar atenção que o personagem em nenhum momento recebe a informação
 do ambiente de onde ele se encontra. Essa informação o agente descobre baseado
 na percepção do ambiente. Por exemplo, o agente sabe que o ``quarto1'' possui um
-um armário, dois criados mundos, 2 duas camas e duas portas. Ele sabe o nome
+um armário, dois criados mudos, duas camas e duas portas. O agente sabe o nome
 correto de cada um dos itens que estão no quarto então ele pode a partir da
 percepção buscar em seu mapa onde os objetos que percebe estão e então
 concluir que ele se encontra em uma determinada sala. Assim, usando o
@@ -478,23 +462,23 @@ cama e onde ela se encontra quando quiser descansar.
 	\label{fig:sims}
 \end{figure}
 
-A Figura~\ref{fig:sims} possui quatro atores diferentes chamados: millie,
-albert, nina e john. Esses atores estão localizados inicialmente em diferentes
+A Figura~\ref{fig:sims} possui quatro atores diferentes chamados: Millie,
+Albert, Nina e John. Esses atores estão localizados inicialmente em diferentes
 pontos da casa e cada um possui uma orientação própria. No inicio da simulação eles
 devem averiguar os objetos próximos para perceberem em qual sala se encontram
 e depois decidem um objetivo próprio baseado em seu estado interno atual.
 Esse estado interno encontra-se representado por uma característica
 fundamental que é a energia que o ator possui para gastar e todos os agentes
-iniciam com ela no valor 40 podendo a mesma ir de 0 (morto) à 100. Sendo
+iniciam com ela no valor 40 podendo a mesma ir de 0 à 100. Sendo
 assim, muito provavelmente no inicio da simulação os agentes tentaram ir
 descansar em suas respectivas camas para obter energia para o dia seguinte.
 
 O valor de energia mencionando antes é informado pelo ambiente que informa o
-agente. Para isso cada um dos agentes recebem uma percepção sobre seu estado
+agente. Cada um dos agentes recebem uma percepção sobre seu estado
 interno que foi denominada ``myself''. O agente usa essa informação junto de
 sua preferência pelas anotações para determinar que emoção ele irá sentir.
-Quando o valor de energia esta abaixo de um determinado limite estipulado pela
-preferência positiva da anotação de energia o agente começa a ter um
+Quando o valor de energia está a baixo de um determinado limite estipulado pela
+preferência da anotação de energia o agente começa a ter um
 determinado nível de sofrimento. No caso de ele estar com a energia acima do
 limite, o mesmo possuirá a emoção que corresponde à alegria.
 
@@ -529,15 +513,15 @@ todos os itens que ele percebe por duas razões. Primeira, é para manter uma
 lista dizendo a orientação e o que foi percebido lá. A segunda razão é que
 quando o agente não sabe onde se encontra, o mesmo pergunta ao ambiente a
 localização de todos os itens percebidos e a localização mais citada é a
-considerada atual. Isso é necessário porque mesmo havendo obstaculos que o
+considerada atual. Isso é necessário porque mesmo havendo obstáculos que o
 agente não consegue passar ou ver, algumas vezes objetos de outros lugares são
-percebidos. Por exemplo, o agente que inicia no norte (deposito) quando olha
+percebidos. Por exemplo, o agente que inicia no norte (depósito) quando olha
 para baixo pode perceber a mesa (cozinha).
 
 O mapa abstrato mostrado na Figura~\ref{fig:abstractWindow} é apresentado
 com os respectivos itens em suas respectivas localizações na
 Figura~\ref{fig:abstractAnother}. Novamente, esse mapa é montado antes do
-inicio da simulação com os dados configurados na ontologia informada para o
+inicio da simulação conforme configuração da ontologia informada no
 ambiente. Além disso, a posição inicial dos personagens também encontram-se
 configurados nesta juntamente com seus perfis.
 
@@ -565,7 +549,7 @@ local que os agentes passam a maior parte de seu tempo e tempos de abertura e
 fechamento não são aplicáveis. A Tabela~\ref{tab:estaloca} mostra os horários
 de funcionamento dos estabelecimentos. Os horários estão no formato 0-23
 horas, sendo que ``-'' significa que não abre naquele dia. Além disso, os
-horarios são em formato texto porque são passados os horarios para todos os
+horários são em formato texto porque são passados os horários para todos os
 dias da semana. A semana esta sendo considerada como iniciando em uma
 segunda-feira e terminando no domingo. Fora isso, os locais marcados como
 fixos são locais que o agente deve permanecer até que o horário de
@@ -601,13 +585,14 @@ sentida. Para Albert o valor 50 é o ponto médio de energia no qual ele não
 sente nenhuma emoção e qualquer valor acima ou abaixo disso ocasiona uma que
 poderá virar sentimento. Dessa forma, quando Albert passar a ter 71 de energia
 ele passará a experimentar alegria. De forma igual, quando Millie atingir o
-valor 9 de energia estara sentindo sofrimento. O valor de 71 e 9 são
+valor 9 de energia estará sentindo sofrimento. O valor de 71 e 9 são
 justificados porque o processo de avaliação cria com base nas preferências as
 emoções. Albert quando a energia esta em 71 possui a emoção de alegria no
 valor 21. Sendo assim, o agente experimenta o sentimento de alegria com valor
 1 por causa que o limite para uma emoção virar sentimento esta configurada com o
 valor 20 (pág.~\pageref{mark:emo}). A mesma coisa acontece com o agente Millie,
-sua energia esta no valor 9 que garante a emoção de sofrimento com valor 21.
+sua energia esta no valor 9 que garante a emoção de sofrimento com valor 21 e
+a percepção da emoção com valor 1.
 
 O presente exemplo possui 4 agentes que compartilham o mesmo código
 \emph{AgentSpeak}. Entretanto, as suas bases de crenças estão configuradas com
@@ -658,13 +643,13 @@ label=lst:appraisal]
 \end{center}
 \end{figure}
 
-No inicio da simulação a base de crenças converte os itens guardados na
+No inicio da simulação, a base de crenças converte os itens guardados na
 ontologia como preferências para crenças no formato ``priority(Type,
-Annotation, Partition)''. Assim, o processo pega todas essas crenças em listas
-e cria uma lista de objetos percebidos também e as envia para a proxima etapa
+Annotation, Partition)''. Assim, o processo pega todas essas crenças em duas listas
+e cria uma lista de objetos percebidos e as envia para a próxima etapa
 que recupera todas as anotações de um objeto e realiza o cálculo baseado nas
 prioridades do que é importante. A Listagem~\ref{lst:appraisal} mostra esse
-procedimento, o operador ``=..'' é usado para desmanchar a variavel em uma
+procedimento, o operador ``=..'' é usado para desmanchar a variável em uma
 lista com três elementos o termo, os parâmetros e as anotações.
 
 O cálculo que dispara as emoções baseando-se nas preferências do indivíduo é
@@ -709,12 +694,12 @@ label=lst:anotcalc]
 \end{figure}
 
 Esse processo leva em consideração o tipo da anotação sendo analisada. Por
-exemplo, elas podem ser números ou atomos. O cálculo verifica se os dois
+exemplo, elas podem ser números ou átomos. O cálculo verifica se os dois
 valores informados nos dois primeiros parâmetros são iguais, se for então o
-resultado é a devolução do valor antigo. No caso de ser uma preferencia de
-repudio então o segundo parâmetro menos o primeiro que representa o valor
-de divisão informado na ontologia menos o valor calculado. No caso de ser uma
-preferência de atração então esses valores são invertidos.
+resultado é a devolução do valor antigo. No caso de ser uma preferência de
+repúdio então o segundo parâmetro (valor de partição informada na ontologia)
+menos o primeiro (valor calculado). No caso de ser uma preferência de atração
+então esses valores são invertidos.
 
 O processo de atualização de emoções é disparado pela consulta
 ``evalAppraisal'' presente na Listagem~\ref{lst:appraisal} na linha 19.
@@ -723,7 +708,7 @@ o valor anterior; e, o valor calculado das anotações presentes na percepção.
 Assim, a consulta ``evalAppraisal'' é utilizada para averiguar os dados antes
 de ocorrer a chamada a consulta ``updateEmotion'' que é similar a explicada
 anteriormente. O código dessa consulta esta apresentado na
-Listagem~\ref{lst:acEmotion}. Ele é responsável simplesmente por construir o
+Listagem~\ref{lst:acEmotion} e é responsável simplesmente por construir o
 nome do indivíduo usando o termo da percepção e o valor de divisão informado
 na ontologia.
 

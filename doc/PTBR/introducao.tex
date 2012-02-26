@@ -1,22 +1,21 @@
 \chapter{Introdução}
 
 Segundo \citet{terzopoulos1998behavioral}, a indústria cinematográfica possui
-excelentes exemplos do estudo do comportamento humano. Esse estudo visa imitar
-as ações humanas na área de animação. Entretanto, ainda há muito trabalho a
-ser feito na construção de um ator virtual que pareça realmente vivo. Um dos
-primeiros trabalhos envolvendo emoções, em personagens virtuais, é o de
-\citet{bates1994role} visando melhorar a interpretação. Por exemplo, João pode
-ser agressivo quando estiver com medo e André fica retraído ao sentir medo.
-%Além disso, a emoção pode ser utilizada para guiar o comportamento de
-%determinado personagem.
+excelentes exemplos do estudo do comportamento humano na área de animação.
+Essa área visa imitar as ações humanas computacionalmente. Entretanto, ainda
+há muito trabalho a ser feito na construção de um ator virtual que pareça
+realmente vivo. Um dos primeiros trabalhos envolvendo emoções, em personagens
+virtuais, é o de \citet{bates1994role} visando melhorar a interpretação. Por
+exemplo, João pode ser agressivo quando estiver com medo e André fica retraído
+ao sentir medo.
 
 As emoções podem ser categorizadas, segundo \citet{damasio2004erro}, em
 primárias (não-cognitivas) e secundárias (cognitivas). As emoções primárias
 surgem a partir de reações a determinadas percepções vindas do meio ambiente e
 são simples e geradas rapidamente. Já as emoções secundárias são aprendidas ao
 longo da nossa vida, isto é, são lentas e geradas por uma avaliação de uma
-situação de acordo com nossos objetivos e valores morais. Por exemplo, estou
-com pena de Alberto por possuir determinada doença.
+situação de acordo com nossos objetivos e valores morais. Por exemplo, André
+está com pena de Alberto por possuir determinada doença.
 
 A Computação Afetiva estuda esse assunto dentro da Computação, dividindo-o em
 dois ramos principais. O primeiro estuda o reconhecimento e expressão de
@@ -25,16 +24,26 @@ síntese das mesmas visando estudar o comportamento humano por simulações e,
 dessa forma, contribuir para o aprimoramento de seres robóticos ou virtuais.
 
 O presente trabalho visa desenvolver uma ferramenta que permita definir o
-comportamento afetivo de atores virtuais utilizando-se de ontologias. Uma
+comportamento afetivo de atores virtuais. Essa ferramenta é um
+\emph{framework} que define as emoções dos atores utilizando ontologias. Uma
 ontologia é uma especificação explícita, fundamentada e bem formada de um
 conhecimento \cite{gruber1993translation}. Atualmente, elas são vistas como um
 entendimento comum e compartilhado que pode ser utilizado na comunicação entre
 máquinas ou pessoas \cite{wks2008towards}.
 
+Sendo assim, o principal resultado é a demonstração das três ontologias
+funcionando em conjunto. A ontologia de emoções foi definida conforme o modelo
+de \citet{ortony1988cse}. A ontologia de rotinas, criada por
+\citet{paiva2005ontology}, define a rotina dos personagens pelo perfil destes
+e permite descrever os locais que o mesmo pode ir visitar tornando possível
+criar uma visualização. Já, definir anotações em objetos e preferências sobre
+essas anotações é a tarefa da última ontologia. Ela torna possível construir
+um mecanismo para emoções simples relacionadas com objetos.
+
 Este trabalho está organizado da seguinte maneira. No capítulo~\ref{ch:eda}
-é feita a revisão bibliográfica dos principais conceitos desse trabalho:
+é feita a revisão bibliográfica das principais áreas desse trabalho:
 Agentes, Computação Afetiva e Ontologia. Os trabalhos relacionados também
 estão inclusos nesse capítulo em suas respectivas seções. A ideia da
 ferramenta é explicada no capítulo~\ref{ch:aec}. Os casos de uso são abordados no
-capítulo seguinte. No \ref{ch:cf} é feita a avaliação do sistema juntamente
-com os trabalhos futuros e considerações finais.
+capítulo seguinte. No capítulo~\ref{ch:cf} é feita a avaliação do sistema
+juntamente com os trabalhos futuros e considerações finais.

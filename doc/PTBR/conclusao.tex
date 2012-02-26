@@ -6,7 +6,7 @@ código do sistema, incluído os exemplos e o presente texto, pode ser acessado
 pelo repositório \emph{on-line} hospedado via
 \emph{GitHub}\footnote{http://github.com/rlucca/Maro}.
 Os apêndices presentes visam facilitar a consulta de alguns dos artefatos lá
-presentes e debatidos no presente trabalho.
+presentes e debatidos aqui.
 O presente capítulo esta dividido em duas seções. A primeira serve para
 avaliar o sistema desenvolvido e discutir melhorias futuras. A segunda seção,
 serve para apresentar as considerações finais fazendo um pequeno retrospecto
@@ -31,7 +31,7 @@ mínimos para uma emoção virar sentimento que pode ser informada de duas
 formas. A primeira é como crenças iniciais dos agentes, conforme demostrado na
 Listagem~\ref{lst:testeJasonIntSetup}~(pág.~\pageref{lst:testeJasonIntSetup}),
 porém essa forma de uso é extremamente cansativa porque se precisa informar
-várias coisas. Cada uma das emoções precisa ser configurada, existem ao todo
+várias coisas. Cada uma das emoções precisa ser configurada, ao todo existem
 22 delas e para cada uma são necessárias 3 relações que dizem de quem é a
 configuração, de qual emoção esta sendo configurada e de qual é o valor mínimo
 para sua ativação. O segundo é o formato utilizado pela
@@ -57,11 +57,13 @@ um plano futuro pois torna o desenvolvido mais transparente permitindo-o ser
 melhor utilizado. Essa atualização pode ser colocada no momento da consulta da
 percepção ``feeling'' ou em algum outro ponto.
 
-Hoje se o usuário desejar utilizar apenas um subconjunto de emoções não é
+Hoje se o usuário desejar utilizar apenas um subconjunto de emoções isso não é
 possível. Ele sempre precisa configurar todos os limites mínimos de todas as
 emoções e, no decorrer da simulação, não inserir as referidas relações para
 aquelas emoções se tornarem ativas. Isso no futuro será ajustado para o
-sistema aguardar somente as emoções presentes no conceitos \emph{Emotion}.
+sistema aguardar somente as emoções presentes no conceitos \emph{Emotion} e
+que exista um modelo de percepção baseado nas preferências do agente para
+tornar a escrita de código menor.
 Além disso, remover a necessidade de o cálculo da potência da emoção ser feita
 em \emph{Java} para ser interessante. A vantagem de fazer isso em código
 \emph{AgentSpeak} é uma maior transparência no que esta sendo feito e como se
@@ -86,7 +88,7 @@ da ontologia de preferência, todas as emoções não podem ainda ser concluída
 só com base no que se encontra configurado. Isso se deve principalmente ao
 fato de que algumas emoções são complexas exigindo conhecimento de que um
 personagem esta interferindo com um determinado objetivo ou que uma meta afeta
-outra.
+outra ou que uma ação é fora dos padrões do ator.
 
 Sobre a ontologia afetiva, ela foi testada de diferentes formas na integração
 com o \emph{Jason}.
@@ -105,15 +107,16 @@ sobre o ator.
 Um sistema que estende a base de crenças do agente \jason para permitir que o
 mesmo tenha emoções segundo o modelo desenvolvido por \citet{ortony1988cse}
 foi apresentado. Assim, o desenvolvimento se baseou em utilizar uma ontologia
-para classificar qual é a emoção sendo sentida com base nas crenças do agente.
+para classificar qual é a emoção sendo sentida com base nas crenças e
+percepções do agente.
 Dessa forma, a base de crenças da plataforma foi alterada para manipular
 ontologias permitindo, de maneira transparente, realizar inserções, remoções e
 consultas.
 
 Inicialmente, o objetivo do trabalho era simular a construção do comportamento
 afetivo usando os agentes da plataforma \jason de maneira integrada com alguma
-aplicação em outra linguagem. Todavia, criar mecanismo para possibilitar o
-\jason rodar externamente e adaptar a aplicação especifica para utiliza-lo foi
+aplicação em outra linguagem. Todavia, criar um outro mecanismo para possibilitar o
+\jason rodar externamente e adaptar a aplicação especifica para utilizá-lo foi
 considerado fora do escopo do trabalho. Sendo por isso, removido da lista de
 objetivos almejados.
 

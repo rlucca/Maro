@@ -12,8 +12,8 @@ desejadas.
 
 Assim, o agente encontra-se situado em um ambiente no qual pode receber de ou
 enviar para outros agentes informações. As ações são
-estabelecidas utilizando regras que descrevem comportamentos. Logo, é
-possível, a própria entidade decidir qual ação deve ser tomada. Essas regras
+estabelecidas utilizando regras que descrevem comportamentos. Logo, 
+a própria entidade decide qual ação deve ser tomada. Essas regras
 são construídas em fórmulas lógicas descrevendo-se o contexto que torna um
 curso de ação válido e sua consequência. Essa consequência pode ser uma ação
 ou um conjunto sequencial de ações que precisam ser feitos.
@@ -24,15 +24,18 @@ AOP. Por exemplo: \emph{2APL}, \emph{Agent-0}, \emph{AgentSpeak(L)},
 formalismos diferentes. \emph{MetateM}, por exemplo, é baseada em lógica temporal,
 permitindo que formulas temporais definam o comportamento do agente.
 \emph{GOAL} tem a visão que o conhecimento pode ser estático (imutável) ou
-dinâmico. \emph{Agent-0}, como dito anteriormente, é a primeira linguagem da
-área de AOP. \emph{2APL} dividiu a linguagem em
-dois formatos básicos \cite{dastani20082apl}. O primeiro define quantos e em
-qual ambiente o agente se encontra e o segundo formato define a programação
-propriamente dita do indivíduo.
+dinâmico e escolhem suas ações a partir das suas crenças e metas de uma
+maneira similar ao que acontece no \emph{Jason}.
+\emph{Agent-0}, como dito anteriormente, é a primeira linguagem da
+área de AOP. \emph{2APL} é sucessora da \emph{3APL} e dividiu a linguagem em
+dois formatos básicos \cite{dastani20082apl}. O primeiro define como a
+plataforma irá operar, isto é, quantos e em qual ambiente o agente se
+encontra. O segundo formato define a programação propriamente dita do indivíduo.
 
 No presente trabalho, a plataforma \jason \cite{bordini-jason} será utilizada.
 Ela usa uma extensão da linguagem \emph{AgentSpeak(L)}, definida por
 \citet{rao1996agentspeak}, para especificar as atitudes que o agente deve
 tomar frente as constantes modificações do ambiente. Assim, essa linguagem é,
-normalmente, vista como reativa as crenças, metas ou percepções.
+normalmente, vista como reativa às crenças, metas ou percepções por causa que
+trabalha com a ideia de eventos sobre esses conceitos.
 
