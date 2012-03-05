@@ -3,26 +3,25 @@
 \section{Visão Geral}
 
 A presente arquitetura construída foi pensada conforme mostrado na
-Figura~\ref{fig:vasc}. Como se pode observar, o sistema é dividido em um
-ambiente e em agentes. O ambiente utiliza a ontologia de
-rotinas para construir a visualização mostrada no capítulo~\ref{ch:cdu}.
-Assim, o que o usuário vê é exibido a partir da descrição da ontologia de
-rotinas. Mais detalhes ver seção~\ref{ch:aec:ocu}. Já a ontologia de preferências,
-explicada na seção~\ref{ch:aec:oda}, permite guardar junto dos objetos do
-mundo virtual informações e especificar como o ator é atraído por essas
-informações.\dev{}
+Figura~\ref{fig:vasc}. Como é possível observar, o sistema é dividido em um
+ambiente e em agentes. O ambiente utiliza a ontologia de rotinas para
+construir uma visualização. Assim, o que o usuário vê é exibido a partir da
+descrição ontológica. Mais detalhes ver seção~\ref{ch:aec:ocu} e o
+capítulo~\ref{ch:cdu}. Já a ontologia de preferências, explicada na
+seção~\ref{ch:aec:oda}, permite guardar junto dos objetos informações e
+especificar como o ator é atraído por essas.\dev{} Além disso, o ambiente é
+o responsável por informar ao agente via percepção essas preferências e as
+rotinas que o agente possui para o dia sendo simulado.
 
-A segunda parte do sistema altera a mente dos atores agindo para acrescentar
-anotações em suas percepções e para alterar o local que essas crenças são
-salvas. A mente dos atores é chamada agente e eles recebem via percepção as suas
-preferências e rotinas\dev{}. Essa escolha foi feita para permitir que a
-escolha do que fazer seja toda ela escrita em código\dev{} da plataforma
-\emph{Jason}. As emoções são concluídas pelo agente através de ontologia
-(ver seção~\ref{ch:aec:omce}) e, portanto, a base de crenças padrão da
-plataforma foi ampliada para consultar, guardar e recuperar as informações
-diretamente da base de conhecimento quando a crença for relevante. Sendo
-assim, é como se houvesse dois níveis. O primeiro formado pela ontologia e o
-segundo pela base de crença padrão.
+A segunda parte do sistema estende os agentes focando em dois objetivos.
+Os agentes recebem um conjunto de percepções referente ao passo de simulação
+atual e conhecem seu conjunto de crenças do momento.
+O primeiro objetivo é acrescentar anotações junto dessas percepções para permitir ao agente conhecer de uma maneira mais profunda o objeto sendo percebido.
+O segundo objetivo é alterar o local onde as crenças que o agente possui são
+armazenadas permitindo ao agente ter ou não crenças salvas dentro de uma
+base de conhecimento. Assim, quando as crenças são salvas dentro da ontologia
+proposta da seção~\ref{ch:aec:omce} emoções podem ser geradas e passarem a ser
+percebidas.
 
 \begin{figure}
   \centering
@@ -42,7 +41,7 @@ regras que ajudam a conclusão das relações \emph{hasKnow}, \emph{hasFriend} e
 \emph{hasEnemy} são diferentes das demais por causa que elas tem como
 característica operar no domínio e na imagem da classe \emph{Agent}. Por
 exemplo, se John avalia que se relaciona bem com Jose então John
-\emph{hasFriend} Jose. Note que o contrario não é necessariamente verdade, o
+\emph{hasFriend} Jose. Note que o contrário não é necessariamente verdade, o
 Jose pode apenas saber que conhece o John então Jose \emph{hasKnow} John.
 
 \begin{table}[h]
