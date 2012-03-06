@@ -4,8 +4,9 @@
 
 A presente arquitetura construída foi pensada conforme mostrado na
 Figura~\ref{fig:vasc}. Como é possível observar, o sistema é dividido em um
-ambiente e em agentes. O ambiente utiliza a ontologia de rotinas para
-construir uma visualização. Assim, o que o usuário vê é exibido a partir da
+ambiente e em agentes. O ambiente utiliza uma ontologia de rotinas para
+construir às rotinas dos atores no ambiente e uma visualização para o usuário.
+Assim, o que o usuário vê é exibido a partir da
 descrição ontológica. Mais detalhes ver seção~\ref{ch:aec:ocu} e o
 capítulo~\ref{ch:cdu}. Já a ontologia de preferências, explicada na
 seção~\ref{ch:aec:oda}, permite guardar junto dos objetos informações e
@@ -34,84 +35,10 @@ percebidas.
 
 A fundamentação do modelo afetivo sendo utilizado aqui é o proposto por
 \citet{ortony1988cse} e encontra-se explicado na seção \ref{ch-ca-mce}. A
-ontologia proposta tinha como ideia inicial não utilizar regras, porém como
-pode ser observado na Tabela~\ref{tab:oa:geral} foi necessário a criação de
-regras para suportar o raciocínio no nível de indivíduo corretamente. As
-regras que ajudam a conclusão das relações \emph{hasKnow}, \emph{hasFriend} e
-\emph{hasEnemy} são diferentes das demais por causa que elas tem como
-característica operar no domínio e na imagem da classe \emph{Agent}. Por
-exemplo, se John avalia que se relaciona bem com Jose então John
-\emph{hasFriend} Jose. Note que o contrário não é necessariamente verdade, o
-Jose pode apenas saber que conhece o John então Jose \emph{hasKnow} John.
-
-\begin{table}[h]
-	\caption{Ontologia proposta com expressividade: ALCHIN(D).}
-	\label{tab:oa:geral}
-	\begin{center}
-	\begin{tabular}{|c|c|}
-	%\begin{tabular}{|p{34mm}|p{50mm}|p{50mm}|}
-		\hline
-		Descrição & Quantidade \\ \hline
-		Classes &  45 		\\ \hline
-		Propriedade de Objetos & 16 \\ \hline
-		Propriedade de Dados & 14 \\ \hline
-		Indivíduos &  0		\\ \hline
-		Regras & 7 \\ \hline
-	\end{tabular}
-	\end{center}
-\end{table}
-
-Na Figura~\ref{fig:rlocc} são mostradas as regras desenvolvidas, elas dependem
-que os indivíduos da ontologia sejam marcados como diferentes um dos outros.
-Assim, recomenda-se fortemente que quando registrar um indivíduo da classe
-\emph{Object} ou \emph{Agent} que a informação de igualdade ou diferenciação
-seja preenchida\dev{}. Assim, se evita que o raciocinador conclua que não
-conhece a resposta e chegue a uma conclusão não esperada.
-
-\begin{figure}[b]
-  \centering
-  \includegraphics[width=14cm]{figuras/rules-LOCC.png}
-  \caption{Regras da ontologia proposta.}
-  \label{fig:rlocc}
-\end{figure}
-
-A Figura~\ref{fig:kplocc} mostra a árvore de relações que tem como imagem
-dados ou instâncias (objetos). Ao se comparar as Figuras~\ref{fig:rlocc}
-e \ref{fig:kplocc} se chega a conclusão que as propriedades que as
-regras concluem não precisam ser configuradas pelo usuário. Assim, ao invés de
-16 propriedades de objetos conforme informado na Tabela~\ref{tab:oa:geral}
-apenas 9 precisam ser conhecidas. Dessas 9, a propriedade menos utilizada é a
-\emph{hasSomething} que serve para indicar genericamente o que esta sendo avaliado. Note que
-\emph{hasPerson} deve ser usado quando o indivíduo em avaliação for um membro
-da classe \emph{Agent}. Já, a relação \emph{hasJudge} serve para indicar que o
-membro da classe \emph{Object} esta sendo avaliado pela sua responsabilidade.
-Por exemplo, Millie tem uma avaliação julgando seu carro com uma valoração
-positiva.
-
-\begin{figure}[b]
-  \centering
-  \begin{tabular}{cc}
-  \includegraphics[height=4cm]{figuras/dataProperty-LOCC.png} & \includegraphics[height=5cm]{figuras/objectProperty-LOCC.png} \\
-  (i) Relações de dados & (ii) Relações de Objetos
-  \end{tabular}
-  \caption{As relações existentes na ontologia proposta.}
-  \label{fig:kplocc}
-\end{figure}
-
-Toda a valoração numérica existente na ontologia é inteira. Isso foi feito com a
-finalidade de permitir que o usuário normalize\dev{} o número obtido da
-maneira que desejar. Além disso, foi tomada a decisão de não especificar o
-domínio da maioria das propriedades por causa que isso forçaria um
-enquadramento em classes não desejadas. Por exemplo, se a relação
-\emph{hasLikelihood} tiver o domínio \emph{ConsequenceForSelf} e existir um
-indivíduo com somente essa relação então o mesmo seria enquadrado no conceito
-\emph{ConsequenceForSelf}. Mas, o correto nesse caso seria não ser concluído nada,
-ou seja, pertencer à classe \emph{Thing}.
-
-A estrutura da ontologia pode ser visualizada na
+estrutura da ontologia pode ser visualizada na
 Figura~\ref{fig:tlocc}~(pág.~\pageref{fig:tlocc}). Além disso, pode ser
 recomendável olhar a
-Figura~\ref{fig:occ_model}~(pág.~\pageref{fig:occ_model}) do modelo \occ
+Figura~\ref{fig:occ_model}~(pág.~\pageref{fig:occ_model})
 durante o resto da discussão dessa seção. Os sub-conceitos de \emph{Emotion}
 correspondem aos três ramos do modelo original.
 O ramo \emph{ActionsOfAgents} julga a responsabilidade e o quanto o agente que
@@ -140,7 +67,7 @@ repulsa por televisão.
 
 O segundo conceito, chamado \emph{ActionsOfAgents}, pode ser pensado como
 um ramo que julga a responsabilidade por uma determinada ação.
-Assim, esse ramo é capaz de gerar emoções de: Admiração (\emph{Admiration}),
+Logo, esse ramo é capaz de gerar emoções de: Admiração (\emph{Admiration}),
 Orgulho (\emph{Pride}), Vergonha (\emph{Shame}) e Reprovação
 (\emph{Reproach}). Por exemplo, Jose possui orgulho por cozinhar ou Dilu
 reprova Jose porque ele come carne.
@@ -162,19 +89,26 @@ casos de reprovação é um valor negativo. Todavia, isso ainda não permite
 diferenciar a emoção de admiração da emoção de orgulho ou a reprovação da de
 vergonha. Essa distinção é possível ao se dividir a relação de julgamento com
 duas sub-relações: tem auto-julgamento (\emph{hasJudgeMyself}) e tem
-julgamento de outro (\emph{hasJudgeOther}).
+julgamento sobre outro (\emph{hasJudgeOther}).
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \includegraphics[height=149mm]{figuras/hierarquiaLOCC.png}
+  \caption{Taxonomia da ontologia proposta baseado no modelo.}
+  \label{fig:tlocc}
+\end{wrapfigure}
 
 A utilização de sub-propriedade torna possível escrever a ontologia da maneira
 esperada suprimindo o problema. Entretanto, para o usuário pode se tornar
 complicado ter que lembrar quando utilizar uma sub-propriedade ou outra.
 Assim, foi resolvido deixar o usuário sempre utilizar a relação de julgamento
-(\emph{hasJudge}) e via 2 regras inferir se é um auto-julgamento ou o
-julgamento de outra pessoa. Para essas regras funcionarem da maneira correta,
+(\emph{hasJudge}) e via 2 regras descobrir se é um julgamento sobre outra
+pessoa ou sobre si mesmo. Para essas regras funcionarem da maneira correta,
 o usuário deve declarar que os agentes ou objetos são diferentes uns dos
-outros. Caso isso
-não ocorra, o sistema considera que não há informação para verificar se um
-indivíduo é igual ou diferente e conclui que não conhece a resposta. Além
-disso, a relação de julgamento tem como imagem o conceito \emph{Object}.
+outros. Caso isso não ocorra, o sistema considera que não há informação para
+verificar se um indivíduo é igual ou diferente e conclui que não conhece a
+resposta. Além disso, a relação de julgamento permite que tantos objetos
+quanto agentes sejam julgados porque possui como imagem o conceito
+\emph{Object}.
 
 Cabe salientar que toda avaliação tem pelo menos duas relações. A primeira
 relação serve para conhecer quem esta avaliando (\emph{isAppraisalOf}) e a
@@ -186,12 +120,6 @@ ser concluída quando usada uma de suas sub-relações. O último ramo, chamado 
 evento realizado por algum agente. Por exemplo, Dilu tem pena
 de Jose, Jose tem esperança de ser promovido, John tem satisfação por
 estar almoçando ou Millie esta alegre por cozinhar.
-
-\begin{wrapfigure}{r}{0.4\textwidth}
-  \includegraphics[height=149mm]{figuras/hierarquiaLOCC.png}
-  \caption{Taxonomia da ontologia proposta baseado no modelo.}
-  \label{fig:tlocc}
-\end{wrapfigure}
 
 A \emph{ConsequencesForOthers} expressa 4 emoções: \emph{Gloating},
 \emph{HappyFor}, \emph{Resentment} e \emph{SorryFor}. Na definição, essas
@@ -205,14 +133,15 @@ relações para descrever as 4 emoções.
 
 A relação de merecimento (\emph{hasDeserved}) e de desejabilidade
 presumida (\emph{hasDesireOther}) são avaliadas de acordo com sua valoração
-positiva ou negativa. Entretanto, a relação \emph{hasPerson} liga o outro indivíduo
+positiva ou negativa. Entretanto, a relação \emph{hasPerson} liga o indivíduo
 sendo avaliado com a avaliação. Para se ter o conhecimento do que esta sendo julgado
 ser amigo (\emph{GoodKnowRelation}) ou inimigo (\emph{BadKnowRelation}), esses
 conceitos foram criados e precisam ser configurados para cada um dos agentes
 em questão, porém quem precisa dessa informação é o conceito de avaliação
 quando as relações \emph{hasPersonEnemy} e \emph{hasPersonFriend} precisam ser
 descobertas. O agente pode declarar que só conhece uma pessoa, que conhece e é
-um amigo ou que conhece e não gosta dela (inimiga).
+um amigo ou que conhece e não gosta dela (inimiga). Veja a
+Figura~\ref{fig:rlocc}~(pág.~\pageref{fig:rlocc}) para mais detalhes.
 
 \emph{ConsequencesForSelf} se divide entre consequências de eventos com
 probabilidade (\emph{ProspectRelevant}) ou sem probabilidade
@@ -282,11 +211,78 @@ somente para valores nulos. Fora isso, as emoções desse conceito e do
 \emph{ActionsOfAgents} podem ser misturadas formando conceitos compostos.
 A composição é quando uma emoção pode ser encaixada em mais de uma emoção
 como no caso de se estar alegre (\emph{Joy}), orgulhoso (\emph{Pride}) e
-gratificado (\emph{Gratification}). Por fim, o conceito \emph{Setup}
-é o utilizado para manter junto da ontologia criada o limite mínimo para uma
-emoção virar sentimento\dev{}. A Tabela~\ref{table:lucca-emo}
-(pág.~\pageref{table:lucca-emo}) resume as definições
-utilizadas para classificar as avaliações como emoções.
+gratificado (\emph{Gratification}).
+
+O conceito \emph{Setup} foi introduzido para manter junto da ontologia criada
+o limite mínimo para uma emoção virar sentimento\dev{} e é
+usado como um conceito de ligação com as demais ontologias.  A
+Tabela~\ref{table:lucca-emo}~(pág.~\pageref{table:lucca-emo}) resume as
+definições utilizadas para classificar as avaliações como emoções e a
+Tabela~\ref{tab:oa:geral}~(pág.~\pageref{tab:oa:geral}) mostra as estatísticas
+da ontologia.
+
+A Figura~\ref{fig:rlocc} mostra todas as regras existentes. Essas 7 regras
+visam facilitar o usuário e a maior parte delas operam no domínio do conceito
+\emph{Appraisal}. As regras \emph{hasKnow}, \emph{hasFriend} e \emph{hasEnemy}
+são uma exceção porque operam no domínio e na imagem do conceito \emph{Agent}.
+Além disso, a finalidade dessas é permitir que um agente conheça o tipo de
+relacionamento que ele possui com outro agente a partir das avaliações feitas
+sobre o conceito \emph{KnowRelation}.
+
+\begin{table}[h]
+	\caption{Ontologia proposta com expressividade: ALCHIN(D).}
+	\label{tab:oa:geral}
+	\begin{center}
+	\begin{tabular}{|c|c|}
+	%\begin{tabular}{|p{34mm}|p{50mm}|p{50mm}|}
+		\hline
+		Descrição & Quantidade \\ \hline
+		Classes &  45 		\\ \hline
+		Propriedade de Objetos & 16 \\ \hline
+		Propriedade de Dados & 14 \\ \hline
+		Indivíduos &  0		\\ \hline
+		Regras & 7 \\ \hline
+	\end{tabular}
+	\end{center}
+\end{table}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=14cm]{figuras/rules-LOCC.png}
+  \caption{Regras da ontologia proposta.}
+  \label{fig:rlocc}
+\end{figure}
+
+\begin{figure}[b]
+  \centering
+  \begin{tabular}{cc}
+  \includegraphics[height=4cm]{figuras/dataProperty-LOCC.png} & \includegraphics[height=5cm]{figuras/objectProperty-LOCC.png} \\
+  (i) Relações de dados & (ii) Relações de Objetos
+  \end{tabular}
+  \caption{As relações existentes na ontologia proposta.}
+  \label{fig:kplocc}
+\end{figure}
+
+Comparando essas regras mencionadas na figura anterior com as relações
+existentes na ontologia mostradas na Figura~\ref{fig:kplocc}. A conclusão é
+que ao invés de 16 propriedades de objetos apenas 9 precisam ser conhecidas.
+Dessas 9, a propriedade menos utilizada é a \emph{hasSomething} que serve para
+indicar genericamente o que esta sendo avaliado. Note que a relação
+\emph{hasPerson} deve ser usada quando o indivíduo em avaliação for um membro
+da classe \emph{Agent}. Já, a relação \emph{hasJudge} serve para indicar que o
+membro da classe \emph{Object} esta sendo avaliado pela sua responsabilidade.
+Por exemplo, Millie tem uma avaliação julgando seu carro positivamente.
+
+Toda a valoração numérica existente na ontologia é inteira. Isso foi feito com a
+finalidade de permitir que o usuário normalize\dev{} o número obtido da
+maneira que desejar. Além disso, foi tomada a decisão de não especificar o
+domínio da maioria das propriedades por causa que isso forçaria um
+enquadramento em classes não desejadas. Por exemplo, se a relação
+\emph{hasLikelihood} tiver o domínio \emph{ConsequenceForSelf} e existir um
+indivíduo com somente essa relação então o mesmo seria enquadrado no conceito
+\emph{ConsequenceForSelf}. Mas, o correto nesse caso seria não ser concluído nada,
+ou seja, pertencer à classe \emph{Thing}.
+
 
 \section{Ontologia de Comportamento Urbano} \label{ch:aec:ocu}
 
