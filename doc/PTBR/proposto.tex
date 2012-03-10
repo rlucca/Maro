@@ -44,7 +44,7 @@ A fundamentação do modelo afetivo sendo utilizado aqui é o proposto por
 estrutura da ontologia pode ser visualizada na
 Figura~\ref{fig:tlocc}. Além disso, pode ser recomendável olhar a
 Figura~\ref{fig:occ_model}~(pág.~\pageref{fig:occ_model})
-durante o resto da discussão dessa seção. Os sub-conceitos de \emph{Emotion}
+durante o resto da discussão dessa seção. Os subconceitos de \emph{Emotion}
 correspondem aos três ramos do modelo original.
 O ramo \emph{ActionsOfAgents} julga a responsabilidade e o quanto o agente que
 realizou uma ação se desviou do esperado, o de
@@ -93,12 +93,12 @@ comportamento esperado, isto é, em casos de aprovação é um valor positivo e 
 casos de reprovação é um valor negativo. Todavia, isso ainda não permite
 diferenciar a emoção de admiração da emoção de orgulho ou a reprovação da de
 vergonha. Essa distinção é possível ao se dividir a relação de julgamento com
-duas sub-relações: tem auto-julgamento (\emph{hasJudgeMyself}) e tem
+duas subrelações: tem auto julgamento (\emph{hasJudgeMyself}) e tem
 julgamento sobre outro (\emph{hasJudgeOther}).
 
-A utilização de sub-propriedade torna possível escrever a ontologia da maneira
+A utilização de subpropriedade torna possível escrever a ontologia da maneira
 esperada suprimindo o problema. Entretanto, para o usuário pode se tornar
-complicado ter que lembrar quando utilizar uma sub-propriedade ou outra.
+complicado ter que lembrar quando utilizar uma subpropriedade ou outra.
 Assim, foi resolvido deixar o usuário sempre utilizar a relação de julgamento
 (\emph{hasJudge}) e via 2 regras descobrir se é um julgamento sobre outra
 pessoa ou sobre si mesmo. Para essas regras funcionarem da maneira correta,
@@ -113,7 +113,7 @@ Cabe salientar que toda avaliação tem pelo menos duas relações. A primeira
 relação serve para conhecer quem esta avaliando (\emph{isAppraisalOf}) e a
 seguinte serve para indicar quem ou o que esta sendo avaliado
 (\emph{hasSomething}). Essa última pode não ser informada explicitamente porque pode
-ser concluída quando usada uma de suas sub-relações. O último ramo, chamado de
+ser concluída quando usada uma de suas subrelações. O último ramo, chamado de
 \emph{ConsequencesOfEvents} é dividido em: \emph{ConsequencesForSelf} e
 \emph{ConsequencesForOthers}. Toda essa divisão foca na consequência de um
 evento realizado por algum agente. Por exemplo, Dilu tem pena
@@ -201,7 +201,7 @@ visão do agente sobre como a consequência do evento aconteceu. A segunda
 relação \emph{hasPreviousIntensity} recebe a valoração da emoção \emph{Fear}
 ou \emph{Hope} do evento que tinha probabilidade e serve para saber se o evento era
 um evento bom (\emph{Hope}) ou ruim (\emph{Fear}). Já a terceira propriedade
-(\emph{hasEffort}) tenta estimar o grau de esforço que foi dispendido para a
+(\emph{hasEffort}) tenta estimar o grau de esforço que foi despendido para a
 atração ou repulsa da consequência.
 
 O conceito \emph{ProspectIrrelevant} é parecido com o conceito
@@ -298,7 +298,7 @@ deve ou pode visitar.
   \label{fig:UEM:TBOX}
 \end{figure}
 
-A Figura~\ref{fig:UEM:TBOX} demostra a ontologia, criada por
+A Figura~\ref{fig:UEM:TBOX} demonstra a ontologia, criada por
 \citet{paiva2005ontology}, que será utilizada. As relações de generalização
 possuem a mesma semântica que na UML, as relações direcionais são relações
 binárias entre as instâncias das classes. Na figura, \emph{Agent} se relaciona
@@ -314,7 +314,7 @@ o tamanho nos eixos X e Y. Já o conceito de \emph{Schedules} possui o horário
 de abertura e fechamento, intervalo de entrada e tempo médio de permanência.
 
 Além disso, o conceito \emph{Components\_of\_the\_environments} esta sendo
-pensando como um sub-conceito de \emph{Setup} na ontologia
+pensando como um subconceito de \emph{Setup} na ontologia
 desenvolvida porque representa uma configuração.
 %Essas configurações gerais são carregadas, normalmente, em outras partes do
 %sistemas e então eliminadas porque elas não influenciam as emoções
@@ -357,7 +357,7 @@ descrevem o estado do jogo permitindo sugerir movimentos.
 
 \citet{kallmann1999modeling} propuseram uma ideia similar: os objetos no mundo
 são os responsáveis por proverem para o personagem o como ele deve ser usado.
-Por exemplo, durante a animação do personagem estar abrindo uma porta, quem esta
+Por exemplo, durante a animação de o personagem estar abrindo uma porta, quem esta
 no controle do ator é o ``agente'' que controla a porta. Sendo assim, o agente do
 personagem delega a responsabilidade da animação para o agente do objeto já
 que o mesmo é o único que sabe como realizar a animação de abertura ou
@@ -387,9 +387,9 @@ Figura~\ref{fig:preferences}. Como pode ser observado, foi criado dois
 conceitos principais: \emph{Annotation} e \emph{Preference}. O conceito
 \emph{Annotation} é utilizado para representar características de objetos.
 Essas características podem ainda ser categorizadas entre as que mudam
-e não mudam durante a simulação. O sub-conceito \emph{Dynamic} representa as
+e não mudam durante a simulação. O subconceito \emph{Dynamic} representa as
 características dinâmicas, isto é, as características que podem ser alteradas
-durante a ``vida'' do objeto. O sub-conceito \emph{Static} representa as
+durante a ``vida'' do objeto. O subconceito \emph{Static} representa as
 características que não podem ser alteradas depois da criação do objeto. O
 calor e o dono são exemplos de características dinâmicas, enquanto o nome e a
 capacidade total são exemplos de características estáticas.
@@ -400,7 +400,7 @@ agente é atraído por determinada característica, por exemplo algumas pessoas
 gostam de calor e outras não. Assim, as pessoas que gostam de calor são
 atraídas pela valoração positiva da anotação de calor. Já, as pessoas que não
 gostam de calor são atraídas pela valoração negativa. Dessa forma, os
-sub-conceitos da preferência representam sempre valores que fazem o agente ser
+subconceitos da preferência representam sempre valores que fazem o agente ser
 atraído pelo objeto e repelido caso contrário.
 
 Entretanto, esse exemplo não funciona para todos os casos. Por exemplo, um
@@ -595,7 +595,7 @@ inserção na ontologia o valor retornado para o \jason dependerá da inserção
 base de crenças padrão da plataforma. O processo que atualiza as emoções e
 guarda a potência das mesmas na classe \emph{Emotion} é realizado quando uma
 percepção esta sendo inserida e o termo da crença é ``step''. Nesse momento os
-sentimentos atualizados são recuperados e é feita a re-inserção deles no
+sentimentos atualizados são recuperados e é feita a reinserção deles no
 segundo nível da base de crenças.
 
 \begin{figure}
@@ -607,7 +607,7 @@ segundo nível da base de crenças.
 
 Agora quando esta sendo feita uma inserção de uma crença que não é uma
 percepção, é feita a verificação se ela é relevante. Caso ela seja considerada
-irrelevante, a crença sera inserida no segundo nível. Entretanto, se ela for
+irrelevante, a crença será inserida no segundo nível. Entretanto, se ela for
 considerado relevante então será feita a recuperação do elemento atualmente
 armazenado e, após isso, é feita a inserção das novas anotações nesse
 elemento. Se o elemento não existir na base de crenças então esse último

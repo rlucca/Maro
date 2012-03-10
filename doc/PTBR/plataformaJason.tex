@@ -44,14 +44,14 @@ normalmente não aparece, é a \emph{executionControl} utilizada para
 mudar a forma com que os agentes são executados. O valor no exemplo é uma
 classe que obriga o próximo ciclo de deliberação somente acontecer quando
 todos os agentes terminaram o seu ciclo. O padrão é iniciar um novo
-após 500ms do anterior ter sido concluído, porém, algumas vezes isso
+após 500ms de o anterior ter sido concluído, porém, algumas vezes isso
 pode vir a apresentar problemas de sincronismo por ser assíncrono e, por isso, é interessante
 mostrar que há uma opção para controlar a forma de execução dos ciclos
 deliberativos. O usuário, inclusive, pode colocar sua própria classe como
 configuração.
 
 Todas as entradas apresentadas até agora mapeiam para código Java.
-Os agentes são especificados na entrada \emph{agents}. Como pode-se
+Os agentes são especificados na entrada \emph{agents}. Como se pode
 observar na Listagem~\ref{lst-roomMas2j}, cada referência a um agente deve
 terminar com um ponto-e-vírgula (;). Há ainda como especializar cada um dos
 agentes mudando opções. Na seção~\ref{sec-jason-architecture} e no
@@ -117,7 +117,7 @@ Listagem~\ref{lst-agente} será detalhado adiante.
 
 Em um plano há sempre três divisões: evento disparador, contexto e corpo.
 A primeira e única à ser explicita é o evento disparador, que deve ocorrer para
-o plano ser disparado. Ele está limitado do carácter inicial até
+o plano ser disparado. Ele está limitado do caractere inicial até
 o dois-pontos (:). A divisão de contexto é onde se coloca as ações, crenças
 ou regras que tem que ser válidas para o corpo do plano ser
 considerado válido. Dessa forma, é
@@ -170,7 +170,7 @@ recurso (a porta).
 
 A plataforma \jason tem uma base de software completamente extensível como
 é possível observar mediante a Figura \ref{fig-jason-infra-1}.
-Nessa figura, a infra-estrutura encontra-se representada como um barramento
+Nessa figura, a infraestrutura encontra-se representada como um barramento
 na parte inferior. Ela pode ser configurada através da chave de configuração
 \emph{infrastructure} no arquivo de projeto (ver Listagem~\ref{lst-roomMas2j}).
 
@@ -184,7 +184,7 @@ a estrutura do barramento.
                \begin{center}
                \includegraphics[width=140mm]{figuras/infra.png} 
                 \end{center}
-                \caption{Modelo da infra-estrutura do \emph{Jason}.}
+                \caption{Modelo da infraestrutura do \emph{Jason}.}
                 \label{fig-jason-infra-1}
 \end{figure}
 
