@@ -3,8 +3,8 @@
 O presente capítulo visa explicar os estudos de caso utilizados para validar o
 sistema desenvolvido. Os estudos são simulações de parte da vida dos
 personagens. No primeiro, eles encontram-se observando um jogo de futebol e
-cada um torce para um time. No segundo, uma casa é simulada com quatro atores
-e suas rotinas. Entretanto, antes desses estudos de caso serem abordados na
+cada um torce por um time. No segundo, uma casa é simulada com quatro atores
+e suas rotinas. Entretanto, antes desses estudos serem abordados na
 seção~\ref{ch:cdu:svc} e na \ref{ch:cdu:home},
 será descrito como a ontologia foi testada juntamente com a plataforma
 \emph{Jason}. A seção~\ref{ch:cdu:tbc} explica as ferramentas desenvolvidas
@@ -30,8 +30,8 @@ recuperação, remoção e listagem. Os testes foram escritos na linguagem
 A primeira aplicação de teste desenvolvida foi de maneira interativa conforme
 pode ser observado na Figura~\ref{fig:introducaoDF}. A aplicação permite que o
 usuário escreva as crenças do agente em um campo texto (área 2 na figura) e
-esse é enviado diretamente para a base de crenças do agente. A área 1 na mesma
-figura é utilizada para mostrar a valência das emoções.
+esse é enviado diretamente para a base de crenças do agente. Na área 1 da mesma
+figura a valência das emoções é mostrada.
 Essas informações podem aparecer em: preto, se não houve alteração com o ciclo
 anterior; azul, se houve um aumento; vermelho, se houve uma diminuição do
 valor.
@@ -66,8 +66,8 @@ no sistema desenvolvido não existe o decaimento dos valores com o
 passar do tempo, para isso ser feito o agente deve reavaliar o problema e
 atualizar os valores nas suas crenças.
 
-Na Listagem~\ref{lst:testeJasonIntBase} pode ser observado uma configuração
-para se rodar a presente aplicação\footnote{Veja a seção
+Na Listagem~\ref{lst:testeJasonIntBase} pode ser observada uma configuração
+para rodar o presente aplicativo\footnote{Veja a seção
 \ref{sec-jason-overview} na página~\pageref{sec-jason-overview}
 para ver uma introdução sobre esse tipo de arquivo.}. O ambiente na linha 3
 espera que todos os agentes (quantidade informada no parâmetro 3) mandem
@@ -86,7 +86,7 @@ ação ou a falha imediata da mesma que é o sendo utilizado no exemplo.
     \end{minipage}
 \end{center}
 
-A agente millie configurada da linha 5 à 9 utiliza opções do \jason para
+O agente configurado da linha 5 à 9 utiliza opções do \jason para
 alterar a base de crença sendo utilizada (\emph{beliefBaseClass}),
 arquitetura (\emph{agentArchClass}) e o raciocinador
 (\emph{agentClass}). As classes dessas alterações foram explicadas anteriormente
@@ -181,7 +181,7 @@ mesmos eventos. Esses eventos foram pensados como a marcação de um gol
 (Listagem~\ref{lst:soccerGoal}), o estado atual do jogo
 (Listagem~\ref{lst:soccerTeam}) e  o estado final do jogo
 (Listagem~\ref{lst:soccerEnd1} e Listagem~\ref{lst:soccerEnd2}).
-Esses são alguns exemplos escritos escritos na plataforma \jason para
+Esses são alguns exemplos escritos na plataforma \jason para
 fins de validação.
 
 \begin{center}
@@ -442,7 +442,7 @@ anotações de posição nos eixos x e y, tamanhos nos dois eixos, utilidade
 
 Cabe chamar atenção que o personagem em nenhum momento recebe a informação
 do ambiente de onde ele se encontra. Essa informação o agente descobre baseado
-na percepção do ambiente. Por exemplo, o agente sabe que o ``quarto1'' possui um
+na percepção do ambiente. Por exemplo, o agente sabe que o ``quarto1'' possui
 um armário, dois criados mudos, duas camas e duas portas. O agente sabe o nome
 correto de cada um dos itens que estão no quarto então ele pode a partir da
 percepção buscar em seu mapa onde os objetos que percebe estão e então
