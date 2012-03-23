@@ -1,0 +1,715 @@
+\documentclass{beamer}
+\usepackage[T1]{fontenc}        % pacote para conj. de caracteres correto
+\usepackage[latin1]{inputenc}   % pacote para acentuação
+\usepackage[brazilian]{babel}   % pacote para acentuação
+%\usepackage{graphicx}           % pacote para importar figuras
+%\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{times}              % pacote para usar fonte Adobe Times
+%\usepackage{mathptmx}           % p/ usar fonte Adobe Times nas fórmulas
+%\usepackage{color}			% p/ usar \textcolor no TODO
+%\usepackage[normalem]{ulem}		% p/ ter riscado e outros tipos de sublinhado
+\usepackage{natbib}
+%\usepackage[alf]{abntcite}		% pacote para as referencias da abnt nao numerica
+\usetheme{Copenhagen}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{headline}[text line] % retira barra de indice
+
+\setbeamertemplate{navigation symbols}{} % retira a barra de navegacao
+
+% Criando comando \todo{algo}
+\newcommand{\todo}[1] {\footnote{TODO #1}\marginpar{\textcolor{red}{\textbf{TODO}}}}
+%\newcommand{\citet}{\citeonline}
+\newcommand{\jason}[0] {\emph{Jason}}
+
+% Traduzindo Listing
+\renewcommand{\lstlistingname}{Listagem}
+\renewcommand{\lstlistlistingname}{Lista de Listagens}
+
+%
+% Informações gerais
+%
+\title{MARO\\ Um modelo de emo\c{c}\~{o}es usando ontologia}
+
+\author{Ricardo Rodrigues Lucca \\
+		 Rafael Heitor Bordini (orientador) }
+
+\institute{UFRGS - Universidade Federal do Rio Grande do Sul}
+
+\date{Porto Alegre, março de 2012}
+
+\definecolor{darkgray}{rgb}{0.95,0.95,0.95}
+\lstset{backgroundcolor=\color{darkgray}}
+\lstset{numbers=left, basicstyle=\scriptsize\ttfamily, numberstyle=\tiny, stepnumber=2, numbersep=5pt}
+
+\newenvironment{changemargin}[2]{% 
+  \begin{list}{}{% 
+    \setlength{\topsep}{0pt}% 
+    \setlength{\leftmargin}{#1}% 
+    \setlength{\rightmargin}{#2}% 
+    \setlength{\listparindent}{\parindent}% 
+    \setlength{\itemindent}{\parindent}% 
+    \setlength{\parsep}{\parskip}% 
+  }% 
+  \item[]}{\end{list}} 
+
+
+%
+% inicio do documento
+%
+\begin{document}
+
+\section{Introdução}
+\frame{\titlepage} % apresentacao
+
+\begin{frame}
+    \frametitle{Sumário}
+    \tableofcontents
+\end{frame}
+
+\begin{frame}
+	\frametitle{Introdução}
+	\framesubtitle{Introdução > Por que do nome \emph{Maro}}
+
+	\begin{itemize}
+		\item Não aprovo nomes começando com J, \\por exemplo \emph{jAffective};
+		\item Foi buscado por um nome perto da ou na ilha de Java;
+		\item \emph{Maro} é um rio da Indonésia que fica à menos de 2000 km da ilha de Java;
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Introdução}
+	\framesubtitle{Introdução > Objetivos e Resultados}
+
+	\begin{columns}
+	\column{0.3\textwidth}
+		A meta era desenvolver uma ferramenta no qual seja
+possível simular o comportamento afetivo nos agentes da plataforma \jason.
+	\column{0.7\textwidth}
+		\begin{itemize}
+			\item Estudar a plataforma \jason \cite{bordini-jason};
+			\item Estudar o modelo de emoções \cite{ortony1988cse};
+			\item Estudar e elaborar a(s) ontologia(s);
+			\item Desenvolvimento de um \emph{framework} para suportar emoções;
+			\item Integrar o \jason { } com aplicações em outras linguagens (por exemplo, C++);
+		\end{itemize}
+	\end{columns}
+	\vfill{}
+	O resultado esperado é uma aplicação utilizando a ferramenta.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Introdução}
+	\framesubtitle{Introdução > Por que modelar a afetividade?}
+
+	A modelagem afetiva possui inúmeras utilidades em
+	\begin{itemize}
+		\item aplicação de entretenimento digital;
+		\item simulação de pedestres;
+		\item simulação de impactos em diversas áreas (por exemplo,
+preservação ambiental, rios, metrópoles, etc);
+		\item mineração de dados;
+	\end{itemize}
+\end{frame}
+
+\section{Estado da Arte}
+\begin{frame}
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Computação Afetiva}
+
+	A afetividade é estudada na área da Computação
+	denominada Computação Afetiva e ela é definida como uma
+	``computação relacionada, surgida ou que influência as emoções'' \cite{Pic98}
+\end{frame}
+\begin{frame}
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Computação Afetiva}
+
+	A afetividade é estudada na área da Computação
+	denominada Computação Afetiva e ela é definida como uma
+	``computação relacionada, surgida ou que influência as \alert{emoções}'' \cite{Pic98}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Emoção e Sentimento \cite{damasio2004erro}}
+
+	\begin{block}{O que é emoção?}
+		Emoção é um estado físico do corpo em contínua alteração.
+	\end{block}
+	\vfill{}
+	\begin{block}{O que é sentimento?}
+		Sentimento é a percepção das alterações contínuas do corpo.
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Modelos afetivos da Psicologia}
+
+	\begin{columns}
+	\column{0.5\textwidth}
+		\vfill
+		Os modelos emotivos podem ser categorizados em:
+		\begin{itemize}
+			\item modelos dimensionais;
+			\item modelos discretos;
+			\item modelos baseados em significados;
+			\item modelos baseados em componentes;
+		\end{itemize}
+	\column{0.5\textwidth}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Modelos afetivos da Psicologia}
+
+	\begin{columns}
+	\column{0.5\textwidth}
+		\vfill
+		Os modelos emotivos podem ser categorizados em:
+		\begin{itemize}
+			\item modelos dimensionais;
+			\item modelos discretos;
+			\item \alert{modelos baseados em significados};
+			\item modelos baseados em componentes;
+		\end{itemize}
+	\column{0.5\textwidth}
+		As estruturas semânticas das emoções são descritas
+		preocupando-se com as situações que as mesmas ocorrem.
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Modelo de Ortony, Collins e Clore}
+
+	\begin{itemize}
+		\item Modelo bem conhecido na Inteligência Artificial \cite{ortony1988cse}
+		\item 3 ramos de avaliação com 22 emoções totais
+	\end{itemize}
+
+	\centering \includegraphics[width=75mm]{figuras/occ.png}
+
+	\vfill
+\end{frame}
+
+\begin{frame}
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Computação Afetiva}
+
+	\begin{columns}
+	\column{0.5\textwidth}
+		\begin{itemize}
+			\item Projeto: \emph{Artificial Intelligent Driving Agent}\footnote{Ver http://senseable.mit.edu/aida}
+			\item Entender o estado afetivo da pessoa dirigindo; e,
+			\item Criar um relacionamento com a pessoa;
+		\end{itemize}
+	\column{0.5\textwidth}
+		\includegraphics[width=5cm]{figuras/aida.jpg} \\
+		\includegraphics[width=4cm]{figuras/robot-car.jpg}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Plataforma \jason}
+
+	A plataforma \jason \cite{bordini-jason} é um sistema multi-agente que
+	permite definir:
+
+	\begin{itemize}
+		\item zero ou um ambiente, no qual é possível definir o mundo virtual
+              que os agentes atuarão permitindo modificar percepções, definir
+              ações possíveis e etc.
+		\item zero ou mais agentes, no qual os agentes representam a mente por
+              de trás dos atores virtuais no mundo criado.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Plataforma \jason}
+
+	\begin{columns}
+	\column{0.4\textwidth}
+		Essa plataforma opera com o seguinte ciclo:
+		\begin{enumerate}
+			\item Recebimento das percepções;
+			\item Raciocínio baseando-se em regras lógicas;
+			\item Envio de ordens para os atuadores;
+		\end{enumerate}
+	\column{0.6\textwidth}
+		\begin{center}
+		\begin{lstlisting}
+		!safety.
+		!wandering.
+
+		+!safety
+		     : .findall(E, enemy(E), LE)
+		     & .length(LE, LEN) & LEN >= 2
+		    <- flee; !!safety.
+		+!safety <- !!safety.
+
+		+!wandering[source(self)]
+		    <- forward; !!wandering.
+		-!wandering[source(self)]
+		    <- left; !!wandering.
+
+		+enemy(E) <- hit(E).
+		\end{lstlisting}
+		\end{center}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Plataforma \jason}
+
+	Como pode ser visto, a plataforma opera com eventos sobre as crenças,
+	percepções ou metas e, por isso, é muitas vezes caracterizada como
+	reativa sobre esses conceitos.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Plataforma \jason}
+
+	A escolha por usar a plataforma veio do fator que ela pode ser
+	especializada em diferentes pontos sem afetar os demais elementos
+	existentes.
+
+	\vfill
+
+	Assim, ela serve tanto para escrever os agentes usados no processo de
+	validação quanto para se criar o \emph{framework} em Java
+	para operar com ontologias.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Plataforma \jason}
+
+	\begin{itemize}
+		\item Incorporação de ontologias à plataforma foi definida em
+\cite{moreira2006agent} e implementada em \cite{KlaBor09};
+		\item A operação com a ontologia feita nesse não se restringe somente
+em operar indivíduos permitindo acrescentar conceitos e a realização de
+consultas durante a simulação;
+		\item A relevância para mandar a informação para a ontologia é via
+anotação e há como definir o projeto via ontologia.
+		\item A implementação realizada é mais simples porque preocupa-se
+somente com indivíduos e a relevância é automática baseando-se nos axiomas
+existentes
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Ontologia}
+
+	\begin{columns}
+		\column[t]{.45\textwidth}
+		\begin{itemize}
+			\item Existem desde Aristóteles
+			\item Entendimento comum e compartilhado
+			\item Estruturado em rede semântica
+			\item Especificação explícita, fundamentada e formal \cite{gruber1993translation}
+		\end{itemize}
+
+		\column[t]{.55\textwidth}
+		Ricardo é uma pessoa.\\
+		Ricardo faz mestrado em Computação.
+
+		\begin{center}
+		\includegraphics[width=50mm]{figuras/ricardoFazComputacao.png}
+		\end{center}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Estado da Arte}
+	\framesubtitle{Estado da Arte > Ontologia}
+
+	\begin{itemize}
+		\item Utilizar ontologias para definir a afetividade não é uma ideia nova;
+		\item Em \cite{benta2007ontology}, há um conjunto básico de emoções e
+a partir da mistura dessas emoções novas (secundárias) são descobertas.
+		\item \cite{wks2008towards} criou uma ontologia de alto nível sobre
+emoções; Nela não tem nenhuma informação de uma teoria específica modelada.
+		\item Há trabalhos que formalizam modelos afetivos
+\cite{adam2009alfototoe, steunebrink2010emotions};
+	\end{itemize}
+\end{frame}
+
+\section{Arquitetura Proposta}
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Exemplo}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Exemplo}
+	\begin{columns}
+		\column{60mm}
+		\includegraphics[width=35mm]{figuras/Unknown2.jpg}
+
+		\column{60mm}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Exemplo}
+	\begin{columns}
+		\column{60mm}
+		\includegraphics[width=35mm]{figuras/Unknown2.jpg}\\
+		myself [\\ positionX(10),\\ positionY(1),\\ energy(57),\\ source(self)\\]
+		\column{60mm}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Exemplo}
+	\begin{columns}
+		\column{60mm}
+		\includegraphics[width=35mm]{figuras/Unknown2.jpg}\\
+		myself [\\ positionX(10),\\ positionY(1),\\ energy(57),\\ source(self)\\]
+		\column{60mm}
+		priority(repulse, energy, 50)\\
+		priority(attract, type, food)\\
+		fixedPlace(camp, 10, 20)\\
+		fixedPlace(house, 0, 10)
+		randomPlace(house, 20, 24)
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Exemplo}
+	\begin{columns}
+		\column{60mm}
+		\includegraphics[width=35mm]{figuras/Unknown2.jpg}\\
+		myself [\\ positionX(10),\\ positionY(1),\\ energy(57),\\ source(self)\\]
+
+		\column{60mm}
+		\includegraphics[height=20mm]{figuras/Unknown.jpg}\\
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Exemplo}
+	\begin{columns}
+		\column{60mm}
+		\includegraphics[width=35mm]{figuras/Unknown2.jpg}\\
+		myself [\\ positionX(10),\\ positionY(1),\\ energy(57),\\ source(self)\\]
+
+		\column{60mm}
+		\includegraphics[height=20mm]{figuras/Unknown.jpg}\\
+		bird(198746637)[\\ positionX(23),\\ positionY(2),\\ type(food),\\ doing(rest),\\ source(percept)\\]
+	\end{columns}
+	\begin{center}
+	* imagens: \url{animal-photography.com} \\ e \url{freenaturepictures.com}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Exemplo}
+	Assim, o \emph{framework} desenvolvido deve ter as seguintes características:
+	\begin{itemize}
+		\item reconhecer anotações das crenças;
+		\item permitir o agente ter preferências sobre as anotações;
+		\item utilizar as preferências para descobrir as emoções;
+		\item suportar consultas de crenças sem uso de operador ou com o uso
+              do operador \emph{not} (e não $\sim$)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Visão Geral}
+	\begin{changemargin}{-13mm}{-2cm}
+		\begin{center}
+		\includegraphics[width=135mm]{figuras/visao-geral.png}
+		\end{center}
+	\end{changemargin}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > \emph{Unified} \emph{Modeling} \emph{Language} }
+	\begin{itemize}
+		\item Relação de Generalização é similar ao \emph{UML}
+		\item Relação de Associação direcional representa uma relação entre dois conceitos
+		\item Atributos representam relações do conceito para um tipo de dado ou para outros conceitos
+		\item Guardas representam condições que precisam ser obedecidas para um elemento pertencer ao conjunto, \\ por exemplo ``int [> 0]''
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologia de Rotina(s)}
+	\begin{center}
+		\includegraphics[width=10cm]{figuras/uem-tbox.png}
+	\end{center}
+	\begin{itemize}
+		\item Descreve os locais que um ator visita utilizando perfis \cite{paiva2005ontology}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologia de Preferência(s)}
+	\begin{center}
+	\includegraphics[width=8cm]{figuras/preferences.png}
+	\end{center}
+	\begin{itemize}
+		\item Definem as anotações existentes e seus tipos;
+		\item Definem as preferências sobre as anotações podendo ter um valor de partição associado;
+		\item Anotações estáticas podem ter seus valores armazenados
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologia Afetiva}
+	\begin{itemize}
+		\item 22 emoções estão representadas
+		\item Há 4 categorias de prob. (nenhuma, baixa, média e alta)
+		\item A expressividade da ontologia é: ALCHIN(D)
+		\item 45 conceitos, 30 relações e 7 regras
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologia Afetiva-0}
+	\includegraphics[width=10cm]{figuras/locc-uml1.png}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologia Afetiva-1}
+	\includegraphics[width=10cm]{figuras/locc-uml2.png}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologia Afetiva-2}
+	\includegraphics[height=8cm]{figuras/locc-uml3.png}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason}}
+	\begin{changemargin}{-13mm}{-2cm}
+		\begin{center}
+		\includegraphics[width=135mm]{figuras/visao-geral.png}
+		\end{center}
+	\end{changemargin}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason}}
+	\begin{itemize}
+		\item Para fazer o ambiente e os agentes trabalharem utilizando
+ontologias foi necessário apenas especializar os elementos existentes na
+plataforma como o Ambiente \\e a Base de Crenças dos Agentes
+		\item A única classe que trabalha sobre a ontologia é a denominada
+\emph{OwlApi} e ela mantém os nomes de conceitos e relações em memória para
+rapidamente determinar se uma crença chamando o método de atualização de
+crenças é relevante ou não
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason} > Relevância}
+	\begin{itemize}
+		\item sameAs(individuo1, individuo2, ...) \\e $\sim$sameAs(individuo1, individuo2, ...)
+		\item Essa crença é especial por permitir aridade igual ou superior à
+dois para marcar os indivíduos\\ como iguais ou diferentes
+		\item A relevância opera verificando o termo da crença sem a negação (hasFamiliarity),
+verifica a aridade do elemento que deve ser 1 ou 2 nos casos normais e os
+tipos dos parâmetros. Por exemplo,
+		\begin{itemize}
+			\item goodKnowRelation("AsobreB").
+			\item hasFamiliarity("AsobreT", -10).
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason} > Diagrama de Classes}
+	\begin{center}
+	\includegraphics[width=10cm]{figuras/implementacao-15dez2011.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason} }
+	\begin{itemize}
+		\item A classe de ambiente envia para o agente quando há um novo ciclo
+uma percepção ``step''
+		\item Quando uma percepção ``step'' é recebida no agente, os
+sentimentos percebidos são apagados, recalculados e novamente inseridos
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason} > Listagem e Consulta}
+	\begin{center}
+	\includegraphics[width=10cm]{figuras/sd-getCB.png}
+	\end{center}
+\end{frame}
+
+\section{Validação}
+\begin{frame}
+	\frametitle{Validação}
+	A validação do \emph{framework} desenvolvido foi feita com a construção de exemplos de utilização:
+	\begin{itemize}
+		\item testes interativos;
+		\item testes não-interativos;
+		\item simulador de jogo de futebol;
+		\item simulador de uma casa;
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Validação}
+	\begin{columns}
+		\column{0.5\textwidth}
+			A validação do \emph{framework} desenvolvido foi feita com a construção de exemplos de utilização:
+			\begin{itemize}
+				\item \alert{testes interativos};
+				\item testes não-interativos;
+				\item simulador de jogo de futebol;
+				\item simulador de uma casa;
+			\end{itemize}
+		\column{0.5\textwidth}
+				\includegraphics[width=5cm]{figuras/introductionDF.png}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Validação}
+	\begin{columns}
+		\column{0.5\textwidth}
+			A validação do \emph{framework} desenvolvido foi feita com a construção de exemplos de utilização:
+			\begin{itemize}
+				\item testes interativos;
+				\item \alert{testes não-interativos};
+				\item simulador de jogo de futebol;
+				\item simulador de uma casa;
+			\end{itemize}
+		\column{0.5\textwidth}
+			\begin{itemize}
+				\item Também, um único agente;
+				\item Serve de teste unitário para se testar o comportamento esperado;
+			\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Validação}
+	\begin{columns}
+		\column{0.5\textwidth}
+			A validação do \emph{framework} desenvolvido foi feita com a construção de exemplos de utilização:
+			\begin{itemize}
+				\item testes interativos;
+				\item testes não-interativos;
+				\item \alert{simulador de jogo de futebol};
+				\item simulador de uma casa;
+			\end{itemize}
+		\column{0.5\textwidth}
+			\begin{itemize}
+				\item três agentes;
+				\item cada agente torcedor torce para um time diferente e
+					informa o agente estádio;
+				\item o ambiente é probabilístico e a cada turno um time tem a
+chance de 0.83\% de fazer gol;
+				\item emoções que podem acontecer são do ramo de
+responsabilidade e consequência;
+			\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Validação}
+	\begin{columns}
+		\column{0.5\textwidth}
+			A validação do \emph{framework} desenvolvido foi feita com a construção de exemplos de utilização:
+			\begin{itemize}
+				\item testes interativos;
+				\item testes não-interativos;
+				\item simulador de jogo de futebol;
+				\item \alert{simulador de uma casa};
+			\end{itemize}
+		\column{0.5\textwidth}
+			\begin{itemize}
+			\item 4 agentes;
+			\item cada agente tem uma rotina a ser seguida diferente dos demais;
+			\item a rotina pode ser ignorada por motivos emocionais; \\
+                  por exemplo, cansaço que faz o agente ficar em sofrimento;
+			\item as emoções presentes aqui são as mais básicas (amor e ódio);
+			\end{itemize}
+	\end{columns}
+\end{frame}
+
+\section{Conclusão}
+% Conclusão
+\begin{frame}
+	\frametitle{Conclusão}
+	\begin{itemize}
+		\item As ontologias desenvolvidas exigem pouco conhecimento para serem usadas adequadamente
+		\item Melhoras nelas podem incluir:
+		\begin{itemize}
+			\item Tornar a probabilidade um número inteiro;
+			\item Incluir a empatia como um número e não como simplesmente a
+distinção de ser a mesma pessoa ou a outra;
+		\end{itemize}
+		\item O sistema utilizando preferência consegue descobrir
+emoções do ramo de aspectos de objetos
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Conclusão}
+	\begin{itemize}
+		\item O ``framework'' depende:
+		\begin{itemize}
+			\item de os limites de todas as emoções serem configuradas para o
+sistema ser ativado
+			\item de o usuário definir como as percepções afetam o agente
+			\item de o ambiente informar uma percepção ``step'' para indicar
+que é um novo ciclo de simulação
+		\end{itemize}
+		\item Os exemplos desenvolvidos não possui um decaimento automático
+	\end{itemize}
+\end{frame}
+
+%\section{Referências}
+\bibliographystyle{plain}
+\frame[allowframebreaks]{
+	\frametitle{Referências}
+	\def\newblock{\hskip .11em plus .33em minus .07em}
+	\bibliography{mestrado}
+}
+%\end{frame}
+
+% perguntas?
+\date{} % tiramos a data :p
+\frame{\titlepage}
+
+
+\end{document}
