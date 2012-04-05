@@ -1,16 +1,21 @@
 \chapter{Estudos de Caso} \label{ch:cdu}
 
 O presente capítulo visa explicar os estudos de caso utilizados para validar o
-sistema desenvolvido. Os estudos são simulações de parte da vida dos
-personagens. No primeiro, eles encontram-se observando um jogo de futebol e
-cada um torce por um time. No segundo, uma casa é simulada com quatro atores
-e suas rotinas. Entretanto, antes desses estudos serem abordados na
-seção~\ref{ch:cdu:svc} e na \ref{ch:cdu:home},
-será descrito como a ontologia foi testada juntamente com a plataforma
-\emph{Jason}. A seção~\ref{ch:cdu:tbc} explica as ferramentas desenvolvidas
-para o teste da base de crenças desenvolvida e são duas:
-uma interativa e outra não interativa que serve como uma espécie de teste
-unitário dos artefatos explicados no capítulo~\ref{ch:aec}.
+sistema desenvolvido. Todo experimento foca no agente que possui uma parte escrita em
+\emph{AgentSpeak} para decidir como as percepções se ligam com a ontologia
+afetiva, os limites da emoção virar sentimento deve ser decidido inicialmente
+e o agente deve receber uma percepção ``step'' quando for um novo ciclo de
+simulação para recalcular os sentimentos.
+
+Os experimentos são simulações de parte da vida dos personagens. No primeiro, eles
+encontram-se observando um jogo de futebol e cada um torce por um time. No
+segundo, uma casa é simulada com quatro atores e suas rotinas. Entretanto,
+antes desses estudos serem abordados na seção~\ref{ch:cdu:svc} e na
+\ref{ch:cdu:home}, será descrito como a ontologia foi testada juntamente com a
+plataforma \emph{Jason}. A seção~\ref{ch:cdu:tbc} explica as ferramentas
+desenvolvidas para o teste da base de crenças desenvolvida e são duas: uma
+interativa e outra não interativa que serve como uma espécie de teste unitário
+dos artefatos explicados no capítulo~\ref{ch:aec}.
 
 \section{Teste da Base de Crenças} \label{ch:cdu:tbc}
 
@@ -77,7 +82,7 @@ agente e segue para o próximo ciclo. O segundo parâmetro permite informar
 um número que representa o último passo de simulação e o quarto
 parâmetro permite configurar a atitude a ser tomada quando um agente tentar
 fazer duas ações no mesmo passo. Essa atitude pode ser ou o enfileiramento da
-ação ou a falha imediata da mesma que é o sendo utilizado no exemplo.
+ação ou a falha imediata da mesma que é a utilizada no exemplo.
 
 \begin{center}
     \begin{minipage}{130mm}
@@ -173,8 +178,7 @@ dessa forma, cada um deles inclui em seus códigos as configurações
 necessárias para utilizar o sistema. Um exemplo dessas configurações
 é o limite de ativação para uma emoção virar sentimento. Outro exemplo é que
 os times que participam do jogo são considerados pelos personagens como outros
-agentes, assim o time que se torçe pode ser considerado ``amigo'' e o outro
-``inimigo''.
+agentes, assim o time pode ser considerado ``amigo'' e o outro ``inimigo''.
 
 Cabe salientar que cada um dos agentes realizam as mesmas avaliações sobre os
 mesmos eventos. Esses eventos foram pensados como a marcação de um gol
@@ -311,7 +315,7 @@ tiver ganho o jogo ele pode sentir-se feliz ou neutro e quando o time perde
 ele pode sentir-se com pena ou neutro da mesma forma. Esse valor de
 neutralidade é porque o modelo de emoções só diz que a felicidade por alguém
 ou a pena serão sentidas quando o merecimento e o desejo presumido sobre o
-outro forem ambas positivas ou ambas negativas.
+outro forem ambas positivas ou negativas.
 
 \begin{center}
     \begin{minipage}{140mm}
@@ -330,7 +334,7 @@ label=lst:soccerEnd2]
      : match(lose, TEAM) & myPoints(TEAM, _, _, _)
      & not(hasAppraisal(NAME, "team_happy_foo"))
     <- .random(N); DE=math.round(N*20)-10;
-       DT=-20; // eh negativo para implificar na emocao de pena
+       DT=-20; // eh negativo para implicar na emocao de pena
        ?updateEmotion(fortunesOfOthers, "team_happy_foo", DE, DT).
 
 +?appraisalEndMatchHappy
@@ -477,7 +481,7 @@ O valor de energia mencionando antes é informado pelo ambiente ao
 agente. Cada um dos agentes recebe uma percepção sobre seu estado
 interno que foi denominada ``myself''. O agente usa essa informação junto de
 sua preferência pelas anotações para determinar que emoção ele irá sentir.
-Quando o valor de energia está a baixo de um determinado limite estipulado pela
+Quando o valor de energia está abaixo de um determinado limite estipulado pela
 preferência da anotação de energia o agente começa a ter um
 determinado nível de sofrimento. No caso de ele estar com a energia acima do
 limite, o mesmo possuirá a emoção que corresponde à alegria.

@@ -51,9 +51,9 @@ evitar duplicações (ver figura da pág.~\pageref{fig:testeJasonIntBase}).
 Logo, a necessidade de uma percepção ``step'' ser adicionada à base de crenças
 sempre que se deseja fazer uma avaliação das emoções atuais afeta o projeto do
 usuário. Essa é uma necessidade do mecanismo construído, e é invasiva porque torna
-o sistema do usuário descontinuo nessa parte das emoções. Além disso, ele deve
+o sistema do usuário descontínuo nessa parte das emoções. Além disso, ele deve
 se preocupar com quem irá informar essa percepção. Eliminar essa necessidade é
-um plano futuro pois torna o desenvolvido mais transparente permitindo-o ser
+um plano futuro pois torna o desenvolvimento mais transparente permitindo-o ser
 melhor utilizado. Essa atualização pode ser colocada no momento da consulta da
 percepção ``feeling'' ou em algum outro ponto.
 
@@ -111,7 +111,7 @@ sobre o ator.
 Um sistema que estende a base de crenças do agente \jason para permitir que o
 mesmo tenha emoções segundo o modelo desenvolvido por \citet{ortony1988cse}
 foi apresentado. Assim, o desenvolvimento se baseou em utilizar uma ontologia
-para classificar qual é a emoção sendo sentida com base nas crenças e
+para classificar as emoções sendo sentidas com base nas crenças e
 percepções do agente.
 Dessa forma, a base de crenças da plataforma foi alterada para manipular
 ontologias permitindo, de maneira transparente, realizar inserções, remoções e
@@ -124,7 +124,14 @@ de ter uma configuração mínima para criar emoções não foi alcançado porqu
 exige do usuário um certo nível de conhecimento da mesma e um refinamento
 manual dos ajustes criados. Considero também que o objetivo de não usar regras
 foi alcançado visto que todas elas visam facilitar o usuário e como elas são
-parte integrante da versão 2 da \emph{OWL} não há razão para não se usa-las.
+parte integrante da versão 2 da \emph{OWL} não há razão para não se usá-las.
+
+Entretanto, os artefatos desenvolvidos baseados em ontologia são todas
+contribuições importantes. A primeira, a ontologia de preferências, descreve como os
+agentes irão interpretar as anotações existentes em crenças ou em percepções
+usando o conceito de \emph{affordance}. A segunda contribuição é a ontologia
+afetiva possuindo as 22 emoções do modelo original descritas e validadas pelas
+aplicações desenvolvidas.
 
 Inicialmente, o objetivo do trabalho era simular a construção do comportamento
 afetivo usando os agentes da plataforma \jason de maneira integrada com alguma
@@ -137,6 +144,6 @@ Os principais resultados são as aplicações construídas com o sistema. Elas
 servem, principalmente, para validar o sistema desenvolvido e possuem
 diferentes propósitos conforme foi visto no capítulo anterior. Ao todo foram
 feitas quatro aplicações e demonstram que mesmo sem um conceito de decaimento
-automático do valor da emoção o mecanismo desenvolvido funciona de uma maneira
+automático do valor da emoção os artefatos desenvolvidos funcionam de uma maneira
 adequada.
 

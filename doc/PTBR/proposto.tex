@@ -4,7 +4,8 @@
 
 A presente arquitetura construída foi pensada conforme mostrado na
 Figura~\ref{fig:vasc}. Como é possível observar, o sistema é dividido em um
-ambiente e em agentes. O ambiente utiliza uma ontologia de rotinas para
+ambiente e em agentes. O ambiente utiliza um modelo para descrever o
+comportamento urbano permitindo a descrição das rotinas para
 construir às rotinas dos atores no ambiente e uma visualização para o usuário.
 Assim, o que o usuário vê é exibido a partir da
 descrição ontológica. Mais detalhes ver seção~\ref{ch:aec:ocu} e o
@@ -17,19 +18,28 @@ rotinas que o agente possui para o dia sendo simulado.
 A segunda parte do sistema estende os agentes focando em dois objetivos.
 Os agentes recebem um conjunto de percepções referente ao passo de simulação
 atual e conhecem seu conjunto de crenças do momento.
-O primeiro objetivo é permitir os agentes raciocinarem sobre as anotações existentes nos objetos percebidos.
+O primeiro objetivo é permitir aos agentes raciocinarem sobre as anotações
+percebidas nos objetos.
 O segundo objetivo é alterar o local onde as crenças que o agente possui são
 armazenadas permitindo ao agente ter ou não crenças salvas dentro de uma
 base de conhecimento. Assim, quando as crenças são salvas dentro da ontologia
-proposta da seção~\ref{ch:aec:omce} emoções podem ser geradas e passarem a ser
-percebidas.
+proposta da seção~\ref{ch:aec:omce} emoções podem ser geradas e percebidas.
 
-\begin{figure}
+\begin{figure}[b]
   \centering
   \includegraphics[width=10cm]{figuras/visao-geral.png}
   \caption{Visão abstrata do sistema construído.}
   \label{fig:vasc}
 \end{figure}
+
+Conforme definido nos capítulos anteriores, o agente é a mente de um ator
+ou personagem que atua em um mundo virtual. Entretanto, qualquer elemento do
+mundo virtual que não é um ator esta sendo considerado como um objeto. Uma
+avaliação foi definida como sendo o julgamento de um agente sobre algum ator
+conhecido ou sobre algum objeto que foi ou esta sendo percebido. Dessa forma,
+uma avaliação afetiva é uma avaliação que foi feita que ocasionou algum
+impacto emocional no agente. Cabe chamar atenção que emoção esta sendo
+considerada como sinônimo para avaliação emotiva.
 
 \section{Ontologia do Modelo Cognitivo Emocional} \label{ch:aec:omce}
 
@@ -41,10 +51,10 @@ percebidas.
 
 A fundamentação do modelo afetivo sendo utilizado aqui é o proposto por
 \citet{ortony1988cse} e encontra-se explicado na seção \ref{ch-ca-mce}. A
-estrutura da ontologia pode ser visualizada na
-Figura~\ref{fig:tlocc}. Além disso, pode ser recomendável olhar a
-Figura~\ref{fig:occ_model}~(pág.~\pageref{fig:occ_model})
-durante o resto da discussão dessa seção. Os subconceitos de \emph{Emotion}
+estrutura da ontologia pode ser visualizada na Figura~\ref{fig:tlocc} e
+é recomendável olhar a Figura~\ref{fig:occ_model}~(pág.~\pageref{fig:occ_model})
+durante o resto da discussão dessa seção. O conceito \emph{Emotion}
+corresponde a uma avaliação emotiva do personagem e seus subconceitos
 correspondem aos três ramos do modelo original.
 O ramo \emph{ActionsOfAgents} julga a responsabilidade e o quanto o agente que
 realizou uma ação se desviou do esperado, o de
@@ -53,22 +63,19 @@ realizou uma ação se desviou do esperado, o de
 
 O primeiro ramo a ser abordado é o menos cognitivo \emph{AspectsOfObjects}.
 As emoções desse tipo são relacionadas com atratividade e familiaridade.
-Entretanto, essas duas relações foram consideradas equivalentes porque o
-importante para o modelo é quando ambas são positivas ou ambas negativas.
-Assim sendo, uma pode assumir os dois papéis sem maiores penalidades e
-simplificando a modelagem. A emoção \emph{Hate} é modelada como tendo a
-propriedade de familiaridade (\emph{hasFamiliarity}) com valores negativos,
-enquanto a emoção \emph{Love} tem valoração dessa mesma propriedade positiva.
-Caso o valor seja zero, nada pode ser concluído.
+A emoção \emph{Hate} é modelada como tendo a propriedade de familiaridade
+(\emph{hasFamiliarity}) e de atração (\emph{hasAttraction}) com valores negativos,
+enquanto a emoção \emph{Love} tem valoração dessas mesmas propriedades
+positivas. Caso o valor seja zero em ambas ou uma tenha valor positivo e outra
+possua valor negativo, nada pode ser concluído.
 
 Cabe notar que parece estranho uma emoção \emph{Love} com um objeto, porém
 essa emoção foi escolhida por quem montou o modelo para representar seu tipo
 por ser a mais forte de sua categoria. Assim, níveis menores implicam em
-outros tipos de emoção. Além disso, agentes
-podem ser vistos como objetos quando se esta avaliando a sua atração. Logo,
-todo agente (\emph{Agent}) é um objeto (\emph{Object}). Por exemplo, John esta
-apaixonado pela Millie (Millie é avaliada como objeto) ou John tem
-repulsa por televisão.
+outros tipos de emoção. Além disso, agentes são vistos como objetos
+quando se esta avaliando a sua atração. Logo, todo agente (\emph{Agent}) é um
+objeto (\emph{Object}). Por exemplo, John esta apaixonado pela Millie (Millie
+é avaliada como objeto) ou John tem repulsa por televisão.
 
 O segundo conceito, chamado \emph{ActionsOfAgents}, pode ser pensado como
 um ramo que julga a responsabilidade por uma determinada ação.
@@ -110,7 +117,7 @@ quanto agentes sejam julgados porque possui como imagem o conceito
 \emph{Object}.
 
 Cabe salientar que toda avaliação tem pelo menos duas relações. A primeira
-relação serve para conhecer quem esta avaliando (\emph{isAppraisalOf}) e a
+relação serve para conhecer quem está avaliando (\emph{isAppraisalOf}) e a
 seguinte serve para indicar quem ou o que esta sendo avaliado
 (\emph{hasSomething}). Essa última pode não ser informada explicitamente porque pode
 ser concluída quando usada uma de suas subrelações. O último ramo, chamado de
@@ -160,8 +167,15 @@ evento ocorre, a emoção atual pode virar uma emoção do conceito
 \emph{FearsConfirmed} ou \emph{Relief} e \emph{Hope} pode virar ou
 \emph{Satisfaction} ou \emph{Disappointment}.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=14cm]{figuras/locc-uml3.png}
+  \caption{Ontologia afetiva proposta.}
+  \label{fig:lucca-emo}
+\end{figure}
+
 \begin{table}[pt]
-	\caption{Regras de classificação de indivíduos como emoções.}
+	\caption{Regras de classificação de indivíduos da classe de avaliação emotiva.}
 	\label{table:lucca-emo}
 	\begin{center}
 	\begin{tabular}{|p{20mm}|p{120mm}|} % 140mm
@@ -215,10 +229,11 @@ gratificado (\emph{Gratification}).
 O conceito \emph{Setup} foi introduzido para manter junto da ontologia criada
 o limite mínimo para uma emoção virar sentimento\dev{} e é
 usado como um conceito de ligação com as demais ontologias.  A
-Tabela~\ref{table:lucca-emo}~(pág.~\pageref{table:lucca-emo}) resume as
-definições utilizadas para classificar as avaliações como emoções e a
-Tabela~\ref{tab:oa:geral}~(pág.~\pageref{tab:oa:geral}) mostra as estatísticas
-da ontologia.
+Figura~\ref{fig:lucca-emo}~(pág.~\pageref{fig:lucca-emo}) resume as
+definições utilizadas para classificar as avaliações como emoções, a
+Tabela~\ref{table:lucca-emo}~(pág.~\pageref{table:lucca-emo}) mostra as regras
+suficientes para ser categorizado como uma avaliação emotiva e a
+Tabela~\ref{tab:oa:geral} mostra as estatísticas da ontologia.
 
 A Figura~\ref{fig:rlocc} mostra todas as regras existentes. Essas 7 regras
 visam facilitar o usuário e a maior parte delas operam no domínio do conceito
@@ -283,9 +298,9 @@ indivíduo com somente essa relação então o mesmo seria enquadrado no conceit
 ou seja, pertencer à classe \emph{Thing}.
 
 
-\section{Ontologia de Comportamento Urbano} \label{ch:aec:ocu}
+\section{Um Modelo de Comportamento Urbano} \label{ch:aec:ocu}
 
-Uma ontologia de comportamento urbano descreve a vida normal que um personagem
+Um modelo de comportamento urbano descreve a vida normal que um personagem
 possui. De outro modo, cada personagem possui lugares regulares que costuma
 visitar frequentemente e lugares eventuais que visita com menos frequência.
 Dessa forma, a rotina que um ator possui é descrita através dos locais que ele
@@ -298,7 +313,7 @@ deve ou pode visitar.
   \label{fig:UEM:TBOX}
 \end{figure}
 
-A Figura~\ref{fig:UEM:TBOX} demonstra a ontologia, criada por
+A Figura~\ref{fig:UEM:TBOX} demonstra um modelo baseado em ontologia, criada por
 \citet{paiva2005ontology}, que será utilizada. As relações de generalização
 possuem a mesma semântica que na UML, as relações direcionais são relações
 binárias entre as instâncias das classes. Na figura, \emph{Agent} se relaciona
@@ -324,7 +339,7 @@ mapeia o conceito de agente da seção anterior para o conceito apresentado
 aqui. Dessa forma, um agente na ontologia afetiva pode descobrir seu perfil e
 seus locais visitados regularmente.
 
-Essa ontologia é utilizada no presente trabalho de duas formas. A primeira
+Esse modelo é utilizado no presente trabalho de duas formas. A primeira
 forma de utilização é para desenhar um mapa 2D do ambiente que os agentes
 atuam. Isso é permitido porque o conceito \emph{Place} relaciona-se com o
 \emph{Dimension}. Assim, todos os itens do mapa são retângulos. A outra forma
@@ -356,7 +371,7 @@ relevantes para determinados trabalhos no mundo; (v) anotações de jogo,
 descrevem o estado do jogo permitindo sugerir movimentos.
 
 \citet{kallmann1999modeling} propuseram uma ideia similar: os objetos no mundo
-são os responsáveis por proverem para o personagem o como ele deve ser usado.
+são responsáveis por proverem o como ele deve ser usado.
 Por exemplo, durante a animação de o personagem estar abrindo uma porta, quem esta
 no controle do ator é o ``agente'' que controla a porta. Sendo assim, o agente do
 personagem delega a responsabilidade da animação para o agente do objeto já
@@ -398,10 +413,10 @@ O conceito \emph{Preference} é usado para representar as preferências por
 determinadas características ou anotações. A preferência define como uma entidade ou
 agente é atraído por determinada característica, por exemplo algumas pessoas
 gostam de calor e outras não. Assim, as pessoas que gostam de calor são
-atraídas pela valoração positiva da anotação de calor. Já, as pessoas que não
-gostam de calor são atraídas pela valoração negativa. Dessa forma, os
-subconceitos da preferência representam sempre valores que fazem o agente ser
-atraído pelo objeto e repelido caso contrário.
+atraídas quando a característica de calor é positiva. Já, as pessoas que não
+gostam de calor são atraídas quando a característica é negativa.
+Dessa forma, os subconceitos da preferência representam sempre valores que
+fazem o agente ser atraído pelo objeto e repelido caso contrário.
 
 Entretanto, esse exemplo não funciona para todos os casos. Por exemplo, um
 agente tem conhecimento de seu nível de energia e este é sempre positivo. Para
@@ -409,7 +424,8 @@ resolver esse problema foi criada a relação \emph{hasAnnotationValue}
 representada na Figura~\ref{fig:preferences} pelo atributo
 \emph{annotationValue}. Sendo assim, é possível descrever que um agente com
 nível de energia abaixo de um determinado limite é atraído pelo seu centro de
-controle.
+controle. Voltando ao exemplo do calor do parágrafo anterior, uma pessoa gosta
+de calor quando a característica de calor ultrapassa o limite de 20 graus.
 
 Essas anotações foram planejadas para serem colocadas pelo ambiente
 nos objetos e nos agentes. As anotações em agentes permitem que os outros saibam
@@ -433,7 +449,7 @@ capítulo~~\ref{ch:cdu}.
   \label{fig:dcs}
 \end{figure}
 
-Na figura~\ref{fig:dcs} pode ser observado as classes desenvolvidas para
+Na Figura~\ref{fig:dcs} pode ser observado as classes desenvolvidas para
 realizar a integração das ontologias com os agentes \jason e o suporte
 afetivo. Para essas classes serem usadas, o agente deve ser configurado para
 utilizar a classe \emph{BBAffective} como base de crença. Essa configuração
@@ -451,8 +467,8 @@ para o primeiro nível. A relevância é descoberta consultando os conceitos e
 propriedades existentes na ontologia: instâncias de conceitos são
 crenças no formato ``nomeDoConceito(nomeDaInstancia)'' e relações são
 similares à ``nomeDaRelacao(nomeDaInstanciaDominio, Imagem)''. Conhecer o que
-é relevante para a ontologia é necessário porque a mesma é lenta e quanto
-menos elementos contiver nela melhor será seu desempenho.
+é relevante para a ontologia é necessário para evitar a colocação de novas
+informações no domínio definido.
 
 A base de crenças delega todo o assunto relacionado com as crenças da
 ontologia para a classe \emph{EmotionKnowledge}. Essa é responsável por
@@ -463,14 +479,14 @@ delega o conhecimento da história da potência das emoções para a classe
 ontologia propriamente dita é de responsabilidade da classe \emph{OwlApi}.
 
 A classe \emph{Emotion} é responsável por conhecer todas as emoções presentes
-e seus valores de potência. Para isso, no inicio da simulação a ontologia é
+e seus valores de potência. Para isso, no início da simulação, a ontologia é
 consultada procurando por todas as classes definidas\footnote{As classes
 definidas possuem condições necessárias e suficientes, isto é, qualquer
 indivíduo pode ser enquadrado nessa classe desde que obedeça as condições
 suficientes.} sobre o conceito ``Emotion''. Isso é utilizado pela classe
 \emph{EmotionKnowledge} quando a mesma precisa consultar o nome de uma emoção
 por algum motivo. Por exemplo, na hora de calcular a valência da emoção em um
-determinado passo é pedido pelo nome de todas as emoções á essa classe. Essa
+determinado passo é pedido pelo nome de todas as emoções a essa classe. Essa
 ainda mantém a história da potência das emoções por agente para cada ciclo
 armazenado utilizando um objeto da classe \emph{EmotionValence} que é uma
 extensão da classe \emph{HashMap} do \emph{Java}.
@@ -509,7 +525,7 @@ Já a classe \emph{BBKeeper} serve para facilitar o acesso a base de crenças.
 Essa classe é a única \emph{singleton} do sistema e cada instância da
 \emph{BBAffective} é conhecida por esta a partir do nome de seu respectivo
 agente. Isso é muito útil para as simulações porque torna possível acessar a
-base de crenças e exibir os valores de potência e valência ou conhecer os
+base de crenças e exibir os valores das emoções e dos sentimentos ou conhecer os
 tipos emotivos disponíveis. Cabe salientar que os tipos emotivos disponíveis
 do simulador não levam em conta o agente e, por isso, mesmo que seja usado um
 agente que não esteja utilizando a base estendida os tipos serão retornados
@@ -554,13 +570,15 @@ O processo de recuperação de uma crença é necessário para a compreensão da
 inserções e remoções de crenças. Ele serve para recuperar uma única crença
 quando ela já existir na base, e em sua busca leva em consideração toda a
 estrutura do literal excluindo as anotações. O procedimento é mostrado na
-Figura~\ref{fig:recover}.
+Figura~\ref{fig:recover}. Essa figura utiliza condições entre colchetes
+chamadas guardas para estabelecer que um código deve obedecer as condições
+impostas.
 
 A recuperação é iniciada pela chamada do método \emph{contains}. Essa função
 inicia com uma chamada à \emph{getCandidateBeliefs} que foi explicada na seção anterior.
 Cada um dos candidatos retornados pela chamada são verificados para ver se
-conferem com o informado pelo cliente, se conferir então o candidato é
-retornado. Se nenhum candidato for retornado, o resultado da base de crenças
+os parâmetros conferem com a crença informada pelo cliente, se conferir então
+o candidato será retornado. Se nenhum candidato for retornado, o resultado da base de crenças
 padrão será retornado porque o mesmo pode estar localizado neste nível.
 Conforme foi falado anteriormente, tanto a inserção e remoção utilizam esse
 procedimento para recuperar o elemento armazenado na base de crença, porém os
@@ -576,10 +594,9 @@ motivos serão vistos em suas respectivas seções.
 \subsection{Processo de Adição de Crenças}
 
 O procedimento de inserção de uma crença pode ser visto na
-figura~\ref{fig:addBelief}. Essa figura utiliza condições entre colchetes para
-informar que um determinado código deve ser executado somente quando obedecer
-essas condições. Além disso, elas podem ser postas perto de linhas que servem
-para delimitar que todo aquele bloco deve obedecer as condições impostas.
+figura~\ref{fig:addBelief}. Essa figura utiliza condições entre colchetes
+chamadas guardas perto de linhas que delimitam que todo um bloco de código
+deve obedecer aquela condição.
 Dessa forma, há na figura dois grandes blocos de código com suas condições
 próprias. Por exemplo, quando estiver sendo inserida uma crença de percepção
 com o termo diferente de ``step'' nenhum código será executado pelo diagrama e
@@ -623,15 +640,13 @@ aridade e, em caso de ambiguidade, se pergunta o tipo à ontologia usando o
 nome da entidade. A chamada \emph{Add} presente no final da
 Figura~\ref{fig:addBelief} é explicada adiante.
 
-\vfill
-
 \subsection{Processo de Remoção de Crenças}
 
 O processo de remoção de crenças permite remover uma crença da base de crenças
 ou, apenas, atualiza-la retirando alguma anotação que não devia existir. Dessa
 forma, o procedimento ao final do mesmo remove os axiomas postos anteriormente
 e quando for uma atualização os insere novamente. A Figura~\ref{fig:delBelief}
-mostra a rotina da base de crenças.
+mostra a rotina modificada da base de crenças.
 
 \begin{figure}
   \centering
@@ -651,9 +666,9 @@ Nesse momento o que se sabe é qual é a crença e que a mesma é relevante.
 Assim, as anotações informadas são removidas da crença obtida e a nova
 crença é testada para ver se ainda possui anotações. Se possuir e não for uma
 anotação de fonte e não é um indicativo de estar sendo armazenada em
-determinada ontologia então é feita a atualização do valor armazenado. No caso
+determinada ontologia então é feita a atualização do valor atualmente armazenado. No caso
 de não possuir anotação ou possuir somente as anotações mencionadas é feita a
-remoção do elemento. Tanto as funções \emph{Add} e \emph{Remove} da
+remoção do elemento que esta na base de crenças. Tanto as funções \emph{Add} e \emph{Remove} da
 Figura~\ref{fig:delBelief} compartilham o mesmo código e estão explicadas na
 seção seguinte.
 
@@ -668,13 +683,6 @@ procedimento é de inserção ou remoção. A partir dai a sequência de chamada
 mostradas na Figura~\ref{fig:shareBelief} segue de maneira igual. Isso foi
 feito porque muito código é igual para ambos os casos.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=12cm]{figuras/shareBelief.png}
-  \caption{Diagrama de sequência para adicionar uma crença.}
-  \label{fig:shareBelief}
-\end{figure}
-
 A classe \emph{OwlApi} é a única que consulta a ontologia diretamente via
 biblioteca. No inicio da aplicação são extraídas as informações de quais
 conceitos existem, quais relações e de quais tipos são. Sendo assim,
@@ -684,4 +692,11 @@ realizar a inserção e remoção dos axiomas. Uma alteração é feita removend
 os axiomas anteriores, acrescentando os novos e marcando a ontologia como
 ``suja'' para quando uma consulta for feita a mesma ter o raciocinador
 atualizado.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{figuras/shareBelief.png}
+  \caption{Diagrama de sequência para adicionar uma crença.}
+  \label{fig:shareBelief}
+\end{figure}
 

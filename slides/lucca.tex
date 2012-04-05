@@ -36,7 +36,7 @@
 
 \institute{UFRGS - Universidade Federal do Rio Grande do Sul}
 
-\date{Porto Alegre, março de 2012}
+\date{Porto Alegre, abril de 2012}
 
 \definecolor{darkgray}{rgb}{0.95,0.95,0.95}
 \lstset{backgroundcolor=\color{darkgray}}
@@ -74,7 +74,7 @@
 	\begin{itemize}
 		\item Não aprovo nomes começando com J, \\por exemplo \emph{jAffective};
 		\item Foi buscado por um nome perto da ou na ilha de Java;
-		\item \emph{Maro} é um rio da Indonésia que fica à menos de 2000 km da ilha de Java;
+		\item \emph{Maro} é um rio da Indonésia que fica a menos de 2000 km da ilha de Java;
 	\end{itemize}
 \end{frame}
 
@@ -151,7 +151,7 @@ preservação ambiental, rios, metrópoles, etc);
 	\begin{columns}
 	\column{0.5\textwidth}
 		\vfill
-		Os modelos emotivos podem ser categorizados em:
+		Os modelos emotivos podem ser categorizados \cite{scherer2000tnoe} em:
 		\begin{itemize}
 			\item modelos dimensionais;
 			\item modelos discretos;
@@ -169,7 +169,7 @@ preservação ambiental, rios, metrópoles, etc);
 	\begin{columns}
 	\column{0.5\textwidth}
 		\vfill
-		Os modelos emotivos podem ser categorizados em:
+		Os modelos emotivos podem ser categorizados \cite{scherer2000tnoe} em:
 		\begin{itemize}
 			\item modelos dimensionais;
 			\item modelos discretos;
@@ -177,8 +177,8 @@ preservação ambiental, rios, metrópoles, etc);
 			\item modelos baseados em componentes;
 		\end{itemize}
 	\column{0.5\textwidth}
-		As estruturas semânticas das emoções são descritas
-		preocupando-se com as situações que as mesmas ocorrem.
+		Descrevem as situações que as emoções ocorrem para definir
+		as estruturas semânticas das mesmas.
 	\end{columns}
 \end{frame}
 
@@ -224,7 +224,7 @@ preservação ambiental, rios, metrópoles, etc);
 		\item zero ou um ambiente, no qual é possível definir o mundo virtual
               que os agentes atuarão permitindo modificar percepções, definir
               ações possíveis e etc.
-		\item zero ou mais agentes, no qual os agentes representam a mente por
+		\item um ou mais agentes, no qual os agentes representam a mente por
               de trás dos atores virtuais no mundo criado.
 	\end{itemize}
 \end{frame}
@@ -293,7 +293,7 @@ preservação ambiental, rios, metrópoles, etc);
 	\framesubtitle{Estado da Arte > Plataforma \jason}
 
 	\begin{itemize}
-		\item Incorporação de ontologias à plataforma foi definida em
+		\item Incorporação de ontologias a plataforma foi definida em
 \cite{moreira2006agent} e implementada em \cite{KlaBor09};
 		\item A operação com a ontologia feita nesse não se restringe somente
 em operar indivíduos permitindo acrescentar conceitos e a realização de
@@ -339,7 +339,7 @@ existentes
 a partir da mistura dessas emoções novas (secundárias) são descobertas.
 		\item \cite{wks2008towards} criou uma ontologia de alto nível sobre
 emoções; Nela não tem nenhuma informação de uma teoria específica modelada.
-		\item Há trabalhos que formalizam modelos afetivos
+		\item Há trabalhos que formalizam o modelo \emph{OCC}
 \cite{adam2009alfototoe, steunebrink2010emotions};
 	\end{itemize}
 \end{frame}
@@ -507,47 +507,6 @@ emoções; Nela não tem nenhuma informação de uma teoria específica modelada.
 
 \begin{frame}
 	\frametitle{Arquitetura Proposta}
-	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason}}
-	\begin{changemargin}{-13mm}{-2cm}
-		\begin{center}
-		\includegraphics[width=135mm]{figuras/visao-geral.png}
-		\end{center}
-	\end{changemargin}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Arquitetura Proposta}
-	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason}}
-	\begin{itemize}
-		\item Para fazer o ambiente e os agentes trabalharem utilizando
-ontologias foi necessário apenas especializar os elementos existentes na
-plataforma como o Ambiente \\e a Base de Crenças dos Agentes
-		\item A única classe que trabalha sobre a ontologia é a denominada
-\emph{OwlApi} e ela mantém os nomes de conceitos e relações em memória para
-rapidamente determinar se uma crença chamando o método de atualização de
-crenças é relevante ou não
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Arquitetura Proposta}
-	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason} > Relevância}
-	\begin{itemize}
-		\item sameAs(individuo1, individuo2, ...) \\e $\sim$sameAs(individuo1, individuo2, ...)
-		\item Essa crença é especial por permitir aridade igual ou superior à
-dois para marcar os indivíduos\\ como iguais ou diferentes
-		\item A relevância opera verificando o termo da crença sem a negação (hasFamiliarity),
-verifica a aridade do elemento que deve ser 1 ou 2 nos casos normais e os
-tipos dos parâmetros. Por exemplo,
-		\begin{itemize}
-			\item goodKnowRelation("AsobreB").
-			\item hasFamiliarity("AsobreT", -10).
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Arquitetura Proposta}
 	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason} > Diagrama de Classes}
 	\begin{center}
 	\includegraphics[width=10cm]{figuras/implementacao-15dez2011.png}
@@ -556,12 +515,54 @@ tipos dos parâmetros. Por exemplo,
 
 \begin{frame}
 	\frametitle{Arquitetura Proposta}
-	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason} }
+	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason}}
+	\begin{itemize}
+		\item Há somente uma classe que trabalha diretamente sobre a ontologia
+		\item A implementação simplesmente especializa os elementos da
+plataforma para suportar ontologias
+		\item O ambiente informa as rotinas e preferências aos agentes
+		\item Os agentes usam a ontologia afetiva para categorizar as
+avaliações sobre determinadas coisas
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason} > Como
+isso funciona?}
+	\begin{center}
+	\includegraphics[width=90mm]{figuras/fluxoGramaInsercao.png}
+	\end{center}
+\end{frame}
+
+%\begin{frame}
+%	\frametitle{Arquitetura Proposta}
+%	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason} > Relevância}
+%	\begin{itemize}
+%		\item sameAs(individuo1, individuo2, ...) \\e $\sim$sameAs(individuo1, individuo2, ...)
+%		\item Essa crença é especial por permitir aridade igual ou superior a
+%dois para marcar os indivíduos\\ como iguais ou diferentes
+%		\item A relevância opera verificando o termo da crença sem a negação (hasFamiliarity),
+%verifica a aridade do elemento que deve ser 1 ou 2 nos casos normais e os
+%tipos dos parâmetros. Por exemplo,
+%		\begin{itemize}
+%			\item goodKnowRelation("AsobreB").
+%			\item hasFamiliarity("AsobreT", -10).
+%		\end{itemize}
+%	\end{itemize}
+%\end{frame}
+
+\begin{frame}
+	\frametitle{Arquitetura Proposta}
+	\framesubtitle{Arquitetura Proposta > Ontologias e o \emph{Jason} > E os
+sentimentos? }
 	\begin{itemize}
 		\item A classe de ambiente envia para o agente quando há um novo ciclo
 uma percepção ``step''
 		\item Quando uma percepção ``step'' é recebida no agente, os
-sentimentos percebidos são apagados, recalculados e novamente inseridos
+sentimentos percebidos são recalculados e atualizados
+		\item Um sentimento é definido como:\\
+			$(\sum_{i=0}^{n} potence(i, emotion)) - threshold(emotion)$\\
 	\end{itemize}
 \end{frame}
 

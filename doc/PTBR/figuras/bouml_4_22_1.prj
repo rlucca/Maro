@@ -1,0 +1,1773 @@
+format 75
+"dummy"
+  revision 17
+  modified_by 66 "rlucca"
+
+
+  
+  // class settings
+  default_attribute_visibility private default_relation_visibility private default_operation_visibility public
+  //class diagram settings
+  draw_all_relations yes hide_attributes no hide_operations yes hide_getset_operations yes show_members_full_definition yes show_members_visibility no show_members_stereotype no show_members_context no show_members_multiplicity no show_members_initialization no show_attribute_modifiers yes member_max_width 127 show_parameter_dir yes show_parameter_name yes package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position no show_relation_modifiers no show_relation_visibility no show_infonote no shadow no show_stereotype_properties no
+  //use case diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes class_drawing_mode actor shadow yes show_stereotype_properties no
+  //sequence diagram settings
+  show_full_operations_definition no write_horizontally yes class_drawing_mode natural drawing_language uml draw_all_relations yes shadow yes show_stereotype_properties no show_class_context_mode no show_msg_context_mode no
+  //collaboration diagram settings
+  show_full_operations_definition no show_hierarchical_rank no write_horizontally yes drawing_language uml package_name_in_tab no show_context no show_msg_context no draw_all_relations yes shadow yes show_stereotype_properties no
+  //object diagram settings
+   write_horizontally yes package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes show_stereotype_properties no
+  //component diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no
+  //deployment diagram settings
+  package_name_in_tab no show_context no write_horizontally yes auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no
+  //state diagram settings
+  package_name_in_tab no show_context no auto_label_position yes write_trans_label_horizontally yes show_trans_definition no draw_all_relations yes shadow yes
+  show_activities yes region_horizontally yes drawing_language uml show_stereotype_properties no
+  //activity diagram settings
+  package_name_in_tab no show_context no show_opaque_action_definition no auto_label_position yes write_flow_label_horizontally no draw_all_relations yes shadow yes
+  show_infonote yes drawing_language uml show_stereotype_properties no
+  
+  class_color yellow duration_color transparent continuation_color gray note_color blue fragment_color transparent subject_color transparent usecase_color yellow package_color transparent component_color green artifact_color green deploymentnode_color gray state_color yellow stateaction_color transparent activity_color transparent activityregion_color transparent activitypartition_color transparent activityaction_color transparent parameterpin_color white 
+  font_size 13
+  diagram_format A4
+
+  image_root_dir ""
+
+  mark_for_import
+  
+  classview 134722 "fofo"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    classdiagram 142018 "cdm"
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    sequencediagram 148546 "sd-add1"
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+      overlapping_bars size A4
+    end
+
+    classdiagram 155074 "owlclass2"
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 166338 "Thing"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 166466 "Dynamic"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 160578 // <generalisation>
+	relation 160578 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 160578 // <generalisation>
+	  b parent class_ref 166722 // Annotation
+      end
+    end
+
+    class 166594 "Static"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 160450 // <generalisation>
+	relation 160450 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 160450 // <generalisation>
+	  b parent class_ref 166722 // Annotation
+      end
+    end
+
+    class 166722 "Annotation"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 161090 // <generalisation>
+	relation 161090 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 161090 // <generalisation>
+	  b parent class_ref 166338 // Thing
+      end
+    end
+
+    class 166850 "Preference"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 160962 // <generalisation>
+	relation 160962 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 160962 // <generalisation>
+	  b parent class_ref 166338 // Thing
+      end
+
+      classrelation 161346 // hasAnnotation (<unidirectional association>)
+	relation 161346 --->
+	  a role_name "hasAnnotation" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 161346 // hasAnnotation (<unidirectional association>)
+	  b parent class_ref 166722 // Annotation
+      end
+
+      attribute 171458 "annotationValue"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 166978 "Negative"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 160706 // <generalisation>
+	relation 160706 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 160706 // <generalisation>
+	  b parent class_ref 166850 // Preference
+      end
+    end
+
+    class 167106 "Positive"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 160834 // <generalisation>
+	relation 160834 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 160834 // <generalisation>
+	  b parent class_ref 166850 // Preference
+      end
+    end
+
+    sequencediagram 161730 "sd-recover"
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+      overlapping_bars size A4
+    end
+
+    sequencediagram 168258 "sd-lookfor"
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+      overlapping_bars size A4
+    end
+
+    sequencediagram 168386 "sd-add2"
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+      overlapping_bars size A4
+    end
+
+    sequencediagram 168514 "sd-remove"
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+      overlapping_bars size A4
+    end
+
+    sequencediagram 168642 "sd-remove2"
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+      overlapping_bars size A4
+    end
+  end
+
+  package_ref 134594 // src
+
+  package_ref 134978 // unknown
+
+  classview 148418 "affec"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    classdiagram 175170 "affective1"
+      draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 173634 "Appraisal"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 178370 "hasSomething"
+	private type class_ref 166338 // Thing
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 168386 // isAppraisalOf (<unidirectional association>)
+	relation 168386 --->
+	  a role_name "isAppraisalOf" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 168386 // isAppraisalOf (<unidirectional association>)
+	  b parent class_ref 174274 // Agent
+      end
+    end
+
+    class 173762 "Emotion"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 168642 // <generalisation>
+	relation 168642 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 168642 // <generalisation>
+	  b parent class_ref 173634 // Appraisal
+      end
+    end
+
+    class 173890 "KnowRelation"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 178498 "hasNiceness"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 168514 // <generalisation>
+	relation 168514 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 168514 // <generalisation>
+	  b parent class_ref 173634 // Appraisal
+      end
+    end
+
+    class 174018 "Likelihood"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 174146 "Object"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 177986 "hasName"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 174274 "Agent"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 168002 // <generalisation>
+	relation 168002 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 168002 // <generalisation>
+	  b parent class_ref 174146 // Object
+      end
+
+      classrelation 168130 // hasKnow (<unidirectional association>)
+	relation 168130 --->
+	  a role_name "hasKnow" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 168130 // hasKnow (<unidirectional association>)
+	  b parent class_ref 174274 // Agent
+      end
+
+      classrelation 168258 // hasSetup (<unidirectional association>)
+	relation 168258 --->
+	  a role_name "hasSetup" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 168258 // hasSetup (<unidirectional association>)
+	  b parent class_ref 174402 // Setup
+      end
+    end
+
+    class 174402 "Setup"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 178114 "hasThreshold"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 178242 "hasThresholdType"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 174530 "None"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 168770 // <generalisation>
+	relation 168770 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 168770 // <generalisation>
+	  b parent class_ref 174018 // Likelihood
+      end
+    end
+
+    class 174658 "Low"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 168898 // <generalisation>
+	relation 168898 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 168898 // <generalisation>
+	  b parent class_ref 174018 // Likelihood
+      end
+    end
+
+    class 174786 "Mid"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 169154 // <generalisation>
+	relation 169154 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 169154 // <generalisation>
+	  b parent class_ref 174018 // Likelihood
+      end
+    end
+
+    class 174914 "High"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 169026 // <generalisation>
+	relation 169026 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 169026 // <generalisation>
+	  b parent class_ref 174018 // Likelihood
+      end
+    end
+
+    classdiagram 175298 "affective2"
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 175042 "GoodKnowRelation"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 169282 // <generalisation>
+	relation 169282 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 169282 // <generalisation>
+	  b parent class_ref 173890 // KnowRelation
+      end
+
+      attribute 178626 "hasNiceness"
+	private explicit_type "int [>0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 175170 "BadKnowRelation"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 169410 // <generalisation>
+	relation 169410 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 169410 // <generalisation>
+	  b parent class_ref 173890 // KnowRelation
+      end
+
+      attribute 178754 "hasNiceness"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 175298 "ActionsOfAgents"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 169666 // <generalisation>
+	relation 169666 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 169666 // <generalisation>
+	  b parent class_ref 173762 // Emotion
+      end
+
+      attribute 178882 "hasJudgeness"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 175426 "AspectsOfObjects"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 169538 // <generalisation>
+	relation 169538 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 169538 // <generalisation>
+	  b parent class_ref 173762 // Emotion
+      end
+
+      attribute 179010 "hasFamiliarity"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 191426 "hasAttraction"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 175554 "ConsequencesOfEvents"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 169794 // <generalisation>
+	relation 169794 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 169794 // <generalisation>
+	  b parent class_ref 173762 // Emotion
+      end
+    end
+
+    class 175682 "ProspectRelevant"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 172866 // <generalisation>
+	relation 172866 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 172866 // <generalisation>
+	  b parent class_ref 179138 // ConsequencesForSelf
+      end
+    end
+
+    class 175810 "ProspectIrrelevant"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 172738 // <generalisation>
+	relation 172738 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 172738 // <generalisation>
+	  b parent class_ref 179138 // ConsequencesForSelf
+      end
+    end
+
+    class 175938 "ProspectNotRealized"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 170178 // <generalisation>
+	relation 170178 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 170178 // <generalisation>
+	  b parent class_ref 175682 // ProspectRelevant
+      end
+    end
+
+    class 176066 "ProspectRealized"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 170306 // <generalisation>
+	relation 170306 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 170306 // <generalisation>
+	  b parent class_ref 175682 // ProspectRelevant
+      end
+    end
+
+    classdiagram 175426 "affective3"
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A3
+    end
+
+    class 176194 "Love"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 179138 "hasFamiliarity"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 170434 // <generalisation>
+	relation 170434 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 170434 // <generalisation>
+	  b parent class_ref 175426 // AspectsOfObjects
+      end
+
+      attribute 191682 "hasAttraction"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 176322 "Hate"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 179266 "hasFamiliarity"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 170562 // <generalisation>
+	relation 170562 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 170562 // <generalisation>
+	  b parent class_ref 175426 // AspectsOfObjects
+      end
+
+      attribute 191554 "hasAttraction"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 176450 "Admiration"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 179906 "hasJudgeOther"
+	private type class_ref 174146 // Object
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 180162 "hasJudgeness"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 170690 // <generalisation>
+	relation 170690 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 170690 // <generalisation>
+	  b parent class_ref 175298 // ActionsOfAgents
+      end
+    end
+
+    class 176578 "Gratitude"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 172098 // <generalisation>
+	relation 172098 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 172098 // <generalisation>
+	  b parent class_ref 176450 // Admiration
+      end
+
+      classrelation 172226 // <generalisation>
+	relation 172226 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 172226 // <generalisation>
+	  b parent class_ref 178114 // Joy
+      end
+    end
+
+    class 176706 "Pride"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 179394 "hasJudgeMyself"
+	private type class_ref 174146 // Object
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 179778 "hasJudgeness"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 170818 // <generalisation>
+	relation 170818 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 170818 // <generalisation>
+	  b parent class_ref 175298 // ActionsOfAgents
+      end
+    end
+
+    class 176834 "Gratification"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 171970 // <generalisation>
+	relation 171970 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 171970 // <generalisation>
+	  b parent class_ref 176706 // Pride
+      end
+
+      classrelation 172354 // <generalisation>
+	relation 172354 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 172354 // <generalisation>
+	  b parent class_ref 178114 // Joy
+      end
+    end
+
+    class 176962 "Shame"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 179522 "hasJudgeMyself"
+	private type class_ref 174146 // Object
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 179650 "hasJudgeness"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 171074 // <generalisation>
+	relation 171074 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 171074 // <generalisation>
+	  b parent class_ref 175298 // ActionsOfAgents
+      end
+    end
+
+    class 177090 "Reproach"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 180034 "hasJudgeOther"
+	private type class_ref 174146 // Object
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 180290 "hasJudgeness"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 170946 // <generalisation>
+	relation 170946 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 170946 // <generalisation>
+	  b parent class_ref 175298 // ActionsOfAgents
+      end
+    end
+
+    class 177218 "Anger"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 171714 // <generalisation>
+	relation 171714 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 171714 // <generalisation>
+	  b parent class_ref 177986 // Distress
+      end
+
+      classrelation 171842 // <generalisation>
+	relation 171842 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 171842 // <generalisation>
+	  b parent class_ref 177090 // Reproach
+      end
+    end
+
+    class 177346 "Remorse"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 171458 // <generalisation>
+	relation 171458 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 171458 // <generalisation>
+	  b parent class_ref 177986 // Distress
+      end
+
+      classrelation 171586 // <generalisation>
+	relation 171586 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 171586 // <generalisation>
+	  b parent class_ref 176962 // Shame
+      end
+    end
+
+    class 177474 "Gloating"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 181698 "hasPersonEnemy"
+	private type class_ref 174274 // Agent
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 182082 "hasDeserved"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 182594 "hasDesireOther"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 173122 // <generalisation>
+	relation 173122 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 173122 // <generalisation>
+	  b parent class_ref 179010 // ConsequencesForOthers
+      end
+    end
+
+    class 177602 "HappyFor"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 181442 "hasPersonFriend"
+	private type class_ref 174274 // Agent
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 181954 "hasDeserved"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 182466 "hasDesireOther"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 172994 // <generalisation>
+	relation 172994 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 172994 // <generalisation>
+	  b parent class_ref 179010 // ConsequencesForOthers
+      end
+    end
+
+    class 177730 "SorryFor"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 181570 "hasPersonFriend"
+	private type class_ref 174274 // Agent
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 182338 "hasDeserved"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 182722 "hasDesireOther"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 173378 // <generalisation>
+	relation 173378 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 173378 // <generalisation>
+	  b parent class_ref 179010 // ConsequencesForOthers
+      end
+    end
+
+    class 177858 "Resentment"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 181826 "hasPersonEnemy"
+	private type class_ref 174274 // Agent
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 182210 "hasDeserved"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 182850 "hasDesireOther"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 173250 // <generalisation>
+	relation 173250 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 173250 // <generalisation>
+	  b parent class_ref 179010 // ConsequencesForOthers
+      end
+    end
+
+    class 177986 "Distress"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 180546 "hasLikelihood"
+	private explicit_type "Likelihood [= None]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 180802 "hasDesireSelf"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 171202 // <generalisation>
+	relation 171202 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 171202 // <generalisation>
+	  b parent class_ref 175810 // ProspectIrrelevant
+      end
+    end
+
+    class 178114 "Joy"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 180418 "hasLikelihood"
+	private explicit_type "Likelihood [= None]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 180674 "hasDesireSelf"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 171330 // <generalisation>
+	relation 171330 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 171330 // <generalisation>
+	  b parent class_ref 175810 // ProspectIrrelevant
+      end
+    end
+
+    class 178242 "Fear"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 181058 "hasDesireSelf"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 181314 "hasLikelihood"
+	private explicit_type "Likelihood [not None]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 180546 // <generalisation>
+	relation 180546 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 180546 // <generalisation>
+	  b parent class_ref 175938 // ProspectNotRealized
+      end
+    end
+
+    class 178370 "Hope"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 180930 "hasDesireSelf"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 181186 "hasLikelihood"
+	private explicit_type "Likelihood [not None]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 180418 // <generalisation>
+	relation 180418 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 180418 // <generalisation>
+	  b parent class_ref 175938 // ProspectNotRealized
+      end
+    end
+
+    class 178498 "Disappointment"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 183362 "hasEffort"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 183746 "hasRealized"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 184258 "hasPreviousIntensity"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 180034 // <generalisation>
+	relation 180034 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 180034 // <generalisation>
+	  b parent class_ref 176066 // ProspectRealized
+      end
+    end
+
+    class 178626 "FearsConfirmed"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 183106 "hasEffort"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 183874 "hasRealized"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 184130 "hasPreviousIntensity"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 180290 // <generalisation>
+	relation 180290 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 180290 // <generalisation>
+	  b parent class_ref 176066 // ProspectRealized
+      end
+    end
+
+    class 178754 "Relief"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 182978 "hasEffort"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 183490 "hasRealized"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 184002 "hasPreviousIntensity"
+	private explicit_type "int [< 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 179906 // <generalisation>
+	relation 179906 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 179906 // <generalisation>
+	  b parent class_ref 176066 // ProspectRealized
+      end
+    end
+
+    class 178882 "Satisfaction"
+      abstract visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 183234 "hasEffort"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 183618 "hasRealized"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 184386 "hasPreviousIntensity"
+	private explicit_type "int [> 0]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 180162 // <generalisation>
+	relation 180162 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 180162 // <generalisation>
+	  b parent class_ref 176066 // ProspectRealized
+      end
+    end
+
+    class 179010 "ConsequencesForOthers"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 184770 "hasDeserved"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 184898 "hasDesireOther"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 172610 // <generalisation>
+	relation 172610 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 172610 // <generalisation>
+	  b parent class_ref 175554 // ConsequencesOfEvents
+      end
+    end
+
+    class 179138 "ConsequencesForSelf"
+      visibility package stereotype "OWLClass"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 184514 "hasLikelihood"
+	private type class_ref 174018 // Likelihood
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 184642 "hasDesireSelf"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 172482 // <generalisation>
+	relation 172482 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 172482 // <generalisation>
+	  b parent class_ref 175554 // ConsequencesOfEvents
+      end
+    end
+  end
+end
