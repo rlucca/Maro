@@ -1,0 +1,61 @@
+%\documentclass[10pt]{article}
+\documentclass[a4paper,10pt,twocolumn]{article}
+
+\usepackage[english]{babel}
+\usepackage[a4paper]{geometry}
+%\usepackage[T1]{fontenc}        % pacote para conj. de caracteres correto
+%\usepackage[utf8]{inputenc}     % pacote para acentuação
+%%\usepackage[alf]{abntcite}		% pacote para as referencias da abnt nao numerica
+\usepackage{graphicx}           % pacote para importar figuras
+\usepackage{times}              % pacote para usar fonte Adobe Times
+\usepackage{color}              % pacote para usar \textcolor
+%\usepackage{xcolor,colortbl}    % pacote para usar cores nas tabelas
+\usepackage{listings}       	% pacote para usar listagens/listing
+%\usepackage{rotating}			% rotacionar textos
+%\usepackage{multirow}			% textos usando mais de uma linha
+%%\usepackage{mathptmx}          % p/ usar fonte Adobe Times nas fórmulas
+\usepackage{wrapfig}			% posiciona elementos de maneira fluante
+%\usepackage{url}
+%\usepackage{setspace}		% para usar onehalfspacing
+\usepackage{indentfirst}
+\usepackage{natbib}
+
+\geometry{lmargin=3cm,rmargin=3cm,top=1.5cm,bottom=2.5cm}
+
+
+
+% Use todo para anotar algo para ver depois
+% Criando comando \todo{algo}
+\newcommand{\todo}[1] {\footnote{TODO #1}\marginpar{\textcolor{red}{\textbf{TODO}}}}
+\renewcommand{\todo}[1] {}
+% Use dev para anotar algum comprometimento
+\newcommand{\dev}[0] {\marginpar{\textcolor{blue}{\textbf{IMPL}}}}
+\renewcommand{\dev}[0] {}
+
+\newcommand{\subsubsubsection}[1]{\subsubsection{#1} \todo{change}}
+
+\newcommand\UP{\mathbin{\char`\^}}
+
+%\newcommand{\citet}{\citeonline}
+\newcommand{\citeauthoronline}{\citeauthor*}
+\newcommand{\jason}{\emph{Jason} }
+\newcommand{\occ}{\emph{OCC} }
+\newcommand{\OWL}{\emph{OWL} }
+
+\title{Maro: A model of emotions using ontology}
+
+\author{Ricardo Rodrigues Lucca}
+
+\begin{document}
+\maketitle
+
+\input{onepage}
+%\input{introduction}
+%\input{stateOfTheArt}
+%\input{working}
+%\input{useCases}
+%\input{considerations}
+
+\bibliographystyle{plainnat}
+\bibliography{mestrado}
+\end{document}

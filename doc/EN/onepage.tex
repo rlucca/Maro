@@ -1,0 +1,54 @@
+\section{Introduction}
+
+This work presents a tool developed to model affective behaviour of virtual
+actors. The work revised agent oriented programming, computing affective
+and how \jason platform \citep{bordini-jason} works which was done because the
+tool is a framework built on top of that platform.
+
+According to \citet{gruber1993translation}, ``ontology is a explicit
+specification of a conceptualization''. In the present, it has been understood as
+a shareable common knowledge which can be used in communication between people
+or machines \citep{wks2008towards}. So, ontology came as an excellent way of do
+two things. First, it is a good manner to expose the rules of the system in a
+general way. Second, it is easy to a human do the configuration needed.
+
+The architecture of the system was divided in one environment and a belief
+base. The environment developed used two ontologies to allow the agents
+receive perceptions its preferences and schedules for one day of activity.
+The first ontology was done to make possible the agents have its preference
+based on annotations that exist in all objects and characters in the world.
+The ontology of schedule was proposed by \citet{paiva2005ontology}, and it
+was used to do the world virtual used in one of the validation cases and the
+schedule of each agent. It allows the agent to have fixed routes (the agent
+always do this route) and random routes (the agent eventually do this).
+
+A belief base is similar to a database excepts that it contains all believes
+and plans of actions that one agent have. The second part of the architecture
+developed divided the belief base in two levels. The first level is the
+ontology based on the emotion model of \citet{ortony1988cse} developed. It
+was built to have all the emotions from the original model. Also, it was
+constructed to be used with the ontology of preferences and the agent can
+expose its feeling through annotation of its name.
+
+Although the multi-agent platform has a way to handle ontologies
+\citep{moreira2006agent}, it was decided to not use this implementation. So,
+it was needed to implement a light version of it. The new version is less
+flexible because it does not allow agents to create new concepts and new data
+or object properties during run-time execution. However, this decision allowed
+the agent beliefs by mapped to and from ontology dynamically.
+
+To test what was developed, this work built three different examples. The
+first demo built was thought as a unit test to protect from possibly changes during
+its development. So it tests all processes needed during the integration as insertion,
+recover, listing or remove beliefs. Next, it was a soccer fight simulation
+which two agents cheers by their teams. The emotion ontology was used in a
+manual way. The last one used all ontologies explained to built a
+visualization of an apartment and defines routines and emotional responses to
+annotations in objects and characters.
+
+A mechanism to represent emotion in agents based on a very acceptable emotion
+model was developed. Also, a library to understand the ontology and know what
+needs by send to or receive from the same was done. The ontologies were
+implemented as modules and each one can be used independently.
+The source of all examples, the articles and other artefacts developed is
+available online on \emph{GitHub}\footnote{http://github.com/rlucca/Maro}.
